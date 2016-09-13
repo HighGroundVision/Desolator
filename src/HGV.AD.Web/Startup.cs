@@ -12,6 +12,8 @@ using Microsoft.Extensions.Logging;
 using HGV.AD.Web.Data;
 using HGV.AD.Web.Models;
 using HGV.AD.Web.Services;
+using Hangfire;
+using HGV.AD.Web.Configuration;
 
 namespace HGV.AD.Web
 {
@@ -39,8 +41,14 @@ namespace HGV.AD.Web
         // This method gets called by the runtime. Use this method to add services to the container.
         public void ConfigureServices(IServiceCollection services)
         {
+            services.AddOptions();
+            services.Configure<Site>(Configuration.GetSection("Site"));
+
             // Add framework services.
-            services.AddDbContext<ApplicationDbContext>(options =>
+            services.AddHangfire(configuration => configuration
+				.UseSqlServerStorage(Configuration.GetConnectionString("DefaultConnection")));
+
+			services.AddDbContext<ApplicationDbContext>(options =>
                 options.UseSqlServer(Configuration.GetConnectionString("DefaultConnection")));
 
             services.AddIdentity<ApplicationUser, IdentityRole>()
@@ -50,8 +58,11 @@ namespace HGV.AD.Web
             services.AddMvc();
 
             // Add application services.
-            services.AddTransient<IEmailSender, AuthMessageSender>();
-            services.AddTransient<ISmsSender, AuthMessageSender>();
+            //services.AddTransient<IEmailSender, AuthMessageSender>();
+            //services.AddTransient<ISmsSender, AuthMessageSender>();
+			services.AddTransient<SeedService, SeedService>();
+            services.AddTransient<CollectorService, CollectorService>();
+            services.AddTransient<TransferService, TransferService>();
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
@@ -60,28 +71,44 @@ namespace HGV.AD.Web
             loggerFactory.AddConsole(Configuration.GetSection("Logging"));
             loggerFactory.AddDebug();
 
+            /*
             if (env.IsDevelopment())
             {
-                app.UseDeveloperExceptionPage();
-                app.UseDatabaseErrorPage();
-                app.UseBrowserLink();
-            }
+				app.UseDeveloperExceptionPage();
+				app.UseDatabaseErrorPage();
+				// app.UseBrowserLink();
+			}
             else
             {
-                app.UseExceptionHandler("/Home/Error");
+				app.UseExceptionHandler("/Main/HandleException");
+                app.UseStatusCodePagesWithRedirects("/Main/HandleStatusCode/{0}");
             }
+            */
 
-            app.UseStaticFiles();
+            app.UseDeveloperExceptionPage();
+            app.UseDatabaseErrorPage();
+            
+            app.UseHangfireDashboard("/hangfire", new DashboardOptions
+            {
+                Authorization = new[]
+                {
+                    new HGVHangFireAuthorizationFilter()
+                }
+            });
+
+			app.UseHangfireServer();
+
+			app.UseStaticFiles();
 
             app.UseIdentity();
 
-            // Add external authentication middleware below. To configure them please see http://go.microsoft.com/fwlink/?LinkID=532715
+			app.UseSteamAuthentication();
 
-            app.UseMvc(routes =>
+			app.UseMvc(routes =>
             {
                 routes.MapRoute(
                     name: "default",
-                    template: "{controller=Home}/{action=Index}/{id?}");
+                    template: "{controller=Main}/{action=Index}/{id?}");
             });
         }
     }

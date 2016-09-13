@@ -3,22 +3,26 @@
 <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>@ViewData["Title"] - HGV.AD.Web</title>
+    <title>@ViewData["Title"] - HGV</title>
 
-    <environment names="Development">
-        <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.css" />
-        <link rel="stylesheet" href="~/css/site.css" />
-    </environment>
-    <environment names="Staging,Production">
-        <link rel="stylesheet" href="https://ajax.aspnetcdn.com/ajax/bootstrap/3.3.6/css/bootstrap.min.css"
-              asp-fallback-href="~/lib/bootstrap/dist/css/bootstrap.min.css"
-              asp-fallback-test-class="sr-only" asp-fallback-test-property="position" asp-fallback-test-value="absolute" />
-        <link rel="stylesheet" href="~/css/site.min.css" asp-append-version="true" />
-    </environment>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://bootswatch.com/cyborg/bootstrap.min.css" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.6.3/css/font-awesome.min.css" />
+    <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/v/bs/dt-1.10.12/fc-3.2.2/datatables.min.css" />
+
+<environment names="Development">
+    <link rel="stylesheet" href="~/css/dota-ability-tooltip.css"  asp-append-version="true"/>
+    <link rel="stylesheet" href="~/css/site.css" asp-append-version="true" />
+</environment>
+<environment names="Staging,Production">
+    <link rel="stylesheet" href="~/css/dota-ability-tooltip.min.css" asp-append-version="true" />
+    <link rel="stylesheet" href="~/css/site.min.css" asp-append-version="true" />
+</environment>
 </head>
 <body>
-    <div class="navbar navbar-inverse navbar-fixed-top">
+    <nav class="navbar navbar-inverse navbar-fixed-top">
         <div class="container">
+            @*  *@
             <div class="navbar-header">
                 <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
                     <span class="sr-only">Toggle navigation</span>
@@ -26,42 +30,137 @@
                     <span class="icon-bar"></span>
                     <span class="icon-bar"></span>
                 </button>
-                <a asp-area="" asp-controller="Home" asp-action="Index" class="navbar-brand">HGV.AD.Web</a>
+
+                <a asp-area="" asp-controller="Info" asp-action="Index" class="navbar-brand">
+                    High Ground Vision <small>AD</small>
+                </a>
+
             </div>
             <div class="navbar-collapse collapse">
                 <ul class="nav navbar-nav">
-                    <li><a asp-area="" asp-controller="Home" asp-action="Index">Home</a></li>
-                    <li><a asp-area="" asp-controller="Home" asp-action="About">About</a></li>
-                    <li><a asp-area="" asp-controller="Home" asp-action="Contact">Contact</a></li>
+                    <li class="dropdown">
+                        <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Info <span class="caret"></span></a>
+                        <ul class="dropdown-menu">
+                            <li><a asp-area="" asp-controller="Info" asp-action="Illusions">Illusions</a></li>
+                        </ul>
+                    </li>
+                    <li><a asp-area="" asp-controller="Heroes" asp-action="Index">Heroes</a></li>
+                    <li><a asp-area="" asp-controller="Abilities" asp-action="Index">Abilities</a></li>
                 </ul>
-                @await Html.PartialAsync("_LoginPartial")
+                
+                @*@await Html.PartialAsync("_LoginPartial")*@
             </div>
         </div>
-    </div>
-    <div class="container body-content">
-        @RenderBody()
-        <hr />
-        <footer>
-            <p>&copy; 2016 - HGV.AD.Web</p>
-        </footer>
-    </div>
+    </nav>
 
-    <environment names="Development">
-        <script src="~/lib/jquery/dist/jquery.js"></script>
-        <script src="~/lib/bootstrap/dist/js/bootstrap.js"></script>
-        <script src="~/js/site.js" asp-append-version="true"></script>
-    </environment>
-    <environment names="Staging,Production">
-        <script src="https://ajax.aspnetcdn.com/ajax/jquery/jquery-2.2.0.min.js"
-                asp-fallback-src="~/lib/jquery/dist/jquery.min.js"
-                asp-fallback-test="window.jQuery">
-        </script>
-        <script src="https://ajax.aspnetcdn.com/ajax/bootstrap/3.3.6/bootstrap.min.js"
-                asp-fallback-src="~/lib/bootstrap/dist/js/bootstrap.min.js"
-                asp-fallback-test="window.jQuery && window.jQuery.fn && window.jQuery.fn.modal">
-        </script>
-        <script src="~/js/site.min.js" asp-append-version="true"></script>
-    </environment>
+    <div class="body-content">
+        <div class="container">
+            @RenderBody()
+        </div>
+    </div>
+    
+    <footer>
+        <div class="container">
+            <div class="row">
+                <div class="col-md-4 col-sm-6 text-center">
+
+                    <h3>
+                        <img src="~/images/logo/Wards.jpg" width="50" class="img-rounded" /> 
+                        HGV 
+                        <small>AD</small>
+                    </h3>
+
+                    <ul class="list-inline">
+                        <li>
+                            <a asp-area="" asp-controller="Info" asp-action="Index" class="text-info">Home</a>
+                        </li>
+                        <li>
+                            <a asp-area="" asp-controller="Info" asp-action="About" class="text-info">About</a>
+                        </li>
+                        <li>
+                            <a asp-area="" asp-controller="Info" asp-action="Questions" class="text-info">FAQs</a>
+                        </li>
+                    </ul>
+
+                    <p>
+                        &copy; @DateTime.Today.Year - <a href="http://venatiostudios.com/">Venatio Studios</a>
+                    </p>
+                </div>
+                <div class="col-md-4 col-sm-6">
+                    <ul class="list-unstyled hidden-xs">
+                        <li>
+                            <h3>
+                                <i class="fa fa-twitter"></i> 
+                                <small>
+                                    <a href="https://twitter.com/DotaHGV" target="_blank">@@DotaHGV</a>
+                                </small>
+                            </h3>
+                        </li>
+                        <li>
+                            <h3>
+                                <i class="fa fa-github"></i>
+                                <small>
+                                    <a href="https://github.com/HighGroundVision" target="_blank">High Ground Vision</a>
+                                </small>
+                            </h3>
+                        </li>
+                        <li>
+                            <h3>
+                                <i class="fa fa-linkedin"></i>
+                                <small>
+                                    <a href="http://www.linkedin.com/in/jamie-webster-8735a98" target="_blank">Jamie Webster</a>
+                                </small>
+                            </h3>
+                        </li>
+                    </ul>
+                    <ul class="list-inline visible-xs text-center">
+                        <li>
+                            <h3>
+                                <a href="https://twitter.com/DotaHGV" target="_blank"><i class="fa fa-twitter"></i></a>
+                            </h3>
+                        </li>
+                        <li>
+                            <h3>
+                                <a href="https://github.com/HighGroundVision" target="_blank"><i class="fa fa-github"></i></a>
+                            </h3>
+                        </li>
+                        <li>
+                            <h3>
+                                <a href="http://www.linkedin.com/in/jamie-webster-8735a98" target="_blank"><i class="fa fa-linkedin"></i></a>
+                            </h3>
+                        </li>
+                    </ul>
+                </div>
+                <div class="col-md-4 hidden-sm hidden-xs">
+                    <div>
+                        <h5>
+                            <i class="fa fa-map-marker" style="color: yellow;" aria-hidden="true"></i>
+                            Be a good support
+                        </h5>
+                        <span><a href="#">Buy wards</a> Your donations are greatly appreciated. It cost us about $100 / month on avg to run this site. Help keep the site alive and support new features.</span>
+                    </div>
+                    <div>
+                        <h5>
+                            <i class="fa fa-map-marker text-primary" aria-hidden="true" data-toggle="popover" title="True Sight" data-placement="top" data-content="Look for wards through to the site as they contain helpful hints, tips, and tricks."></i>
+                            Need Help?
+                        </h5>
+                        <span>Click a ward for helpful a popup full of hints, tips, and tricks.</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <script src="https://code.jquery.com/jquery-3.1.0.min.js" integrity="sha256-cCueBR6CsyA4/9szpPfrX3s49M9vUU5BgtiJj06wt/s=" crossorigin="anonymous"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
+    <script type="text/javascript" src="https://cdn.datatables.net/v/bs/dt-1.10.12/fc-3.2.2/datatables.min.js"></script>
+
+<environment names="Development">   
+    <script src="~/js/site.js" asp-append-version="true"></script>
+</environment>
+<environment names="Staging,Production">
+    <script src="~/js/site.min.js" asp-append-version="true"></script>
+</environment>
 
     @RenderSection("scripts", required: false)
 </body>
