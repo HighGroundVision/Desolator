@@ -7,7 +7,7 @@ using Hangfire.Annotations;
 
 namespace HGV.AD.Web.Configuration
 {
-    public class HGVHangFireAuthorizationFilter : IDashboardAuthorizationFilter
+    public class HangfireAuthorizationFilter : IDashboardAuthorizationFilter
     {
         public bool Authorize([NotNull] DashboardContext context)
         {

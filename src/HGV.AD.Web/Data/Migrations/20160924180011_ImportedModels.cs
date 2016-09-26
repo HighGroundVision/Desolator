@@ -13,7 +13,7 @@ namespace HGV.AD.Web.Data.Migrations
                 name: "Abilities",
                 columns: table => new
                 {
-                    Id = table.Column<int>(nullable: false),
+                    AbilityId = table.Column<int>(nullable: false),
                     AffectsWhom = table.Column<string>(nullable: true),
                     DamageType = table.Column<string>(nullable: true),
                     Description = table.Column<string>(nullable: true),
@@ -27,14 +27,36 @@ namespace HGV.AD.Web.Data.Migrations
                 },
                 constraints: table =>
                 {
-                    table.PrimaryKey("PK_Abilities", x => x.Id);
+                    table.PrimaryKey("PK_Abilities", x => x.AbilityId);
+                });
+
+            migrationBuilder.CreateTable(
+                name: "HeroAttributeRanks",
+                columns: table => new
+                {
+                    Id = table.Column<int>(nullable: false)
+                        .Annotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn),
+                    Avg = table.Column<double>(nullable: false),
+                    Groups = table.Column<double>(nullable: false),
+                    HeroId = table.Column<int>(nullable: false),
+                    Index = table.Column<int>(nullable: false),
+                    Max = table.Column<double>(nullable: false),
+                    Min = table.Column<double>(nullable: false),
+                    Name = table.Column<string>(nullable: true),
+                    Percentage = table.Column<double>(nullable: false),
+                    Rank = table.Column<int>(nullable: false),
+                    Value = table.Column<double>(nullable: false)
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_HeroAttributeRanks", x => x.Id);
                 });
 
             migrationBuilder.CreateTable(
                 name: "Heroes",
                 columns: table => new
                 {
-                    Id = table.Column<int>(nullable: false),
+                    HeroId = table.Column<int>(nullable: false),
                     AgiGain = table.Column<double>(nullable: false),
                     Alignment = table.Column<int>(nullable: false),
                     Armor = table.Column<double>(nullable: false),
@@ -68,18 +90,35 @@ namespace HGV.AD.Web.Data.Migrations
                 },
                 constraints: table =>
                 {
-                    table.PrimaryKey("PK_Heroes", x => x.Id);
+                    table.PrimaryKey("PK_Heroes", x => x.HeroId);
+                });
+
+            migrationBuilder.CreateTable(
+                name: "Checkpoints",
+                columns: table => new
+                {
+                    Id = table.Column<int>(nullable: false)
+                        .Annotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn),
+                    MatchDate = table.Column<DateTime>(nullable: false),
+                    MatchId = table.Column<long>(nullable: false),
+                    MatchNumber = table.Column<long>(nullable: false)
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_Checkpoints", x => x.Id);
                 });
 
             migrationBuilder.CreateTable(
                 name: "CurrentAbilityComboTrends",
                 columns: table => new
                 {
-                    Id = table.Column<long>(nullable: false)
-                        .Annotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn),
                     AbilityId = table.Column<int>(nullable: false),
+                    ComboId = table.Column<int>(nullable: false),
+                    AbilityIdentity = table.Column<string>(nullable: true),
+                    AbilityName = table.Column<string>(nullable: true),
                     Assists = table.Column<long>(nullable: false),
-                    ComboAbilityId = table.Column<int>(nullable: false),
+                    ComboIdentity = table.Column<string>(nullable: true),
+                    ComboName = table.Column<string>(nullable: true),
                     Deaths = table.Column<long>(nullable: false),
                     Kills = table.Column<long>(nullable: false),
                     Loses = table.Column<long>(nullable: false),
@@ -88,38 +127,40 @@ namespace HGV.AD.Web.Data.Migrations
                 },
                 constraints: table =>
                 {
-                    table.PrimaryKey("PK_CurrentAbilityComboTrends", x => x.Id);
+                    table.PrimaryKey("PK_CurrentAbilityComboTrends", x => new { x.AbilityId, x.ComboId });
                 });
 
             migrationBuilder.CreateTable(
                 name: "CurrentAbilityTrends",
                 columns: table => new
                 {
-                    Id = table.Column<int>(nullable: false)
-                        .Annotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn),
                     AbilityId = table.Column<int>(nullable: false),
                     Assists = table.Column<long>(nullable: false),
                     Deaths = table.Column<long>(nullable: false),
+                    Identity = table.Column<string>(nullable: true),
                     Kills = table.Column<long>(nullable: false),
                     Loses = table.Column<long>(nullable: false),
+                    Name = table.Column<string>(nullable: true),
                     Total = table.Column<long>(nullable: false),
                     Wins = table.Column<long>(nullable: false)
                 },
                 constraints: table =>
                 {
-                    table.PrimaryKey("PK_CurrentAbilityTrends", x => x.Id);
+                    table.PrimaryKey("PK_CurrentAbilityTrends", x => x.AbilityId);
                 });
 
             migrationBuilder.CreateTable(
                 name: "CurrentHeroComboTrends",
                 columns: table => new
                 {
-                    Id = table.Column<int>(nullable: false)
-                        .Annotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn),
+                    HeroId = table.Column<int>(nullable: false),
                     AbilityId = table.Column<int>(nullable: false),
+                    AbilityIdentity = table.Column<string>(nullable: true),
+                    AbilityName = table.Column<string>(nullable: true),
                     Assists = table.Column<long>(nullable: false),
                     Deaths = table.Column<long>(nullable: false),
-                    HeroId = table.Column<int>(nullable: false),
+                    HeroIdentity = table.Column<string>(nullable: true),
+                    HeroName = table.Column<string>(nullable: true),
                     Kills = table.Column<long>(nullable: false),
                     Loses = table.Column<long>(nullable: false),
                     Total = table.Column<long>(nullable: false),
@@ -127,37 +168,39 @@ namespace HGV.AD.Web.Data.Migrations
                 },
                 constraints: table =>
                 {
-                    table.PrimaryKey("PK_CurrentHeroComboTrends", x => x.Id);
+                    table.PrimaryKey("PK_CurrentHeroComboTrends", x => new { x.HeroId, x.AbilityId });
                 });
 
             migrationBuilder.CreateTable(
                 name: "CurrentHeroTrends",
                 columns: table => new
                 {
-                    Id = table.Column<int>(nullable: false)
-                        .Annotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn),
+                    HeroId = table.Column<int>(nullable: false),
                     Assists = table.Column<long>(nullable: false),
                     Deaths = table.Column<long>(nullable: false),
-                    HeroId = table.Column<int>(nullable: false),
+                    Identity = table.Column<string>(nullable: true),
                     Kills = table.Column<long>(nullable: false),
                     Loses = table.Column<long>(nullable: false),
+                    Name = table.Column<string>(nullable: true),
                     Total = table.Column<long>(nullable: false),
                     Wins = table.Column<long>(nullable: false)
                 },
                 constraints: table =>
                 {
-                    table.PrimaryKey("PK_CurrentHeroTrends", x => x.Id);
+                    table.PrimaryKey("PK_CurrentHeroTrends", x => x.HeroId);
                 });
 
             migrationBuilder.CreateTable(
                 name: "NextAbilityComboTrends",
                 columns: table => new
                 {
-                    Id = table.Column<long>(nullable: false)
-                        .Annotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn),
                     AbilityId = table.Column<int>(nullable: false),
+                    ComboId = table.Column<int>(nullable: false),
+                    AbilityIdentity = table.Column<string>(nullable: true),
+                    AbilityName = table.Column<string>(nullable: true),
                     Assists = table.Column<long>(nullable: false),
-                    ComboAbilityId = table.Column<int>(nullable: false),
+                    ComboIdentity = table.Column<string>(nullable: true),
+                    ComboName = table.Column<string>(nullable: true),
                     Deaths = table.Column<long>(nullable: false),
                     Kills = table.Column<long>(nullable: false),
                     Loses = table.Column<long>(nullable: false),
@@ -166,38 +209,40 @@ namespace HGV.AD.Web.Data.Migrations
                 },
                 constraints: table =>
                 {
-                    table.PrimaryKey("PK_NextAbilityComboTrends", x => x.Id);
+                    table.PrimaryKey("PK_NextAbilityComboTrends", x => new { x.AbilityId, x.ComboId });
                 });
 
             migrationBuilder.CreateTable(
                 name: "NextAbilityTrends",
                 columns: table => new
                 {
-                    Id = table.Column<int>(nullable: false)
-                        .Annotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn),
                     AbilityId = table.Column<int>(nullable: false),
                     Assists = table.Column<long>(nullable: false),
                     Deaths = table.Column<long>(nullable: false),
+                    Identity = table.Column<string>(nullable: true),
                     Kills = table.Column<long>(nullable: false),
                     Loses = table.Column<long>(nullable: false),
+                    Name = table.Column<string>(nullable: true),
                     Total = table.Column<long>(nullable: false),
                     Wins = table.Column<long>(nullable: false)
                 },
                 constraints: table =>
                 {
-                    table.PrimaryKey("PK_NextAbilityTrends", x => x.Id);
+                    table.PrimaryKey("PK_NextAbilityTrends", x => x.AbilityId);
                 });
 
             migrationBuilder.CreateTable(
                 name: "NextHeroComboTrends",
                 columns: table => new
                 {
-                    Id = table.Column<int>(nullable: false)
-                        .Annotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn),
+                    HeroId = table.Column<int>(nullable: false),
                     AbilityId = table.Column<int>(nullable: false),
+                    AbilityIdentity = table.Column<string>(nullable: true),
+                    AbilityName = table.Column<string>(nullable: true),
                     Assists = table.Column<long>(nullable: false),
                     Deaths = table.Column<long>(nullable: false),
-                    HeroId = table.Column<int>(nullable: false),
+                    HeroIdentity = table.Column<string>(nullable: true),
+                    HeroName = table.Column<string>(nullable: true),
                     Kills = table.Column<long>(nullable: false),
                     Loses = table.Column<long>(nullable: false),
                     Total = table.Column<long>(nullable: false),
@@ -205,37 +250,39 @@ namespace HGV.AD.Web.Data.Migrations
                 },
                 constraints: table =>
                 {
-                    table.PrimaryKey("PK_NextHeroComboTrends", x => x.Id);
+                    table.PrimaryKey("PK_NextHeroComboTrends", x => new { x.HeroId, x.AbilityId });
                 });
 
             migrationBuilder.CreateTable(
                 name: "NextHeroTrends",
                 columns: table => new
                 {
-                    Id = table.Column<int>(nullable: false)
-                        .Annotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn),
+                    HeroId = table.Column<int>(nullable: false),
                     Assists = table.Column<long>(nullable: false),
                     Deaths = table.Column<long>(nullable: false),
-                    HeroId = table.Column<int>(nullable: false),
+                    Identity = table.Column<string>(nullable: true),
                     Kills = table.Column<long>(nullable: false),
                     Loses = table.Column<long>(nullable: false),
+                    Name = table.Column<string>(nullable: true),
                     Total = table.Column<long>(nullable: false),
                     Wins = table.Column<long>(nullable: false)
                 },
                 constraints: table =>
                 {
-                    table.PrimaryKey("PK_NextHeroTrends", x => x.Id);
+                    table.PrimaryKey("PK_NextHeroTrends", x => x.HeroId);
                 });
 
             migrationBuilder.CreateTable(
                 name: "PerviousAbilityComboTrends",
                 columns: table => new
                 {
-                    Id = table.Column<long>(nullable: false)
-                        .Annotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn),
                     AbilityId = table.Column<int>(nullable: false),
+                    ComboId = table.Column<int>(nullable: false),
+                    AbilityIdentity = table.Column<string>(nullable: true),
+                    AbilityName = table.Column<string>(nullable: true),
                     Assists = table.Column<long>(nullable: false),
-                    ComboAbilityId = table.Column<int>(nullable: false),
+                    ComboIdentity = table.Column<string>(nullable: true),
+                    ComboName = table.Column<string>(nullable: true),
                     Deaths = table.Column<long>(nullable: false),
                     Kills = table.Column<long>(nullable: false),
                     Loses = table.Column<long>(nullable: false),
@@ -244,38 +291,40 @@ namespace HGV.AD.Web.Data.Migrations
                 },
                 constraints: table =>
                 {
-                    table.PrimaryKey("PK_PerviousAbilityComboTrends", x => x.Id);
+                    table.PrimaryKey("PK_PerviousAbilityComboTrends", x => new { x.AbilityId, x.ComboId });
                 });
 
             migrationBuilder.CreateTable(
                 name: "PerviousAbilityTrends",
                 columns: table => new
                 {
-                    Id = table.Column<int>(nullable: false)
-                        .Annotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn),
                     AbilityId = table.Column<int>(nullable: false),
                     Assists = table.Column<long>(nullable: false),
                     Deaths = table.Column<long>(nullable: false),
+                    Identity = table.Column<string>(nullable: true),
                     Kills = table.Column<long>(nullable: false),
                     Loses = table.Column<long>(nullable: false),
+                    Name = table.Column<string>(nullable: true),
                     Total = table.Column<long>(nullable: false),
                     Wins = table.Column<long>(nullable: false)
                 },
                 constraints: table =>
                 {
-                    table.PrimaryKey("PK_PerviousAbilityTrends", x => x.Id);
+                    table.PrimaryKey("PK_PerviousAbilityTrends", x => x.AbilityId);
                 });
 
             migrationBuilder.CreateTable(
                 name: "PerviousHeroComboTrends",
                 columns: table => new
                 {
-                    Id = table.Column<int>(nullable: false)
-                        .Annotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn),
+                    HeroId = table.Column<int>(nullable: false),
                     AbilityId = table.Column<int>(nullable: false),
+                    AbilityIdentity = table.Column<string>(nullable: true),
+                    AbilityName = table.Column<string>(nullable: true),
                     Assists = table.Column<long>(nullable: false),
                     Deaths = table.Column<long>(nullable: false),
-                    HeroId = table.Column<int>(nullable: false),
+                    HeroIdentity = table.Column<string>(nullable: true),
+                    HeroName = table.Column<string>(nullable: true),
                     Kills = table.Column<long>(nullable: false),
                     Loses = table.Column<long>(nullable: false),
                     Total = table.Column<long>(nullable: false),
@@ -283,26 +332,26 @@ namespace HGV.AD.Web.Data.Migrations
                 },
                 constraints: table =>
                 {
-                    table.PrimaryKey("PK_PerviousHeroComboTrends", x => x.Id);
+                    table.PrimaryKey("PK_PerviousHeroComboTrends", x => new { x.HeroId, x.AbilityId });
                 });
 
             migrationBuilder.CreateTable(
                 name: "PerviousHeroTrends",
                 columns: table => new
                 {
-                    Id = table.Column<int>(nullable: false)
-                        .Annotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn),
+                    HeroId = table.Column<int>(nullable: false),
                     Assists = table.Column<long>(nullable: false),
                     Deaths = table.Column<long>(nullable: false),
-                    HeroId = table.Column<int>(nullable: false),
+                    Identity = table.Column<string>(nullable: true),
                     Kills = table.Column<long>(nullable: false),
                     Loses = table.Column<long>(nullable: false),
+                    Name = table.Column<string>(nullable: true),
                     Total = table.Column<long>(nullable: false),
                     Wins = table.Column<long>(nullable: false)
                 },
                 constraints: table =>
                 {
-                    table.PrimaryKey("PK_PerviousHeroTrends", x => x.Id);
+                    table.PrimaryKey("PK_PerviousHeroTrends", x => x.HeroId);
                 });
         }
 
@@ -312,7 +361,13 @@ namespace HGV.AD.Web.Data.Migrations
                 name: "Abilities");
 
             migrationBuilder.DropTable(
+                name: "HeroAttributeRanks");
+
+            migrationBuilder.DropTable(
                 name: "Heroes");
+
+            migrationBuilder.DropTable(
+                name: "Checkpoints");
 
             migrationBuilder.DropTable(
                 name: "CurrentAbilityComboTrends");

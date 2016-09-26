@@ -45,7 +45,7 @@ namespace HGV.AD.Web.Controllers
             if (id.HasValue == false)
                 return RedirectToAction("List");
 
-            var ability = _dbContext.Abilities.FirstOrDefault(_ => _.Id == id);
+            var ability = _dbContext.Abilities.FirstOrDefault(_ => _.AbilityId == id);
 
             var perviousAbilityTrendss = _dbContext.PerviousAbilityTrends.FirstOrDefault(_ => _.AbilityId == id);
             var currentAbilityTrends = _dbContext.CurrentAbilityTrends.FirstOrDefault(_ => _.AbilityId == id);

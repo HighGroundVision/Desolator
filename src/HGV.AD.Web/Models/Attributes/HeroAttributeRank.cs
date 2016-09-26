@@ -8,7 +8,6 @@ namespace HGV.AD.Web.Models.Attributes
 {
     public class HeroAttributeRank
     {
-        [Key]
         public int Id { get; set; }
 
         public int Index { get; set; }
@@ -20,5 +19,6 @@ namespace HGV.AD.Web.Models.Attributes
         public double Max { get; set; }
         public double Avg { get; set; }
         public double Groups { get; set; }
+        public double Percentage { get; set; }
     }
 }

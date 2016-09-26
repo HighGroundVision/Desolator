@@ -46,7 +46,7 @@ namespace HGV.AD.Web.Controllers
             if (id.HasValue == false)
                 return RedirectToAction("List");
 
-            var hero = _dbContext.Heroes.FirstOrDefault(_ => _.Id == id);
+            var hero = _dbContext.Heroes.FirstOrDefault(_ => _.HeroId == id);
 
             var attributes = _dbContext.HeroAttributeRanks.Where(_ => _.HeroId == id).OrderBy(_ => _.Index).ToList();
 

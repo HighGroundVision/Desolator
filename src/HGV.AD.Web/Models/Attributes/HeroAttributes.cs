@@ -9,9 +9,7 @@ namespace HGV.AD.Web.Models.Attributes
 {
     public class HeroAttributes
 	{
-		[DatabaseGenerated(DatabaseGeneratedOption.None)]
-		[Key]
-		public int Id { get; set; }
+		public int HeroId { get; set; }
         public int LookupId { get; set; }
         public string Identity { get; set; }
 		public string Name { get; set; }

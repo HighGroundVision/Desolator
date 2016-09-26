@@ -8,13 +8,12 @@ using HGV.AD.Web.Data;
 namespace HGV.AD.Web.Data.Migrations
 {
     [DbContext(typeof(ApplicationDbContext))]
-    [Migration("20160904045754_AddHeroAttributeRank")]
-    partial class AddHeroAttributeRank
+    partial class ApplicationDbContextModelSnapshot : ModelSnapshot
     {
-        protected override void BuildTargetModel(ModelBuilder modelBuilder)
+        protected override void BuildModel(ModelBuilder modelBuilder)
         {
             modelBuilder
-                .HasAnnotation("ProductVersion", "1.0.0-rtm-21431")
+                .HasAnnotation("ProductVersion", "1.0.1")
                 .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
 
             modelBuilder.Entity("HGV.AD.Web.Models.ApplicationUser", b =>
@@ -68,7 +67,7 @@ namespace HGV.AD.Web.Data.Migrations
 
             modelBuilder.Entity("HGV.AD.Web.Models.Attributes.AbilityAttributes", b =>
                 {
-                    b.Property<int>("Id");
+                    b.Property<int>("AbilityId");
 
                     b.Property<string>("AffectsWhom");
 
@@ -90,7 +89,7 @@ namespace HGV.AD.Web.Data.Migrations
 
                     b.Property<bool>("Ultimate");
 
-                    b.HasKey("Id");
+                    b.HasKey("AbilityId");
 
                     b.ToTable("Abilities");
                 });
@@ -104,11 +103,21 @@ namespace HGV.AD.Web.Data.Migrations
 
                     b.Property<double>("Groups");
 
+                    b.Property<int>("HeroId");
+
+                    b.Property<int>("Index");
+
                     b.Property<double>("Max");
 
                     b.Property<double>("Min");
 
                     b.Property<string>("Name");
+
+                    b.Property<double>("Percentage");
+
+                    b.Property<int>("Rank");
+
+                    b.Property<double>("Value");
 
                     b.HasKey("Id");
 
@@ -117,7 +126,7 @@ namespace HGV.AD.Web.Data.Migrations
 
             modelBuilder.Entity("HGV.AD.Web.Models.Attributes.HeroAttributes", b =>
                 {
-                    b.Property<int>("Id");
+                    b.Property<int>("HeroId");
 
                     b.Property<double>("AgiGain");
 
@@ -179,38 +188,38 @@ namespace HGV.AD.Web.Data.Migrations
 
                     b.Property<double>("Turnrate");
 
-                    b.HasKey("Id");
+                    b.HasKey("HeroId");
 
                     b.ToTable("Heroes");
                 });
 
             modelBuilder.Entity("HGV.AD.Web.Models.Checkpoints.Checkpoint", b =>
                 {
-                    b.Property<long>("MatchId");
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd();
 
                     b.Property<DateTime>("MatchDate");
 
+                    b.Property<long>("MatchId");
+
                     b.Property<long>("MatchNumber");
 
-                    b.HasKey("MatchId");
+                    b.HasKey("Id");
 
                     b.ToTable("Checkpoints");
                 });
 
             modelBuilder.Entity("HGV.AD.Web.Models.Statistics.CurrentAbilityComboStat", b =>
                 {
-                    b.Property<long>("Id")
-                        .ValueGeneratedOnAdd();
-
                     b.Property<int>("AbilityId");
+
+                    b.Property<int>("ComboId");
 
                     b.Property<string>("AbilityIdentity");
 
                     b.Property<string>("AbilityName");
 
                     b.Property<long>("Assists");
-
-                    b.Property<int>("ComboId");
 
                     b.Property<string>("ComboIdentity");
 
@@ -226,16 +235,13 @@ namespace HGV.AD.Web.Data.Migrations
 
                     b.Property<long>("Wins");
 
-                    b.HasKey("Id");
+                    b.HasKey("AbilityId", "ComboId");
 
                     b.ToTable("CurrentAbilityComboTrends");
                 });
 
             modelBuilder.Entity("HGV.AD.Web.Models.Statistics.CurrentAbilityStat", b =>
                 {
-                    b.Property<int>("Id")
-                        .ValueGeneratedOnAdd();
-
                     b.Property<int>("AbilityId");
 
                     b.Property<long>("Assists");
@@ -254,15 +260,14 @@ namespace HGV.AD.Web.Data.Migrations
 
                     b.Property<long>("Wins");
 
-                    b.HasKey("Id");
+                    b.HasKey("AbilityId");
 
                     b.ToTable("CurrentAbilityTrends");
                 });
 
             modelBuilder.Entity("HGV.AD.Web.Models.Statistics.CurrentHeroComboStats", b =>
                 {
-                    b.Property<int>("Id")
-                        .ValueGeneratedOnAdd();
+                    b.Property<int>("HeroId");
 
                     b.Property<int>("AbilityId");
 
@@ -273,8 +278,6 @@ namespace HGV.AD.Web.Data.Migrations
                     b.Property<long>("Assists");
 
                     b.Property<long>("Deaths");
-
-                    b.Property<int>("HeroId");
 
                     b.Property<string>("HeroIdentity");
 
@@ -288,21 +291,18 @@ namespace HGV.AD.Web.Data.Migrations
 
                     b.Property<long>("Wins");
 
-                    b.HasKey("Id");
+                    b.HasKey("HeroId", "AbilityId");
 
                     b.ToTable("CurrentHeroComboTrends");
                 });
 
             modelBuilder.Entity("HGV.AD.Web.Models.Statistics.CurrentHeroStat", b =>
                 {
-                    b.Property<int>("Id")
-                        .ValueGeneratedOnAdd();
+                    b.Property<int>("HeroId");
 
                     b.Property<long>("Assists");
 
                     b.Property<long>("Deaths");
-
-                    b.Property<int>("HeroId");
 
                     b.Property<string>("Identity");
 
@@ -316,25 +316,22 @@ namespace HGV.AD.Web.Data.Migrations
 
                     b.Property<long>("Wins");
 
-                    b.HasKey("Id");
+                    b.HasKey("HeroId");
 
                     b.ToTable("CurrentHeroTrends");
                 });
 
             modelBuilder.Entity("HGV.AD.Web.Models.Statistics.NextAbilityComboStat", b =>
                 {
-                    b.Property<long>("Id")
-                        .ValueGeneratedOnAdd();
-
                     b.Property<int>("AbilityId");
+
+                    b.Property<int>("ComboId");
 
                     b.Property<string>("AbilityIdentity");
 
                     b.Property<string>("AbilityName");
 
                     b.Property<long>("Assists");
-
-                    b.Property<int>("ComboId");
 
                     b.Property<string>("ComboIdentity");
 
@@ -350,16 +347,13 @@ namespace HGV.AD.Web.Data.Migrations
 
                     b.Property<long>("Wins");
 
-                    b.HasKey("Id");
+                    b.HasKey("AbilityId", "ComboId");
 
                     b.ToTable("NextAbilityComboTrends");
                 });
 
             modelBuilder.Entity("HGV.AD.Web.Models.Statistics.NextAbilityStat", b =>
                 {
-                    b.Property<int>("Id")
-                        .ValueGeneratedOnAdd();
-
                     b.Property<int>("AbilityId");
 
                     b.Property<long>("Assists");
@@ -378,15 +372,14 @@ namespace HGV.AD.Web.Data.Migrations
 
                     b.Property<long>("Wins");
 
-                    b.HasKey("Id");
+                    b.HasKey("AbilityId");
 
                     b.ToTable("NextAbilityTrends");
                 });
 
             modelBuilder.Entity("HGV.AD.Web.Models.Statistics.NextHeroComboStats", b =>
                 {
-                    b.Property<int>("Id")
-                        .ValueGeneratedOnAdd();
+                    b.Property<int>("HeroId");
 
                     b.Property<int>("AbilityId");
 
@@ -397,8 +390,6 @@ namespace HGV.AD.Web.Data.Migrations
                     b.Property<long>("Assists");
 
                     b.Property<long>("Deaths");
-
-                    b.Property<int>("HeroId");
 
                     b.Property<string>("HeroIdentity");
 
@@ -412,21 +403,18 @@ namespace HGV.AD.Web.Data.Migrations
 
                     b.Property<long>("Wins");
 
-                    b.HasKey("Id");
+                    b.HasKey("HeroId", "AbilityId");
 
                     b.ToTable("NextHeroComboTrends");
                 });
 
             modelBuilder.Entity("HGV.AD.Web.Models.Statistics.NextHeroStat", b =>
                 {
-                    b.Property<int>("Id")
-                        .ValueGeneratedOnAdd();
+                    b.Property<int>("HeroId");
 
                     b.Property<long>("Assists");
 
                     b.Property<long>("Deaths");
-
-                    b.Property<int>("HeroId");
 
                     b.Property<string>("Identity");
 
@@ -440,25 +428,22 @@ namespace HGV.AD.Web.Data.Migrations
 
                     b.Property<long>("Wins");
 
-                    b.HasKey("Id");
+                    b.HasKey("HeroId");
 
                     b.ToTable("NextHeroTrends");
                 });
 
             modelBuilder.Entity("HGV.AD.Web.Models.Statistics.PerviousAbilityComboStat", b =>
                 {
-                    b.Property<long>("Id")
-                        .ValueGeneratedOnAdd();
-
                     b.Property<int>("AbilityId");
+
+                    b.Property<int>("ComboId");
 
                     b.Property<string>("AbilityIdentity");
 
                     b.Property<string>("AbilityName");
 
                     b.Property<long>("Assists");
-
-                    b.Property<int>("ComboId");
 
                     b.Property<string>("ComboIdentity");
 
@@ -474,16 +459,13 @@ namespace HGV.AD.Web.Data.Migrations
 
                     b.Property<long>("Wins");
 
-                    b.HasKey("Id");
+                    b.HasKey("AbilityId", "ComboId");
 
                     b.ToTable("PerviousAbilityComboTrends");
                 });
 
             modelBuilder.Entity("HGV.AD.Web.Models.Statistics.PerviousAbilityStat", b =>
                 {
-                    b.Property<int>("Id")
-                        .ValueGeneratedOnAdd();
-
                     b.Property<int>("AbilityId");
 
                     b.Property<long>("Assists");
@@ -502,15 +484,14 @@ namespace HGV.AD.Web.Data.Migrations
 
                     b.Property<long>("Wins");
 
-                    b.HasKey("Id");
+                    b.HasKey("AbilityId");
 
                     b.ToTable("PerviousAbilityTrends");
                 });
 
             modelBuilder.Entity("HGV.AD.Web.Models.Statistics.PerviousHeroComboStats", b =>
                 {
-                    b.Property<int>("Id")
-                        .ValueGeneratedOnAdd();
+                    b.Property<int>("HeroId");
 
                     b.Property<int>("AbilityId");
 
@@ -521,8 +502,6 @@ namespace HGV.AD.Web.Data.Migrations
                     b.Property<long>("Assists");
 
                     b.Property<long>("Deaths");
-
-                    b.Property<int>("HeroId");
 
                     b.Property<string>("HeroIdentity");
 
@@ -536,21 +515,18 @@ namespace HGV.AD.Web.Data.Migrations
 
                     b.Property<long>("Wins");
 
-                    b.HasKey("Id");
+                    b.HasKey("HeroId", "AbilityId");
 
                     b.ToTable("PerviousHeroComboTrends");
                 });
 
             modelBuilder.Entity("HGV.AD.Web.Models.Statistics.PerviousHeroStat", b =>
                 {
-                    b.Property<int>("Id")
-                        .ValueGeneratedOnAdd();
+                    b.Property<int>("HeroId");
 
                     b.Property<long>("Assists");
 
                     b.Property<long>("Deaths");
-
-                    b.Property<int>("HeroId");
 
                     b.Property<string>("Identity");
 
@@ -564,7 +540,7 @@ namespace HGV.AD.Web.Data.Migrations
 
                     b.Property<long>("Wins");
 
-                    b.HasKey("Id");
+                    b.HasKey("HeroId");
 
                     b.ToTable("PerviousHeroTrends");
                 });

@@ -1,20 +1,21 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations;
+using System.ComponentModel.DataAnnotations.Schema;
 using System.Linq;
 using System.Threading.Tasks;
 
 namespace HGV.AD.Web.Models.Statistics
 {
     public class PerviousAbilityComboStat : AbilityComboStatBase
-	{
+    {
     }
 
-	public class CurrentAbilityComboStat : AbilityComboStatBase
-	{
+    public class CurrentAbilityComboStat : AbilityComboStatBase
+    {
         public static AbilityComboStatBase operator -(CurrentAbilityComboStat c1, PerviousAbilityComboStat c2) =>
             new AbilityComboStatBase()
             {
-                Id = 0,
                 AbilityId = c1.AbilityId,
                 AbilityIdentity = c1.AbilityIdentity,
                 AbilityName = c1.AbilityName,
@@ -30,15 +31,13 @@ namespace HGV.AD.Web.Models.Statistics
             };
     }
 
-	public class NextAbilityComboStat : AbilityComboStatBase
-	{
-	}
+    public class NextAbilityComboStat : AbilityComboStatBase
+    {
+    }
 
-	public class AbilityComboStatBase
-	{
-		public long Id { get; set; }
-
-		public int AbilityId { get; set; }
+    public class AbilityComboStatBase
+    {
+        public int AbilityId { get; set; }
         public string AbilityIdentity { get; set; }
         public string AbilityName { get; set; }
 
@@ -47,10 +46,10 @@ namespace HGV.AD.Web.Models.Statistics
         public string ComboName { get; set; }
 
         public long Wins { get; set; }
-		public long Loses { get; set; }
-		public long Kills { get; set; }
-		public long Deaths { get; set; }
-		public long Assists { get; set; }
-		public long Total { get; set; }
-	}
+        public long Loses { get; set; }
+        public long Kills { get; set; }
+        public long Deaths { get; set; }
+        public long Assists { get; set; }
+        public long Total { get; set; }
+    }
 }

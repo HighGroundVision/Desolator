@@ -1,0 +1,385 @@
+﻿@model IEnumerable<HGV.AD.Web.Models.Attributes.HeroAttributes>
+@{
+    ViewData["Title"] = "Draft";
+}
+
+@section scripts
+{
+    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/knockout/3.4.0/knockout-min.js"></script>
+    <script type="text/javascript" src="~/js/draft.js" asp-append-version="true"></script>
+}
+
+<h2>Draft <small>Recommendations</small></h2>
+
+<p>
+    Lorem ipsum dolor sit amet, consectetur adipiscing elit. Quisque iaculis nulla sed lectus tincidunt, sed accumsan purus vehicula. Phasellus et diam ex. Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. 
+</p>
+
+<nav class="navbar navbar-inverse"> 
+    <div class="navbar-header"> 
+        <button type="button" class="collapsed navbar-toggle" data-toggle="collapse" data-target="#subnav" aria-expanded="false"> 
+            <span class="sr-only">Toggle navigation</span> 
+            <span class="icon-bar"></span> 
+            <span class="icon-bar"></span> 
+            <span class="icon-bar"></span> 
+        </button>
+    </div>
+    <div class="collapse navbar-collapse" id="subnav">
+        <form class="navbar-form navbar-left" onsubmit="return false;" data-bind="visible: SelectedDraft().length != 12">
+            <div class="form-group">
+                <input class="form-control" placeholder="Search by Hero or Ability" data-bind="value: SearchDraft">
+            </div>
+            <button type="submit" class="btn btn-primary">Search</button>
+        </form>
+        <form class="navbar-form navbar-right">
+            <button class="btn btn-warning" data-bind="click: Reset">Reset</button>
+        </form>
+    </div>
+</nav>
+
+<div class="alert alert-warning visible-xs" role="alert">
+    <h5>Warning!</h5> Drafting on mobile is not the best experience. We are exploring other options that work better for mobile devices.
+</div>
+
+<section data-bind="visible: SelectedDraft().length != 12" style="display:none;">
+    <div class="row" data-bind="foreach: FilteredDraft">
+        <div class="col-xs-2 col-sm-2 col-md-1 col-lg-1">
+            <img src="" class="img-rounded img-responsive" data-bind="click: $root.SelectDraft, css: $root.GetSelectedHeroStyling($data), attr: { src: 'http://cdn.dota2.com/apps/dota2/images/abilities/' + identity + '_hp1.png' }" />
+        </div>
+    </div>
+    <hr />
+</section>
+
+<section>
+    <div class="row" data-bind="foreach: SelectedHeroes">
+        <div class="col-xs-2 col-sm-2 col-md-1 col-lg-1">
+            <img src="" class="img-responsive img-rounded" data-bind="click: $root.SelectHero, attr: { src: 'http://cdn.dota2.com/apps/dota2/images/heroes/' + identity + '_sb.png'}" />
+        </div>
+    </div>
+    <hr />
+</section>
+
+<section data-bind="visible: SelectedDraft().length === 12" style="display:none;">
+    <div class="row" data-bind="foreach: FilteredAbilities">
+        <div class="col-xs-2 col-sm-2 col-md-1 col-lg-1">
+            <img src="" class="img-responsive img-rounded" data-bind="click: $root.SelectAbility, attr: { src: 'http://cdn.dota2.com/apps/dota2/images/abilities/' + identity + '_hp1.png'}" />
+        </div>
+    </div>
+    <hr />
+</section>
+
+<section>
+    <div class="row" data-bind="foreach: FilteredUltimateAbilities">
+        <div class="col-xs-2 col-sm-2 col-md-1 col-lg-1">
+            <img src="" class="img-responsive img-rounded" data-bind="click: $root.SelectAbility, attr: { src: 'http://cdn.dota2.com/apps/dota2/images/abilities/' + identity + '_hp1.png'}" />
+        </div>
+    </div>
+    <hr />
+</section>
+
+<section data-bind="visible: Combos().length > 0" style="display:none;" >
+    <div class="row">
+        <div class="col-xs-12">
+            <table id="tblCombos" class="table table-condensed table-striped  display nowrap" cellspacing="0" width="100%">
+                 <thead>
+                    <tr>
+                        <th></th>
+                        <th class="hidden-xs">Ability</th>
+                        <th></th>
+                        <th class="hidden-xs">Ability</th>
+                        <th>Wins</th>
+                        <th>Loses</th>
+                        <th>Kills</th>
+                        <th>Deaths</th>
+                        <th>Assists</th>
+                        <th>Total</th>
+                    </tr>
+                </thead>
+                <tbody data-bind="foreach: Combos">
+                    <tr>
+                        <td>
+                            <a data-bind="attr: { 'href': '/Abilities/Details/' + abilityId}">
+                                <img src="#" data-bind="attr: { src:'http://cdn.dota2.com/apps/dota2/images/abilities/' + abilityIdentity + '_hp1.png' }" alt="Ability" class="img-responsive pull-left" width="30" height="30" />
+                            </a>
+                        </td>
+                        <td class="hidden-xs">
+                            <a data-bind="attr: { 'href': '/Abilities/Details/' + abilityId}">
+                                <span data-bind="text: abilityName"></span>
+                            </a>
+                        </td>
+                        <td>
+                            <a data-bind="attr: { 'href': '/Abilities/Details/' + comboId}">
+                                <img src="#" data-bind="attr: { src:'http://cdn.dota2.com/apps/dota2/images/abilities/' + comboIdentity + '_hp1.png' }" alt="Ability" class="img-responsive pull-left" width="30" height="30" />
+                            </a>
+                        </td>
+                        <td class="hidden-xs">
+                            <a data-bind="attr: { 'href': '/Abilities/Details/' + comboId}">
+                                <span data-bind="text: comboName"></span>
+                            </a>
+                        </td>
+                        <td data-bind="text: wins"></td>
+                        <td data-bind="text: loses"></td>
+                        <td data-bind="text: kills"></td>
+                        <td data-bind="text: deaths"></td>
+                        <td data-bind="text: assists"></td>
+                        <td data-bind="text: total"></td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
+</section>
+
+<div id="abilityDetails" class="modal fade" tabindex="-1" role="dialog" data-bind="with: SelectedAbility">
+    <div class="modal-dialog modal-lg" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                <h4 class="modal-title" data-bind="text: item1.name"></h4>
+            </div>
+            <div class="modal-body" >
+                <div class="row">
+                    <div class="col-lg-4">
+                        <section>
+                            <div data-bind="html: item1.html"></div>
+                        </section>
+
+                        <section>
+                            <h3>Trends</h3>
+                            <table class="table table-condensed">
+                                <thead>
+                                    <tr>
+                                        <th></th>
+                                        <th>Current</th>
+                                    </tr>
+                                </thead>
+                                <tbody data-bind="with: item2">
+                                    <tr>
+                                        <td class="text-info">Wins</td>
+                                        <td>
+                                            <span data-bind="text: wins"></span>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td class="text-info">Loses</td>
+                                        <td>
+                                            <span data-bind="text: loses"></span>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td class="text-info">Kills</td>
+                                        <td>
+                                            <span data-bind="text: kills"></span>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td class="text-info">Deaths</td>
+                                        <td>
+                                            <span data-bind="text: deaths"></span>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td class="text-info">Assists</td>
+                                        <td>
+                                            <span data-bind="text: assists"></span>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td class="text-info">Total</td>
+                                        <td>
+                                            <span data-bind="text: total"></span>
+                                        </td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </section>
+                        
+                    </div>
+                    <div class="col-lg-8">
+                        
+                        <section>
+                            <h3>Ability Combo Trends</h3>
+                            <table id="tblAbilityCombos" class="table table-condensed table-striped  display nowrap" cellspacing="0" width="100%">
+                                <thead>
+                                    <tr>
+                                        <th></th>
+                                        <th>Ability</th>
+                                        <th>Wins</th>
+                                        <th>Loses</th>
+                                        <th>Kills</th>
+                                        <th>Deaths</th>
+                                        <th>Assists</th>
+                                        <th>Total</th>
+                                    </tr>
+                                </thead>
+                                <tbody data-bind="foreach: item3">
+                                    <tr>
+                                        <td>
+                                            <a data-bind="attr: { 'href': '/Abilities/Details/' + comboId}">
+                                                <img src="#" data-bind="attr: { src:'http://cdn.dota2.com/apps/dota2/images/abilities/' + comboIdentity + '_hp1.png' }" alt="Ability" class="img-responsive pull-left" width="30" height="30" />
+                                            </a>
+                                        </td>
+                                        <td class="hidden-xs">
+                                            <a data-bind="attr: { 'href': '/Abilities/Details/' + comboId}">
+                                                <span data-bind="text: comboName"></span>
+                                            </a>
+                                        </td>
+                                        <td data-bind="text: wins"></td>
+                                        <td data-bind="text: loses"></td>
+                                        <td data-bind="text: kills"></td>
+                                        <td data-bind="text: deaths"></td>
+                                        <td data-bind="text: assists"></td>
+                                        <td data-bind="text: total"></td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </section>
+
+                    </div>
+                </div>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div id="heroDetails" class="modal fade" tabindex="-1" role="dialog" data-bind="with: SelectedHero">
+    <div class="modal-dialog modal-lg" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                <h4 class="modal-title" data-bind="text: item1.name"></h4>
+            </div>
+            <div class="modal-body">
+                <div class="row">
+                    <div class="col-lg-4">
+
+                        <section>
+                            <h3>Stat Ranking</h3>
+
+                            <div data-bind="visible: item2.length === 0">
+                                <p>Nothing Interesting</p>
+                            </div>
+
+                            <div data-bind="visible: item2.length > 0, foreach: item2">
+                                <div class="row">
+                                    <div class="col-xs-5" data-bind="text: name">
+                                    </div>
+                                    <div class="col-xs-2" data-bind="text: value">
+                                    </div>
+                                    <div class="col-xs-5">
+                                        <div class="progress">
+                                            <div data-bind="attr: { 'aria-valuenow': rank, 'aria-valuemax': groups }, style: { 'width': (percentage*100) + '%' }, css: $root.GetHeroRankStyling($data)" role="progressbar" aria-valuenow="0" aria-valuemin="1" aria-valuemax="0">
+                                                <span class="sr-only" data-bind="text: rank + '/' + groups"></span>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+
+                        </section>
+
+                        <hr />
+
+                        <section>
+                            <h3>Trends</h3>
+                            <table class="table table-condensed">
+                                <thead>
+                                    <tr>
+                                        <th></th>
+                                        <th>Current</th>
+                                    </tr>
+                                </thead>
+                                <tbody data-bind="with: item3">
+                                    <tr>
+                                        <td class="text-info">Wins</td>
+                                        <td>
+                                            <span data-bind="text: wins"></span>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td class="text-info">Loses</td>
+                                        <td>
+                                            <span data-bind="text: loses"></span>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td class="text-info">Kills</td>
+                                        <td>
+                                            <span data-bind="text: kills"></span>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td class="text-info">Deaths</td>
+                                        <td>
+                                            <span data-bind="text: deaths"></span>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td class="text-info">Assists</td>
+                                        <td>
+                                            <span data-bind="text: assists"></span>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td class="text-info">Total</td>
+                                        <td>
+                                            <span data-bind="text: total"></span>
+                                        </td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </section>
+
+                    </div>
+                    <div class="col-lg-8">
+
+                        <section>
+                            <h3>Paired Abilties Trends</h3>
+                            <table id="tblHeroCombos" class="table table-condensed table-striped  display nowrap" cellspacing="0" width="100%">
+                                <thead>
+                                    <tr>
+                                        <th></th>
+                                        <th>Ability</th>
+                                        <th>Wins</th>
+                                        <th>Loses</th>
+                                        <th>Kills</th>
+                                        <th>Deaths</th>
+                                        <th>Assists</th>
+                                        <th>Total</th>
+                                    </tr>
+                                </thead>
+                                <tbody data-bind="foreach: item4">
+                                    <tr>
+                                        <td>
+                                            <a data-bind="attr: { 'href': '/Abilities/Details/' + abilityId}">
+                                                <img data-bind="attr: { src:'http://cdn.dota2.com/apps/dota2/images/abilities/' + abilityIdentity + '_hp1.png' }" alt="Ability" class="img-responsive pull-left" width="30" height="30" />
+                                            </a>
+                                        </td>
+                                        <td class="hidden-xs">
+                                            <a data-bind="attr: { 'href': '/Abilities/Details/' + abilityId}">
+                                                <span data-bind="text: abilityName"></span>
+                                            </a>
+                                        </td>
+                                        <td data-bind="text: wins"></td>
+                                        <td data-bind="text: loses"></td>
+                                        <td data-bind="text: kills"></td>
+                                        <td data-bind="text: deaths"></td>
+                                        <td data-bind="text: assists"></td>
+                                        <td data-bind="text: total"></td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </section>
+
+                    </div>
+                </div>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+            </div>
+        </div>
+    </div>
+</div>

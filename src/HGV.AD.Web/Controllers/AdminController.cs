@@ -13,16 +13,21 @@ namespace HGV.AD.Web.Controllers
     {
         public ActionResult RegisterRecurringServices()
         {
-#if DEBUG
-            RecurringJob.AddOrUpdate<CollectorService>(_ => _.Collect(), Cron.MinuteInterval(1));
-            RecurringJob.AddOrUpdate<TransferService>(_ => _.Transfer(), Cron.Daily);
-#else
-            RecurringJob.AddOrUpdate<CollectorService>(_ => _.Collect(), Cron.MinuteInterval(5));
+            RecurringJob.AddOrUpdate<CollectorService>(_ => _.Collect(), Cron.MinuteInterval(10));
             RecurringJob.AddOrUpdate<TransferService>(_ => _.Transfer(), Cron.Weekly);
-#endif
+
             return Redirect("/hangfire/recurring");
         }
 
+        
+        public ActionResult ApplyMigrations()
+        {
+            var id = BackgroundJob.Enqueue<SeedService>(_ => _.MigrateDB());
+
+            return Redirect("/hangfire/");
+        }
+
+        
         public ActionResult SeedHeroes()
         {
 			var id = BackgroundJob.Enqueue<SeedService>(_ => _.SeedHeroes());
@@ -30,14 +35,15 @@ namespace HGV.AD.Web.Controllers
 			return Redirect("/hangfire/");
         }
 
-		public ActionResult SeedAbilities()
+        
+        public ActionResult SeedAbilities()
 		{
 			var id = BackgroundJob.Enqueue<SeedService>(_ => _.SeedAbilities());
 
 			return Redirect("/hangfire/");
 		}
 
-		public ActionResult SeedTrends()
+        public ActionResult SeedTrends()
 		{
 			var id = BackgroundJob.Enqueue<SeedService>(_ => _.SeedTrends());
 

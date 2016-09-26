@@ -25,183 +25,141 @@ namespace HGV.AD.Web.Services
         )
         {
             _dbContext = dbcontext;
+            _dbContext.Database.SetCommandTimeout(300);
             _logger = loggerFactory.CreateLogger<TransferService>();
         }
 
         public void Transfer()
         {
             HeroTrends();
+            HeroComboTrends();
+
             AbilityTrends();
             AbilityComboTrends();
-            HeroComboTrends();
         }
 
         private void HeroTrends()
         {
-            var collection1 = _dbContext.CurrentHeroTrends.Join(_dbContext.PerviousHeroTrends, _ => _.HeroId, _ => _.HeroId, (lhs, rhs) => new { Item1 = lhs, Item2 = rhs }).ToList();
-            foreach (var _ in collection1)
-            {
-                _.Item2.Kills = _.Item1.Kills;
-                _.Item2.Deaths = _.Item1.Deaths;
-                _.Item2.Assists = _.Item1.Assists;
-                _.Item2.Wins = _.Item1.Wins;
-                _.Item2.Loses = _.Item1.Loses;
-                _.Item2.Total = _.Item1.Total;
+            var sql = @"
+update _previous
+set _previous.[Assists] = _current.[Assists]
+,_previous.[Deaths] = _current.[Deaths]
+,_previous.[Kills] = _current.[Kills]
+,_previous.[Loses] = _current.[Loses]
+,_previous.[Total] = _current.[Total]
+,_previous.[Wins] = _current.[Wins]
+from CurrentHeroTrends _current
+    join PerviousHeroTrends _previous 
+	on _current.HeroId = _previous.HeroId
 
-                _dbContext.SaveChanges();
-            }
-
-            var collection2 = _dbContext.NextHeroTrends.Join(_dbContext.CurrentHeroTrends, _ => _.HeroId, _ => _.HeroId, (lhs, rhs) => new { Item1 = lhs, Item2 = rhs }).ToList();
-            foreach (var _ in collection2)
-            {
-                _.Item2.Kills = _.Item1.Kills;
-                _.Item2.Deaths = _.Item1.Deaths;
-                _.Item2.Assists = _.Item1.Assists;
-                _.Item2.Wins = _.Item1.Wins;
-                _.Item2.Loses = _.Item1.Loses;
-                _.Item2.Total = _.Item1.Total;
-
-                _dbContext.SaveChanges();
-            }
-
-            var collection3 = _dbContext.NextHeroTrends.ToList();
-            foreach (var _ in collection3)
-            {
-                _.Kills = 0;
-                _.Deaths = 0;
-                _.Assists = 0;
-                _.Wins = 0;
-                _.Loses = 0;
-                _.Total = 0;
-
-                _dbContext.SaveChanges();
-            }
+update _current
+set _current.[Assists] = _next.[Assists]
+,_current.[Deaths] = _next.[Deaths]
+,_current.[Kills] = _next.[Kills]
+,_current.[Loses] = _next.[Loses]
+,_current.[Total] = _next.[Total]
+,_current.[Wins] = _next.[Wins]
+from NextHeroTrends _next
+    join CurrentHeroTrends _current 
+	on _next.HeroId = _current.HeroId
+	
+UPDATE NextHeroTrends
+SET [Assists] = 0, [Deaths] = 0, [Kills] = 0, [Loses] = 0, [Total] = 0, [Wins] = 0
+";
+            _dbContext.Database.ExecuteSqlCommand(sql);
         }
 
         private void AbilityTrends()
         {
-            var collection1 = _dbContext.CurrentAbilityTrends.Join(_dbContext.PerviousAbilityTrends, _ => _.AbilityId, _ => _.AbilityId, (lhs, rhs) => new { Item1 = lhs, Item2 = rhs }).ToList();
-            foreach (var _ in collection1)
-            {
-                _.Item2.Kills = _.Item1.Kills;
-                _.Item2.Deaths = _.Item1.Deaths;
-                _.Item2.Assists = _.Item1.Assists;
-                _.Item2.Wins = _.Item1.Wins;
-                _.Item2.Loses = _.Item1.Loses;
-                _.Item2.Total = _.Item1.Total;
+            var sql = @"
+update _previous
+set _previous.[Assists] = _current.[Assists]
+,_previous.[Deaths] = _current.[Deaths]
+,_previous.[Kills] = _current.[Kills]
+,_previous.[Loses] = _current.[Loses]
+,_previous.[Total] = _current.[Total]
+,_previous.[Wins] = _current.[Wins]
+from CurrentAbilityTrends _current
+    join PerviousAbilityTrends _previous 
+	on _current.AbilityId = _previous.AbilityId
 
-                _dbContext.SaveChanges();
-            }
-
-            var collection2 = _dbContext.NextAbilityTrends.Join(_dbContext.CurrentAbilityTrends, _ => _.AbilityId, _ => _.AbilityId, (lhs, rhs) => new { Item1 = lhs, Item2 = rhs }).ToList();
-            foreach (var _ in collection2)
-            {
-                _.Item2.Kills = _.Item1.Kills;
-                _.Item2.Deaths = _.Item1.Deaths;
-                _.Item2.Assists = _.Item1.Assists;
-                _.Item2.Wins = _.Item1.Wins;
-                _.Item2.Loses = _.Item1.Loses;
-                _.Item2.Total = _.Item1.Total;
-
-                _dbContext.SaveChanges();
-            }
-
-            var collection3 = _dbContext.NextAbilityTrends.ToList();
-            foreach (var _ in collection3)
-            {
-                _.Kills = 0;
-                _.Deaths = 0;
-                _.Assists = 0;
-                _.Wins = 0;
-                _.Loses = 0;
-                _.Total = 0;
-
-                _dbContext.SaveChanges();
-            }
+update _current
+set _current.[Assists] = _next.[Assists]
+,_current.[Deaths] = _next.[Deaths]
+,_current.[Kills] = _next.[Kills]
+,_current.[Loses] = _next.[Loses]
+,_current.[Total] = _next.[Total]
+,_current.[Wins] = _next.[Wins]
+from NextAbilityTrends _next
+    join CurrentAbilityTrends _current 
+	on _next.AbilityId = _current.AbilityId
+	
+UPDATE NextAbilityTrends
+SET [Assists] = 0, [Deaths] = 0, [Kills] = 0, [Loses] = 0, [Total] = 0, [Wins] = 0
+";
+            _dbContext.Database.ExecuteSqlCommand(sql);
         }
 
         private void AbilityComboTrends()
         {
-            var collection1 = _dbContext.CurrentAbilityComboTrends.Join(_dbContext.PerviousAbilityComboTrends, _ => _.AbilityId ^ _.ComboId, _ => _.AbilityId ^ _.ComboId, (lhs, rhs) => new { Item1 = lhs, Item2 = rhs }).ToList();
-            foreach (var _ in collection1)
-            {
-                _.Item2.Kills = _.Item1.Kills;
-                _.Item2.Deaths = _.Item1.Deaths;
-                _.Item2.Assists = _.Item1.Assists;
-                _.Item2.Wins = _.Item1.Wins;
-                _.Item2.Loses = _.Item1.Loses;
-                _.Item2.Total = _.Item1.Total;
+            var sql = @"
+update _previous
+set _previous.[Assists] = _current.[Assists]
+,_previous.[Deaths] = _current.[Deaths]
+,_previous.[Kills] = _current.[Kills]
+,_previous.[Loses] = _current.[Loses]
+,_previous.[Total] = _current.[Total]
+,_previous.[Wins] = _current.[Wins]
+from CurrentAbilityComboTrends _current
+    join [PerviousAbilityComboTrends] _previous 
+	on _current.AbilityId = _previous.AbilityId and _current.ComboId = _previous.ComboId
 
-                _dbContext.SaveChanges();
-            }
+update _current
+set _current.[Assists] = _next.[Assists]
+,_current.[Deaths] = _next.[Deaths]
+,_current.[Kills] = _next.[Kills]
+,_current.[Loses] = _next.[Loses]
+,_current.[Total] = _next.[Total]
+,_current.[Wins] = _next.[Wins]
+from NextAbilityComboTrends _next
+    join [CurrentAbilityComboTrends] _current 
+	on _next.AbilityId = _current.AbilityId and _next.ComboId = _current.ComboId
 
-            var collection2 = _dbContext.NextAbilityComboTrends.Join(_dbContext.CurrentAbilityComboTrends, _ => _.AbilityId ^ _.ComboId, _ => _.AbilityId ^ _.ComboId, (lhs, rhs) => new { Item1 = lhs, Item2 = rhs }).ToList();
-            foreach (var _ in collection2)
-            {
-                _.Item2.Kills = _.Item1.Kills;
-                _.Item2.Deaths = _.Item1.Deaths;
-                _.Item2.Assists = _.Item1.Assists;
-                _.Item2.Wins = _.Item1.Wins;
-                _.Item2.Loses = _.Item1.Loses;
-                _.Item2.Total = _.Item1.Total;
-
-                _dbContext.SaveChanges();
-            }
-
-            var collection3 = _dbContext.NextAbilityComboTrends.ToList();
-            foreach (var _ in collection3)
-            {
-                _.Kills = 0;
-                _.Deaths = 0;
-                _.Assists = 0;
-                _.Wins = 0;
-                _.Loses = 0;
-                _.Total = 0;
-
-                _dbContext.SaveChanges();
-            }
+UPDATE [NextAbilityComboTrends]
+SET [Assists] = 0, [Deaths] = 0, [Kills] = 0, [Loses] = 0, [Total] = 0, [Wins] = 0
+";
+            _dbContext.Database.ExecuteSqlCommand(sql);
         }
 
         private void HeroComboTrends()
         {
-            var collection1 = _dbContext.CurrentHeroComboTrends.Join(_dbContext.PerviousHeroComboTrends, _ => _.HeroId ^ _.AbilityId, _ => _.HeroId ^ _.AbilityId, (lhs, rhs) => new { Item1 = lhs, Item2 = rhs }).ToList();
-            foreach (var _ in collection1)
-            {
-                _.Item2.Kills = _.Item1.Kills;
-                _.Item2.Deaths = _.Item1.Deaths;
-                _.Item2.Assists = _.Item1.Assists;
-                _.Item2.Wins = _.Item1.Wins;
-                _.Item2.Loses = _.Item1.Loses;
-                _.Item2.Total = _.Item1.Total;
+            var sql = @"
+update _previous
+set _previous.[Assists] = _current.[Assists]
+,_previous.[Deaths] = _current.[Deaths]
+,_previous.[Kills] = _current.[Kills]
+,_previous.[Loses] = _current.[Loses]
+,_previous.[Total] = _current.[Total]
+,_previous.[Wins] = _current.[Wins]
+from CurrentHeroComboTrends _current
+    join PerviousHeroComboTrends _previous 
+	on _current.HeroId = _previous.HeroId and _current.AbilityId = _previous.AbilityId
 
-                _dbContext.SaveChanges();
-            }
-
-            var collection2 = _dbContext.NextHeroComboTrends.Join(_dbContext.CurrentHeroComboTrends, _ => _.HeroId ^ _.AbilityId, _ => _.HeroId ^ _.AbilityId, (lhs, rhs) => new { Item1 = lhs, Item2 = rhs }).ToList();
-            foreach (var _ in collection2)
-            {
-                _.Item2.Kills = _.Item1.Kills;
-                _.Item2.Deaths = _.Item1.Deaths;
-                _.Item2.Assists = _.Item1.Assists;
-                _.Item2.Wins = _.Item1.Wins;
-                _.Item2.Loses = _.Item1.Loses;
-                _.Item2.Total = _.Item1.Total;
-
-                _dbContext.SaveChanges();
-            }
-
-            var collection3 = _dbContext.NextHeroComboTrends.ToList();
-            foreach (var _ in collection3)
-            {
-                _.Kills = 0;
-                _.Deaths = 0;
-                _.Assists = 0;
-                _.Wins = 0;
-                _.Loses = 0;
-                _.Total = 0;
-
-                _dbContext.SaveChanges();
-            }
+update _current
+set _current.[Assists] = _next.[Assists]
+,_current.[Deaths] = _next.[Deaths]
+,_current.[Kills] = _next.[Kills]
+,_current.[Loses] = _next.[Loses]
+,_current.[Total] = _next.[Total]
+,_current.[Wins] = _next.[Wins]
+from NextHeroComboTrends _next
+    join CurrentHeroComboTrends _current 
+	on _next.HeroId = _current.HeroId and _next.AbilityId = _current.AbilityId
+	
+UPDATE NextHeroComboTrends
+SET [Assists] = 0, [Deaths] = 0, [Kills] = 0, [Loses] = 0, [Total] = 0, [Wins] = 0
+";
+            _dbContext.Database.ExecuteSqlCommand(sql);
         }
     }
 }

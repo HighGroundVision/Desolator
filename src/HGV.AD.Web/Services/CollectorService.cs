@@ -42,45 +42,62 @@ namespace HGV.AD.Web.Services
 
         [AutomaticRetry(Attempts = 0)]
         public void Collect()
-        { 
-            var next = GetNextInSquence();
-
-            var checkpoint = _dbContext.Checkpoints.FirstOrDefault(_ => _.MatchId == next.Item1);
-            if (checkpoint != null)
-            {
-                _logger.LogDebug("Already Processed Match: {0}", next.Item1);
-                return;
-            }
-
-            ProcessMatches(next.Item2);
-        }
-
-        private Tuple<long,long> GetNextInSquence()
         {
-            try
+            var lastCheckpoint = _dbContext.Checkpoints.Single(); // There should always one be one
+            var from = lastCheckpoint.MatchNumber;
+
+            var latestMatch = GetNextMatch();
+            var to = latestMatch.match_seq_num;
+
+            var batchSize = (to - from);
+
+            if (batchSize < 5)
+                throw new ArgumentOutOfRangeException(string.Format("Batch size of {0} is to small to processs.", batchSize));
+
+            lastCheckpoint.MatchNumber = latestMatch.match_seq_num;
+            lastCheckpoint.MatchId = latestMatch.match_id;
+            lastCheckpoint.MatchDate = new DateTime(1970, 1, 1, 0, 0, 0, 0).AddSeconds(latestMatch.start_time);
+
+            _dbContext.SaveChanges();
+
+            if (batchSize > 100000)
+                throw new ArgumentOutOfRangeException(string.Format("Batch size of {0} is to big to processs.", batchSize));
+
+            ProcessBatch(from, to);
+        }
+
+        private Models.DotaApi.GetMatchHistory.Match GetNextMatch()
+        {
+            var url = string.Format("https://api.steampowered.com/IDOTA2Match_570/GetMatchHistory/v1?key={0}&matches_requested=1&game_mode=18", _siteSettings.Value.DotaApiKey);
+
+            var httpClient = new HttpClient();
+            var jsonData = httpClient.GetStringAsync(url).Result;
+            var root = Newtonsoft.Json.JsonConvert.DeserializeObject<Models.DotaApi.GetMatchHistory.Root>(jsonData);
+
+            return root.result.matches.OrderByDescending(_ => _.match_seq_num).FirstOrDefault();
+        }
+
+        private void ProcessBatch(long frist, long last)
+        {
+            var current = frist;
+            while(current < last)
             {
-                var url = string.Format("https://api.steampowered.com/IDOTA2Match_570/GetMatchHistory/v1?key={0}&matches_requested=1&game_mode=18", _siteSettings.Value.DotaApiKey);
+                try
+                {
+                    current = ProcessMatches(current);
 
-                var httpClient = new HttpClient();
-                var jsonData = httpClient.GetStringAsync(url).Result;
-                var root = Newtonsoft.Json.JsonConvert.DeserializeObject<Models.DotaApi.GetMatchHistory.Root>(jsonData);
+                    Thread.Sleep(TimeSpan.FromSeconds(5));
+                }
+                catch (Exception ex)
+                {
+                    this._logger.LogDebug(ex.Message);
 
-                return root.result.matches
-                    .Select(_ => Tuple.Create(_.match_id, _.match_seq_num))
-                    .FirstOrDefault();
-            }
-            catch (Exception ex)
-            {
-                _logger.LogError(ex.Message);
-
-                return _dbContext.Checkpoints
-                    .OrderByDescending(_ => _.MatchNumber)
-                    .Select(_ => Tuple.Create(0L, _.MatchNumber + 1))
-                    .FirstOrDefault();
+                    Thread.Sleep(TimeSpan.FromSeconds(30));
+                }
             }
         }
 
-        private void ProcessMatches(long next)
+        private long ProcessMatches(long next)
         {
             var url = string.Format("https://api.steampowered.com/IDOTA2Match_570/GetMatchHistoryBySequenceNum/v1?key={0}&start_at_match_seq_num={1}", _siteSettings.Value.DotaApiKey, next);
 
@@ -96,13 +113,6 @@ namespace HGV.AD.Web.Services
 
             foreach (var m in matches)
             {
-                var checkpoint = _dbContext.Checkpoints.FirstOrDefault(_ => _.MatchId == m.match_id);
-                if (checkpoint != null)
-                {
-                    _logger.LogDebug("Already Processed Match: {0}", m.match_id);
-                    continue;
-                }
-
                 foreach (var p in m.players)
                 {
                     var hero = _dbContext.NextHeroTrends.FirstOrDefault(_ => _.HeroId == p.hero_id);
@@ -179,14 +189,10 @@ namespace HGV.AD.Web.Services
                     }
                 }
 
-                _dbContext.Checkpoints.Add(new Checkpoint()
-                {
-                    MatchId = m.match_id,
-                    MatchNumber = m.match_seq_num,
-                    MatchDate = new DateTime(1970, 1, 1, 0, 0, 0, 0).ToLocalTime().AddSeconds(m.start_time)
-                });
                 _dbContext.SaveChanges();
             }
+
+            return root.result.matches.Max(_ => _.match_seq_num);
         }
     }
 }

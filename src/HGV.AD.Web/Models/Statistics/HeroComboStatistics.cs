@@ -1,5 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations;
+using System.ComponentModel.DataAnnotations.Schema;
 using System.Linq;
 using System.Threading.Tasks;
 
@@ -14,7 +16,6 @@ namespace HGV.AD.Web.Models.Statistics
         public static HeroComboStatsBase operator -(CurrentHeroComboStats c1, PerviousHeroComboStats c2) =>
             new HeroComboStatsBase()
             {
-                Id = 0,
                 AbilityId = c1.AbilityId,
                 AbilityName = c1.AbilityName,
                 AbilityIdentity = c1.AbilityIdentity,
@@ -36,9 +37,7 @@ namespace HGV.AD.Web.Models.Statistics
 
 	public class HeroComboStatsBase
 	{
-		public int Id { get; set; }
-
-		public int HeroId { get; set; }
+        public int HeroId { get; set; }
         public string HeroIdentity { get; set; }
         public string HeroName { get; set; }
 

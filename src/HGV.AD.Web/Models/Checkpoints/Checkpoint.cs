@@ -9,8 +9,8 @@ namespace HGV.AD.Web.Models.Checkpoints
 {
     public class Checkpoint
     {
-        [DatabaseGenerated(DatabaseGeneratedOption.None)]
-        [Key]
+        public int Id { get; set; }
+
         public long MatchId { get; set; }
 
         public long MatchNumber { get; set; }

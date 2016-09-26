@@ -57,22 +57,21 @@
                     <div class="col-xs-5">
                         <div class="progress">
                             @{ 
-                                var percentage = ((item.Groups - item.Rank + 1) / item.Groups);
                                 var style = "";
-                                if (percentage < 0.20)
+                                if (item.Percentage < 0.20)
                                 {
                                     style = "progress-bar-danger";
                                 }
-                                else if (percentage < 0.50)
+                                else if (item.Percentage < 0.50)
                                 {
                                     style = "progress-bar-warning";
                                 }
-                                else if (percentage > 0.80)
+                                else if (item.Percentage > 0.80)
                                 {
                                     style = "progress-bar-success";
                                 }
                             }
-                            <div class="progress-bar @style" role="progressbar" aria-valuenow="@item.Rank" aria-valuemin="1" aria-valuemax="@item.Groups" style="width: @(percentage * 100)%;" >
+                            <div class="progress-bar @style" role="progressbar" aria-valuenow="@item.Rank" aria-valuemin="1" aria-valuemax="@item.Groups" style="width: @(item.Percentage * 100)%;" >
                                 <span class="sr-only">@item.Rank / @item.Groups</span>
                             </div>
                         </div>

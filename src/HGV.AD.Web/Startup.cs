@@ -14,6 +14,7 @@ using HGV.AD.Web.Models;
 using HGV.AD.Web.Services;
 using Hangfire;
 using HGV.AD.Web.Configuration;
+using Microsoft.AspNetCore.Http;
 
 namespace HGV.AD.Web
 {
@@ -58,8 +59,6 @@ namespace HGV.AD.Web
             services.AddMvc();
 
             // Add application services.
-            //services.AddTransient<IEmailSender, AuthMessageSender>();
-            //services.AddTransient<ISmsSender, AuthMessageSender>();
 			services.AddTransient<SeedService, SeedService>();
             services.AddTransient<CollectorService, CollectorService>();
             services.AddTransient<TransferService, TransferService>();
@@ -71,32 +70,19 @@ namespace HGV.AD.Web
             loggerFactory.AddConsole(Configuration.GetSection("Logging"));
             loggerFactory.AddDebug();
 
-            /*
             if (env.IsDevelopment())
             {
 				app.UseDeveloperExceptionPage();
 				app.UseDatabaseErrorPage();
-				// app.UseBrowserLink();
-			}
+            }
             else
             {
-				app.UseExceptionHandler("/Main/HandleException");
+                app.UseExceptionHandler("/Main/HandleException");
                 app.UseStatusCodePagesWithRedirects("/Main/HandleStatusCode/{0}");
             }
-            */
 
-            app.UseDeveloperExceptionPage();
-            app.UseDatabaseErrorPage();
-            
-            app.UseHangfireDashboard("/hangfire", new DashboardOptions
-            {
-                Authorization = new[]
-                {
-                    new HGVHangFireAuthorizationFilter()
-                }
-            });
-
-			app.UseHangfireServer();
+            app.UseHangfireDashboard("/hangfire", new DashboardOptions { Authorization = new[] { new HangfireAuthorizationFilter() } });
+            app.UseHangfireServer();
 
 			app.UseStaticFiles();
 
