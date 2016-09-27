@@ -11,6 +11,7 @@ using System.Text.RegularExpressions;
 using System.Threading.Tasks;
 using Microsoft.EntityFrameworkCore;
 using System.Linq.Expressions;
+using CsvHelper;
 
 namespace HGV.AD.Web.Services
 {
@@ -39,97 +40,99 @@ namespace HGV.AD.Web.Services
         //~ time 2m
         public void SeedHeroes()
         {
+            // http://devilesk.com/dota2/heroes/herodata/
+
             var heroes = new List<HeroAttributes>()
             {
-                new HeroAttributes() { HeroId = 1, LookupId = 30, Identity = "antimage" },
-                new HeroAttributes() { HeroId = 2, LookupId = 16, Identity = "axe" },
-                new HeroAttributes() { HeroId = 3, LookupId = 78, Identity = "bane" },
-                new HeroAttributes() { HeroId = 4, LookupId = 46, Identity = "bloodseeker" },
-                new HeroAttributes() { HeroId = 5, LookupId = 61, Identity = "crystal_maiden" },
-                new HeroAttributes() { HeroId = 6, LookupId = 31, Identity = "drow_ranger" },
-                new HeroAttributes() { HeroId = 7, LookupId = 1, Identity = "earthshaker" },
-                new HeroAttributes() { HeroId = 8, LookupId = 32, Identity = "juggernaut" },
-                new HeroAttributes() { HeroId = 9, LookupId = 33, Identity = "mirana" },
-                new HeroAttributes() { HeroId = 12, LookupId = 35, Identity = "phantom_lancer" },
-                new HeroAttributes() { HeroId = 14, LookupId = 17, Identity = "pudge" },
-                new HeroAttributes() { HeroId = 15, LookupId = 48, Identity = "razor" },
-                new HeroAttributes() { HeroId = 16, LookupId = 18, Identity = "sand_king" },
-                new HeroAttributes() { HeroId = 17, LookupId = 63, Identity = "storm_spirit" },
-                new HeroAttributes() { HeroId = 18, LookupId = 2, Identity = "sven" },
-                new HeroAttributes() { HeroId = 19, LookupId = 3, Identity = "tiny" },
-                new HeroAttributes() { HeroId = 20, LookupId = 36, Identity = "vengefulspirit" },
-                new HeroAttributes() { HeroId = 21, LookupId = 64, Identity = "windrunner" },
-                new HeroAttributes() { HeroId = 22, LookupId = 65, Identity = "zuus" },
-                new HeroAttributes() { HeroId = 23, LookupId = 4, Identity = "kunkka" },
-                new HeroAttributes() { HeroId = 25, LookupId = 66, Identity = "lina" },
-                new HeroAttributes() { HeroId = 26, LookupId = 80, Identity = "lion" },
-                new HeroAttributes() { HeroId = 27, LookupId = 67, Identity = "shadow_shaman" },
-                new HeroAttributes() { HeroId = 28, LookupId = 19, Identity = "slardar" },
-                new HeroAttributes() { HeroId = 29, LookupId = 20, Identity = "tidehunter" },
-                new HeroAttributes() { HeroId = 30, LookupId = 81, Identity = "witch_doctor" },
-                new HeroAttributes() { HeroId = 31, LookupId = 79, Identity = "lich" },
-                new HeroAttributes() { HeroId = 32, LookupId = 37, Identity = "riki" },
-                new HeroAttributes() { HeroId = 33, LookupId = 82, Identity = "enigma" },
-                new HeroAttributes() { HeroId = 34, LookupId = 68, Identity = "tinker" },
-                new HeroAttributes() { HeroId = 35, LookupId = 38, Identity = "sniper" },
-                new HeroAttributes() { HeroId = 36, LookupId = 83, Identity = "necrolyte" },
-                new HeroAttributes() { HeroId = 37, LookupId = 84, Identity = "warlock" },
-                new HeroAttributes() { HeroId = 39, LookupId = 85, Identity = "queenofpain" },
-                new HeroAttributes() { HeroId = 40, LookupId = 49, Identity = "venomancer" },
-                new HeroAttributes() { HeroId = 41, LookupId = 50, Identity = "faceless_void" },
-                new HeroAttributes() { HeroId = 42, LookupId = 21, Identity = "skeleton_king" },
-                new HeroAttributes() { HeroId = 43, LookupId = 86, Identity = "death_prophet" },
-                new HeroAttributes() { HeroId = 44, LookupId = 51, Identity = "phantom_assassin" },
-                new HeroAttributes() { HeroId = 45, LookupId = 87, Identity = "pugna" },
-                new HeroAttributes() { HeroId = 47, LookupId = 52, Identity = "viper" },
-                new HeroAttributes() { HeroId = 48, LookupId = 40, Identity = "luna" },
-                new HeroAttributes() { HeroId = 49, LookupId = 6, Identity = "dragon_knight" },
-                new HeroAttributes() { HeroId = 50, LookupId = 88, Identity = "dazzle" },
-                new HeroAttributes() { HeroId = 51, LookupId = 7, Identity = "rattletrap" },
-                new HeroAttributes() { HeroId = 52, LookupId = 89, Identity = "leshrac" },
-                new HeroAttributes() { HeroId = 53, LookupId = 69, Identity = "furion" },
-                new HeroAttributes() { HeroId = 54, LookupId = 22, Identity = "life_stealer" },
-                new HeroAttributes() { HeroId = 55, LookupId = 90, Identity = "dark_seer" },
-                new HeroAttributes() { HeroId = 56, LookupId = 53, Identity = "clinkz" },
-                new HeroAttributes() { HeroId = 57, LookupId = 8, Identity = "omniknight" },
-                new HeroAttributes() { HeroId = 58, LookupId = 70, Identity = "enchantress" },
-                new HeroAttributes() { HeroId = 59, LookupId = 9, Identity = "huskar" },
-                new HeroAttributes() { HeroId = 60, LookupId = 23, Identity = "night_stalker" },
-                new HeroAttributes() { HeroId = 61, LookupId = 54, Identity = "broodmother" },
-                new HeroAttributes() { HeroId = 62, LookupId = 41, Identity = "bounty_hunter" },
-                new HeroAttributes() { HeroId = 63, LookupId = 55, Identity = "weaver" },
-                new HeroAttributes() { HeroId = 64, LookupId = 71, Identity = "jakiro" },
-                new HeroAttributes() { HeroId = 65, LookupId = 91, Identity = "batrider" },
-                new HeroAttributes() { HeroId = 68, LookupId = 92, Identity = "ancient_apparition" },
-                new HeroAttributes() { HeroId = 70, LookupId = 42, Identity = "ursa" },
-                new HeroAttributes() { HeroId = 71, LookupId = 25, Identity = "spirit_breaker" },
-                new HeroAttributes() { HeroId = 72, LookupId = 43, Identity = "gyrocopter" },
-                new HeroAttributes() { HeroId = 73, LookupId = 10, Identity = "alchemist" },
-                new HeroAttributes() { HeroId = 75, LookupId = 73, Identity = "silencer" },
-                new HeroAttributes() { HeroId = 76, LookupId = 94, Identity = "obsidian_destroyer" },
-                new HeroAttributes() { HeroId = 77, LookupId = 26, Identity = "lycan" },
-                new HeroAttributes() { HeroId = 78, LookupId = 11, Identity = "brewmaster" },
-                new HeroAttributes() { HeroId = 81, LookupId = 27, Identity = "chaos_knight" },
-                new HeroAttributes() { HeroId = 83, LookupId = 12, Identity = "treant" },
-                new HeroAttributes() { HeroId = 85, LookupId = 28, Identity = "undying" },
-                new HeroAttributes() { HeroId = 87, LookupId = 76, Identity = "disruptor" },
-                new HeroAttributes() { HeroId = 88, LookupId = 58, Identity = "nyx_assassin" },
-                new HeroAttributes() { HeroId = 89, LookupId = 45, Identity = "naga_siren" },
-                new HeroAttributes() { HeroId = 92, LookupId = 96, Identity = "visage" },
-                new HeroAttributes() { HeroId = 93, LookupId = 59, Identity = "slark" },
-                new HeroAttributes() { HeroId = 94, LookupId = 60, Identity = "medusa" },
-                new HeroAttributes() { HeroId = 96, LookupId = 14, Identity = "centaur" },
-                new HeroAttributes() { HeroId = 97, LookupId = 29, Identity = "magnataur" },
-                new HeroAttributes() { HeroId = 99, LookupId = 99, Identity = "bristleback" },
-                new HeroAttributes() { HeroId = 101, LookupId = 100, Identity = "skywrath_mage" },
-                new HeroAttributes() { HeroId = 102, LookupId = 102, Identity = "abaddon" },
-                new HeroAttributes() { HeroId = 103, LookupId = 101, Identity = "elder_titan" },
-                new HeroAttributes() { HeroId = 104, LookupId = 105, Identity = "legion_commander" },
-                new HeroAttributes() { HeroId = 109, LookupId = 106, Identity = "terrorblade" },
-                new HeroAttributes() { HeroId = 111, LookupId = 109, Identity = "oracle" },
-                new HeroAttributes() { HeroId = 112, LookupId = 110, Identity = "winter_wyvern" },
-                new HeroAttributes() { HeroId = 113, LookupId = 111, Identity = "arc_warden" },
-                //new HeroAttributes() { HeroId = 112, LookupId = 112, Identity = "abyssal_underlord" }
+                new HeroAttributes() { HeroId = 1, Identity = "antimage" },
+                new HeroAttributes() { HeroId = 2, Identity = "axe" },
+                new HeroAttributes() { HeroId = 3, Identity = "bane" },
+                new HeroAttributes() { HeroId = 4, Identity = "bloodseeker" },
+                new HeroAttributes() { HeroId = 5, Identity = "crystal_maiden" },
+                new HeroAttributes() { HeroId = 6, Identity = "drow_ranger" },
+                new HeroAttributes() { HeroId = 7, Identity = "earthshaker" },
+                new HeroAttributes() { HeroId = 8, Identity = "juggernaut" },
+                new HeroAttributes() { HeroId = 9, Identity = "mirana" },
+                new HeroAttributes() { HeroId = 12, Identity = "phantom_lancer" },
+                new HeroAttributes() { HeroId = 14, Identity = "pudge" },
+                new HeroAttributes() { HeroId = 15, Identity = "razor" },
+                new HeroAttributes() { HeroId = 16, Identity = "sand_king" },
+                new HeroAttributes() { HeroId = 17, Identity = "storm_spirit" },
+                new HeroAttributes() { HeroId = 18, Identity = "sven" },
+                new HeroAttributes() { HeroId = 19, Identity = "tiny" },
+                new HeroAttributes() { HeroId = 20, Identity = "vengefulspirit" },
+                new HeroAttributes() { HeroId = 21, Identity = "windrunner" },
+                new HeroAttributes() { HeroId = 22, Identity = "zuus" },
+                new HeroAttributes() { HeroId = 23, Identity = "kunkka" },
+                new HeroAttributes() { HeroId = 25, Identity = "lina" },
+                new HeroAttributes() { HeroId = 26, Identity = "lion" },
+                new HeroAttributes() { HeroId = 27, Identity = "shadow_shaman" },
+                new HeroAttributes() { HeroId = 28, Identity = "slardar" },
+                new HeroAttributes() { HeroId = 29, Identity = "tidehunter" },
+                new HeroAttributes() { HeroId = 30, Identity = "witch_doctor" },
+                new HeroAttributes() { HeroId = 31, Identity = "lich" },
+                new HeroAttributes() { HeroId = 32, Identity = "riki" },
+                new HeroAttributes() { HeroId = 33, Identity = "enigma" },
+                new HeroAttributes() { HeroId = 34, Identity = "tinker" },
+                new HeroAttributes() { HeroId = 35, Identity = "sniper" },
+                new HeroAttributes() { HeroId = 36, Identity = "necrolyte" },
+                new HeroAttributes() { HeroId = 37, Identity = "warlock" },
+                new HeroAttributes() { HeroId = 39, Identity = "queenofpain" },
+                new HeroAttributes() { HeroId = 40, Identity = "venomancer" },
+                new HeroAttributes() { HeroId = 41, Identity = "faceless_void" },
+                new HeroAttributes() { HeroId = 42, Identity = "skeleton_king" },
+                new HeroAttributes() { HeroId = 43, Identity = "death_prophet" },
+                new HeroAttributes() { HeroId = 44, Identity = "phantom_assassin" },
+                new HeroAttributes() { HeroId = 45, Identity = "pugna" },
+                new HeroAttributes() { HeroId = 47, Identity = "viper" },
+                new HeroAttributes() { HeroId = 48, Identity = "luna" },
+                new HeroAttributes() { HeroId = 49, Identity = "dragon_knight" },
+                new HeroAttributes() { HeroId = 50, Identity = "dazzle" },
+                new HeroAttributes() { HeroId = 51, Identity = "rattletrap" },
+                new HeroAttributes() { HeroId = 52, Identity = "leshrac" },
+                new HeroAttributes() { HeroId = 53, Identity = "furion" },
+                new HeroAttributes() { HeroId = 54, Identity = "life_stealer" },
+                new HeroAttributes() { HeroId = 55, Identity = "dark_seer" },
+                new HeroAttributes() { HeroId = 56, Identity = "clinkz" },
+                new HeroAttributes() { HeroId = 57, Identity = "omniknight" },
+                new HeroAttributes() { HeroId = 58, Identity = "enchantress" },
+                new HeroAttributes() { HeroId = 59, Identity = "huskar" },
+                new HeroAttributes() { HeroId = 60, Identity = "night_stalker" },
+                new HeroAttributes() { HeroId = 61, Identity = "broodmother" },
+                new HeroAttributes() { HeroId = 62, Identity = "bounty_hunter" },
+                new HeroAttributes() { HeroId = 63, Identity = "weaver" },
+                new HeroAttributes() { HeroId = 64, Identity = "jakiro" },
+                new HeroAttributes() { HeroId = 65, Identity = "batrider" },
+                new HeroAttributes() { HeroId = 68, Identity = "ancient_apparition" },
+                new HeroAttributes() { HeroId = 70, Identity = "ursa" },
+                new HeroAttributes() { HeroId = 71, Identity = "spirit_breaker" },
+                new HeroAttributes() { HeroId = 72, Identity = "gyrocopter" },
+                new HeroAttributes() { HeroId = 73, Identity = "alchemist" },
+                new HeroAttributes() { HeroId = 75, Identity = "silencer" },
+                new HeroAttributes() { HeroId = 76, Identity = "obsidian_destroyer" },
+                new HeroAttributes() { HeroId = 77, Identity = "lycan" },
+                new HeroAttributes() { HeroId = 78, Identity = "brewmaster" },
+                new HeroAttributes() { HeroId = 81, Identity = "chaos_knight" },
+                new HeroAttributes() { HeroId = 83, Identity = "treant" },
+                new HeroAttributes() { HeroId = 85, Identity = "undying" },
+                new HeroAttributes() { HeroId = 87, Identity = "disruptor" },
+                new HeroAttributes() { HeroId = 88, Identity = "nyx_assassin" },
+                new HeroAttributes() { HeroId = 89, Identity = "naga_siren" },
+                new HeroAttributes() { HeroId = 92, Identity = "visage" },
+                new HeroAttributes() { HeroId = 93, Identity = "slark" },
+                new HeroAttributes() { HeroId = 94, Identity = "medusa" },
+                new HeroAttributes() { HeroId = 96, Identity = "centaur" },
+                new HeroAttributes() { HeroId = 97, Identity = "magnataur" },
+                new HeroAttributes() { HeroId = 99, Identity = "bristleback" },
+                new HeroAttributes() { HeroId = 101, Identity = "skywrath_mage" },
+                new HeroAttributes() { HeroId = 102, Identity = "abaddon" },
+                new HeroAttributes() { HeroId = 103, Identity = "elder_titan" },
+                new HeroAttributes() { HeroId = 104, Identity = "legion_commander" },
+                new HeroAttributes() { HeroId = 109, Identity = "terrorblade" },
+                new HeroAttributes() { HeroId = 111, Identity = "oracle" },
+                new HeroAttributes() { HeroId = 112, Identity = "winter_wyvern" },
+                new HeroAttributes() { HeroId = 113, Identity = "arc_warden" },
+                new HeroAttributes() { HeroId = 108, Identity = "abyssal_underlord" }
             };
 
             // Remove all others
@@ -142,52 +145,47 @@ namespace HGV.AD.Web.Services
 
             // Get other hero attributes
             var httpClient = new HttpClient();
-            var jsonData = httpClient.GetStringAsync("http://herostats.io:322/heroes/all").Result;
+            var csvData = httpClient.GetStringAsync("http://www.abilitydrafter.com/data/heroes.csv").Result;
 
-            var collection = JObject.Parse(jsonData);
-
-            foreach (var item in collection)
+            using (var reader = new System.IO.StringReader(csvData))
+            using (var csv = new CsvReader(reader))
             {
-                JObject obj = item.Value as JObject;
-
-                var lookupID = obj["ID"].Value<int>();
-
-                var hero = _dbContext.Heroes.SingleOrDefault(_ => _.LookupId == lookupID);
-                if (hero == null)
+                while (csv.Read())
                 {
-                    _logger.LogWarning(string.Format("No hero found for id: {0}", lookupID));
-                    continue;
+                    var identity = csv.GetField<string>("Identity");
+
+                    var hero = _dbContext.Heroes.SingleOrDefault(_ => _.Identity == identity);
+                    if (hero == null)
+                    {
+                        _logger.LogWarning(string.Format("No hero found for identity: {0}", identity));
+                        continue;
+                    }
+
+                    hero.Name = csv.GetField<string>("Name");
+                    hero.Patch = "6.88c";
+                    hero.Primary = csv.GetField<string>("Primary Stat");
+
+                    hero.Movespeed = csv.GetField<double>("MS");
+                    hero.MaxDmg = csv.GetField<double>("Max Dmg");
+                    hero.MinDmg = csv.GetField<double>("Min Dmg");
+                    hero.AvgDmg = csv.GetField<double>("Avg Dmg");
+                    hero.HP = csv.GetField<double>("HP");
+                    hero.Mana = csv.GetField<double>("Mana");
+                    hero.HPRegen = csv.GetField<double>("HP Regen");
+                    hero.ManaRegen = csv.GetField<double>("Mana Regen");
+                    hero.Armor = csv.GetField<double>("Armor");
+                    hero.Range = csv.GetField<double>("Atk Range");
+                    hero.ProjectileSpeed = csv.GetField<double>("Projectile Speed");
+                    hero.BaseStr = csv.GetField<double>("Str");
+                    hero.BaseAgi = csv.GetField<double>("Agi");
+                    hero.BaseInt = csv.GetField<double>("Int");
+                    hero.StrGain = csv.GetField<double>("Str Gain");
+                    hero.AgiGain = csv.GetField<double>("Agi Gain");
+                    hero.IntGain = csv.GetField<double>("Int Gain");
+                    hero.DayVision = csv.GetField<double>("Day Vision Range");
+                    hero.NightVision = csv.GetField<double>("Night Vision Range");
+                    hero.Turnrate = csv.GetField<double>("Turn Rate");
                 }
-
-                hero.Name = obj["Name"].Value<string>();
-                hero.Patch = obj["Patch"].Value<string>();
-                hero.Primary = obj["PrimaryStat"].Value<int>();
-                hero.Alignment = obj["Alignment"].Value<int>();
-
-                hero.Movespeed = obj["Movespeed"].Value<double>();
-                hero.MaxDmg = obj["MaxDmg"].Value<double>();
-                hero.MinDmg = obj["MinDmg"].Value<double>();
-                hero.HP = obj["HP"].Value<double>();
-                hero.Mana = obj["Mana"].Value<double>();
-                hero.HPRegen = obj["HPRegen"].Value<double>();
-                hero.ManaRegen = obj["ManaRegen"].Value<double>();
-                hero.Armor = obj["Armor"].Value<double>();
-                hero.Range = obj["Range"].Value<double>();
-                hero.ProjectileSpeed = obj["ProjectileSpeed"].Value<double>();
-                hero.BaseStr = obj["BaseStr"].Value<double>();
-                hero.BaseAgi = obj["BaseAgi"].Value<double>();
-                hero.BaseInt = obj["BaseInt"].Value<double>();
-                hero.StrGain = obj["StrGain"].Value<double>();
-                hero.AgiGain = obj["AgiGain"].Value<double>();
-                hero.IntGain = obj["IntGain"].Value<double>();
-                hero.DayVision = obj["DayVision"].Value<double>();
-                hero.NightVision = obj["NightVision"].Value<double>();
-                hero.BaseAttackTime = obj["BaseAttackTime"].Value<double>();
-                hero.AttackPoint = obj["AttackPoint"].Value<double>();
-                hero.AttackSwing = obj["AttackSwing"].Value<double>();
-                hero.CastPoint = obj["CastPoint"].Value<double>();
-                hero.CastSwing = obj["CastSwing"].Value<double>();
-                hero.Turnrate = obj["Turnrate"].Value<double>();
             }
 
             _dbContext.SaveChanges();
@@ -604,7 +602,11 @@ namespace HGV.AD.Web.Services
                 new AbilityAttributes() { AbilityId = 5679, Identity = "arc_warden_spark_wraith",  HeroId = 113, Ultimate = false},
                 new AbilityAttributes() { AbilityId = 5683, Identity = "arc_warden_tempest_double",  HeroId = 113, Ultimate = true },
                 new AbilityAttributes() { AbilityId = 5685, Identity = "death_prophet_spirit_siphon",  HeroId = 43, Ultimate = false},
-                new AbilityAttributes() { AbilityId = 5691, Identity = "faceless_void_time_dilation",  HeroId = 41, Ultimate = false}
+                new AbilityAttributes() { AbilityId = 5691, Identity = "faceless_void_time_dilation",  HeroId = 41, Ultimate = false},
+                new AbilityAttributes() { AbilityId = 5613, Identity = "abyssal_underlord_firestorm",  HeroId = 108, Ultimate = false},
+                new AbilityAttributes() { AbilityId = 5614, Identity = "abyssal_underlord_pit_of_malice",  HeroId = 108, Ultimate = false},
+                new AbilityAttributes() { AbilityId = 5615, Identity = "abyssal_underlord_atrophy_aura",  HeroId = 108, Ultimate = false},
+                new AbilityAttributes() { AbilityId = 5616, Identity = "abyssal_underlord_dark_rift",  HeroId = 108, Ultimate = true},
             };
 
             // Remove all others

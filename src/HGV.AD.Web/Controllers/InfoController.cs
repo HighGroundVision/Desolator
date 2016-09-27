@@ -23,10 +23,10 @@ namespace HGV.AD.Web.Controllers
             return View();
         }
 
-        public IActionResult Questions()
+        public IActionResult Guide()
         {
             return View();
         }
-
+        
     }
 }
