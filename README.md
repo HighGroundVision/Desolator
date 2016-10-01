@@ -35,7 +35,7 @@ The Follow application settings need to be set before the system will function
 
 Both the Connection String and Settings can be found in the appsettings.json file but we recommand using [user secrets](https://docs.asp.net/en/latest/security/app-secrets.html) instead.
 
-After which you will need to run the Seed methods in the Admin controller, then you can run the RegisterRecurringServices method to create the recurring jobs. (We use [hangfire](http://hangfire.io/) for our job system)
+After which you will need to run the SeedHero, SeedAbilities, SeedTrends methods in the Admin controller, then you can run the RegisterRecurringServices method to create the recurring jobs. (We use [hangfire](http://hangfire.io/) for our job system)
 
 ## License
 
