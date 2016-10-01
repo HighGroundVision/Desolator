@@ -18,7 +18,7 @@ A Asp.Net Core web application designed to serivce the needs of Ability Draft pl
 You will need to configure the Conection String
 ```
 "ConnectionStrings": {
-	"DefaultConnection": "Server=DESKTOP-563HJ3N\\SQLEXPRESS;Database=HGV.AD;Trusted_Connection=True;MultipleActiveResultSets=true"
+	"DefaultConnection": "Server=.\\SQLEXPRESS;Database=HGV.AD;Trusted_Connection=True;MultipleActiveResultSets=true"
 }
 ```
 
