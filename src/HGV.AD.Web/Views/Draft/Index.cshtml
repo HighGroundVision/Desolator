@@ -11,8 +11,11 @@
 
 <h2>Draft <small>Recommendations</small></h2>
 
+<h5>Pick the ultimates listed in the draft window in the order which they are listed.</h5>
 <p>
-    Lorem ipsum dolor sit amet, consectetur adipiscing elit. Quisque iaculis nulla sed lectus tincidunt, sed accumsan purus vehicula. Phasellus et diam ex. Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. 
+    We will automaticly display ability combos filtered by the abilties available. 
+    Click on any hero and a dialog with infomation speific to that hero will appear, we will also filter the combos by the abilties available.
+    Click on any ability and a dialog with infomation speific to that ability will appear, we will also filter the combos by the abilties available.
 </p>
 
 <nav class="navbar navbar-inverse"> 
@@ -37,9 +40,11 @@
     </div>
 </nav>
 
-<div class="alert alert-warning visible-xs" role="alert">
-    <h5>Warning!</h5> Drafting on mobile is not the best experience. We are exploring other options that work better for mobile devices.
-</div>
+<section class="visible-xs" >
+    <div class="alert alert-warning" role="alert">
+        <h5>Warning!</h5> Drafting on mobile is not the best experience. We are exploring other options that work better for mobile devices.
+    </div>
+</section>
 
 <section data-bind="visible: SelectedDraft().length != 12" style="display:none;">
     <div class="row" data-bind="foreach: FilteredDraft">
@@ -77,11 +82,11 @@
     <hr />
 </section>
 
-<section data-bind="visible: Combos().length > 0" style="display:none;" >
+<section data-bind="visible: Combos().length > 0" style="display:none;">
     <div class="row">
         <div class="col-xs-12">
             <table id="tblCombos" class="table table-condensed table-striped  display nowrap" cellspacing="0" width="100%">
-                 <thead>
+                <thead>
                     <tr>
                         <th></th>
                         <th class="hidden-xs">Ability</th>
@@ -98,22 +103,22 @@
                 <tbody data-bind="foreach: Combos">
                     <tr>
                         <td>
-                            <a data-bind="attr: { 'href': '/Abilities/Details/' + abilityId}">
+                            <a data-bind="click: $root.SelectAbility">
                                 <img src="#" data-bind="attr: { src:'http://cdn.dota2.com/apps/dota2/images/abilities/' + abilityIdentity + '_hp1.png' }" alt="Ability" class="img-responsive pull-left" width="30" height="30" />
                             </a>
                         </td>
                         <td class="hidden-xs">
-                            <a data-bind="attr: { 'href': '/Abilities/Details/' + abilityId}">
+                            <a data-bind="click: $root.SelectAbility">
                                 <span data-bind="text: abilityName"></span>
                             </a>
                         </td>
                         <td>
-                            <a data-bind="attr: { 'href': '/Abilities/Details/' + comboId}">
+                            <a data-bind="click: $root.SelectAbility">
                                 <img src="#" data-bind="attr: { src:'http://cdn.dota2.com/apps/dota2/images/abilities/' + comboIdentity + '_hp1.png' }" alt="Ability" class="img-responsive pull-left" width="30" height="30" />
                             </a>
                         </td>
                         <td class="hidden-xs">
-                            <a data-bind="attr: { 'href': '/Abilities/Details/' + comboId}">
+                            <a data-bind="click: $root.SelectAbility">
                                 <span data-bind="text: comboName"></span>
                             </a>
                         </td>
@@ -127,6 +132,12 @@
                 </tbody>
             </table>
         </div>
+    </div>
+</section>
+
+<section data-bind="visible: Searching" style="display:none;">
+    <div class="alert alert-info text-center" role="alert">
+        <i class="fa fa-spinner fa-spin fa-fw fa-3x" aria-hidden="true"></i>
     </div>
 </section>
 

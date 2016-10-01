@@ -15,6 +15,8 @@
     self.SelectedHero = ko.observable(null);
     self.SelectedAbility = ko.observable(null);
 
+    self.Searching = ko.observable(false);
+
     // Computed
     self.FilteredDraft = ko.computed(function () {
         var search = self.SearchDraft();
@@ -26,7 +28,7 @@
             });
 
             if (filtered.length == 1) {
-                self.PickHero(filtered[0]);
+                self.SelectDraft(filtered[0]);
             } else {
                 return filtered;
             }
@@ -105,10 +107,14 @@
         }
 
         if (self.SelectedDraft().length == 12) {
+            self.Searching(true);
+
             var collection = $.map(self.AvailableAbilities(), function(value, index) {
                 return value.id;
             });
             $.post("/Draft/GetCombosFromPool/", { abilities: collection }).done(function (data) {
+                self.Searching(false);
+
                 self.Combos(data);
 
                 $('#tblCombos').DataTable({
@@ -116,6 +122,7 @@
                     "scrollX": true,
                     "order": [[4, "desc"]],
                     "pagingType": "simple",
+                    "pageLength": 25,
                     "dom": "<'row'<'col-sm-6'i><'col-sm-6'f>><'row'<'col-sm-12'tr>><'row'<'col-sm-6'l><'col-sm-6'p>>",
                 });
             });

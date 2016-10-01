@@ -8,9 +8,10 @@ using HGV.AD.Web.Data;
 namespace HGV.AD.Web.Data.Migrations
 {
     [DbContext(typeof(ApplicationDbContext))]
-    partial class ApplicationDbContextModelSnapshot : ModelSnapshot
+    [Migration("20160929224811_AddedSourceSameToCombos")]
+    partial class AddedSourceSameToCombos
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
             modelBuilder
                 .HasAnnotation("ProductVersion", "1.0.1")

@@ -32,17 +32,15 @@ namespace HGV.AD.Web.Controllers
 		public IActionResult HandleStatusCode(int id)
 		{
 			var code = (HttpStatusCode)id;
-
-
             switch (code)
 			{
 				case HttpStatusCode.Forbidden:
 					return View("Forbidden");
-
-				case HttpStatusCode.NotFound:
-					return View("NotFound");
-
-				default:
+				case HttpStatusCode.Unauthorized:
+					return View("Forbidden");
+                case HttpStatusCode.NotFound:
+                    return View("NotFound");
+                default:
 					return View("Error");
 			}
 		}

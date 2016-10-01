@@ -12,6 +12,7 @@ namespace HGV.AD.Web.Models.Attributes
 		public int HeroId { get; set; }
         public string Identity { get; set; }
 		public string Name { get; set; }
+        public string Notes { get; set; }
         public string Patch { get; set; }
         public string Primary { get; set; }
 

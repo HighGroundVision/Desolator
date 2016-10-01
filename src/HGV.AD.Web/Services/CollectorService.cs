@@ -26,8 +26,6 @@ namespace HGV.AD.Web.Services
         private readonly ILogger _logger;
         private readonly IOptions<Site> _siteSettings;
 
-        //private readonly string DotaApiKey;
-
         public CollectorService(
             ApplicationDbContext dbcontext,
             IOptions<Site> siteSettings,
@@ -43,7 +41,11 @@ namespace HGV.AD.Web.Services
         [AutomaticRetry(Attempts = 0)]
         public void Collect()
         {
-            var lastCheckpoint = _dbContext.Checkpoints.Single(); // There should always one be one
+            // There should always be one and only one
+            var lastCheckpoint = _dbContext.Checkpoints.FirstOrDefault(); 
+            if (lastCheckpoint == null)
+                throw new NullReferenceException("Can not find last checkpoint");
+
             var from = lastCheckpoint.MatchNumber;
 
             var latestMatch = GetNextMatch();
@@ -106,9 +108,10 @@ namespace HGV.AD.Web.Services
             var root = Newtonsoft.Json.JsonConvert.DeserializeObject<Models.DotaApi.GetMatchHistoryBySequenceNum.Root>(jsonData);
 
             var matches = root.result.matches
-                .Where(_ => _.game_mode == 18)
-                .Where(_ => _.players != null)
-                .Where(_ => _.players.Count == 10)
+                .Where(_ => _.game_mode == 18)          // Is the game mode Ability Drafter
+                .Where(_ => _.duration > 300)           // Is the duration greater then 5 mins
+                .Where(_ => _.players != null)          // Are thre players
+                .Where(_ => _.players.Count == 10)      // Are there 10 players
                 .ToList();
 
             foreach (var m in matches)
@@ -171,12 +174,12 @@ namespace HGV.AD.Web.Services
                         .Where(_ => _.Item1 != _.Item2)
                         .ToList();
 
-                    foreach (var combo in abilityCombos)
+                    foreach (var pair in abilityCombos)
                     {
-                        var abilityCombo = _dbContext.NextAbilityComboTrends.FirstOrDefault(_ => _.AbilityId == combo.Item1 && _.ComboId == combo.Item2);
+                        var abilityCombo = _dbContext.NextAbilityComboTrends.FirstOrDefault(_ => _.AbilityId == pair.Item1 && _.ComboId == pair.Item2);
                         if (abilityCombo == null)
                         {
-                            _logger.LogDebug("Can not find ability combo: {0} {1} {2}", m.match_id, combo.Item1, combo.Item2);
+                            _logger.LogDebug("Can not find ability combo: {0} {1} {2}", m.match_id, pair.Item1, pair.Item2);
                             continue;
                         }
 

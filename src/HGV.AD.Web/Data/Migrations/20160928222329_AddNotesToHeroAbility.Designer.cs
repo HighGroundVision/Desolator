@@ -8,9 +8,10 @@ using HGV.AD.Web.Data;
 namespace HGV.AD.Web.Data.Migrations
 {
     [DbContext(typeof(ApplicationDbContext))]
-    partial class ApplicationDbContextModelSnapshot : ModelSnapshot
+    [Migration("20160928222329_AddNotesToHeroAbility")]
+    partial class AddNotesToHeroAbility
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
             modelBuilder
                 .HasAnnotation("ProductVersion", "1.0.1")
@@ -223,8 +224,6 @@ namespace HGV.AD.Web.Data.Migrations
 
                     b.Property<long>("Loses");
 
-                    b.Property<bool>("SameSource");
-
                     b.Property<long>("Total");
 
                     b.Property<long>("Wins");
@@ -280,8 +279,6 @@ namespace HGV.AD.Web.Data.Migrations
                     b.Property<long>("Kills");
 
                     b.Property<long>("Loses");
-
-                    b.Property<bool>("SameSource");
 
                     b.Property<long>("Total");
 
@@ -339,8 +336,6 @@ namespace HGV.AD.Web.Data.Migrations
 
                     b.Property<long>("Loses");
 
-                    b.Property<bool>("SameSource");
-
                     b.Property<long>("Total");
 
                     b.Property<long>("Wins");
@@ -396,8 +391,6 @@ namespace HGV.AD.Web.Data.Migrations
                     b.Property<long>("Kills");
 
                     b.Property<long>("Loses");
-
-                    b.Property<bool>("SameSource");
 
                     b.Property<long>("Total");
 
@@ -455,8 +448,6 @@ namespace HGV.AD.Web.Data.Migrations
 
                     b.Property<long>("Loses");
 
-                    b.Property<bool>("SameSource");
-
                     b.Property<long>("Total");
 
                     b.Property<long>("Wins");
@@ -512,8 +503,6 @@ namespace HGV.AD.Web.Data.Migrations
                     b.Property<long>("Kills");
 
                     b.Property<long>("Loses");
-
-                    b.Property<bool>("SameSource");
 
                     b.Property<long>("Total");
 

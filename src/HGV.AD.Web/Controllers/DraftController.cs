@@ -61,6 +61,7 @@ namespace HGV.AD.Web.Controllers
         {
             var query = _dbContext.CurrentAbilityComboTrends
                 .Join(abilities, _ => _.AbilityId, _ => _, (lhs, rhs) => lhs)
+                .Where(_ => _.SameSource == false)
                 .Where(_ => abilities.Any(__ => __ == _.ComboId))
                 .Where(_ => _.Total > 0)
                 .ToList();
@@ -92,6 +93,7 @@ namespace HGV.AD.Web.Controllers
 
             var combos = _dbContext.CurrentHeroComboTrends
                 .Where(_ => _.HeroId == id)
+                .Where(_ => _.SameSource == false)
                 .Where(_ => _.Total > 0)
                 .Join(abilities, _ => _.AbilityId, _ => _, (lhs, rhs) => lhs)
                 .Where(_ => abilities.Any(__ => __ == _.AbilityId))
@@ -113,6 +115,7 @@ namespace HGV.AD.Web.Controllers
 
             var combos = _dbContext.CurrentAbilityComboTrends
                 .Where(_ => _.AbilityId == id)
+                .Where(_ => _.SameSource == false)
                 .Where(_ => _.Total > 0)
                 .Join(abilities, _ => _.AbilityId, _ => _, (lhs, rhs) => lhs)
                 .Where(_ => abilities.Any(__ => __ == _.ComboId))

@@ -1,0 +1,25 @@
+﻿@{
+    ViewData["Title"] = "Login";
+}
+
+<div class="row">
+    <div class="col-md-2">
+        <img src="~/images/characters/cluckles.png" class="img-responsive" />
+        <div class="alert alert-info text-center">
+            <strong>Hi, Iam Cluckles!</strong><br />
+        </div>
+    </div>
+    <div class="col-md-10">
+        <h3>@ViewBag.Title</h3>
+        <p>
+            Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed sem turpis, aliquet vel ullamcorper ac, porttitor et nisl. Nulla facilisi. Fusce diam mauris, laoreet a malesuada ac, consectetur non nisl. Suspendisse vel placerat nunc. Mauris finibus maximus eros, posuere ullamcorper lorem. Pellentesque aliquet auctor egestas. Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Etiam arcu massa, hendrerit eget nisl quis, condimentum pulvinar felis. Fusce nec leo bibendum, dictum ex eget, feugiat dolor. Sed rutrum, quam quis sagittis fermentum, nisi ligula mollis leo, nec lacinia elit libero eu libero. Cras finibus molestie orci.
+        </p>
+        <div>
+            <form asp-area="" asp-controller="Account" asp-action="ExternalLogin" method="post" id="loginForm">
+                <button type="submit" class="btn btn-link" id="Steam" name="provider" value="Steam" title="Log in using your Steam account">
+                    <img src="~/images/steam/sits_large_border.png" />
+                </button>
+            </form>
+        </div>
+    </div>
+</div>

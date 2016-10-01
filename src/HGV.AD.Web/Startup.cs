@@ -15,6 +15,7 @@ using HGV.AD.Web.Services;
 using Hangfire;
 using HGV.AD.Web.Configuration;
 using Microsoft.AspNetCore.Http;
+using Hangfire.Dashboard;
 
 namespace HGV.AD.Web
 {
@@ -39,11 +40,19 @@ namespace HGV.AD.Web
 
         public IConfigurationRoot Configuration { get; }
 
+        private string FounderSteamId
+        {
+            get
+            {
+                return Configuration.GetSection("Site")?["FounderSteamId"] ?? "";
+            }
+        }
+
         // This method gets called by the runtime. Use this method to add services to the container.
         public void ConfigureServices(IServiceCollection services)
         {
             services.AddOptions();
-            services.Configure<Site>(Configuration.GetSection("Site"));
+            services.Configure<Site>(this.Configuration.GetSection("Site"));
 
             // Add framework services.
             services.AddHangfire(configuration => configuration
@@ -58,8 +67,13 @@ namespace HGV.AD.Web
 
             services.AddMvc();
 
+            services.AddAuthorization(options =>
+            {
+                options.AddPolicy("Founder", policy => policy.RequireClaim("steam:steam:id", this.FounderSteamId));
+            });
+
             // Add application services.
-			services.AddTransient<SeedService, SeedService>();
+            services.AddTransient<SeedService, SeedService>();
             services.AddTransient<CollectorService, CollectorService>();
             services.AddTransient<TransferService, TransferService>();
         }
@@ -81,16 +95,19 @@ namespace HGV.AD.Web
                 app.UseStatusCodePagesWithRedirects("/Main/HandleStatusCode/{0}");
             }
 
-            app.UseHangfireDashboard("/hangfire", new DashboardOptions { Authorization = new[] { new HangfireAuthorizationFilter() } });
-            app.UseHangfireServer();
-
 			app.UseStaticFiles();
 
             app.UseIdentity();
 
 			app.UseSteamAuthentication();
 
-			app.UseMvc(routes =>
+            app.UseHangfireDashboard("/hangfire", new DashboardOptions
+            {
+                Authorization = new[] { new ClaimsBasedAuthorizationFilter("steam:steam:id", this.FounderSteamId) }
+            });
+            app.UseHangfireServer();
+
+            app.UseMvc(routes =>
             {
                 routes.MapRoute(
                     name: "default",

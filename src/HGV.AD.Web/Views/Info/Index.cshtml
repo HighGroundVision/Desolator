@@ -3,26 +3,32 @@
 }
 
 <!-- Jumbotron Header -->
+<br />
 <header class="jumbotron hero-spacer">
     <div class="row">
         <div class="col-md-2">
-            <img src="~/images/mascot/HGV-Mascot-2.png" class="img-responsive" />
+            <img src="~/images/characters/cluckles.png" class="img-responsive" />
             <div class="alert alert-info text-center">
-                <strong>Hi, Iam Cluckles!</strong><br />
+                <strong>Hi, I am Cluckles!</strong><br />
             </div>
         </div>
         <div class="col-md-10">
             <p>
-                Abilty Draft is hard! luckly I am here to help.
-                The ability draft mode adds a drafting process for abilities into the mix before the match begins.
+                Avility Draft (AD) is a hard mode. 
                 A lot of people treat it like a joke mode, especially when it becomes apparent that their builds suck.
             </p>
             <p>
-                Play a hero with four abilities selected from a random pool of abilities.
-                Players are given a random hero from Ability-Draft enabled heroes. Each players' abilities are put into a pool.
-                Players take turns selecting abilities from the pool, given five seconds for each choice. Each player selects three normal abilities and one ultimate.
+                We are here to help.
             </p>
-
+            <p>
+                Players are given a random hero from AD enabled heroes. Each players' abilities are put into a pool. Plus two random heroes' abilities from the pool.
+                Players have 60 seconds to plan their draft.
+                Players take turns selecting abilities from the pool, given five seconds for each choice.
+                Each player selects three normal abilities and one ultimate.
+            </p>
+            <p>
+                Check out our <a asp-area="" asp-controller="Info" asp-action="Guide">Guide</a> if your are new to AD.
+            </p>
         </div>
     </div>
 </header>
@@ -30,7 +36,7 @@
 <!-- Title -->
 <div class="row">
     <div class="col-lg-12">
-        <h3>Why We Are Awesome?</h3>
+        <h3 class="text-center">Why We Are Awesome?</h3>
     </div>
 </div>
 <!-- /.row -->
@@ -38,9 +44,11 @@
 <div class="row text-center">
     <div class="col-md-3 col-sm-6 hero-feature">
         <div class="thumbnail">
-            <img src="~/images/landing/Picture4.png" style="width: 800px; height: 200px;">
+            <img src="~/images/landing/draft.png" >
             <div class="caption">
-                <h3>Draft</h3>
+                <h3>
+                    <a asp-area="" asp-controller="Draft" asp-action="Index">Draft</a>
+                </h3>
                 <p>Ever Wonder what to draft? Wonder no more, our mock drafter allows you set up a draft and get infomation about the best combos and see highlights about your hero.</p>
                 <p>
                     <a asp-area="" asp-controller="Draft" asp-action="Index" class="btn btn-default">More Info</a>
@@ -51,9 +59,11 @@
 
     <div class="col-md-3 col-sm-6 hero-feature">
         <div class="thumbnail">
-            <img src="~/images/landing/Picture2.jpg" style="width: 800px; height: 200px;">
+            <img src="~/images/landing/heroes.png">
             <div class="caption">
-                <h3>Heros</h3>
+                <h3>
+                    <a asp-area="" asp-controller="Heroes" asp-action="Index">Heroes</a>
+                </h3>
                 <p>Ever wonder what hero has the best attributes? Wonder no more, we have a list of hero stats and have create a visual ranking to esily compare heroes.</p>
                 <p>
                     <a asp-area="" asp-controller="Heroes" asp-action="Index" class="btn btn-default">More Info</a>
@@ -64,10 +74,12 @@
    
     <div class="col-md-3 col-sm-6 hero-feature">
         <div class="thumbnail">
-            <img src="~/images/landing/Picture3.jpg" style="width: 800px; height: 200px;">
+            <img src="~/images/landing/abilities.png" >
             <div class="caption">
-                <h3>Abilities</h3>
-                <p>Ever wonder what how many kills an abilty gets? Wonder no more, we have anylsised matches and tracked W/L KDA for abilities, heroes, and their combos.</p>
+                <h3>
+                    <a asp-area="" asp-controller="Abilities" asp-action="Index">Abilities</a>
+                </h3>
+                <p>Ever wonder what how many kills an abilty gets? Wonder no more, we have anylsised matches and tracked W/L & KDA for abilities, heroes, and their combos.</p>
                 <p>
                     <a asp-area="" asp-controller="Abilities" asp-action="Index" class="btn btn-default">More Info</a>
                 </p>
@@ -77,9 +89,11 @@
 
     <div class="col-md-3 col-sm-6 hero-feature">
         <div class="thumbnail">
-            <img src="~/images/landing/Picture1.jpg" style="width: 800px; height: 200px;">
+            <img src="~/images/landing/illusions.png" >
             <div class="caption">
-                <h3>Illusions</h3>
+                <h3>
+                    <a asp-area="" asp-controller="Info" asp-action="Illusions">Illusions</a>
+                </h3>
                 <p>Ever wonder what abilties works with the Illusions? Wonder no more, we have complied a complete list of abilties and items that work with illusions.</p>
                 <p>
                     <a asp-area="" asp-controller="Info" asp-action="Illusions" class="btn btn-default">More Info</a>

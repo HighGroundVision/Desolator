@@ -17,8 +17,9 @@ namespace HGV.AD.Web.Models.Attributes
 		public string Description { get; set; }
 
 		public string Html { get; set; }
+        public string Notes { get; set; }
 
-		public bool Ultimate { get; set; }
+        public bool Ultimate { get; set; }
 
 		public string Target { get; set; }
 		public string DamageType { get; set; }

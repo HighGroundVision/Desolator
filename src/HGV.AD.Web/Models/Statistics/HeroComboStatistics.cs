@@ -51,5 +51,7 @@ namespace HGV.AD.Web.Models.Statistics
 		public long Deaths { get; set; }
 		public long Assists { get; set; }
 		public long Total { get; set; }
-	}
+
+        public bool SameSource { get; set; }
+    }
 }

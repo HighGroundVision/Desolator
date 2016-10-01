@@ -39,8 +39,20 @@ namespace HGV.AD.Web.Controllers
             _logger = loggerFactory.CreateLogger<AccountController>();
         }
 
-        //
-        // POST: /Account/LogOff
+        [HttpGet]
+        [AllowAnonymous]
+        public IActionResult Login(string returnUrl = null)
+        {
+            return View();
+        }
+
+        [HttpGet]
+        [AllowAnonymous]
+        public IActionResult AccessDenied(string returnUrl = null)
+        {
+            return RedirectToAction("HandleStatusCode", "Main", new { id = 403 });
+        }
+
         [HttpPost]
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> LogOff()
@@ -52,8 +64,6 @@ namespace HGV.AD.Web.Controllers
             return RedirectToAction(nameof(MainController.Index), "Main");
         }
 
-        //
-        // POST: /Account/ExternalLogin
         [HttpPost]
         [AllowAnonymous]
         [ValidateAntiForgeryToken]
@@ -67,8 +77,6 @@ namespace HGV.AD.Web.Controllers
             return Challenge(properties, provider);
         }
 
-        //
-        // GET: /Account/ExternalLoginCallback
         [HttpGet]
         [AllowAnonymous]
         public async Task<IActionResult> ExternalLoginCallback(string returnUrl = null, string remoteError = null)

@@ -6,20 +6,13 @@ using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using HGV.AD.Web.Services;
 using Hangfire;
+using Microsoft.AspNetCore.Authorization;
 
 namespace HGV.AD.Web.Controllers
 {
+    [Authorize(Policy = "Founder")]
     public class AdminController : Controller
     {
-        public ActionResult RegisterRecurringServices()
-        {
-            RecurringJob.AddOrUpdate<CollectorService>(_ => _.Collect(), Cron.MinuteInterval(10));
-            RecurringJob.AddOrUpdate<TransferService>(_ => _.Transfer(), Cron.Weekly);
-
-            return Redirect("/hangfire/recurring");
-        }
-
-        
         public ActionResult ApplyMigrations()
         {
             var id = BackgroundJob.Enqueue<SeedService>(_ => _.MigrateDB());
@@ -27,6 +20,13 @@ namespace HGV.AD.Web.Controllers
             return Redirect("/hangfire/jobs/processing");
         }
 
+        public ActionResult RegisterRecurringServices()
+        {
+            RecurringJob.AddOrUpdate<CollectorService>(_ => _.Collect(), Cron.MinuteInterval(10));
+            RecurringJob.AddOrUpdate<TransferService>(_ => _.Transfer(), Cron.Weekly);
+
+            return Redirect("/hangfire/recurring");
+        }
         
         public ActionResult SeedHeroes()
         {
