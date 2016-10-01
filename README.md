@@ -2,17 +2,40 @@
 
 **Build Status Bagde**
 
-A windows desktop application that which will automatically watch for new matches played and will download the replay and upload it to this HGV.
+A Asp.Net Core web application designed to serivce the needs of Ability Draft players.
 
 **Project Status:**
 
-- #1. Yippy!
-- #2
-- #3
+- #1. AD Guide
+- #2. Illusions Info
+- #3. Heroes List and Details
+- #4. Abilities List and Details
+- #5. Match Analysis
+- #6. Mock Drafter
 
 ## Getting Started
 
-Details of process.
+You will need to configure the Conection String
+```
+"ConnectionStrings": {
+	"DefaultConnection": "Server=DESKTOP-563HJ3N\\SQLEXPRESS;Database=HGV.AD;Trusted_Connection=True;MultipleActiveResultSets=true"
+}
+```
+
+The Follow application settings need to be set before the system will function
+```
+"Site": {
+	"FounderSteamId": "",
+	"DotaApiKey": ""
+},
+"ApplicationInsights": {
+	"InstrumentationKey": ""
+}
+```
+
+Both the Connection String and Settings can be found in the appsettings.json file but we recommand using [user secrets](https://docs.asp.net/en/latest/security/app-secrets.html) instead.
+
+After which you will need to run the Seed methods in the Admin controller, then you can run the RegisterRecurringServices method to create the recurring jobs. (We use [hangfire](http://hangfire.io/) for our job system)
 
 ## License
 
