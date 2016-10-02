@@ -89,6 +89,8 @@
             $.get("/Draft/GetHeroesAbilities/" + item.heroId).done(function (data) {
                 $.each(data, function (index, value) {
                     self.AvailableAbilities.push(value);
+
+                    self.IfDraftIsFullThenGetCombos();
                 });
             });
         } else {
@@ -105,14 +107,22 @@
 
             self.AvailableAbilities.removeAll(abilities);
         }
+    }
 
-        if (self.SelectedDraft().length == 12) {
+    self.IfDraftIsFullThenGetCombos = function() {
+        if (self.SelectedDraft().length == 12 && self.AvailableAbilities().length == 48) {
             self.Searching(true);
 
-            var collection = $.map(self.AvailableAbilities(), function(value, index) {
-                return value.id;
+            var ultimateData = $.map(self.SelectedDraft(), function (value, index) { return value.id; });
+
+            new Clipboard('#share-draft', {
+                text: function (trigger) {
+                    return window.location.origin + window.location.pathname + "?key=" + ultimateData;
+                }
             });
-            $.post("/Draft/GetCombosFromPool/", { abilities: collection }).done(function (data) {
+
+            var abilityData = $.map(self.AvailableAbilities(), function (value, index) { return value.id; });
+            $.post("/Draft/GetCombosFromPool/", { abilities: abilityData }).done(function (data) {
                 self.Searching(false);
 
                 self.Combos(data);
@@ -179,17 +189,32 @@
     }
 
     self.Reset = function () {
+
         self.SearchDraft("");
         self.SelectedDraft([]);
         self.SelectedHeroes([]);
         self.AvailableAbilities([]);
         self.SelectedAbility(null);
         self.SelectedAbility(null);
+        self.Combos([]);
     }
 
     self.Load = function () {
         $.get("/Draft/GetDraftPool", function (heroes) {
             self.AvailableDraft(heroes);
+            
+            var key = url('?key');
+            if (key) {
+                var abilities = url('?key').split(",");
+                $.each(abilities, function (index, value) {
+                    var abilityId = parseInt(value);
+                    var item = ko.utils.arrayFirst(self.AvailableDraft(), function (_) { return _.id === abilityId; });
+                    if (item) {
+                        self.SelectDraft(item);
+                    }
+                });
+            }
+            
         });
     }
 

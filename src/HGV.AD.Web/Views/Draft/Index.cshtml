@@ -6,6 +6,8 @@
 @section scripts
 {
     <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/knockout/3.4.0/knockout-min.js"></script>
+    <script type="text/javascript" src="~/lib/clipboard/dist/clipboard.min.js"></script>
+    <script type="text/javascript" src="~/lib/js-url/url.min.js"></script>
     <script type="text/javascript" src="~/js/draft.js" asp-append-version="true"></script>
 }
 
@@ -33,6 +35,9 @@
                 <input class="form-control" placeholder="Search by Hero or Ability" data-bind="value: SearchDraft">
             </div>
             <button type="submit" class="btn btn-primary">Search</button>
+        </form>
+        <form class="navbar-form navbar-left" onsubmit="return false;" data-bind="visible: SelectedDraft().length == 12">
+            <button id="share-draft" type="submit" class="btn btn-info">Copy Collaborate Link</button>
         </form>
         <form class="navbar-form navbar-right">
             <button class="btn btn-warning" data-bind="click: Reset">Reset</button>
