@@ -60,7 +60,7 @@
     <hr />
 </section>
 
-<section>
+<section data-bind="visible: SelectedHeroes().length > 0" style="display:none;">
     <div class="row" data-bind="foreach: SelectedHeroes">
         <div class="col-xs-2 col-sm-2 col-md-1 col-lg-1">
             <img src="" class="img-responsive img-rounded" data-bind="visible: $index() < 10, click: $root.SelectHero, attr: { src: 'http://cdn.dota2.com/apps/dota2/images/heroes/' + identity + '_sb.png'}" />
@@ -78,7 +78,7 @@
     <hr />
 </section>
 
-<section>
+<section data-bind="visible: FilteredUltimateAbilities().length > 0" style="display:none;">
     <div class="row" data-bind="foreach: FilteredUltimateAbilities">
         <div class="col-xs-2 col-sm-2 col-md-1 col-lg-1">
             <img src="" class="img-responsive img-rounded" data-bind="click: $root.SelectAbility, attr: { src: 'http://cdn.dota2.com/apps/dota2/images/abilities/' + identity + '_hp1.png'}" />
