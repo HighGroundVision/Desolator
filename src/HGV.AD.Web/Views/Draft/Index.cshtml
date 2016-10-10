@@ -13,12 +13,22 @@
 
 <h2>Draft <small>Recommendations</small></h2>
 
-<h5>Pick the ultimates listed in the draft window in the order which they are listed.</h5>
-<p>
-    We will automaticly display ability combos filtered by the abilties available. 
-    Click on any hero and a dialog with infomation speific to that hero will appear, we will also filter the combos by the abilties available.
-    Click on any ability and a dialog with infomation speific to that ability will appear, we will also filter the combos by the abilties available.
-</p>
+<section>
+    <h5>Pick the ultimates listed in the draft window in the order which they are listed.</h5>
+    <div class="row">
+        <div class="col-md-8">
+            <p>
+                We will automatically display ability combos filtered by the abilities available. 
+                Click on any hero and a dialog with information specific to that hero will appear, we will also filter the combos by the abilities available. 
+                Click on any ability and a dialog with information specific to that ability will appear, we will also filter the combos by the abilities available. 
+                We have removed ability combos that came from the same hero because of ratios it will always be the top of the list and they are boring anyways.
+            </p>
+        </div>
+        <div class="col-md-4">
+            <!-- Ad Here? -->
+        </div>
+    </div>
+</section>
 
 <nav class="navbar navbar-inverse"> 
     <div class="navbar-header"> 
@@ -30,13 +40,13 @@
         </button>
     </div>
     <div class="collapse navbar-collapse" id="subnav">
-        <form class="navbar-form navbar-left" onsubmit="return false;" data-bind="visible: SelectedDraft().length != 12">
+        <form class="navbar-form navbar-left" onsubmit="return false;" data-bind="visible: SelectedDraft().length != 12" style="display: none;">
             <div class="form-group">
                 <input class="form-control" placeholder="Search by Hero or Ability" data-bind="value: SearchDraft">
             </div>
             <button type="submit" class="btn btn-primary">Search</button>
         </form>
-        <form class="navbar-form navbar-left" onsubmit="return false;" data-bind="visible: SelectedDraft().length == 12">
+        <form class="navbar-form navbar-left" onsubmit="return false;" data-bind="visible: SelectedDraft().length == 12" style="display: none;">
             <button id="share-draft" type="submit" class="btn btn-info">Copy Collaborate Link</button>
         </form>
         <form class="navbar-form navbar-right">

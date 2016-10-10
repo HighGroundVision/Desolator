@@ -189,14 +189,7 @@
     }
 
     self.Reset = function () {
-
-        self.SearchDraft("");
-        self.SelectedDraft([]);
-        self.SelectedHeroes([]);
-        self.AvailableAbilities([]);
-        self.SelectedAbility(null);
-        self.SelectedAbility(null);
-        self.Combos([]);
+        window.location.reload();
     }
 
     self.Load = function () {

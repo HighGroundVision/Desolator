@@ -16,6 +16,7 @@ using Hangfire;
 using HGV.AD.Web.Configuration;
 using Microsoft.AspNetCore.Http;
 using Hangfire.Dashboard;
+using Microsoft.AspNetCore.Mvc;
 
 namespace HGV.AD.Web
 {
@@ -65,7 +66,16 @@ namespace HGV.AD.Web
                 .AddEntityFrameworkStores<ApplicationDbContext>()
                 .AddDefaultTokenProviders();
 
-            services.AddMvc();
+            services.AddApplicationInsightsTelemetry(Configuration);
+
+            services.AddMvc(options =>
+            {
+                options.CacheProfiles.Add("Default",
+                    new CacheProfile()
+                    {
+                        Duration = 86400
+                    });
+            });
 
             services.AddAuthorization(options =>
             {
@@ -84,6 +94,8 @@ namespace HGV.AD.Web
             loggerFactory.AddConsole(Configuration.GetSection("Logging"));
             loggerFactory.AddDebug();
 
+            app.UseApplicationInsightsRequestTelemetry();
+
             if (env.IsDevelopment())
             {
 				app.UseDeveloperExceptionPage();
@@ -95,7 +107,9 @@ namespace HGV.AD.Web
                 app.UseStatusCodePagesWithRedirects("/Main/HandleStatusCode/{0}");
             }
 
-			app.UseStaticFiles();
+            app.UseApplicationInsightsExceptionTelemetry();
+
+            app.UseStaticFiles();
 
             app.UseIdentity();
 

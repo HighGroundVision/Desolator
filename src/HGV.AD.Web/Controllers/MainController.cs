@@ -24,12 +24,12 @@ namespace HGV.AD.Web.Controllers
             return RedirectToAction("Index", "Info");
 		}
 
-		public IActionResult HandleException()
+        public IActionResult HandleException()
 		{
 			return View("Error");
 		}
 
-		public IActionResult HandleStatusCode(int id)
+        public IActionResult HandleStatusCode(int id)
 		{
 			var code = (HttpStatusCode)id;
             switch (code)

@@ -12,12 +12,12 @@
     <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/v/bs/dt-1.10.12/fc-3.2.2/datatables.min.css" />
 
 <environment names="Development">
-    <link rel="stylesheet" href="~/css/dota-ability-tooltip.css"  asp-append-version="true"/>
-    <link rel="stylesheet" href="~/css/site.css" asp-append-version="true" />
+    <link rel="stylesheet" href="/css/dota-ability-tooltip.css" />
+    <link rel="stylesheet" href="/css/site.css" />
 </environment>
 <environment names="Staging,Production">
-    <link rel="stylesheet" href="~/css/dota-ability-tooltip.min.css" asp-append-version="true" />
-    <link rel="stylesheet" href="~/css/site.min.css" asp-append-version="true" />
+    <link rel="stylesheet" href="/css/dota-ability-tooltip.min.css" asp-append-version="true" />
+    <link rel="stylesheet" href="/css/site.min.css" asp-append-version="true" />
 </environment>
 </head>
 <body>
@@ -145,12 +145,14 @@
     <script type="text/javascript" src="https://cdn.datatables.net/v/bs/dt-1.10.12/fc-3.2.2/datatables.min.js"></script>
 
 <environment names="Development">   
-    <script src="~/js/site.js" asp-append-version="true"></script>
+    <script src="/js/site.js"></script>
 </environment>
 <environment names="Staging,Production">
-    <script src="~/js/site.min.js" asp-append-version="true"></script>
+    <script src="/js/site.min.js" asp-append-version="true"></script>
 </environment>
 
     @RenderSection("scripts", required: false)
+
+    @Html.ApplicationInsightsJavaScript(TelemetryConfiguration)
 </body>
 </html>
