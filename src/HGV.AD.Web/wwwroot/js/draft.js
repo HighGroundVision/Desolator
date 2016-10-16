@@ -192,20 +192,31 @@
         window.location.reload();
     }
 
+    self.AutoDraft = function (key) {
+        var abilities = key.split(",");
+        var index = 0;
+
+        var interval = setInterval(function () {
+            if (index >= abilities.length) {
+                clearInterval(interval);
+            } else {
+                var value = abilities[index++];
+                var abilityId = parseInt(value);
+                var item = ko.utils.arrayFirst(self.AvailableDraft(), function (_) { return _.id === abilityId; });
+                if (item) {
+                    self.SelectDraft(item);
+                }
+            }
+        }, 200);
+    }
+
     self.Load = function () {
         $.get("/Draft/GetDraftPool", function (heroes) {
             self.AvailableDraft(heroes);
             
             var key = url('?key');
             if (key) {
-                var abilities = url('?key').split(",");
-                $.each(abilities, function (index, value) {
-                    var abilityId = parseInt(value);
-                    var item = ko.utils.arrayFirst(self.AvailableDraft(), function (_) { return _.id === abilityId; });
-                    if (item) {
-                        self.SelectDraft(item);
-                    }
-                });
+                self.AutoDraft(key);
             }
             
         });
