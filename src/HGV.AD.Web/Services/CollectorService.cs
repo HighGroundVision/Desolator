@@ -70,7 +70,7 @@ namespace HGV.AD.Web.Services
 
         private Models.DotaApi.GetMatchHistory.Match GetNextMatch()
         {
-            var url = string.Format("https://api.steampowered.com/IDOTA2Match_570/GetMatchHistory/v1?key={0}&matches_requested=1&game_mode=18", _siteSettings.Value.DotaApiKey);
+            var url = string.Format("https://api.steampowered.com/IDOTA2Match_570/GetMatchHistory/v1?key={0}&matches_requested=1", _siteSettings.Value.DotaApiKey);
 
             var httpClient = new HttpClient();
             var jsonData = httpClient.GetStringAsync(url).Result;

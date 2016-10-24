@@ -104,7 +104,7 @@ namespace HGV.AD.Web
             else
             {
                 app.UseExceptionHandler("/Main/HandleException");
-                app.UseStatusCodePagesWithRedirects("/Main/HandleStatusCode/{0}");
+                //app.UseStatusCodePagesWithRedirects("/Main/HandleStatusCode/{0}");
             }
 
             app.UseApplicationInsightsExceptionTelemetry();
