@@ -109,41 +109,43 @@
                 <thead>
                     <tr>
                         <th></th>
-                        <th class="hidden-xs">Ability</th>
                         <th></th>
-                        <th class="hidden-xs">Ability</th>
+                        <th></th>
+                        <th></th>
                         <th>Wins</th>
                         <th>Loses</th>
                         <th>Kills</th>
                         <th>Deaths</th>
                         <th>Assists</th>
-                        <th>Total</th>
+                        <th>Picks</th>
                     </tr>
                 </thead>
                 <tbody data-bind="foreach: Combos">
                     <tr>
                         <td>
-                            <a data-bind="click: $root.SelectAbility">
+                            <a data-bind="click: $root.SelectComboPart1">
                                 <img src="#" data-bind="attr: { src:'http://cdn.dota2.com/apps/dota2/images/abilities/' + abilityIdentity + '_hp1.png' }" alt="Ability" class="img-responsive pull-left" width="30" height="30" />
                             </a>
                         </td>
-                        <td class="hidden-xs">
-                            <a data-bind="click: $root.SelectAbility">
-                                <span data-bind="text: abilityName"></span>
-                            </a>
+                        <td>
+                            <a data-bind="click: $root.SelectComboPart1, text: abilityName"></a>
                         </td>
                         <td>
-                            <a data-bind="click: $root.SelectAbility">
+                            <a data-bind="click: $root.SelectComboPart2">
                                 <img src="#" data-bind="attr: { src:'http://cdn.dota2.com/apps/dota2/images/abilities/' + comboIdentity + '_hp1.png' }" alt="Ability" class="img-responsive pull-left" width="30" height="30" />
                             </a>
                         </td>
-                        <td class="hidden-xs">
-                            <a data-bind="click: $root.SelectAbility">
-                                <span data-bind="text: comboName"></span>
-                            </a>
+                        <td>
+                            <a data-bind="click: $root.SelectComboPart2, text: comboName"></a>
                         </td>
-                        <td data-bind="text: wins"></td>
-                        <td data-bind="text: loses"></td>
+                        <td>
+                            <span data-bind="text: wins"></span>
+                            <span>%</span>
+                        </td>
+                        <td>
+                            <span data-bind="text: loses"></span>
+                            <span>%</span>
+                        </td>
                         <td data-bind="text: kills"></td>
                         <td data-bind="text: deaths"></td>
                         <td data-bind="text: assists"></td>
@@ -189,12 +191,14 @@
                                         <td class="text-info">Wins</td>
                                         <td>
                                             <span data-bind="text: wins"></span>
+                                            <span>%</span>
                                         </td>
                                     </tr>
                                     <tr>
                                         <td class="text-info">Loses</td>
                                         <td>
                                             <span data-bind="text: loses"></span>
+                                            <span>%</span>
                                         </td>
                                     </tr>
                                     <tr>
@@ -240,7 +244,7 @@
                                         <th>Kills</th>
                                         <th>Deaths</th>
                                         <th>Assists</th>
-                                        <th>Total</th>
+                                        <th>Picks</th>
                                     </tr>
                                 </thead>
                                 <tbody data-bind="foreach: item3">
@@ -255,8 +259,14 @@
                                                 <span data-bind="text: comboName"></span>
                                             </a>
                                         </td>
-                                        <td data-bind="text: wins"></td>
-                                        <td data-bind="text: loses"></td>
+                                        <td>
+                                            <span data-bind="text: wins"></span>
+                                            <span>%</span>
+                                        </td>
+                                        <td>
+                                            <span data-bind="text: loses"></span>
+                                            <span>%</span>
+                                        </td>
                                         <td data-bind="text: kills"></td>
                                         <td data-bind="text: deaths"></td>
                                         <td data-bind="text: assists"></td>
@@ -328,12 +338,14 @@
                                         <td class="text-info">Wins</td>
                                         <td>
                                             <span data-bind="text: wins"></span>
+                                            <span>%</span>
                                         </td>
                                     </tr>
                                     <tr>
                                         <td class="text-info">Loses</td>
                                         <td>
                                             <span data-bind="text: loses"></span>
+                                            <span>%</span>
                                         </td>
                                     </tr>
                                     <tr>
@@ -379,7 +391,7 @@
                                         <th>Kills</th>
                                         <th>Deaths</th>
                                         <th>Assists</th>
-                                        <th>Total</th>
+                                        <th>Picks</th>
                                     </tr>
                                 </thead>
                                 <tbody data-bind="foreach: item4">
@@ -394,8 +406,14 @@
                                                 <span data-bind="text: abilityName"></span>
                                             </a>
                                         </td>
-                                        <td data-bind="text: wins"></td>
-                                        <td data-bind="text: loses"></td>
+                                        <td>
+                                            <span data-bind="text: wins"></span>
+                                            <span>%</span>
+                                        </td>
+                                        <td>
+                                            <span data-bind="text: loses"></span>
+                                            <span>%</span>
+                                        </td>
                                         <td data-bind="text: kills"></td>
                                         <td data-bind="text: deaths"></td>
                                         <td data-bind="text: assists"></td>

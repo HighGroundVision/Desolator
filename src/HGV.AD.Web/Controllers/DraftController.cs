@@ -59,14 +59,12 @@ namespace HGV.AD.Web.Controllers
         [HttpPost]
         public IActionResult GetCombosFromPool(IEnumerable<int> abilities)
         {
-            var query = _dbContext.CurrentAbilityComboTrends
-                .Join(abilities, _ => _.AbilityId, _ => _, (lhs, rhs) => lhs)
+            var collection = _dbContext.CurrentAbilityComboTrends
                 .Where(_ => _.SameSource == false)
-                .Where(_ => abilities.Any(__ => __ == _.ComboId))
-                .Where(_ => _.Total > 0)
-                .ToList();
-
-            var collection = query.GroupBy(_ => new {
+                .Where(_ => _.Total > 50)
+                .Where(_ => abilities.Contains(_.AbilityId))
+                .Where(_ => abilities.Contains(_.ComboId))
+                .GroupBy(_ => new {
                     AbilityId = _.AbilityId > _.ComboId ? _.AbilityId : _.ComboId,
                     ComboId = _.ComboId > _.AbilityId ? _.AbilityId : _.ComboId
                 })
@@ -94,9 +92,8 @@ namespace HGV.AD.Web.Controllers
             var combos = _dbContext.CurrentHeroComboTrends
                 .Where(_ => _.HeroId == id)
                 .Where(_ => _.SameSource == false)
-                .Where(_ => _.Total > 0)
-                .Join(abilities, _ => _.AbilityId, _ => _, (lhs, rhs) => lhs)
-                .Where(_ => abilities.Any(__ => __ == _.AbilityId))
+                .Where(_ => _.Total > 50)
+                .Where(_ => abilities.Contains(_.AbilityId))
                 .ToList();
 
             var viewModel = Tuple.Create(hero, attributes, trends, combos);
@@ -116,9 +113,9 @@ namespace HGV.AD.Web.Controllers
             var combos = _dbContext.CurrentAbilityComboTrends
                 .Where(_ => _.AbilityId == id)
                 .Where(_ => _.SameSource == false)
-                .Where(_ => _.Total > 0)
-                .Join(abilities, _ => _.AbilityId, _ => _, (lhs, rhs) => lhs)
-                .Where(_ => abilities.Any(__ => __ == _.ComboId))
+                .Where(_ => _.Total > 50)
+                .Where(_ => abilities.Contains(_.AbilityId))
+                .Where(_ => abilities.Contains(_.ComboId))
                 .ToList();
 
             var viewModel = Tuple.Create(ability, trends, combos);

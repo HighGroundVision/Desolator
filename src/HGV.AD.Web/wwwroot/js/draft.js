@@ -1,4 +1,5 @@
-﻿function DraftingViewModel() {
+﻿
+function DraftingViewModel() {
     var self = this;
 
     // Observables
@@ -109,7 +110,7 @@
         }
     }
 
-    self.IfDraftIsFullThenGetCombos = function() {
+    self.IfDraftIsFullThenGetCombos = function () {
         if (self.SelectedDraft().length == 12 && self.AvailableAbilities().length == 48) {
             self.Searching(true);
 
@@ -125,7 +126,8 @@
             $.post("/Draft/GetCombosFromPool/", { abilities: abilityData }).done(function (data) {
                 self.Searching(false);
 
-                self.Combos(data);
+                var collection = $.map(data, function (_) { return ConvertToRates(_) });
+                self.Combos(collection);
 
                 $('#tblCombos').DataTable({
                     "destroy": true,
@@ -139,7 +141,7 @@
         }
     }
 
-    self.SelectHero = function (item, element) {
+    self.SelectHero = function (item) {
         if (self.SelectedDraft().length != 12) {
             return;
         }
@@ -149,7 +151,12 @@
         });
 
         $.post("/Draft/GetHeroDetails/" + item.id, { abilities: collection }).done(function (data) {
+
+            data.item3 = ConvertToRates(data.item3);
+            data.item4 = $.map(data.item4, function (_) { return ConvertToRates(_) });
+
             self.SelectedHero(data);
+
             $("#heroDetails").modal('show');
 
             setTimeout(function () {
@@ -163,7 +170,19 @@
         });
     }
 
-    self.SelectAbility = function (item, element) {
+    self.SelectComboPart1 = function (item) {
+        self.GetAbilityDetails(item.abilityId);
+    }
+
+    self.SelectComboPart2 = function (item) {
+        self.GetAbilityDetails(item.comboId);
+    }
+
+    self.SelectAbility = function (item) {
+        self.GetAbilityDetails(item.id);
+    }
+
+    self.GetAbilityDetails = function (abvilityId) {
         if (self.SelectedDraft().length != 12) {
             return;
         }
@@ -172,8 +191,13 @@
             return value.id;
         });
 
-        $.post("/Draft/GetAbilityDetails/" + item.id, { abilities: collection }).done(function (data) {
+        $.post("/Draft/GetAbilityDetails/" + abvilityId, { abilities: collection }).done(function (data) {
+
+            data.item2 = ConvertToRates(data.item2);
+            data.item3 = $.map(data.item3, function (_) { return ConvertToRates(_) });
+
             self.SelectedAbility(data);
+
             $("#abilityDetails").modal('show');
 
             setTimeout(function () {
@@ -184,12 +208,12 @@
                     "dom": "<'row'<'col-sm-6'i><'col-sm-6'f>><'row'<'col-sm-12'tr>><'row'<'col-sm-5'l><'col-sm-7'p>>",
                 });
             }, 200);
-            
+
         });
     }
 
     self.Reset = function () {
-        window.location.reload();
+        window.location = window.location.href.split('?')[0];
     }
 
     self.AutoDraft = function (key) {
@@ -213,17 +237,17 @@
     self.Load = function () {
         $.get("/Draft/GetDraftPool", function (heroes) {
             self.AvailableDraft(heroes);
-            
+
             var key = url('?key');
             if (key) {
                 self.AutoDraft(key);
             }
-            
+
         });
     }
 
     self.Load();
-}
+};
 
 $(document).ready(function () {
 
