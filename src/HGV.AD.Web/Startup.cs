@@ -1,22 +1,22 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
+﻿using Hangfire;
+using Hangfire.Dashboard;
+using Hangfire.Console;
+using HGV.AD.Web.Configuration;
+using HGV.AD.Web.Data;
+using HGV.AD.Web.Models;
+using HGV.AD.Web.Services;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
+using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Logging;
-using HGV.AD.Web.Data;
-using HGV.AD.Web.Models;
-using HGV.AD.Web.Services;
-using Hangfire;
-using HGV.AD.Web.Configuration;
-using Microsoft.AspNetCore.Http;
-using Hangfire.Dashboard;
-using Microsoft.AspNetCore.Mvc;
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Threading.Tasks;
 
 namespace HGV.AD.Web
 {
@@ -56,8 +56,11 @@ namespace HGV.AD.Web
             services.Configure<Site>(this.Configuration.GetSection("Site"));
 
             // Add framework services.
-            services.AddHangfire(configuration => configuration
-				.UseSqlServerStorage(Configuration.GetConnectionString("DefaultConnection")));
+            services.AddHangfire(configuration =>
+            {
+                configuration.UseSqlServerStorage(Configuration.GetConnectionString("DefaultConnection"));
+                configuration.UseConsole();
+            });
 
 			services.AddDbContext<ApplicationDbContext>(options =>
                 options.UseSqlServer(Configuration.GetConnectionString("DefaultConnection")));

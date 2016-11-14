@@ -22,8 +22,8 @@ namespace HGV.AD.Web.Controllers
 
         public ActionResult RegisterRecurringServices()
         {
-            RecurringJob.AddOrUpdate<CollectorService>(_ => _.Collect(), Cron.MinuteInterval(10));
-            RecurringJob.AddOrUpdate<TransferService>(_ => _.Transfer(), Cron.Weekly);
+            RecurringJob.AddOrUpdate<CollectorService>("75A37A85-0F57-460F-9837-F8F295408F4D", _ => _.CalucateBatch(), Cron.MinuteInterval(5));
+            RecurringJob.AddOrUpdate<TransferService>("C534FFB9-DED0-4BCF-A7CF-5E67B781DA1B", _ => _.Transfer(), Cron.Monthly());
 
             return Redirect("/hangfire/recurring");
         }

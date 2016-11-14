@@ -17,6 +17,8 @@ using Hangfire;
 using HGV.AD.Web.Models.Checkpoints;
 using Microsoft.Extensions.Options;
 using HGV.AD.Web.Configuration;
+using Hangfire.Server;
+using Hangfire.Console;
 
 namespace HGV.AD.Web.Services
 {
@@ -32,29 +34,22 @@ namespace HGV.AD.Web.Services
             ILoggerFactory loggerFactory
         )
         {
-            _dbContext = dbcontext;
             _logger = loggerFactory.CreateLogger<CollectorService>();
-
+            _dbContext = dbcontext;
             _siteSettings = siteSettings;
         }
 
-        [AutomaticRetry(Attempts = 0)]
-        public void Collect()
+        public void CalucateBatch()
         {
             // There should always be one and only one
-            var lastCheckpoint = _dbContext.Checkpoints.FirstOrDefault(); 
+            var lastCheckpoint = _dbContext.Checkpoints.FirstOrDefault();
             if (lastCheckpoint == null)
                 throw new NullReferenceException("Can not find last checkpoint");
 
-            var from = lastCheckpoint.MatchNumber;
-
             var latestMatch = GetNextMatch();
+
+            var from = lastCheckpoint.MatchNumber;
             var to = latestMatch.match_seq_num;
-
-            var batchSize = (to - from);
-
-            if (batchSize < 5)
-                throw new ArgumentOutOfRangeException(string.Format("Batch size of {0} is to small to processs.", batchSize));
 
             lastCheckpoint.MatchNumber = latestMatch.match_seq_num;
             lastCheckpoint.MatchId = latestMatch.match_id;
@@ -62,10 +57,35 @@ namespace HGV.AD.Web.Services
 
             _dbContext.SaveChanges();
 
-            if (batchSize > 100000)
-                throw new ArgumentOutOfRangeException(string.Format("Batch size of {0} is to big to processs.", batchSize));
+            var batchSize = (to - from);
+            if (batchSize > 10000)
+                from = to - 10000; // Limit batch size to 10,000
 
-            ProcessBatch(from, to);
+            BackgroundJob.Enqueue<CollectorService>(_ => _.ProcessBatch(null, from, to));
+        }
+
+        public void ProcessBatch(PerformContext context, long frist, long last)
+        {
+            this.Log(context, string.Format("Delta: ~{0}", (last - frist)));
+
+            var matches = ExtractMatchesFromBatch(context, frist, last);
+
+            this.Log(context, string.Format("AD Matches: {0}", matches.Count));
+
+            ProcessMatches(context, matches);
+
+            this.Log(context, "Saving Results");
+
+            _dbContext.SaveChanges();
+        }
+
+        private void Log(PerformContext context, string msg, ConsoleTextColor color = null)
+        {
+            if(color != null) context.SetTextColor(color);
+
+            context.WriteLine(msg);
+
+            if (color != null) context.ResetTextColor();
         }
 
         private Models.DotaApi.GetMatchHistory.Match GetNextMatch()
@@ -79,49 +99,85 @@ namespace HGV.AD.Web.Services
             return root.result.matches.OrderByDescending(_ => _.match_seq_num).FirstOrDefault();
         }
 
-        private void ProcessBatch(long frist, long last)
+        private List<Models.DotaApi.GetMatchHistoryBySequenceNum.Match> ExtractMatchesFromBatch(PerformContext context, long frist, long last)
         {
+            var progress = context.WriteProgressBar();
+
+            var matches = new List<Models.DotaApi.GetMatchHistoryBySequenceNum.Match>();
+
+            var circuitBreaker = 0;
+
             var current = frist;
-            while(current < last)
+            while (current < last)
             {
                 try
                 {
-                    current = ProcessMatches(current);
+                    Thread.Sleep(TimeSpan.FromSeconds(3));
 
-                    Thread.Sleep(TimeSpan.FromSeconds(5));
+                    progress.SetValue((((current - frist) / (double)(last - frist)) * 100));
+
+                    var newMatches = GetMatches(current, out current);
+                    matches.AddRange(newMatches);
+
+                    circuitBreaker = 0;
                 }
-                catch (Exception ex)
+                catch (ApplicationException ex)
                 {
-                    this._logger.LogDebug(ex.Message);
+                    circuitBreaker++;
+                    
+                    this.Log(context, ex.Message, ConsoleTextColor.Red);
+
+                    if (circuitBreaker > 3)
+                        throw ex;
 
                     Thread.Sleep(TimeSpan.FromSeconds(30));
                 }
             }
+
+            progress.SetValue(100);
+
+            return matches;
         }
 
-        private long ProcessMatches(long next)
+        private List<Models.DotaApi.GetMatchHistoryBySequenceNum.Match> GetMatches(long current, out long next)
         {
-            var url = string.Format("https://api.steampowered.com/IDOTA2Match_570/GetMatchHistoryBySequenceNum/v1?key={0}&start_at_match_seq_num={1}", _siteSettings.Value.DotaApiKey, next);
+            try
+            {
+                var url = string.Format("https://api.steampowered.com/IDOTA2Match_570/GetMatchHistoryBySequenceNum/v1?key={0}&start_at_match_seq_num={1}", _siteSettings.Value.DotaApiKey, current);
 
-            var httpClient = new HttpClient();
-            var jsonData = httpClient.GetStringAsync(url).Result;
-            var root = Newtonsoft.Json.JsonConvert.DeserializeObject<Models.DotaApi.GetMatchHistoryBySequenceNum.Root>(jsonData);
+                var httpClient = new HttpClient();
+                var jsonData = httpClient.GetStringAsync(url).Result;
+                var root = Newtonsoft.Json.JsonConvert.DeserializeObject<Models.DotaApi.GetMatchHistoryBySequenceNum.Root>(jsonData);
 
-            var matches = root.result.matches
-                .Where(_ => _.game_mode == 18)          // Is the game mode Ability Drafter
-                .Where(_ => _.duration > 300)           // Is the duration greater then 5 mins
-                .Where(_ => _.players != null)          // Are thre players
-                .Where(_ => _.players.Count == 10)      // Are there 10 players
-                .ToList();
+                next = root.result.matches.Max(_ => _.match_seq_num);
 
-            foreach (var m in matches)
+                var matches = root.result.matches
+                    .Where(_ => _.game_mode == 18)          // Is the game mode Ability Drafter
+                    .Where(_ => _.duration > 300)           // Is the duration greater then 5 minutes
+                    .Where(_ => _.players != null)          // Are there players
+                    .Where(_ => _.players.Count == 10)      // Are there 10 players
+                    .ToList();
+
+                return matches;
+            }
+            catch (AggregateException ex)
+            {
+                throw new ApplicationException("Dota API interruption.", ex);
+            }
+        }
+
+        private void ProcessMatches(PerformContext context, List<Models.DotaApi.GetMatchHistoryBySequenceNum.Match> matches)
+        {
+            var progress = context.WriteProgressBar();
+
+            foreach (var m in matches.WithProgress(progress))
             {
                 foreach (var p in m.players)
                 {
                     var hero = _dbContext.NextHeroTrends.FirstOrDefault(_ => _.HeroId == p.hero_id);
                     if (hero == null)
                     {
-                        _logger.LogDebug("Can not find hero: {0} {1}", m.match_id, p.hero_id);
+                        this.Log(context, string.Format("Can not find hero: {0} {1}", m.match_id, p.hero_id), ConsoleTextColor.Red);
                         continue;
                     }
 
@@ -136,66 +192,59 @@ namespace HGV.AD.Web.Services
                     hero.Assists += p.assists;
                     hero.Total++;
 
-                    var abilities = p.ability_upgrades.Select(_ => _.ability).Where(_ => _ != 5002).Distinct().ToList();
-                    foreach (var id in abilities)
-                    {
-                        var heroCombo = _dbContext.NextHeroComboTrends.FirstOrDefault(_ => _.HeroId == p.hero_id && _.AbilityId == id);
-                        if (heroCombo == null)
-                        {
-                            _logger.LogDebug("Can not find hero combo: {0} {1} {2}", m.match_id, p.hero_id, id);
-                            continue;
-                        }
-
-                        heroCombo.Wins += win;
-                        heroCombo.Loses += loss;
-                        heroCombo.Kills += p.kills;
-                        heroCombo.Deaths += p.deaths;
-                        heroCombo.Assists += p.assists;
-                        heroCombo.Total++;
-
-                        var ability = _dbContext.NextAbilityTrends.FirstOrDefault(_ => _.AbilityId == id);
-                        if (ability == null)
-                        {
-                            _logger.LogDebug("Can not find ability: {0} {1}", m.match_id, id);
-                            continue;
-                        }
-
-                        ability.Wins += win;
-                        ability.Loses += loss;
-                        ability.Kills += p.kills;
-                        ability.Deaths += p.deaths;
-                        ability.Assists += p.assists;
-                        ability.Total++;
-                    }
-
-                    // Cross Join
-                    var abilityCombos = abilities
-                        .SelectMany(x => abilities, (x, y) => Tuple.Create(x, y))
-                        .Where(_ => _.Item1 != _.Item2)
+                    var abilities = p.ability_upgrades
+                        .Select(_ => _.ability)
+                        .Where(_ => _ != 5002)
+                        .Distinct()
                         .ToList();
 
-                    foreach (var pair in abilityCombos)
-                    {
-                        var abilityCombo = _dbContext.NextAbilityComboTrends.FirstOrDefault(_ => _.AbilityId == pair.Item1 && _.ComboId == pair.Item2);
-                        if (abilityCombo == null)
-                        {
-                            _logger.LogDebug("Can not find ability combo: {0} {1} {2}", m.match_id, pair.Item1, pair.Item2);
-                            continue;
-                        }
+                    var heroCollection = _dbContext.NextHeroComboTrends
+                        .Where(_ => p.hero_id == _.HeroId)
+                        .Where(_ => abilities.Contains(_.AbilityId) == true)
+                        .ToList();
 
-                        abilityCombo.Wins += win;
-                        abilityCombo.Loses += loss;
-                        abilityCombo.Kills += p.kills;
-                        abilityCombo.Deaths += p.deaths;
-                        abilityCombo.Assists += p.assists;
-                        abilityCombo.Total++;
+                    foreach (var item in heroCollection)
+                    {
+                        item.Wins += win;
+                        item.Loses += loss;
+                        item.Kills += p.kills;
+                        item.Deaths += p.deaths;
+                        item.Assists += p.assists;
+                        item.Total++;
+                    }
+
+                    var abilityCollection = _dbContext.NextAbilityTrends
+                        .Where(_ => abilities.Contains(_.AbilityId) == true)
+                        .ToList();
+
+                    foreach (var item in abilityCollection)
+                    {
+                        item.Wins += win;
+                        item.Loses += loss;
+                        item.Kills += p.kills;
+                        item.Deaths += p.deaths;
+                        item.Assists += p.assists;
+                        item.Total++;
+                    }
+
+                    var comboCollection = _dbContext.NextAbilityComboTrends
+                        .Where(_ => abilities.Contains(_.AbilityId))
+                        .Where(_ => abilities.Contains(_.ComboId))
+                        .Where(_ => _.AbilityId != _.ComboId)
+                        .ToList();
+
+                    foreach (var item in comboCollection)
+                    {
+                        item.Wins += win;
+                        item.Loses += loss;
+                        item.Kills += p.kills;
+                        item.Deaths += p.deaths;
+                        item.Assists += p.assists;
+                        item.Total++;
                     }
                 }
-
-                _dbContext.SaveChanges();
             }
-
-            return root.result.matches.Max(_ => _.match_seq_num);
         }
+        
     }
 }
