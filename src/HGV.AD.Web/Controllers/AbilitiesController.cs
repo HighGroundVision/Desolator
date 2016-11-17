@@ -5,6 +5,7 @@ using System.Threading.Tasks;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using HGV.AD.Web.Data;
+using HGV.AD.Web.Models.Statistics;
 
 namespace HGV.AD.Web.Controllers
 {
@@ -17,27 +18,54 @@ namespace HGV.AD.Web.Controllers
             this._dbContext = dbContext;
         }
 
-        public ActionResult Index()
+        public ActionResult Index(bool? ts = false)
         {
-            var stats = _dbContext.Abilities
+            if(ts == true)
+            {
+                var stats = _dbContext.Abilities
                 .OrderBy(_ => _.Name)
                 .ToList();
 
-            var trends = _dbContext.CurrentAbilityTrends
-               .OrderBy(_ => _.Name)
-               .ToList();
+                var trends = _dbContext.NextAbilityTrends
+                   .Select(_ => (AbilityStatBase)_)
+                   .OrderBy(_ => _.Name)
+                   .ToList();
 
-            var combos = _dbContext.CurrentAbilityTrends
-                .Join(_dbContext.PerviousAbilityTrends, _ => _.AbilityId, _ => _.AbilityId, (lhs, rhs) => new { Current = lhs, Pervious = rhs })
+                var combos = _dbContext.NextAbilityTrends
+                    .Join(_dbContext.CurrentAbilityTrends, _ => _.AbilityId, _ => _.AbilityId, (lhs, rhs) => new { Next = lhs, Current = rhs })
+                    .ToList();
+
+                var change = combos
+                    .Select(_ => _.Next - _.Current)
+                    .ToList();
+
+                var viewModel = Tuple.Create(stats, trends, change);
+
+                return View(viewModel);
+            }
+            else
+            {
+                var stats = _dbContext.Abilities
+                .OrderBy(_ => _.Name)
                 .ToList();
 
-            var change = combos
-                .Select(_ => _.Current - _.Pervious)
-                .ToList();
+                var trends = _dbContext.CurrentAbilityTrends
+                   .Select(_ => (AbilityStatBase)_)
+                   .OrderBy(_ => _.Name)
+                   .ToList();
 
-            var viewModel = Tuple.Create(stats, trends, change);
+                var combos = _dbContext.CurrentAbilityTrends
+                    .Join(_dbContext.PerviousAbilityTrends, _ => _.AbilityId, _ => _.AbilityId, (lhs, rhs) => new { Current = lhs, Pervious = rhs })
+                    .ToList();
 
-            return View(viewModel);
+                var change = combos
+                    .Select(_ => _.Current - _.Pervious)
+                    .ToList();
+
+                var viewModel = Tuple.Create(stats, trends, change);
+
+                return View(viewModel);
+            }
         }
 
         public ActionResult Details(int? id)

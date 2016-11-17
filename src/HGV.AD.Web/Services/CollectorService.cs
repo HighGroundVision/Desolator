@@ -194,7 +194,6 @@ namespace HGV.AD.Web.Services
 
                     var abilities = p.ability_upgrades
                         .Select(_ => _.ability)
-                        .Where(_ => _ != 5002)
                         .Distinct()
                         .ToList();
 

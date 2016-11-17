@@ -5,7 +5,7 @@ using System.Threading.Tasks;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using HGV.AD.Web.Data;
-
+using HGV.AD.Web.Models.Statistics;
 
 namespace HGV.AD.Web.Controllers
 {
@@ -18,27 +18,54 @@ namespace HGV.AD.Web.Controllers
             this._dbContext = dbContext;
         }
 
-        public ActionResult Index()
+        public ActionResult Index(bool? ts = false)
         {
-            var stats = _dbContext.Heroes
-                .OrderBy(_ => _.Name)
-                .ToList();
+            if (ts == true)
+            {
+                var stats = _dbContext.Heroes
+                    .OrderBy(_ => _.Name)
+                    .ToList();
 
-            var trends = _dbContext.CurrentHeroTrends
-                .OrderBy(_ => _.Name)
-                .ToList();
+                var trends = _dbContext.NextHeroTrends
+                    .Select(_ => (HeroStatBase)_)
+                    .OrderBy(_ => _.Name)
+                    .ToList();
 
-            var combos = _dbContext.CurrentHeroTrends
-                .Join(_dbContext.PerviousHeroTrends, _ => _.HeroId, _ => _.HeroId, (lhs, rhs) => new { Current = lhs, Pervious = rhs })
-                .ToList();
+                var combos = _dbContext.NextHeroTrends
+                    .Join(_dbContext.CurrentHeroTrends, _ => _.HeroId, _ => _.HeroId, (lhs, rhs) => new { Next = lhs, Current = rhs })
+                    .ToList();
 
-            var change = combos
-                .Select(_ => _.Current - _.Pervious)
-                .ToList();
+                var change = combos
+                    .Select(_ => _.Next - _.Current)
+                    .ToList();
 
-            var viewModel = Tuple.Create(stats, trends, change);
+                var viewModel = Tuple.Create(stats, trends, change);
 
-            return View(viewModel);
+                return View(viewModel);
+            }
+            else
+            {
+                var stats = _dbContext.Heroes
+                   .OrderBy(_ => _.Name)
+                   .ToList();
+
+                var trends = _dbContext.CurrentHeroTrends
+                    .Select(_ => (HeroStatBase)_)
+                    .OrderBy(_ => _.Name)
+                    .ToList();
+
+                var combos = _dbContext.CurrentHeroTrends
+                    .Join(_dbContext.PerviousHeroTrends, _ => _.HeroId, _ => _.HeroId, (lhs, rhs) => new { Current = lhs, Pervious = rhs })
+                    .ToList();
+
+                var change = combos
+                    .Select(_ => _.Current - _.Pervious)
+                    .ToList();
+
+                var viewModel = Tuple.Create(stats, trends, change);
+
+                return View(viewModel);
+            }
         }
 
         public ActionResult Details(int? id)

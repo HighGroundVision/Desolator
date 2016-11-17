@@ -11,8 +11,8 @@ namespace HGV.AD.Web.Models.Statistics
 	{
     }
 
-	public class CurrentAbilityStat : AbilityStatBase
-	{
+    public class CurrentAbilityStat : AbilityStatBase
+    {
         public static AbilityStatBase operator -(CurrentAbilityStat c1, PerviousAbilityStat c2) =>
             new AbilityStatBase()
             {
@@ -27,10 +27,24 @@ namespace HGV.AD.Web.Models.Statistics
                 Total = c1.Total - c2.Total,
             };
     }
+       
 
 	public class NextAbilityStat : AbilityStatBase
 	{
-	}
+        public static AbilityStatBase operator -(NextAbilityStat c1, CurrentAbilityStat c2) =>
+          new AbilityStatBase()
+          {
+              AbilityId = c1.AbilityId,
+              Name = c1.Name,
+              Identity = c1.Identity,
+              Wins = c1.Wins - c2.Wins,
+              Loses = c1.Loses - c2.Loses,
+              Kills = c1.Kills - c2.Kills,
+              Deaths = c1.Deaths - c2.Deaths,
+              Assists = c1.Assists - c2.Assists,
+              Total = c1.Total - c2.Total,
+          };
+    }
 
 	public class AbilityStatBase
 	{

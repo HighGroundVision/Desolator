@@ -30,7 +30,21 @@ namespace HGV.AD.Web.Models.Statistics
 
 	public class NextHeroStat : HeroStatBase
 	{
-	}
+
+        public static HeroStatBase operator -(NextHeroStat c1, CurrentHeroStat c2) =>
+           new HeroStatBase()
+           {
+               HeroId = c1.HeroId,
+               Name = c1.Name,
+               Identity = c1.Identity,
+               Wins = c1.Wins - c2.Wins,
+               Loses = c1.Loses - c2.Loses,
+               Kills = c1.Kills - c2.Kills,
+               Deaths = c1.Deaths - c2.Deaths,
+               Assists = c1.Assists - c2.Assists,
+               Total = c1.Total - c2.Total,
+           };
+    }
 
 	public class HeroStatBase
     {
