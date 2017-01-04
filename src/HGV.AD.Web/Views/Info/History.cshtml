@@ -1,0 +1,68 @@
+﻿@model IEnumerable<HGV.AD.Web.Models.Statistics.Batch>
+@{
+    ViewData["Title"] = "History";
+}
+
+<h2>@ViewBag.Title</h2>
+
+
+<div class="row">
+    <div class="col-md-12">
+        <h4 class="text-center"># Of Matches</h4>
+        <canvas id="myChart" width="600" height="200"></canvas>
+    </div>
+</div>
+
+@section scripts
+{
+    <script>
+        var labels = @Html.Raw(JsonConvert.SerializeObject(
+                        Model.Select(_ => _.DateProcessed.ToString("M")).ToList()
+                    ));
+        var serise1 = @Html.Raw(JsonConvert.SerializeObject(
+                        Model.Select(_ =>_.NumberOfAD).ToList()
+                     ));
+        var serise2 = @Html.Raw(JsonConvert.SerializeObject(
+                        Model.Select(_ =>_.NumberOfMatches).ToList()
+                     ));
+
+        var data = {
+            labels: labels,
+            datasets: [
+                {
+                    label: "# Of AD Matches",
+                    data: serise1,
+                    backgroundColor: "#9933cc",
+                    borderColor: "#9933cc",  //#6e2caf
+                    fill: false,
+                    yAxisID: "y-axis-0",
+                },
+                {
+                    label: "# Of Matches Scanned",
+                    data: serise2,
+                    backgroundColor: "#cc6d00",
+                    borderColor: "#cc6d00",
+                    fill: false,
+                    yAxisID: "y-axis-1",
+                }
+            ]
+        };
+
+        var ctx = document.getElementById("myChart");
+        var myChart = new Chart(ctx, {
+            type: 'line',
+            data: data,
+            options: {
+                scales: {
+                    yAxes: [{
+                        position: "left",
+                        id: "y-axis-0",
+                    }, {
+                        position: "right",
+                        id: "y-axis-1",
+                    }]
+                }
+            }
+        });
+    </script>
+}

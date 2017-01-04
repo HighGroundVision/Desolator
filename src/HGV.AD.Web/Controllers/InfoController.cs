@@ -38,7 +38,7 @@ namespace HGV.AD.Web.Controllers
             return View();
         }
 
-        public IActionResult Status()
+        public IActionResult History()
         {
             var query = _dbContext.Batchs
                 .GroupBy(_ => _.DateProcessed.Date)
