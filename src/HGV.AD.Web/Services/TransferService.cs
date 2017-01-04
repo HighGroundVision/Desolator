@@ -10,7 +10,7 @@ using System.Net.Http;
 using System.Text.RegularExpressions;
 using System.Threading.Tasks;
 using Microsoft.EntityFrameworkCore;
-using HGV.AD.Web.Models.Statistics;
+using HGV.AD.Web.Models.Trends;
 
 namespace HGV.AD.Web.Services
 {

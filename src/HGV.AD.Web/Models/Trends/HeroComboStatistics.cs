@@ -5,7 +5,7 @@ using System.ComponentModel.DataAnnotations.Schema;
 using System.Linq;
 using System.Threading.Tasks;
 
-namespace HGV.AD.Web.Models.Statistics
+namespace HGV.AD.Web.Models.Trends
 {
     public class PerviousHeroComboStats : HeroComboStatsBase
 	{

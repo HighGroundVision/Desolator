@@ -1,6 +1,15 @@
-﻿using HGV.AD.Web.Data;
+﻿using Hangfire;
+using Hangfire.Console;
+using Hangfire.Server;
+using HGV.AD.Web.Configuration;
+using HGV.AD.Web.Data;
 using HGV.AD.Web.Models.Attributes;
+using HGV.AD.Web.Models.DotaApi;
+using HGV.AD.Web.Models.Statistics;
+using HGV.AD.Web.Models.Trends;
+using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Logging;
+using Microsoft.Extensions.Options;
 using Newtonsoft.Json.Linq;
 using System;
 using System.Collections.Generic;
@@ -8,17 +17,8 @@ using System.Diagnostics;
 using System.Linq;
 using System.Net.Http;
 using System.Text.RegularExpressions;
-using System.Threading.Tasks;
-using Microsoft.EntityFrameworkCore;
-using HGV.AD.Web.Models.DotaApi;
-using HGV.AD.Web.Models.Statistics;
 using System.Threading;
-using Hangfire;
-using HGV.AD.Web.Models.Checkpoints;
-using Microsoft.Extensions.Options;
-using HGV.AD.Web.Configuration;
-using Hangfire.Server;
-using Hangfire.Console;
+using System.Threading.Tasks;
 
 namespace HGV.AD.Web.Services
 {
@@ -39,6 +39,7 @@ namespace HGV.AD.Web.Services
             _siteSettings = siteSettings;
         }
 
+        [AutomaticRetry(Attempts = 0, OnAttemptsExceeded = AttemptsExceededAction.Delete)]
         public void CalucateBatch()
         {
             // There should always be one and only one
@@ -61,18 +62,27 @@ namespace HGV.AD.Web.Services
             if (batchSize > 10000)
                 from = to - 10000; // Limit batch size to 10,000
 
+            if (batchSize < 5)
+                return;
+
             BackgroundJob.Enqueue<CollectorService>(_ => _.ProcessBatch(null, from, to));
         }
 
+        [AutomaticRetry(Attempts = 1)]
         public void ProcessBatch(PerformContext context, long frist, long last)
         {
             this.Log(context, string.Format("Delta: ~{0}", (last - frist)));
 
             var matches = ExtractMatchesFromBatch(context, frist, last);
 
+            if (matches.Count() == 0)
+                throw new ArgumentOutOfRangeException(nameof(matches), "No Matches to Process.");
+
             this.Log(context, string.Format("AD Matches: {0}", matches.Count));
 
             ProcessMatches(context, matches);
+
+            CreateBatch(frist, last, matches.Count);
 
             this.Log(context, "Saving Results");
 
@@ -86,6 +96,20 @@ namespace HGV.AD.Web.Services
             context.WriteLine(msg);
 
             if (color != null) context.ResetTextColor();
+        }
+
+        private void CreateBatch(long frist, long last, int matches)
+        {
+            var batch = new Batch()
+            {
+                DateProcessed = DateTime.UtcNow,
+                SquenceStart = frist,
+                SquenceEnd = last,
+                NumberOfMatches = (int)(last - frist),
+                NumberOfAD = matches
+            };
+
+            _dbContext.Batchs.Add(batch);
         }
 
         private Models.DotaApi.GetMatchHistory.Match GetNextMatch()
@@ -112,14 +136,12 @@ namespace HGV.AD.Web.Services
             {
                 try
                 {
-                    Thread.Sleep(TimeSpan.FromSeconds(3));
+                    Thread.Sleep(TimeSpan.FromSeconds(5));
 
                     progress.SetValue((((current - frist) / (double)(last - frist)) * 100));
 
                     var newMatches = GetMatches(current, out current);
                     matches.AddRange(newMatches);
-
-                    circuitBreaker = 0;
                 }
                 catch (ApplicationException ex)
                 {
@@ -127,8 +149,8 @@ namespace HGV.AD.Web.Services
                     
                     this.Log(context, ex.Message, ConsoleTextColor.Red);
 
-                    if (circuitBreaker > 3)
-                        throw ex;
+                    if (circuitBreaker > 5)
+                        break; // Go with what you got
 
                     Thread.Sleep(TimeSpan.FromSeconds(30));
                 }

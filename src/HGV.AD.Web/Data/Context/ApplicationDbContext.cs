@@ -6,8 +6,8 @@ using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore;
 using HGV.AD.Web.Models;
 using HGV.AD.Web.Models.Attributes;
+using HGV.AD.Web.Models.Trends;
 using HGV.AD.Web.Models.Statistics;
-using HGV.AD.Web.Models.Checkpoints;
 
 namespace HGV.AD.Web.Data
 {
@@ -21,7 +21,9 @@ namespace HGV.AD.Web.Data
 		// Heroes' abilities
 		public DbSet<AbilityAttributes> Abilities { get; set; }
 
+        // Statistics
         public DbSet<Checkpoint> Checkpoints { get; set; }
+        public DbSet<Batch> Batchs { get; set; }
 
         // Trends - abilities
         public DbSet<PerviousAbilityStat> PerviousAbilityTrends { get; set; }

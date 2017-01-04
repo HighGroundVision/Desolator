@@ -30,6 +30,7 @@ namespace HGV.AD.Web.Controllers
         
         public ActionResult SeedHeroes()
         {
+            var host = this.HttpContext.Request.Host;
 			var id = BackgroundJob.Enqueue<SeedService>(_ => _.SeedHeroes());
 
 			return Redirect("/hangfire/jobs/processing");

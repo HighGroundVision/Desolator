@@ -4,7 +4,7 @@ using System.Linq;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
 using HGV.AD.Web.Data;
-using HGV.AD.Web.Models.Statistics;
+using HGV.AD.Web.Models.Trends;
 using Microsoft.EntityFrameworkCore;
 
 namespace HGV.AD.Web.Controllers

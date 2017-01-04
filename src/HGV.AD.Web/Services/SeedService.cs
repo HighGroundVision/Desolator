@@ -41,6 +41,7 @@ namespace HGV.AD.Web.Services
         public void SeedHeroes()
         {
             // http://devilesk.com/dota2/heroes/herodata/
+            // https://api.steampowered.com/IEconDOTA2_205790/GetHeroes/V001/?key=D929B1E7DFCC5FABB23DE7969F813E5E&language=en
 
             var heroes = new List<HeroAttributes>()
             {
@@ -132,7 +133,8 @@ namespace HGV.AD.Web.Services
                 new HeroAttributes() { HeroId = 111, Identity = "oracle", Notes = "" },
                 new HeroAttributes() { HeroId = 112, Identity = "winter_wyvern", Notes = "" },
                 new HeroAttributes() { HeroId = 113, Identity = "arc_warden", Notes = "" },
-                new HeroAttributes() { HeroId = 108, Identity = "abyssal_underlord", Notes = "" }
+                new HeroAttributes() { HeroId = 108, Identity = "abyssal_underlord", Notes = "" },
+                new HeroAttributes() { HeroId = 114, Identity = "monkey_king", Notes = "" }
             };
 
             // Remove all others
@@ -152,17 +154,16 @@ namespace HGV.AD.Web.Services
             {
                 while (csv.Read())
                 {
-                    var identity = csv.GetField<string>("Identity");
+                    var name = csv.GetField<string>("Name");
 
-                    var hero = _dbContext.Heroes.SingleOrDefault(_ => _.Identity == identity);
+                    var hero = _dbContext.Heroes.SingleOrDefault(_ => _.Name == name);
                     if (hero == null)
                     {
-                        _logger.LogWarning(string.Format("No hero found for identity: {0}", identity));
+                        _logger.LogWarning(string.Format("No hero found for name: {0}", name));
                         continue;
                     }
 
-                    hero.Name = csv.GetField<string>("Name");
-                    hero.Patch = "6.88c";
+                    hero.Patch = "7.00";
                     hero.Primary = csv.GetField<string>("Primary Stat");
 
                     hero.Movespeed = csv.GetField<double>("MS");
@@ -721,7 +722,7 @@ namespace HGV.AD.Web.Services
             _dbContext.Checkpoints.RemoveRange(_dbContext.Checkpoints);
             _dbContext.SaveChanges();
 
-            _dbContext.Checkpoints.Add(new Models.Checkpoints.Checkpoint() { MatchId = 0, MatchNumber = 0, MatchDate = DateTime.MinValue });
+            _dbContext.Checkpoints.Add(new Models.Statistics.Checkpoint() { MatchId = 0, MatchNumber = 0, MatchDate = DateTime.MinValue });
             _dbContext.SaveChanges();
 
             // Remove old trends
@@ -737,19 +738,19 @@ namespace HGV.AD.Web.Services
             // Add Abilities
             foreach (var item in abilities)
             {
-                _dbContext.NextAbilityTrends.Add(new Models.Statistics.NextAbilityStat()
+                _dbContext.NextAbilityTrends.Add(new Models.Trends.NextAbilityStat()
                 {
                     AbilityId = item.AbilityId,
                     Identity = item.Identity,
                     Name = item.Name,
                 });
-                _dbContext.PerviousAbilityTrends.Add(new Models.Statistics.PerviousAbilityStat()
+                _dbContext.PerviousAbilityTrends.Add(new Models.Trends.PerviousAbilityStat()
                 {
                     AbilityId = item.AbilityId,
                     Identity = item.Identity,
                     Name = item.Name,
                 });
-                _dbContext.CurrentAbilityTrends.Add(new Models.Statistics.CurrentAbilityStat()
+                _dbContext.CurrentAbilityTrends.Add(new Models.Trends.CurrentAbilityStat()
                 {
                     AbilityId = item.AbilityId,
                     Identity = item.Identity,
@@ -767,7 +768,7 @@ namespace HGV.AD.Web.Services
 
             foreach (var combo in abilityCombos)
             {
-                _dbContext.NextAbilityComboTrends.Add(new Models.Statistics.NextAbilityComboStat()
+                _dbContext.NextAbilityComboTrends.Add(new Models.Trends.NextAbilityComboStat()
                 {
                     AbilityId = combo.Item1.AbilityId,
                     AbilityIdentity = combo.Item1.Identity,
@@ -777,7 +778,7 @@ namespace HGV.AD.Web.Services
                     ComboName = combo.Item2.Name,
                     SameSource = combo.Item1.HeroId == combo.Item2.HeroId,
                 });
-                _dbContext.CurrentAbilityComboTrends.Add(new Models.Statistics.CurrentAbilityComboStat()
+                _dbContext.CurrentAbilityComboTrends.Add(new Models.Trends.CurrentAbilityComboStat()
                 {
                     AbilityId = combo.Item1.AbilityId,
                     AbilityIdentity = combo.Item1.Identity,
@@ -787,7 +788,7 @@ namespace HGV.AD.Web.Services
                     ComboName = combo.Item2.Name,
                     SameSource = combo.Item1.HeroId == combo.Item2.HeroId,
                 });
-                _dbContext.PerviousAbilityComboTrends.Add(new Models.Statistics.PerviousAbilityComboStat()
+                _dbContext.PerviousAbilityComboTrends.Add(new Models.Trends.PerviousAbilityComboStat()
                 {
                     AbilityId = combo.Item1.AbilityId,
                     AbilityIdentity = combo.Item1.Identity,
@@ -804,19 +805,19 @@ namespace HGV.AD.Web.Services
             // Add Heroes
             foreach (var item in heroes)
             {
-                _dbContext.NextHeroTrends.Add(new Models.Statistics.NextHeroStat()
+                _dbContext.NextHeroTrends.Add(new Models.Trends.NextHeroStat()
                 {
                     HeroId = item.HeroId,
                     Identity = item.Identity,
                     Name = item.Name,
                 });
-                _dbContext.CurrentHeroTrends.Add(new Models.Statistics.CurrentHeroStat()
+                _dbContext.CurrentHeroTrends.Add(new Models.Trends.CurrentHeroStat()
                 {
                     HeroId = item.HeroId,
                     Identity = item.Identity,
                     Name = item.Name,
                 });
-                _dbContext.PerviousHeroTrends.Add(new Models.Statistics.PerviousHeroStat()
+                _dbContext.PerviousHeroTrends.Add(new Models.Trends.PerviousHeroStat()
                 {
                     HeroId = item.HeroId,
                     Identity = item.Identity,
@@ -831,7 +832,7 @@ namespace HGV.AD.Web.Services
             {
                 foreach (var ability in abilities)
                 {
-                    _dbContext.NextHeroComboTrends.Add(new Models.Statistics.NextHeroComboStats()
+                    _dbContext.NextHeroComboTrends.Add(new Models.Trends.NextHeroComboStats()
                     {
                         HeroId = hero.HeroId,
                         HeroIdentity = hero.Identity,
@@ -841,7 +842,7 @@ namespace HGV.AD.Web.Services
                         AbilityName = ability.Name,
                         SameSource = hero.HeroId  == ability.HeroId,
                     });
-                    _dbContext.CurrentHeroComboTrends.Add(new Models.Statistics.CurrentHeroComboStats()
+                    _dbContext.CurrentHeroComboTrends.Add(new Models.Trends.CurrentHeroComboStats()
                     {
                         HeroId = hero.HeroId,
                         HeroIdentity = hero.Identity,
@@ -851,7 +852,7 @@ namespace HGV.AD.Web.Services
                         AbilityName = ability.Name,
                         SameSource = hero.HeroId == ability.HeroId,
                     });
-                    _dbContext.PerviousHeroComboTrends.Add(new Models.Statistics.PerviousHeroComboStats()
+                    _dbContext.PerviousHeroComboTrends.Add(new Models.Trends.PerviousHeroComboStats()
                     {
                         HeroId = hero.HeroId,
                         HeroIdentity = hero.Identity,

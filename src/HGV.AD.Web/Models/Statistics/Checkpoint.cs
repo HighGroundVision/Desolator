@@ -5,7 +5,7 @@ using System.ComponentModel.DataAnnotations.Schema;
 using System.Linq;
 using System.Threading.Tasks;
 
-namespace HGV.AD.Web.Models.Checkpoints
+namespace HGV.AD.Web.Models.Statistics
 {
     public class Checkpoint
     {

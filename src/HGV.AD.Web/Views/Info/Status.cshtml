@@ -1,0 +1,60 @@
+﻿@model IEnumerable<HGV.AD.Web.Models.Statistics.Batch>
+@{
+    ViewData["Title"] = "Status";
+}
+
+<h2>@ViewBag.Title</h2>
+
+
+<div class="row">
+    <div class="col-md-12">
+        <h4>% Of AD Matches</h4>
+        <canvas id="myChart" width="600" height="200"></canvas>
+    </div>
+</div>
+
+@section scripts
+{
+    <script>
+        var labels = @Html.Raw(JsonConvert.SerializeObject(
+                        Model.Select(_ => _.DateProcessed.ToLongDateString()).ToList()
+                    ));
+        var serise = @Html.Raw(JsonConvert.SerializeObject(
+                        Model.Select(_ => Math.Round((_.NumberOfAD / (_.NumberOfMatches * 1.0) * 100), 2)).ToList()
+                     ));
+
+        var data = {
+            labels: labels,
+            datasets: [
+                {
+                    label: "% Of AD Matches",
+                    fill: false,
+                    lineTension: 0.1,
+                    backgroundColor: "#9933cc",
+                    borderColor: "#6e2caf",
+                    borderCapStyle: 'butt',
+                    borderDash: [],
+                    borderDashOffset: 0.0,
+                    borderJoinStyle: 'miter',
+                    pointBorderColor: "#6e2caf",
+                    pointBackgroundColor: "#fff",
+                    pointBorderWidth: 1,
+                    pointHoverRadius: 5,
+                    pointHoverBackgroundColor: "#cc6d00",
+                    pointHoverBorderColor: "#804400",
+                    pointHoverBorderWidth: 2,
+                    pointRadius: 1,
+                    pointHitRadius: 10,
+                    data: serise,
+                    spanGaps: false,
+                }
+            ]
+        };
+
+        var ctx = document.getElementById("myChart");
+        var myChart = new Chart(ctx, {
+            type: 'line',
+            data: data,
+        });
+    </script>
+}
