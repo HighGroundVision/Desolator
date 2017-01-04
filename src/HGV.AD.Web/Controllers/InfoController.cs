@@ -43,6 +43,7 @@ namespace HGV.AD.Web.Controllers
             var query = _dbContext.Batchs
                 .GroupBy(_ => _.DateProcessed.Date)
                 .OrderByDescending(_ => _.Key)
+                .Skip(1)
                 .Take(14)
                 .ToList();
 
