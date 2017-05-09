@@ -12,6 +12,7 @@ namespace HGV.AD.Web.Controllers
     public class HeroesController : Controller
     {
         private readonly ApplicationDbContext _dbContext;
+        private readonly List<int> _filterCauseSteamSucks = new List<int>() { 114, 67, 105, 98, 100 };
 
         public HeroesController(ApplicationDbContext dbContext)
         {
@@ -23,6 +24,7 @@ namespace HGV.AD.Web.Controllers
             if (ts == true)
             {
                 var stats = _dbContext.Heroes
+                    .Where(_ => _filterCauseSteamSucks.Contains(_.HeroId) == false)
                     .OrderBy(_ => _.Name)
                     .ToList();
 
@@ -46,6 +48,7 @@ namespace HGV.AD.Web.Controllers
             else
             {
                 var stats = _dbContext.Heroes
+                   .Where(_ => _filterCauseSteamSucks.Contains(_.HeroId) == false)
                    .OrderBy(_ => _.Name)
                    .ToList();
 
@@ -75,6 +78,8 @@ namespace HGV.AD.Web.Controllers
 
             var hero = _dbContext.Heroes.FirstOrDefault(_ => _.HeroId == id);
 
+            var talenets = _dbContext.Talenets.Where(_ => _.HeroId == id).GroupBy(_ => _.Level).OrderBy(_ => _.Key).ToList();
+
             var attributes = _dbContext.HeroAttributeRanks.Where(_ => _.HeroId == id).OrderBy(_ => _.Index).ToList();
 
             var currentHeroTrends = _dbContext.CurrentHeroTrends.FirstOrDefault(_ => _.HeroId == id);
@@ -89,7 +94,7 @@ namespace HGV.AD.Web.Controllers
                 .Select(_ => _.Current - _.Pervious)
                 .ToList();
 
-            var viewModel = Tuple.Create(hero, attributes, currentHeroTrends, changeHeroTrends, combos, change);
+            var viewModel = Tuple.Create(hero, attributes, currentHeroTrends, changeHeroTrends, combos, change, talenets);
 
             return View(viewModel);
         }

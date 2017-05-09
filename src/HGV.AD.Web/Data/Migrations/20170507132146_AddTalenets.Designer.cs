@@ -8,9 +8,10 @@ using HGV.AD.Web.Data;
 namespace HGV.AD.Web.Data.Migrations
 {
     [DbContext(typeof(ApplicationDbContext))]
-    partial class ApplicationDbContextModelSnapshot : ModelSnapshot
+    [Migration("20170507132146_AddTalenets")]
+    partial class AddTalenets
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
             modelBuilder
                 .HasAnnotation("ProductVersion", "1.1.1")
@@ -188,9 +189,9 @@ namespace HGV.AD.Web.Data.Migrations
 
             modelBuilder.Entity("HGV.AD.Web.Models.Attributes.TalenetAttributes", b =>
                 {
-                    b.Property<int>("HeroId");
-
                     b.Property<int>("AbilityId");
+
+                    b.Property<int>("HeroId");
 
                     b.Property<string>("Key");
 
@@ -198,7 +199,7 @@ namespace HGV.AD.Web.Data.Migrations
 
                     b.Property<string>("Name");
 
-                    b.HasKey("HeroId", "AbilityId");
+                    b.HasKey("AbilityId");
 
                     b.ToTable("Talenets");
                 });

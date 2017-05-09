@@ -17,7 +17,7 @@ namespace HGV.AD.Web.Controllers
         {
             var id = BackgroundJob.Enqueue<SeedService>(_ => _.MigrateDB());
 
-            return Redirect("/hangfire/jobs/processing");
+            return Redirect("/hangfire/jobs/details/" + id);
         }
 
         public ActionResult RegisterRecurringServices()
@@ -33,7 +33,7 @@ namespace HGV.AD.Web.Controllers
             var host = this.HttpContext.Request.Host;
 			var id = BackgroundJob.Enqueue<SeedService>(_ => _.SeedHeroes());
 
-			return Redirect("/hangfire/jobs/processing");
+			return Redirect("/hangfire/jobs/details/" + id);
         }
 
         
@@ -41,14 +41,22 @@ namespace HGV.AD.Web.Controllers
 		{
 			var id = BackgroundJob.Enqueue<SeedService>(_ => _.SeedAbilities());
 
-			return Redirect("/hangfire/jobs/processing");
+			return Redirect("/hangfire/jobs/details/" + id);
 		}
+
+        public ActionResult SeedTalenets()
+        {
+            var id = BackgroundJob.Enqueue<SeedService>(_ => _.SeedTalenets());
+
+            return Redirect("/hangfire/jobs/details/" + id);
+        }
+
 
         public ActionResult SeedTrends()
 		{
 			var id = BackgroundJob.Enqueue<SeedService>(_ => _.SeedTrends());
 
-			return Redirect("/hangfire/jobs/processing");
+			return Redirect("/hangfire/jobs/details/" + id);
 		}
     }
 }

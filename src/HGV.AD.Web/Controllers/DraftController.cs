@@ -12,6 +12,7 @@ namespace HGV.AD.Web.Controllers
     public class DraftController : Controller
     {
         private readonly ApplicationDbContext _dbContext;
+        private readonly List<int> _filterCauseSteamSucks = new List<int>() { 114, 67, 105, 98, 100 };
 
         public DraftController(ApplicationDbContext dbContext)
         {
@@ -28,7 +29,10 @@ namespace HGV.AD.Web.Controllers
         public IActionResult GetDraftPool()
         {
             var collection = _dbContext.Abilities
+                .Where(_ => _filterCauseSteamSucks.Contains(_.HeroId) == false)
                 .Where(_ => _.Ultimate == true)
+                .GroupBy(_ => _.HeroId)
+                .Select(_ => _.First())
                 .OrderBy(_ => _.Name)
                 .Select(_ => new { Id = _.AbilityId, Identity = _.Identity, HeroId = _.HeroId })
                 .ToList();
@@ -80,6 +84,8 @@ namespace HGV.AD.Web.Controllers
             var hero = _dbContext.Heroes
                 .FirstOrDefault(_ => _.HeroId == id);
 
+            var talents = _dbContext.Talenets.Where(_ => _.HeroId == id).GroupBy(_ => _.Level).OrderBy(_ => _.Key).ToList();
+
             var attributes = _dbContext.HeroAttributeRanks
                 .Where(_ => _.HeroId == id)
                 .Where(_ => _.Percentage < 0.20 || _.Percentage > 0.80)
@@ -96,7 +102,7 @@ namespace HGV.AD.Web.Controllers
                 .Where(_ => abilities.Contains(_.AbilityId))
                 .ToList();
 
-            var viewModel = Tuple.Create(hero, attributes, trends, combos);
+            var viewModel = Tuple.Create(hero, attributes, trends, combos, talents);
 
             return Json(viewModel);
         }

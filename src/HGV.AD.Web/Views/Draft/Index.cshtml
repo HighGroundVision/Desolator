@@ -295,7 +295,28 @@
             </div>
             <div class="modal-body">
                 <div class="row">
-                    <div class="col-lg-4">
+                    <div class="col-lg-5">
+
+                        <section>
+                            <h3>Talents</h3>
+
+                            <div data-bind="visible: item5.length === 0">
+                                <p>Nothing Interesting</p>
+                            </div>
+
+                            <div data-bind="visible: item5.length > 0">
+                                <table class="table table-condensed">
+                                    <tbody data-bind="foreach: item5">
+                                        <tr>
+                                            <td class="text-info" data-bind="text: $data[0].name"></td>
+                                            <td data-bind="text: $data[0].level"></td>
+                                            <td class="text-info" data-bind="text: $data[1].name"></td>
+                                        </tr>
+                                    </tbody>
+                                </table>
+                            </div>
+
+                        </section>
 
                         <section>
                             <h3>Stat Ranking</h3>
@@ -377,7 +398,7 @@
                         </section>
 
                     </div>
-                    <div class="col-lg-8">
+                    <div class="col-lg-7">
 
                         <section>
                             <h3>Paired Abilties Trends</h3>

@@ -20,6 +20,7 @@ namespace HGV.AD.Web.Data
 
 		// Heroes' abilities
 		public DbSet<AbilityAttributes> Abilities { get; set; }
+        public DbSet<TalenetAttributes> Talenets { get; set; }
 
         // Statistics
         public DbSet<Checkpoint> Checkpoints { get; set; }
@@ -72,6 +73,8 @@ namespace HGV.AD.Web.Data
 
             builder.Entity<AbilityAttributes>().HasKey(_ => _.AbilityId);
             builder.Entity<AbilityAttributes>().Property(_ => _.AbilityId).ValueGeneratedNever();
+
+            builder.Entity<TalenetAttributes>().HasKey(_ => new { _.HeroId, _.AbilityId });
 
             builder.Entity<PerviousAbilityStat>().HasKey(_ => _.AbilityId);
             builder.Entity<PerviousAbilityStat>().Property(_ => _.AbilityId).ValueGeneratedNever();

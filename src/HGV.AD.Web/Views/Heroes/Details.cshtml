@@ -1,4 +1,4 @@
-﻿@model Tuple<HGV.AD.Web.Models.Attributes.HeroAttributes, List<HGV.AD.Web.Models.Attributes.HeroAttributeRank>, HGV.AD.Web.Models.Trends.CurrentHeroStat, HGV.AD.Web.Models.Trends.HeroStatBase, List<HGV.AD.Web.Models.Trends.CurrentHeroComboStats>, List<HGV.AD.Web.Models.Trends.HeroComboStatsBase>>
+﻿@model Tuple<HGV.AD.Web.Models.Attributes.HeroAttributes, List<HGV.AD.Web.Models.Attributes.HeroAttributeRank>, HGV.AD.Web.Models.Trends.CurrentHeroStat, HGV.AD.Web.Models.Trends.HeroStatBase, List<HGV.AD.Web.Models.Trends.CurrentHeroComboStats>, List<HGV.AD.Web.Models.Trends.HeroComboStatsBase>, List<IGrouping<int, HGV.AD.Web.Models.Attributes.TalenetAttributes>>>
 
 @{
     ViewData["Title"] = "Hero Details";
@@ -6,29 +6,49 @@
 
 <section>
     <hr />
-
+    
     <div class="row">
-        <div class="col-sm-6">
+        <div class="col-sm-4">
             <section>
                 <img src="@string.Format("http://cdn.dota2.com/apps/dota2/images/heroes/{0}_full.png?v=3581135", Model.Item1.Identity)" />
             </section>
         </div>
-        <div class="col-sm-6">
-            <section>
-                <h3>@Model.Item1.Name</h3>
-                <table class="table table-condensed">
-                    <tbody>
-                        <tr>
-                            <td class="text-info">Patch</td>
-                            <td>@Model.Item1.Patch</td>
-                        </tr>
-                        <tr>
-                            <td class="text-info">Primary</td>
-                            <td>@Model.Item1.Primary</td>
-                        </tr>
-                    </tbody>
-                </table>
-            </section> 
+        <div class="col-sm-8">
+            <div class="row">
+                <div class="col-sm-12">
+                    <h3>@Model.Item1.Name</h3>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-sm-4">
+                    <table class="table table-condensed">
+                        <tbody>
+                            <tr>
+                                <td class="text-info">Patch</td>
+                                <td>@Model.Item1.Patch</td>
+                            </tr>
+                            <tr>
+                                <td class="text-info">Primary</td>
+                                <td>@Model.Item1.Primary</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+                <div class="col-sm-8">
+                    <table class="table table-condensed">
+                        <tbody>
+                            @foreach (var item in Model.Item7)
+                            {
+                                <tr>
+                                    <td class="text-info">@item.FirstOrDefault().Name</td>
+                                    <td>@item.Key</td>
+                                    <td class="text-info">@item.LastOrDefault().Name</td>
+                                </tr>
+                            }
+                        </tbody>
+                    </table>
+                </div>
+            </div>
         </div>
     </div>
 

@@ -12,6 +12,7 @@ namespace HGV.AD.Web.Controllers
     public class AbilitiesController : Controller
     {
         private readonly ApplicationDbContext _dbContext;
+        private readonly List<int> _filterCauseSteamSucks = new List<int>() { 114, 67, 105, 98, 100 };
 
         public AbilitiesController(ApplicationDbContext dbContext)
         {
@@ -23,6 +24,7 @@ namespace HGV.AD.Web.Controllers
             if(ts == true)
             {
                 var stats = _dbContext.Abilities
+                .Where(_ => _filterCauseSteamSucks.Contains(_.HeroId) == false)
                 .OrderBy(_ => _.Name)
                 .ToList();
 
@@ -46,6 +48,7 @@ namespace HGV.AD.Web.Controllers
             else
             {
                 var stats = _dbContext.Abilities
+                .Where(_ => _filterCauseSteamSucks.Contains(_.HeroId) == false)
                 .OrderBy(_ => _.Name)
                 .ToList();
 

@@ -1,7 +1,7 @@
 ﻿using HGV.AD.Web.Data;
 using HGV.AD.Web.Models.Attributes;
+using HGV.AD.Web.Models.DotaApi.Raindrop;
 using Microsoft.Extensions.Logging;
-using Newtonsoft.Json.Linq;
 using System;
 using System.Collections.Generic;
 using System.Diagnostics;
@@ -12,6 +12,8 @@ using System.Threading.Tasks;
 using Microsoft.EntityFrameworkCore;
 using System.Linq.Expressions;
 using CsvHelper;
+using Newtonsoft.Json;
+using Newtonsoft.Json.Linq;
 
 namespace HGV.AD.Web.Services
 {
@@ -33,165 +35,73 @@ namespace HGV.AD.Web.Services
 
         //~ time unknown
         public void MigrateDB()
-        {            
+        {
             _dbContext.Database.Migrate();
         }
 
-        //~ time 2m
         public void SeedHeroes()
         {
-            // http://devilesk.com/dota2/heroes/herodata/
-            // https://api.steampowered.com/IEconDOTA2_205790/GetHeroes/V001/?key=D929B1E7DFCC5FABB23DE7969F813E5E&language=en
-
-            var heroes = new List<HeroAttributes>()
-            {
-                new HeroAttributes() { HeroId = 1, Identity = "antimage", Notes = "" },
-                new HeroAttributes() { HeroId = 2, Identity = "axe", Notes = "" },
-                new HeroAttributes() { HeroId = 3, Identity = "bane", Notes = "" },
-                new HeroAttributes() { HeroId = 4, Identity = "bloodseeker", Notes = "" },
-                new HeroAttributes() { HeroId = 5, Identity = "crystal_maiden", Notes = "" },
-                new HeroAttributes() { HeroId = 6, Identity = "drow_ranger", Notes = "" },
-                new HeroAttributes() { HeroId = 7, Identity = "earthshaker", Notes = "" },
-                new HeroAttributes() { HeroId = 8, Identity = "juggernaut", Notes = "" },
-                new HeroAttributes() { HeroId = 9, Identity = "mirana", Notes = "" },
-                new HeroAttributes() { HeroId = 12, Identity = "phantom_lancer", Notes = "" },
-                new HeroAttributes() { HeroId = 14, Identity = "pudge", Notes = "" },
-                new HeroAttributes() { HeroId = 15, Identity = "razor", Notes = "" },
-                new HeroAttributes() { HeroId = 16, Identity = "sand_king", Notes = "" },
-                new HeroAttributes() { HeroId = 17, Identity = "storm_spirit", Notes = "" },
-                new HeroAttributes() { HeroId = 18, Identity = "sven", Notes = "" },
-                new HeroAttributes() { HeroId = 19, Identity = "tiny", Notes = "" },
-                new HeroAttributes() { HeroId = 20, Identity = "vengefulspirit", Notes = "" },
-                new HeroAttributes() { HeroId = 21, Identity = "windrunner", Notes = "" },
-                new HeroAttributes() { HeroId = 22, Identity = "zuus", Notes = "" },
-                new HeroAttributes() { HeroId = 23, Identity = "kunkka", Notes = "" },
-                new HeroAttributes() { HeroId = 25, Identity = "lina", Notes = "" },
-                new HeroAttributes() { HeroId = 26, Identity = "lion", Notes = "" },
-                new HeroAttributes() { HeroId = 27, Identity = "shadow_shaman", Notes = "" },
-                new HeroAttributes() { HeroId = 28, Identity = "slardar", Notes = "" },
-                new HeroAttributes() { HeroId = 29, Identity = "tidehunter", Notes = "" },
-                new HeroAttributes() { HeroId = 30, Identity = "witch_doctor", Notes = "" },
-                new HeroAttributes() { HeroId = 31, Identity = "lich", Notes = "" },
-                new HeroAttributes() { HeroId = 32, Identity = "riki", Notes = "" },
-                new HeroAttributes() { HeroId = 33, Identity = "enigma", Notes = "" },
-                new HeroAttributes() { HeroId = 34, Identity = "tinker", Notes = "" },
-                new HeroAttributes() { HeroId = 35, Identity = "sniper", Notes = "" },
-                new HeroAttributes() { HeroId = 36, Identity = "necrolyte", Notes = "" },
-                new HeroAttributes() { HeroId = 37, Identity = "warlock", Notes = "" },
-                new HeroAttributes() { HeroId = 39, Identity = "queenofpain", Notes = "" },
-                new HeroAttributes() { HeroId = 40, Identity = "venomancer", Notes = "" },
-                new HeroAttributes() { HeroId = 41, Identity = "faceless_void", Notes = "" },
-                new HeroAttributes() { HeroId = 42, Identity = "skeleton_king", Notes = "" },
-                new HeroAttributes() { HeroId = 43, Identity = "death_prophet", Notes = "" },
-                new HeroAttributes() { HeroId = 44, Identity = "phantom_assassin", Notes = "" },
-                new HeroAttributes() { HeroId = 45, Identity = "pugna", Notes = "" },
-                new HeroAttributes() { HeroId = 47, Identity = "viper", Notes = "" },
-                new HeroAttributes() { HeroId = 48, Identity = "luna", Notes = "" },
-                new HeroAttributes() { HeroId = 49, Identity = "dragon_knight", Notes = "" },
-                new HeroAttributes() { HeroId = 50, Identity = "dazzle", Notes = "" },
-                new HeroAttributes() { HeroId = 51, Identity = "rattletrap", Notes = "" },
-                new HeroAttributes() { HeroId = 52, Identity = "leshrac", Notes = "" },
-                new HeroAttributes() { HeroId = 53, Identity = "furion", Notes = "" },
-                new HeroAttributes() { HeroId = 54, Identity = "life_stealer", Notes = "" },
-                new HeroAttributes() { HeroId = 55, Identity = "dark_seer", Notes = "" },
-                new HeroAttributes() { HeroId = 56, Identity = "clinkz", Notes = "" },
-                new HeroAttributes() { HeroId = 57, Identity = "omniknight", Notes = "" },
-                new HeroAttributes() { HeroId = 58, Identity = "enchantress", Notes = "" },
-                new HeroAttributes() { HeroId = 59, Identity = "huskar", Notes = "" },
-                new HeroAttributes() { HeroId = 60, Identity = "night_stalker", Notes = "" },
-                new HeroAttributes() { HeroId = 61, Identity = "broodmother", Notes = "" },
-                new HeroAttributes() { HeroId = 62, Identity = "bounty_hunter", Notes = "" },
-                new HeroAttributes() { HeroId = 63, Identity = "weaver", Notes = "" },
-                new HeroAttributes() { HeroId = 64, Identity = "jakiro", Notes = "" },
-                new HeroAttributes() { HeroId = 65, Identity = "batrider", Notes = "" },
-                new HeroAttributes() { HeroId = 68, Identity = "ancient_apparition", Notes = "" },
-                new HeroAttributes() { HeroId = 70, Identity = "ursa", Notes = "" },
-                new HeroAttributes() { HeroId = 71, Identity = "spirit_breaker", Notes = "" },
-                new HeroAttributes() { HeroId = 72, Identity = "gyrocopter", Notes = "" },
-                new HeroAttributes() { HeroId = 73, Identity = "alchemist", Notes = "" },
-                new HeroAttributes() { HeroId = 75, Identity = "silencer", Notes = "" },
-                new HeroAttributes() { HeroId = 76, Identity = "obsidian_destroyer", Notes = "" },
-                new HeroAttributes() { HeroId = 77, Identity = "lycan", Notes = "" },
-                new HeroAttributes() { HeroId = 78, Identity = "brewmaster", Notes = "" },
-                new HeroAttributes() { HeroId = 81, Identity = "chaos_knight", Notes = "" },
-                new HeroAttributes() { HeroId = 83, Identity = "treant", Notes = "" },
-                new HeroAttributes() { HeroId = 85, Identity = "undying", Notes = "" },
-                new HeroAttributes() { HeroId = 87, Identity = "disruptor", Notes = "" },
-                new HeroAttributes() { HeroId = 88, Identity = "nyx_assassin", Notes = "" },
-                new HeroAttributes() { HeroId = 89, Identity = "naga_siren", Notes = "" },
-                new HeroAttributes() { HeroId = 92, Identity = "visage", Notes = "" },
-                new HeroAttributes() { HeroId = 93, Identity = "slark", Notes = "" },
-                new HeroAttributes() { HeroId = 94, Identity = "medusa", Notes = "" },
-                new HeroAttributes() { HeroId = 96, Identity = "centaur", Notes = "" },
-                new HeroAttributes() { HeroId = 97, Identity = "magnataur", Notes = "" },
-                new HeroAttributes() { HeroId = 99, Identity = "bristleback", Notes = "" },
-                new HeroAttributes() { HeroId = 101, Identity = "skywrath_mage", Notes = "" },
-                new HeroAttributes() { HeroId = 102, Identity = "abaddon", Notes = "" },
-                new HeroAttributes() { HeroId = 103, Identity = "elder_titan", Notes = "" },
-                new HeroAttributes() { HeroId = 104, Identity = "legion_commander", Notes = "" },
-                new HeroAttributes() { HeroId = 109, Identity = "terrorblade", Notes = "" },
-                new HeroAttributes() { HeroId = 111, Identity = "oracle", Notes = "" },
-                new HeroAttributes() { HeroId = 112, Identity = "winter_wyvern", Notes = "" },
-                new HeroAttributes() { HeroId = 113, Identity = "arc_warden", Notes = "" },
-                new HeroAttributes() { HeroId = 108, Identity = "abyssal_underlord", Notes = "" },
-                new HeroAttributes() { HeroId = 114, Identity = "monkey_king", Notes = "" }
-            };
-
-            // Remove all others
-            _dbContext.Heroes.RemoveRange(_dbContext.Heroes);
-            _dbContext.SaveChanges();
-
-            // Add new
-            _dbContext.Heroes.AddRange(heroes);
-            _dbContext.SaveChanges();
-
-            // Get other hero attributes
             var httpClient = new HttpClient();
-            var csvData = httpClient.GetStringAsync("http://www.abilitydrafter.com/data/heroes.csv").Result;
+            var jsonData = httpClient.GetStringAsync("http://hgv-raindrop.azurewebsites.net/api/heroes").Result;
+            var heroes = JsonConvert.DeserializeObject<List<Hero>>(jsonData);
 
-            using (var reader = new System.IO.StringReader(csvData))
-            using (var csv = new CsvReader(reader))
+            foreach (var item in heroes)
             {
-                while (csv.Read())
+                // Hero
+                var hero = _dbContext.Heroes.SingleOrDefault(_ => _.HeroId == item.hero_id);
+                if(item.ability_draft_enabled == true)
                 {
-                    var name = csv.GetField<string>("Name");
-
-                    var hero = _dbContext.Heroes.SingleOrDefault(_ => _.Name == name);
                     if (hero == null)
                     {
-                        _logger.LogWarning(string.Format("No hero found for name: {0}", name));
-                        continue;
+                        hero = new HeroAttributes() { HeroId = item.hero_id };
+                        _dbContext.Heroes.Add(hero);
+                    }
+                }
+                else
+                {
+                    if (hero != null)
+                    {
+                        _dbContext.Heroes.Remove(hero);
                     }
 
-                    hero.Patch = "7.00";
-                    hero.Primary = csv.GetField<string>("Primary Stat");
-
-                    hero.Movespeed = csv.GetField<double>("MS");
-                    hero.MaxDmg = csv.GetField<double>("Max Dmg");
-                    hero.MinDmg = csv.GetField<double>("Min Dmg");
-                    hero.AvgDmg = csv.GetField<double>("Avg Dmg");
-                    hero.HP = csv.GetField<double>("HP");
-                    hero.Mana = csv.GetField<double>("Mana");
-                    hero.HPRegen = csv.GetField<double>("HP Regen");
-                    hero.ManaRegen = csv.GetField<double>("Mana Regen");
-                    hero.Armor = csv.GetField<double>("Armor");
-                    hero.Range = csv.GetField<double>("Atk Range");
-                    hero.ProjectileSpeed = csv.GetField<double>("Projectile Speed");
-                    hero.BaseStr = csv.GetField<double>("Str");
-                    hero.BaseAgi = csv.GetField<double>("Agi");
-                    hero.BaseInt = csv.GetField<double>("Int");
-                    hero.StrGain = csv.GetField<double>("Str Gain");
-                    hero.AgiGain = csv.GetField<double>("Agi Gain");
-                    hero.IntGain = csv.GetField<double>("Int Gain");
-                    hero.DayVision = csv.GetField<double>("Day Vision Range");
-                    hero.NightVision = csv.GetField<double>("Night Vision Range");
-                    hero.Turnrate = csv.GetField<double>("Turn Rate");
+                    continue;
                 }
-            }
 
+                var primary = "";
+                if(item.attribute_primary == 1)
+                    primary = "STR";
+                else if (item.attribute_primary == 2)
+                    primary = "AGI";
+                else if (item.attribute_primary == 3)
+                    primary = "INT";
+
+                hero.Name = item.name;
+                hero.Patch = "7.05";
+                hero.Primary = primary;
+                hero.Movespeed = item.movement_speed;
+                hero.MaxDmg = item.attack_damage_max;
+                hero.MinDmg = item.attack_damage_min;
+                hero.AvgDmg = (item.attack_damage_min + item.attack_damage_max) / 2;
+                hero.HP = item.status_health;
+                hero.Mana = item.status_mana;
+                hero.HPRegen = item.status_health_regen;
+                hero.ManaRegen = item.status_mana_regen;
+                hero.Armor = item.armor;
+                hero.Range = item.attack_range;
+                hero.ProjectileSpeed = item.attack_projectile_speed;
+                hero.BaseStr = item.attribute_base_strength;
+                hero.BaseAgi = item.attribute_base_agility;
+                hero.BaseInt = item.attribute_base_intelligence;
+                hero.StrGain = item.attribute_strength_gain;
+                hero.AgiGain = item.attribute_agility_gain;
+                hero.IntGain = item.attribute_intelligence_gain;
+                hero.DayVision = item.vision_daytime_range;
+                hero.NightVision = item.vision_nighttime_range;
+                hero.Turnrate = item.movement_turn_rate;
+            }
             _dbContext.SaveChanges();
 
-            // Remove all others
+            // Attribute Ranks
             _dbContext.HeroAttributeRanks.RemoveRange(_dbContext.HeroAttributeRanks);
             _dbContext.SaveChanges();
 
@@ -244,10 +154,8 @@ namespace HGV.AD.Web.Services
             }
 
             _dbContext.SaveChanges();
-
         }
 
-        //~ time 5s
         public void SeedAbilities()
         {
             var abilities = new List<AbilityAttributes>()
@@ -714,6 +622,37 @@ namespace HGV.AD.Web.Services
 
             _dbContext.SaveChanges();
         }
+
+        public void SeedTalenets()
+        {
+            var httpClient = new HttpClient();
+            var jsonData = httpClient.GetStringAsync("http://hgv-raindrop.azurewebsites.net/api/heroes").Result;
+            var heroes = JsonConvert.DeserializeObject<List<Hero>>(jsonData);
+
+            foreach (var hero in heroes)
+            {
+                var existing = _dbContext.Talenets.Where(_ => _.HeroId == hero.hero_id);
+                _dbContext.Talenets.RemoveRange(existing);
+            }
+            _dbContext.SaveChanges();
+
+            foreach (var hero in heroes)
+            {
+                foreach (var item in hero.talenets)
+                {
+                    var ability = new TalenetAttributes();
+                    ability.AbilityId = item.ability_id;
+                    ability.HeroId = item.hero_id;
+                    ability.Key = item.key;
+                    ability.Level = item.level;
+                    ability.Name = item.name;
+                    _dbContext.Talenets.Add(ability);
+                }
+            }
+
+            _dbContext.SaveChanges();
+        }
+
 
         //~ time 5m
         public void SeedTrends()
