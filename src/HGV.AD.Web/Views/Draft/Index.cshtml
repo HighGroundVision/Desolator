@@ -1,455 +1,103 @@
-﻿@model IEnumerable<HGV.AD.Web.Models.Attributes.HeroAttributes>
-@{
+﻿@{
     ViewData["Title"] = "Draft";
 }
 
 @section scripts
 {
-    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/knockout/3.4.0/knockout-min.js"></script>
-    <script type="text/javascript" src="~/lib/clipboard/dist/clipboard.min.js"></script>
     <script type="text/javascript" src="~/lib/js-url/url.min.js"></script>
     <script type="text/javascript" src="~/js/draft.js" asp-append-version="true"></script>
 }
 
-<h2>Draft <small>Recommendations</small></h2>
+<h2>Draft</h2>
 
 <section>
-    
     <div class="row">
-        <div class="col-md-9">
-            <h5>Pick the ultimates listed in the draft window in the order which they are listed.</h5>
+        <div class="col-md-12">
             <p>
-                We will automatically display ability combos filtered by the abilities available. 
-                Click on any hero and a dialog with information specific to that hero will appear, we will also filter the combos by the abilities available. 
-                Click on any ability and a dialog with information specific to that ability will appear, we will also filter the combos by the abilities available. 
-                We have removed ability combos that came from the same hero because of ratios it will always be the top of the list and they are boring anyways.
-            </p>
-        </div>
-        <div class="col-md-3">
-            <a class="btn btn-info btn-block" href="/companions/bloodstone/HGV.AD.AutoDrafter.application" target="_blank">Download Auto Drafter</a>
-            <br />
-            <p>
-                This windows desktop application watches your games and will open the website with the draft pre selected.
+                Pick the ultimates listed in the draft window in the order which they are listed. Then select your hero form the list.
             </p>
         </div>
     </div>
 </section>
 
-<nav class="navbar navbar-inverse"> 
-    <div class="navbar-header"> 
-        <button type="button" class="collapsed navbar-toggle" data-toggle="collapse" data-target="#subnav" aria-expanded="false"> 
-            <span class="sr-only">Toggle navigation</span> 
-            <span class="icon-bar"></span> 
-            <span class="icon-bar"></span> 
-            <span class="icon-bar"></span> 
-        </button>
-    </div>
-    <div class="collapse navbar-collapse" id="subnav">
-        <form class="navbar-form navbar-left" onsubmit="return false;" data-bind="visible: SelectedDraft().length != 12" style="display: none;">
-            <div class="form-group">
-                <input class="form-control" placeholder="Search by Hero or Ability" data-bind="value: SearchDraft">
-            </div>
-            <button type="submit" class="btn btn-primary">Search</button>
-        </form>
-        <form class="navbar-form navbar-left" onsubmit="return false;" data-bind="visible: SelectedDraft().length == 12" style="display: none;">
-            <button id="share-draft" type="submit" class="btn btn-info">Copy Collaborate Link</button>
-        </form>
-        <form class="navbar-form navbar-right">
-            <button class="btn btn-warning" data-bind="click: Reset">Reset</button>
-        </form>
-    </div>
-</nav>
+<section>
+    <nav class="navbar navbar-inverse">
+        <div class="navbar-header">
+            <button type="button" class="collapsed navbar-toggle" data-toggle="collapse" data-target="#subnav" aria-expanded="false">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+            </button>
+        </div>
+        <div class="collapse navbar-collapse" id="subnav">
+            <form class="navbar-form navbar-left" onsubmit="return false;">
+                <a class="btn btn-info" href="/companions/bloodstone/HGV.AD.AutoDrafter.application" target="_blank">Download Auto Drafter</a>
+            </form>
+            <form class="navbar-form navbar-right" onsubmit="return false;">
+                <div class="form-group">
+                    <input class="form-control" placeholder="Search by Hero or Ability" data-bind="value: SearchDraft">
+                </div>
+                <div class="form-group">
+                    <a class="btn btn-warning" data-bind="click: Reset">Reset</a>
+                </div>
 
-<section class="visible-xs" >
+            </form>
+        </div>
+    </nav>
+
+</section>
+
+<section class="visible-xs">
     <div class="alert alert-warning" role="alert">
         <h5>Warning!</h5> Drafting on mobile is not the best experience. We are exploring other options that work better for mobile devices.
     </div>
 </section>
 
-<section data-bind="visible: SelectedDraft().length != 12" style="display:none;">
-    <div class="row" data-bind="foreach: FilteredDraft">
+<section data-bind="visible: IsDrafting()" style="display:none;">
+    <div class="row" data-bind="foreach: AvailableDraft">
         <div class="col-xs-2 col-sm-2 col-md-1 col-lg-1">
-            <img src="" class="img-rounded img-responsive" data-bind="click: $root.SelectDraft, css: $root.GetSelectedHeroStyling($data), attr: { src: 'http://cdn.dota2.com/apps/dota2/images/abilities/' + identity + '_hp1.png' }" />
+            <img src="" class="img-rounded img-responsive" data-bind="click: $root.SelectAbility, css: $root.GetSelectedStyling($data), attr: { src: 'http://cdn.dota2.com/apps/dota2/images/abilities/' + abilityIdentity + '_hp1.png' }" />
         </div>
     </div>
     <hr />
 </section>
 
-<section data-bind="visible: SelectedHeroes().length > 0" style="display:none;">
-    <div class="row" data-bind="foreach: SelectedHeroes">
+<section>
+    <div class="row" data-bind="foreach: SelectedDraft">
         <div class="col-xs-2 col-sm-2 col-md-1 col-lg-1">
-            <img src="" class="img-responsive img-rounded" data-bind="visible: $index() < 10, click: $root.SelectHero, attr: { src: 'http://cdn.dota2.com/apps/dota2/images/heroes/' + identity + '_sb.png'}" />
+            <img src="" class="img-responsive img-rounded" data-bind="attr: { src: 'http://cdn.dota2.com/apps/dota2/images/abilities/' + abilityIdentity + '_hp1.png'}" />
         </div>
     </div>
     <hr />
 </section>
 
-<section data-bind="visible: SelectedDraft().length === 12" style="display:none;">
-    <div class="row" data-bind="foreach: FilteredAbilities">
-        <div class="col-xs-2 col-sm-2 col-md-1 col-lg-1">
-            <img src="" class="img-responsive img-rounded" data-bind="click: $root.SelectAbility, attr: { src: 'http://cdn.dota2.com/apps/dota2/images/abilities/' + identity + '_hp1.png'}" />
-        </div>
-    </div>
-    <hr />
-</section>
-
-<section data-bind="visible: FilteredUltimateAbilities().length > 0" style="display:none;">
-    <div class="row" data-bind="foreach: FilteredUltimateAbilities">
-        <div class="col-xs-2 col-sm-2 col-md-1 col-lg-1">
-            <img src="" class="img-responsive img-rounded" data-bind="click: $root.SelectAbility, attr: { src: 'http://cdn.dota2.com/apps/dota2/images/abilities/' + identity + '_hp1.png'}" />
-        </div>
-    </div>
-    <hr />
-</section>
-
-<section data-bind="visible: Combos().length > 0" style="display:none;">
+<section data-bind="visible: IsDraftFull()" style="display:none;">
     <div class="row">
-        <div class="col-xs-12">
-            <table id="tblCombos" class="table table-condensed table-striped  display nowrap" cellspacing="0" width="100%">
-                <thead>
-                    <tr>
-                        <th></th>
-                        <th></th>
-                        <th></th>
-                        <th></th>
-                        <th>Wins</th>
-                        <th>Loses</th>
-                        <th>Kills</th>
-                        <th>Deaths</th>
-                        <th>Assists</th>
-                        <th>Picks</th>
-                    </tr>
-                </thead>
-                <tbody data-bind="foreach: Combos">
-                    <tr>
-                        <td>
-                            <a data-bind="click: $root.SelectComboPart1">
-                                <img src="#" data-bind="attr: { src:'http://cdn.dota2.com/apps/dota2/images/abilities/' + abilityIdentity + '_hp1.png' }" alt="Ability" class="img-responsive pull-left" width="30" height="30" />
-                            </a>
-                        </td>
-                        <td>
-                            <a data-bind="click: $root.SelectComboPart1, text: abilityName"></a>
-                        </td>
-                        <td>
-                            <a data-bind="click: $root.SelectComboPart2">
-                                <img src="#" data-bind="attr: { src:'http://cdn.dota2.com/apps/dota2/images/abilities/' + comboIdentity + '_hp1.png' }" alt="Ability" class="img-responsive pull-left" width="30" height="30" />
-                            </a>
-                        </td>
-                        <td>
-                            <a data-bind="click: $root.SelectComboPart2, text: comboName"></a>
-                        </td>
-                        <td>
-                            <span data-bind="text: wins"></span>
-                            <span>%</span>
-                        </td>
-                        <td>
-                            <span data-bind="text: loses"></span>
-                            <span>%</span>
-                        </td>
-                        <td data-bind="text: kills"></td>
-                        <td data-bind="text: deaths"></td>
-                        <td data-bind="text: assists"></td>
-                        <td data-bind="text: total"></td>
-                    </tr>
-                </tbody>
-            </table>
+        <div class="col-xs-1 col-sm-1 col-md-1 col-lg-1">
+            <!-- Padding -->
+        </div>
+        <!-- ko foreach: TeamDire -->
+        <div class="col-xs-2 col-sm-2 col-md-2 col-lg-2">
+            <img src="" class="img-responsive img-rounded" data-bind="click: $root.SelectHero, attr: { src: 'http://cdn.dota2.com/apps/dota2/images/heroes/' + heroIdentity + '_hphover.png'}" />
+        </div>
+        <!-- /ko -->
+        <div class="col-xs-1 col-sm-1 col-md-1 col-lg-1">
+            <!-- Padding -->
+        </div>
+    </div>
+    <hr />
+    <div class="row">
+        <div class="col-xs-1 col-sm-1 col-md-1 col-lg-1">
+            <!-- Padding -->
+        </div>
+        <!-- ko foreach: TeamRadiant -->
+        <div class="col-xs-2 col-sm-2 col-md-2 col-lg-2">
+            <img src="" class="img-responsive img-rounded" data-bind="click: $root.SelectHero, attr: { src: 'http://cdn.dota2.com/apps/dota2/images/heroes/' + heroIdentity + '_hphover.png'}" />
+        </div>
+        <!-- /ko -->
+        <div class="col-xs-1 col-sm-1 col-md-1 col-lg-1">
+            <!-- Padding -->
         </div>
     </div>
 </section>
-
-<section data-bind="visible: Searching" style="display:none;">
-    <div class="alert alert-info text-center" role="alert">
-        <i class="fa fa-spinner fa-spin fa-fw fa-3x" aria-hidden="true"></i>
-    </div>
-</section>
-
-<div id="abilityDetails" class="modal fade" tabindex="-1" role="dialog" data-bind="with: SelectedAbility">
-    <div class="modal-dialog modal-lg" role="document">
-        <div class="modal-content">
-            <div class="modal-header">
-                <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-                <h4 class="modal-title" data-bind="text: item1.name"></h4>
-            </div>
-            <div class="modal-body" >
-                <div class="row">
-                    <div class="col-lg-4">
-                        <section>
-                            <div data-bind="html: item1.html"></div>
-                        </section>
-
-                        <section>
-                            <h3>Trends</h3>
-                            <table class="table table-condensed">
-                                <thead>
-                                    <tr>
-                                        <th></th>
-                                        <th>Current</th>
-                                    </tr>
-                                </thead>
-                                <tbody data-bind="with: item2">
-                                    <tr>
-                                        <td class="text-info">Wins</td>
-                                        <td>
-                                            <span data-bind="text: wins"></span>
-                                            <span>%</span>
-                                        </td>
-                                    </tr>
-                                    <tr>
-                                        <td class="text-info">Loses</td>
-                                        <td>
-                                            <span data-bind="text: loses"></span>
-                                            <span>%</span>
-                                        </td>
-                                    </tr>
-                                    <tr>
-                                        <td class="text-info">Kills</td>
-                                        <td>
-                                            <span data-bind="text: kills"></span>
-                                        </td>
-                                    </tr>
-                                    <tr>
-                                        <td class="text-info">Deaths</td>
-                                        <td>
-                                            <span data-bind="text: deaths"></span>
-                                        </td>
-                                    </tr>
-                                    <tr>
-                                        <td class="text-info">Assists</td>
-                                        <td>
-                                            <span data-bind="text: assists"></span>
-                                        </td>
-                                    </tr>
-                                    <tr>
-                                        <td class="text-info">Total</td>
-                                        <td>
-                                            <span data-bind="text: total"></span>
-                                        </td>
-                                    </tr>
-                                </tbody>
-                            </table>
-                        </section>
-                        
-                    </div>
-                    <div class="col-lg-8">
-                        
-                        <section>
-                            <h3>Ability Combo Trends</h3>
-                            <table id="tblAbilityCombos" class="table table-condensed table-striped  display nowrap" cellspacing="0" width="100%">
-                                <thead>
-                                    <tr>
-                                        <th></th>
-                                        <th>Ability</th>
-                                        <th>Wins</th>
-                                        <th>Loses</th>
-                                        <th>Kills</th>
-                                        <th>Deaths</th>
-                                        <th>Assists</th>
-                                        <th>Picks</th>
-                                    </tr>
-                                </thead>
-                                <tbody data-bind="foreach: item3">
-                                    <tr>
-                                        <td>
-                                            <a data-bind="attr: { 'href': '/Abilities/Details/' + comboId}">
-                                                <img src="#" data-bind="attr: { src:'http://cdn.dota2.com/apps/dota2/images/abilities/' + comboIdentity + '_hp1.png' }" alt="Ability" class="img-responsive pull-left" width="30" height="30" />
-                                            </a>
-                                        </td>
-                                        <td class="hidden-xs">
-                                            <a data-bind="attr: { 'href': '/Abilities/Details/' + comboId}">
-                                                <span data-bind="text: comboName"></span>
-                                            </a>
-                                        </td>
-                                        <td>
-                                            <span data-bind="text: wins"></span>
-                                            <span>%</span>
-                                        </td>
-                                        <td>
-                                            <span data-bind="text: loses"></span>
-                                            <span>%</span>
-                                        </td>
-                                        <td data-bind="text: kills"></td>
-                                        <td data-bind="text: deaths"></td>
-                                        <td data-bind="text: assists"></td>
-                                        <td data-bind="text: total"></td>
-                                    </tr>
-                                </tbody>
-                            </table>
-                        </section>
-
-                    </div>
-                </div>
-            </div>
-            <div class="modal-footer">
-                <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
-            </div>
-        </div>
-    </div>
-</div>
-
-<div id="heroDetails" class="modal fade" tabindex="-1" role="dialog" data-bind="with: SelectedHero">
-    <div class="modal-dialog modal-lg" role="document">
-        <div class="modal-content">
-            <div class="modal-header">
-                <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-                <h4 class="modal-title" data-bind="text: item1.name"></h4>
-            </div>
-            <div class="modal-body">
-                <div class="row">
-                    <div class="col-lg-5">
-
-                        <section>
-                            <h3>Talents</h3>
-
-                            <div data-bind="visible: item5.length === 0">
-                                <p>Nothing Interesting</p>
-                            </div>
-
-                            <div data-bind="visible: item5.length > 0">
-                                <table class="table table-condensed">
-                                    <tbody data-bind="foreach: item5">
-                                        <tr>
-                                            <td class="text-info" data-bind="text: $data[0].name"></td>
-                                            <td data-bind="text: $data[0].level"></td>
-                                            <td class="text-info" data-bind="text: $data[1].name"></td>
-                                        </tr>
-                                    </tbody>
-                                </table>
-                            </div>
-
-                        </section>
-
-                        <section>
-                            <h3>Stat Ranking</h3>
-
-                            <div data-bind="visible: item2.length === 0">
-                                <p>Nothing Interesting</p>
-                            </div>
-
-                            <div data-bind="visible: item2.length > 0, foreach: item2">
-                                <div class="row">
-                                    <div class="col-xs-5" data-bind="text: name">
-                                    </div>
-                                    <div class="col-xs-2" data-bind="text: value">
-                                    </div>
-                                    <div class="col-xs-5">
-                                        <div class="progress">
-                                            <div data-bind="attr: { 'aria-valuenow': rank, 'aria-valuemax': groups }, style: { 'width': (percentage*100) + '%' }, css: $root.GetHeroRankStyling($data)" role="progressbar" aria-valuenow="0" aria-valuemin="1" aria-valuemax="0">
-                                                <span class="sr-only" data-bind="text: rank + '/' + groups"></span>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-
-                        </section>
-
-                        <hr />
-
-                        <section>
-                            <h3>Trends</h3>
-                            <table class="table table-condensed">
-                                <thead>
-                                    <tr>
-                                        <th></th>
-                                        <th>Current</th>
-                                    </tr>
-                                </thead>
-                                <tbody data-bind="with: item3">
-                                    <tr>
-                                        <td class="text-info">Wins</td>
-                                        <td>
-                                            <span data-bind="text: wins"></span>
-                                            <span>%</span>
-                                        </td>
-                                    </tr>
-                                    <tr>
-                                        <td class="text-info">Loses</td>
-                                        <td>
-                                            <span data-bind="text: loses"></span>
-                                            <span>%</span>
-                                        </td>
-                                    </tr>
-                                    <tr>
-                                        <td class="text-info">Kills</td>
-                                        <td>
-                                            <span data-bind="text: kills"></span>
-                                        </td>
-                                    </tr>
-                                    <tr>
-                                        <td class="text-info">Deaths</td>
-                                        <td>
-                                            <span data-bind="text: deaths"></span>
-                                        </td>
-                                    </tr>
-                                    <tr>
-                                        <td class="text-info">Assists</td>
-                                        <td>
-                                            <span data-bind="text: assists"></span>
-                                        </td>
-                                    </tr>
-                                    <tr>
-                                        <td class="text-info">Total</td>
-                                        <td>
-                                            <span data-bind="text: total"></span>
-                                        </td>
-                                    </tr>
-                                </tbody>
-                            </table>
-                        </section>
-
-                    </div>
-                    <div class="col-lg-7">
-
-                        <section>
-                            <h3>Paired Abilties Trends</h3>
-                            <table id="tblHeroCombos" class="table table-condensed table-striped  display nowrap" cellspacing="0" width="100%">
-                                <thead>
-                                    <tr>
-                                        <th></th>
-                                        <th>Ability</th>
-                                        <th>Wins</th>
-                                        <th>Loses</th>
-                                        <th>Kills</th>
-                                        <th>Deaths</th>
-                                        <th>Assists</th>
-                                        <th>Picks</th>
-                                    </tr>
-                                </thead>
-                                <tbody data-bind="foreach: item4">
-                                    <tr>
-                                        <td>
-                                            <a data-bind="attr: { 'href': '/Abilities/Details/' + abilityId}">
-                                                <img data-bind="attr: { src:'http://cdn.dota2.com/apps/dota2/images/abilities/' + abilityIdentity + '_hp1.png' }" alt="Ability" class="img-responsive pull-left" width="30" height="30" />
-                                            </a>
-                                        </td>
-                                        <td class="hidden-xs">
-                                            <a data-bind="attr: { 'href': '/Abilities/Details/' + abilityId}">
-                                                <span data-bind="text: abilityName"></span>
-                                            </a>
-                                        </td>
-                                        <td>
-                                            <span data-bind="text: wins"></span>
-                                            <span>%</span>
-                                        </td>
-                                        <td>
-                                            <span data-bind="text: loses"></span>
-                                            <span>%</span>
-                                        </td>
-                                        <td data-bind="text: kills"></td>
-                                        <td data-bind="text: deaths"></td>
-                                        <td data-bind="text: assists"></td>
-                                        <td data-bind="text: total"></td>
-                                    </tr>
-                                </tbody>
-                            </table>
-                        </section>
-
-                    </div>
-                </div>
-            </div>
-            <div class="modal-footer">
-                <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
-            </div>
-        </div>
-    </div>
-</div>

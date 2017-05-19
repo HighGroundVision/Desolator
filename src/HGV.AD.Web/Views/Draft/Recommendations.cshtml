@@ -1,0 +1,185 @@
+﻿@{
+    ViewData["Title"] = "Draft";
+}
+
+@section scripts
+{
+    <script type="text/javascript" src="~/lib/underscore/underscore-min.js"></script>
+    <script type="text/javascript" src="~/lib/js-url/url.min.js"></script>
+    <script type="text/javascript" src="~/js/recommendations.js" asp-append-version="true"></script>
+}
+
+<section data-bind="visible: Loading">
+    <div class="text-center">
+        <i class="fa fa-spinner fa-spin fa-5x fa-fw text-info"></i>
+        <br />
+        <h3>Loading</h3>
+    </div>
+</section>
+
+<section data-bind="visible: !Loading()">
+    <div class="row">
+        <div class="col-xs-6 col-md-2">
+            <!-- ko with: Hero -->
+            <h5 data-bind="text: name"></h5>
+            <img class="img-rounded img-responsive" data-bind="attr: { src: 'http://cdn.dota2.com/apps/dota2/images/heroes/' +  identity + '_full.png'}" />
+            <!-- /ko -->
+            
+        </div>
+        <div class="col-xs-6 col-md-6">
+            <h5>Talents</h5>
+            <table class="table table-condensed">
+                <!-- ko with: TalenetGrouped -->
+                <tbody data-bind="foreach: Object.keys($data)">
+                    <tr>
+                        <td data-bind="text: $parent[$data][0].name"></td>
+                        <td class="text-info" data-bind="text: $data"></td>
+                        <td data-bind="text: $parent[$data][1].name"></td>
+                    </tr>
+                </tbody>
+                <!-- /ko -->
+            </table>
+        </div>
+        <div class="col-xs-6 col-md-2">
+            <h5>Best</h5>
+            <table class="table table-condensed">
+                <tbody data-bind="foreach: AttributesGood()">
+                    <tr>
+                        <td width="80px;">
+                            <span data-bind="text: name"></span>
+                        </td>
+                        <td>
+                            <div class="progress">
+                                <div class="progress-bar" data-bind="style: { 'width': (percentage*100) + '%' }, css: $root.getStyleForHeroStatRanks($data)" role="progressbar"></div>
+                            </div>
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+        <div class="col-xs-6 col-md-2">
+            <h5>Wrost</h5>
+            <table class="table table-condensed">
+                <tbody data-bind="foreach: AttributesBad()">
+                    <tr>
+                        <td width="80px;">
+                            <span data-bind="text: name"></span>
+                        </td>
+                        <td>
+                            <div class="progress">
+                                <div class="progress-bar" data-bind="style: { 'width': (percentage*100) + '%' }, css: $root.getStyleForHeroStatRanks($data)" role="progressbar"></div>
+                            </div>
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
+
+    <hr />
+</section>
+
+<section data-bind="visible: !Loading()">
+    <div class="row" data-bind="foreach: Abilities">
+        <div class="col-xs-2 col-sm-2 col-md-1 col-lg-1" style="margin-bottom: 30px;">
+            <i class="fa" aria-hidden="true"></i>
+            @*<i class="fa fa-link" aria-hidden="true" title="Recommended For Self" style="color: green;"></i>
+                <i class="fa fa-sitemap" aria-hidden="true" title="Recommended For Team" style="color: cornflowerblue;"></i>
+                <i class="fa fa-exclamation" aria-hidden="true" title="Deny Enemy Team" style="color: darkred;"></i>*@
+
+
+            <br />
+            <i class="fa" aria-hidden="true"></i>
+            <i data-bind="visible: $root.isMostPicked($data)" class="fa fa-fire" aria-hidden="true" title="Most Picked" style="color:orangered;"></i>
+            <i data-bind="visible: $root.isLeastPicked($data)" class="fa fa-thermometer-quarter" aria-hidden="true" title="Least Picked" style="color: cornflowerblue;"></i>
+            <i data-bind="visible: $root.isMostWins($data)" class="fa fa-trophy" aria-hidden="true" title="Most Wins" style="color:goldenrod;"></i>
+            <i data-bind="visible: $root.isMostKills($data)" class="fa fa-crosshairs" aria-hidden="true" title="Most Kills" style="color:white;"></i>
+            <i data-bind="visible: $root.isLinked($data)" class="fa fa-superpowers" aria-hidden="true" title="Most Combed" style="color:lime;"></i>
+            <i data-bind="visible: $root.hasTalents($data)" class="fa fa-user-plus" aria-hidden="true" title="Talent Dependant" style="color: purple;"></i>
+            <i data-bind="visible: $root.isUpgradable($data)" class="fa fa-bolt" aria-hidden="true" title="Upgradable" style="color: yellow;"></i>
+
+            <img src="" class="img-responsive img-rounded" data-bind="click: $root.SelectAbility, css: $root.getStyleForSelectedAbility($data), attr: { src: 'http://cdn.dota2.com/apps/dota2/images/abilities/' + identity + '_hp1.png', title: name}" style="padding-bottom: 5px;" />
+
+            <div data-bind="visible: $root.getSelectedProgress($data) != -1" class="progress">
+                <div class="progress-bar progress-bar-striped progress-bar-info" data-bind="style: { 'width': $root.getSelectedProgress($data) + '%' }" role="progressbar"></div>
+            </div>
+        </div>
+    </div>
+
+    <div class="row" data-bind="foreach: Ultimates">
+        <div class="col-xs-2 col-sm-2 col-md-1 col-lg-1">
+            <i class="fa" aria-hidden="true"></i>
+            @*<i class="fa fa-link" aria-hidden="true" title="Recommended For Self" style="color: green;"></i>
+                <i class="fa fa-sitemap" aria-hidden="true" title="Recommended For Team" style="color: cornflowerblue;"></i>
+                <i class="fa fa-exclamation" aria-hidden="true" title="Deny Enemy Team" style="color: darkred;"></i>*@
+            <br />
+            <i class="fa" aria-hidden="true"></i>
+            <i data-bind="visible: $root.isMostPicked($data)" class="fa fa-fire" aria-hidden="true" title="Most Picked" style="color: orangered;"></i>
+            <i data-bind="visible: $root.isLeastPicked($data)" class="fa fa-thermometer-quarter" aria-hidden="true" title="Least Picked" style="color: cornflowerblue;"></i>
+            <i data-bind="visible: $root.isMostWins($data)" class="fa fa-trophy" aria-hidden="true" title="Most Wins" style="color:goldenrod;"></i>
+            <i data-bind="visible: $root.isMostKills($data)" class="fa fa-crosshairs" aria-hidden="true" title="Most Kills" style="color:white;"></i>
+            <i data-bind="visible: $root.isLinked($data)" class="fa fa-superpowers" aria-hidden="true" title="Most Combed" style="color:lime;"></i>
+            <i data-bind="visible: $root.hasTalents($data)" class="fa fa-user-plus" aria-hidden="true" title="Talent Dependant" style="color: purple;"></i>
+            <i data-bind="visible: $root.isUpgradable($data)" class="fa fa-bolt" aria-hidden="true" title="Upgradable" style="color: yellow;"></i>
+
+            <img src="" class="img-responsive img-rounded" data-bind="click: $root.SelectAbility, css: $root.getStyleForSelectedAbility($data), attr: { src: 'http://cdn.dota2.com/apps/dota2/images/abilities/' + identity + '_hp1.png', title: name}" style="padding-bottom: 5px;" />
+
+            <div data-bind="visible: $root.getSelectedProgress($data) != -1" class="progress">
+                <div class="progress-bar progress-bar-striped progress-bar-info" data-bind="style: { 'width': $root.getSelectedProgress($data) + '%' }" role="progressbar"></div>
+            </div>
+        </div>
+    </div>
+
+    <hr />
+
+</section>
+
+<section data-bind="visible: !Loading()">
+    <div class="row">
+        <div class="col-sm-6">
+            <i class="fa fa-user-plus" aria-hidden="true" title="Talent Dependant" style="color: purple;"></i>  Talent Dependant
+            <p>These are abilities that are required by the heroes' talents.</p>
+        </div>
+        <div class="col-sm-6">
+            <i class="fa fa-bolt" aria-hidden="true" title="Upgradable" style="color: yellow;"></i>  Aghanim's Upgrade
+            <p>These are abilities that upgrade with the purchase of Aghanim's Scepter.</p>
+        </div>
+        <div class="col-sm-6">
+            <i class="fa fa-fire" aria-hidden="true" title="Most Picked" style="color: orangered;"></i>  Most Picked
+            <p>These are the most picked abilities from those in the pool.</p>
+        </div>
+        <div class="col-sm-6">
+            <i class="fa fa-thermometer-quarter" aria-hidden="true" title="Least Picked" style="color: cornflowerblue;"></i>  Least Picked
+            <p>These are the least picked abilities from those in the pool.</p>
+        </div>
+        <div class="col-sm-6">
+            <i class="fa fa-trophy" aria-hidden="true" title="Most Wins" style="color:goldenrod;"></i>  Most Wins
+            <p>These are the abilities with the most wins.</p>
+        </div>
+        <div class="col-sm-6">
+            <i class="fa fa-crosshairs" aria-hidden="true" title="Most Kills" style="color:white;"></i>  Most Deadly
+            <p>These are the abilities with the most kills.</p>
+        </div>
+        <div class="col-sm-6">
+            <i class="fa fa-superpowers" aria-hidden="true" title="Most Combed" style="color:lime;"></i>  Most Combed
+            <p>These are the abilities are have the most wins when paired with other abilties.</p>
+        </div>
+        @*
+            <div class="col-sm-6">
+                <i class="fa fa-link" aria-hidden="true" title="Recommended For Self" style="color: green;"></i>  Recommended For Self
+                <p>These are the abilities that pair well with your current selected abilties.</p>
+            </div>
+            <div class="col-sm-6">
+                <i class="fa fa-sitemap" aria-hidden="true" title="Recommended For Team" style="color: cornflowerblue;"></i>  Recommended For Team
+                <p>These are the abilities that pair well with your team current selected abilties.</p>
+            </div>
+            <div class="col-sm-6">
+                <i class="fa fa-exclamation" aria-hidden="true" title="Deny Enemy Team" style="color: darkred;"></i>  Deny Enemy Team
+                <p>These are the abilities that you do not want you enmemies to get.</p>
+            </div>
+        *@
+    </div>
+
+    <hr />
+</section>
+

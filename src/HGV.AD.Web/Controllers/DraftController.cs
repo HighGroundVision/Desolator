@@ -21,113 +21,113 @@ namespace HGV.AD.Web.Controllers
 
         public IActionResult Index()
         {
-            var heroes = _dbContext.Heroes.ToList();
-
-            return View(heroes);
+            return View();
         }
 
         public IActionResult GetDraftPool()
         {
+            var heroes = _dbContext.Heroes;
+
             var collection = _dbContext.Abilities
-                .Where(_ => _filterCauseSteamSucks.Contains(_.HeroId) == false)
                 .Where(_ => _.Ultimate == true)
-                .GroupBy(_ => _.HeroId)
-                .Select(_ => _.First())
                 .OrderBy(_ => _.Name)
-                .Select(_ => new { Id = _.AbilityId, Identity = _.Identity, HeroId = _.HeroId })
+                .Join(heroes, _ => _.HeroId, _ => _.HeroId, (lhs, rhs) => new { Ability = lhs, Hero = rhs })
+                .Select(_ => new { AbilityId = _.Ability.AbilityId, AbilityIdentity = _.Ability.Identity, HeroId = _.Ability.HeroId, HeroIdentity = _.Hero.Identity, })
                 .ToList();
 
             return Json(collection);
         }
 
-        public IActionResult GetHeroSummary(int id)
+        public IActionResult Recommendations(int heroId, string draft)
         {
-            var entity = _dbContext.Heroes
-                .Where(_ => _.HeroId == id)
-                .Select(_ => new { Id = _.HeroId, Identity = _.Identity })
-                .FirstOrDefault();
-
-            return Json(entity);
+            return View();
         }
 
-        public IActionResult GetHeroesAbilities(int id)
+        public IActionResult GetHeroDetails(int heroId)
         {
-            var collection = _dbContext.Abilities
-                .Where(_ => _.HeroId == id)
-                .Select(_ => new { Id = _.AbilityId, Identity = _.Identity, HeroId = _.HeroId, Ultimate = _.Ultimate })
+            var hero = _dbContext.Heroes.FirstOrDefault(_ => _.HeroId == heroId);
+
+            var talenets = _dbContext.Talenets
+                .Where(_ => _.HeroId == heroId)
                 .ToList();
 
-            return Json(collection);
-        }
-
-        [HttpPost]
-        public IActionResult GetCombosFromPool(IEnumerable<int> abilities)
-        {
-            var collection = _dbContext.CurrentAbilityComboTrends
-                .Where(_ => _.SameSource == false)
-                .Where(_ => _.Total > 50)
-                .Where(_ => abilities.Contains(_.AbilityId))
-                .Where(_ => abilities.Contains(_.ComboId))
-                .GroupBy(_ => new {
-                    AbilityId = _.AbilityId > _.ComboId ? _.AbilityId : _.ComboId,
-                    ComboId = _.ComboId > _.AbilityId ? _.AbilityId : _.ComboId
-                })
-                .Select(_ => _.First())
+            var attributesBad = _dbContext.HeroAttributeRanks
+                .Where(_ => _.HeroId == heroId)
+                .Where(_ => !_.Name.Contains("Base"))
+                .Where(_ => _.Percentage < 0.50)
+                .OrderBy(_ => _.Percentage)
+                .Take(4)
                 .ToList();
 
-            return Json(collection);
-        }
-
-        [HttpPost]
-        public IActionResult GetHeroDetails(int id, IEnumerable<int> abilities)
-        {
-            var hero = _dbContext.Heroes
-                .FirstOrDefault(_ => _.HeroId == id);
-
-            var talents = _dbContext.Talenets.Where(_ => _.HeroId == id).GroupBy(_ => _.Level).OrderBy(_ => _.Key).ToList();
-
-            var attributes = _dbContext.HeroAttributeRanks
-                .Where(_ => _.HeroId == id)
-                .Where(_ => _.Percentage < 0.20 || _.Percentage > 0.80)
+            var attributesGood = _dbContext.HeroAttributeRanks
+                .Where(_ => _.HeroId == heroId)
+                .Where(_ => !_.Name.Contains("Base"))
+                .Where(_ => _.Percentage > 0.50)
                 .OrderByDescending(_ => _.Percentage)
+                .Take(4)
                 .ToList();
 
-            var trends = _dbContext.CurrentHeroTrends
-                .FirstOrDefault(_ => _.HeroId == id);
-
-            var combos = _dbContext.CurrentHeroComboTrends
-                .Where(_ => _.HeroId == id)
-                .Where(_ => _.SameSource == false)
-                .Where(_ => _.Total > 50)
-                .Where(_ => abilities.Contains(_.AbilityId))
-                .ToList();
-
-            var viewModel = Tuple.Create(hero, attributes, trends, combos, talents);
+            var viewModel = Tuple.Create(hero, talenets, attributesGood, attributesBad);
 
             return Json(viewModel);
         }
 
-        [HttpPost]
-        public IActionResult GetAbilityDetails(int id, IEnumerable<int> abilities)
+        public IActionResult GetAbilityPoolFromDraft(string draft)
         {
-            var ability = _dbContext.Abilities
-                .FirstOrDefault(_ => _.AbilityId == id);
+            var ultimates = draft.Split(',')
+                .Select(_ => int.Parse(_))
+                .ToList();
+
+            var abilities = _dbContext.Abilities
+                .Where(_ => ultimates.Contains(_.AbilityId))
+                .OrderBy(_ => _.HeroId)
+                .Join(_dbContext.Abilities, _ => _.HeroId, _ => _.HeroId, (lhs, rhs) => rhs)
+                .ToList();
+
+            return Json(abilities);
+        }
+
+        public IActionResult GetAbilityTrendsFromDraft(string draft)
+        {
+            var ultimates = draft.Split(',')
+                .Select(_ => int.Parse(_))
+                .ToList();
+
+            var abilities = _dbContext.Abilities
+                .Where(_ => ultimates.Contains(_.AbilityId))
+                .Join(_dbContext.Abilities, _ => _.HeroId, _ => _.HeroId, (lhs, rhs) => rhs.AbilityId)
+                .ToList();
 
             var trends = _dbContext.CurrentAbilityTrends
-                .FirstOrDefault(_ => _.AbilityId == id);
+                .Where(_ => abilities.Contains(_.AbilityId))
+                .ToList();
+
+            return Json(trends);
+        }
+
+        public IActionResult GetComboTrendsFromDraft(string draft)
+        {
+            var ultimates = draft.Split(',')
+                .Select(_ => int.Parse(_))
+                .ToList();
+
+            var abilities = _dbContext.Abilities
+                .Where(_ => ultimates.Contains(_.AbilityId))
+                .Join(_dbContext.Abilities, _ => _.HeroId, _ => _.HeroId, (lhs, rhs) => rhs.AbilityId)
+                .ToList();
 
             var combos = _dbContext.CurrentAbilityComboTrends
-                .Where(_ => _.AbilityId == id)
                 .Where(_ => _.SameSource == false)
-                .Where(_ => _.Total > 50)
                 .Where(_ => abilities.Contains(_.AbilityId))
                 .Where(_ => abilities.Contains(_.ComboId))
                 .ToList();
 
-            var viewModel = Tuple.Create(ability, trends, combos);
-
-            return Json(viewModel);
+            return Json(combos);
         }
 
+        public IActionResult Live(int matchid)
+        {
+            return View();
+        }
     }
 }

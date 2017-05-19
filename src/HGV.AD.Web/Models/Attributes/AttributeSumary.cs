@@ -12,6 +12,6 @@ namespace HGV.AD.Web.Models.Attributes
 
         public Expression<Func<HeroAttributes, double>> Expression {get; set;}
 
-        public bool OrderBy { get; set; }
+        public Expression<Func<HeroAttributes, bool>> Include { get; set; }
     }
 }

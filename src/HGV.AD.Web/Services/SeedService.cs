@@ -106,22 +106,15 @@ namespace HGV.AD.Web.Services
             _dbContext.SaveChanges();
 
             var attributes = new List<AttributeSumary>();
-            attributes.Add(new AttributeSumary() { Name = "Base Str", Expression = _ => _.BaseStr, OrderBy = true });
-            attributes.Add(new AttributeSumary() { Name = "Str Gain", Expression = _ => _.StrGain, OrderBy = true });
-            attributes.Add(new AttributeSumary() { Name = "Base Agi", Expression = _ => _.BaseAgi, OrderBy = true });
-            attributes.Add(new AttributeSumary() { Name = "Agi Gain", Expression = _ => _.AgiGain, OrderBy = true });
-            attributes.Add(new AttributeSumary() { Name = "Base Int", Expression = _ => _.BaseInt, OrderBy = true });
-            attributes.Add(new AttributeSumary() { Name = "Int Gain", Expression = _ => _.IntGain, OrderBy = true });
-            attributes.Add(new AttributeSumary() { Name = "HP", Expression = _ => _.HP, OrderBy = true });
-            attributes.Add(new AttributeSumary() { Name = "HP Regen", Expression = _ => _.HPRegen, OrderBy = true });
-            attributes.Add(new AttributeSumary() { Name = "Mana", Expression = _ => _.Mana, OrderBy = true });
-            attributes.Add(new AttributeSumary() { Name = "Armor", Expression = _ => _.Armor, OrderBy = true });
-            attributes.Add(new AttributeSumary() { Name = "Max Dmg", Expression = _ => _.MaxDmg, OrderBy = true });
-            attributes.Add(new AttributeSumary() { Name = "Min Dmg", Expression = _ => _.MinDmg, OrderBy = true });
-            attributes.Add(new AttributeSumary() { Name = "Movespeed", Expression = _ => _.Movespeed, OrderBy = true });
-            attributes.Add(new AttributeSumary() { Name = "Projectile", Expression = _ => _.ProjectileSpeed, OrderBy = true });
-            attributes.Add(new AttributeSumary() { Name = "Range", Expression = _ => _.Range, OrderBy = true });
-            attributes.Add(new AttributeSumary() { Name = "Turnrate", Expression = _ => _.Turnrate, OrderBy = false });
+            attributes.Add(new AttributeSumary() { Name = "Str Gain",   Expression = _ => _.StrGain,                Include = _ => true });
+            attributes.Add(new AttributeSumary() { Name = "Agi Gain",   Expression = _ => _.AgiGain,                Include = _ => true });
+            attributes.Add(new AttributeSumary() { Name = "Int Gain",   Expression = _ => _.IntGain,                Include = _ => true });
+            attributes.Add(new AttributeSumary() { Name = "HP Regen",   Expression = _ => _.HPRegen,                Include = _ => true });
+            attributes.Add(new AttributeSumary() { Name = "Armor",      Expression = _ => _.Armor,                  Include = _ => true });
+            attributes.Add(new AttributeSumary() { Name = "Damage",     Expression = _ => (_.MinDmg + _.MaxDmg)/2,  Include = _ => true });
+            attributes.Add(new AttributeSumary() { Name = "Movespeed",  Expression = _ => _.Movespeed,              Include = _ => true });
+            attributes.Add(new AttributeSumary() { Name = "Projectile", Expression = _ => _.ProjectileSpeed,        Include = _ => _.Range > 150 });
+            attributes.Add(new AttributeSumary() { Name = "Range",      Expression = _ => _.Range,                  Include = _ => _.Range > 150 });
 
             var heroeCollection = _dbContext.Heroes.ToList();
             foreach (var hero in heroeCollection)
@@ -130,9 +123,11 @@ namespace HGV.AD.Web.Services
                 foreach (var item in attributes)
                 {
                     var value = item.Expression.Compile().Invoke(hero);
-                    var rank = item.OrderBy == true ?
-                            _dbContext.Heroes.GroupBy(item.Expression).Select(_ => _.Key).OrderByDescending(_ => _).ToList().IndexOf(value) + 1 :
-                            _dbContext.Heroes.GroupBy(item.Expression).Select(_ => _.Key).OrderBy(_ => _).ToList().IndexOf(value) + 1;
+                    var included = item.Include.Compile().Invoke(hero);
+                    if (included == false)
+                        continue;
+
+                    var rank = _dbContext.Heroes.GroupBy(item.Expression).Select(_ => _.Key).OrderByDescending(_ => _).ToList().IndexOf(value) + 1;
 
                     var entity = new HeroAttributeRank()
                     {
