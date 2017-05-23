@@ -10,9 +10,9 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <Content Include="wwwroot\js\recommendations.js">
-      <CopyToPublishDirectory>PreserveNewest</CopyToPublishDirectory>
-    </Content>
+    <Content Include="wwwroot\js\live.js" />
+    <Content Include="wwwroot\js\live.min.js" />
+    <Content Include="wwwroot\js\recommendations.js" />
     <Content Include="wwwroot\js\recommendations.min.js" />
   </ItemGroup>
 
@@ -24,6 +24,7 @@
   </ItemGroup>
 
   <ItemGroup>
+    <PackageReference Include="BuildBundlerMinifier" Version="2.4.337" />
     <PackageReference Include="BundlerMinifier.Core" Version="2.2.306" />
     <PackageReference Include="CsvHelper" Version="3.0.0-beta7" />
     <PackageReference Include="Microsoft.AspNetCore.Authentication.Cookies" Version="1.1.1" />

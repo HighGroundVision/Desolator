@@ -80,7 +80,9 @@
         </div>
         <!-- ko foreach: TeamDire -->
         <div class="col-xs-2 col-sm-2 col-md-2 col-lg-2">
-            <img src="" class="img-responsive img-rounded" data-bind="click: $root.SelectHero, attr: { src: 'http://cdn.dota2.com/apps/dota2/images/heroes/' + heroIdentity + '_hphover.png'}" />
+            <a href="" data-bind="attr: { href: $root.getSelectedHeroUrl($data) }" >
+                <img src="" class="img-responsive img-rounded" data-bind="attr: { src: 'http://cdn.dota2.com/apps/dota2/images/heroes/' + heroIdentity + '_hphover.png'}" />
+            </a>
         </div>
         <!-- /ko -->
         <div class="col-xs-1 col-sm-1 col-md-1 col-lg-1">
@@ -94,7 +96,9 @@
         </div>
         <!-- ko foreach: TeamRadiant -->
         <div class="col-xs-2 col-sm-2 col-md-2 col-lg-2">
-            <img src="" class="img-responsive img-rounded" data-bind="click: $root.SelectHero, attr: { src: 'http://cdn.dota2.com/apps/dota2/images/heroes/' + heroIdentity + '_hphover.png'}" />
+            <a href="" data-bind="attr: { href: $root.getSelectedHeroUrl($data) }" >
+                <img src="" class="img-responsive img-rounded" data-bind="attr: { src: 'http://cdn.dota2.com/apps/dota2/images/heroes/' + heroIdentity + '_hphover.png'}" />
+            </a>
         </div>
         <!-- /ko -->
         <div class="col-xs-1 col-sm-1 col-md-1 col-lg-1">

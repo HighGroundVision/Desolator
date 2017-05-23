@@ -21,6 +21,7 @@ namespace HGV.AD.Web.Services
     {
         private readonly ApplicationDbContext _dbContext;
         private readonly ILogger _logger;
+        private readonly List<int> _filterCauseSteamSucks = new List<int>() { 114, 67, 105, 98, 100 };
 
         public SeedService(
             ApplicationDbContext dbcontext,
@@ -49,7 +50,7 @@ namespace HGV.AD.Web.Services
             {
                 // Hero
                 var hero = _dbContext.Heroes.SingleOrDefault(_ => _.HeroId == item.hero_id);
-                if(item.ability_draft_enabled == true)
+                if(item.ability_draft_enabled == true && _filterCauseSteamSucks.Contains(item.hero_id) == false)
                 {
                     if (hero == null)
                     {
@@ -76,7 +77,7 @@ namespace HGV.AD.Web.Services
                     primary = "INT";
 
                 hero.Name = item.name;
-                hero.Patch = "7.05";
+                hero.Patch = "7.06";
                 hero.Primary = primary;
                 hero.Movespeed = item.movement_speed;
                 hero.MaxDmg = item.attack_damage_max;
@@ -522,15 +523,18 @@ namespace HGV.AD.Web.Services
             _dbContext.SaveChanges();
 
             var httpClient = new HttpClient();
-            var jsonData = httpClient.GetStringAsync("http://www.dota2.com/jsfeed/heropediadata?feeds=abilitydata&l=en_us").Result;
-            var root = JObject.Parse(jsonData);
+            var json1 = httpClient.GetStringAsync("http://www.dota2.com/jsfeed/heropediadata?feeds=abilitydata&l=en_us").Result;
+            var json2 = httpClient.GetStringAsync("http://hgv-raindrop.azurewebsites.net/api/abilities").Result;
+
+            var feedRoot = JObject.Parse(json1);
+            var abilitiesRoot = JArray.Parse(json2);
 
             var regexAbility = new Regex(@"ABILITY: <span class=""attribVal"">(?<value>.*?)</span>", RegexOptions.None);
             var regexDamageType = new Regex(@"DAMAGE TYPE: <span class=""attribVal"">(?<value>.*?)</span>", RegexOptions.None);
             var regexAffects = new Regex(@"AFFECTS: <span class=""attribVal"">(?<value>.*?)</span>", RegexOptions.None);
 
 
-            foreach (var data in root)
+            foreach (var data in feedRoot)
             {
                 JObject collection = data.Value as JObject;
 
@@ -539,6 +543,16 @@ namespace HGV.AD.Web.Services
                     var identity = item.Key;
                     var ability = _dbContext.Abilities.SingleOrDefault(_ => _.Identity == identity);
                     if (ability == null)
+                    {
+                        _logger.LogWarning(string.Format("No ability found for identity: {0}", identity));
+                        continue;
+                    }
+
+                    var abilityOther = abilitiesRoot.Select(_ => (JObject)_).Where(_ =>
+                        _.Properties().Any(__ => __.Name == "ability_id" && __.Value.Value<int>() == ability.AbilityId)
+                    ).FirstOrDefault();
+
+                    if (abilityOther == null)
                     {
                         _logger.LogWarning(string.Format("No ability found for identity: {0}", identity));
                         continue;
@@ -577,12 +591,15 @@ namespace HGV.AD.Web.Services
                     var template = "<div class=\"iconTooltip\"><div class=\"abilityTarget\"><div>{0}</div><hr /><div class=\"abilityDesc\">{1}</div><div class=\"abilityNotes\">{2}</div><div class=\"abilityDmg\">{3}</div><div>{4}</div><div class=\"abilityCMB\">{5}</div><div class=\"abilityLore\">{6}</div></div></div>";
                     ability.Html = string.Format(template, affects, description, notes, damage, attributes, commands, lore);
 
+                    if(abilityOther["scepter"].Value<bool>() == true)
+                        ability.Keywords += "Upgradable ";
+
                     if (string.IsNullOrWhiteSpace(ability.DamageType) == false)
                         ability.Keywords += "Damage ";
 
                     var searchDescription = new Dictionary<string, string>()
                     {
-                        { "Upgradable by Aghanim's Scepter", "Upgradable " },
+                        //{ "Upgradable by Aghanim's Scepter", "Upgradable " },
                         { "Unique Attack Modifier", "UAM " },
                         { "lifesteal", "Lifesteal " },
                         { "silence", "Silence " },

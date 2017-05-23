@@ -2,4 +2,244 @@
     ViewData["Title"] = "Draft";
 }
 
-<h1>Live Draft</h1>
+@section scripts
+{
+    <script type="text/javascript" src="~/lib/underscore/underscore-min.js"></script>
+    <script type="text/javascript" src="~/lib/js-url/url.min.js"></script>
+    <script type="text/javascript" src="~/js/live.js" asp-append-version="true"></script>
+}
+
+<section class="hidden-xs">
+    <section data-bind="visible: Loading">
+
+        <div class="text-center">
+            <h3>Loading</h3>
+            <i class="fa fa-spinner fa-spin fa-5x fa-fw text-info"></i>
+        </div>
+
+    </section>
+
+    <section data-bind="visible: !Loading()">
+        <section>
+            <div class="row">
+                <div class="col-xs-6 col-md-2">
+                    <!-- ko with: Hero -->
+                    <h5><span data-bind="text: name"></span> <span class="pull-right text-primary" data-bind="text: primary"></span></h5>
+                    <img class="img-rounded img-responsive" data-bind="attr: { src: 'http://cdn.dota2.com/apps/dota2/images/heroes/' +  identity + '_full.png'}" />
+                    <!-- /ko -->
+
+                </div>
+                <div class="col-xs-6 col-md-6">
+                    <h5>Talents</h5>
+                    <table class="table table-condensed">
+                        <!-- ko with: TalenetGrouped -->
+                        <tbody data-bind="foreach: Object.keys($data).reverse()">
+                            <tr>
+                                <td data-bind="text: $parent[$data][0].name"></td>
+                                <td class="text-primary" data-bind="text: $data"></td>
+                                <td data-bind="text: $parent[$data][1].name"></td>
+                            </tr>
+                        </tbody>
+                        <!-- /ko -->
+                    </table>
+                </div>
+                <div class="col-xs-6 col-md-2">
+                    <h5>Best</h5>
+                    <table class="table table-condensed">
+                        <tbody data-bind="foreach: AttributesGood()">
+                            <tr>
+                                <td width="80px;">
+                                    <span data-bind="text: name"></span>
+                                </td>
+                                <td>
+                                    <div class="progress draft-progress-bar">
+                                        <div class="progress-bar" data-bind="style: { 'width': (percentage*100) + '%' }, css: $root.getStyleForHeroStatRanks($data)" role="progressbar"></div>
+                                    </div>
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+                <div class="col-xs-6 col-md-2">
+                    <h5>Wrost</h5>
+                    <table class="table table-condensed">
+                        <tbody data-bind="foreach: AttributesBad()">
+                            <tr>
+                                <td width="80px;">
+                                    <span data-bind="text: name"></span>
+                                </td>
+                                <td>
+                                    <div class="progress draft-progress-bar">
+                                        <div class="progress-bar" data-bind="style: { 'width': (percentage*100) + '%' }, css: $root.getStyleForHeroStatRanks($data)" role="progressbar"></div>
+                                    </div>
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+
+            <hr />
+        </section>
+
+        <section>
+
+            <div class="row">           
+                <div class="col-sm-1">
+                    <div class="text-center">
+                        <i data-bind="click: function() { $root.SelectTrend(1) }, css: $root.getStyleForSelectedTrend(1)" style="color: #2a9fd6;" class="fa fa-user-plus fa-2x" title="These are abilities that are required by the heroes' talents." aria-hidden="true"></i>
+                        <br />
+                        <span>Talents</span>
+                    </div>
+                    
+                </div>
+                <div class="col-sm-1">
+                    <div class="text-center">
+                        <i data-bind="click: function() { $root.SelectTrend(2) }, css: $root.getStyleForSelectedTrend(2)" style="color: yellow;" class="fa fa-bolt fa-2x" title="These are abilities that upgrade with the purchase of Aghanim's Scepter." aria-hidden="true"></i>
+                        <br />
+                        <span>Upgradable</span>
+                    </div>
+                </div>
+                <div class="col-sm-1">
+                    <div class="text-center">
+                        <i data-bind="click: function() { $root.SelectTrend(3) }, css: $root.getStyleForSelectedTrend(3)" style="color: #77b300;" class="fa fa-chain-broken fa-2x" title="These are the abilities that stun." aria-hidden="true"></i>
+                        <br />
+                        <span>Stun</span>
+                    </div>                  
+                </div>
+                <div class="col-sm-1">
+                    <div class="text-center">
+                        <i data-bind="click: function() { $root.SelectTrend(4) }, css: $root.getStyleForSelectedTrend(4)" style="color: royalblue;" class="fa fa-snowflake-o fa-2x" title="These are the abilities that slow." aria-hidden="true"></i>
+                        <br />
+                        <span>Slow</span>
+                    </div>             
+                </div>
+                <div class="col-sm-1">
+                    <div class="text-center">
+                        <i data-bind="click: function() { $root.SelectTrend(5) }, css: $root.getStyleForSelectedTrend(5)" style="color: red;" class="fa fa-ban fa-2x" title="These are the abilities that silence." aria-hidden="true"></i>
+                        <br />
+                        <span>Silence</span>
+                    </div>
+                </div>
+                <div class="col-sm-1">
+                    <div class="text-center">
+                        <i data-bind="click: function() { $root.SelectTrend(6) }, css: $root.getStyleForSelectedTrend(6)" style="color: #cc0000;" class="fa fa-heartbeat fa-2x" title="These are the abilities that have lifesteal." aria-hidden="true"></i>
+                        <br />
+                        <span>Lifesteal</span>
+                    </div>
+                </div>
+                <div class="col-sm-1">
+                    <div class="text-center">
+                        <i data-bind="click: function() { $root.SelectTrend(7) }, css: $root.getStyleForSelectedTrend(7)" style="color: green;" class="fa fa-medkit fa-2x" title="These are the abilities that heal." aria-hidden="true"></i>
+                        <br />
+                        <span>Heal</span>
+                    </div>
+                </div>
+                <div class="col-sm-1">
+                    <div class="text-center">
+                        <i data-bind="click: function() { $root.SelectTrend(8) }, css: $root.getStyleForSelectedTrend(8)" style="color: mediumpurple;" class="fa fa-magic fa-2x" title="These are the abilities that give or reduce resistance." aria-hidden="true"></i>
+                        <br />
+                        <span>Resistance</span>
+                    </div>
+                </div>
+                <div class="col-sm-1">
+                    <div class="text-center">
+                        <i data-bind="click: function() { $root.SelectTrend(9) }, css: $root.getStyleForSelectedTrend(9)" style="color: goldenrod;" class="fa fa-shield fa-2x" title="These are the abilities that give or reduce armor." aria-hidden="true"></i>
+                        <br />
+                        <span>Armor</span>
+                    </div>
+                </div>
+                <div class="col-sm-1">
+                </div>
+                <div class="col-sm-1">
+                    <div class="text-center">
+                        <i data-bind="click: function() { $root.SelectTrend(11) }, css: $root.getStyleForSelectedTrend(11)" style="color: green;" class="fa fa-check fa-2x" title="Pick" aria-hidden="true"></i>
+                        <br />
+                        <span>Pick</span>
+                    </div>   
+                </div>
+                <div class="col-sm-1">
+                    <div class="text-center">
+                        <i data-bind="click: function() { $root.SelectTrend(12) }, css: $root.getStyleForSelectedTrend(12)" style="color: red;" class="fa fa-times fa-2x" title="Taken" aria-hidden="true"></i>
+                        <br />
+                        <span>Taken</span>
+                    </div>
+                </div>
+            </div>
+
+            <hr />
+        </section>
+
+        <section>
+            <div class="row" data-bind="foreach: Abilities">
+                <div class="col-xs-2 col-sm-2 col-md-1 col-lg-1" style="margin-bottom: 20px;" >
+                   
+                    
+                    <div class="row">
+                        <div class="col-lg-12">
+                            <img src="" class="img-responsive img-rounded" data-bind="click: $root.SelectAbility, css: $root.getStyleForSelectedAbility($data), attr: { src: 'http://cdn.dota2.com/apps/dota2/images/abilities/' + identity + '_hp1.png', title: name }, style: { filter: 'grayscale(' + $root.getFilterForSelectedTrend($data) + '%)' }" />
+                        </div>
+                    </div>
+
+                    <div class="row">
+                        <div class="col-lg-12">
+                            <div class="progress draft-progress-bar">
+                                <div data-bind="style: { width: $root.getWinRateOfSelectForProgress($data) + '%', filter: 'grayscale(' + $root.getFilterForSelectedTrend($data) + '%)' }" class="progress-bar" role="progressbar"></div>
+                            </div>
+                            <div class="progress draft-progress-bar">
+                                <div data-bind="style: { width: $root.getWinRateOfPick1ForProgress($data) + '%', filter: 'grayscale(' + $root.getFilterForSelectedTrend($data) + '%)' }" class="progress-bar progress-bar-success" role="progressbar"></div>
+                            </div>
+                            <div class="progress draft-progress-bar">
+                                <div data-bind="style: { width: $root.getWinRateOfPick2ForProgress($data) + '%', filter: 'grayscale(' + $root.getFilterForSelectedTrend($data) + '%)' }" class="progress-bar progress-bar-warning" role="progressbar"></div>
+                            </div>
+                            <div class="progress draft-progress-bar">
+                                <div data-bind="style: { width: $root.getWinRateOfPick3ForProgress($data) + '%', filter: 'grayscale(' + $root.getFilterForSelectedTrend($data) + '%)' }" class="progress-bar progress-bar-info" role="progressbar"></div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="row" data-bind="foreach: Ultimates">
+                <div class="col-xs-2 col-sm-2 col-md-1 col-lg-1">
+
+                    <div class="row">
+                        <div class="col-lg-12">
+                            <img src="" class="img-responsive img-rounded" data-bind="click: $root.SelectAbility, css: $root.getStyleForSelectedAbility($data), attr: { src: 'http://cdn.dota2.com/apps/dota2/images/abilities/' + identity + '_hp1.png', title: name }, style: { filter: 'grayscale(' + $root.getFilterForSelectedTrend($data) + '%)' }" />
+                        </div>
+                    </div>
+
+                    <div class="row">
+                        <div class="col-lg-12">
+                            <div class="progress draft-progress-bar">
+                                <div data-bind="style: { 'width': $root.getWinRateOfSelectForProgress($data) + '%', filter: 'grayscale(' + $root.getFilterForSelectedTrend($data) + '%)' }" class="progress-bar" role="progressbar"></div>
+                            </div>
+                            <div class="progress draft-progress-bar">
+                                <div data-bind="style: { width: $root.getWinRateOfPick1ForProgress($data) + '%', filter: 'grayscale(' + $root.getFilterForSelectedTrend($data) + '%)' }" class="progress-bar progress-bar-success" role="progressbar"></div>
+                            </div>
+                            <div class="progress draft-progress-bar">
+                                <div data-bind="style: { width: $root.getWinRateOfPick2ForProgress($data) + '%', filter: 'grayscale(' + $root.getFilterForSelectedTrend($data) + '%)' }" class="progress-bar progress-bar-warning" role="progressbar"></div>
+                            </div>
+                            <div class="progress draft-progress-bar">
+                                <div data-bind="style: { width: $root.getWinRateOfPick3ForProgress($data) + '%', filter: 'grayscale(' + $root.getFilterForSelectedTrend($data) + '%)' }" class="progress-bar progress-bar-info" role="progressbar"></div>
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+
+            <hr />
+        </section>
+     
+    </section>
+
+</section>
+
+<section class="visible-xs">
+
+    <div class="alert alert-warning" role="alert">
+        <h5>Warning!</h5> Drafting on mobile is not the best experience. We are exploring other options that work better for mobile devices.
+    </div>
+
+</section>

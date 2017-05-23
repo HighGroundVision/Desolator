@@ -6,6 +6,7 @@ using Microsoft.AspNetCore.Mvc;
 using HGV.AD.Web.Data;
 using HGV.AD.Web.Models.Trends;
 using Microsoft.EntityFrameworkCore;
+using HGV.AD.Web.Models.Attributes;
 
 namespace HGV.AD.Web.Controllers
 {
@@ -55,7 +56,7 @@ namespace HGV.AD.Web.Controllers
                 .Where(_ => _.HeroId == heroId)
                 .Where(_ => !_.Name.Contains("Base"))
                 .Where(_ => _.Percentage < 0.50)
-                .OrderBy(_ => _.Percentage)
+                .OrderByDescending(_ => _.Percentage)
                 .Take(4)
                 .ToList();
 
@@ -74,20 +75,24 @@ namespace HGV.AD.Web.Controllers
 
         public IActionResult GetAbilityPoolFromDraft(string draft)
         {
+            var collection = new List<AbilityAttributes>();
+
             var ultimates = draft.Split(',')
                 .Select(_ => int.Parse(_))
                 .ToList();
 
-            var abilities = _dbContext.Abilities
-                .Where(_ => ultimates.Contains(_.AbilityId))
-                .OrderBy(_ => _.HeroId)
-                .Join(_dbContext.Abilities, _ => _.HeroId, _ => _.HeroId, (lhs, rhs) => rhs)
-                .ToList();
+            foreach (var Id in ultimates)
+            {
+                var entity = _dbContext.Abilities.Find(Id);
+                var abilities = _dbContext.Abilities.Where(_ => _.HeroId == entity.HeroId && _.AbilityId != entity.AbilityId).ToList();
+                collection.AddRange(abilities);
+                collection.Add(entity);
+            }
 
-            return Json(abilities);
+            return Json(collection);
         }
 
-        public IActionResult GetAbilityTrendsFromDraft(string draft)
+        public IActionResult GetAbilityTrendsFromDraft(int heroId, string draft)
         {
             var ultimates = draft.Split(',')
                 .Select(_ => int.Parse(_))
@@ -95,10 +100,12 @@ namespace HGV.AD.Web.Controllers
 
             var abilities = _dbContext.Abilities
                 .Where(_ => ultimates.Contains(_.AbilityId))
+                .Where(_ => _.HeroId != heroId)
                 .Join(_dbContext.Abilities, _ => _.HeroId, _ => _.HeroId, (lhs, rhs) => rhs.AbilityId)
                 .ToList();
 
-            var trends = _dbContext.CurrentAbilityTrends
+            var trends = _dbContext.CurrentHeroComboTrends
+                .Where(_ => _.HeroId == heroId)
                 .Where(_ => abilities.Contains(_.AbilityId))
                 .ToList();
 

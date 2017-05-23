@@ -38,6 +38,10 @@ function DraftingViewModel() {
         return _.some(self.Talenets(), function (i) { return i.name.includes(item.name); });
     }
 
+    self.isUpgradable = function (item) {
+        return item.keywords ? item.keywords.includes("Upgradable") : false;
+    }
+
     self.isMostPicked = function (item) {
         return _.some(self.MostPicked(), function (i) { return i.abilityId == item.abilityId; });
     }
@@ -58,23 +62,23 @@ function DraftingViewModel() {
         return _.some(self.MostLinked(), function (i) { return i == item.abilityId; });
     }
 
-    self.isUpgradable = function (item) {
-        return item.keywords ? item.keywords.includes("Upgradable") : false;
+    self.isFlaged = function (item) {
+        return _.some(self.MostPicked(), function (i) { return i.abilityId == item.abilityId; }) && 
+            _.some(self.MostWins(), function (i) { return i.abilityId == item.abilityId; }) && 
+            _.some(self.MostKills(), function (i) { return i.abilityId == item.abilityId; });
     }
+
+    
 
     self.getStyleForHeroStatRanks = function (item) {
         var value = item.percentage;
-        if (value >= 0.80) {
+        if (value >= 0.60) {
             return "progress-bar-success";
-        }
-        if (value >= 0.50) {
-            return "progress-bar-info";
-        }
-        if (value >= 0.20) {
+        } else if (value >= 0.40) {
             return "progress-bar-warning";
+        } else {
+            return "progress-bar-danger";
         }
-
-        return "progress-bar-danger";
     }
 
     self.getStyleForSelectedAbility = function (item) {
@@ -94,23 +98,42 @@ function DraftingViewModel() {
     self.getSelectedProgress = function (item) {
         var selected = self.SelectedAbility();
         if (!selected) {
-            return -1;
+            return 0;
         }
         if (selected.abilityId == item.abilityId) {
-            return -1;
+            return 0;
         }
 
         var combos = self.SelectedCombos();
         var total = _.max(combos, function (i) { return i.wins; });
         var entity = ko.utils.arrayFirst(combos, function (i) { return i.abilityId == selected.abilityId && i.comboId == item.abilityId; });
         if (!entity)
-            return -1;
-
-        var value = (entity.wins / total.wins) * 100;
-        if (value < 10)
             return 0;
 
-        return value;
+        var value = (entity.wins / total.wins) * 100;
+            return value;
+    }
+
+    self.getSelectedFilter = function (item) {
+        var selected = self.SelectedAbility();
+        if (!selected) {
+            return 0;
+        }
+        if (selected.abilityId == item.abilityId) {
+            return 0;
+        }
+
+        var combos = self.SelectedCombos();
+        var total = _.max(combos, function (i) { return i.wins; });
+        var entity = ko.utils.arrayFirst(combos, function (i) { return i.abilityId == selected.abilityId && i.comboId == item.abilityId; });
+        if (!entity)
+            return 0;
+
+        var value = (entity.wins / total.wins) * 100;
+        if (value < 40)
+            return 100;
+        else
+            return 100 - value;
     }
 
     self.SelectAbility = function (item) {
@@ -140,7 +163,7 @@ function DraftingViewModel() {
 
         var d1 = $.get("/Draft/GetHeroDetails/?heroId=" + heroId);
         var d2 = $.get("/Draft/GetAbilityPoolFromDraft/?draft=" + draft);
-        var d3 = $.get("/Draft/GetAbilityTrendsFromDraft/?draft=" + draft);
+        var d3 = $.get("/Draft/GetAbilityTrendsFromDraft/?heroId=" + heroId + "&draft=" + draft);
         var d4 = $.get("/Draft/GetComboTrendsFromDraft/?draft=" + draft);
 
         $.when(d1, d2, d3, d4).done(function (v1, v2, v3, v4) {

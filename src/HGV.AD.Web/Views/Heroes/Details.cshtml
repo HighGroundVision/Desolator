@@ -24,11 +24,11 @@
                     <table class="table table-condensed">
                         <tbody>
                             <tr>
-                                <td class="text-info">Patch</td>
+                                <td class="text-primary">Patch</td>
                                 <td>@Model.Item1.Patch</td>
                             </tr>
                             <tr>
-                                <td class="text-info">Primary</td>
+                                <td class="text-primary">Primary</td>
                                 <td>@Model.Item1.Primary</td>
                             </tr>
                         </tbody>
@@ -40,9 +40,9 @@
                             @foreach (var item in Model.Item7)
                             {
                                 <tr>
-                                    <td class="text-info">@item.FirstOrDefault().Name</td>
-                                    <td>@item.Key</td>
-                                    <td class="text-info">@item.LastOrDefault().Name</td>
+                                    <td >@item.FirstOrDefault().Name</td>
+                                    <td class="text-primary">@item.Key</td>
+                                    <td>@item.LastOrDefault().Name</td>
                                 </tr>
                             }
                         </tbody>
@@ -67,8 +67,8 @@
                     <div class="col-xs-5">
                         @item.Name
                     </div>
-                    <div class="col-xs-2">
-                        @item.Value
+                    <div class="col-xs-2" >
+                        <span class="text-primary">@item.Value</span>
                     </div>
                     <div class="col-xs-5">
                         <div class="progress">
@@ -111,7 +111,7 @@
                     </thead>
                     <tbody>
                         <tr>
-                            <td class="text-info">Wins</td>
+                            <td class="text-primary">Wins</td>
                             <td>
                                 <span>@Model.Item3.Wins</span>
                             </td>
@@ -120,7 +120,7 @@
                             </td>
                         </tr>
                         <tr>
-                            <td class="text-info">Loses</td>
+                            <td class="text-primary">Loses</td>
                             <td>
                                 <span>@Model.Item3.Loses</span>
                             </td>
@@ -129,7 +129,7 @@
                             </td>
                         </tr>
                         <tr>
-                            <td class="text-info">Kills</td>
+                            <td class="text-primary">Kills</td>
                             <td>
                                 <span>@Model.Item3.Kills</span>
                             </td>
@@ -138,7 +138,7 @@
                             </td>
                         </tr>
                         <tr>
-                            <td class="text-info">Deaths</td>
+                            <td class="text-primary">Deaths</td>
                             <td>
                                 <span>@Model.Item3.Deaths</span>
                             </td>
@@ -147,7 +147,7 @@
                             </td>
                         </tr>
                         <tr>
-                            <td class="text-info">Assists</td>
+                            <td class="text-primary">Assists</td>
                             <td>
                                 <span>@Model.Item3.Assists</span>
                             </td>
@@ -156,7 +156,7 @@
                             </td>
                         </tr>
                         <tr>
-                            <td class="text-info">Picks</td>
+                            <td class="text-primary">Picks</td>
                             <td>
                                 <span>@Model.Item3.Total</span>
                             </td>

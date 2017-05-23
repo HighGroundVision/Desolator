@@ -34,11 +34,15 @@ function DraftingViewModel() {
         if (entity) {
             return "selected-img";
         } else {
-            if (!search || !item.identity.includes(search)) {
+            if (search) {
+                if (item.abilityIdentity.includes(search)) {
+                    return "";
+                } else {
+                    return "searched-img";
+                }
+            } else {
                 return "";
             }
-
-            return "searched-img";
         }
     }
 
@@ -54,6 +58,12 @@ function DraftingViewModel() {
         } else {
             self.SelectedDraft.remove(item);
         }
+
+        if (self.IsDraftFull()) {
+            var draft = $.map(self.SelectedDraft(), function (_) { return _.abilityId; });
+            var url = "/Draft?key=" + draft.join();
+            history.pushState({}, null, url);
+        }
     }
 
     self.AutoDraft = function (key) {
@@ -66,9 +76,13 @@ function DraftingViewModel() {
         });
     }
 
-    self.SelectHero = function (item) {
-        var draft = $.map(self.SelectedDraft(), function (_) { return _.abilityId; });
-        window.location = "/Draft/Recommendations/?heroId=" + item.heroId + "&draft=" + draft.join();
+    self.getSelectedHeroUrl = function (item) {
+        if (item) {
+            var draft = $.map(self.SelectedDraft(), function (_) { return _.abilityId; });
+            return "/Draft/Live?heroId=" + item.heroId + "&draft=" + draft.join();
+        } else {
+            return window.location;
+        }
     }
 
     self.Reset = function () {
