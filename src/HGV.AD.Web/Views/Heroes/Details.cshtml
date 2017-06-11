@@ -10,7 +10,8 @@
     <div class="row">
         <div class="col-sm-4">
             <section>
-                <img src="@string.Format("http://cdn.dota2.com/apps/dota2/images/heroes/{0}_full.png?v=3581135", Model.Item1.Identity)" />
+                @*<img src="@string.Format("http://cdn.dota2.com/apps/dota2/images/heroes/{0}_full.png?v=3581135", Model.Item1.Identity)" />*@
+                <img src="@string.Format("/images/heroes/{0}.png", Model.Item1.Identity)" />
             </section>
         </div>
         <div class="col-sm-8">
@@ -233,7 +234,7 @@
 
             <hr />
 
-            <section>
+            @*<section>
                 <h3>Paired Abilties Change</h3>
                 <table id="tblCombosTrends" class="table table-condensed table-striped  display nowrap" cellspacing="0" width="100%">
                     <thead>
@@ -284,7 +285,7 @@
                         }
                     </tbody>
                 </table>
-            </section>
+            </section>*@
         </div>
     </div>
 </section>

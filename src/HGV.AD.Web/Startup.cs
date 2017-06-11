@@ -9,6 +9,7 @@ using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.AspNetCore.Rewrite;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
@@ -72,6 +73,7 @@ namespace HGV.AD.Web
 
             services.AddMvc(options =>
             {
+                //options.Filters.Add(new RequireHttpsAttribute());
                 options.CacheProfiles.Add("Default",
                     new CacheProfile()
                     {
@@ -105,8 +107,11 @@ namespace HGV.AD.Web
             }
             else
             {
+                var options = new RewriteOptions();
+                options.AddRedirectToHttps();
+                app.UseRewriter(options);
+
                 app.UseExceptionHandler("/Main/HandleException");
-                //app.UseStatusCodePagesWithRedirects("/Main/HandleStatusCode/{0}");
             }
 
             app.UseApplicationInsightsExceptionTelemetry();

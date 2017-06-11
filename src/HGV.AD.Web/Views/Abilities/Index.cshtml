@@ -48,7 +48,8 @@
                     </td>
                     <td>
                         <a asp-area="" asp-controller="Abilities" asp-action="Details" asp-route-id="@item.AbilityId">
-                            <img src="@string.Format("http://cdn.dota2.com/apps/dota2/images/abilities/{0}_hp1.png", item.Identity)" title="@item.Name" alt="Ability" class="img-responsive" width="30" height="30" />
+                            @*<img src="@string.Format("http://cdn.dota2.com/apps/dota2/images/abilities/{0}_hp1.png", item.Identity)" title="@item.Name" alt="Ability" class="img-responsive" width="30" height="30" />*@
+                            <img src="@string.Format("/images/spellicons/{0}.png", item.Identity)" title="@item.Name" alt="Ability" class="img-responsive" width="30" height="30" />
                         </a>
                     </td>
 
@@ -74,149 +75,6 @@
     </table>
 </section>
 
-<section>
-    <h4 class="text-center">Trends</h4>
-    <table id="tblAbilityTrends" class="table table-condensed table-striped  display nowrap" cellspacing="0" width="100%">
-        <thead>
-            <tr>
-                <th>
-                    Name
-                </th>
-                <th>
-                    Icon
-                </th>
-
-                <th>
-                    Wins
-                </th>
-                <th>
-                    Loses
-                </th>
-                <th>
-                    Kills
-                </th>
-                <th>
-                    Deaths
-                </th>
-                <th>
-                    Assists
-                </th>
-                <th>
-                    Picks
-                </th>
-            </tr>
-        </thead>
-        <tbody>
-            @foreach (var item in Model.Item2)
-            {
-                <tr>
-                    <td>
-                        <a asp-area="" asp-controller="Abilities" asp-action="Details" asp-route-id="@item.AbilityId">
-                            @Html.DisplayFor(modelItem => item.Name)
-                        </a>
-                    </td>
-                    <td>
-                        <a asp-area="" asp-controller="Abilities" asp-action="Details" asp-route-id="@item.AbilityId">
-                            <img src="@string.Format("http://cdn.dota2.com/apps/dota2/images/abilities/{0}_hp1.png", item.Identity)" title="@item.Name" alt="Ability" class="img-responsive" width="30" height="30" />
-                        </a>
-                    </td>
-
-                    <td>
-                        @Html.DisplayFor(modelItem => item.Wins)
-                    </td>
-                    <td>
-                        @Html.DisplayFor(modelItem => item.Loses)
-                    </td>
-                    <td>
-                        @Html.DisplayFor(modelItem => item.Kills)
-                    </td>
-                    <td>
-                        @Html.DisplayFor(modelItem => item.Deaths)
-                    </td>
-                    <td>
-                        @Html.DisplayFor(modelItem => item.Assists)
-                    </td>
-                    <td>
-                        @Html.DisplayFor(modelItem => item.Total)
-                    </td>
-
-                </tr>
-            }
-        </tbody>
-    </table>
-</section>
-
-<section>
-    <h4 class="text-center">Change</h4>
-    <table id="tblAbilityChange" class="table table-condensed table-striped  display nowrap" cellspacing="0" width="100%">
-        <thead>
-            <tr>
-                <th>
-                    Name
-                </th>
-                <th>
-                    Icon
-                </th>
-
-                <th>
-                   Wins
-                </th>
-                <th>
-                    Loses
-                </th>
-                <th>
-                    Kills
-                </th>
-                <th>
-                    Deaths
-                </th>
-                <th>
-                    Assists
-                </th>
-                <th>
-                    Picks
-                </th>
-            </tr>
-        </thead>
-        <tbody>
-            @foreach (var item in Model.Item3)
-            {
-                <tr>
-                    <td>
-                        <a asp-area="" asp-controller="Abilities" asp-action="Details" asp-route-id="@item.AbilityId">
-                            @Html.DisplayFor(modelItem => item.Name)
-                        </a>
-                    </td>
-                    <td>
-                        <a asp-area="" asp-controller="Abilities" asp-action="Details" asp-route-id="@item.AbilityId">
-                            <img src="@string.Format("http://cdn.dota2.com/apps/dota2/images/abilities/{0}_hp1.png", item.Identity)" title="@item.Name" alt="Ability" class="img-responsive" width="30" height="30" />
-                        </a>
-                    </td>
-
-                    <td class="@(item.Wins > 0 ? "text-success" : item.Wins < 0 ? "text-danger" : "" )">
-                        @Html.DisplayFor(modelItem => item.Wins)
-                    </td>
-                    <td class="@(item.Loses > 0 ? "text-danger" : item.Loses < 0 ? "text-success" : "" )">
-                        @Html.DisplayFor(modelItem => item.Loses)
-                    </td>
-                    <td class="@(item.Kills > 0 ? "text-success" : item.Kills < 0 ? "text-danger" : "" )">
-                        @Html.DisplayFor(modelItem => item.Kills)
-                    </td>
-                    <td class="@(item.Deaths > 0 ? "text-danger" : item.Deaths < 0 ? "text-success" : "" )">
-                        @Html.DisplayFor(modelItem => item.Deaths)
-                    </td>
-                    <td class="@(item.Assists > 0 ? "text-success" : item.Assists < 0 ? "text-danger" : "" )">
-                        @Html.DisplayFor(modelItem => item.Assists)
-                    </td>
-                    <td class="@(item.Total > 0 ? "text-success" : item.Total < 0 ? "text-danger" : "" )">
-                        @Html.DisplayFor(modelItem => item.Total)
-                    </td>
-
-                </tr>
-            }
-        </tbody>
-    </table>
-</section>
 
 @section scripts
 {
@@ -224,20 +82,6 @@
         $(document).ready(function () {
             $('#tblAbilities').DataTable({
                 "scrollX": true,
-                "pagingType": "simple",
-                "dom": "<'row'<'col-sm-6'i><'col-sm-6'f>><'row'<'col-sm-12'tr>><'row'<'col-sm-5'l><'col-sm-7'p>>",
-            });
-
-            $('#tblAbilityTrends').DataTable({
-                "scrollX": true,
-                "order": [[2, "desc"]],
-                "pagingType": "simple",
-                "dom": "<'row'<'col-sm-6'i><'col-sm-6'f>><'row'<'col-sm-12'tr>><'row'<'col-sm-5'l><'col-sm-7'p>>",
-            });
-
-            $('#tblAbilityChange').DataTable({
-                "scrollX": true,
-                "order": [[2, "desc"]],
                 "pagingType": "simple",
                 "dom": "<'row'<'col-sm-6'i><'col-sm-6'f>><'row'<'col-sm-12'tr>><'row'<'col-sm-5'l><'col-sm-7'p>>",
             });

@@ -72,7 +72,8 @@
                     </td>
                     <td>
                         <a asp-area="" asp-controller="Heroes" asp-action="Details" asp-route-id="@item.HeroId">
-                            <img src="@string.Format("http://cdn.dota2.com/apps/dota2/images/heroes/{0}_hphover.png?v=3581135", item.Identity)" height="35" />
+                            @*<img src="@string.Format("http://cdn.dota2.com/apps/dota2/images/heroes/{0}_hphover.png?v=3581135", item.Identity)" height="35" />*@
+                            <img src="@string.Format("/images/heroes/{0}.png", item.Identity)" height="35" />
                         </a>
                     </td>
 
@@ -123,153 +124,7 @@
     </table>
 </section>
 
-<hr />
 
-<section>
-    <h4 class="text-center">Trends</h4>
-    <table id="tblHeroTrends" class="table table-condensed table-striped  display nowrap" cellspacing="0" width="100%">
-        <thead>
-            <tr>
-                <th>
-                   Name
-                </th>
-                <th>
-                    Icon
-                </th>
-
-                <th>
-                    Wins
-                </th>
-                <th>
-                    Loses
-                </th>
-                <th>
-                    Kills
-                </th>
-                <th>
-                    Deaths
-                </th>
-                <th>
-                    Assists
-                </th>
-                <th>
-                    Picks
-                </th>
-            </tr>
-        </thead>
-        <tbody>
-            @foreach (var item in Model.Item2)
-            {
-                <tr>
-                    <td>
-                        <a asp-area="" asp-controller="Heroes" asp-action="Details" asp-route-id="@item.HeroId">
-                            @Html.DisplayFor(modelItem => item.Name)
-                        </a>
-                    </td>
-                    <td>
-                        <a asp-area="" asp-controller="Heroes" asp-action="Details" asp-route-id="@item.HeroId">
-                            <img src="@string.Format("http://cdn.dota2.com/apps/dota2/images/heroes/{0}_hphover.png?v=3581135", item.Identity)" height="35" />
-                        </a>
-                    </td>
-
-                    <td>
-                        @Html.DisplayFor(modelItem => item.Wins)
-                    </td>
-                    <td>
-                        @Html.DisplayFor(modelItem => item.Loses)
-                    </td>
-                    <td>
-                        @Html.DisplayFor(modelItem => item.Kills)
-                    </td>
-                    <td>
-                        @Html.DisplayFor(modelItem => item.Deaths)
-                    </td>
-                    <td>
-                        @Html.DisplayFor(modelItem => item.Assists)
-                    </td>
-                    <td>
-                        @Html.DisplayFor(modelItem => item.Total)
-                    </td>
-
-                </tr>
-            }
-        </tbody>
-    </table>
-</section>
-
-<hr />
-
-<section>
-    <h4 class="text-center">Change</h4>
-    <table id="tblHeroChange" class="table table-condensed table-striped display nowrap" cellspacing="0" width="100%">
-        <thead>
-            <tr>
-                <th>
-                    Name
-                </th>
-                <th>
-                    Icon
-                </th>
-
-                <th>
-                    Wins
-                </th>
-                <th>
-                    Loses
-                </th>
-                <th>
-                    Kills
-                </th>
-                <th>
-                    Deaths
-                </th>
-                <th>
-                    Assists
-                </th>
-                <th>
-                    Picks
-                </th>
-            </tr>
-        </thead>
-        <tbody>
-            @foreach (var item in Model.Item3)
-            {
-                <tr>
-                    <td>
-                        <a asp-area="" asp-controller="Heroes" asp-action="Details" asp-route-id="@item.HeroId">
-                            @Html.DisplayFor(modelItem => item.Name)
-                        </a>
-                    </td>
-                    <td>
-                        <a asp-area="" asp-controller="Heroes" asp-action="Details" asp-route-id="@item.HeroId">
-                            <img src="@string.Format("http://cdn.dota2.com/apps/dota2/images/heroes/{0}_hphover.png?v=3581135", item.Identity)" height="35" />
-                        </a>
-                    </td>
-
-                    <td class="@(item.Wins > 0 ? "text-success" : item.Wins < 0 ? "text-danger" : "" )">
-                        @Html.DisplayFor(modelItem => item.Wins)
-                    </td>
-                    <td class="@(item.Loses > 0 ? "text-danger" : item.Loses < 0 ? "text-success" : "" )">
-                        @Html.DisplayFor(modelItem => item.Loses)
-                    </td>
-                    <td class="@(item.Kills > 0 ? "text-success" : item.Kills < 0 ? "text-danger" : "" )">
-                        @Html.DisplayFor(modelItem => item.Kills)
-                    </td>
-                    <td class="@(item.Deaths > 0 ? "text-danger" : item.Deaths < 0 ? "text-success" : "" )">
-                        @Html.DisplayFor(modelItem => item.Deaths)
-                    </td>
-                    <td class="@(item.Assists > 0 ? "text-success" : item.Assists < 0 ? "text-danger" : "" )">
-                        @Html.DisplayFor(modelItem => item.Assists)
-                    </td>
-                    <td class="@(item.Total > 0 ? "text-success" : item.Total < 0 ? "text-danger" : "" )">
-                        @Html.DisplayFor(modelItem => item.Total)
-                    </td>
-
-                </tr>
-            }
-        </tbody>
-    </table>
-</section>
 
 @section scripts
 {
@@ -277,20 +132,6 @@
         $(document).ready(function () {
             $('#tblHeroes').DataTable({
                 "scrollX": true,
-                "pagingType": "simple",
-                "dom": "<'row'<'col-sm-6'i><'col-sm-6'f>><'row'<'col-sm-12'tr>><'row'<'col-sm-5'l><'col-sm-7'p>>",
-            });
-
-            $('#tblHeroTrends').DataTable({
-                "scrollX": true,
-                "order": [[2, "desc"]],
-                "pagingType": "simple",
-                "dom": "<'row'<'col-sm-6'i><'col-sm-6'f>><'row'<'col-sm-12'tr>><'row'<'col-sm-5'l><'col-sm-7'p>>",
-            });
-
-            $('#tblHeroChange').DataTable({
-                "scrollX": true,
-                "order": [[2, "desc"]],
                 "pagingType": "simple",
                 "dom": "<'row'<'col-sm-6'i><'col-sm-6'f>><'row'<'col-sm-12'tr>><'row'<'col-sm-5'l><'col-sm-7'p>>",
             });

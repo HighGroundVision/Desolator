@@ -58,7 +58,7 @@
 <section data-bind="visible: IsDrafting()" style="display:none;">
     <div class="row" data-bind="foreach: AvailableDraft">
         <div class="col-xs-2 col-sm-2 col-md-1 col-lg-1">
-            <img src="" class="img-rounded img-responsive" data-bind="click: $root.SelectAbility, css: $root.GetSelectedStyling($data), attr: { src: 'http://cdn.dota2.com/apps/dota2/images/abilities/' + abilityIdentity + '_hp1.png' }" />
+            <img src="" class="img-rounded img-responsive" data-bind="click: $root.SelectAbility, css: $root.GetSelectedStyling($data), attr: { src: '/images/spellicons/' + abilityIdentity + '.png' }" />
         </div>
     </div>
     <hr />
@@ -67,7 +67,7 @@
 <section>
     <div class="row" data-bind="foreach: SelectedDraft">
         <div class="col-xs-2 col-sm-2 col-md-1 col-lg-1">
-            <img src="" class="img-responsive img-rounded" data-bind="attr: { src: 'http://cdn.dota2.com/apps/dota2/images/abilities/' + abilityIdentity + '_hp1.png'}" />
+            <img src="" class="img-responsive img-rounded" data-bind="attr: { src: '/images/spellicons/' + abilityIdentity + '.png'}" />
         </div>
     </div>
     <hr />
@@ -81,7 +81,7 @@
         <!-- ko foreach: TeamDire -->
         <div class="col-xs-2 col-sm-2 col-md-2 col-lg-2">
             <a href="" data-bind="attr: { href: $root.getSelectedHeroUrl($data) }" >
-                <img src="" class="img-responsive img-rounded" data-bind="attr: { src: 'http://cdn.dota2.com/apps/dota2/images/heroes/' + heroIdentity + '_hphover.png'}" />
+                <img src="" class="img-responsive img-rounded" data-bind="attr: { src: '/images/heroes/' + heroIdentity + '.png'}" />
             </a>
         </div>
         <!-- /ko -->
@@ -97,7 +97,7 @@
         <!-- ko foreach: TeamRadiant -->
         <div class="col-xs-2 col-sm-2 col-md-2 col-lg-2">
             <a href="" data-bind="attr: { href: $root.getSelectedHeroUrl($data) }" >
-                <img src="" class="img-responsive img-rounded" data-bind="attr: { src: 'http://cdn.dota2.com/apps/dota2/images/heroes/' + heroIdentity + '_hphover.png'}" />
+                <img src="" class="img-responsive img-rounded" data-bind="attr: { src: '/images/heroes/' + heroIdentity + '.png'}" />
             </a>
         </div>
         <!-- /ko -->

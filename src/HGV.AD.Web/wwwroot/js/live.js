@@ -10,6 +10,9 @@ function DraftingViewModel() {
     // Talenets
     self.Talenets = ko.observableArray();
     self.TalenetGrouped = ko.observable();
+    self.getStyleForTalenets = function (key) {
+        return key.includes("unique") ? "info" : "";
+    }
 
     // Attributes
     self.AttributesGood = ko.observableArray([]);
@@ -51,48 +54,56 @@ function DraftingViewModel() {
     self.getStyleForSelectedTrend = function (index) {
         var current = self.SelectedTrend();
         if (current == index) {
-            return "";
-        } else {
             return "picked-trend";
+        } else {
+            return "";
         }
     }
     self.getFilterForSelectedTrend = function (item) {
-        
 
         var takenCollection = self.TakenAbilities();
         var taken = ko.utils.arrayFirst(takenCollection, function (i) { return i.abilityId == item.abilityId; });
         if (taken)
             return 100;
 
+        if (item.ultimate == true) {
+            var pickedCollection = self.PickedAbilities();
+            var picked = ko.utils.arrayFirst(pickedCollection, function (i) { return i.ultimate == true && i.abilityId != item.abilityId; });
+            if (picked)
+                return 100;
+        }
+
         var current = self.SelectedTrend();
         if (current == 0) {
             return 0;
         } else if (current == 1) {
-            return _.some(self.Talenets(), function (i) { return i.name.includes(item.name); }) == true ? 0 : 100;
-        } else if (current > 1 && current < 11) {
+            return _.some(self.Talenets(), function (i) { return i.name.toLowerCase().includes(item.name.toLowerCase()); }) == true ? 0 : 100;
+        } else if (current > 1) {
             if (item.keywords == null) {
                 return 100;
             }
 
             switch (current) {
                 case 2:
-                    return item.key.includes("unique") == true ? 0 : 100;
+                    return item.keywords.includes("Upgradable") == true ? 0 : 100;
                 case 3:
                     return item.keywords.includes("Stun") == true ? 0 : 100;
                 case 4:
                     return item.keywords.includes("Slow") == true ? 0 : 100;
                 case 5:
-                    return item.keywords.includes("Silence") == true ? 0 : 100;
+                    return item.keywords.includes("Speed") == true ? 0 : 100;
                 case 6:
-                    return item.keywords.includes("Lifesteal") == true ? 0 : 100;
+                    return item.keywords.includes("Disable") == true ? 0 : 100;
                 case 7:
                     return item.keywords.includes("Heal") == true ? 0 : 100;
                 case 8:
-                    return item.keywords.includes("Resistance") == true ? 0 : 100;
+                    return item.keywords.includes("Tank") == true ? 0 : 100;
                 case 9:
-                    return item.keywords.includes("Armor") == true ? 0 : 100;
-                case 10:
-                    return item.keywords.includes("Speed") == true ? 0 : 100;
+                    return item.keywords.includes("Nuke") == true ? 0 : 100;
+                case 10: 
+                    return item.keywords.includes("Passive") == true ? 0 : 100;
+                case 11:
+                    return item.keywords.includes("Attack") == true ? 0 : 100;
                 default:
                     return 0;
             }
@@ -101,31 +112,18 @@ function DraftingViewModel() {
 
     self.SelectedAbility = ko.observable(null);
     self.SelectAbility = function (item) {
-        var current = self.SelectedTrend();
-        if (current == 11) {
-            self.PickAbility(item);
-            self.SelectedTrend(0);
-        } else if (current == 12) {
-            self.TakenAbility(item);
-        } else {
-            var current = self.SelectedAbility();
-            if (current) {
-                if (current.abilityId == item.abilityId) {
-                    self.SelectedAbility(null);
-                } else {
-                    self.SelectedAbility(item);
-                }
+        var current = self.SelectedAbility();
+        if (current) {
+            if (current.abilityId == item.abilityId) {
+                self.SelectedAbility(null);
             } else {
                 self.SelectedAbility(item);
             }
+        } else {
+            self.SelectedAbility(item);
         }
     }
-    self.getStyleForSelectedAbility = function (item) {
-        var current = self.SelectedAbility();
-        if (current)
-            if (current.abilityId == item.abilityId)
-                return "selected-img";
-
+    self.getStyleForSelectedAbility = function (item) {       
         var picks = self.PickedAbilities();
         if (picks.length > 0) {
             if (picks[0])
@@ -140,6 +138,12 @@ function DraftingViewModel() {
                 if (picks[2].abilityId == item.abilityId)
                     return "picked-self-three-img";
         }
+
+        var current = self.SelectedAbility();
+        if (current)
+            if (current.abilityId == item.abilityId)
+                return "selected-img";
+
     }
     self.getWinRateOfSelectForProgress = function (item) {
 
@@ -154,7 +158,7 @@ function DraftingViewModel() {
             var max = _.max(filtered, function (i) { return i.wins; });
             var entity = ko.utils.arrayFirst(filtered, function (i) { return i.abilityId == selected.abilityId && i.comboId == item.abilityId; });
             if (!entity)
-                return 0;
+                return 100;
 
             var value = (entity.wins / max.wins) * 100;
             return value;
@@ -163,7 +167,7 @@ function DraftingViewModel() {
             var max = _.max(combos, function (i) { return i.wins; });
             var entity = ko.utils.arrayFirst(combos, function (i) { return i.abilityId == item.abilityId; });
             if (!entity)
-                return 0;
+                return 100;
 
             var value = (entity.wins / max.wins) * 100;
             return value;
@@ -239,15 +243,43 @@ function DraftingViewModel() {
     // Pick Ability
     self.PickedAbilities = ko.observableArray([]);
     self.PickAbility = function (item) {
+        self.SelectedTrend(0);
+
         var picked = self.PickedAbilities();
         var entity = ko.utils.arrayFirst(picked, function (i) { return i.abilityId == item.abilityId; });
         if (entity) {
             self.PickedAbilities.remove(item);
         } else {
-            if (picked.length < 3)
+            if (picked.length < 3) {
                 self.PickedAbilities.push(item);
+            }
         }
     }
+
+    self.hasFirstPick = ko.computed(function () {
+        var picks = self.PickedAbilities();
+        if (picks.length > 0) {
+            return true;
+        } else {
+            return false;
+        }
+    });
+    self.hasSecondPick = ko.computed(function () {
+        var picks = self.PickedAbilities();
+        if (picks.length > 1) {
+            return true;
+        } else {
+            return false;
+        }
+    });
+    self.hasThridPick = ko.computed(function () {
+        var picks = self.PickedAbilities();
+        if (picks.length > 2) {
+            return true;
+        } else {
+            return false;
+        }
+    });
 
     // Taken Ability
     self.TakenAbilities = ko.observableArray([]);
@@ -265,6 +297,10 @@ function DraftingViewModel() {
         } else {
             self.TakenAbilities.push(item);
         }
+    }
+
+    self.openAbilityDetails = function (item) {
+        window.open("/Abilities/Details/" + item.abilityId);
     }
     
 
