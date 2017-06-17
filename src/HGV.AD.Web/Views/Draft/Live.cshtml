@@ -6,10 +6,12 @@
 {
     <script type="text/javascript" src="~/lib/underscore/underscore-min.js"></script>
     <script type="text/javascript" src="~/lib/js-url/url.min.js"></script>
+    <script type="text/javascript" src="~/lib/bootbox.js/bootbox.js"></script>
     <script type="text/javascript" src="~/js/live.js" asp-append-version="true"></script>
 }
 
 <section data-bind="visible: Loading">
+    <!-- Loading -->
 
     <div class="text-center">
         <h3>Loading</h3>
@@ -19,7 +21,11 @@
 </section>
 
 <section data-bind="visible: !Loading()">
+    <!-- Loaded -->
+
     <section>
+        <!-- Hero Details -->
+
         <div class="row">
             <div class="col-md-2 hidden-sm hidden-xs">
                 <!-- ko with: Hero -->
@@ -80,10 +86,10 @@
             </div>
         </div>
 
-        <hr />
     </section>
 
     <section>
+        <!-- Filter Toolbar -->
 
         <div class="row">
             <div class="col-sm-12">
@@ -96,58 +102,58 @@
                     </a>
 
                     <a data-bind="click: function() { $root.SelectTrend(2) }, css: $root.getStyleForSelectedTrend(2)" style="color: yellow;" href="" class="btn btn-default">
-                        <i class="fa fa-bolt fa-2x" title="These are abilities that upgrade with the purchase of Aghanim's Scepter." aria-hidden="true"></i>
+                        <i class="fa fa-level-up fa-2x" title="These are abilities that upgrade with the purchase of Aghanim's Scepter." aria-hidden="true"></i>
                         <br />
                         <span class="hidden-sm hidden-xs">Upgrade</span>
                     </a>
 
-                    <a data-bind="click: function() { $root.SelectTrend(9) }, css: $root.getStyleForSelectedTrend(9)" style="color: #2a9fd6;" href="" class="btn btn-default">
+                    <a data-bind="click: function() { $root.SelectTrend(9) }, css: $root.getStyleForSelectedTrend(9)" style="color: hotpink;" href="" class="btn btn-default">
                         <i class="fa fa-magic fa-2x" title="" aria-hidden="true"></i>
                         <br />
                         <span class="hidden-sm hidden-xs">Nuke</span>
-                        
+
                     </a>
 
                     <a data-bind="click: function() { $root.SelectTrend(3) }, css: $root.getStyleForSelectedTrend(3)" style="color: #77b300;" href="" class="btn btn-default">
                         <i class="fa fa-chain-broken fa-2x" title="These are the abilities that stun." aria-hidden="true"></i>
                         <br />
                         <span class="hidden-sm hidden-xs">Stun</span>
-                        
+
                     </a>
 
                     <a data-bind="click: function() { $root.SelectTrend(6) }, css: $root.getStyleForSelectedTrend(6)" style="color: brown;" href="" class="btn btn-default">
                         <i class="fa fa-ban fa-2x" title="These are the abilities that silence." aria-hidden="true"></i>
                         <br />
                         <span class="hidden-sm hidden-xs">Disable</span>
-                        
+
                     </a>
 
-                    <a data-bind="click: function() { $root.SelectTrend(4) }, css: $root.getStyleForSelectedTrend(4)" style="color: royalblue;" href="" class="btn btn-default">
+                    <a data-bind="click: function() { $root.SelectTrend(4) }, css: $root.getStyleForSelectedTrend(4)" style="color: cornflowerblue;" href="" class="btn btn-default">
                         <i class="fa fa-snowflake-o fa-2x" title="These are the abilities that slow." aria-hidden="true"></i>
                         <br />
                         <span class="hidden-sm hidden-xs">Slow</span>
-                        
+
                     </a>
 
                     <a data-bind="click: function() { $root.SelectTrend(5) }, css: $root.getStyleForSelectedTrend(5)" style="color: green;" href="" class="btn btn-default">
                         <i class="fa fa-paper-plane-o fa-2x" title="These are the abilities that give or reduce speed." aria-hidden="true"></i>
                         <br />
                         <span class="hidden-sm hidden-xs">Speed</span>
-                        
+
                     </a>
 
                     <a data-bind="click: function() { $root.SelectTrend(11) }, css: $root.getStyleForSelectedTrend(11)" style="color: lightseagreen;" href="" class="btn btn-default">
                         <i class="fa fa-legal fa-2x" title="These are the abilities that turn you into a killer" aria-hidden="true"></i>
                         <br />
                         <span class="hidden-sm hidden-xs">Attack</span>
-                        
+
                     </a>
 
                     <a data-bind="click: function() { $root.SelectTrend(8) }, css: $root.getStyleForSelectedTrend(8)" style="color: goldenrod;" href="" class="btn btn-default">
                         <i class="fa fa-shield fa-2x" title="These are the abilities that make you harder to kill." aria-hidden="true"></i>
                         <br />
                         <span class="hidden-sm hidden-xs">Tank</span>
-                        
+
                     </a>
 
                     <a data-bind="click: function() { $root.SelectTrend(7) }, css: $root.getStyleForSelectedTrend(7)" style="color: #cc0000;" href="" class="btn btn-default">
@@ -162,6 +168,27 @@
                         <span class="hidden-sm hidden-xs">Passive</span>
                     </a>
 
+                    
+                </div>
+
+                <div class="btn-group pull-right" role="group">
+                   <a data-bind="click: function() { $root.SelectTrend(12) }, css: $root.getStyleForSelectedTrend(12)" style="color: #2a9fd6;" href="" class="btn btn-default">
+                        <i class="fa fa-legal fa-2x" title="These are the abilities that turn you into a killer" aria-hidden="true"></i>
+                        <br />
+                        <span class="hidden-sm hidden-xs">Physical</span>
+
+                    </a>
+                    <a data-bind="click: function() { $root.SelectTrend(13) }, css: $root.getStyleForSelectedTrend(13)" style="color: #2a9fd6;" href="" class="btn btn-default">
+                        <i class="fa fa-magic fa-2x" title="" aria-hidden="true"></i>
+                        <br />
+                        <span class="hidden-sm hidden-xs">Magical</span>
+
+                    </a>
+                    <a data-bind="click: function() { $root.SelectTrend(14) }, css: $root.getStyleForSelectedTrend(14)" style="color: #2a9fd6;" href="" class="btn btn-default">
+                        <i class="fa fa-bolt fa-2x" title="These are abilities that upgrade with the purchase of Aghanim's Scepter." aria-hidden="true"></i>
+                        <br />
+                        <span class="hidden-sm hidden-xs">Pure</span>
+                    </a>
                 </div>
             </div>
         </div>
@@ -170,13 +197,15 @@
     </section>
 
     <section>
+        <!-- Ability Field -->
+
         <div class="row" data-bind="foreach: Abilities">
             <div class="col-xs-2 col-sm-1 col-md-1 col-lg-1" style="margin-bottom: 20px;">
 
                 <div class="row hidden-sm hidden-xs">
                     <div class="col-lg-12">
-                        <i data-bind="click: $root.PickAbility" class="fa fa-check" aria-hidden="true" title="Pick" style="color: grey;"></i>
-                        <i data-bind="click: $root.openAbilityDetails" class="fa fa-arrow-circle-up pull-right" aria-hidden="true" title="Taken" style="color: grey;"></i>
+                        <i data-bind="click: $root.PickAbility" class="fa fa-lg fa-check" aria-hidden="true" title="Pick" style="color: grey;"></i>
+                        <i data-bind="click: $root.openAbilityDetails" class="fa fa-lg fa-info pull-right" aria-hidden="true" title="Taken" style="color: grey;"></i>
                     </div>
                 </div>
 
@@ -187,9 +216,9 @@
                 </div>
 
                 <div class="row hidden-sm hidden-xs">
-                    <div class="col-lg-12">
+                    <div class="col-lg-12" style="min-height: 50px;">
                         <div class="progress draft-progress-bar">
-                            <div data-bind="style: { width: $root.getWinRateOfSelectForProgress($data) + '%', filter: 'grayscale(' + $root.getFilterForSelectedTrend($data) + '%)' }" class="progress-bar " role="progressbar"></div>
+                            <div data-bind="style: { width: $root.getWinRateVsHero($data) + '%', filter: 'grayscale(' + $root.getFilterForSelectedTrend($data) + '%)' }" class="progress-bar progress-bar-info" role="progressbar"></div>
                         </div>
                         <div data-bind="visible: $root.hasFirstPick" class="progress draft-progress-bar">
                             <div data-bind="style: { width: $root.getWinRateOfPick1ForProgress($data) + '%', filter: 'grayscale(' + $root.getFilterForSelectedTrend($data) + '%)' }" class="progress-bar progress-bar-success" role="progressbar"></div>
@@ -198,9 +227,11 @@
                             <div data-bind="style: { width: $root.getWinRateOfPick2ForProgress($data) + '%', filter: 'grayscale(' + $root.getFilterForSelectedTrend($data) + '%)' }" class="progress-bar progress-bar-warning" role="progressbar"></div>
                         </div>
                         <div data-bind="visible: $root.hasThridPick" class="progress draft-progress-bar">
-                            <div data-bind="style: { width: $root.getWinRateOfPick3ForProgress($data) + '%', filter: 'grayscale(' + $root.getFilterForSelectedTrend($data) + '%)' }" class="progress-bar progress-bar-info" role="progressbar"></div>
+                            <div data-bind="style: { width: $root.getWinRateOfPick3ForProgress($data) + '%', filter: 'grayscale(' + $root.getFilterForSelectedTrend($data) + '%)' }" class="progress-bar progress-bar-danger" role="progressbar"></div>
                         </div>
-                        
+                        <div data-bind="visible: $root.hasSelectedAbility" class="progress draft-progress-bar">
+                            <div data-bind="style: { width: $root.getWinRateVsSelected($data) + '%', filter: 'grayscale(' + $root.getFilterForSelectedTrend($data) + '%)' }" class="progress-bar " role="progressbar"></div>
+                        </div>
                     </div>
                 </div>
             </div>
@@ -211,8 +242,8 @@
 
                 <div class="row hidden-sm hidden-xs">
                     <div class="col-lg-12">
-                        <i data-bind="click: $root.PickAbility" class="fa fa-check" aria-hidden="true" title="Pick" style="color: grey;"></i>
-                        <i data-bind="click: $root.openAbilityDetails" class="fa fa-arrow-circle-up pull-right" aria-hidden="true" title="Taken" style="color: grey;"></i>
+                        <i data-bind="click: $root.PickAbility" class="fa fa-lg fa-check" aria-hidden="true" title="Pick" style="color: grey;"></i>
+                        <i data-bind="click: $root.openAbilityDetails" class="fa fa-lg fa-info pull-right" aria-hidden="true" title="Taken" style="color: grey;"></i>
                     </div>
                 </div>
 
@@ -223,9 +254,9 @@
                 </div>
 
                 <div class="row hidden-sm hidden-xs">
-                    <div class="col-lg-12">
+                    <div class="col-lg-12" style="min-height: 50px;">
                         <div class="progress draft-progress-bar">
-                            <div data-bind="style: { 'width': $root.getWinRateOfSelectForProgress($data) + '%', filter: 'grayscale(' + $root.getFilterForSelectedTrend($data) + '%)' }" class="progress-bar" role="progressbar"></div>
+                            <div data-bind="style: { width: $root.getWinRateVsHero($data) + '%', filter: 'grayscale(' + $root.getFilterForSelectedTrend($data) + '%)' }" class="progress-bar progress-bar-info" role="progressbar"></div>
                         </div>
                         <div data-bind="visible: $root.hasFirstPick" class="progress draft-progress-bar">
                             <div data-bind="style: { width: $root.getWinRateOfPick1ForProgress($data) + '%', filter: 'grayscale(' + $root.getFilterForSelectedTrend($data) + '%)' }" class="progress-bar progress-bar-success" role="progressbar"></div>
@@ -234,9 +265,11 @@
                             <div data-bind="style: { width: $root.getWinRateOfPick2ForProgress($data) + '%', filter: 'grayscale(' + $root.getFilterForSelectedTrend($data) + '%)' }" class="progress-bar progress-bar-warning" role="progressbar"></div>
                         </div>
                         <div data-bind="visible: $root.hasThridPick" class="progress draft-progress-bar">
-                            <div data-bind="style: { width: $root.getWinRateOfPick3ForProgress($data) + '%', filter: 'grayscale(' + $root.getFilterForSelectedTrend($data) + '%)' }" class="progress-bar progress-bar-info" role="progressbar"></div>
+                            <div data-bind="style: { width: $root.getWinRateOfPick3ForProgress($data) + '%', filter: 'grayscale(' + $root.getFilterForSelectedTrend($data) + '%)' }" class="progress-bar progress-bar-danger" role="progressbar"></div>
                         </div>
-                        
+                        <div data-bind="visible: $root.hasSelectedAbility" class="progress draft-progress-bar">
+                            <div data-bind="style: { width: $root.getWinRateVsSelected($data) + '%', filter: 'grayscale(' + $root.getFilterForSelectedTrend($data) + '%)' }" class="progress-bar" role="progressbar"></div>
+                        </div>
                     </div>
                 </div>
 
@@ -244,6 +277,46 @@
         </div>
 
         <hr />
+    </section>
+
+    <section>
+        <!-- Help -->
+
+        <h4 class="text-center">Help</h4>
+        <h5>Hero Info</h5>
+        <p>
+            We include the primary type for the selected hero. We include the heroes talents and highlight ones that are dependant on the hero's abilities. We also included the best and wrost attributes of the hero.
+        </p>
+        <h5>Filters</h5>
+        <p>
+            Select the button and we will highlight abilities that match the selected filter. Unfortunately, you can only select one filter at a time.
+        </p>
+        <h5>Abilities</h5>
+        <p>
+            You can click the image to select the ability. You can also click the <i class="fa fa-check" aria-hidden="true" title="Pick" style="color: grey;"></i> check mark button to pick the ability. As well, you can click the <i class="fa fa-info" aria-hidden="true" title="Pick" style="color: grey;"></i> info button to bring up an dialog with details about the ability. We also include win rates (as process bars) for hero, selected, and pickes.
+        </p>
+        <ul class="list-inline">
+            <li class="text-info">
+                <i class="fa fa-square-o" aria-hidden="true"></i>
+                <span>Winrate vs Hero</span>
+            </li>
+            <li class="text-success">
+                <i class="fa fa-square-o" aria-hidden="true"></i>
+                <span>Winrate vs Pick 1</span>
+            </li>
+            <li class="text-warning">
+                <i class="fa fa-square-o" aria-hidden="true"></i>
+                <span>Winrate vs Pick 2</span>
+            </li>
+            <li class="text-danger">
+                <i class="fa fa-square-o" aria-hidden="true"></i>
+                <span>Winrate vs Pick 3</span>
+            </li>
+            <li class="text-primary">
+                <i class="fa fa-square-o" aria-hidden="true"></i>
+                <span>Winrate vs Selected Ability</span>
+            </li>
+        </ul>
     </section>
 
 </section>

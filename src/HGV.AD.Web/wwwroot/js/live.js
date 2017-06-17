@@ -18,14 +18,16 @@ function DraftingViewModel() {
     self.AttributesGood = ko.observableArray([]);
     self.AttributesBad = ko.observableArray([]);
     self.getStyleForHeroStatRanks = function (item) {
-        var value = item.percentage;
-        if (value >= 0.60) {
-            return "progress-bar-success";
-        } else if (value >= 0.40) {
-            return "progress-bar-warning";
-        } else {
-            return "progress-bar-danger";
-        }
+        return "progress-bar-info";
+
+        //var value = item.percentage;
+        //if (value >= 0.60) {
+        //    return "progress-bar-success";
+        //} else if (value >= 0.40) {
+        //    return "progress-bar-warning";
+        //} else {
+        //    return "progress-bar-danger";
+        //}
     }
 
     // Ability Pool
@@ -104,6 +106,12 @@ function DraftingViewModel() {
                     return item.keywords.includes("Passive") == true ? 0 : 100;
                 case 11:
                     return item.keywords.includes("Attack") == true ? 0 : 100;
+                case 12:
+                    return item.damageType == "Physical" ? 0 : 100;
+                case 13:
+                    return item.damageType == "Magical" ? 0 : 100;
+                case 14:
+                    return item.damageType == "Pure" ? 0 : 100;
                 default:
                     return 0;
             }
@@ -111,6 +119,14 @@ function DraftingViewModel() {
     }
 
     self.SelectedAbility = ko.observable(null);
+    self.hasSelectedAbility = ko.computed(function () {
+        var current = self.SelectedAbility();
+        if (current) {
+            return true;
+        } else {
+            return false;
+        }
+    });
     self.SelectAbility = function (item) {
         var current = self.SelectedAbility();
         if (current) {
@@ -145,11 +161,27 @@ function DraftingViewModel() {
                 return "selected-img";
 
     }
-    self.getWinRateOfSelectForProgress = function (item) {
+
+    self.getWinRateVsHero = function (item) {
+
+        var combos = self.AbilityTrends();
+        var max = _.max(combos, function (i) { return i.wins; });
+        var entity = ko.utils.arrayFirst(combos, function (i) { return i.abilityId == item.abilityId; });
+        if (!entity)
+            return 100;
+
+        var value = (entity.wins / max.wins) * 100;
+        return value;
+    }
+
+    self.getWinRateVsSelected = function (item) {
 
         var selected = self.SelectedAbility();
         if (selected) {
-            
+            if (item.abilityId === selected.abilityId) {
+                return 0;
+            }
+
             var combos = self.ComboTrends();
             var filtered = ko.utils.arrayFilter(combos, function (i) {
                 return i.abilityId == selected.abilityId || i.comboId == selected.abilityId;
@@ -163,14 +195,7 @@ function DraftingViewModel() {
             var value = (entity.wins / max.wins) * 100;
             return value;
         } else {
-            var combos = self.AbilityTrends();
-            var max = _.max(combos, function (i) { return i.wins; });
-            var entity = ko.utils.arrayFirst(combos, function (i) { return i.abilityId == item.abilityId; });
-            if (!entity)
-                return 100;
-
-            var value = (entity.wins / max.wins) * 100;
-            return value;
+            return 0;
         }
     }
 
@@ -185,7 +210,7 @@ function DraftingViewModel() {
             var max = _.max(filtered, function (i) { return i.wins; });
             var entity = ko.utils.arrayFirst(filtered, function (i) { return i.abilityId == picks[0].abilityId && i.comboId == item.abilityId; });
             if (!entity)
-                return 0;
+                return 100;
 
             var value = (entity.wins / max.wins) * 100;
             return value;
@@ -300,7 +325,25 @@ function DraftingViewModel() {
     }
 
     self.openAbilityDetails = function (item) {
-        window.open("/Abilities/Details/" + item.abilityId);
+        bootbox.dialog({
+            title: "Ability",
+            closeButton: true,
+            onEscape: true,
+            message: item.html,
+            buttons: {
+                'open': {
+                    label: 'More Details',
+                    className: 'btn-info',
+                    callback: function () {
+                        window.open("/Abilities/Details/" + item.abilityId);
+                    }
+                },
+                'cancel': {
+                    label: 'Cancel',
+                    className: 'btn-primary'
+                }
+            }
+        });
     }
     
 
