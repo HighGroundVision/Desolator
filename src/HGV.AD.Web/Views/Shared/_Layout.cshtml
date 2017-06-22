@@ -39,13 +39,24 @@
             </div>
             <div id="mainNav" class="navbar-collapse collapse">
                 <ul class="nav navbar-nav">
-                    <li><a asp-area="" asp-controller="Info" asp-action="About" class="text-info">About</a></li>
-                    <li><a asp-area="" asp-controller="Info" asp-action="Guide">Guide</a></li>
-                    <li><a asp-area="" asp-controller="Info" asp-action="Illusions">Illusions</a></li>
-                    <li><a asp-area="" asp-controller="Info" asp-action="History" class="text-info">History</a></li>
-                    <li><a asp-area="" asp-controller="Heroes" asp-action="Index">Heroes</a></li>
-                    <li><a asp-area="" asp-controller="Abilities" asp-action="Index">Abilities</a></li>
+                    <li class="dropdown">
+                        <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Info <span class="caret"></span></a>
+                        <ul class="dropdown-menu">
+                            <li><a asp-area="" asp-controller="Info" asp-action="About" class="text-info">About</a></li>
+                            <li><a asp-area="" asp-controller="Info" asp-action="Guide">Guide</a></li>
+                            <li><a asp-area="" asp-controller="Info" asp-action="History" class="text-info">History</a></li>
+                        </ul>
+                    </li>
+                    <li class="dropdown">
+                        <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Data <span class="caret"></span></a>
+                        <ul class="dropdown-menu">
+                            <li><a asp-area="" asp-controller="Heroes" asp-action="Index">Heroes</a></li>
+                            <li><a asp-area="" asp-controller="Abilities" asp-action="Index">Abilities</a></li>
+                            <li><a asp-area="" asp-controller="Info" asp-action="Illusions">Illusions</a></li>
+                        </ul>
+                    </li>            
                     <li><a asp-area="" asp-controller="Draft" asp-action="Index">Draft</a></li>
+                    <li><a asp-area="" asp-controller="Matches" asp-action="Index">Matches</a></li>
                 </ul>
                 
                 @await Html.PartialAsync("_LoginPartial")
@@ -62,7 +73,7 @@
     <footer>
         <div class="container">
             <div class="row">
-                <div class="col-sm-4 text-center">
+                <div class="col-sm-4">
 
                     <h3>
                         <img src="~/images/logo/Wards.jpg" width="50" class="img-rounded" /> 
@@ -75,41 +86,54 @@
                     </p>
                 </div>
                 <div class="col-sm-4">
-                    <ul class="list-unstyled hidden-xs">
+                    <ul class="list-unstyled">
+
                         <li>
                             <h3>
-                                <i class="fa fa-twitter"></i> 
-                                <small>
-                                    <a href="https://twitter.com/DotaHGV" target="_blank">@@DotaHGV</a>
-                                </small>
+                                <small>Join us</small>
+                            </h3>
+                        </li>
+                        <li>
+                            <h3>
+                                <i class="fa fa-twitter"></i>
+                                <a href="https://twitter.com/DotaHGV" target="_blank">@@DotaHGV</a>
+                            </h3>
+                        </li>
+                        <li>
+                            <h3>
+                                <img src="~/images/logo/Discord.png" width="34" height="34" />
+                                <a href="https://discord.gg/caSzBph" target="_blank">AD Guild</a>
                             </h3>
                         </li>
                         <li>
                             <h3>
                                 <i class="fa fa-github"></i>
-                                <small>
-                                    <a href="https://github.com/HighGroundVision/Desolator" target="_blank">High Ground Vision</a>
-                                </small>
+                                <a href="https://github.com/HighGroundVision/Desolator" target="_blank">Desolator</a>
                             </h3>
                         </li>
-
-
-                    </ul>
-                    <ul class="list-inline visible-xs text-center">
-                        <li>
-                            <h3>
-                                <a href="https://twitter.com/DotaHGV" target="_blank"><i class="fa fa-twitter"></i></a>
-                            </h3>
-                        </li>
-                        <li>
-                            <h3>
-                                <a href="https://github.com/HighGroundVision/Desolator" target="_blank"><i class="fa fa-github"></i></a>
-                            </h3>
-                        </li>
-
                     </ul>
                 </div>
                 <div class="col-sm-4">
+                    <ul class="list-unstyled">
+                        
+                        <li>
+                            <h3>
+                                <small>Powered by</small>
+                            </h3>
+                        </li>
+                        <li>
+                            <h3>
+                                <a href="https://github.com/HighGroundVision/Desolator" target="_blank">High Ground Vision</a>
+                            </h3>
+                        </li>
+                        <li>
+                            <h3>
+                                <a href="https://www.opendota.com/" target="_blank">
+                                    <strong>&lt;OpenDota /&gt;</strong>
+                                </a>
+                            </h3>
+                        </li>
+                    </ul>
                 </div>
             </div>
         </div>

@@ -4,21 +4,29 @@
 @inject SignInManager<ApplicationUser> SignInManager
 @inject UserManager<ApplicationUser> UserManager
 
-@{ 
+@{
     var username = @User.Claims.Where(_ => _.Type == "steam:persona").Select(_ => _.Value).FirstOrDefault() ?? "[Unknown]";
     var profileUrl = @User.Claims.Where(_ => _.Type == "steam:profile").Select(_ => _.Value).FirstOrDefault() ?? "#";
+    var accountId = @User.Claims.Where(_ => _.Type == "steam:dota:id").Select(_ => _.Value).FirstOrDefault();
 }
 
 @if (SignInManager.IsSignedIn(User))
 {
+    
     <form asp-area="" asp-controller="Account" asp-action="LogOff" method="post" id="logoutForm" class="navbar-right">
         <ul class="nav navbar-nav navbar-right">
             <li>
-                <a href="@profileUrl" target="_blank">@username</a>
+                <a href="@string.Format("https://www.opendota.com/players/{0}", accountId)" target="_blank">@username</a>
             </li>
             <li>
                 <button type="submit" class="btn btn-link navbar-btn navbar-link">Log off</button>
             </li>
         </ul>
     </form>
+}
+else
+{
+    <ul class="nav navbar-nav navbar-right">
+        <li><a asp-area="" asp-controller="Account" asp-action="Login" class="text-info">Login</a></li>
+    </ul>
 }

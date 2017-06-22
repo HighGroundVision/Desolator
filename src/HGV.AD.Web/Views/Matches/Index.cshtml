@@ -1,0 +1,316 @@
+﻿@{
+    ViewData["Title"] = "Matches";
+}
+
+@{
+    var accountId = @User.Claims.Where(_ => _.Type == "steam:dota:id").Select(_ => _.Value).FirstOrDefault();
+}
+
+@section scripts
+{
+    <script type="text/javascript" src="~/lib/moment/moment.js"></script>
+    <script type="text/javascript" src="~/lib/underscore/underscore-min.js"></script>
+    <script type="text/javascript" >var AccountId = "@accountId";</script>
+    <script type="text/javascript" src="~/js/utilities.js" asp-append-version="true"></script>
+    <script type="text/javascript" src="~/js/matches.js" asp-append-version="true"></script>
+}
+
+<section data-bind="visible: Loading">
+    <!-- Loading -->
+
+    <div class="text-center">
+        <h3>Loading</h3>
+        <i class="fa fa-spinner fa-spin fa-5x fa-fw text-info"></i>
+    </div>
+
+</section>
+
+<section data-bind="visible: !Loading()">
+    <!-- Loaded -->
+
+    <section data-bind="visible: $root.Matches().length == 0">
+        <!-- Help -->
+
+        <header class="jumbotron">
+            <div class="row">
+                <div class="col-md-2">
+                    <img src="~/images/characters/cluckles.png" class="img-responsive" />
+                    <div class="alert alert-info text-center">
+                        <strong>Where are my matches?</strong><br />
+                    </div>
+                </div>
+                <div class="col-md-10">
+                    <h3>Where are my matches?</h3>
+                    <p>
+                        We use <a href="https://www.opendota.com/">&lt;OpenDota /&gt;</a> API to your most recent matches. You have to make sure to login at OpenDota to make sure they continue to prase your AD matches. If you donate to their site (just once) they will track your account without needing to login. 
+                    </p>
+                    <p>
+                        As well do not forget to expose "Public Match Data" within dota's Advance Options your your matches will not be avaible to 3rd party sites.
+                    </p>
+                </div>
+            </div>
+        </header>
+    </section>
+
+    <section data-bind="visible: $root.Matches().length > 0">
+        <!-- Lastest Match -->
+
+        <header class="jumbotron" data-bind="with: Lastest">
+            <div class="row">
+                <div class="col-sm-12">
+                    <div class="text-center">
+                        <h3>Summary of Lastest Match</h3>
+                        <span data-bind="text: start_time"></span> 
+                        <span data-bind="visible: win_radiant">Radaint won aginst Dire</span>
+                        <span data-bind="visible: win_dire">Dire won aginst Radaint</span>
+                        <span>in a match of Ability Draft that took</span>
+                        <span data-bind="text: duration"></span>
+                        <span>mintues on the</span>
+                        <span data-bind="text: region"></span>
+                        <span>server.</span>
+                    </div>
+                </div>
+            </div>
+            <br />
+            <div class="row">
+                <div class="col-lg-6">
+                    <div class="text-center">
+                        <h5>Radiant <strong data-bind="text: score_radiant, css: { 'text-success': win_radiant, 'text-danger': win_dire }"></strong></h5>
+                    </div>
+                    <!-- ko foreach: players_radiant -->
+                    <div class="row">
+                        <div class="col-xs-4">
+
+                            <div class="row">
+                                <div class="col-sm-12">
+                                    <div class="text-center">
+                                        <strong data-bind="text: personaname"></strong>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="row">
+                                <div class="col-sm-12">
+                                    <img data-bind=" attr: { src: hero_img }" src="" title="" alt="Hero" class="img-responsive" style="width: 100%;"/>
+                                </div>
+                            </div>
+
+                            <div class="row">
+                                <div class="col-sm-12">
+                                    <table class="table table-condensed">
+                                        <thead>
+                                            <tr>
+                                                <th class="text-center text-success">K</th>
+                                                <th class="text-center text-danger">D</th>
+                                                <th class="text-center text-primary">A</th>
+                                                <th class="text-center text-info hidden-xs" colspan="2">Lane</th>
+                                            </tr>
+                                        </thead>
+                                        <tbody>
+                                            <tr>
+                                                <td>
+                                                    <span data-bind="text: kills"></span>
+                                                </td>
+                                                <td>
+                                                    <span data-bind="text: deaths"></span>
+                                                </td>
+                                                <td>
+                                                    <span data-bind="text: assists"></span>
+                                                </td>
+                                                <td class="hidden-xs">
+                                                    <span data-bind="text: lane_role"></span>
+                                                </td>
+                                                <td class="hidden-xs">
+                                                    <span data-bind="text: lane_efficiency"></span>%
+                                                </td>
+                                            </tr>
+                                        </tbody>
+                                    </table>
+
+                                </div>
+                            </div>
+
+                        </div>
+                        <div class="col-xs-8">
+
+                            <div class="row">
+                                <div class="col-sm-12">
+                                    <ul class="list-inline">
+                                        <!-- ko foreach: abilities -->
+                                        <li style="padding-right: 20px;">
+                                            <img data-bind="attr: { src: ability_img, title: name }" src="" title="" alt="Ability" height="40" />
+                                        </li>
+                                        <!-- /ko -->
+                                    </ul>
+                                </div>
+                            </div>
+
+                            <div class="row hidden-xs">
+                                <div class="col-sm-12">
+                                    <ul class="list-inline">
+                                        <!-- ko foreach: items -->
+                                        <li>
+                                            <img data-bind="attr: { src: item_img, title: name }" src="" title="" alt="Item" height="40" />
+                                        </li>
+                                        <!-- /ko -->
+                                    </ul>
+                                </div>
+                            </div>
+
+                        </div>
+                    </div>
+                    <!-- /ko -->
+                </div>
+                <div class="col-lg-6">
+                    <div class="text-center">
+                        <h5>Dire <strong data-bind="text: score_dire, css: { 'text-success': win_dire, 'text-danger': win_radiant }"></strong></h5>
+                    </div>
+                    <!-- ko foreach: players_dire -->
+                    <div class="row">
+                        <div class="col-xs-4">
+                            <div class="row">
+                                <div class="col-sm-12">
+                                    <div class="text-center">
+                                        <strong data-bind="text: personaname"></strong>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="row">
+                                <div class="col-sm-12">
+                                    <img data-bind=" attr: { src: hero_img }" src="" title="" alt="Hero" class="img-responsive" style="width: 100%;" />
+                                </div>
+                            </div>
+
+                            <div class="row">
+                                <div class="col-sm-12">
+                                    <table class="table table-condensed">
+                                        <thead>
+                                            <tr>
+                                                <th class="text-center text-success">K</th>
+                                                <th class="text-center text-danger">D</th>
+                                                <th class="text-center text-primary">A</th>
+                                                <th class="text-center text-info hidden-xs" colspan="2">Lane</th>
+                                            </tr>
+                                        </thead>
+                                        <tbody>
+                                            <tr>
+                                                <td>
+                                                    <span data-bind="text: kills"></span>
+                                                </td>
+                                                <td>
+                                                    <span data-bind="text: deaths"></span>
+                                                </td>
+                                                <td>
+                                                    <span data-bind="text: assists"></span>
+                                                </td>
+                                                <td class="hidden-xs">
+                                                    <span data-bind="text: lane_role"></span>
+                                                </td>
+                                                <td class="hidden-xs">
+                                                    <span data-bind="text: lane_efficiency"></span>%
+                                                </td>
+                                            </tr>
+                                        </tbody>
+                                    </table>
+
+                                </div>
+                            </div>
+
+                        </div>
+                        <div class="col-xs-8">
+
+                            <div class="row">
+                                <div class="col-sm-12">
+                                    <ul class="list-inline">
+                                        <!-- ko foreach: abilities -->
+                                        <li style="padding-right: 20px;">
+                                            <img data-bind="attr: { src: ability_img, title: name }" src="" title="" alt="Ability" height="40" />
+                                        </li>
+                                        <!-- /ko -->
+                                    </ul>
+                                </div>
+                            </div>
+
+                            <div class="row hidden-xs">
+                                <div class="col-sm-12">
+                                    <ul class="list-inline">
+                                        <!-- ko foreach: items -->
+                                        <li>
+                                            <img data-bind="attr: { src: item_img, title: name }" src="" title="" alt="Item" height="40" />
+                                        </li>
+                                        <!-- /ko -->
+                                    </ul>
+                                </div>
+                            </div>
+
+                        </div>
+                    </div>
+                    <!-- /ko -->
+                </div>
+            </div>
+           
+        </header>
+    </section>
+
+    <hr>
+    
+    <section data-bind="visible: $root.Matches().length > 0">
+
+        <!-- Matches -->
+        <div class="row">
+            <div class="col-lg-12">
+                <table class="table table-striped">
+                    <thead>
+                        <tr>
+                            <td>Match #</td>
+                            <td>Date</td>
+                            <td>Result</td>
+                            <td class="hidden-xs">K</td>
+                            <td class="hidden-xs">D</td>
+                            <td class="hidden-xs">A</td>
+                            <td>Hero</td>
+                            <td class="hidden-xs">Abilities</td>
+                        </tr>
+                    </thead>
+                    <tbody data-bind="foreach: $root.Matches">
+                        <tr>
+                            <td>
+                                <a data-bind="text: match_id, attr: { href: match_url }" href="" target="_blank"></a>
+                            </td>
+                            <td>
+                                <span data-bind="text: start_time"></span>
+                                <br />
+                                <span>~</span><span data-bind="text: duration"></span><span> minutes</span>
+                            </td>
+                            <td>
+                                <strong data-bind="visible: win" class="text-success">Win</strong>
+                                <strong data-bind="visible: lost" class="text-danger">Loss</strong>
+                            </td>
+                            <td  class="hidden-xs">
+                                <span data-bind="text: kills"></span>
+                            </td>
+                            <td  class="hidden-xs">
+                                <span data-bind="text: deaths"></span>
+                            </td>
+                            <td  class="hidden-xs">
+                                <span data-bind="text: assists"></span>
+                            </td>
+                            <td> 
+                                <img data-bind=" attr: { src: hero_img }" src="" height="40" />
+                            </td>
+                            <td class="hidden-xs">
+                                <ul class="list-inline" data-bind="foreach: abilities">
+                                    <li>
+                                        <img data-bind="attr: { src: ability_img, title: name }" src="" title="" alt="Ability" class="img-responsive" width="40" height="40">
+                                    </li>
+                                </ul>
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </section>
+
+</section>

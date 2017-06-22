@@ -20,14 +20,6 @@ function DraftingViewModel() {
     self.getStyleForHeroStatRanks = function (item) {
         return "progress-bar-info";
 
-        //var value = item.percentage;
-        //if (value >= 0.60) {
-        //    return "progress-bar-success";
-        //} else if (value >= 0.40) {
-        //    return "progress-bar-warning";
-        //} else {
-        //    return "progress-bar-danger";
-        //}
     }
 
     // Ability Pool
