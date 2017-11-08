@@ -6,7 +6,7 @@
 
             var row = $('<tr>');
 
-            var heroImg = $('<img>').attr('src', hero.img).attr('title', hero.name).css("height", "90");
+            var heroImg = $('<img>').addClass("img-responsive hero-icon").attr('src', hero.img).attr('title', hero.name);
             if (!hero.enabled) {
                 heroImg.addClass("disabled");
             }
@@ -15,7 +15,7 @@
             for (var a = 0; a < hero.abilities.length; a++) {
                 var ability = hero.abilities[a];
 
-                var abilityImg = $('<img>').attr('src', ability.img).attr('title', ability.name);
+                var abilityImg = $('<img>').addClass("img-responsive ability-icon").attr('src', ability.img).attr('title', ability.name);
                 if (!ability.enabled) {
                     abilityImg.addClass("disabled");
                 }
