@@ -1,15 +1,52 @@
 <template>
-  <div>
-    <h1>{{ msg }}</h1>
-  </div>
+  <section class="opaque-background">
+      <div class="row">
+          <div class="col-lg-10">
+              <h2 class="text-warning">Draft Pool</h2>
+              <p>Find out exactly which heroes and which abilities are active. Below are listed the heroes and abilities that make up the draft pool. The active heroes and abilities are in colour while the disabled ones are greyed out.</p>
+              <table id="roaster" class="table table-striped b-table">
+                <tbody>
+                  <template v-for="hero in items">
+                    <tr v-bind:item="hero" v-bind:key="hero.id">
+                      <td>
+                        <b-img :src="hero.img" :title="hero.name" v-bind:class="{ disabled: !hero.enabled }" fluid class="hero-icon" />
+                      </td>
+                      <template v-for="ability in hero.abilities">
+                        <td v-bind:key="ability.id">
+                          <b-img :src="ability.img" :title="ability.name" v-bind:class="{ disabled: !ability.enabled }" fluid class="hero-icon" />
+                        </td>
+                      </template>
+                    </tr>
+                  </template>
+                </tbody>
+              </table>
+          </div>
+          <div class="col-lg-2">
+              <b-img src="/static/images/cluckles.png" fluid />
+              <b-alert variant="info" show>
+                <div class="text-center">
+                  <strong>Drafting Changes!</strong><br />
+                  <p>With all the new additions it gives hope that one day all heroes will be included.</p>
+                </div>
+              </b-alert>
+          </div>
+      </div>
+  </section>
 </template>
 
 <script>
+import pool from '../data/draftpool.json'
+pool.sort((lhs, rhs) => {
+  if (lhs.name < rhs.name) return -1
+  if (lhs.name > rhs.name) return 1
+  return 0
+})
+
 export default {
   name: 'foo',
   data () {
     return {
-      msg: 'Foo!'
+      items: pool
     }
   }
 }
@@ -17,7 +54,17 @@ export default {
 
 <!-- Add "scoped" attribute to limit CSS to this component only -->
 <style scoped>
-h1, h2 {
-  font-weight: normal;
+.ability-icon {
+    max-height: 90px;
+}
+.hero-icon {
+    max-height: 90px;
+}
+img.disabled {
+    -webkit-filter: grayscale(100%);
+    -moz-filter: grayscale(100%);
+    -o-filter: grayscale(100%);
+    -ms-filter: grayscale(100%);
+    filter: grayscale(100%);
 }
 </style>

@@ -4,10 +4,12 @@
     <div class="row">
         <div class="col-lg-2">
             <b-img src="/static/images/cluckles.png" fluid  />
-            <div class="alert alert-info text-center">
-                <strong>Hi, I am Cluckles!</strong><br />
-                <p>AD is hard and confusing, lucky I am here to help make it fun and insightful</p>
-            </div>
+            <b-alert variant="info" show>
+                <div class="text-center">
+                    <strong>Hi, I am Cluckles!</strong><br />
+                    <p>AD is hard and confusing, lucky I am here to help make it fun and insightful</p>
+                </div>
+            </b-alert>
         </div>
         <div class="col-lg-6 offset-lg-4">
             <h2 class="text-warning">High Ground Vision</h2>
@@ -68,7 +70,4 @@ export default {
 
 <!-- Add "scoped" attribute to limit CSS to this component only -->
 <style scoped>
-h1, h2 {
-  font-weight: normal;
-}
 </style>

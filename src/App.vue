@@ -38,6 +38,11 @@ body {
 .bd-navbar {
   background-color:#573dcc;
 }
+.opaque-background {
+    border-radius: 10px;
+    padding-left: 10px;
+    background-color: #0B1425;
+}
 #app {
   font-family: 'Avenir', Helvetica, Arial, sans-serif;
   -webkit-font-smoothing: antialiased;
