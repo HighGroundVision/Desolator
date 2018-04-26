@@ -1,18 +1,18 @@
 # Desolator
 
-**Build Status Bagde**
+**Build Status Badge**
 
-A Asp.Net Core web application designed to serivce the needs of Ability Draft players.
+A Asp.Net Core web application designed to service the needs of Ability Draft players.
 
 **Project Status:**
 
-- #1. AD Guide
-- #2. Heroes + Ability List
-- #3. Drafter
+- #1. Draft Pool
+- #2. Ability Stats
+- #3. Post Match Analysis
 
 ## Getting Started
 
-...
+https://bootstrap-vue.js.org/docs/components/alert
 
 ## License
 
@@ -22,7 +22,7 @@ See the LICENSE file.
 
 If you have any questions, you can tweet us at [@DotaHGV](https://twitter.com/DotaHGV)
 
-## Authors and Acknowledgements
+## Authors and Acknowledgments
 
 Desolator is maintained and development by [HGV](http://www.highgroundvision.com), a leading Dota 2 data visualization and analysis web site. HGV's Team:
 

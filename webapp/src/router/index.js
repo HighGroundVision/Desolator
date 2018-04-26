@@ -16,6 +16,11 @@ export default new Router({
       path: '/draft/pool',
       name: 'DraftPool',
       component: DraftPool
+    },
+    {
+      path: '/abilities',
+      name: 'abilities',
+      component: DraftPool
     }
   ]
 })
