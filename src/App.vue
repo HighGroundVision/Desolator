@@ -1,7 +1,7 @@
 <template>
   <div id="app">
     <header>
-      <b-navbar toggleable="md" type="dark" class="bd-navbar">
+      <b-navbar toggleable="md" type="dark" variant="dark">
         <b-container>
           <b-navbar-toggle target="nav_collapse"></b-navbar-toggle>
           <b-navbar-brand to="/">[HGV] Ability Drafter</b-navbar-brand>
@@ -34,9 +34,6 @@ body {
     color: white;
     background-color: #0B1425;
     background: #0B1425 url("~/static/images/background.jpg") no-repeat;
-}
-.bd-navbar {
-  background-color:#573dcc;
 }
 .opaque-background {
     border-radius: 10px;
