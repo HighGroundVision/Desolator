@@ -1,29 +1,30 @@
-# Desolator
+# desolator
 
-**Build Status Badge**
+> Ability Drafter
 
-A Asp.Net Core web application designed to service the needs of Ability Draft players.
+## Build Setup
 
-**Project Status:**
+``` bash
+# install dependencies
+npm install
 
-- #1. Draft Pool
-- #2. Ability Stats
-- #3. Post Match Analysis
+# serve with hot reload at localhost:8080
+npm run dev
 
-## Getting Started
+# build for production with minification
+npm run build
 
-https://bootstrap-vue.js.org/docs/components/alert
+# build for production and view the bundle analyzer report
+npm run build --report
 
-## License
+# run unit tests
+npm run unit
 
-See the LICENSE file.
+# run e2e tests
+npm run e2e
 
-## Help
+# run all tests
+npm test
+```
 
-If you have any questions, you can tweet us at [@DotaHGV](https://twitter.com/DotaHGV)
-
-## Authors and Acknowledgments
-
-Desolator is maintained and development by [HGV](http://www.highgroundvision.com), a leading Dota 2 data visualization and analysis web site. HGV's Team:
-
-* [Jamie Webster](https://github.com/RGBKnights) 
+For detailed explanation on how things work, checkout the [guide](http://vuejs-templates.github.io/webpack/) and [docs for vue-loader](http://vuejs.github.io/vue-loader).
