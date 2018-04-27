@@ -30,11 +30,6 @@ export default {
 </script>
 
 <style>
-body {
-    color: white;
-    background-color: #0B1425;
-    background: #0B1425 url("~/static/images/background.jpg") no-repeat;
-}
 .opaque-background {
     border-radius: 10px;
     padding-left: 10px;
@@ -44,5 +39,8 @@ body {
   font-family: 'Avenir', Helvetica, Arial, sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+  color: white;
+  background-color: #0B1425;
+  background: #0B1425 url("~/static/images/background.jpg") no-repeat;
 }
 </style>
