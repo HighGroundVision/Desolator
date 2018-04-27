@@ -1,7 +1,7 @@
 <template>
   <div id="app">
     <header>
-      <b-navbar toggleable="md" type="dark" variant="dark">
+      <b-navbar toggleable="md" type="dark" class="b-navbar">
         <b-container>
           <b-navbar-toggle target="nav_collapse"></b-navbar-toggle>
           <b-navbar-brand to="/">[HGV] Ability Drafter</b-navbar-brand>
@@ -30,17 +30,27 @@ export default {
 </script>
 
 <style>
+hr {
+  background-color: orange;
+}
 .opaque-background {
     border-radius: 10px;
     padding-left: 10px;
     background-color: #0B1425;
+    margin: 10px;
+    padding: 10px;
+}
+.b-navbar {
+   background-color: #0B1425;
+}
+.body-background {
+  background-color: black;
 }
 #app {
-  font-family: 'Avenir', Helvetica, Arial, sans-serif;
+  font-family: 'Gugi', Arial, sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   color: white;
-  background-color: #0B1425;
-  background: #0B1425 url("~/static/images/background.jpg") no-repeat;
+  background: url("~/static/images/bg-left.png") left top no-repeat, url("~/static/images/bg-right.png") right top no-repeat;
 }
 </style>

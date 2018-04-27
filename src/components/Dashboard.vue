@@ -1,5 +1,5 @@
 <template>
-  <section>
+  <section class="opaque-background">
     <br />
     <div class="row">
         <div class="col-lg-2">
@@ -11,9 +11,9 @@
                 </div>
             </b-alert>
         </div>
-        <div class="col-lg-6 offset-lg-4">
-            <h2 class="text-warning">High Ground Vision</h2>
-            <h3>Ability Drafter</h3>
+        <div class="col-lg-10">
+            <h2>High Ground Vision</h2>
+            <h3 class="text-warning">Ability Drafter</h3>
             <p>Dota has changed once again with the 7.07 patch.</p>
             <p>We are going to have to change with it.</p>
             <p>We have currently retired the existing branch and are working on vNext.</p>
@@ -23,8 +23,6 @@
             <p>Although some these heroes will have limited abilities in the pool.</p>
             <p>Check the <b-button size="" variant="link" to="/draft/pool">Pool</b-button> for info on which heroes &amp; abilities are active in AD.</p>
             <p>Read on for more details about what has changed and what is coming next!</p>
-            <br />
-            <br />
         </div>
     </div>
     <hr />
