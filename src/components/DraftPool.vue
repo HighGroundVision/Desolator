@@ -1,9 +1,22 @@
 <template>
   <section class="opaque-background">
       <div class="row">
-          <div class="col-lg-10">
-              <h2 class="text-warning">Draft Pool</h2>
-              <p>Find out exactly which heroes and which abilities are active. Below are listed the heroes and abilities that make up the draft pool. The active heroes and abilities are in colour while the disabled ones are greyed out.</p>
+        <div class="col-xl-8 col-lg-10">
+          <h2 class="text-warning">Draft Pool</h2>
+          <p>Find out exactly which heroes and which abilities are active. Below are listed the heroes and abilities that make up the draft pool. The active heroes and abilities are in colour while the disabled ones are greyed out.</p>
+        </div>
+        <div class="col-xl-4 col-lg-2">
+          <div class="text-center">
+            <b-img src="/static/images/cluckles.png" fluid />
+            <b-alert variant="info" show>
+              <strong>Drafting Changes!</strong><br />
+              <p>With all the new additions it gives hope that one day all heroes will be included.</p>
+            </b-alert>
+          </div>
+        </div>
+      </div>
+      <div class="row">
+          <div class="col-lg-12">
               <table id="roaster" class="table table-striped b-table">
                 <tbody>
                   <template v-for="hero in items">
@@ -20,15 +33,6 @@
                   </template>
                 </tbody>
               </table>
-          </div>
-          <div class="col-lg-2">
-              <b-img src="/static/images/cluckles.png" fluid />
-              <b-alert variant="info" show>
-                <div class="text-center">
-                  <strong>Drafting Changes!</strong><br />
-                  <p>With all the new additions it gives hope that one day all heroes will be included.</p>
-                </div>
-              </b-alert>
           </div>
       </div>
   </section>
