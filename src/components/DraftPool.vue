@@ -40,14 +40,16 @@
 
 <script>
 import pool from '../data/draftpool.json'
-pool.sort((lhs, rhs) => {
-  if (lhs.name < rhs.name) return -1
-  if (lhs.name > rhs.name) return 1
-  return 0
-})
 
 export default {
-  name: 'foo',
+  name: 'DraftPool',
+  created: function () {
+    pool.sort((lhs, rhs) => {
+      if (lhs.name < rhs.name) return -1
+      if (lhs.name > rhs.name) return 1
+      return 0
+    })
+  },
   data () {
     return {
       items: pool

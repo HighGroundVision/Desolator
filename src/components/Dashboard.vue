@@ -26,7 +26,7 @@
         </div>
     </div>
     <div class="row">
-        <div class="col-md-12">
+        <div class="col-12">
             <h2>Patch 7.07</h2>
             <ul>
                 <li>New Drafting UI</li>
@@ -55,10 +55,10 @@
 
 <script>
 export default {
-  name: 'dashboard',
+  name: 'Dashboard',
   data () {
     return {
-      msg: 'Welcome to the Dashboard!'
+      msg: '...'
     }
   }
 }
