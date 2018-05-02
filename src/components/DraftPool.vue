@@ -26,7 +26,10 @@
                       </td>
                       <template v-for="ability in hero.abilities">
                         <td v-bind:key="ability.id">
-                          <b-img :src="ability.img" :title="ability.name" v-bind:class="{ disabled: !ability.enabled }" fluid class="hero-icon" />
+                          <b-link :to="'/ability/stats/' + ability.id" v-if="ability.enabled">
+                            <b-img :src="ability.img" :title="ability.name" v-bind:class="{ disabled: !ability.enabled }" fluid class="ability-icon" />
+                          </b-link>
+                          <b-img v-else :src="ability.img" :title="ability.name" v-bind:class="{ disabled: !ability.enabled }" fluid class="ability-icon" />
                         </td>
                       </template>
                     </tr>
@@ -40,14 +43,16 @@
 
 <script>
 import pool from '../data/draftpool.json'
-pool.sort((lhs, rhs) => {
-  if (lhs.name < rhs.name) return -1
-  if (lhs.name > rhs.name) return 1
-  return 0
-})
 
 export default {
-  name: 'foo',
+  name: 'DraftPool',
+  created: function () {
+    pool.sort((lhs, rhs) => {
+      if (lhs.name < rhs.name) return -1
+      if (lhs.name > rhs.name) return 1
+      return 0
+    })
+  },
   data () {
     return {
       items: pool
@@ -59,10 +64,10 @@ export default {
 <!-- Add "scoped" attribute to limit CSS to this component only -->
 <style scoped>
 .ability-icon {
-    max-height: 90px;
+    height: 90px;
 }
 .hero-icon {
-    max-height: 90px;
+    height: 90px;
 }
 img.disabled {
     -webkit-filter: grayscale(100%);
