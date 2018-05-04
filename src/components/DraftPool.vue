@@ -26,7 +26,7 @@
                       </td>
                       <template v-for="ability in hero.abilities">
                         <td v-bind:key="ability.id">
-                          <b-link :to="'/ability/stats/' + ability.id" v-if="ability.enabled">
+                          <b-link :to="'/ability/single/' + ability.id" v-if="ability.enabled">
                             <b-img :src="ability.img" :title="ability.name" v-bind:class="{ disabled: !ability.enabled }" fluid class="ability-icon" />
                           </b-link>
                           <b-img v-else :src="ability.img" :title="ability.name" v-bind:class="{ disabled: !ability.enabled }" fluid class="ability-icon" />
@@ -42,7 +42,7 @@
 </template>
 
 <script>
-import pool from '../data/draftpool.json'
+import pool from '@/data/draftpool.json'
 
 export default {
   name: 'DraftPool',

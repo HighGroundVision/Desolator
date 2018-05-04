@@ -133,10 +133,10 @@
 </template>
 
 <script>
-import abilities from '../data/abilities.json'
+import abilities from '@/data/abilities.json'
 
 export default {
-  name: 'AbilityStats',
+  name: 'PairStats',
   created () {
     var url = 'http://localhost:7071/api/RequestStats?key=' + this.$route.params.key
     this.$http.get(url).then((response) => {
