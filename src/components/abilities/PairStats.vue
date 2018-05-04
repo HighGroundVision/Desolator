@@ -138,7 +138,7 @@ import abilities from '@/data/abilities.json'
 export default {
   name: 'PairStats',
   created () {
-    var url = 'http://localhost:7071/api/RequestStats?key=' + this.$route.params.key
+    var url = process.env.API_BASE_URL + '/RequestStats?key=' + this.$route.params.key
     this.$http.get(url).then((response) => {
       if (!response.ok) {
         return
