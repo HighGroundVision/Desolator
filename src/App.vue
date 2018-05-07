@@ -30,12 +30,13 @@ export default {
 
 <style>
 .body-app {
-  font-family: /*'Gugi',*/ Arial, sans-serif;
+  font-family: 'Gugi', Arial, sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   color: white;
   background: url("~/static/images/bg-left.png") left top no-repeat, url("~/static/images/bg-right.png") right top no-repeat;
   background-color: black;
+  font-size: 1.2em;
 }
 .opaque-background {
     border-radius: 10px;
