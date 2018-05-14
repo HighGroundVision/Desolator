@@ -1,11 +1,16 @@
 <template>
-  <section>
-    <div v-if="loading" class="opaque-background">
+  <section class="opaque-background">
+    <div v-if="loading">
+      <b-row>
+        <b-col class="col-2 offset-5">
+          
+        </b-col>
+      </b-row>
       <div class="col-2 offset-5 ">
         <pacman-loader :loading="loading" :color="color" ></pacman-loader>
       </div>
     </div>
-    <div v-else class="opaque-background">
+    <div v-else>
         <div class="row">
             <div class="col-12">
                 <h1>{{ability.dname}}</h1>
@@ -13,15 +18,15 @@
         </div>
         <hr />
         <div class="row">
-        <div class="col-2">
-            <b-img :src="ability.img" :title="ability.dname" fluid class="ability-icon" />
-        </div>
-        <div class="col-10">
-            {{ability.desc}}
-        </div>
+          <div class="col-2">
+              <b-img :src="ability.img" :title="ability.dname" fluid class="ability-icon" />
+          </div>
+          <div class="col-10">
+              {{ability.desc}}
+          </div>
         </div>
         <hr />
-        <div class="row">
+        <div class="row" >
             <div class="col-12">
                 <h2>Melee Heroes</h2>
                 <div class="row">
@@ -53,37 +58,6 @@
                     </div>
                 </div>
             </div>
-            <div class="col-12">
-                <h2>Range Heroes</h2>
-                <div class="row">
-                    <div class="col-4">
-                        Pick Rate
-                    </div>
-                    <div class="col-2">
-                        {{round(range.pickRate)}} %
-                    </div>
-                    <div class="col-2">
-                        {{range.picks}} / {{range.total}}
-                    </div>
-                    <div class="col-4">
-                        <b-progress :value="round(range.pickRate)" :min="0" :max="100"></b-progress>
-                    </div>
-                </div>
-                <div class="row">
-                    <div class="col-4">
-                        Win Rate
-                    </div>
-                    <div class="col-2">
-                        {{round(range.winRate)}} %
-                    </div>
-                    <div class="col-2">
-                        {{range.wins}} / {{range.picks}}
-                    </div>
-                    <div class="col-4">
-                        <b-progress :value="round(range.winRate)" :min="0" :max="100"></b-progress>
-                    </div>
-                </div>
-            </div>
         </div>
     </div>
   </section>
@@ -91,30 +65,25 @@
 
 <script>
 import abilities from '@/data/abilities.json'
+import db from '@/data/db-extract-ability.json'
 
 export default {
   name: 'SingleStats',
   created () {
-    var url = process.env.API_BASE_URL + '/RequestStats?key=' + this.$route.params.key
-    this.$http.get(url).then((response) => {
-      if (!response.ok) {
-        return
-      }
+    // var url = process.env.API_BASE_URL + '/RequestStats?key=' + this.$route.params.key
 
-      var data = response.body
-      this.ability = abilities[data.abilities[0]]
-      this.melee = data.melee
-      this.range = data.range
-      this.loading = false
-    })
+    const id = parseInt(this.$route.params.key)
+    this.ability = abilities[id]
+    this.stats = db.filter(stat => stat.abilities === id)
+
+    this.loading = false
   },
   data () {
     return {
       'color': '#007bff',
       'loading': true,
       'ability': {},
-      'melee': {},
-      'range': {}
+      'stats': []
     }
   },
   methods: {
