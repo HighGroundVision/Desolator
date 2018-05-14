@@ -2,63 +2,82 @@
   <section class="opaque-background">
     <div v-if="loading">
       <b-row>
-        <b-col class="col-2 offset-5">
-          
+        <b-col>
+          <pacman-loader :loading="loading" :color="'#007bff'" ></pacman-loader>
         </b-col>
       </b-row>
-      <div class="col-2 offset-5 ">
-        <pacman-loader :loading="loading" :color="color" ></pacman-loader>
-      </div>
     </div>
     <div v-else>
-        <div class="row">
-            <div class="col-12">
-                <h1>{{ability.dname}}</h1>
-            </div>
-        </div>
-        <hr />
-        <div class="row">
-          <div class="col-2">
-              <b-img :src="ability.img" :title="ability.dname" fluid class="ability-icon" />
-          </div>
-          <div class="col-10">
-              {{ability.desc}}
-          </div>
-        </div>
-        <hr />
-        <div class="row" >
-            <div class="col-12">
-                <h2>Melee Heroes</h2>
-                <div class="row">
-                    <div class="col-4">
-                        Pick Rate
-                    </div>
-                    <div class="col-2">
-                        {{round(melee.pickRate)}} %
-                    </div>
-                    <div class="col-2">
-                        {{melee.picks}} / {{range.total}}
-                    </div>
-                    <div class="col-4">
-                        <b-progress :value="round(melee.pickRate)" :min="0" :max="100"></b-progress>
-                    </div>
-                </div>
-                <div class="row">
-                    <div class="col-4">
-                        Win Rate
-                    </div>
-                    <div class="col-2">
-                        {{round(melee.winRate)}} %
-                    </div>
-                    <div class="col-2">
-                        {{melee.wins}} / {{range.picks}}
-                    </div>
-                    <div class="col-4">
-                        <b-progress :value="round(melee.winRate)" :min="0" :max="100"></b-progress>
-                    </div>
-                </div>
-            </div>
-        </div>
+      <b-row>
+        <b-col cols="2" >
+          <b-img :src="ability.img" :title="ability.dname" fluid class="ability-icon" />
+        </b-col>
+        <b-col>
+          <b-row>
+            <b-col>
+              <p class="ability-name">{{ability.dname}}</p>
+            </b-col>
+          </b-row>
+          <b-row>
+            <b-col>
+              <p>{{ability.desc}}</p>
+            </b-col>
+          </b-row>
+        </b-col>
+      </b-row>
+      <b-row>
+        <b-col cols="2" />
+        <b-col>
+          <ul class="list-unstyled">
+            <li v-if="ability.mc" class="text-info">MANA COST: {{format(ability.mc)}}</li>
+            <li v-if="ability.cd" class="text-warning">COOLDOWN: {{format(ability.cd)}}</li>
+            <li v-if="ability.behavior">BEHAVIOR: {{format(ability.behavior)}}</li>
+            <li v-if="ability.dmg_type">DAMAGE TYPE: {{ability.dmg_type}}</li>
+            <li v-if="ability.bkbpierce">PIERCING: {{ability.bkbpierce}}</li>
+          </ul>
+        </b-col>
+        <b-col>
+          <ul class="list-unstyled">
+            <li class="ability-stats" v-for="attr in ability.attrib" :key="attr.key">
+              {{attr.header}} {{format(attr.value)}}
+            </li>
+          </ul>
+        </b-col>
+      </b-row>
+      <hr />
+      <b-row>
+        <b-col cols="12">
+          <b-row>
+            <b-col>Attack Type</b-col>
+            <b-col>Primary Stat</b-col>
+            <b-col>Win Rate</b-col>
+            <b-col></b-col>
+            <b-col>Wins / Picks</b-col>
+          </b-row>
+          <b-row v-for="stat in stats" :key="stats.indexOf(stat)">
+            <b-col v-if="stat.type === 1">
+              <b-img src="/static/images/type_melee.png" title="Melee" />
+            </b-col>
+            <b-col v-if="stat.type === 2">
+              <b-img src="/static/images/type_range.png" title="Range" />
+            </b-col>
+            <b-col v-if="stat.primary === 1">
+              <b-img src="/static/images/primary_str.png" title="Str" />
+            </b-col>
+            <b-col v-if="stat.primary === 2">
+              <b-img src="/static/images/primary_agi.png" title="Agi" />
+            </b-col>
+            <b-col v-if="stat.primary === 3">
+              <b-img src="/static/images/primary_int.png" title="Int"  />
+            </b-col>
+            <b-col>{{round(stat.win_rate)}} %</b-col>
+            <b-col>
+              <b-progress :value="round(stat.win_rate)" :min="0" :max="100"></b-progress>
+            </b-col>
+            <b-col>{{stat.wins}} / {{stat.picks}}</b-col>
+          </b-row>
+        </b-col>
+      </b-row>
     </div>
   </section>
 </template>
@@ -73,14 +92,17 @@ export default {
     // var url = process.env.API_BASE_URL + '/RequestStats?key=' + this.$route.params.key
 
     const id = parseInt(this.$route.params.key)
+
     this.ability = abilities[id]
-    this.stats = db.filter(stat => stat.abilities === id)
+
+    let results = db.filter(stat => stat.picks > 10 && stat.abilities === id)
+    results.sort(function (lhs, rhs) { return rhs.win_rate - lhs.win_rate })
+    this.stats = results
 
     this.loading = false
   },
   data () {
     return {
-      'color': '#007bff',
       'loading': true,
       'ability': {},
       'stats': []
@@ -89,6 +111,13 @@ export default {
   methods: {
     round: function (stat) {
       return Math.round(stat * 100)
+    },
+    format: function (stat) {
+      if (Array.isArray(stat)) {
+        return stat.join(' / ')
+      } else {
+        return stat
+      }
     }
   }
 }
@@ -96,7 +125,12 @@ export default {
 
 <!-- Add "scoped" attribute to limit CSS to this component only -->
 <style scoped>
+.ability-name {
+  font-size: 1.6em;
+  font-weight: bold;
+}
 .ability-icon {
     height: 120px;
+    box-shadow: 5px 4px #000000;
 }
 </style>
