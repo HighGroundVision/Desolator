@@ -1,21 +1,14 @@
 <template>
-  <section class="opaque-background">
-    <div v-if="loading">
-      <b-row>
-        <b-col>
-          <pacman-loader :loading="loading" :color="'#007bff'" ></pacman-loader>
-        </b-col>
-      </b-row>
-    </div>
-    <div v-else>
-      <b-row>
-        <b-col cols="2" >
+  <section>
+    <div v-if="found">
+     <b-row>
+        <b-col cols="4" sm="2" md="1" lg="1" xl="1">
           <b-img :src="ability.img" :title="ability.dname" fluid class="ability-icon" />
         </b-col>
         <b-col>
           <b-row>
             <b-col>
-              <p class="ability-name">{{ability.dname}}</p>
+              <p class="header">{{ability.dname}}</p>
             </b-col>
           </b-row>
           <b-row>
@@ -26,7 +19,7 @@
         </b-col>
       </b-row>
       <b-row>
-        <b-col cols="2" />
+        <b-col cols="6" xs="4" sm="2" md="1" lg="1" xl="1"></b-col>
         <b-col>
           <ul class="list-unstyled">
             <li v-if="ability.mc" class="text-info">MANA COST: {{format(ability.mc)}}</li>
@@ -45,6 +38,7 @@
         </b-col>
       </b-row>
       <hr />
+      <p class="header">Individual Stats</p>
       <b-row>
         <b-col cols="12">
           <b-row>
@@ -78,34 +72,47 @@
           </b-row>
         </b-col>
       </b-row>
+      <hr />
+      <missing-data></missing-data>
+    </div>
+    <div v-else>
+      <b-row>
+        <b-col>
+          <p class="header">Missing!</p>
+          <p>Could not find Ability {{abilityKey}}</p>
+        </b-col>
+      </b-row>
     </div>
   </section>
 </template>
 
 <script>
-import abilities from '@/data/abilities.json'
-import db from '@/data/db-extract-ability.json'
+import abilitiesDB from '@/data/abilities.json'
+import statsDB from '@/data/stats-ability.json'
 
 export default {
-  name: 'SingleStats',
-  created () {
-    // var url = process.env.API_BASE_URL + '/RequestStats?key=' + this.$route.params.key
-
-    const id = parseInt(this.$route.params.key)
-
-    this.ability = abilities[id]
-
-    let results = db.filter(stat => stat.picks > 10 && stat.abilities === id)
-    results.sort(function (lhs, rhs) { return rhs.win_rate - lhs.win_rate })
-    this.stats = results
-
-    this.loading = false
+  name: 'AbilityStats',
+  props: {
+    abilityKey: {
+      type: String,
+      default: '0'
+    }
   },
   data () {
+    let key = parseInt(this.abilityKey)
+
+    let ability = abilitiesDB[key]
+    if (ability === undefined) {
+      return { 'found': false }
+    }
+
+    let results = statsDB.filter(stat => stat.abilities === key)
+    results.sort(function (lhs, rhs) { return rhs.win_rate - lhs.win_rate })
+
     return {
-      'loading': true,
-      'ability': {},
-      'stats': []
+      'found': true,
+      'ability': ability,
+      'stats': results
     }
   },
   methods: {
@@ -125,12 +132,12 @@ export default {
 
 <!-- Add "scoped" attribute to limit CSS to this component only -->
 <style scoped>
-.ability-name {
+.header {
   font-size: 1.6em;
   font-weight: bold;
 }
 .ability-icon {
-    height: 120px;
+
     box-shadow: 5px 4px #000000;
 }
 </style>

@@ -2,8 +2,7 @@ import Vue from 'vue'
 import Router from 'vue-router'
 import Dashboard from '@/components/Dashboard'
 import DraftPool from '@/components/DraftPool'
-import SingleStats from '@/components/abilities/SingleStats'
-import PairStats from '@/components/abilities/PairStats'
+import Stats from '@/components/Stats'
 
 Vue.use(Router)
 
@@ -20,14 +19,9 @@ export default new Router({
       component: DraftPool
     },
     {
-      path: '/ability/single/:key',
-      name: 'SingleStats',
-      component: SingleStats
-    },
-    {
-      path: '/ability/pairs/:key',
-      name: 'PairStats',
-      component: PairStats
+      path: '/stats/:key',
+      name: 'Stats',
+      component: Stats
     }
   ]
 })
