@@ -81,11 +81,14 @@
           <b-col>Attack Type</b-col>
           <b-col>Primary Stat</b-col>
           <b-col>Win Rate</b-col>
-          <b-col></b-col>
           <b-col>Wins / Picks</b-col>
+          <b-col></b-col>
         </b-row>
         <b-row v-for="stat in individualStats" :key="individualStats.indexOf(stat)">
-          <b-col>{{stat.abilities}}</b-col>
+          <!--<b-col>{{stat.abilities}}</b-col>-->
+          <b-col>
+            <b-img :src="stat.img" fluid style="height: 33px;" />
+          </b-col>
           <b-col v-if="stat.type === 1">
             <b-img src="/static/images/type_melee.png" title="Melee" />
           </b-col>
@@ -101,11 +104,11 @@
           <b-col v-if="stat.primary === 3">
             <b-img src="/static/images/primary_int.png" title="Int"  />
           </b-col>
+          <b-col>{{stat.wins}} / {{stat.picks}}</b-col>
           <b-col>{{round(stat.win_rate)}} %</b-col>
           <b-col>
             <b-progress :value="round(stat.win_rate)" :min="0" :max="100"></b-progress>
           </b-col>
-          <b-col>{{stat.wins}} / {{stat.picks}}</b-col>
         </b-row>
       </b-col>
     </b-row>
@@ -136,9 +139,13 @@ export default {
     let abilities = []
     this.abilityKeys.forEach(id => {
       const abilityId = parseInt(id)
-      abilities.push(abilitiesDB[abilityId])
+      const ability = abilitiesDB[abilityId]
+      abilities.push(ability)
 
-      let stats = statsAbilityDB.filter(stat => stat.abilities === abilityId)
+      let stats = statsAbilityDB.filter(stat => stat.abilities === id)
+      for (let index = 0; index < stats.length; index++) {
+        stats[index].img = ability.img
+      }
       individual = individual.concat(stats)
     })
 

@@ -106,7 +106,7 @@ export default {
       return { 'found': false }
     }
 
-    let results = statsDB.filter(stat => stat.abilities === key)
+    let results = statsDB.filter(stat => stat.abilities === this.abilityKey)
     results.sort(function (lhs, rhs) { return rhs.win_rate - lhs.win_rate })
 
     return {
