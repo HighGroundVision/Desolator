@@ -30,13 +30,24 @@ export default {
 </script>
 
 <style>
+.background-left {
+  background-image: url("~/static/images/bg-left.png");
+  background-repeat: no-repeat;
+  background-size: 50%;
+  background-position: left top;
+}
+.background-right {
+  background-image: url("~/static/images/bg-right.png");
+  background-repeat: no-repeat;
+  background-size: 50%;
+  background-position: right top;
+}
 .body-app {
   font-family: /*'Gugi',*/ Arial, sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   color: white;
-  background: url("~/static/images/bg-left.png") left top no-repeat, url("~/static/images/bg-right.png") right top no-repeat;
-  background-color: black;
+  background: url("~/static/images/bg-left.png") left top / 50% no-repeat, url("~/static/images/bg-right.png") right top / 50% no-repeat, black;
 }
 .opaque-background {
     border-radius: 10px;

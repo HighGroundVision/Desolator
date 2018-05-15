@@ -15,9 +15,6 @@
         <h1 class="text-warning">Ability Drafter</h1>
         <b-alert variant="warning" show>
           <b-row>
-            <b-col cols="2">
-              <b-img src="https://cdn.pixabay.com/photo/2017/06/16/07/26/under-construction-2408061_960_720.png" style="width: 90px;" />
-            </b-col>
             <b-col>
               <strong>Under Construction</strong>
               <p>
