@@ -1,54 +1,41 @@
 <template>
   <section class="opaque-background">
-    <div class="row">
-        <div class="col-xl-3 col-lg-3 col-md-4 col-sm-4 col-12">
-            <div class="text-center">
-                <b-img src="/static/images/cluckles.png" fluid  />
-                <b-alert variant="info" show>   
-                    <strong>Hi, I am Cluckles!</strong><br />
-                    AD is hard and confusing, lucky I am here to help make it fun!
-                </b-alert>
-            </div>
+    <b-row>
+      <b-col cols="4" lg="3">
+        <div class="text-center">
+            <b-img src="/static/images/cluckles.png" fluid  />
+            <b-alert variant="info" show>   
+                <strong>Hi, I am Cluckles!</strong>
+                <br />
+                <span>AD is hard and confusing, lucky I am here to help make it fun!</span>
+            </b-alert>
         </div>
-        <div class="col-xl-9 col-lg-9 col-md-8 col-sm-8 col-12">
-            <h1 class="text-warning">Ability Drafter</h1>
-            <p>Dota has changed once again with the 7.07 patch.
-            We are going to have to change with it.
-            We have currently retired the existing branch and are working on vNext.
-            It is nice to see Ability Draft (AD) getting some attention.
-            This change will fix a number of existing game breaking bugs.
-            As well as introduce some new heroes and some old favourites.
-            Although some these heroes will have limited abilities in the pool.
-            Check the <b-button size="" variant="link" to="/draft/pool">Pool</b-button> for info on which heroes &amp; abilities are active in AD.
-            Read on for more details about what has changed and what is coming next!
-            </p>
-        </div>
-    </div>
-    <div class="row">
-        <div class="col-12">
-            <h2>Patch 7.07</h2>
-            <ul>
-                <li>New Drafting UI</li>
-                <li>Added support for chat during draft.</li>
-                <li>Added support for swapping ability slots.</li>
-                <li>Added tooltips for hero talents and base stats as well as indicators for hero primary attributes.</li>
-                <li>Scoreboard will now show drafted abilities at end of game and when viewing replays.</li>
-                <li><b class="text-success">17 New</b> heroes. Including Dark Willow and Pangolier.</li>
-                <li><b class="text-warning">6 Existing</b> heroes have been "fixed".</li>
-            </ul>
-            <h2>vNext</h2>
-            A number of these changes have made the existing parts of this website obsolete.
-            <ul>
-                <li>Tooltips for base stats</li>
-                <li>Tooltips for primary attribute</li>
-                <li>Tooltips for talents</li>
-            </ul>
-            Since the primary focus of the website was to provide these details to drafters and that will no longer be needed after the update we are focusing the website towards drafting.
-            We are currently rewriting the API to provide a better drafting experience. We want to include the stats for Ability &amp; Combos. As well as filters for Stuns, Disables, Passives, etc.
-            We are going to investigate the changes to the scoreboard as it may contain insights into the drafting order.
-            You can get more update details on our twitter <a href="https://twitter.com/DotaHGV">@DotaHGV</a>
-        </div>
-    </div>
+      </b-col>
+      <b-col>
+        <h1 class="text-warning">Ability Drafter</h1>
+        <b-alert variant="warning" show>
+          <b-row>
+            <b-col cols="2">
+              <b-img src="https://cdn.pixabay.com/photo/2017/06/16/07/26/under-construction-2408061_960_720.png" style="width: 90px;" />
+            </b-col>
+            <b-col>
+              <strong>Under Construction</strong>
+              <p>
+                We are currently rebuilding the backend and front systems that run this web application. 
+                Our continuous deployment process means that this site will be updated as we push out new features. 
+                You are welcome to use the site and the new features. 
+                Some features maybe unstable/incomplete and maybe removed in the future.
+                This banner will be removed when the rework is finished.
+              </p>
+              <p>Please provide any feedback to <a href="https://twitter.com/DotaHGV" target="_blank">@DotaHGV</a> or open an issue on <a href="https://github.com/HighGroundVision/Desolator/issues" target="_blank">GitHub</a>.</p>
+            </b-col>
+          </b-row>
+        </b-alert>
+        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nam suscipit elit sed magna rutrum, vel ornare est lacinia. Nam et mi fringilla, volutpat sem eget, eleifend enim. Vestibulum eget enim vehicula, placerat sem id, ullamcorper felis. Nullam tempor mauris ut sapien tincidunt, in vulputate odio iaculis. Vivamus vitae facilisis quam, eget egestas tellus. Suspendisse potenti. Mauris ac efficitur ante, suscipit molestie sapien. Vestibulum posuere mauris magna, nec varius orci sagittis at. Mauris pellentesque quam massa, non efficitur turpis auctor vel. Nam sed eros sit amet ligula dictum laoreet in at magna. Donec vitae dictum nunc, vel rhoncus arcu.</p>
+        <p>Phasellus luctus ac diam nec maximus. Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas. Quisque leo orci, vehicula at dapibus ut, sodales vitae justo. Sed sit amet ullamcorper arcu, et semper tortor. Curabitur enim augue, semper sed rhoncus tincidunt, suscipit eget tellus. Maecenas venenatis euismod quam in sodales. Ut lectus felis, porta et dapibus sed, semper nec purus. Etiam nec nisi ut odio feugiat pulvinar. Vestibulum ante ipsum primis in faucibus orci luctus et ultrices posuere cubilia Curae; Sed efficitur, turpis ut hendrerit rutrum, turpis augue eleifend ex, viverra tristique neque risus eu tellus. Integer ut faucibus justo. Integer sodales lorem tellus, ut aliquet ex volutpat sed. Nam sollicitudin eleifend molestie.</p>
+        <p>Duis sit amet feugiat lacus, vel molestie lorem. Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas. Maecenas eleifend vehicula dolor non egestas. Cras nec venenatis nibh, ac faucibus lacus. Cras convallis vulputate dapibus. Sed lectus turpis, sollicitudin non pulvinar et, fringilla sit amet augue. Phasellus massa lectus, congue et nibh eu, luctus iaculis purus. Integer nisl massa, pharetra sit amet erat at, pharetra pharetra magna. Fusce velit mi, egestas id magna posuere, malesuada semper mauris. Duis posuere est non enim venenatis dictum.</p>
+      </b-col>
+    </b-row>
   </section>
 </template>
 
