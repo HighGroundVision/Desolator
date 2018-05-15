@@ -1,14 +1,25 @@
 <template>
-  <section>
+  <section  class="opaque-background">
     <div v-if="found">
-     <b-row>
+      <b-row>
+        <b-col>
+          <h1 class="text-warning">Ability Details</h1>
+        </b-col>
+      </b-row>
+      <b-row>
+        <b-col>
+          <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Maecenas eget porta velit. Etiam aliquam auctor nulla, vitae congue ligula rhoncus vel. Fusce porta imperdiet risus, ac maximus magna posuere in. Suspendisse quis sodales velit. Sed fringilla enim quis nibh congue efficitur. Proin ante lectus, rhoncus quis venenatis in, maximus malesuada ipsum. Cras hendrerit facilisis ante at molestie. Nullam ullamcorper diam vitae dolor placerat, nec euismod neque placerat.</p>
+        </b-col>
+      </b-row>
+      <hr />
+      <b-row>
         <b-col cols="4" sm="2" md="1" lg="1" xl="1">
-          <b-img :src="ability.img" :title="ability.dname" fluid class="ability-icon" />
+          <b-img :src="ability.img" :title="ability.dname" fluid class="ability-icon ability-icon-lg" />
         </b-col>
         <b-col>
           <b-row>
             <b-col>
-              <p class="header">{{ability.dname}}</p>
+              <h2>{{ability.dname}}</h2>
             </b-col>
           </b-row>
           <b-row>
@@ -38,8 +49,13 @@
         </b-col>
       </b-row>
       <hr />
-      <p class="header">Individual Stats</p>
       <b-row>
+        <b-col>
+          <h3>Individual Stats</h3>
+          <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Maecenas eget porta velit. Etiam aliquam auctor nulla, vitae congue ligula rhoncus vel. Fusce porta imperdiet risus, ac maximus magna posuere in. Suspendisse quis sodales velit. Sed fringilla enim quis nibh congue efficitur. Proin ante lectus, rhoncus quis venenatis in, maximus malesuada ipsum. Cras hendrerit facilisis ante at molestie. Nullam ullamcorper diam vitae dolor placerat, nec euismod neque placerat.</p>
+        </b-col>
+      </b-row>
+      <b-row class="text-center">
         <b-col cols="12">
           <b-row>
             <b-col>Type</b-col>
@@ -48,19 +64,19 @@
           </b-row>
           <b-row v-for="stat in stats" :key="stats.indexOf(stat)">
             <b-col v-if="stat.type === 1">
-              <b-img src="/static/images/type_melee.png" title="Melee" /> Melee
+              <b-img src="/static/images/type_melee.png" title="Melee" class="ability-icon-sm" /> Melee
             </b-col>
             <b-col v-if="stat.type === 2">
-              <b-img src="/static/images/type_range.png" title="Range" /> Range
+              <b-img src="/static/images/type_range.png" title="Range" class="ability-icon-sm" /> Range
             </b-col>
             <b-col v-if="stat.type === 3">
-              <b-img src="/static/images/primary_str.png" title="Str" /> Str
+              <b-img src="/static/images/primary_str.png" title="Str" class="ability-icon-sm" /> Str &nbsp; &nbsp;
             </b-col>
             <b-col v-if="stat.type === 4">
-              <b-img src="/static/images/primary_agi.png" title="Agi" /> Agi
+              <b-img src="/static/images/primary_agi.png" title="Agi" class="ability-icon-sm" /> Agi &nbsp; &nbsp;
             </b-col>
             <b-col v-if="stat.type === 5">
-              <b-img src="/static/images/primary_int.png" title="Int"  /> Int
+              <b-img src="/static/images/primary_int.png" title="Int" class="ability-icon-sm" /> Int &nbsp; &nbsp;
             </b-col>
             <b-col>
               <b-progress :value="round(stat.win_rate)" :min="0" :max="100" :striped="true" show-progress></b-progress>
@@ -70,7 +86,57 @@
         </b-col>
       </b-row>
       <hr />
-      <missing-data></missing-data>
+      <b-row>
+        <b-col>
+          <h3>Best Combos</h3>
+          <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Maecenas eget porta velit. Etiam aliquam auctor nulla, vitae congue ligula rhoncus vel. Fusce porta imperdiet risus, ac maximus magna posuere in. Suspendisse quis sodales velit. Sed fringilla enim quis nibh congue efficitur. Proin ante lectus, rhoncus quis venenatis in, maximus malesuada ipsum. Cras hendrerit facilisis ante at molestie. Nullam ullamcorper diam vitae dolor placerat, nec euismod neque placerat.</p>
+        </b-col>
+      </b-row>
+      <b-row class="text-center">
+        <b-col cols="12">
+          <b-row v-if="combos.length > 0">
+            <b-col>Ability</b-col>
+            <b-col>Icon</b-col>
+            <b-col>Type</b-col>
+            <b-col>Win Rate</b-col>
+            <b-col>Wins / Picks</b-col>
+          </b-row>
+          <b-row v-for="stat in combos" :key="combos.indexOf(stat)">
+            <b-col>
+              <b-link :to="'/stats/abilities/' + stat.abilities">{{stat.name}}</b-link>
+            </b-col>
+            <b-col>
+              <b-img :src="stat.img" class="ability-icon-sm" /> 
+            </b-col>
+            <b-col>
+              <div v-if="stat.type === 1">
+                <b-img src="/static/images/type_melee.png" title="Melee" class="ability-icon-sm" /> Melee
+              </div>
+              <div v-if="stat.type === 2">
+                <b-img src="/static/images/type_range.png" title="Range" class="ability-icon-sm" /> Range
+              </div>
+              <div v-if="stat.type === 3">
+                <b-img src="/static/images/primary_str.png" title="Str" class="ability-icon-sm" /> Str &nbsp; &nbsp;
+              </div>
+              <div v-if="stat.type === 4">
+                <b-img src="/static/images/primary_agi.png" title="Agi" class="ability-icon-sm" /> Agi &nbsp; &nbsp;
+              </div>
+              <div v-if="stat.type === 5">
+                <b-img src="/static/images/primary_int.png" title="Int" class="ability-icon-sm"  /> Int &nbsp; &nbsp;
+              </div>
+            </b-col>
+            <b-col>
+              <b-progress :value="round(stat.win_rate)" :min="0" :max="100" :striped="true" show-progress></b-progress>
+            </b-col>
+            <b-col>{{stat.wins}} / {{stat.picks}}</b-col>
+          </b-row>
+          <b-row>
+            <b-col>
+              <b-btn variant="link" @click="comboLimit+=10">Show More</b-btn>
+            </b-col>
+          </b-row>
+        </b-col>
+      </b-row>
     </div>
     <div v-else>
       <b-row>
@@ -85,31 +151,51 @@
 
 <script>
 import abilitiesDB from '@/data/abilities.json'
-import statsDB from '@/data/stats-ability.json'
+import statsAbilityDB from '@/data/stats-ability.json'
+import statsAbilitieDB from '@/data/stats-abilities.json'
 
 export default {
   name: 'AbilityStats',
-  props: {
-    abilityKey: {
-      type: String,
-      default: '0'
-    }
-  },
   data () {
-    let key = parseInt(this.abilityKey)
+    let abilityKey = this.$route.params.key
+    let key = parseInt(abilityKey)
 
     let ability = abilitiesDB[key]
     if (ability === undefined) {
       return { 'found': false }
     }
 
-    let results = statsDB.filter(stat => stat.abilities === this.abilityKey)
+    let results = statsAbilityDB.filter(stat => stat.abilities === abilityKey)
     results.sort(function (lhs, rhs) { return rhs.win_rate - lhs.win_rate })
 
     return {
       'found': true,
+      'key': abilityKey,
       'ability': ability,
-      'stats': results
+      'stats': results,
+      'comboLimit': 10
+    }
+  },
+  computed: {
+    combos: function () {
+      let combos = statsAbilitieDB.filter((lhs) => lhs.abilities.includes(this.key))
+      combos.sort(function (lhs, rhs) { return rhs.win_rate - lhs.win_rate })
+      const bestCombos = combos.slice(0, this.comboLimit)
+
+      bestCombos.forEach(combo => {
+        let parts = combo.abilities.split('-')
+        if (this.key === parts[0]) {
+          const a = abilitiesDB[parts[1]]
+          combo.img = a.img
+          combo.name = a.dname
+        } else {
+          const a = abilitiesDB[parts[0]]
+          combo.img = a.img
+          combo.name = a.dname
+        }
+      })
+
+      return bestCombos
     }
   },
   methods: {
@@ -129,12 +215,4 @@ export default {
 
 <!-- Add "scoped" attribute to limit CSS to this component only -->
 <style scoped>
-.header {
-  font-size: 1.6em;
-  font-weight: bold;
-}
-.ability-icon {
-
-    box-shadow: 5px 4px #000000;
-}
 </style>

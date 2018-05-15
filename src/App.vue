@@ -45,4 +45,15 @@ export default {
     margin: 10px;
     padding: 10px;
 }
+.ability-icon {
+    box-shadow: 5px 4px #000000;
+}
+.ability-icon-lg {
+  height: 64px;
+  width: 64px;
+}
+.ability-icon-sm {
+  height: 33px;
+  width: 33px;
+}
 </style>

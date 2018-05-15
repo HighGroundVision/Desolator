@@ -1,8 +1,18 @@
 <template>
   <section class="opaque-background">
     <b-row>
+      <b-col>
+        <h1 class="text-warning">Ability Stats</h1>
+      </b-col>
+    </b-row>
+    <b-row>
+      <b-col>
+        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Maecenas eget porta velit. Etiam aliquam auctor nulla, vitae congue ligula rhoncus vel. Fusce porta imperdiet risus, ac maximus magna posuere in. Suspendisse quis sodales velit. Sed fringilla enim quis nibh congue efficitur. Proin ante lectus, rhoncus quis venenatis in, maximus malesuada ipsum. Cras hendrerit facilisis ante at molestie. Nullam ullamcorper diam vitae dolor placerat, nec euismod neque placerat.</p>
+      </b-col>
+    </b-row>
+    <b-row>
       <b-col md="2" lg="1" >
-        <p class="header">Filter</p>
+        <h2>Filter</h2>
       </b-col>
       <b-col  md="4" lg="5">
         <b-form-input v-model="filterByAbility" placeholder="By Ability" />
@@ -17,17 +27,17 @@
       </b-col>
     </b-row>
     <br />
-    <b-row>
+    <b-row class="text-center">
       <b-col>
         <b-table :fields="fields" :items="computedItems" :sort-by.sync="sortBy" :sort-desc.sync="sortDesc" :current-page="currentPage" :per-page="perPage">
           <template slot="icon" slot-scope="row">
-            <b-img :src="row.item.img" fluid />
+            <b-img :src="row.item.img" class="ability-icon-sm" />
+          </template>
+          <template slot="link" slot-scope="row">
+            <b-link :to="'/stats/ability/' + row.item.id">{{row.item.name}}</b-link>
           </template>
           <template slot="win_rate_progress" slot-scope="row">
             <b-progress height="2rem" :value="round(row.item.win_rate)" :min="0" :max="100" :striped="true" show-progress></b-progress>
-          </template>
-          <template slot="link" slot-scope="row">
-            <b-link :to="'/stats/' + row.item.id">{{row.item.name}}</b-link>
           </template>
           <template slot="type" slot-scope="row">
             <div v-if="row.item.type === 1">
@@ -37,13 +47,13 @@
               <b-img src="/static/images/type_range.png" title="Range" /> Range
             </div>
             <div v-if="row.item.type === 3">
-              <b-img src="/static/images/primary_str.png" title="Str" /> Str
+              <b-img src="/static/images/primary_str.png" title="Str" /> Str &nbsp; &nbsp;
             </div>
             <div v-if="row.item.type === 4">
-              <b-img src="/static/images/primary_agi.png" title="Agi" /> Agi
+              <b-img src="/static/images/primary_agi.png" title="Agi" /> Agi &nbsp; &nbsp;
             </div>
             <div v-if="row.item.type === 5">
-              <b-img src="/static/images/primary_int.png" title="Int"  /> Int
+              <b-img src="/static/images/primary_int.png" title="Int"  /> Int &nbsp; &nbsp;
             </div>
           </template>
         </b-table>
@@ -67,7 +77,7 @@ export default {
     let items = statsDB
 
     const fields = [
-      { key: 'icon', label: '', sortable: false },
+      { key: 'icon', label: 'Icon', sortable: false },
       { key: 'link', label: 'Ability', sortable: true },
       { key: 'type', label: 'Type', sortable: true },
       { key: 'win_rate_progress', label: 'Win Rate', sortable: true },
@@ -96,7 +106,7 @@ export default {
       'perPage': 10,
       'totalRows': items.length,
       'pageOptions': [ 10, 50, 100 ],
-      'sortBy': 'win_rate',
+      'sortBy': 'win_rate_progress',
       'sortDesc': true,
       'fields': fields,
       'items': items,
@@ -159,8 +169,4 @@ export default {
 
 <!-- Add "scoped" attribute to limit CSS to this component only -->
 <style scoped>
-.header {
-  font-size: 1.6em;
-  font-weight: bold;
-}
 </style>

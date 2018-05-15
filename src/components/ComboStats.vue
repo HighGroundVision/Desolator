@@ -1,5 +1,16 @@
 <template>
-  <section>
+  <section  class="opaque-background">
+    <b-row>
+      <b-col>
+        <h1 class="text-warning">Combo Details</h1>
+      </b-col>
+    </b-row>
+    <b-row>
+      <b-col>
+        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Maecenas eget porta velit. Etiam aliquam auctor nulla, vitae congue ligula rhoncus vel. Fusce porta imperdiet risus, ac maximus magna posuere in. Suspendisse quis sodales velit. Sed fringilla enim quis nibh congue efficitur. Proin ante lectus, rhoncus quis venenatis in, maximus malesuada ipsum. Cras hendrerit facilisis ante at molestie. Nullam ullamcorper diam vitae dolor placerat, nec euismod neque placerat.</p>
+      </b-col>
+    </b-row>
+    <hr />
     <b-row>
       <b-col cols="6" v-for="ability in abilities" :key="ability.id">
         <b-row>
@@ -9,7 +20,9 @@
           <b-col>
             <b-row>
               <b-col>
-                <p class="header">{{ability.dname}}</p>
+                <b-link :to="'/stats/ability/' + ability.id">
+                  <h2>{{ability.dname}}</h2>
+                </b-link>
               </b-col>
             </b-row>
             <b-row>
@@ -43,31 +56,34 @@
       </b-col>
     </b-row>
     <hr />
-    <p class="header">Combind Stats</p>
     <b-row>
+      <b-col>
+        <h3>Combind Stats</h3>
+        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Maecenas eget porta velit. Etiam aliquam auctor nulla, vitae congue ligula rhoncus vel. Fusce porta imperdiet risus, ac maximus magna posuere in. Suspendisse quis sodales velit. Sed fringilla enim quis nibh congue efficitur. Proin ante lectus, rhoncus quis venenatis in, maximus malesuada ipsum. Cras hendrerit facilisis ante at molestie. Nullam ullamcorper diam vitae dolor placerat, nec euismod neque placerat.</p>
+      </b-col>
+    </b-row>
+    <b-row class="text-center">
       <b-col cols="12">
         <b-row v-if="combindStats.length > 0">
-          <b-col></b-col>
           <b-col>Type</b-col>
           <b-col>Win Rate</b-col>
           <b-col>Wins / Picks</b-col>
         </b-row>
         <b-row v-for="stat in combindStats" :key="combindStats.indexOf(stat)">
-          <b-col></b-col>
           <b-col v-if="stat.type === 1">
-            <b-img src="/static/images/type_melee.png" title="Melee" /> Melee
+            <b-img src="/static/images/type_melee.png" title="Melee" class="ability-icon-sm" /> Melee
           </b-col>
           <b-col v-if="stat.type === 2">
-            <b-img src="/static/images/type_range.png" title="Range" /> Range
+            <b-img src="/static/images/type_range.png" title="Range" class="ability-icon-sm" /> Range
           </b-col>
           <b-col v-if="stat.type === 3">
-            <b-img src="/static/images/primary_str.png" title="Str" /> Str
+            <b-img src="/static/images/primary_str.png" title="Str" class="ability-icon-sm" /> Str &nbsp; &nbsp;
           </b-col>
           <b-col v-if="stat.type === 4">
-            <b-img src="/static/images/primary_agi.png" title="Agi" /> Agi
+            <b-img src="/static/images/primary_agi.png" title="Agi" class="ability-icon-sm" /> Agi &nbsp; &nbsp;
           </b-col>
           <b-col v-if="stat.type === 5">
-            <b-img src="/static/images/primary_int.png" title="Int"  /> Int
+            <b-img src="/static/images/primary_int.png" title="Int" class="ability-icon-sm" /> Int &nbsp; &nbsp;
           </b-col>
           <b-col>
             <b-progress :value="round(stat.win_rate)" :min="0" :max="100" :striped="true" show-progress></b-progress>
@@ -77,33 +93,44 @@
       </b-col>
     </b-row>
     <hr />
-    <p class="header">Individual Stats</p>
     <b-row>
+      <b-col>
+        <h3>Individual Stats</h3>
+        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Maecenas eget porta velit. Etiam aliquam auctor nulla, vitae congue ligula rhoncus vel. Fusce porta imperdiet risus, ac maximus magna posuere in. Suspendisse quis sodales velit. Sed fringilla enim quis nibh congue efficitur. Proin ante lectus, rhoncus quis venenatis in, maximus malesuada ipsum. Cras hendrerit facilisis ante at molestie. Nullam ullamcorper diam vitae dolor placerat, nec euismod neque placerat.</p>
+      </b-col>
+    </b-row>
+    <b-row class="text-center">
       <b-col cols="12">
         <b-row v-if="individualStats.length > 0">
           <b-col>Ability</b-col>
+          <b-col>Icon</b-col>
           <b-col>Type</b-col>
           <b-col>Win Rate</b-col>
           <b-col>Wins / Picks</b-col>
         </b-row>
         <b-row v-for="stat in individualStats" :key="individualStats.indexOf(stat)">
           <b-col>
-            <b-img :src="stat.img" fluid style="height: 33px;" />
+            {{stat.name}}
           </b-col>
-          <b-col v-if="stat.type === 1">
-            <b-img src="/static/images/type_melee.png" title="Melee" /> Melee
+          <b-col>
+            <b-img :src="stat.img" class="ability-icon-sm" />
           </b-col>
-          <b-col v-if="stat.type === 2">
-            <b-img src="/static/images/type_range.png" title="Range" /> Range
-          </b-col>
-          <b-col v-if="stat.type === 3">
-            <b-img src="/static/images/primary_str.png" title="Str" /> Str
-          </b-col>
-          <b-col v-if="stat.type === 4">
-            <b-img src="/static/images/primary_agi.png" title="Agi" /> Agi
-          </b-col>
-          <b-col v-if="stat.type === 5">
-            <b-img src="/static/images/primary_int.png" title="Int"  /> Int
+          <b-col>
+            <div v-if="stat.type === 1">
+              <b-img src="/static/images/type_melee.png" title="Melee" class="ability-icon-sm" /> Melee
+            </div>
+            <div v-if="stat.type === 2">
+              <b-img src="/static/images/type_range.png" title="Range" class="ability-icon-sm" /> Range
+            </div>
+            <div v-if="stat.type === 3">
+              <b-img src="/static/images/primary_str.png" title="Str" class="ability-icon-sm" /> Str &nbsp; &nbsp;
+            </div>
+            <div v-if="stat.type === 4">
+              <b-img src="/static/images/primary_agi.png" title="Agi" class="ability-icon-sm" /> Agi &nbsp; &nbsp;
+            </div>
+            <div v-if="stat.type === 5">
+              <b-img src="/static/images/primary_int.png" title="Int" class="ability-icon-sm"  /> Int &nbsp; &nbsp;
+            </div>
           </b-col>
           <b-col>
             <b-progress :value="round(stat.win_rate)" :min="0" :max="100" :striped="true" show-progress></b-progress>
@@ -124,20 +151,14 @@ import statsAbilityDB from '@/data/stats-ability.json'
 
 export default {
   name: 'ComboStats',
-  props: {
-    abilityKeys: {
-      type: Array,
-      default: []
-    }
-  },
   data () {
-    let key = this.abilityKeys.join('-')
+    let key = this.$route.params.key
+    let abilityKeys = key.split('-')
 
-    let combind = statsAbilitiesDB.filter(stat => stat.abilities === key)
     let individual = []
-
     let abilities = []
-    this.abilityKeys.forEach(id => {
+
+    abilityKeys.forEach(id => {
       const abilityId = parseInt(id)
       const ability = abilitiesDB[abilityId]
       abilities.push(ability)
@@ -145,10 +166,12 @@ export default {
       let stats = statsAbilityDB.filter(stat => stat.abilities === id)
       for (let index = 0; index < stats.length; index++) {
         stats[index].img = ability.img
+        stats[index].name = ability.dname
       }
       individual = individual.concat(stats)
     })
 
+    let combind = statsAbilitiesDB.filter(stat => stat.abilities === key)
     combind.sort(function (lhs, rhs) { return rhs.win_rate - lhs.win_rate })
     individual.sort(function (lhs, rhs) { return rhs.win_rate - lhs.win_rate })
 
@@ -176,12 +199,4 @@ export default {
 
 <!-- Add "scoped" attribute to limit CSS to this component only -->
 <style scoped>
-.header {
-  font-size: 1.6em;
-  font-weight: bold;
-}
-.ability-icon {
-
-    box-shadow: 5px 4px #000000;
-}
 </style>

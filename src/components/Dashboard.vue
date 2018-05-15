@@ -11,8 +11,7 @@
             </div>
         </div>
         <div class="col-xl-9 col-lg-9 col-md-8 col-sm-8 col-12">
-            
-            <h3 class="text-warning">Ability Drafter</h3>
+            <h1 class="text-warning">Ability Drafter</h1>
             <p>Dota has changed once again with the 7.07 patch.
             We are going to have to change with it.
             We have currently retired the existing branch and are working on vNext.

@@ -2,7 +2,7 @@
   <section class="opaque-background">
       <div class="row">
         <div class="col-xl-8 col-lg-10">
-          <h2 class="text-warning">Draft Pool</h2>
+          <h1 class="text-warning">Draft Pool</h1>
           <p>Find out exactly which heroes and which abilities are active. Below are listed the heroes and abilities that make up the draft pool. The active heroes and abilities are in colour while the disabled ones are greyed out.</p>
         </div>
         <div class="col-xl-4 col-lg-2">
@@ -26,10 +26,10 @@
                       </td>
                       <template v-for="ability in hero.abilities">
                         <td v-bind:key="ability.id">
-                          <b-link :to="'/stats/' + ability.id" v-if="ability.enabled">
-                            <b-img :src="ability.img" :title="ability.name" v-bind:class="{ disabled: !ability.enabled }" fluid class="ability-icon" />
+                          <b-link :to="'/stats/ability/' + ability.id" v-if="ability.enabled">
+                            <b-img :src="ability.img" :title="ability.name" v-bind:class="{ disabled: !ability.enabled }" fluid class="ability-icon-lg" />
                           </b-link>
-                          <b-img v-else :src="ability.img" :title="ability.name" v-bind:class="{ disabled: !ability.enabled }" fluid class="ability-icon" />
+                          <b-img v-else :src="ability.img" :title="ability.name" v-bind:class="{ disabled: !ability.enabled }" fluid class="ability-icon-lg" />
                         </td>
                       </template>
                     </tr>
@@ -63,11 +63,8 @@ export default {
 
 <!-- Add "scoped" attribute to limit CSS to this component only -->
 <style scoped>
-.ability-icon {
-    height: 90px;
-}
 .hero-icon {
-    height: 90px;
+    height: 64px;
 }
 img.disabled {
     -webkit-filter: grayscale(100%);
