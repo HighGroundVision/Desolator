@@ -10,19 +10,24 @@
         <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Maecenas eget porta velit. Etiam aliquam auctor nulla, vitae congue ligula rhoncus vel. Fusce porta imperdiet risus, ac maximus magna posuere in. Suspendisse quis sodales velit. Sed fringilla enim quis nibh congue efficitur. Proin ante lectus, rhoncus quis venenatis in, maximus malesuada ipsum. Cras hendrerit facilisis ante at molestie. Nullam ullamcorper diam vitae dolor placerat, nec euismod neque placerat.</p>
       </b-col>
     </b-row>
-    <b-row>
-      <b-col md="2" lg="1" >
+    <b-row class="text-center">
+      <b-col>
         <h2>Filter</h2>
       </b-col>
-      <b-col  md="4" lg="5">
+      <b-col>
         <b-form-input v-model="filterByAbility" placeholder="By Ability" />
       </b-col>
-      <b-col md="4" lg="5">
-        <b-form-select v-model="filterByType" :options="typeOptions">
-          <option slot="first" :value="null">By Type</option>
+      <b-col>
+        <b-form-select v-model="filterByAttack" :options="attackOptions">
+          <option slot="first" :value="null">By Attack</option>
         </b-form-select>
       </b-col>
-      <b-col md="2" lg="1">
+      <b-col>
+        <b-form-select v-model="filterByPrimary" :options="primaryOptions">
+          <option slot="first" :value="null">By Primary</option>
+        </b-form-select>
+      </b-col>
+      <b-col>
         <b-btn @click="resetModel">Clear</b-btn>
       </b-col>
     </b-row>
@@ -93,9 +98,12 @@ export default {
       items[index].win_vs_picks = items[index].wins + ' / ' + items[index].picks
     }
 
-    const typeOptions = [
+    const attackOptions = [
       {text: 'Melee', value: 1},
-      {text: 'Range', value: 2},
+      {text: 'Range', value: 2}
+    ]
+
+    const primaryOptions = [
       {text: 'Str', value: 3},
       {text: 'Agi', value: 4},
       {text: 'Int', value: 5}
@@ -111,8 +119,10 @@ export default {
       'fields': fields,
       'items': items,
       'filterByAbility': null,
-      'filterByType': null,
-      'typeOptions': typeOptions
+      'filterByAttack': null,
+      'filterByPrimary': null,
+      'attackOptions': attackOptions,
+      'primaryOptions': primaryOptions
     }
   },
   computed: {
@@ -125,9 +135,17 @@ export default {
         })
       }
 
-      if (this.filterByType) {
+      if (this.filterByAttack && this.filterByPrimary) {
         items = items.filter((lhs) => {
-          return lhs.type === this.filterByType
+          return lhs.type === this.filterByAttack || lhs.type === this.filterByPrimary
+        })
+      } else if (this.filterByAttack) {
+        items = items.filter((lhs) => {
+          return lhs.type === this.filterByAttack
+        })
+      } else if (this.filterByPrimary) {
+        items = items.filter((lhs) => {
+          return lhs.type === this.filterByPrimary
         })
       }
 

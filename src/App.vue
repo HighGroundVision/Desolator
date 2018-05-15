@@ -30,20 +30,8 @@ export default {
 </script>
 
 <style>
-.background-left {
-  background-image: url("~/static/images/bg-left.png");
-  background-repeat: no-repeat;
-  background-size: 50%;
-  background-position: left top;
-}
-.background-right {
-  background-image: url("~/static/images/bg-right.png");
-  background-repeat: no-repeat;
-  background-size: 50%;
-  background-position: right top;
-}
 .body-app {
-  font-family: /*'Gugi',*/ Arial, sans-serif;
+  font-family: 'Gugi', Arial, sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   color: white;
