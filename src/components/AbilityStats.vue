@@ -42,27 +42,26 @@
       <b-row>
         <b-col cols="12">
           <b-row>
-            <b-col>Attack Type</b-col>
-            <b-col>Primary Stat</b-col>
+            <b-col>Type</b-col>
             <b-col>Win Rate</b-col>
             <b-col></b-col>
             <b-col>Wins / Picks</b-col>
           </b-row>
           <b-row v-for="stat in stats" :key="stats.indexOf(stat)">
             <b-col v-if="stat.type === 1">
-              <b-img src="/static/images/type_melee.png" title="Melee" />
+              <b-img src="/static/images/type_melee.png" title="Melee" /> Melee
             </b-col>
             <b-col v-if="stat.type === 2">
-              <b-img src="/static/images/type_range.png" title="Range" />
+              <b-img src="/static/images/type_range.png" title="Range" /> Range
             </b-col>
-            <b-col v-if="stat.primary === 1">
-              <b-img src="/static/images/primary_str.png" title="Str" />
+            <b-col v-if="stat.type === 3">
+              <b-img src="/static/images/primary_str.png" title="Str" /> Str
             </b-col>
-            <b-col v-if="stat.primary === 2">
-              <b-img src="/static/images/primary_agi.png" title="Agi" />
+            <b-col v-if="stat.type === 4">
+              <b-img src="/static/images/primary_agi.png" title="Agi" /> Agi
             </b-col>
-            <b-col v-if="stat.primary === 3">
-              <b-img src="/static/images/primary_int.png" title="Int"  />
+            <b-col v-if="stat.type === 5">
+              <b-img src="/static/images/primary_int.png" title="Int"  /> Int
             </b-col>
             <b-col>{{round(stat.win_rate)}} %</b-col>
             <b-col>

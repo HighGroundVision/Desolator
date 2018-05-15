@@ -5,7 +5,7 @@
         <span>* Why is data missing?</span>
         <button class="btn btn-link" v-on:click="more = !more">More</button>
         <br />
-        <span v-if="more">This is because these triplets did not have high enough pick rate to be included in the results.</span>
+        <span v-if="more">This is because these pairs did not have high enough pick rate to be included in the results.</span>
       </p>
     </b-col>
   </b-row>
