@@ -8,6 +8,7 @@
           <b-collapse is-nav id="nav_collapse">
             <b-navbar-nav>
               <b-nav-item to="/draft/pool">Draft Pool</b-nav-item>
+              <b-nav-item to="/abilities">Ability Stats</b-nav-item>
             </b-navbar-nav>
           </b-collapse>
         </b-navbar>

@@ -50,7 +50,6 @@
           <b-col></b-col>
           <b-col>Type</b-col>
           <b-col>Win Rate</b-col>
-          <b-col></b-col>
           <b-col>Wins / Picks</b-col>
         </b-row>
         <b-row v-for="stat in combindStats" :key="combindStats.indexOf(stat)">
@@ -70,9 +69,8 @@
           <b-col v-if="stat.type === 5">
             <b-img src="/static/images/primary_int.png" title="Int"  /> Int
           </b-col>
-          <b-col>{{round(stat.win_rate)}} %</b-col>
           <b-col>
-            <b-progress :value="round(stat.win_rate)" :min="0" :max="100"></b-progress>
+            <b-progress :value="round(stat.win_rate)" :min="0" :max="100" :striped="true" show-progress></b-progress>
           </b-col>
           <b-col>{{stat.wins}} / {{stat.picks}}</b-col>
         </b-row>
@@ -86,7 +84,6 @@
           <b-col>Ability</b-col>
           <b-col>Type</b-col>
           <b-col>Win Rate</b-col>
-          <b-col></b-col>
           <b-col>Wins / Picks</b-col>
         </b-row>
         <b-row v-for="stat in individualStats" :key="individualStats.indexOf(stat)">
@@ -108,9 +105,8 @@
           <b-col v-if="stat.type === 5">
             <b-img src="/static/images/primary_int.png" title="Int"  /> Int
           </b-col>
-          <b-col>{{round(stat.win_rate)}} %</b-col>
           <b-col>
-            <b-progress :value="round(stat.win_rate)" :min="0" :max="100"></b-progress>
+            <b-progress :value="round(stat.win_rate)" :min="0" :max="100" :striped="true" show-progress></b-progress>
           </b-col>
           <b-col>{{stat.wins}} / {{stat.picks}}</b-col>
         </b-row>

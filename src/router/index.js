@@ -3,6 +3,7 @@ import Router from 'vue-router'
 import Dashboard from '@/components/Dashboard'
 import DraftPool from '@/components/DraftPool'
 import Stats from '@/components/Stats'
+import Abilities from '@/components/Abilities'
 
 Vue.use(Router)
 
@@ -22,6 +23,11 @@ export default new Router({
       path: '/stats/:key',
       name: 'Stats',
       component: Stats
+    },
+    {
+      path: '/abilities',
+      name: 'Abilities',
+      component: Abilities
     }
   ]
 })
