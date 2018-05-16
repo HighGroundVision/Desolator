@@ -152,6 +152,14 @@ export default {
         })
       }
 
+      // TODO: 
+      // #. Abilities: Change the dropdowns to checkboxes to filter by
+      // #. Abilities: Add Top 5 abilities by each type
+      // #. DrafPool: Add search by hero and ability name
+      // #. New Component: Pairs List ()
+      // #. New Component: Post Match Analysis ()
+      // #. New Component: Live Draft ()
+
       items = items.sort((lhs, rhs) => {
         if (this.sortBy === 'link') {
           return this.sortDesc ? lhs.name.localeCompare(rhs.name) : rhs.name.localeCompare(lhs.name)
@@ -176,7 +184,6 @@ export default {
     },
     resetModel: function () {
       this.filterByAbility = null
-      this.filterByType = null
     },
     round: function (stat) {
       return Math.round(stat * 100)
