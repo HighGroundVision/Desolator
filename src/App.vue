@@ -31,7 +31,7 @@ export default {
 
 <style>
 .body-app {
-  font-family: 'Gugi', Arial, sans-serif;
+  font-family: /*'Gugi',*/ Arial, sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   color: white;

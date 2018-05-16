@@ -34,7 +34,10 @@
     <br />
     <b-row class="text-center">
       <b-col>
-        <b-table :fields="fields" :items="computedItems" :sort-by.sync="sortBy" :sort-desc.sync="sortDesc" :current-page="currentPage" :per-page="perPage">
+        <b-table :fields="fields" :items="computedItems" 
+            :sort-by.sync="sortBy" :sort-desc.sync="sortDesc" 
+            :current-page="currentPage" :per-page="perPage"
+            @filtered="onFiltered">
           <template slot="icon" slot-scope="row">
             <b-img :src="row.item.img" class="ability-icon-sm" />
           </template>
@@ -167,6 +170,10 @@ export default {
     }
   },
   methods: {
+    onFiltered (filteredItems) {
+      this.totalRows = filteredItems.length
+      this.currentPage = 1
+    },
     resetModel: function () {
       this.filterByAbility = null
       this.filterByType = null
