@@ -20,22 +20,17 @@
           <b-col>
             <b-row>
               <b-col>
-                <b-link :to="'/stats/ability/' + ability.id">
-                  <h2>{{ability.dname}}</h2>
-                </b-link>
+                <h2>{{ability.dname}}</h2>
               </b-col>
             </b-row>
             <b-row>
               <b-col>
                 <p>{{ability.desc}}</p>
-                <p>
-                  <b-link v-on:click="attributes = !attributes">Attributes</b-link>
-                </p>
               </b-col>
             </b-row>
           </b-col>
         </b-row>
-        <div v-if="attributes">
+        <div>
           <b-row>
             <b-col md="2"></b-col>
             <b-col>
@@ -64,12 +59,12 @@
     </b-row>
     <b-row class="text-center">
       <b-col cols="12">
-        <b-row v-if="combindStats.length > 0">
+        <b-row v-if="combind.length > 0">
           <b-col>Type</b-col>
           <b-col>Win Rate</b-col>
           <b-col>Wins / Picks</b-col>
         </b-row>
-        <b-row v-for="stat in combindStats" :key="combindStats.indexOf(stat)">
+        <b-row v-for="stat in combind" :key="combind.indexOf(stat)">
           <b-col v-if="stat.type === 1">
             <b-img src="/static/images/type_melee.png" title="Melee" class="ability-icon-sm" /> Melee
           </b-col>
@@ -90,6 +85,7 @@
           </b-col>
           <b-col>{{stat.wins}} / {{stat.picks}}</b-col>
         </b-row>
+        <missing-data></missing-data>
       </b-col>
     </b-row>
     <hr />
@@ -99,48 +95,108 @@
         <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Maecenas eget porta velit. Etiam aliquam auctor nulla, vitae congue ligula rhoncus vel. Fusce porta imperdiet risus, ac maximus magna posuere in. Suspendisse quis sodales velit. Sed fringilla enim quis nibh congue efficitur. Proin ante lectus, rhoncus quis venenatis in, maximus malesuada ipsum. Cras hendrerit facilisis ante at molestie. Nullam ullamcorper diam vitae dolor placerat, nec euismod neque placerat.</p>
       </b-col>
     </b-row>
-    <b-row class="text-center">
-      <b-col cols="12">
-        <b-row v-if="individualStats.length > 0">
-          <b-col>Ability</b-col>
-          <b-col>Icon</b-col>
-          <b-col>Type</b-col>
-          <b-col>Win Rate</b-col>
-          <b-col>Wins / Picks</b-col>
+    <b-row>
+      <b-col v-for="item in singles" :key="item.ability.id">
+        <b-row>
+          <b-col md="2">
+            <b-img :src="item.ability.img" :title="item.ability.dname" fluid class="ability-icon" />
+          </b-col>
+          <b-col>
+            <h2>{{item.ability.dname}}</h2>
+          </b-col>
         </b-row>
-        <b-row v-for="stat in individualStats" :key="individualStats.indexOf(stat)">
-          <b-col>
-            {{stat.name}}
+        <br />
+        <b-row>
+          <b-col class="text-center">
+            <b-row v-if="item.stats.length > 0">
+              <b-col>Type</b-col>
+              <b-col>Win Rate</b-col>
+              <b-col>Wins / Picks</b-col>
+            </b-row>
+            <b-row v-for="stat in item.stats" :key="item.stats.indexOf(stat)">
+              <b-col>
+                <div v-if="stat.type === 1">
+                  <b-img src="/static/images/type_melee.png" title="Melee" class="ability-icon-sm" /> Melee
+                </div>
+                <div v-if="stat.type === 2">
+                  <b-img src="/static/images/type_range.png" title="Range" class="ability-icon-sm" /> Range
+                </div>
+                <div v-if="stat.type === 3">
+                  <b-img src="/static/images/primary_str.png" title="Str" class="ability-icon-sm" /> Str &nbsp; &nbsp;
+                </div>
+                <div v-if="stat.type === 4">
+                  <b-img src="/static/images/primary_agi.png" title="Agi" class="ability-icon-sm" /> Agi &nbsp; &nbsp;
+                </div>
+                <div v-if="stat.type === 5">
+                  <b-img src="/static/images/primary_int.png" title="Int" class="ability-icon-sm"  /> Int &nbsp; &nbsp;
+                </div>
+              </b-col>
+              <b-col>
+                <b-progress :value="round(stat.win_rate)" :min="0" :max="100" :striped="true" show-progress></b-progress>
+              </b-col>
+              <b-col>{{stat.wins}} / {{stat.picks}}</b-col>
+            </b-row>
           </b-col>
-          <b-col>
-            <b-img :src="stat.img" class="ability-icon-sm" />
-          </b-col>
-          <b-col>
-            <div v-if="stat.type === 1">
-              <b-img src="/static/images/type_melee.png" title="Melee" class="ability-icon-sm" /> Melee
-            </div>
-            <div v-if="stat.type === 2">
-              <b-img src="/static/images/type_range.png" title="Range" class="ability-icon-sm" /> Range
-            </div>
-            <div v-if="stat.type === 3">
-              <b-img src="/static/images/primary_str.png" title="Str" class="ability-icon-sm" /> Str &nbsp; &nbsp;
-            </div>
-            <div v-if="stat.type === 4">
-              <b-img src="/static/images/primary_agi.png" title="Agi" class="ability-icon-sm" /> Agi &nbsp; &nbsp;
-            </div>
-            <div v-if="stat.type === 5">
-              <b-img src="/static/images/primary_int.png" title="Int" class="ability-icon-sm"  /> Int &nbsp; &nbsp;
-            </div>
-          </b-col>
-          <b-col>
-            <b-progress :value="round(stat.win_rate)" :min="0" :max="100" :striped="true" show-progress></b-progress>
-          </b-col>
-          <b-col>{{stat.wins}} / {{stat.picks}}</b-col>
         </b-row>
       </b-col>
     </b-row>
     <hr />
-    <missing-data></missing-data>
+    <b-row>
+      <b-col>
+        <h3>Better Combos</h3>
+        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Maecenas eget porta velit. Etiam aliquam auctor nulla, vitae congue ligula rhoncus vel. Fusce porta imperdiet risus, ac maximus magna posuere in. Suspendisse quis sodales velit. Sed fringilla enim quis nibh congue efficitur. Proin ante lectus, rhoncus quis venenatis in, maximus malesuada ipsum. Cras hendrerit facilisis ante at molestie. Nullam ullamcorper diam vitae dolor placerat, nec euismod neque placerat.</p>
+      </b-col>
+    </b-row>
+    <b-row>
+      <b-col v-for="item in combos" :key="item.ability.id">
+        <b-row>
+          <b-col md="2">
+            <b-img :src="item.ability.img" :title="item.ability.dname" fluid class="ability-icon" />
+          </b-col>
+          <b-col>
+            <h2>{{item.ability.dname}}</h2>
+          </b-col>
+        </b-row>
+        <br />
+        <b-row>
+          <b-col class="text-center">
+            <b-row v-if="item.stats.length > 0">
+              <b-col>Ability</b-col>
+              <b-col>Type</b-col>
+              <b-col>Win Rate</b-col>
+              <b-col>Wins / Picks</b-col>
+            </b-row>
+            <b-row v-for="stat in item.stats" :key="item.stats.indexOf(stat)">
+              <b-col>
+                <b-img :src="stat.img" :title="stat.name" fluid class="ability-icon-sm" />
+              </b-col>
+              <b-col>
+                <div v-if="stat.type === 1">
+                  <b-img src="/static/images/type_melee.png" title="Melee" class="ability-icon-sm" /> Melee
+                </div>
+                <div v-if="stat.type === 2">
+                  <b-img src="/static/images/type_range.png" title="Range" class="ability-icon-sm" /> Range
+                </div>
+                <div v-if="stat.type === 3">
+                  <b-img src="/static/images/primary_str.png" title="Str" class="ability-icon-sm" /> Str &nbsp; &nbsp;
+                </div>
+                <div v-if="stat.type === 4">
+                  <b-img src="/static/images/primary_agi.png" title="Agi" class="ability-icon-sm" /> Agi &nbsp; &nbsp;
+                </div>
+                <div v-if="stat.type === 5">
+                  <b-img src="/static/images/primary_int.png" title="Int" class="ability-icon-sm"  /> Int &nbsp; &nbsp;
+                </div>
+              </b-col>
+              <b-col>
+                <b-progress :value="round(stat.win_rate)" :min="0" :max="100" :striped="true" show-progress></b-progress>
+              </b-col>
+              <b-col>{{stat.wins}} / {{stat.picks}}</b-col>
+            </b-row>
+          </b-col>
+        </b-row>
+      </b-col>
+    </b-row>
+
   </section>
 </template>
 
@@ -155,31 +211,53 @@ export default {
     let key = this.$route.params.key
     let abilityKeys = key.split('-')
 
-    let individual = []
     let abilities = []
+    let singles = []
+    let combos = []
 
     abilityKeys.forEach(id => {
-      const abilityId = parseInt(id)
-      const ability = abilitiesDB[abilityId]
+      const ability = abilitiesDB[id]
       abilities.push(ability)
 
-      let stats = statsAbilityDB.filter(stat => stat.abilities === id)
-      for (let index = 0; index < stats.length; index++) {
-        stats[index].img = ability.img
-        stats[index].name = ability.dname
+      const singleStats = statsAbilityDB.filter(stat => stat.abilities === id)
+      singles.push({'ability': ability, 'stats': singleStats})
+
+      let stats = []
+      let comboStats = statsAbilitiesDB.filter(stat => stat.abilities.includes(id))
+      for (let index = 0; index < comboStats.length; index++) {
+        let keys = comboStats[index].abilities
+        if (keys === key) {
+          break
+        }
+
+        let otherId = keys.split('-').filter(z => z !== id)[0]
+        const otherAbility = abilitiesDB[otherId]
+
+        let data = {
+          'name': otherAbility.dname, 
+          'img': otherAbility.img, 
+          'type': comboStats[index].type, 
+          'win_rate': comboStats[index].win_rate, 
+          'wins': comboStats[index].wins, 
+          'picks': comboStats[index].picks
+        }
+        stats.push(data)
       }
-      individual = individual.concat(stats)
+
+      // Limit the results to 25
+      combos.push({'ability': ability, 'stats': stats.slice(0, 25)})
     })
 
     let combind = statsAbilitiesDB.filter(stat => stat.abilities === key)
     combind.sort(function (lhs, rhs) { return rhs.win_rate - lhs.win_rate })
-    individual.sort(function (lhs, rhs) { return rhs.win_rate - lhs.win_rate })
+    singles.sort(function (lhs, rhs) { return rhs.win_rate - lhs.win_rate })
+    combos.sort(function (lhs, rhs) { return rhs.win_rate - lhs.win_rate })
 
     return {
-      'attributes': false,
       'abilities': abilities,
-      'combindStats': combind,
-      'individualStats': individual
+      'combind': combind,
+      'singles': singles,
+      'combos': combos
     }
   },
   methods: {

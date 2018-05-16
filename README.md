@@ -2,6 +2,12 @@
 
 > Ability Drafter
 
+## TODO
+1. Abilities: Add Top 5 abilities by each type
+2. New Component: Pairs List ()
+3. New Component: Post Match Analysis ()
+4. New Component: Live Draft ()
+
 ## Build Setup
 
 ``` bash

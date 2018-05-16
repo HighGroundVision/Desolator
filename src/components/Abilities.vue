@@ -11,23 +11,17 @@
       </b-col>
     </b-row>
     <b-row class="text-center">
-      <b-col>
+      <b-col cols="2" lg="1">
         <h2>Filter</h2>
       </b-col>
       <b-col>
-        <b-form-input v-model="filterByAbility" placeholder="By Ability" />
+        <b-form-input v-model="filterByAbility" placeholder="By Ability"  />
       </b-col>
       <b-col>
-        <b-form-select v-model="filterByAttack" :options="attackOptions">
-          <option slot="first" :value="null">By Attack</option>
-        </b-form-select>
+        <b-form-checkbox-group v-model="filterByType" name="filterByType" :options="filterByTypeOptions">
+        </b-form-checkbox-group>
       </b-col>
-      <b-col>
-        <b-form-select v-model="filterByPrimary" :options="primaryOptions">
-          <option slot="first" :value="null">By Primary</option>
-        </b-form-select>
-      </b-col>
-      <b-col>
+      <b-col cols="2" lg="1">
         <b-btn @click="resetModel">Clear</b-btn>
       </b-col>
     </b-row>
@@ -101,12 +95,9 @@ export default {
       items[index].win_vs_picks = items[index].wins + ' / ' + items[index].picks
     }
 
-    const attackOptions = [
+    const filterByTypeOptions = [
       {text: 'Melee', value: 1},
-      {text: 'Range', value: 2}
-    ]
-
-    const primaryOptions = [
+      {text: 'Range', value: 2},
       {text: 'Str', value: 3},
       {text: 'Agi', value: 4},
       {text: 'Int', value: 5}
@@ -122,10 +113,8 @@ export default {
       'fields': fields,
       'items': items,
       'filterByAbility': null,
-      'filterByAttack': null,
-      'filterByPrimary': null,
-      'attackOptions': attackOptions,
-      'primaryOptions': primaryOptions
+      'filterByType': [1, 2, 3, 4, 5],
+      'filterByTypeOptions': filterByTypeOptions
     }
   },
   computed: {
@@ -138,27 +127,9 @@ export default {
         })
       }
 
-      if (this.filterByAttack && this.filterByPrimary) {
-        items = items.filter((lhs) => {
-          return lhs.type === this.filterByAttack || lhs.type === this.filterByPrimary
-        })
-      } else if (this.filterByAttack) {
-        items = items.filter((lhs) => {
-          return lhs.type === this.filterByAttack
-        })
-      } else if (this.filterByPrimary) {
-        items = items.filter((lhs) => {
-          return lhs.type === this.filterByPrimary
-        })
-      }
-
-      // TODO: 
-      // #. Abilities: Change the dropdowns to checkboxes to filter by
-      // #. Abilities: Add Top 5 abilities by each type
-      // #. DrafPool: Add search by hero and ability name
-      // #. New Component: Pairs List ()
-      // #. New Component: Post Match Analysis ()
-      // #. New Component: Live Draft ()
+      items = items.filter((lhs) => {
+        return this.filterByType.includes(lhs.type)
+      })
 
       items = items.sort((lhs, rhs) => {
         if (this.sortBy === 'link') {
