@@ -16,7 +16,8 @@
         <p>{{item.key}}</p>
         <ul class="list-unstyled text-left">
           <li v-for="stat in item.stats" :key="stat.abilities">
-            <b-img :src="stat.img" class="ability-icon-sm" /> {{stat.name}}
+            <b-img :src="stat.img" class="ability-icon-sm" />
+            <b-link :to="'/stats/ability/' + stat.id">{{stat.name}}</b-link>
           </li>
         </ul>
       </b-col>

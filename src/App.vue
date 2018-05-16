@@ -9,6 +9,7 @@
             <b-navbar-nav>
               <b-nav-item to="/draft/pool">Draft Pool</b-nav-item>
               <b-nav-item to="/abilities">Ability Stats</b-nav-item>
+              <b-nav-item to="/combos">Combo Stats</b-nav-item>
             </b-navbar-nav>
           </b-collapse>
         </b-navbar>

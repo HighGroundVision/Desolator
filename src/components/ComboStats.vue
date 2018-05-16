@@ -96,9 +96,9 @@
       </b-col>
     </b-row>
     <b-row>
-      <b-col v-for="item in singles" :key="item.ability.id">
+      <b-col v-for="item in singles" :key="item.ability.id" md="6">
         <b-row>
-          <b-col md="2">
+          <b-col col="1" sm="2">
             <b-img :src="item.ability.img" :title="item.ability.dname" fluid class="ability-icon" />
           </b-col>
           <b-col>
@@ -138,6 +138,7 @@
             </b-row>
           </b-col>
         </b-row>
+        <br />
       </b-col>
     </b-row>
     <hr />
@@ -147,10 +148,10 @@
         <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Maecenas eget porta velit. Etiam aliquam auctor nulla, vitae congue ligula rhoncus vel. Fusce porta imperdiet risus, ac maximus magna posuere in. Suspendisse quis sodales velit. Sed fringilla enim quis nibh congue efficitur. Proin ante lectus, rhoncus quis venenatis in, maximus malesuada ipsum. Cras hendrerit facilisis ante at molestie. Nullam ullamcorper diam vitae dolor placerat, nec euismod neque placerat.</p>
       </b-col>
     </b-row>
-    <b-row>
-      <b-col v-for="item in combos" :key="item.ability.id">
+    <b-row v-for="item in combos" :key="item.ability.id">
+      <b-col>
         <b-row>
-          <b-col md="2">
+          <b-col col="1" sm="1">
             <b-img :src="item.ability.img" :title="item.ability.dname" fluid class="ability-icon" />
           </b-col>
           <b-col>
@@ -159,8 +160,9 @@
         </b-row>
         <br />
         <b-row>
-          <b-col class="text-center">
+          <b-col>
             <b-row v-if="item.stats.length > 0">
+              <b-col>Icon</b-col>
               <b-col>Ability</b-col>
               <b-col>Type</b-col>
               <b-col>Win Rate</b-col>
@@ -171,6 +173,9 @@
                 <b-img :src="stat.img" :title="stat.name" fluid class="ability-icon-sm" />
               </b-col>
               <b-col>
+                <b-link :to="'/stats/abilities/' + stat.abilities" target="_blank">{{stat.name}}</b-link>
+              </b-col>
+              <b-col>
                 <div v-if="stat.type === 1">
                   <b-img src="/static/images/type_melee.png" title="Melee" class="ability-icon-sm" /> Melee
                 </div>
@@ -194,6 +199,7 @@
             </b-row>
           </b-col>
         </b-row>
+        <br />
       </b-col>
     </b-row>
 
@@ -234,6 +240,7 @@ export default {
         const otherAbility = abilitiesDB[otherId]
 
         let data = {
+          'abilities': keys,
           'name': otherAbility.dname, 
           'img': otherAbility.img, 
           'type': comboStats[index].type, 

@@ -5,6 +5,7 @@ import DraftPool from '@/components/DraftPool'
 import AbilityStats from '@/components/AbilityStats'
 import ComboStats from '@/components/ComboStats'
 import Abilities from '@/components/Abilities'
+import Combos from '@/components/Combos'
 
 Vue.use(Router)
 
@@ -34,6 +35,11 @@ export default new Router({
       path: '/abilities',
       name: 'AbilitiesList',
       component: Abilities
+    },
+    {
+      path: '/combos',
+      name: 'CombosList',
+      component: Combos
     }
   ]
 })
