@@ -176,6 +176,7 @@ export default {
         const ability = abilitiesDB[otherId]
 
         let data = {
+          'abilities': combo.abilities,
           'name': ability.dname,
           'img': ability.img,
           'type': combo.type,

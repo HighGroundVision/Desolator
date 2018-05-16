@@ -11,6 +11,22 @@
       </b-col>
     </b-row>
     <b-row class="text-center">
+      <b-col v-for="item in top" :key="item.key">
+        <b-img :src="item.img" :title="item.key" />
+        <p>{{item.key}}</p>
+        <ul class="list-unstyled text-left">
+          <li v-for="stat in item.stats" :key="stat.abilities">
+            <b-img :src="stat.img" class="ability-icon-sm" /> {{stat.name}}
+          </li>
+        </ul>
+      </b-col>
+    </b-row>
+    <b-row>
+      <b-col>
+        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Maecenas eget porta velit. Etiam aliquam auctor nulla, vitae congue ligula rhoncus vel. Fusce porta imperdiet risus, ac maximus magna posuere in. Suspendisse quis sodales velit. Sed fringilla enim quis nibh congue efficitur. Proin ante lectus, rhoncus quis venenatis in, maximus malesuada ipsum. Cras hendrerit facilisis ante at molestie. Nullam ullamcorper diam vitae dolor placerat, nec euismod neque placerat.</p>
+      </b-col>
+    </b-row>
+    <b-row class="text-center">
       <b-col cols="2" lg="1">
         <h2>Filter</h2>
       </b-col>
@@ -103,7 +119,16 @@ export default {
       {text: 'Int', value: 5}
     ]
 
+    let top = [
+      { 'key': 'Melee', 'img': '/static/images/type_melee.png', 'stats': items.filter(s => s.type === 1).slice(0, 5) },
+      { 'key': 'Range', 'img': '/static/images/type_range.png', 'stats': items.filter(s => s.type === 2).slice(0, 5) },
+      { 'key': 'Str', 'img': '/static/images/primary_str.png', 'stats': items.filter(s => s.type === 3).slice(0, 5) },
+      { 'key': 'Agi', 'img': '/static/images/primary_agi.png', 'stats': items.filter(s => s.type === 4).slice(0, 5) },
+      { 'key': 'Int', 'img': '/static/images/primary_int.png', 'stats': items.filter(s => s.type === 5).slice(0, 5) }
+    ]
+
     return {
+      'top': top,
       'currentPage': 1,
       'perPage': 10,
       'totalRows': items.length,
@@ -155,6 +180,7 @@ export default {
     },
     resetModel: function () {
       this.filterByAbility = null
+      this.filterByType = [1, 2, 3, 4, 5]
     },
     round: function (stat) {
       return Math.round(stat * 100)
