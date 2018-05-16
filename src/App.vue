@@ -7,9 +7,9 @@
           <b-navbar-brand to="/">[HGV] Ability Drafter</b-navbar-brand>
           <b-collapse is-nav id="nav_collapse">
             <b-navbar-nav>
-              <b-nav-item to="/draft/pool">Draft Pool</b-nav-item>
-              <b-nav-item to="/abilities">Ability Stats</b-nav-item>
-              <b-nav-item to="/combos">Combo Stats</b-nav-item>
+              <b-nav-item to="/pool">Pool</b-nav-item>
+              <b-nav-item to="/abilities">Abilities</b-nav-item>
+              <b-nav-item to="/combos">Combos</b-nav-item>
             </b-navbar-nav>
           </b-collapse>
         </b-navbar>

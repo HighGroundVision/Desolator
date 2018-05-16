@@ -17,7 +17,7 @@ export default new Router({
       component: Dashboard
     },
     {
-      path: '/draft/pool',
+      path: '/pool',
       name: 'DraftPool',
       component: DraftPool
     },

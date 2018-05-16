@@ -161,6 +161,11 @@
         <br />
         <b-row>
           <b-col>
+            <b-row v-if="item.stats.length === 0">
+              <b-col class="text-center">
+                <missing-combos></missing-combos>
+              </b-col>
+            </b-row>
             <b-row v-if="item.stats.length > 0">
               <b-col>Icon</b-col>
               <b-col>Ability</b-col>
@@ -252,7 +257,8 @@ export default {
       }
 
       // Limit the results to 25
-      combos.push({'ability': ability, 'stats': stats.slice(0, 25)})
+      let topStats = stats.slice(0, 25)
+      combos.push({ 'ability': ability, 'stats': topStats })
     })
 
     let combind = statsAbilitiesDB.filter(stat => stat.abilities === key)
