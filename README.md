@@ -3,8 +3,9 @@
 > Ability Drafter
 
 ## TODO
-2. New Component: Post Match Analysis ()
-3. New Component: Live Draft ()
+1. New Component: Post to soical (maybe we can find one that already exists)
+3. New Component: Post Match Analysis ()
+4. New Component: Live Draft ()
 
 ## Build Setup
 

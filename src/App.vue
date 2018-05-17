@@ -15,6 +15,18 @@
         </b-navbar>
       </header>
       <router-view></router-view>
+      <div class="sticky-container">
+        <ul class="sticky">
+            <li>
+                <i class="fab fa-2x fa-twitter-square text-warning"></i>
+                <p><a href="https://twitter.com/DotaHGV/" target="_blank">Follow Us on<br>Twitter</a></p>
+            </li>
+            <li>
+                <i class="fab fa-2x fa-reddit-square text-warning"></i>
+                <p><a href="https://www.reddit.com/r/abilitydraft/" target="_blank">Find Us on<br>Reddit</a></p>
+            </li>
+        </ul>
+      </div>
       <footer>
         <div class="text-center">
           <p>&copy; 2018 - High Ground Vision</p>
@@ -31,29 +43,4 @@ export default {
 </script>
 
 <style>
-.body-app {
-  font-family: /*'Gugi',*/ Arial, sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-  color: white;
-  background: url("~/static/images/bg-left.png") left top / 50% no-repeat, url("~/static/images/bg-right.png") right top / 50% no-repeat, black;
-}
-.opaque-background {
-    border-radius: 10px;
-    padding-left: 10px;
-    background-color: #0B1425;
-    margin: 10px;
-    padding: 10px;
-}
-.ability-icon {
-    box-shadow: 5px 4px #000000;
-}
-.ability-icon-lg {
-  height: 64px;
-  width: 64px;
-}
-.ability-icon-sm {
-  height: 33px;
-  width: 33px;
-}
 </style>
