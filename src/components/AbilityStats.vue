@@ -63,19 +63,19 @@
         </b-row>
         <b-row v-for="stat in stats" :key="stats.indexOf(stat)">
           <b-col v-if="stat.type === 1">
-            <b-img src="/static/images/type_melee.png" title="Melee" class="ability-icon-sm" /> Melee
+            <b-img src="https://hgv-hyperstone.azurewebsites.net/mics/type_melee.png" title="Melee" class="ability-icon-sm" /> Melee
           </b-col>
           <b-col v-if="stat.type === 2">
-            <b-img src="/static/images/type_range.png" title="Range" class="ability-icon-sm" /> Range
+            <b-img src="https://hgv-hyperstone.azurewebsites.net/mics/type_range.png" title="Range" class="ability-icon-sm" /> Range
           </b-col>
           <b-col v-if="stat.type === 3">
-            <b-img src="/static/images/primary_str.png" title="Str" class="ability-icon-sm" /> Str &nbsp; &nbsp;
+            <b-img src="https://hgv-hyperstone.azurewebsites.net/mics/primary_str.png" title="Str" class="ability-icon-sm" /> Str &nbsp; &nbsp;
           </b-col>
           <b-col v-if="stat.type === 4">
-            <b-img src="/static/images/primary_agi.png" title="Agi" class="ability-icon-sm" /> Agi &nbsp; &nbsp;
+            <b-img src="https://hgv-hyperstone.azurewebsites.net/mics/primary_agi.png" title="Agi" class="ability-icon-sm" /> Agi &nbsp; &nbsp;
           </b-col>
           <b-col v-if="stat.type === 5">
-            <b-img src="/static/images/primary_int.png" title="Int" class="ability-icon-sm" /> Int &nbsp; &nbsp;
+            <b-img src="https://hgv-hyperstone.azurewebsites.net/mics/primary_int.png" title="Int" class="ability-icon-sm" /> Int &nbsp; &nbsp;
           </b-col>
           <b-col>
             <b-progress :value="round(stat.win_rate)" :min="0" :max="100" :striped="true" show-progress></b-progress>
@@ -109,19 +109,19 @@
           </b-col>
           <b-col>
             <div v-if="stat.type === 1">
-              <b-img src="/static/images/type_melee.png" title="Melee" class="ability-icon-sm" /> Melee
+              <b-img src="https://hgv-hyperstone.azurewebsites.net/mics/type_melee.png" title="Melee" class="ability-icon-sm" /> Melee
             </div>
             <div v-if="stat.type === 2">
-              <b-img src="/static/images/type_range.png" title="Range" class="ability-icon-sm" /> Range
+              <b-img src="https://hgv-hyperstone.azurewebsites.net/mics/type_range.png" title="Range" class="ability-icon-sm" /> Range
             </div>
             <div v-if="stat.type === 3">
-              <b-img src="/static/images/primary_str.png" title="Str" class="ability-icon-sm" /> Str &nbsp; &nbsp;
+              <b-img src="https://hgv-hyperstone.azurewebsites.net/mics/primary_str.png" title="Str" class="ability-icon-sm" /> Str &nbsp; &nbsp;
             </div>
             <div v-if="stat.type === 4">
-              <b-img src="/static/images/primary_agi.png" title="Agi" class="ability-icon-sm" /> Agi &nbsp; &nbsp;
+              <b-img src="https://hgv-hyperstone.azurewebsites.net/mics/primary_agi.png" title="Agi" class="ability-icon-sm" /> Agi &nbsp; &nbsp;
             </div>
             <div v-if="stat.type === 5">
-              <b-img src="/static/images/primary_int.png" title="Int" class="ability-icon-sm"  /> Int &nbsp; &nbsp;
+              <b-img src="https://hgv-hyperstone.azurewebsites.net/mics/primary_int.png" title="Int" class="ability-icon-sm"  /> Int &nbsp; &nbsp;
             </div>
           </b-col>
           <b-col>

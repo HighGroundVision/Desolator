@@ -13,7 +13,7 @@
 
     <b-row>
       <b-col class="text-center">
-        <b-img src="/static/images/type_melee.png" title="Melee" class="ability-icon-sm" /> 
+        <b-img src="https://hgv-hyperstone.azurewebsites.net/mics/type_melee.png" title="Melee" class="ability-icon-sm" /> 
         <h3>Melee</h3>
       </b-col>
     </b-row>
@@ -40,7 +40,7 @@
     <hr />
     <b-row>
       <b-col class="text-center">
-        <b-img src="/static/images/type_range.png" title="Range" class="ability-icon-sm" /> 
+        <b-img src="https://hgv-hyperstone.azurewebsites.net/mics/type_range.png" title="Range" class="ability-icon-sm" /> 
         <h3>Range</h3>
       </b-col>
     </b-row>
@@ -67,7 +67,7 @@
     <hr />
     <b-row>
       <b-col class="text-center">
-        <b-img src="/static/images/primary_str.png" title="Str" class="ability-icon-sm" /> 
+        <b-img src="https://hgv-hyperstone.azurewebsites.net/mics/primary_str.png" title="Str" class="ability-icon-sm" /> 
         <h3>Str</h3>
       </b-col>
     </b-row>
@@ -94,7 +94,7 @@
     <hr />
     <b-row>
       <b-col class="text-center">
-        <b-img src="/static/images/primary_agi.png" title="Agi" class="ability-icon-sm" /> 
+        <b-img src="https://hgv-hyperstone.azurewebsites.net/mics/primary_agi.png" title="Agi" class="ability-icon-sm" /> 
         <h3>Agi</h3>
       </b-col>
     </b-row>
@@ -121,7 +121,7 @@
     <hr />
     <b-row>
       <b-col class="text-center">
-        <b-img src="/static/images/primary_int.png" title="Int" class="ability-icon-sm" /> 
+        <b-img src="https://hgv-hyperstone.azurewebsites.net/mics/primary_int.png" title="Int" class="ability-icon-sm" /> 
         <h3>Int</h3>
       </b-col>
     </b-row>

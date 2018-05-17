@@ -60,19 +60,19 @@
           </template>
           <template slot="type" slot-scope="row">
             <div v-if="row.item.type === 1">
-              <b-img src="/static/images/type_melee.png" title="Melee" /> Melee
+              <b-img src="https://hgv-hyperstone.azurewebsites.net/mics/type_melee.png" title="Melee" /> Melee
             </div>
             <div v-if="row.item.type === 2">
-              <b-img src="/static/images/type_range.png" title="Range" /> Range
+              <b-img src="https://hgv-hyperstone.azurewebsites.net/mics/type_range.png" title="Range" /> Range
             </div>
             <div v-if="row.item.type === 3">
-              <b-img src="/static/images/primary_str.png" title="Str" /> Str &nbsp; &nbsp;
+              <b-img src="https://hgv-hyperstone.azurewebsites.net/mics/primary_str.png" title="Str" /> Str &nbsp; &nbsp;
             </div>
             <div v-if="row.item.type === 4">
-              <b-img src="/static/images/primary_agi.png" title="Agi" /> Agi &nbsp; &nbsp;
+              <b-img src="https://hgv-hyperstone.azurewebsites.net/mics/primary_agi.png" title="Agi" /> Agi &nbsp; &nbsp;
             </div>
             <div v-if="row.item.type === 5">
-              <b-img src="/static/images/primary_int.png" title="Int"  /> Int &nbsp; &nbsp;
+              <b-img src="https://hgv-hyperstone.azurewebsites.net/mics/primary_int.png" title="Int"  /> Int &nbsp; &nbsp;
             </div>
           </template>
         </b-table>
@@ -121,11 +121,11 @@ export default {
     ]
 
     let top = [
-      { 'key': 'Melee', 'img': '/static/images/type_melee.png', 'stats': items.filter(s => s.type === 1).slice(0, 5) },
-      { 'key': 'Range', 'img': '/static/images/type_range.png', 'stats': items.filter(s => s.type === 2).slice(0, 5) },
-      { 'key': 'Str', 'img': '/static/images/primary_str.png', 'stats': items.filter(s => s.type === 3).slice(0, 5) },
-      { 'key': 'Agi', 'img': '/static/images/primary_agi.png', 'stats': items.filter(s => s.type === 4).slice(0, 5) },
-      { 'key': 'Int', 'img': '/static/images/primary_int.png', 'stats': items.filter(s => s.type === 5).slice(0, 5) }
+      { 'key': 'Melee', 'img': 'https://hgv-hyperstone.azurewebsites.net/mics/type_melee.png', 'stats': items.filter(s => s.type === 1).slice(0, 5) },
+      { 'key': 'Range', 'img': 'https://hgv-hyperstone.azurewebsites.net/mics/type_range.png', 'stats': items.filter(s => s.type === 2).slice(0, 5) },
+      { 'key': 'Str', 'img': 'https://hgv-hyperstone.azurewebsites.net/mics/primary_str.png', 'stats': items.filter(s => s.type === 3).slice(0, 5) },
+      { 'key': 'Agi', 'img': 'https://hgv-hyperstone.azurewebsites.net/mics/primary_agi.png', 'stats': items.filter(s => s.type === 4).slice(0, 5) },
+      { 'key': 'Int', 'img': 'https://hgv-hyperstone.azurewebsites.net/mics/primary_int.png', 'stats': items.filter(s => s.type === 5).slice(0, 5) }
     ]
 
     return {
