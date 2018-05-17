@@ -94,18 +94,18 @@
     <b-row class="text-center">
       <b-col cols="12">
         <b-row v-if="combos.length > 0">
-          <b-col>Ability</b-col>
           <b-col>Icon</b-col>
+          <b-col>Ability</b-col>
           <b-col>Type</b-col>
           <b-col>Win Rate</b-col>
           <b-col>Wins / Picks</b-col>
         </b-row>
         <b-row v-for="stat in combos" :key="combos.indexOf(stat)">
           <b-col>
-            <b-link :to="'/stats/abilities/' + stat.abilities">{{stat.name}}</b-link>
+            <b-img :src="stat.img" class="ability-icon-sm" /> 
           </b-col>
           <b-col>
-            <b-img :src="stat.img" class="ability-icon-sm" /> 
+            <b-link :to="'/stats/abilities/' + stat.abilities">{{stat.name}}</b-link>
           </b-col>
           <b-col>
             <div v-if="stat.type === 1">

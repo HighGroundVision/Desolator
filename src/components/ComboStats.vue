@@ -98,7 +98,7 @@
     <b-row>
       <b-col v-for="item in singles" :key="item.ability.id" md="6">
         <b-row>
-          <b-col col="1" sm="2">
+          <b-col cols="1" sm="2">
             <b-img :src="item.ability.img" :title="item.ability.dname" fluid class="ability-icon" />
           </b-col>
           <b-col>
@@ -151,7 +151,7 @@
     <b-row v-for="item in combos" :key="item.ability.id">
       <b-col>
         <b-row>
-          <b-col col="1" sm="1">
+          <b-col cols="1" sm="1">
             <b-img :src="item.ability.img" :title="item.ability.dname" fluid class="ability-icon" />
           </b-col>
           <b-col>

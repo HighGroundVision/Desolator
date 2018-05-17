@@ -12,10 +12,11 @@ import 'bootstrap-vue/dist/bootstrap-vue.css'
 
 Vue.use(VueResource)
 Vue.use(BootstrapVue)
-Vue.config.productionTip = false
 
 Vue.component('missing-data', MissingData)
 Vue.component('missing-combos', MissingCombos)
+
+Vue.config.productionTip = false
 
 /* eslint-disable no-new */
 new Vue({
