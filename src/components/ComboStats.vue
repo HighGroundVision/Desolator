@@ -256,8 +256,8 @@ export default {
         stats.push(data)
       }
 
-      // Limit the results to 25
-      let topStats = stats.slice(0, 25)
+      // Limit the results to 10
+      let topStats = stats.slice(0, 10)
       combos.push({ 'ability': ability, 'stats': topStats })
     })
 

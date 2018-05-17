@@ -1,9 +1,8 @@
-# desolator
+# Desolator
 
 > Ability Drafter
 
 ## TODO
-1. New Component: Pairs List ()
 2. New Component: Post Match Analysis ()
 3. New Component: Live Draft ()
 
