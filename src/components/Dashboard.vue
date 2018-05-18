@@ -28,22 +28,6 @@
             </b-col>
           </b-row>
         </b-alert>
-        <!--
-        <social-sharing title="HGV - Ability Drafter! Your place for Dota-AD news, stats and more" hashtags="dota2,abilitydraft" twitter-user="DotaHGV" inline-template>
-          <div>
-            <network network="reddit">
-              <b-button variant="secondary">
-                <i class="fab fa-reddit-square"></i> Reddit
-              </b-button>
-            </network>
-            <network network="twitter">
-              <b-button variant="secondary">
-                <i class="fab fa-twitter-square"></i> Twitter
-              </b-button>
-            </network>
-          </div>
-        </social-sharing>
-        -->
         <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nam suscipit elit sed magna rutrum, vel ornare est lacinia. Nam et mi fringilla, volutpat sem eget, eleifend enim. Vestibulum eget enim vehicula, placerat sem id, ullamcorper felis. Nullam tempor mauris ut sapien tincidunt, in vulputate odio iaculis. Vivamus vitae facilisis quam, eget egestas tellus. Suspendisse potenti. Mauris ac efficitur ante, suscipit molestie sapien. Vestibulum posuere mauris magna, nec varius orci sagittis at. Mauris pellentesque quam massa, non efficitur turpis auctor vel. Nam sed eros sit amet ligula dictum laoreet in at magna. Donec vitae dictum nunc, vel rhoncus arcu.</p>
         <p>Phasellus luctus ac diam nec maximus. Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas. Quisque leo orci, vehicula at dapibus ut, sodales vitae justo. Sed sit amet ullamcorper arcu, et semper tortor. Curabitur enim augue, semper sed rhoncus tincidunt, suscipit eget tellus. Maecenas venenatis euismod quam in sodales. Ut lectus felis, porta et dapibus sed, semper nec purus. Etiam nec nisi ut odio feugiat pulvinar. Vestibulum ante ipsum primis in faucibus orci luctus et ultrices posuere cubilia Curae; Sed efficitur, turpis ut hendrerit rutrum, turpis augue eleifend ex, viverra tristique neque risus eu tellus. Integer ut faucibus justo. Integer sodales lorem tellus, ut aliquet ex volutpat sed. Nam sollicitudin eleifend molestie.</p>
         <p>Duis sit amet feugiat lacus, vel molestie lorem. Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas. Maecenas eleifend vehicula dolor non egestas. Cras nec venenatis nibh, ac faucibus lacus. Cras convallis vulputate dapibus. Sed lectus turpis, sollicitudin non pulvinar et, fringilla sit amet augue. Phasellus massa lectus, congue et nibh eu, luctus iaculis purus. Integer nisl massa, pharetra sit amet erat at, pharetra pharetra magna. Fusce velit mi, egestas id magna posuere, malesuada semper mauris. Duis posuere est non enim venenatis dictum.</p>
@@ -56,9 +40,7 @@
 export default {
   name: 'Dashboard',
   data () {
-    return {
-      msg: '...'
-    }
+    return {}
   }
 }
 </script>

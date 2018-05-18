@@ -5,11 +5,12 @@
 import Vue from 'vue'
 import VueResource from 'vue-resource'
 import BootstrapVue from 'bootstrap-vue'
+import SocialSharing from 'vue-social-sharing'
 import App from './App'
 import router from './router'
 import MissingData from '@/components/MissingData.vue'
 import MissingCombos from '@/components/MissingCombos.vue'
-import SocialSharing from 'vue-social-sharing'
+import Social from '@/components/Social.vue'
 // CSS
 import 'bootstrap/dist/css/bootstrap.min.css'
 import 'bootstrap-vue/dist/bootstrap-vue.css'
@@ -22,6 +23,7 @@ Vue.use(SocialSharing)
 
 Vue.component('missing-data', MissingData)
 Vue.component('missing-combos', MissingCombos)
+Vue.component('social', Social)
 
 Vue.config.productionTip = false
 

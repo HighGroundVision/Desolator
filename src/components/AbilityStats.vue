@@ -3,11 +3,10 @@
     <b-row>
       <b-col>
         <h1 class="text-warning">Ability Details</h1>
-      </b-col>
-    </b-row>
-    <b-row>
-      <b-col>
         <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Maecenas eget porta velit. Etiam aliquam auctor nulla, vitae congue ligula rhoncus vel. Fusce porta imperdiet risus, ac maximus magna posuere in. Suspendisse quis sodales velit. Sed fringilla enim quis nibh congue efficitur. Proin ante lectus, rhoncus quis venenatis in, maximus malesuada ipsum. Cras hendrerit facilisis ante at molestie. Nullam ullamcorper diam vitae dolor placerat, nec euismod neque placerat.</p>
+      </b-col>
+      <b-col cols="4">
+        <social :msg="socialMessage"></social>
       </b-col>
     </b-row>
     <hr />
@@ -148,6 +147,8 @@ import statsAbilitieDB from '@/data/stats-abilities.json'
 export default {
   name: 'AbilityStats',
   data () {
+    console.log(window.location.href)
+
     let abilityKey = this.$route.params.key
     let key = parseInt(abilityKey)
 
@@ -157,6 +158,7 @@ export default {
     results.sort(function (lhs, rhs) { return rhs.win_rate - lhs.win_rate })
 
     return {
+      'socialMessage': 'Cluckles says to check out stats for ' + ability.dname,
       'key': abilityKey,
       'ability': ability,
       'stats': results,

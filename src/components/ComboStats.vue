@@ -3,11 +3,10 @@
     <b-row>
       <b-col>
         <h1 class="text-warning">Combo Details</h1>
-      </b-col>
-    </b-row>
-    <b-row>
-      <b-col>
         <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Maecenas eget porta velit. Etiam aliquam auctor nulla, vitae congue ligula rhoncus vel. Fusce porta imperdiet risus, ac maximus magna posuere in. Suspendisse quis sodales velit. Sed fringilla enim quis nibh congue efficitur. Proin ante lectus, rhoncus quis venenatis in, maximus malesuada ipsum. Cras hendrerit facilisis ante at molestie. Nullam ullamcorper diam vitae dolor placerat, nec euismod neque placerat.</p>
+      </b-col>
+      <b-col cols="4">
+        <social :msg="socialMessage"></social>
       </b-col>
     </b-row>
     <hr />
@@ -222,6 +221,7 @@ export default {
     let key = this.$route.params.key
     let abilityKeys = key.split('-')
 
+    let names = []
     let abilities = []
     let singles = []
     let combos = []
@@ -229,6 +229,7 @@ export default {
     abilityKeys.forEach(id => {
       const ability = abilitiesDB[id]
       abilities.push(ability)
+      names.push(ability.dname)
 
       const singleStats = statsAbilityDB.filter(stat => stat.abilities === id)
       singles.push({'ability': ability, 'stats': singleStats})
@@ -267,6 +268,7 @@ export default {
     combos.sort(function (lhs, rhs) { return rhs.win_rate - lhs.win_rate })
 
     return {
+      'socialMessage': 'Cluckles says check out this combo ' + names.join(' & '),
       'abilities': abilities,
       'combind': combind,
       'singles': singles,
