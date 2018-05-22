@@ -15,7 +15,7 @@
 </template>
 
 <script>
-// import axios from 'axios'
+import axios from 'axios'
 
 export default {
   name: 'AuthHandler',
@@ -25,18 +25,21 @@ export default {
   created: function () {
     let openidIdentity = this.$route.query['openid.identity']
     const identity = openidIdentity.replace('https://steamcommunity.com/openid/id/', '')
-    
-    const user = { userid: identity, username: 'User: ' + identity }
-    this.$store.commit('login', user)
 
-    this.$router.push('/')
-
-    /*
-    const url = 'https://steamcommunity.com/id/{ID}/?xml=1'.replace('{ID}', identity)
+    const url = process.env.API_BASE_URL + 'PlayerSummary?identity=' + identity
     axios.get(url).then((response) => {
-      console.log(response.data)
+      const user = { 
+        steamid: response.data.SteamId, 
+        dotaId: response.data.DotaId,
+        username: response.data.Persona
+      }
+
+      this.$store.commit('login', user)
+      this.$router.push('/')
+    }).catch(function () {
+      this.$store.commit('logout')
+      this.$router.push('/')
     })
-    */
   }
 }
 </script>

@@ -6,8 +6,9 @@ Vue.use(Vuex)
 export default new Vuex.Store({
   state: {
     authenticated: false,
-    username: '',
-    userid: 0
+    steamId: '',
+    dotaId: '',
+    username: ''
   },
   getters: {
     isAuthenticated: state => {
@@ -16,8 +17,11 @@ export default new Vuex.Store({
     isAnonymous: state => {
       return state.authenticated === false
     },
-    userId: state => {
-      return state.userid
+    steamId: state => {
+      return state.steamId
+    },
+    dotaId: state => {
+      return state.dotaId
     },
     userName: state => {
       return state.username
@@ -26,13 +30,15 @@ export default new Vuex.Store({
   mutations: {
     login (state, user) {
       state.authenticated = true
+      state.steamId = user.steamId
+      state.dotaId = user.dotaId
       state.username = user.username
-      state.userid = user.userid
     },
     logout (state) {
       state.authenticated = false
+      state.steamId = ''
+      state.dotaId = ''
       state.username = ''
-      state.userid = 0
     }
   }
 })

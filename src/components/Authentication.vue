@@ -4,7 +4,7 @@
       <b-nav-item to="/login">Login</b-nav-item>
     </b-navbar-nav>
     <b-navbar-nav v-if="isAuthenticated" class="mr-auto">
-      <span v-if="isAuthenticated" class="navbar-text">{{userName}}</span>
+      <span v-if="isAuthenticated" class="navbar-text text-info">{{userName}}</span>
       <b-nav-item to="/logout">Logout</b-nav-item>
     </b-navbar-nav>
   </div>
@@ -18,7 +18,7 @@ export default {
   data () {
     return {}
   },
-  computed: mapGetters(['isAuthenticated', 'isAnonymous', 'userId', 'userName'])
+  computed: mapGetters(['isAuthenticated', 'isAnonymous', 'userName'])
 }
 </script>
 
