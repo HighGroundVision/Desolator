@@ -5,7 +5,6 @@
 import Vue from 'vue'
 import VueResource from 'vue-resource'
 import BootstrapVue from 'bootstrap-vue'
-import SocialSharing from 'vue-social-sharing'
 import App from './App'
 import router from './router'
 import store from './store'
@@ -24,7 +23,6 @@ import '@/assets/main.css'
 
 Vue.use(VueResource)
 Vue.use(BootstrapVue)
-Vue.use(SocialSharing)
 
 Vue.component('hgv-authentication', Authentication)
 Vue.component('hgv-missing-data', MissingData)

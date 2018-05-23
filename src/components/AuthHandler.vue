@@ -16,6 +16,7 @@
 
 <script>
 import axios from 'axios'
+import {setUser, clearUser} from '@/assets/user-storage'
 
 export default {
   name: 'AuthHandler',
@@ -23,6 +24,8 @@ export default {
     return {}
   },
   created: function () {
+    const self = this
+
     let openidIdentity = this.$route.query['openid.identity']
     const identity = openidIdentity.replace('https://steamcommunity.com/openid/id/', '')
 
@@ -34,11 +37,15 @@ export default {
         username: response.data.Persona
       }
 
-      this.$store.commit('login', user)
-      this.$router.push('/')
+      setUser(user)
+
+      self.$store.commit('login', user)
+      self.$router.push('/')
     }).catch(function () {
-      this.$store.commit('logout')
-      this.$router.push('/')
+      clearUser()
+      
+      self.$store.commit('logout')
+      self.$router.push('/')
     })
   }
 }

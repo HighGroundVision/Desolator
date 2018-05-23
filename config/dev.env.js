@@ -3,5 +3,7 @@ var prodEnv = require('./prod.env')
 
 module.exports = merge(prodEnv, {
   NODE_ENV: '"development"',
-  API_BASE_URL: '"http://localhost:7071/api/"'
+  API_BASE_URL: '"http://localhost:7071/api/"',
+  FLAG_SOICAL: true,
+  FLAG_AUTHENTICATION: true
 })

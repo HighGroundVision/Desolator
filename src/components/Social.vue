@@ -4,33 +4,26 @@
     <b-alert variant="info" show>   
         <strong>Cluckles says sharing is caring!</strong>
         <br />
-        <!--
-        <social-sharing :url="url" :title="message" hashtags="dota2,abilitydraft" twitter-user="DotaHGV" inline-template>
-          <div>
-            <network network="reddit">
-              <b-button variant="secondary">
-                <i class="fab fa-reddit-square"></i> Reddit
-              </b-button>
-            </network>
-            <network network="twitter">
-              <b-button variant="secondary">
-                <i class="fab fa-twitter-square"></i> Twitter
-              </b-button>
-            </network>
-          </div>
-        </social-sharing>
-        -->
+        <b-button variant="secondary"  v-if="enabled" @click="reddit">
+          <i class="fab fa-reddit-square"></i> Reddit
+        </b-button>
+         <b-button variant="secondary" v-if="enabled" @click="twitter">
+          <i class="fab fa-twitter-square"></i> Twitter
+        </b-button>
     </b-alert>
   </div>
 </template>
 
 <script>
+const defultMessage = 'Cluckles says sharing is caring!'
+const defaultWindowSettings = 'status=no,height=600,width=900,resizable=yes,left=0,top=0,screenX=0,screenY=0,toolbar=no,menubar=no,scrollbars=no,location=no,directories=no'
+
 export default {
   name: 'Soical',
   props: {
     msg: {
       'type': String,
-      'default': 'Cluckles says sharing is caring!',
+      'default': defultMessage,
       'required': true
     },
     link: {
@@ -40,8 +33,22 @@ export default {
   },
   data () {
     return {
+      'enabled': process.env.FLAG_SOICAL,
       'url': this.link,
-      'message': this.msg
+      'message': this.msg,
+      'popup': undefined
+    }
+  },
+  methods: {
+    reddit: function () {
+      let url = 'https://www.reddit.com/r/abilitydraft/submit?url=' + encodeURIComponent(this.url) + '&title=' + encodeURIComponent(this.msg)
+      this.popup = window.open(url, defultMessage, defaultWindowSettings)
+      this.popup.focus()
+    },
+    twitter: function () {
+      let url = 'https://twitter.com/intent/tweet?text=' + encodeURIComponent(this.msg) + '&url=' + encodeURIComponent(this.url) + '&hashtags=dota2,abilitydraft'
+      this.popup = window.open(url, defultMessage, defaultWindowSettings)
+      this.popup.focus()
     }
   }
 }

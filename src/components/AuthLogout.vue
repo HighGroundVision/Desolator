@@ -15,12 +15,16 @@
 </template>
 
 <script>
+import {clearUser} from '@/assets/user-storage'
+
 export default {
   name: 'AuthLogout',
   data () {
     return {}
   },
   created: function () {
+    clearUser()
+
     this.$store.commit('logout')
     this.$router.push('/')
   }

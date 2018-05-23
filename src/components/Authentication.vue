@@ -1,5 +1,5 @@
 <template>
-  <div>
+  <div v-if="enabled">
     <b-navbar-nav v-if="isAnonymous" class="mr-auto">
       <b-nav-item to="/login">Login</b-nav-item>
     </b-navbar-nav>
@@ -16,7 +16,9 @@ import { mapGetters } from 'vuex'
 export default {
   name: 'AuthReponse',
   data () {
-    return {}
+    return {
+      'enabled': process.env.FLAG_AUTHENTICATION
+    }
   },
   computed: mapGetters(['isAuthenticated', 'isAnonymous', 'userName'])
 }
