@@ -3,11 +3,8 @@
 > Ability Drafter
 
 ## TODO
-1. New Component: Post to soical (we are building our own based on soical-sharing just for Reddit and Twitter)
-2. New Component: Authentication [AuthRequest & AuthReponse] 
-    (we are building a  a login reques using a URL redirect to steam/login and extracting the openid.identity from the response)
-3. New Component: Post Match Analysis ()
-4. New Component: Live Draft ()
+1. New Component: Post Match Analysis ()
+2. New Component: Live Draft ()
 
 ## Build Setup
 

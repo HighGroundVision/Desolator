@@ -27,6 +27,7 @@ export default {
     if (user) {
       this.$store.commit('login', user)
       this.$router.push('/')
+      return
     }
 
     const returnUrl = encodeURIComponent(window.location.origin + '/#/authenticated')

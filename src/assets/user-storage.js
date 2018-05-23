@@ -1,8 +1,11 @@
 export function getUserIfExists () {
   if (typeof (Storage) !== 'undefined') {
     const json = localStorage.getItem('user')
-    const user = JSON.parse(json)
-    return user
+    if (json) {
+      return JSON.parse(json)
+    } else {
+      return undefined
+    }
   }
 }
 
