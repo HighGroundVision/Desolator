@@ -1,5 +1,8 @@
 import Vue from 'vue'
 import Router from 'vue-router'
+import AuthLogin from '@/components/AuthLogin'
+import AuthLogout from '@/components/AuthLogout'
+import AuthHandler from '@/components/AuthHandler'
 import Dashboard from '@/components/Dashboard'
 import DraftPool from '@/components/DraftPool'
 import AbilityStats from '@/components/AbilityStats'
@@ -13,8 +16,23 @@ export default new Router({
   routes: [
     {
       path: '/',
-      name: 'Dashboard',
+      name: 'Home',
       component: Dashboard
+    },
+    {
+      path: '/login',
+      name: 'Login',
+      component: AuthLogin
+    },
+    {
+      path: '/logout',
+      name: 'Logout',
+      component: AuthLogout
+    },
+    {
+      path: '/authenticated',
+      name: 'Authenticated',
+      component: AuthHandler
     },
     {
       path: '/pool',
