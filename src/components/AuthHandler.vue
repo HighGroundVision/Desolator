@@ -32,7 +32,7 @@ export default {
     const url = process.env.API_BASE_URL + 'PlayerSummary?identity=' + identity
     axios.get(url).then((response) => {
       const user = { 
-        steamid: response.data.SteamId, 
+        steamId: response.data.SteamId, 
         dotaId: response.data.DotaId,
         username: response.data.Persona
       }
