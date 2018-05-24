@@ -151,8 +151,6 @@
 
 <script>
 import axios from 'axios'
-// import abilitiesDB from '@/data/abilities.json'
-// import statsDB from '@/data/stats-abilities.json'
 
 export default {
   name: 'CombosList',

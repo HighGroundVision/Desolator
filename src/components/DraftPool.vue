@@ -48,19 +48,31 @@
 </template>
 
 <script>
-import pool from '@/data/draftpool.json'
+import axios from 'axios'
 
 export default {
   name: 'DraftPool',
   data () {
-    pool.sort((lhs, rhs) => {
-      return lhs.name.localeCompare(rhs.name)
-    })
-
     return {
       'filter': null,
-      'items': pool
+      'items': []
     }
+  },
+  created: function () {
+    const self = this
+
+    let p1 = axios.get('/static/data/draftpool.json').then((reponse) => { return reponse.data })
+    Promise.all([p1]).then((values) => {
+      const pool = values[0]
+
+      pool.sort((lhs, rhs) => {
+        return lhs.name.localeCompare(rhs.name)
+      })
+
+      self.items = pool
+    }).catch(function (error) {
+      console.log(error)
+    })
   },
   computed: {
     computedItems: function () {

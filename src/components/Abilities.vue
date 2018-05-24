@@ -87,14 +87,11 @@
 </template>
 
 <script>
-import abilitiesDB from '@/data/abilities.json'
-import statsDB from '@/data/stats-ability.json'
+import axios from 'axios'
 
 export default {
   name: 'AbilityList',
   data () {
-    let items = statsDB
-
     const fields = [
       { key: 'icon', label: 'Icon', sortable: false },
       { key: 'link', label: 'Ability', sortable: true },
@@ -102,15 +99,6 @@ export default {
       { key: 'win_rate_progress', label: 'Win Rate', sortable: true },
       { key: 'win_vs_picks', label: 'Win / Pick', sortable: true }
     ]
-
-    for (let index = 0; index < items.length; index++) {
-      const abilityId = parseInt(items[index].abilities)
-      const ability = abilitiesDB[abilityId]
-      items[index].id = abilityId
-      items[index].name = ability.dname
-      items[index].img = ability.img
-      items[index].win_vs_picks = items[index].wins + ' / ' + items[index].picks
-    }
 
     const filterByTypeOptions = [
       {text: 'Melee', value: 1},
@@ -120,28 +108,54 @@ export default {
       {text: 'Int', value: 5}
     ]
 
-    let top = [
-      { 'key': 'Melee', 'img': 'https://hgv-hyperstone.azurewebsites.net/mics/type_melee.png', 'stats': items.filter(s => s.type === 1).slice(0, 5) },
-      { 'key': 'Range', 'img': 'https://hgv-hyperstone.azurewebsites.net/mics/type_range.png', 'stats': items.filter(s => s.type === 2).slice(0, 5) },
-      { 'key': 'Str', 'img': 'https://hgv-hyperstone.azurewebsites.net/mics/primary_str.png', 'stats': items.filter(s => s.type === 3).slice(0, 5) },
-      { 'key': 'Agi', 'img': 'https://hgv-hyperstone.azurewebsites.net/mics/primary_agi.png', 'stats': items.filter(s => s.type === 4).slice(0, 5) },
-      { 'key': 'Int', 'img': 'https://hgv-hyperstone.azurewebsites.net/mics/primary_int.png', 'stats': items.filter(s => s.type === 5).slice(0, 5) }
-    ]
-
     return {
-      'top': top,
+      'top': [],
       'currentPage': 1,
       'perPage': 10,
-      'totalRows': items.length,
+      'totalRows': 0,
       'pageOptions': [ 10, 50, 100 ],
       'sortBy': 'win_rate_progress',
       'sortDesc': true,
       'fields': fields,
-      'items': items,
+      'items': [],
       'filterByAbility': null,
       'filterByType': [1, 2, 3, 4, 5],
       'filterByTypeOptions': filterByTypeOptions
     }
+  },
+  created: function () {
+    const self = this
+
+    let p1 = axios.get('/static/data/stats-ability.json').then((reponse) => { return reponse.data })
+    let p2 = axios.get('/static/data/abilities.json').then((reponse) => { return reponse.data })
+
+    Promise.all([p1, p2]).then((values) => {
+      let items = values[0]
+      let abilitiesDB = values[1]
+
+      for (let index = 0; index < items.length; index++) {
+        const abilityId = parseInt(items[index].abilities)
+        const ability = abilitiesDB[abilityId]
+        items[index].id = abilityId
+        items[index].name = ability.dname
+        items[index].img = ability.img
+        items[index].win_vs_picks = items[index].wins + ' / ' + items[index].picks
+      }
+
+      let top = [
+        { 'key': 'Melee', 'img': 'https://hgv-hyperstone.azurewebsites.net/mics/type_melee.png', 'stats': items.filter(s => s.type === 1).slice(0, 5) },
+        { 'key': 'Range', 'img': 'https://hgv-hyperstone.azurewebsites.net/mics/type_range.png', 'stats': items.filter(s => s.type === 2).slice(0, 5) },
+        { 'key': 'Str', 'img': 'https://hgv-hyperstone.azurewebsites.net/mics/primary_str.png', 'stats': items.filter(s => s.type === 3).slice(0, 5) },
+        { 'key': 'Agi', 'img': 'https://hgv-hyperstone.azurewebsites.net/mics/primary_agi.png', 'stats': items.filter(s => s.type === 4).slice(0, 5) },
+        { 'key': 'Int', 'img': 'https://hgv-hyperstone.azurewebsites.net/mics/primary_int.png', 'stats': items.filter(s => s.type === 5).slice(0, 5) }
+      ]
+
+      self.totalRows = items.length
+      self.items = items
+      self.top = top
+    }).catch(function (error) {
+      console.log(error)
+    })
   },
   computed: {
     computedItems: function () {

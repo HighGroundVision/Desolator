@@ -212,9 +212,6 @@
 
 <script>
 import axios from 'axios'
-// import abilitiesDB from '@/data/abilities.json'
-// import statsAbilityDB from '@/data/stats-ability.json'
-// import statsAbilitiesDB from '@/data/stats-abilities.json'
 
 export default {
   name: 'ComboStats',
