@@ -150,44 +150,81 @@
 </template>
 
 <script>
-import abilitiesDB from '@/data/abilities.json'
-import statsDB from '@/data/stats-abilities.json'
+import axios from 'axios'
+// import abilitiesDB from '@/data/abilities.json'
+// import statsDB from '@/data/stats-abilities.json'
 
 export default {
   name: 'CombosList',
   data () {
-    const limit = 10
+    return {
+      'topMelee': [],
+      'topRange': [],
+      'topStr': [],
+      'topAgi': [],
+      'topInt': []
+    }
+  },
+  created: function () {
+    const self = this
 
-    let melee = statsDB.filter(s => s.type === 1).slice(0, limit)
-    let range = statsDB.filter(s => s.type === 2).slice(0, limit)
-    let str = statsDB.filter(s => s.type === 3).slice(0, limit)
-    let agi = statsDB.filter(s => s.type === 4).slice(0, limit) 
-    let int = statsDB.filter(s => s.type === 5).slice(0, limit)
-    let all = [melee, range, str, agi, int]
+    let p1 = axios.get('/static/data/abilities.json').then((reponse) => { return reponse.data })
+    let p2 = axios.get('/static/data/stats-abilities.json').then((reponse) => { return reponse.data })
     
-    for (let z = 0; z < all.length; z++) {
-      let items = all[z]
+    Promise.all([p1, p2]).then((values) => {
+      const abilitiesDB = values[0]
+      const statsDB = values[1]
 
-      for (let i = 0; i < items.length; i++) {
-        const keys = items[i].abilities.split('-')
+      let melee = []
+      let range = []
+      let str = []
+      let agi = []
+      let int = []
 
-        items[i].pair = []
+      for (let i = 0; i < statsDB.length; i++) {
+        let stat = statsDB[i]
+        if (stat.picks < 10) {
+          continue
+        }
 
+        stat.pair = []
+
+        const keys = stat.abilities.split('-')
         for (let x = 0; x < keys.length; x++) {
           const id = keys[x]
           const ability = abilitiesDB[id]
-          items[i].pair.push(ability)
+          stat.pair.push(ability)
+        }
+
+        if (stat.type === 1 && melee.length < 10) {
+          melee.push(stat)
+        } else if (stat.type === 2 && range.length < 10) {
+          range.push(stat)
+        } else if (stat.type === 3 && str.length < 10) {
+          str.push(stat)
+        } else if (stat.type === 4 && agi.length < 10) {
+          agi.push(stat)
+        } else if (stat.type === 5 && int.length < 10) {
+          int.push(stat)
+        }
+
+        if (melee.length === 10 && 
+          range.length === 10 && 
+          str.length === 10 && 
+          agi.length === 10 && 
+          int.length === 10) {
+          break
         }
       }
-    }
 
-    return {
-      'topMelee': melee,
-      'topRange': range,
-      'topStr': str,
-      'topAgi': agi,
-      'topInt': int
-    }
+      self.topMelee = melee
+      self.topRange = range
+      self.topStr = str
+      self.topAgi = agi
+      self.topInt = int
+    }).catch(function (error) {
+      console.log(error)
+    })
   },
   methods: {
     round: function (stat) {

@@ -211,69 +211,94 @@
 </template>
 
 <script>
-import abilitiesDB from '@/data/abilities.json'
-import statsAbilitiesDB from '@/data/stats-abilities.json'
-import statsAbilityDB from '@/data/stats-ability.json'
+import axios from 'axios'
+// import abilitiesDB from '@/data/abilities.json'
+// import statsAbilityDB from '@/data/stats-ability.json'
+// import statsAbilitiesDB from '@/data/stats-abilities.json'
 
 export default {
   name: 'ComboStats',
   data () {
-    let key = this.$route.params.key
-    let abilityKeys = key.split('-')
-
-    let names = []
-    let abilities = []
-    let singles = []
-    let combos = []
-
-    abilityKeys.forEach(id => {
-      const ability = abilitiesDB[id]
-      abilities.push(ability)
-      names.push(ability.dname)
-
-      const singleStats = statsAbilityDB.filter(stat => stat.abilities === id)
-      singles.push({'ability': ability, 'stats': singleStats})
-
-      let stats = []
-      let comboStats = statsAbilitiesDB.filter(stat => stat.abilities.includes(id))
-      for (let index = 0; index < comboStats.length; index++) {
-        let keys = comboStats[index].abilities
-        if (keys === key) {
-          break
-        }
-
-        let otherId = keys.split('-').filter(z => z !== id)[0]
-        const otherAbility = abilitiesDB[otherId]
-
-        let data = {
-          'abilities': keys,
-          'name': otherAbility.dname, 
-          'img': otherAbility.img, 
-          'type': comboStats[index].type, 
-          'win_rate': comboStats[index].win_rate, 
-          'wins': comboStats[index].wins, 
-          'picks': comboStats[index].picks
-        }
-        stats.push(data)
-      }
-
-      // Limit the results to 10
-      let topStats = stats.slice(0, 10)
-      combos.push({ 'ability': ability, 'stats': topStats })
-    })
-
-    let combind = statsAbilitiesDB.filter(stat => stat.abilities === key)
-    combind.sort(function (lhs, rhs) { return rhs.win_rate - lhs.win_rate })
-    singles.sort(function (lhs, rhs) { return rhs.win_rate - lhs.win_rate })
-    combos.sort(function (lhs, rhs) { return rhs.win_rate - lhs.win_rate })
-
     return {
-      'socialMessage': 'Cluckles says check out this combo ' + names.join(' & '),
-      'abilities': abilities,
-      'combind': combind,
-      'singles': singles,
-      'combos': combos
+      'socialMessage': 'Cluckles says check out this combo',
+      'abilities': [],
+      'combind': [],
+      'singles': [],
+      'combos': []
     }
+  },
+  created: function () {
+    const self = this
+
+    let p1 = axios.get('/static/data/abilities.json').then((reponse) => { return reponse.data })
+    let p2 = axios.get('/static/data/stats-ability.json').then((reponse) => { return reponse.data })
+    let p3 = axios.get('/static/data/stats-abilities.json').then((reponse) => { return reponse.data })
+    
+    Promise.all([p1, p2, p3]).then((values) => {
+      const abilitiesDB = values[0]
+      const statsAbilityDB = values[1]
+      const statsAbilitiesDB = values[2]
+
+      let key = self.$route.params.key
+      let abilityKeys = key.split('-')
+
+      let names = []
+      let abilities = []
+      let singles = []
+      let combos = []
+
+      abilityKeys.forEach(id => {
+        const ability = abilitiesDB[id]
+
+        abilities.push(ability)
+        names.push(ability.dname)
+
+        const singleStats = statsAbilityDB.filter(stat => stat.abilities === id)
+        singles.push({'ability': ability, 'stats': singleStats})
+
+        let stats = []
+        let comboStats = statsAbilitiesDB.filter(stat => stat.abilities.includes(id))
+        for (let index = 0; index < comboStats.length; index++) {
+          let keys = comboStats[index].abilities
+          if (keys === key) {
+            break
+          }
+
+          let otherId = keys.split('-').filter(z => z !== id)[0]
+          const otherAbility = abilitiesDB[otherId]
+          console.log(keys)
+
+          let data = {
+            'abilities': keys,
+            'name': otherAbility.dname, 
+            'img': otherAbility.img, 
+            'type': comboStats[index].type, 
+            'win_rate': comboStats[index].win_rate, 
+            'wins': comboStats[index].wins, 
+            'picks': comboStats[index].picks
+          }
+          stats.push(data)
+        }
+
+        // Limit the results to 10
+        let topStats = stats.slice(0, 10)
+        combos.push({ 'ability': ability, 'stats': topStats })
+      })
+
+      let combind = statsAbilitiesDB.filter(stat => stat.abilities === key)
+      combind.sort(function (lhs, rhs) { return rhs.win_rate - lhs.win_rate })
+      singles.sort(function (lhs, rhs) { return rhs.win_rate - lhs.win_rate })
+      combos.sort(function (lhs, rhs) { return rhs.win_rate - lhs.win_rate })
+
+      self.abilities = abilities
+      self.combind = combind
+      self.singles = singles
+      self.combos = combos
+
+      self.socialMessage = 'Cluckles says check out this combo ' + names.join(' & ')
+    }).catch(function (error) {
+      console.log(error)
+    })
   },
   methods: {
     round: function (stat) {

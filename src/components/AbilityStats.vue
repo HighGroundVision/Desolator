@@ -128,11 +128,6 @@
           </b-col>
           <b-col>{{stat.wins}} / {{stat.picks}}</b-col>
         </b-row>
-        <b-row>
-          <b-col>
-            <b-btn variant="link" @click="comboLimit+=10">Show More</b-btn>
-          </b-col>
-        </b-row>
       </b-col>
     </b-row>
 
@@ -140,37 +135,48 @@
 </template>
 
 <script>
-import abilitiesDB from '@/data/abilities.json'
-import statsAbilityDB from '@/data/stats-ability.json'
-import statsAbilitieDB from '@/data/stats-abilities.json'
+import axios from 'axios'
+// import abilitiesDB from '@/data/abilities.json'
+// import statsAbilityDB from '@/data/stats-ability.json'
+// import statsAbilitiesDB from '@/data/stats-abilities.json'
 
 export default {
   name: 'AbilityStats',
   data () {
-    let abilityKey = this.$route.params.key
-    let key = parseInt(abilityKey)
-
-    let ability = abilitiesDB[key]
-
-    let results = statsAbilityDB.filter(stat => stat.abilities === abilityKey)
-    results.sort(function (lhs, rhs) { return rhs.win_rate - lhs.win_rate })
-
     return {
-      'socialMessage': 'Cluckles says to check out stats for ' + ability.dname,
-      'key': abilityKey,
-      'ability': ability,
-      'stats': results,
-      'comboLimit': 10
+      'socialMessage': 'Cluckles says to check out stats for',
+      'key': [],
+      'ability': [],
+      'stats': [],
+      'combos': []
     }
   },
-  computed: {
-    combos: function () {
-      let combos = statsAbilitieDB.filter((lhs) => lhs.abilities.includes(this.key))
-      combos.sort(function (lhs, rhs) { return rhs.win_rate - lhs.win_rate })
-      const topCombos = combos.slice(0, this.comboLimit)
+  created: function () {
+    const self = this
 
-      let results = []
-      topCombos.forEach(combo => {
+    let p1 = axios.get('/static/data/abilities.json').then((reponse) => { return reponse.data })
+    let p2 = axios.get('/static/data/stats-ability.json').then((reponse) => { return reponse.data })
+    let p3 = axios.get('/static/data/stats-abilities.json').then((reponse) => { return reponse.data })
+    
+    Promise.all([p1, p2, p3]).then((values) => {
+      const abilitiesDB = values[0]
+      const statsAbilityDB = values[1]
+      const statsAbilitiesDB = values[2]
+      
+      let abilityKey = self.$route.params.key
+      let key = parseInt(abilityKey)
+
+      let ability = abilitiesDB[key]
+
+      let results = statsAbilityDB.filter(stat => stat.abilities === abilityKey)
+      results.sort(function (lhs, rhs) { return rhs.win_rate - lhs.win_rate })
+
+      let combos = statsAbilitiesDB.filter((lhs) => lhs.abilities.includes(this.key))
+      combos.sort(function (lhs, rhs) { return rhs.win_rate - lhs.win_rate })
+      combos = combos.slice(0, 10)
+
+      let topCombos = []
+      combos.forEach(combo => {
         let parts = combo.abilities.split('-')
         const otherId = parts.filter(z => z !== this.key)[0]
         const ability = abilitiesDB[otherId]
@@ -184,11 +190,17 @@ export default {
           'wins': combo.wins,
           'picks': combo.picks
         }
-        results.push(data)
+        topCombos.push(data)
       })
 
-      return results
-    }
+      self.socialMessage = 'Cluckles says to check out stats for ' + ability.dname
+      self.key = abilityKey
+      self.ability = ability
+      self.stats = results
+      self.combos = topCombos
+    }).catch(function (error) {
+      console.log(error)
+    })
   },
   methods: {
     round: function (stat) {
