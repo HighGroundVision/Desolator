@@ -1,5 +1,5 @@
 <template>
-  <section  class="opaque-background">
+  <section v-if="ready" class="opaque-background">
     <b-row>
       <b-col>
         <h1 class="text-warning">Combo Details</h1>
@@ -206,7 +206,9 @@
         <br />
       </b-col>
     </b-row>
-
+  </section>
+  <section v-else class="opaque-background text-center">
+    <hgv-loader :color="'#ffc107'"></hgv-loader>
   </section>
 </template>
 
@@ -217,6 +219,7 @@ export default {
   name: 'ComboStats',
   data () {
     return {
+      'ready': false,
       'socialMessage': 'Cluckles says check out this combo',
       'abilities': [],
       'combind': [],
@@ -287,12 +290,12 @@ export default {
       singles.sort(function (lhs, rhs) { return rhs.win_rate - lhs.win_rate })
       combos.sort(function (lhs, rhs) { return rhs.win_rate - lhs.win_rate })
 
+      self.socialMessage = 'Cluckles says check out this combo ' + names.join(' & ')
       self.abilities = abilities
       self.combind = combind
       self.singles = singles
       self.combos = combos
-
-      self.socialMessage = 'Cluckles says check out this combo ' + names.join(' & ')
+      self.ready = true
     }).catch(function (error) {
       console.log(error)
     })

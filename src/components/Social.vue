@@ -15,39 +15,43 @@
 </template>
 
 <script>
-const defultMessage = 'Cluckles says sharing is caring!'
-const defaultWindowSettings = 'status=no,height=600,width=900,resizable=yes,left=0,top=0,screenX=0,screenY=0,toolbar=no,menubar=no,scrollbars=no,location=no,directories=no'
+const title = 'Cluckles says sharing is caring!'
+
+function getSettings () {
+  const w = 900
+  const h = 600
+  const left = (screen.width / 2) - (w / 2)
+  const top = (screen.height / 2) - (h / 2)
+  let settings = 'status=no,height=' + h + ',width=' + w + ',resizable=yes,left=' + left + ',top=' + top + ',screenX=' + left + ',screenY=' + top + ',toolbar=no,menubar=no,scrollbars=no,location=no,directories=no'
+  return settings
+}
 
 export default {
   name: 'Soical',
   props: {
     msg: {
       'type': String,
-      'default': defultMessage,
       'required': true
-    },
-    link: {
-      'type': String,
-      'default': window.location.href
     }
   },
   data () {
     return {
       'enabled': process.env.FLAG_SOICAL,
-      'url': this.link,
       'message': this.msg,
       'popup': undefined
     }
   },
   methods: {
-    reddit: function () {
-      let url = 'https://www.reddit.com/r/abilitydraft/submit?url=' + encodeURIComponent(this.url) + '&title=' + encodeURIComponent(this.msg)
-      this.popup = window.open(url, defultMessage, defaultWindowSettings)
+    reddit () {
+      const settings = getSettings()
+      let url = 'https://www.reddit.com/r/abilitydraft/submit?url=' + encodeURIComponent(window.location.href) + '&title=' + encodeURIComponent(this.msg)
+      this.popup = window.open(url, title, settings)
       this.popup.focus()
     },
-    twitter: function () {
-      let url = 'https://twitter.com/intent/tweet?text=' + encodeURIComponent(this.msg) + '&url=' + encodeURIComponent(this.url) + '&hashtags=dota2,abilitydraft'
-      this.popup = window.open(url, defultMessage, defaultWindowSettings)
+    twitter () {
+      const settings = getSettings()
+      let url = 'https://twitter.com/intent/tweet?text=' + encodeURIComponent(this.msg) + '&url=' + encodeURIComponent(window.location.href) + '&hashtags=dota2,abilitydraft'
+      this.popup = window.open(url, title, settings)
       this.popup.focus()
     }
   }

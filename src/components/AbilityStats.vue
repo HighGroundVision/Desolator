@@ -1,5 +1,5 @@
 <template>
-  <section  class="opaque-background">
+  <section v-if="ready" class="opaque-background">
     <b-row>
       <b-col>
         <h1 class="text-warning">Ability Details</h1>
@@ -130,7 +130,9 @@
         </b-row>
       </b-col>
     </b-row>
-
+  </section>
+  <section v-else class="opaque-background text-center">
+    <hgv-loader :color="'#ffc107'"></hgv-loader>
   </section>
 </template>
 
@@ -141,6 +143,7 @@ export default {
   name: 'AbilityStats',
   data () {
     return {
+      'ready': false,
       'socialMessage': 'Cluckles says to check out stats for',
       'key': [],
       'ability': [],
@@ -195,6 +198,7 @@ export default {
       self.ability = ability
       self.stats = results
       self.combos = topCombos
+      self.ready = true
     }).catch(function (error) {
       console.log(error)
     })

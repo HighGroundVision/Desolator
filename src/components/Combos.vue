@@ -1,5 +1,5 @@
 <template>
-  <section class="opaque-background">
+  <section v-if="ready" class="opaque-background">
     <b-row>
       <b-col>
         <h1 class="text-warning">Combo Stats</h1>
@@ -145,7 +145,9 @@
         </b-row>
       </b-col>
     </b-row>
-
+  </section>
+  <section v-else class="opaque-background text-center">
+    <hgv-loader :color="'#ffc107'"></hgv-loader>
   </section>
 </template>
 
@@ -156,6 +158,7 @@ export default {
   name: 'CombosList',
   data () {
     return {
+      'ready': false,
       'topMelee': [],
       'topRange': [],
       'topStr': [],
@@ -220,6 +223,7 @@ export default {
       self.topStr = str
       self.topAgi = agi
       self.topInt = int
+      self.ready = true
     }).catch(function (error) {
       console.log(error)
     })

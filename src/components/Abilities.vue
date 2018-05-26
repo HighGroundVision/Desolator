@@ -1,5 +1,5 @@
 <template>
-  <section class="opaque-background">
+  <section v-if="ready" class="opaque-background">
     <b-row>
       <b-col>
         <h1 class="text-warning">Ability Stats</h1>
@@ -84,6 +84,9 @@
       </b-col>
     </b-row>
   </section>
+  <section v-else class="opaque-background text-center">
+    <hgv-loader :color="'#ffc107'"></hgv-loader>
+  </section>
 </template>
 
 <script>
@@ -109,6 +112,7 @@ export default {
     ]
 
     return {
+      'ready': false,
       'top': [],
       'currentPage': 1,
       'perPage': 10,
@@ -153,6 +157,7 @@ export default {
       self.totalRows = items.length
       self.items = items
       self.top = top
+      self.ready = true
     }).catch(function (error) {
       console.log(error)
     })

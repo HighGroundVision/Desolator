@@ -1,5 +1,5 @@
 <template>
-  <section class="opaque-background">
+  <section v-if="ready"  class="opaque-background">
       <b-row>
         <b-col cols="8">
           <h1 class="text-warning">Draft Pool</h1>
@@ -45,6 +45,9 @@
         </b-col>
       </b-row>
   </section>
+  <section v-else class="opaque-background text-center">
+    <hgv-loader :color="'#ffc107'"></hgv-loader>
+  </section>
 </template>
 
 <script>
@@ -54,11 +57,12 @@ export default {
   name: 'DraftPool',
   data () {
     return {
+      'ready': false,
       'filter': null,
       'items': []
     }
   },
-  created: function () {
+  created () {
     const self = this
 
     let p1 = axios.get('/static/data/draftpool.json').then((reponse) => { return reponse.data })
@@ -70,12 +74,13 @@ export default {
       })
 
       self.items = pool
+      self.ready = true
     }).catch(function (error) {
       console.log(error)
     })
   },
   computed: {
-    computedItems: function () {
+    computedItems () {
       let items = this.items
 
       if (this.filter) {
