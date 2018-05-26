@@ -1,4 +1,29 @@
+<template>
+  <div class="sticky-container">
+    <ul class="sticky">
+      <li>
+        <i class="fab fa-2x fa-twitter-square text-warning"></i>
+        <p><a href="https://twitter.com/DotaHGV/" target="_blank">Follow Us on<br>Twitter</a></p>
+      </li>
+      <li>
+        <i class="fab fa-2x fa-reddit-square text-warning"></i>
+        <p><a href="https://www.reddit.com/r/abilitydraft/" target="_blank">Find Us on<br>Reddit</a></p>
+      </li>
+    </ul>
+  </div>
+</template>
 
+<script>
+export default {
+  name: 'SoicalFollow',
+  data () {
+    return {}
+  }
+}
+</script>
+
+<!-- Add "scoped" attribute to limit CSS to this component only -->
+<style scoped>
 .sticky-container{
   padding:0px;
   margin:0px;
@@ -43,3 +68,4 @@
 .sticky li p a:hover{
   text-decoration:underline;
 }
+</style>

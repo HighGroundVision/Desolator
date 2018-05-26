@@ -27,7 +27,7 @@ function getSettings () {
 }
 
 export default {
-  name: 'Soical',
+  name: 'SocialShare',
   props: {
     msg: {
       'type': String,
