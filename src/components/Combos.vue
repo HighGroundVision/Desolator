@@ -29,7 +29,7 @@
             <b-link :to="'/stats/abilities/' + stat.abilities">{{stat.pair[0].dname}} | {{stat.pair[1].dname}}</b-link>
           </b-col>
           <b-col>
-            <b-progress height="1.5rem" :value="round(stat.win_rate)" :min="0" :max="100" :striped="true" show-progress></b-progress>
+            <b-progress height="1.5rem" :value="stat.win_rate" :min="0" :max="100" :striped="true" show-progress></b-progress>
           </b-col>
           <b-col cols="2">
             {{stat.wins}} / {{stat.picks}}
@@ -56,7 +56,7 @@
             <b-link :to="'/stats/abilities/' + stat.abilities">{{stat.pair[0].dname}} | {{stat.pair[1].dname}}</b-link>
           </b-col>
           <b-col>
-            <b-progress height="1.5rem" :value="round(stat.win_rate)" :min="0" :max="100" :striped="true" show-progress></b-progress>
+            <b-progress height="1.5rem" :value="stat.win_rate" :min="0" :max="100" :striped="true" show-progress></b-progress>
           </b-col>
           <b-col cols="2">
             {{stat.wins}} / {{stat.picks}}
@@ -83,7 +83,7 @@
             <b-link :to="'/stats/abilities/' + stat.abilities">{{stat.pair[0].dname}} | {{stat.pair[1].dname}}</b-link>
           </b-col>
           <b-col>
-            <b-progress height="1.5rem" :value="round(stat.win_rate)" :min="0" :max="100" :striped="true" show-progress></b-progress>
+            <b-progress height="1.5rem" :value="stat.win_rate" :min="0" :max="100" :striped="true" show-progress></b-progress>
           </b-col>
           <b-col cols="2">
             {{stat.wins}} / {{stat.picks}}
@@ -110,7 +110,7 @@
             <b-link :to="'/stats/abilities/' + stat.abilities">{{stat.pair[0].dname}} | {{stat.pair[1].dname}}</b-link>
           </b-col>
           <b-col>
-            <b-progress height="1.5rem" :value="round(stat.win_rate)" :min="0" :max="100" :striped="true" show-progress></b-progress>
+            <b-progress height="1.5rem" :value="stat.win_rate" :min="0" :max="100" :striped="true" show-progress></b-progress>
           </b-col>
           <b-col cols="2">
             {{stat.wins}} / {{stat.picks}}
@@ -137,7 +137,7 @@
             <b-link :to="'/stats/abilities/' + stat.abilities">{{stat.pair[0].dname}} | {{stat.pair[1].dname}}</b-link>
           </b-col>
           <b-col>
-            <b-progress height="1.5rem" :value="round(stat.win_rate)" :min="0" :max="100" :striped="true" show-progress></b-progress>
+            <b-progress height="1.5rem" :value="stat.win_rate" :min="0" :max="100" :striped="true" show-progress></b-progress>
           </b-col>
           <b-col cols="2">
             {{stat.wins}} / {{stat.picks}}
@@ -167,7 +167,7 @@ export default {
     }
   },
   created: function () {
-    const self = this
+    const vm = this
 
     let p1 = axios.get('/static/data/abilities.json').then((reponse) => { return reponse.data })
     let p2 = axios.get('/static/data/stats-abilities.json').then((reponse) => { return reponse.data })
@@ -218,20 +218,17 @@ export default {
         }
       }
 
-      self.topMelee = melee
-      self.topRange = range
-      self.topStr = str
-      self.topAgi = agi
-      self.topInt = int
-      self.ready = true
+      vm.topMelee = melee
+      vm.topRange = range
+      vm.topStr = str
+      vm.topAgi = agi
+      vm.topInt = int
+      vm.ready = true
     }).catch(function (error) {
       console.log(error)
     })
   },
   methods: {
-    round: function (stat) {
-      return Math.round(stat * 100)
-    },
     format: function (stat) {
       if (Array.isArray(stat)) {
         return stat.join(' / ')

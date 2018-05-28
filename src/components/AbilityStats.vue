@@ -77,7 +77,7 @@
             <b-img src="https://hgv-hyperstone.azurewebsites.net/mics/primary_int.png" title="Int" class="ability-icon-sm" /> Int &nbsp; &nbsp;
           </b-col>
           <b-col>
-            <b-progress :value="round(stat.win_rate)" :min="0" :max="100" :striped="true" show-progress></b-progress>
+            <b-progress :value="stat.win_rate" :min="0" :max="100" :striped="true" show-progress></b-progress>
           </b-col>
           <b-col>{{stat.wins}} / {{stat.picks}}</b-col>
         </b-row>
@@ -124,7 +124,7 @@
             </div>
           </b-col>
           <b-col>
-            <b-progress :value="round(stat.win_rate)" :min="0" :max="100" :striped="true" show-progress></b-progress>
+            <b-progress :value="stat.win_rate" :min="0" :max="100" :striped="true" show-progress></b-progress>
           </b-col>
           <b-col>{{stat.wins}} / {{stat.picks}}</b-col>
         </b-row>
@@ -152,7 +152,7 @@ export default {
     }
   },
   created: function () {
-    const self = this
+    const vm = this
 
     let p1 = axios.get('/static/data/abilities.json').then((reponse) => { return reponse.data })
     let p2 = axios.get('/static/data/stats-ability.json').then((reponse) => { return reponse.data })
@@ -163,7 +163,7 @@ export default {
       const statsAbilityDB = values[1]
       const statsAbilitiesDB = values[2]
       
-      let abilityKey = self.$route.params.key
+      let abilityKey = vm.$route.params.key
       let key = parseInt(abilityKey)
 
       let ability = abilitiesDB[key]
@@ -193,20 +193,17 @@ export default {
         topCombos.push(data)
       })
 
-      self.socialMessage = 'Cluckles says to check out stats for ' + ability.dname
-      self.key = abilityKey
-      self.ability = ability
-      self.stats = results
-      self.combos = topCombos
-      self.ready = true
+      vm.socialMessage = 'Cluckles says to check out stats for ' + ability.dname
+      vm.key = abilityKey
+      vm.ability = ability
+      vm.stats = results
+      vm.combos = topCombos
+      vm.ready = true
     }).catch(function (error) {
       console.log(error)
     })
   },
   methods: {
-    round: function (stat) {
-      return Math.round(stat * 100)
-    },
     format: function (stat) {
       if (Array.isArray(stat)) {
         return stat.join(' / ')

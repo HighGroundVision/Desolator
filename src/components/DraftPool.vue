@@ -23,7 +23,7 @@
       <br />
       <b-row>
         <b-col>
-          <table id="roaster" class="table table-striped b-table">
+          <table class="table table-striped b-table">
             <tbody>
               <template v-for="hero in computedItems">
                 <tr v-bind:item="hero" v-bind:key="hero.id">
@@ -63,7 +63,7 @@ export default {
     }
   },
   created () {
-    const self = this
+    const vm = this
 
     let p1 = axios.get('/static/data/draftpool.json').then((reponse) => { return reponse.data })
     Promise.all([p1]).then((values) => {
@@ -73,8 +73,8 @@ export default {
         return lhs.name.localeCompare(rhs.name)
       })
 
-      self.items = pool
-      self.ready = true
+      vm.items = pool
+      vm.ready = true
     }).catch(function (error) {
       console.log(error)
     })

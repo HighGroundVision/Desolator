@@ -80,7 +80,7 @@
             <b-img src="https://hgv-hyperstone.azurewebsites.net/mics/primary_int.png" title="Int" class="ability-icon-sm" /> Int &nbsp; &nbsp;
           </b-col>
           <b-col>
-            <b-progress :value="round(stat.win_rate)" :min="0" :max="100" :striped="true" show-progress></b-progress>
+            <b-progress :value="stat.win_rate" :min="0" :max="100" :striped="true" show-progress></b-progress>
           </b-col>
           <b-col>{{stat.wins}} / {{stat.picks}}</b-col>
         </b-row>
@@ -131,7 +131,7 @@
                 </div>
               </b-col>
               <b-col>
-                <b-progress :value="round(stat.win_rate)" :min="0" :max="100" :striped="true" show-progress></b-progress>
+                <b-progress :value="stat.win_rate" :min="0" :max="100" :striped="true" show-progress></b-progress>
               </b-col>
               <b-col>{{stat.wins}} / {{stat.picks}}</b-col>
             </b-row>
@@ -197,7 +197,7 @@
                 </div>
               </b-col>
               <b-col>
-                <b-progress :value="round(stat.win_rate)" :min="0" :max="100" :striped="true" show-progress></b-progress>
+                <b-progress :value="stat.win_rate" :min="0" :max="100" :striped="true" show-progress></b-progress>
               </b-col>
               <b-col>{{stat.wins}} / {{stat.picks}}</b-col>
             </b-row>
@@ -228,7 +228,7 @@ export default {
     }
   },
   created: function () {
-    const self = this
+    const vm = this
 
     let p1 = axios.get('/static/data/abilities.json').then((reponse) => { return reponse.data })
     let p2 = axios.get('/static/data/stats-ability.json').then((reponse) => { return reponse.data })
@@ -239,7 +239,7 @@ export default {
       const statsAbilityDB = values[1]
       const statsAbilitiesDB = values[2]
 
-      let key = self.$route.params.key
+      let key = vm.$route.params.key
       let abilityKeys = key.split('-')
 
       let names = []
@@ -266,8 +266,7 @@ export default {
 
           let otherId = keys.split('-').filter(z => z !== id)[0]
           const otherAbility = abilitiesDB[otherId]
-          console.log(keys)
-
+          
           let data = {
             'abilities': keys,
             'name': otherAbility.dname, 
@@ -290,20 +289,17 @@ export default {
       singles.sort(function (lhs, rhs) { return rhs.win_rate - lhs.win_rate })
       combos.sort(function (lhs, rhs) { return rhs.win_rate - lhs.win_rate })
 
-      self.socialMessage = 'Cluckles says check out this combo ' + names.join(' & ')
-      self.abilities = abilities
-      self.combind = combind
-      self.singles = singles
-      self.combos = combos
-      self.ready = true
+      vm.socialMessage = 'Cluckles says check out this combo ' + names.join(' & ')
+      vm.abilities = abilities
+      vm.combind = combind
+      vm.singles = singles
+      vm.combos = combos
+      vm.ready = true
     }).catch(function (error) {
       console.log(error)
     })
   },
   methods: {
-    round: function (stat) {
-      return Math.round(stat * 100)
-    },
     format: function (stat) {
       if (Array.isArray(stat)) {
         return stat.join(' / ')

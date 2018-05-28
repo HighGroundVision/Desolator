@@ -9,6 +9,7 @@ import AbilityStats from '@/components/AbilityStats'
 import ComboStats from '@/components/ComboStats'
 import Abilities from '@/components/Abilities'
 import Combos from '@/components/Combos'
+import MatchHistory from '@/components/MatchHistory'
 
 Vue.use(Router)
 
@@ -57,6 +58,16 @@ export default new Router({
     {
       path: '/combos',
       name: 'CombosList',
+      component: Combos
+    },
+    {
+      path: '/match/history',
+      name: 'MatchHistory',
+      component: MatchHistory
+    },
+    {
+      path: '/match/details/:key',
+      name: 'MatchDetails',
       component: Combos
     }
   ]

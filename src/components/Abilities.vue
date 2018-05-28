@@ -56,7 +56,7 @@
             <b-link :to="'/stats/ability/' + row.item.id">{{row.item.name}}</b-link>
           </template>
           <template slot="win_rate_progress" slot-scope="row">
-            <b-progress height="2rem" :value="round(row.item.win_rate)" :min="0" :max="100" :striped="true" show-progress></b-progress>
+            <b-progress height="2rem" :value="row.item.win_rate" :min="0" :max="100" :striped="true" show-progress></b-progress>
           </template>
           <template slot="type" slot-scope="row">
             <div v-if="row.item.type === 1">
@@ -128,7 +128,7 @@ export default {
     }
   },
   created: function () {
-    const self = this
+    const vm = this
 
     let p1 = axios.get('/static/data/stats-ability.json').then((reponse) => { return reponse.data })
     let p2 = axios.get('/static/data/abilities.json').then((reponse) => { return reponse.data })
@@ -154,10 +154,10 @@ export default {
         { 'key': 'Int', 'img': 'https://hgv-hyperstone.azurewebsites.net/mics/primary_int.png', 'stats': items.filter(s => s.type === 5).slice(0, 5) }
       ]
 
-      self.totalRows = items.length
-      self.items = items
-      self.top = top
-      self.ready = true
+      vm.totalRows = items.length
+      vm.items = items
+      vm.top = top
+      vm.ready = true
     }).catch(function (error) {
       console.log(error)
     })
@@ -201,9 +201,6 @@ export default {
     resetModel: function () {
       this.filterByAbility = null
       this.filterByType = [1, 2, 3, 4, 5]
-    },
-    round: function (stat) {
-      return Math.round(stat * 100)
     },
     format: function (stat) {
       if (Array.isArray(stat)) {

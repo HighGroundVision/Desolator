@@ -24,7 +24,9 @@ export default {
     return {}
   },
   created: function () {
-    const self = this
+    const vm = this
+
+    const redirect = vm.$route.query.r === undefined ? '/' : vm.$route.query.r
 
     let openidIdentity = this.$route.query['openid.identity']
     const identity = openidIdentity.replace('https://steamcommunity.com/openid/id/', '')
@@ -39,13 +41,13 @@ export default {
 
       setUser(user)
 
-      self.$store.commit('login', user)
-      self.$router.push('/')
+      vm.$store.commit('login', user)
+      vm.$router.push(redirect)
     }).catch(function () {
       clearUser()
       
-      self.$store.commit('logout')
-      self.$router.push('/')
+      vm.$store.commit('logout')
+      vm.$router.push('/')
     })
   }
 }
