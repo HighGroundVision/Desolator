@@ -28,7 +28,7 @@
               <template v-for="hero in computedItems">
                 <tr v-bind:item="hero" v-bind:key="hero.id">
                   <td>
-                    <b-img :src="hero.img" :title="hero.name" v-bind:class="{ disabled: !hero.enabled }" fluid class="hero-icon" />
+                    <b-img :src="hero.img" :title="hero.name" v-bind:class="{ disabled: !hero.enabled }" fluid class="hero-icon-lg" />
                   </td>
                   <template v-for="ability in hero.abilities">
                     <td v-bind:key="ability.id">
@@ -98,9 +98,6 @@ export default {
 
 <!-- Add "scoped" attribute to limit CSS to this component only -->
 <style scoped>
-.hero-icon {
-    height: 64px;
-}
 img.disabled {
     -webkit-filter: grayscale(100%);
     -moz-filter: grayscale(100%);

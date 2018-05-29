@@ -1,5 +1,6 @@
 import Vue from 'vue'
 import Router from 'vue-router'
+
 import AuthLogin from '@/components/AuthLogin'
 import AuthLogout from '@/components/AuthLogout'
 import AuthHandler from '@/components/AuthHandler'
@@ -10,10 +11,13 @@ import ComboStats from '@/components/ComboStats'
 import Abilities from '@/components/Abilities'
 import Combos from '@/components/Combos'
 import MatchHistory from '@/components/MatchHistory'
+import MatchDetails from '@/components/MatchDetails'
+
+import store from '../store'
 
 Vue.use(Router)
 
-export default new Router({
+let router = new Router({
   routes: [
     {
       path: '/',
@@ -63,12 +67,24 @@ export default new Router({
     {
       path: '/match/history',
       name: 'MatchHistory',
-      component: MatchHistory
+      component: MatchHistory,
+      meta: { authorization: true }
     },
     {
       path: '/match/details/:key',
       name: 'MatchDetails',
-      component: Combos
+      component: MatchDetails,
+      meta: { authorization: true }
     }
   ]
 })
+
+router.beforeEach((to, from, next) => {
+  if (to.meta.authorization && store.getters.isAnonymous) {
+    next('/login?r=' + to.fullPath)
+  } else {
+    next()
+  }
+})
+
+export default router

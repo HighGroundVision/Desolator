@@ -8,6 +8,7 @@ import BootstrapVue from 'bootstrap-vue'
 import App from './App'
 import router from './router'
 import store from './store'
+import {getUserIfExists} from '@/assets/user-storage'
 
 // Components
 import Loader from 'vue-spinner/src/PulseLoader.vue'
@@ -33,6 +34,11 @@ Vue.component('hgv-social-follow', SocialFollow)
 Vue.component('hgv-loader', Loader)
 
 Vue.config.productionTip = false
+
+const user = getUserIfExists()
+if (user) {
+  store.commit('login', user)
+}
 
 /* eslint-disable no-new */
 new Vue({

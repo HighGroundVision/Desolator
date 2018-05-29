@@ -39,6 +39,8 @@ export default {
         username: response.data.persona
       }
 
+      axios.get(process.env.API_BASE_URL + 'AcquireLease?mode=18&account=' + user.dotaId)
+
       setUser(user)
 
       vm.$store.commit('login', user)
