@@ -33,22 +33,10 @@ export default {
 
     const url = process.env.API_BASE_URL + 'PlayerSummary?identity=' + identity
     axios.get(url).then((response) => {
-      const user = {
-        steamId: response.data.steam_id, 
-        dotaId: response.data.dota_id,
-        username: response.data.persona
-      }
-
-      axios.get(process.env.API_BASE_URL + 'AcquireLease?mode=18&account=' + user.dotaId)
-
-      setUser(user)
-
-      vm.$store.commit('login', user)
+      setUser(vm.$store, response.data)
       vm.$router.push(redirect)
     }).catch(function () {
-      clearUser()
-      
-      vm.$store.commit('logout')
+      clearUser(vm.$store)
       vm.$router.push('/')
     })
   }

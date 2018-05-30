@@ -23,9 +23,8 @@ export default {
     return {}
   },
   created: function () {
-    clearUser()
-
-    this.$store.commit('logout')
+    clearUser(this.$store)
+    
     this.$router.push('/')
   }
 }
