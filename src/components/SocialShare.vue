@@ -2,12 +2,14 @@
   <div class="text-center">
     <b-img src="/static/images/cluckles.png" fluid  />
     <b-alert variant="info" show>   
-        <strong>Cluckles says sharing is caring!</strong>
+        <strong>Cluckles says!</strong>
+        <br />
+        <span>Sharing is caring; So spread the word!</span>
         <br />
         <b-button variant="secondary"  v-if="enabled" @click="reddit">
           <i class="fab fa-reddit-square"></i> Reddit
         </b-button>
-         <b-button variant="secondary" v-if="enabled" @click="twitter">
+        <b-button variant="secondary" v-if="enabled" @click="twitter">
           <i class="fab fa-twitter-square"></i> Twitter
         </b-button>
     </b-alert>

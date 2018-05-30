@@ -3,7 +3,10 @@
 > Ability Drafter
 
 ## TODO
-1. New Component: Post Match Analysis ()
+1. New Component: Post Match Analysis 
+a. Lineup (Radaint vs Dire) https://www.opendota.com/matches/3918372469/overview
+b. Combat (how much abilty did in damage, to & from) https://www.opendota.com/matches/3918372469/combat
+c. Casts (how much a speel was cast and the damage it dealt) https://www.opendota.com/matches/3918372469/casts
 2. New Component: Live Draft ()
 
 ## Build Setup
