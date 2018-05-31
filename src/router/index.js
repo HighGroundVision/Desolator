@@ -73,8 +73,7 @@ let router = new Router({
     {
       path: '/match/details/:key',
       name: 'MatchDetails',
-      component: MatchDetails,
-      meta: { authorization: true }
+      component: MatchDetails
     }
   ]
 })
