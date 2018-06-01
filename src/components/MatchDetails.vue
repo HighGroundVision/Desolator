@@ -88,10 +88,6 @@
               <th class="text-danger">D</th>
               <th class="text-info">A</th>
               <th class="text-warning">G</th>
-              <!--
-              <th class="text-warning">GPM</th>
-              <th>XPM</th>
-              -->
               <th width="290px">Items</th>             
             </tr>
           </thead>
@@ -158,14 +154,6 @@
                 <td class="text-warning">
                   {{player.gold}}
                 </td>
-                 <!--
-                <td class="text-warning">
-                  {{player.gold_per_min}}
-                </td>
-                <td>
-                  {{player.xp_per_min}}
-                </td>
-                -->
                 <td class="text-left">
                   <template v-for="item in player.items" >
                     <b-img v-bind:key="item.id" :src="item.img" :title="item.name" class="item-icon-sm" />
@@ -234,6 +222,11 @@ export default {
       let patch = patchesDB[match.patch]
       match.patch = patch === undefined ? 'Unknown (' + match.patch + ')' : patch.name
 
+      const parsed = match.version !== null
+
+      let myPool = []
+      let draftPool = []
+
       for (let i = 0; i < match.players.length; i++) {
         let player = match.players[i]
 
@@ -249,11 +242,14 @@ export default {
 
         // Hero
         const hero = heroesDB[player.hero_id]
-        player.hero_img = hero.img.replace('/banner/', '/profile/npc_dota_hero_')
-        player.hero_name = hero.name
-
+        if (hero) {
+          player.hero_img = hero.img.replace('/banner/', '/profile/npc_dota_hero_')
+          player.hero_name = hero.name
+        }
+      
         // Abilties & Stats
         let abilities = []
+
         let skills = Array.from(new Set(player.ability_upgrades_arr))
         for (let x = 0; x < skills.length; x++) {
           const id = skills[x]
@@ -262,34 +258,43 @@ export default {
             continue
           }
 
-          let usageTotal = 0
-          let usageKey = Object.keys(player.ability_uses).filter((lhs) => lhs === ability.key)
-          if (usageKey) {
-            if (player.ability_uses[usageKey]) {
-              usageTotal = player.ability_uses[usageKey]
-            }
+          draftPool.push(id)
+
+          if (player.self === true) {
+            myPool.push(id)
           }
 
+          let usageTotal = 0
           let hitTotal = 0
-          let hitKey = Object.keys(player.ability_targets).filter((lhs) => lhs === ability.key)
-          if (hitKey) {
-            let hitTargets = player.ability_targets[hitKey]
-            for (const key in hitTargets) {
-              if (hitTargets.hasOwnProperty(key)) {
-                const value = hitTargets[key]
-                hitTotal += value
+          let damgeTotal = 0
+
+          if (parsed) {
+            let usageKey = Object.keys(player.ability_uses).filter((lhs) => lhs === ability.key)
+            if (usageKey) {
+              if (player.ability_uses[usageKey]) {
+                usageTotal = player.ability_uses[usageKey]
               }
             }
-          }
-  
-          let damgeTotal = 0
-          let damageKey = Object.keys(player.damage_targets).filter((lhs) => lhs === ability.key)
-          if (damageKey) {
-            let damageTargets = player.damage_targets[damageKey]
-            for (const key in damageTargets) {
-              if (damageTargets.hasOwnProperty(key)) {
-                const value = damageTargets[key]
-                damgeTotal += value
+
+            let hitKey = Object.keys(player.ability_targets).filter((lhs) => lhs === ability.key)
+            if (hitKey) {
+              let hitTargets = player.ability_targets[hitKey]
+              for (const key in hitTargets) {
+                if (hitTargets.hasOwnProperty(key)) {
+                  const value = hitTargets[key]
+                  hitTotal += value
+                }
+              }
+            }
+    
+            let damageKey = Object.keys(player.damage_targets).filter((lhs) => lhs === ability.key)
+            if (damageKey) {
+              let damageTargets = player.damage_targets[damageKey]
+              for (const key in damageTargets) {
+                if (damageTargets.hasOwnProperty(key)) {
+                  const value = damageTargets[key]
+                  damgeTotal += value
+                }
               }
             }
           }
