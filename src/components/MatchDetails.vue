@@ -78,36 +78,39 @@
           <thead>
             <tr>
               <th>Player</th>
-              <th>Heroes</th>
+              <th>Hero</th>
               <th class="text-primary">Abilities</th>
-              <th class="text-primary"><span style="font-size: 0.8em;">Cast</span></th>
-              <th class="text-primary"><span style="font-size: 0.8em;">Hits</span></th>
-              <th class="text-primary"><span style="font-size: 0.8em;">Dmg</span></th>
+              <th><span style="font-size: 0.8em;">Cast</span></th>
+              <th><span style="font-size: 0.8em;">Hits</span></th>
+              <th><span style="font-size: 0.8em;">Dmg</span></th>
               <th>Level</th>
               <th class="text-success">K</th>
               <th class="text-danger">D</th>
               <th class="text-info">A</th>
               <th class="text-warning">G</th>
+              <!--
               <th class="text-warning">GPM</th>
               <th>XPM</th>
-              <th width="300px">Items</th>
+              -->
+              <th width="290px">Items</th>             
             </tr>
           </thead>
           <tbody>
             <template v-for="player in data.players">
-              <tr v-bind:item="player" v-bind:key="player.player_slot" v-bind:class="{ 'bg-info': player.self }" >
+              <tr v-bind:item="player" v-bind:key="player.player_slot"  v-bind:class="{ 'table-row-self': player.self }" >
                 <td>
-                  {{player.personaname}}
+                  <span>{{player.personaname}}</span>
                 </td>
                 <td>
-                  <b-img :src="player.hero_img" :title="player.hero_name" class="hero-icon-lg" />
+                  <b-img :src="player.hero_img" :title="player.hero_name" class="hero-icon-profile" />
                 </td>
-                <td>
+                <td class="text-left">
                   <ul class="list-unstyled">
                     <template v-for="ability in player.abilities" >
                       <li v-bind:key="ability.id">
                         <b-link @click="gotoAbility(ability)">
                           <b-img :src="ability.img" :title="ability.name" class="ability-icon-sm" />
+                          {{ability.name}}
                         </b-link>
                       </li>
                     </template>
@@ -143,24 +146,26 @@
                 <td>
                   {{player.level}}
                 </td>
-                <td>
+                <td class="text-success">
                   {{player.kills}}
                 </td>
-                <td>
+                <td class="text-danger">
+                  {{player.deaths}}
+                </td>
+                <td class="text-info">
                   {{player.assists}}
                 </td>
-                <td>
-                  {{player.assists}}
-                </td>
-                <td>
+                <td class="text-warning">
                   {{player.gold}}
                 </td>
-                <td>
+                 <!--
+                <td class="text-warning">
                   {{player.gold_per_min}}
                 </td>
                 <td>
                   {{player.xp_per_min}}
                 </td>
+                -->
                 <td class="text-left">
                   <template v-for="item in player.items" >
                     <b-img v-bind:key="item.id" :src="item.img" :title="item.name" class="item-icon-sm" />
@@ -168,7 +173,7 @@
                   <template v-for="item in player.backpack" >
                     <b-img v-bind:key="item.id" :src="item.img" :title="item.name" class="item-icon-sm" />
                   </template>
-                </td>
+                </td>     
               </tr>
             </template>
           </tbody>
@@ -244,7 +249,7 @@ export default {
 
         // Hero
         const hero = heroesDB[player.hero_id]
-        player.hero_img = hero.img
+        player.hero_img = hero.img.replace('/banner/', '/profile/npc_dota_hero_')
         player.hero_name = hero.name
 
         // Abilties & Stats
@@ -349,5 +354,8 @@ export default {
 <style scoped>
 .ability-inline {
   line-height: 32px;
+}
+.table-row-self {
+  border: 2px solid #ffc107;
 }
 </style>
