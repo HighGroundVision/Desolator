@@ -38,7 +38,7 @@ export default {
   },
   data () {
     return {
-      'enabled': process.env.FLAG_SOICAL,
+      'enabled': process.env.FLAG_SOCIAL,
       'message': this.msg,
       'popup': undefined
     }

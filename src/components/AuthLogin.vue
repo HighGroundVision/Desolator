@@ -23,6 +23,11 @@ export default {
   created: function () {
     const vm = this
 
+    if (process.env.FLAG_AUTHENTICATION !== true) {
+      vm.$router.push('/')
+      return
+    }
+
     const redirect = vm.$route.query.r === undefined ? '/' : vm.$route.query.r
     const returnUrl = encodeURIComponent(window.location.origin + '/#/authenticated?r=' + redirect)
     const realmUrl = encodeURIComponent(window.location.origin)

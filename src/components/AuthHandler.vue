@@ -26,6 +26,11 @@ export default {
   created: function () {
     const vm = this
 
+    if (process.env.FLAG_AUTHENTICATION !== true) {
+      vm.$router.push('/')
+      return
+    }
+
     const redirect = vm.$route.query.r === undefined ? '/' : vm.$route.query.r
 
     let openidIdentity = this.$route.query['openid.identity']

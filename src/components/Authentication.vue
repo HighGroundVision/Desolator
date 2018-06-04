@@ -18,7 +18,7 @@ export default {
   name: 'AuthReponse',
   data () {
     return {
-      'enabled': process.env.FLAG_AUTHENTICATION
+      'enabled': process.env.FLAG_AUTHENTICATION === true
     }
   },
   computed: mapGetters(['isAuthenticated', 'isAnonymous', 'userName'])
