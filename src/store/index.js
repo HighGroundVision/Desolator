@@ -7,7 +7,7 @@ export default new Vuex.Store({
   state: {
     authenticated: false,
     steamId: '',
-    dotaId: '',
+    dotaId: 0,
     username: ''
   },
   getters: {

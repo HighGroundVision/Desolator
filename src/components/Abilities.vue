@@ -7,7 +7,11 @@
     </b-row>
     <b-row>
       <b-col>
-        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Maecenas eget porta velit. Etiam aliquam auctor nulla, vitae congue ligula rhoncus vel. Fusce porta imperdiet risus, ac maximus magna posuere in. Suspendisse quis sodales velit. Sed fringilla enim quis nibh congue efficitur. Proin ante lectus, rhoncus quis venenatis in, maximus malesuada ipsum. Cras hendrerit facilisis ante at molestie. Nullam ullamcorper diam vitae dolor placerat, nec euismod neque placerat.</p>
+        <p>
+        We have compiled win rates since 7.07 patch using random sampling every day. 
+        Ability pairs are created by combining all the skills with the 5 types (Str, Agi, Int, Melee, Range) to create ~2000 pairs.
+        Below we highlight the 5 best abilities under each category by win rate.
+        </p>
       </b-col>
     </b-row>
     <b-row class="text-center">
@@ -24,7 +28,14 @@
     </b-row>
     <b-row>
       <b-col>
-        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Maecenas eget porta velit. Etiam aliquam auctor nulla, vitae congue ligula rhoncus vel. Fusce porta imperdiet risus, ac maximus magna posuere in. Suspendisse quis sodales velit. Sed fringilla enim quis nibh congue efficitur. Proin ante lectus, rhoncus quis venenatis in, maximus malesuada ipsum. Cras hendrerit facilisis ante at molestie. Nullam ullamcorper diam vitae dolor placerat, nec euismod neque placerat.</p>
+        <p>
+          We have compiled the complete list of ability + type Pairs with the wins, picks, and win rate.
+          You can filter by ability name and/or combination of type.
+        </p>
+        <p>
+          You can click on the ability name to see more details about that ability.
+          This includes the break down of stats by type. Also, the top combos with this ability by type. As well as, the ability rank and share these abilities with the community.
+        </p>
       </b-col>
     </b-row>
     <b-row class="text-center">

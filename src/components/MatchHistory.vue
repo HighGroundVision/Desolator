@@ -7,17 +7,23 @@
     </b-row>
     <b-row>
       <b-col>
-        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Maecenas eget porta velit. Etiam aliquam auctor nulla, vitae congue ligula rhoncus vel. Fusce porta imperdiet risus, ac maximus magna posuere in. Suspendisse quis sodales velit. Sed fringilla enim quis nibh congue efficitur. Proin ante lectus, rhoncus quis venenatis in, maximus malesuada ipsum. Cras hendrerit facilisis ante at molestie. Nullam ullamcorper diam vitae dolor placerat, nec euismod neque placerat.</p>
+        <p>
+          Because of a number of limitations with the STEAM API, It may take some time for your matches to populate. 
+          After a filtered list of just your AD matches will be available.
+          A request to update this list is made every time you login and is cached for 1 hour. 
+          It while take approximately 5-10 minutues to poplulate cache with your lastest matches.
+        </p>
       </b-col>
     </b-row>
-    <b-row>
+    <hr class="highlighted" />
+    <b-row v-if="items.length > 0">
       <b-col>
-        <table class="table table-striped b-table">
+        <table class="table table-borderless table-sm b-table">
           <thead>
             <tr>
               <th>Status</th>
               <th>Hero</th>
-              <th>Abilities</th>
+              <th class="text-center">Abilities</th>
               <th>Date / Duration</th>
               <th>Level</th>
               <th>K / D / A</th>
@@ -27,7 +33,6 @@
           <tbody>
             <template v-for="item in items">
               <tr v-bind:item="item" v-bind:key="item.match_id">
-                <!-- v-bind:class="{ 'victory-background': item.won, 'defeat-background': !item.won }" -->
                 <td class="align-middle">
                   <span v-if="item.won" class="text-success">Victory</span>
                   <span v-else class="text-danger">Defeat</span>
@@ -64,6 +69,15 @@
             </template>
           </tbody>
         </table>
+      </b-col>
+    </b-row>
+    <b-row v-else>
+      <b-col>
+        <p>
+          You currently do not have AD matches listed in your history. 
+          Either we are still processing your history and they will be available shortly or you haven't played any AD games in the last 100 matches. 
+          In which case go play some more AD games and check back with us later...
+        </p>
       </b-col>
     </b-row>
   </section>
@@ -138,7 +152,7 @@ export default {
       return ts.humanize()
     }
   },
-  computed: mapGetters(['isAnonymous', 'dotaId'])
+  computed: mapGetters(['isAuthenticated', 'isAnonymous', 'dotaId'])
 }
 </script>
 

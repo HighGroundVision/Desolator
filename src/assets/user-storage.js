@@ -9,13 +9,17 @@ function hasLocationStorage () {
   }
 }
 
+function requestRefresh (user) {
+  axios.get(process.env.API_BASE_URL + 'RefreshAccount?mode=18&account=' + user.dotaId)
+}
+
 function refreshLease (user) {
-  let now = moment()
-  let offset = moment(user.lease)
+  let now = moment.utc()
+  let offset = moment.utc(user.lease)
   if (offset < now) {
-    axios.get(process.env.API_BASE_URL + 'RefreshAccount?mode=18&account=' + user.dotaId)
-    user.lease = moment().add(1, 'h')
-    localStorage.setItem('user', JSON.stringify(user))
+    requestRefresh(user)
+    user.lease = moment().utc().add(1, 'h')
+    localStorage.setItem('hgv-ad-user', JSON.stringify(user))
   }
 }
 
@@ -24,7 +28,7 @@ export function setUser (store, data) {
     return
   }
 
-  let offset = moment().add(1, 'h')
+  let offset = moment.utc().add(1, 'h')
 
   const user = {
     steamId: data.steam_id, 
@@ -33,9 +37,9 @@ export function setUser (store, data) {
     lease: offset
   }
 
-  localStorage.setItem('user', JSON.stringify(user))
+  localStorage.setItem('hgv-ad-user', JSON.stringify(user))
 
-  axios.get(process.env.API_BASE_URL + 'RefreshAccount?mode=18&account=' + user.dotaId)
+  requestRefresh(user)
 
   store.commit('login', user)
 }
@@ -47,7 +51,7 @@ export function hydrateUser (store) {
 
   let user
 
-  const json = localStorage.getItem('user')
+  const json = localStorage.getItem('hgv-ad-user')
   if (json) {
     user = JSON.parse(json)
   } else {
@@ -71,5 +75,5 @@ export function clearUser (store) {
 
   store.commit('logout')
 
-  localStorage.setItem('user', '')
+  localStorage.setItem('hgv-ad-user', '')
 }
