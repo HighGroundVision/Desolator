@@ -76,8 +76,8 @@ export default {
 
       vm.items = pool
       vm.ready = true
-    }).catch(function (error) {
-      console.log(error)
+    }).catch(function () {
+      vm.$router.push('/error')
     })
   },
   computed: {

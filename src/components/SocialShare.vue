@@ -1,19 +1,24 @@
 <template>
-  <div class="text-center">
-    <b-img src="/static/images/cluckles.png" fluid  />
-    <b-alert variant="info" show>   
-        <strong>Cluckles says!</strong>
-        <br />
-        <span>Sharing is caring; So spread the word!</span>
-        <br />
-        <b-button variant="secondary"  v-if="enabled" @click="reddit">
-          <i class="fab fa-reddit-square"></i> Reddit
-        </b-button>
-        <b-button variant="secondary" v-if="enabled" @click="twitter">
-          <i class="fab fa-twitter-square"></i> Twitter
-        </b-button>
-    </b-alert>
-  </div>
+  <section>
+    <div style="float: right;">
+      <i class="far fa-question-circle" :title="help"></i> 
+    </div>
+    <div class="text-center">
+      <b-img src="/static/images/cluckles.png" />
+      <b-alert variant="info" show>
+          <strong>Cluckles Says</strong>
+          <br />
+          <span>Sharing is caring!</span>
+          <br />
+          <b-button variant="secondary"  v-if="enabled" @click="reddit">
+            <i class="fab fa-reddit-square"></i> Reddit
+          </b-button>
+          <b-button variant="secondary" v-if="enabled" @click="twitter">
+            <i class="fab fa-twitter-square"></i> Twitter
+          </b-button>
+      </b-alert>
+    </div>
+  </section>
 </template>
 
 <script>
@@ -39,6 +44,7 @@ export default {
   data () {
     return {
       'enabled': process.env.FLAG_SOCIAL,
+      'help': 'Share your favourite abilities and combos with Reddit & Twitter',
       'message': this.msg,
       'popup': undefined
     }

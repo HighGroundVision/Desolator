@@ -1,6 +1,7 @@
 import Vue from 'vue'
 import Router from 'vue-router'
 
+import ErrorHandler from '@/components/Error'
 import AuthLogin from '@/components/AuthLogin'
 import AuthLogout from '@/components/AuthLogout'
 import AuthHandler from '@/components/AuthHandler'
@@ -23,6 +24,11 @@ let router = new Router({
       path: '/',
       name: 'Home',
       component: Dashboard
+    },
+    {
+      path: '/error',
+      name: 'Error',
+      component: ErrorHandler
     },
     {
       path: '/login',

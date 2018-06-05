@@ -178,7 +178,7 @@ export default {
     const vm = this
 
     let p1 = axios.get('/static/data/abilities.json').then((reponse) => { return reponse.data })
-    let p2 = axios.get('/static/data/stats-abilities.json').then((reponse) => { return reponse.data })
+    let p2 = axios.get('/static/data/stats-combos.json').then((reponse) => { return reponse.data })
     
     Promise.all([p1, p2]).then((values) => {
       const abilitiesDB = values[0]
@@ -232,8 +232,8 @@ export default {
       vm.topAgi = agi
       vm.topInt = int
       vm.ready = true
-    }).catch(function (error) {
-      console.log(error)
+    }).catch(function () {
+      vm.$router.push('/error')
     })
   },
   methods: {

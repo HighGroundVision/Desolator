@@ -17,6 +17,7 @@ import MissingData from '@/components/MissingData.vue'
 import MissingCombos from '@/components/MissingCombos.vue'
 import SocialShare from '@/components/SocialShare.vue'
 import SocialFollow from '@/components/SocialFollow.vue'
+import Karma from '@/components/Karma.vue'
 
 // CSS
 import 'bootstrap/dist/css/bootstrap.min.css'
@@ -32,6 +33,7 @@ Vue.component('hgv-missing-combos', MissingCombos)
 Vue.component('hgv-social-share', SocialShare)
 Vue.component('hgv-social-follow', SocialFollow)
 Vue.component('hgv-loader', Loader)
+Vue.component('hgv-karma', Karma)
 
 Vue.config.productionTip = false
 

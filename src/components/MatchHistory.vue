@@ -132,8 +132,8 @@ export default {
 
       vm.items = items
       vm.ready = true
-    }).catch(function (error) {
-      console.log(error)
+    }).catch(function () {
+      vm.$router.push('/error')
     })
   },
   methods: {

@@ -227,8 +227,8 @@ export default {
     let p2 = axios.get('/static/data/regions.json').then((reponse) => { return reponse.data })
     let p3 = axios.get('/static/data/abilities.json').then((reponse) => { return reponse.data })
     let p4 = axios.get('/static/data/heroes.json').then((reponse) => { return reponse.data })
-    let p5 = axios.get('/static/data/stats-ability.json').then((reponse) => { return reponse.data })
-    let p6 = axios.get('/static/data/stats-abilities.json').then((reponse) => { return reponse.data })
+    let p5 = axios.get('/static/data/stats-abilities.json').then((reponse) => { return reponse.data })
+    let p6 = axios.get('/static/data/stats-combos.json').then((reponse) => { return reponse.data })
 
     Promise.all([p0, p1, p2, p3, p4, p5, p6]).then((values) => {
       const match = values[0]
@@ -372,8 +372,8 @@ export default {
       vm.data = match
 
       vm.ready = true
-    }).catch(function (error) {
-      console.log(error)
+    }).catch(function () {
+      vm.$router.push('/error')
     })
   },
   methods: {
