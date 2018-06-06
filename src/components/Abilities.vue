@@ -10,7 +10,7 @@
         <p>
         We have compiled win rates since 7.07 patch using random sampling every day. 
         Ability pairs are created by combining all the skills with the 5 types (Str, Agi, Int, Melee, Range) to create ~2000 pairs.
-        Below we highlight the 5 best abilities under each category by win rate.
+        Below we highlight the 5 best abilities under each category by win rate. We also track the Karma of each ability as voted by the community.
         </p>
       </b-col>
     </b-row>
@@ -18,15 +18,16 @@
       <b-col v-for="item in top" :key="item.key">
         <b-img :src="item.img" :title="item.key" />
         <p>{{item.key}}</p>
-        <ul class="list-unstyled">
-          <li v-for="stat in item.stats" :key="stat.abilities">
-            <b-img :src="stat.img" class="ability-icon-sm" />
-            <br />
-            <b-link :to="'/stats/ability/' + stat.id">
-              {{stat.name}}
-            </b-link>
-          </li>
-        </ul>
+        <div class="text-left" style="font-size: 0.7em;">
+          <ul class="list-unstyled">
+            <li v-for="stat in item.stats" :key="stat.abilities">
+              <b-img :src="stat.img" class="ability-icon-sm" />
+              <b-link :to="'/stats/ability/' + stat.id">
+                {{stat.name}}
+              </b-link>
+            </li>
+          </ul>
+        </div>
       </b-col>
     </b-row>
     <b-row>
@@ -188,7 +189,7 @@ export default {
 
       // NOTE: The type (type === 1) dose not really matter just filter the items down to single set
       let rankings = items.filter(s => s.type === 1 && s.ranking).sort(function (lhs, rhs) { return rhs.ranking - lhs.ranking })
-      top.push({ 'key': 'Karma', 'img': imageUrl + 'attribute_bonus.png', 'stats': rankings.slice(0, 5) })
+      top.push({ 'key': 'Karma', 'img': imageUrl + 'karma.png', 'stats': rankings.slice(0, 5) })
 
       vm.totalRows = items.length
       vm.items = items

@@ -1,18 +1,22 @@
 <template>
   <section class="opaque-background">
     <b-row>
+      <b-col>
+        <h1 class="text-warning">Ability Drafter</h1>
+      </b-col>
+    </b-row>
+    <b-row>
       <b-col cols="4" lg="3">
         <div class="text-center">
-            <b-img src="/static/images/cluckles.png" fluid  />
-            <b-alert variant="info" show>   
-                <strong>Hi, I am Cluckles!</strong>
-                <br />
-                <span>AD is hard and confusing, lucky I am here to help make it fun!</span>
-            </b-alert>
+          <b-alert variant="info" show>   
+            <strong>Hi, I am Cluckles!</strong>
+            <br />
+            <span>AD is hard and confusing, lucky I am here to help make it fun!</span>
+          </b-alert>
+          <b-img src="/static/images/cluckles-speach.png" class="cluckles-speach" />
         </div>
       </b-col>
       <b-col>
-        <h1 class="text-warning">Ability Drafter</h1>
         <b-alert variant="warning" show>
           <b-row>
             <b-col>

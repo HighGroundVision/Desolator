@@ -5,7 +5,7 @@
       <h3>Opps somthing went worng!</h3>
       <p>We sorry we could not carry hard enough</p>
       <b-img src="/static/images/sad.png"></b-img>
-      <p>We will try better next time...</p>
+      <p>We will try harder next time...</p>
     </div>
   </section>
 </template>

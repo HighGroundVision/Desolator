@@ -1,10 +1,7 @@
 <template>
   <section>
-    <div style="float: right;">
-      <i class="far fa-question-circle" :title="help"></i> 
-    </div>
+    
     <div class="text-center">
-      <b-img src="/static/images/cluckles.png" />
       <b-alert variant="info" show>
           <strong>Cluckles Says</strong>
           <br />
@@ -17,6 +14,10 @@
             <i class="fab fa-twitter-square"></i> Twitter
           </b-button>
       </b-alert>
+      <div style="float: right; position: relative; top:-15px;">
+        <i class="far fa-question-circle" :title="help"></i> 
+      </div>
+      <b-img src="/static/images/cluckles-speach.png" class="cluckles-speach" />
     </div>
   </section>
 </template>
@@ -29,7 +30,12 @@ function getSettings () {
   const h = 600
   const left = (screen.width / 2) - (w / 2)
   const top = (screen.height / 2) - (h / 2)
-  let settings = 'status=no,height=' + h + ',width=' + w + ',resizable=yes,left=' + left + ',top=' + top + ',screenX=' + left + ',screenY=' + top + ',toolbar=no,menubar=no,scrollbars=no,location=no,directories=no'
+  let settings = 'status=no,height=' + h + 
+    ',width=' + w + 
+    ',resizable=yes,left=' + left + 
+    ',top=' + top + 
+    ',screenX=' + left + 
+    ',screenY=' + top + ',toolbar=no,menubar=no,scrollbars=no,location=no,directories=no'
   return settings
 }
 
@@ -44,7 +50,10 @@ export default {
   data () {
     return {
       'enabled': process.env.FLAG_SOCIAL,
-      'help': 'Share your favourite abilities and combos with Reddit & Twitter',
+      'help': '' +
+        'Share your favourite abilities and combos with Reddit & Twitter.' + '\u000d' +
+        'Remember Cluckles is only trying to help.' + '\u000d' +
+        'Your thoughts are your own, share them.',
       'message': this.msg,
       'popup': undefined
     }

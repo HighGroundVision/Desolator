@@ -2,10 +2,15 @@
   <section v-if="ready" class="opaque-background">
     <b-row>
       <b-col>
+        <h1 class="text-warning">Ability Details</h1>
+      </b-col>
+    </b-row>
+    <b-row>
+      <b-col>
         <b-row>
-          <b-col>
-            <h1 class="text-warning">Ability Details</h1>
-            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Maecenas eget porta velit. Etiam aliquam auctor nulla, vitae congue ligula rhoncus vel. Fusce porta imperdiet risus, ac maximus magna posuere in. Suspendisse quis sodales velit. Sed fringilla enim quis nibh congue efficitur. Proin ante lectus, rhoncus quis venenatis in, maximus malesuada ipsum. Cras hendrerit facilisis ante at molestie. Nullam ullamcorper diam vitae dolor placerat, nec euismod neque placerat.</p>
+          <b-col>          
+            <p>...</p>
+            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Maecenas eget porta velit. Etiam aliquam auctor nulla, vitae congue ligula rhoncus vel. Fusce porta imperdiet risus, ac maximus magna posuere in. </p>
           </b-col>
         </b-row>
         <b-row>
@@ -52,7 +57,8 @@
     <b-row>
       <b-col>
         <h3>Individual Stats</h3>
-        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Maecenas eget porta velit. Etiam aliquam auctor nulla, vitae congue ligula rhoncus vel. Fusce porta imperdiet risus, ac maximus magna posuere in. Suspendisse quis sodales velit. Sed fringilla enim quis nibh congue efficitur. Proin ante lectus, rhoncus quis venenatis in, maximus malesuada ipsum. Cras hendrerit facilisis ante at molestie. Nullam ullamcorper diam vitae dolor placerat, nec euismod neque placerat.</p>
+        <p>...</p>
+        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Maecenas eget porta velit. Etiam aliquam auctor nulla, vitae congue ligula rhoncus vel. Fusce porta imperdiet risus, ac maximus magna posuere in. Suspendisse quis sodales velit. Sed fringilla enim quis nibh congue efficitur. </p>
         <div class="text-center">
           <b-row>
             <b-col>Type</b-col>
@@ -148,7 +154,6 @@ export default {
     return {
       'ready': false,
       'socialMessage': 'Cluckles says to check out stats for',
-      'key': [],
       'ability': [],
       'stats': [],
       'combos': []
@@ -176,14 +181,14 @@ export default {
       let results = statsAbilitiesDB.filter(stat => stat.abilities === abilityKey)
       results.sort(function (lhs, rhs) { return rhs.win_rate - lhs.win_rate })
 
-      let combos = statsComboDB.filter((lhs) => lhs.abilities.includes(this.key))
+      let combos = statsComboDB.filter((lhs) => lhs.abilities.includes(abilityKey))
       combos.sort(function (lhs, rhs) { return rhs.win_rate - lhs.win_rate })
       combos = combos.slice(0, 10)
 
       let topCombos = []
       combos.forEach(combo => {
         let parts = combo.abilities.split('-')
-        const otherId = parts.filter(z => z !== this.key)[0]
+        const otherId = parts.filter(z => z !== abilityKey)[0]
         const ability = abilitiesDB[otherId]
 
         let data = {

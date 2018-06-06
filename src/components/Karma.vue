@@ -1,10 +1,6 @@
 <template>
   <section v-if="ready">
-    <div style="float: right;">
-      <i class="far fa-question-circle" :title="help"></i> 
-    </div>
     <div class="text-center">
-      <b-img src="/static/images/cluckles.png" />
       <b-alert variant="info" show>
         <b-row>
           <b-col>
@@ -14,7 +10,7 @@
           </b-col>
         </b-row>
         <hr />
-        <b-row>
+        <b-row v-if="enabled">
           <b-col>
             <b-row>
               <b-col style="font-size: 1.3em;">
@@ -42,6 +38,10 @@
           </b-col>
         </b-row>
       </b-alert>
+      <div style="float: right; position: relative; top:-15px;">
+        <i class="far fa-question-circle" :title="help"></i> 
+      </div>
+      <b-img src="/static/images/cluckles-speach.png" class="cluckles-speach" />
     </div>
   </section>
   <section v-else>
@@ -53,6 +53,7 @@
 import axios from 'axios'
 import { voteAbility } from '@/assets/karma-storage'
 import { mapGetters } from 'vuex'
+import swal from 'sweetalert'
 
 export default {
   name: 'Karma',
@@ -64,26 +65,27 @@ export default {
   },
   data () {
     return {
+      'enabled': process.env.FLAG_KARMA === true,
       'ready': false,
       'help': '' + 
-        'Karma is a calculated value from the number of upvotes and downvotes.' + '\u000d' +
-        'You can only Up / Down vote an ability or combo once.' + '\u000d' +
-        'This make take some time to propagate through the whole system.',
+        'Karma is calculated from up-votes and down-votes.' + '\u000d' +
+        'You can only cast your vote once.' + '\u000d' +
+        'Changes may take some time to propagate through out the system.',
       'ranking': { 'up': 0, 'down': 0, 'total': 0 }
     }
   },
   created: function () {
     const vm = this
 
-    let web = []
+    let requests = []
 
     if (this.type === 1) {
-      web.push(axios.get(process.env.API_BASE_URL + 'AbilityRanking').then((reponse) => { return reponse.data }))
+      requests.push(axios.get(process.env.API_BASE_URL + 'AbilityRanking').then((reponse) => { return reponse.data }))
     } else if (this.type === 2) {
-      web.push(axios.get(process.env.API_BASE_URL + 'ComboRanking').then((reponse) => { return reponse.data }))
+      requests.push(axios.get(process.env.API_BASE_URL + 'ComboRanking').then((reponse) => { return reponse.data }))
     }
     
-    Promise.all(web).then((values) => {
+    Promise.all(requests).then((values) => {
       const rankingAbilityDB = values[0]
       
       let abilityKey = vm.$route.params.key
@@ -102,18 +104,24 @@ export default {
   methods: {
     upVote () {
       const result = voteAbility(this.dotaId, this.type, this.$route.params.key, true)
+      
       // Give instant feedback to the user
       if (result) {
         this.ranking.up++
         this.ranking.total++
+      } else {
+        swal('You already voted', 'You can only cast your vote once')
       }
     },
     downVote () {
       const result = voteAbility(this.dotaId, this.type, this.$route.params.key, false)
+
       // Give instant feedback to the user
       if (result) {
         this.ranking.down++
         this.ranking.total = this.ranking.total === 0 ? 0 : this.ranking.total - 1
+      } else {
+        swal('You already voted', 'You can only cast your vote once')
       }
     }
   }

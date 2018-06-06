@@ -8,11 +8,11 @@
         </b-col>
         <b-col>
           <div class="text-center">
-            <b-img src="/static/images/cluckles.png" fluid />
             <b-alert variant="info" show>
-              <strong>Drafting Changes!</strong><br />
-              <p>With all the new additions it gives hope that one day all heroes will be included.</p>
+              <strong>Cluckles Says</strong><br />
+              <p>With all the new additions it gives hope that one day all heroes will be included!</p>
             </b-alert>
+            <b-img src="/static/images/cluckles-speach.png" class="cluckles-speach" />
           </div>
         </b-col>
       </b-row>
