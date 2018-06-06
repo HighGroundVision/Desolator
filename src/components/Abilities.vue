@@ -35,8 +35,6 @@
         <p>
           We have compiled the complete list of ability + type Pairs with the wins, picks, and win rate.
           You can filter by ability name and/or combination of type.
-        </p>
-        <p>
           You can click on the ability name to see more details about that ability.
           This includes the break down of stats by type. Also, the top combos with this ability by type. As well as, the ability rank and share these abilities with the community.
         </p>
