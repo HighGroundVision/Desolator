@@ -11,6 +11,7 @@
               <b-nav-item to="/abilities">Abilities</b-nav-item>
               <b-nav-item to="/combos">Combos</b-nav-item>
               <b-nav-item to="/match/history">Matches</b-nav-item>
+              <b-nav-item to="/live">Live</b-nav-item>
             </b-navbar-nav>
             <hgv-authentication></hgv-authentication>
           </b-collapse>

@@ -80,6 +80,11 @@ let router = new Router({
       path: '/match/details/:key',
       name: 'MatchDetails',
       component: MatchDetails
+    },
+    {
+      path: '/live',
+      name: 'Error',
+      component: ErrorHandler
     }
   ]
 })
