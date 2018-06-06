@@ -3,9 +3,22 @@
     <b-row>
       <b-col>
         <h1 class="text-warning">Match Details</h1>
-        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Maecenas eget porta velit. Etiam aliquam auctor nulla, vitae congue ligula rhoncus vel. Fusce porta imperdiet risus, ac maximus magna posuere in.</p>
-        <p>Suspendisse quis sodales velit. Sed fringilla enim quis nibh congue efficitur. Proin ante lectus, rhoncus quis venenatis in, maximus malesuada ipsum. Cras hendrerit facilisis ante at molestie. Nullam ullamcorper diam vitae dolor placerat, nec euismod neque placerat.</p>
-        <p>Phasellus non dui id ligula rutrum porta id ac turpis. Nulla tristique nisi at nulla tempor, non gravida nibh malesuada. Vestibulum ac scelerisque velit. Curabitur bibendum eros sit amet odio rutrum, et semper nulla pretium. Nunc rhoncus leo a sapien molestie, non auctor eros iaculis. Nullam hendrerit nisi vitae arcu volutpat, et dictum arcu cursus.</p>
+        <p>
+          We at HGV take a different approach to match details.
+          There are a number of others sites from DotaBuff to OpenDota that will display your match details with great detail.
+          But all these sites fail to address AD matches. We assume this is because AD is only a small % of total matches.
+        </p>
+        <p>
+          We have created a match details page with information specifically related to AD.
+          We include a match overview to know when the match took place and what was the outcome.
+          After that we break down each player showing the hero, abilities, and the ability win rates, cast, hits, damage. 
+          We also include the stats for combos these abilities pair into.
+          Thos with a % above 50 are good while those below 50 are bad with the how far away they are indicating the degree.
+        </p>
+        <p>
+          Some abilities can not be correctly tracked when parsing relays this way some cast, hits, and damage maybe missing. 
+          Also if some combos do not have win rates displayed it is because those combos do not have a high enough pick rate to be included.
+        </p>
       </b-col>
       <b-col cols="6" md="4">
         <div class="text-center">
@@ -14,7 +27,7 @@
             <strong>Cluckles says!</strong>
             <br />
             <span>If you want to see the full details our friends over at OpenDota can help.</span>
-            <b-button variant="secondary" @click="gotToOpenDota">View Full Details</b-button>
+            <b-button variant="secondary" @click="gottoOpenDota">View Full Details</b-button>
           </b-alert>
         </div>
       </b-col>
@@ -377,7 +390,7 @@ export default {
     })
   },
   methods: {
-    gotToOpenDota () {
+    gottoOpenDota () {
       window.open('https://www.opendota.com/matches/' + this.data.match_id)
     }
   },
@@ -390,8 +403,10 @@ export default {
 .ability-inline {
   line-height: 32px;
 }
+/*
 a {
     color: white;
     text-decoration: none;
 }
+*/
 </style>

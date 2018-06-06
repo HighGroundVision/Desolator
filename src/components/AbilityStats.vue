@@ -9,8 +9,10 @@
       <b-col>
         <b-row>
           <b-col>          
-            <p>...</p>
-            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Maecenas eget porta velit. Etiam aliquam auctor nulla, vitae congue ligula rhoncus vel. Fusce porta imperdiet risus, ac maximus magna posuere in. </p>
+            <p>
+              Abilities are the heart and soul of Ability Draft (and dare we say Dota itself!) so geting to know your abilities is key to enjoying AD.
+              We have collected the most usefull information about abilities into one place including the ability attributes, stats, and combos.
+            </p>
           </b-col>
         </b-row>
         <b-row>
@@ -56,9 +58,12 @@
     <hr class="highlighted" />
     <b-row>
       <b-col>
-        <h3>Individual Stats</h3>
-        <p>...</p>
-        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Maecenas eget porta velit. Etiam aliquam auctor nulla, vitae congue ligula rhoncus vel. Fusce porta imperdiet risus, ac maximus magna posuere in. Suspendisse quis sodales velit. Sed fringilla enim quis nibh congue efficitur. </p>
+        <h3>Stats</h3>
+        <p>
+          An ability win rate by self is not that valuable as it can generaly effected by the type of hero that try and use those abilities.
+          We broke out the picks, wins, and win rate by Melee, Range, Str, Agi, Int to give you a better understanding of how that ability will align with your hero.
+          We also encourage the community to get involved and help us rank each ability to generate a Karma score.
+        </p>
         <div class="text-center">
           <b-row>
             <b-col>Type</b-col>
@@ -95,8 +100,13 @@
     <hr />
     <b-row>
       <b-col>
-        <h3>Top Combos</h3>
-        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Maecenas eget porta velit. Etiam aliquam auctor nulla, vitae congue ligula rhoncus vel. Fusce porta imperdiet risus, ac maximus magna posuere in. Suspendisse quis sodales velit. Sed fringilla enim quis nibh congue efficitur. Proin ante lectus, rhoncus quis venenatis in, maximus malesuada ipsum. Cras hendrerit facilisis ante at molestie. Nullam ullamcorper diam vitae dolor placerat, nec euismod neque placerat.</p>
+        <h3>Combos</h3>
+        <p>
+          An Ability is just a start. 
+          A good combo can go a long way to help you win the match. 
+          Like abilities we have taken the pair of abilties to from a combo and add the type to form triplets with a wins, picks, and win rate for each of these combos.
+          These are the top combos with this ability by win rate.
+        </p>
       </b-col>
     </b-row>
     <b-row class="text-center">

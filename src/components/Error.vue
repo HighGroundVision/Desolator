@@ -3,9 +3,9 @@
     <div class="text-center">
       <h1 class="text-warning">Error</h1>
       <h3>Opps somthing went worng!</h3>
-      <p>We sorry we could not carry hard enough</p>
+      <p>We are sorry, we could not carry hard enough</p>
       <b-img src="/static/images/sad.png"></b-img>
-      <p>We will try harder next time...</p>
+      <p>Next time we will pick a support...</p>
     </div>
   </section>
 </template>

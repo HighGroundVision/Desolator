@@ -29,18 +29,22 @@
     <b-row>
       <b-col>
         <b-row v-for="stat in topMelee" :key="topMelee.indexOf(stat)">
-          <b-col cols="2">
+          <b-col>
             <b-img :src="stat.pair[0].img" class="ability-icon-sm" />
             <b-img :src="stat.pair[1].img" class="ability-icon-sm" />
           </b-col>
-          <b-col>
+          <b-col cols="4">
             <b-link :to="'/stats/abilities/' + stat.abilities">{{stat.pair[0].dname}} | {{stat.pair[1].dname}}</b-link>
           </b-col>
-          <b-col>
+          <b-col cols="4">
             <b-progress height="1.5rem" :value="stat.win_rate" :min="0" :max="100" :striped="true" show-progress></b-progress>
           </b-col>
-          <b-col cols="2">
+          <b-col>
             {{stat.wins}} / {{stat.picks}}
+          </b-col>
+          <b-col>
+            <span v-if="stat.ranking">{{stat.ranking.total}}</span>
+            <span v-else title="N/A">--</span>
           </b-col>
         </b-row>
       </b-col>
@@ -56,18 +60,22 @@
     <b-row>
       <b-col>
         <b-row v-for="stat in topRange" :key="topRange.indexOf(stat)">
-          <b-col cols="2">
+          <b-col>
             <b-img :src="stat.pair[0].img" class="ability-icon-sm" />
             <b-img :src="stat.pair[1].img" class="ability-icon-sm" />
           </b-col>
-          <b-col>
+          <b-col cols="4">
             <b-link :to="'/stats/abilities/' + stat.abilities">{{stat.pair[0].dname}} | {{stat.pair[1].dname}}</b-link>
           </b-col>
-          <b-col>
+          <b-col cols="4">
             <b-progress height="1.5rem" :value="stat.win_rate" :min="0" :max="100" :striped="true" show-progress></b-progress>
           </b-col>
-          <b-col cols="2">
+          <b-col>
             {{stat.wins}} / {{stat.picks}}
+          </b-col>
+          <b-col>
+            <span v-if="stat.ranking">{{stat.ranking.total}}</span>
+            <span v-else title="N/A">--</span>
           </b-col>
         </b-row>
       </b-col>
@@ -83,18 +91,22 @@
     <b-row>
       <b-col>
         <b-row v-for="stat in topStr" :key="topStr.indexOf(stat)">
-          <b-col cols="2">
+          <b-col>
             <b-img :src="stat.pair[0].img" class="ability-icon-sm" />
             <b-img :src="stat.pair[1].img" class="ability-icon-sm" />
           </b-col>
-          <b-col>
+          <b-col cols="4">
             <b-link :to="'/stats/abilities/' + stat.abilities">{{stat.pair[0].dname}} | {{stat.pair[1].dname}}</b-link>
           </b-col>
-          <b-col>
+          <b-col cols="4">
             <b-progress height="1.5rem" :value="stat.win_rate" :min="0" :max="100" :striped="true" show-progress></b-progress>
           </b-col>
-          <b-col cols="2">
+          <b-col>
             {{stat.wins}} / {{stat.picks}}
+          </b-col>
+          <b-col>
+            <span v-if="stat.ranking">{{stat.ranking.total}}</span>
+            <span v-else title="N/A">--</span>
           </b-col>
         </b-row>
       </b-col>
@@ -110,18 +122,22 @@
     <b-row>
       <b-col>
         <b-row v-for="stat in topAgi" :key="topAgi.indexOf(stat)">
-          <b-col cols="2">
+          <b-col>
             <b-img :src="stat.pair[0].img" class="ability-icon-sm" />
             <b-img :src="stat.pair[1].img" class="ability-icon-sm" />
           </b-col>
-          <b-col>
+          <b-col cols="4">
             <b-link :to="'/stats/abilities/' + stat.abilities">{{stat.pair[0].dname}} | {{stat.pair[1].dname}}</b-link>
           </b-col>
-          <b-col>
+          <b-col cols="4">
             <b-progress height="1.5rem" :value="stat.win_rate" :min="0" :max="100" :striped="true" show-progress></b-progress>
           </b-col>
-          <b-col cols="2">
+          <b-col>
             {{stat.wins}} / {{stat.picks}}
+          </b-col>
+          <b-col>
+            <span v-if="stat.ranking">{{stat.ranking.total}}</span>
+            <span v-else title="N/A">--</span>
           </b-col>
         </b-row>
       </b-col>
@@ -137,18 +153,22 @@
     <b-row>
       <b-col>
         <b-row v-for="stat in topInt" :key="topInt.indexOf(stat)">
-          <b-col cols="2">
+          <b-col>
             <b-img :src="stat.pair[0].img" class="ability-icon-sm" />
             <b-img :src="stat.pair[1].img" class="ability-icon-sm" />
           </b-col>
-          <b-col>
+          <b-col cols="4">
             <b-link :to="'/stats/abilities/' + stat.abilities">{{stat.pair[0].dname}} | {{stat.pair[1].dname}}</b-link>
           </b-col>
-          <b-col>
+          <b-col cols="4">
             <b-progress height="1.5rem" :value="stat.win_rate" :min="0" :max="100" :striped="true" show-progress></b-progress>
           </b-col>
-          <b-col cols="2">
+          <b-col>
             {{stat.wins}} / {{stat.picks}}
+          </b-col>
+          <b-col>
+            <span v-if="stat.ranking">{{stat.ranking.total}}</span>
+            <span v-else title="N/A">--</span>
           </b-col>
         </b-row>
       </b-col>
@@ -177,12 +197,16 @@ export default {
   created: function () {
     const vm = this
 
-    let p1 = axios.get('/static/data/abilities.json').then((reponse) => { return reponse.data })
-    let p2 = axios.get('/static/data/stats-combos.json').then((reponse) => { return reponse.data })
-    
-    Promise.all([p1, p2]).then((values) => {
+    let web = [
+      axios.get('/static/data/abilities.json').then((reponse) => { return reponse.data }),
+      axios.get('/static/data/stats-combos.json').then((reponse) => { return reponse.data }),
+      axios.get(process.env.API_BASE_URL + 'ComboRanking').then((reponse) => { return reponse.data })
+    ]
+
+    Promise.all(web).then((values) => {
       const abilitiesDB = values[0]
       const statsDB = values[1]
+      const rankingsDB = values[2]
 
       let melee = []
       let range = []
@@ -192,11 +216,10 @@ export default {
 
       for (let i = 0; i < statsDB.length; i++) {
         let stat = statsDB[i]
-        if (stat.picks < 10) {
-          continue
-        }
 
         stat.pair = []
+
+        stat.ranking = rankingsDB[stat.abilities]
 
         const keys = stat.abilities.split('-')
         for (let x = 0; x < keys.length; x++) {
@@ -217,11 +240,7 @@ export default {
           int.push(stat)
         }
 
-        if (melee.length === 10 && 
-          range.length === 10 && 
-          str.length === 10 && 
-          agi.length === 10 && 
-          int.length === 10) {
+        if (melee.length === 10 && range.length === 10 && str.length === 10 && agi.length === 10 && int.length === 10) {
           break
         }
       }

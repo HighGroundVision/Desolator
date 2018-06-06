@@ -13,6 +13,9 @@
           A request to update this list is made every time you login and is cached for 1 hour. 
           It while take approximately 5-10 minutues to poplulate cache with your lastest matches.
         </p>
+        <p>
+          Also you need to select the option in Dota "Expose Public Match Data" which exposes match data from your public games to the STEAM API.
+        </p>
       </b-col>
     </b-row>
     <hr class="highlighted" />

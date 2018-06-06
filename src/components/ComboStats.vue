@@ -3,13 +3,21 @@
     <b-row>
       <b-col>
         <h1 class="text-warning">Combo Details</h1>
-        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Maecenas eget porta velit. Etiam aliquam auctor nulla, vitae congue ligula rhoncus vel. Fusce porta imperdiet risus, ac maximus magna posuere in. Suspendisse quis sodales velit. Sed fringilla enim quis nibh congue efficitur. Proin ante lectus, rhoncus quis venenatis in, maximus malesuada ipsum. Cras hendrerit facilisis ante at molestie. Nullam ullamcorper diam vitae dolor placerat, nec euismod neque placerat.</p>
       </b-col>
-      <b-col cols="4">
+    </b-row>
+    <b-row>
+      <b-col>
+        <p>
+          A good combo can win the game single handed.
+          Knowing which combos have a high impact is import as your team is constructing the draft.
+          Making sure the right abilities goes to right heroes based on their type, while at the same time trying to deny the enemy team is key to successfull draft.
+          We have collected the most useful information about combos into one place including the abilities attributes, combined and individual stats, and combos.
+        </p>
+      </b-col>
+      <b-col cols="3">
         <hgv-social-share :msg="socialMessage"></hgv-social-share>
       </b-col>
     </b-row>
-    <hr />
     <b-row>
       <b-col cols="6" v-for="ability in abilities" :key="ability.id">
         <b-row>
@@ -46,52 +54,64 @@
             </b-col>
           </b-row>
         </div>
-        
       </b-col>
     </b-row>
-    <hr />
+    <hr class="highlighted" />
     <b-row>
       <b-col>
-        <h3>Combind Stats</h3>
-        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Maecenas eget porta velit. Etiam aliquam auctor nulla, vitae congue ligula rhoncus vel. Fusce porta imperdiet risus, ac maximus magna posuere in. Suspendisse quis sodales velit. Sed fringilla enim quis nibh congue efficitur. Proin ante lectus, rhoncus quis venenatis in, maximus malesuada ipsum. Cras hendrerit facilisis ante at molestie. Nullam ullamcorper diam vitae dolor placerat, nec euismod neque placerat.</p>
-      </b-col>
-    </b-row>
-    <b-row class="text-center">
-      <b-col cols="12">
-        <b-row v-if="combind.length > 0">
-          <b-col>Type</b-col>
-          <b-col>Win Rate</b-col>
-          <b-col>Wins / Picks</b-col>
-        </b-row>
-        <b-row v-for="stat in combind" :key="combind.indexOf(stat)">
-          <b-col v-if="stat.type === 1">
-            <b-img src="https://hgv-hyperstone.azurewebsites.net/mics/type_melee.png" title="Melee" class="ability-icon-sm" /> Melee
-          </b-col>
-          <b-col v-if="stat.type === 2">
-            <b-img src="https://hgv-hyperstone.azurewebsites.net/mics/type_range.png" title="Range" class="ability-icon-sm" /> Range
-          </b-col>
-          <b-col v-if="stat.type === 3">
-            <b-img src="https://hgv-hyperstone.azurewebsites.net/mics/primary_str.png" title="Str" class="ability-icon-sm" /> Str &nbsp; &nbsp;
-          </b-col>
-          <b-col v-if="stat.type === 4">
-            <b-img src="https://hgv-hyperstone.azurewebsites.net/mics/primary_agi.png" title="Agi" class="ability-icon-sm" /> Agi &nbsp; &nbsp;
-          </b-col>
-          <b-col v-if="stat.type === 5">
-            <b-img src="https://hgv-hyperstone.azurewebsites.net/mics/primary_int.png" title="Int" class="ability-icon-sm" /> Int &nbsp; &nbsp;
-          </b-col>
+        <b-row>
           <b-col>
-            <b-progress :value="stat.win_rate" :min="0" :max="100" :striped="true" show-progress></b-progress>
+            <h3>Combo Stats</h3>
+            <p>
+              A combo win rate by self is not that valuable as it can generaly effected by the type of hero that try and use those that combo.
+              We broke out the picks, wins, and win rate by Melee, Range, Str, Agi, Int to give you a better understanding of how that combo will align with your hero.
+              We also encourage the community to get involved and help us rank each combo to generate a Karma score.
+            </p>
           </b-col>
-          <b-col>{{stat.wins}} / {{stat.picks}}</b-col>
         </b-row>
-        <hgv-missing-data></hgv-missing-data>
+        <b-row class="text-center">
+          <b-col cols="12">
+            <b-row v-if="combind.length > 0">
+              <b-col>Type</b-col>
+              <b-col>Win Rate</b-col>
+              <b-col>Wins / Picks</b-col>
+            </b-row>
+            <b-row v-for="stat in combind" :key="combind.indexOf(stat)">
+              <b-col v-if="stat.type === 1">
+                <b-img src="https://hgv-hyperstone.azurewebsites.net/mics/type_melee.png" title="Melee" class="ability-icon-sm" /> Melee
+              </b-col>
+              <b-col v-if="stat.type === 2">
+                <b-img src="https://hgv-hyperstone.azurewebsites.net/mics/type_range.png" title="Range" class="ability-icon-sm" /> Range
+              </b-col>
+              <b-col v-if="stat.type === 3">
+                <b-img src="https://hgv-hyperstone.azurewebsites.net/mics/primary_str.png" title="Str" class="ability-icon-sm" /> Str &nbsp; &nbsp;
+              </b-col>
+              <b-col v-if="stat.type === 4">
+                <b-img src="https://hgv-hyperstone.azurewebsites.net/mics/primary_agi.png" title="Agi" class="ability-icon-sm" /> Agi &nbsp; &nbsp;
+              </b-col>
+              <b-col v-if="stat.type === 5">
+                <b-img src="https://hgv-hyperstone.azurewebsites.net/mics/primary_int.png" title="Int" class="ability-icon-sm" /> Int &nbsp; &nbsp;
+              </b-col>
+              <b-col>
+                <b-progress :value="stat.win_rate" :min="0" :max="100" :striped="true" show-progress></b-progress>
+              </b-col>
+              <b-col>{{stat.wins}} / {{stat.picks}}</b-col>
+            </b-row>
+            <hgv-missing-data></hgv-missing-data>
+          </b-col>
+        </b-row>
+      </b-col>
+      <b-col cols="3">
+        <hgv-karma :type="2"></hgv-karma>
       </b-col>
     </b-row>
-    <hr />
+    <hr class="highlighted" />
     <b-row>
       <b-col>
-        <h3>Individual Stats</h3>
-        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Maecenas eget porta velit. Etiam aliquam auctor nulla, vitae congue ligula rhoncus vel. Fusce porta imperdiet risus, ac maximus magna posuere in. Suspendisse quis sodales velit. Sed fringilla enim quis nibh congue efficitur. Proin ante lectus, rhoncus quis venenatis in, maximus malesuada ipsum. Cras hendrerit facilisis ante at molestie. Nullam ullamcorper diam vitae dolor placerat, nec euismod neque placerat.</p>
+        <h3>Abilities Stats</h3>
+        <p>
+          We have included the ability stat information here as well to give you view of not just how the combo affects your hero but also how the individual abilities affect your hero, to make sure you are getting the most out of this combo.
+        </p>
       </b-col>
     </b-row>
     <b-row>
@@ -140,11 +160,15 @@
         <br />
       </b-col>
     </b-row>
-    <hr />
+    <hr class="highlighted" />
     <b-row>
       <b-col>
         <h3>Better Combos</h3>
-        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Maecenas eget porta velit. Etiam aliquam auctor nulla, vitae congue ligula rhoncus vel. Fusce porta imperdiet risus, ac maximus magna posuere in. Suspendisse quis sodales velit. Sed fringilla enim quis nibh congue efficitur. Proin ante lectus, rhoncus quis venenatis in, maximus malesuada ipsum. Cras hendrerit facilisis ante at molestie. Nullam ullamcorper diam vitae dolor placerat, nec euismod neque placerat.</p>
+        <p>
+          This is the best combo for these abilties; Maybe it is for one but not the other; how far off is it?
+          These are all questions of the past as we will display the 10 combos with a win rate better then this combo. 
+          If there are less then this you know that this combo is with in the best for that ability.
+        </p>
       </b-col>
     </b-row>
     <b-row v-for="item in combos" :key="item.ability.id">

@@ -87,10 +87,9 @@ export default {
     
     Promise.all(requests).then((values) => {
       const rankingAbilityDB = values[0]
-      
+
       let abilityKey = vm.$route.params.key
-      let key = parseInt(abilityKey)
-      let ranking = rankingAbilityDB[key]
+      let ranking = rankingAbilityDB[abilityKey]
       if (ranking) {
         vm.ranking = ranking
       }

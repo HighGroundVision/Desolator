@@ -155,11 +155,13 @@ export default {
   created: function () {
     const vm = this
 
-    let p1 = axios.get('/static/data/stats-abilities.json').then((reponse) => { return reponse.data })
-    let p2 = axios.get('/static/data/abilities.json').then((reponse) => { return reponse.data })
-    let p3 = axios.get(process.env.API_BASE_URL + 'AbilityRanking').then((reponse) => { return reponse.data })
+    let web = [
+      axios.get('/static/data/stats-abilities.json').then((reponse) => { return reponse.data }),
+      axios.get('/static/data/abilities.json').then((reponse) => { return reponse.data }),
+      axios.get(process.env.API_BASE_URL + 'AbilityRanking').then((reponse) => { return reponse.data })
+    ]
 
-    Promise.all([p1, p2, p3]).then((values) => {
+    Promise.all(web).then((values) => {
       let items = values[0]
       let abilitiesDB = values[1]
       let rankingAbilityDB = values[2]
