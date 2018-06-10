@@ -11,7 +11,8 @@
               <b-nav-item to="/abilities">Abilities</b-nav-item>
               <b-nav-item to="/combos">Combos</b-nav-item>
               <b-nav-item to="/match/history">Matches</b-nav-item>
-              <b-nav-item to="/live">Live</b-nav-item>
+              <b-nav-item to="/draft">Draft</b-nav-item>
+              <b-nav-item to="/error" title="This will not work, but that is ok...">Test</b-nav-item>
             </b-navbar-nav>
             <hgv-authentication></hgv-authentication>
           </b-collapse>

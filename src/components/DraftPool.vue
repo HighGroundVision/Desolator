@@ -1,5 +1,5 @@
 <template>
-  <section v-if="ready"  class="opaque-background">
+  <section v-if="ready" class="opaque-background">
       <b-row>
         <b-col cols="8">
           <h1 class="text-warning">Draft Pool</h1>
@@ -39,6 +39,13 @@
                       <b-img v-else :src="ability.img" :title="ability.name" v-bind:class="{ disabled: !ability.enabled }" fluid class="ability-icon-lg" />
                     </td>
                   </template>
+                  <template v-for="ability in hero.unique">
+                    <td v-bind:key="ability.id">
+                      <b-link :to="'/stats/ability/' + ability.id" >
+                        <b-img :src="ability.img" title="One of few Extra abilities that work" v-bind:class="{ disabled: !ability.enabled }" fluid  class="border border-primary ability-icon-lg" />
+                      </b-link>
+                    </td>
+                  </template>
                 </tr>
               </template>
             </tbody>
@@ -69,10 +76,8 @@ export default {
     let p1 = axios.get('/static/data/draftpool.json').then((reponse) => { return reponse.data })
     Promise.all([p1]).then((values) => {
       const pool = values[0]
-
-      pool.sort((lhs, rhs) => {
-        return lhs.name.localeCompare(rhs.name)
-      })
+      
+      pool.sort((lhs, rhs) => lhs.name.localeCompare(rhs.name))
 
       vm.items = pool
       vm.ready = true

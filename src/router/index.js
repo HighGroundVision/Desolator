@@ -13,6 +13,7 @@ import Abilities from '@/components/Abilities'
 import Combos from '@/components/Combos'
 import MatchHistory from '@/components/MatchHistory'
 import MatchDetails from '@/components/MatchDetails'
+import DraftLive from '@/components/DraftLive'
 
 import store from '../store'
 
@@ -82,9 +83,10 @@ let router = new Router({
       component: MatchDetails
     },
     {
-      path: '/live',
-      name: 'Error',
-      component: ErrorHandler
+      path: '/draft',
+      name: 'DraftLive',
+      component: DraftLive,
+      meta: { authorization: true }
     }
   ]
 })
