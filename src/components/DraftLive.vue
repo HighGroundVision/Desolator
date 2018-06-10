@@ -12,7 +12,7 @@
     </b-row>
     <b-row>
       <b-col>
-        <draggable v-model="pool" :options="{group:'heroes'}" >
+        <draggable v-model="pool" :options="{group:'heroes',sort:false}" >
           <b-img v-for="item in pool" :key="item.id" :src="item.img" :title="item.name" />
         </draggable>
       </b-col>
