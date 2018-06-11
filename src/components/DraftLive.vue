@@ -12,7 +12,7 @@
     </b-row>
     <b-row>
       <b-col>
-        <draggable v-model="pool" :options="{group:'heroes',sort:false}" >
+        <draggable v-model="pool" :options="{group:'heroes',sort:false}">
           <b-img v-for="item in pool" :key="item.id" :src="item.img" :title="item.name" />
         </draggable>
       </b-col>
@@ -21,13 +21,13 @@
     <b-row>
       <b-col>
         <h3>Radiant</h3>
-        <draggable v-model="radiant" :options="{group:'heroes'}"  class="border border-primary" style="min-height: 100px;">
+        <draggable v-model="radiant" :options="{group:'heroes'}"  class="border border-primary" style="min-height: 50px;">
            <b-img v-for="item in radiant" :key="item.id" :src="item.img" :title="item.name" />
         </draggable>
       </b-col>
       <b-col>
         <h3>Dire</h3>
-        <draggable v-model="dire" :options="{group:'heroes'}" class="border border-primary" style="min-height: 100px;">
+        <draggable v-model="dire" :options="{group:'heroes'}" class="border border-primary" style="min-height: 50px;">
            <b-img v-for="item in dire" :key="item.id" :src="item.img" :title="item.name" />
         </draggable>
       </b-col>
