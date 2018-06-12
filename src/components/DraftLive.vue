@@ -11,9 +11,15 @@
       </b-col>
     </b-row>
     <b-row>
+      <b-col cols="6">
+        <b-form-input v-model="filter" placeholder="Filter by Hero"  />
+      </b-col>
+    </b-row>
+    <br />
+    <b-row>
       <b-col>
         <draggable v-model="pool" :options="{group:'heroes',sort:false}">
-          <b-img v-for="item in pool" :key="item.id" :src="item.img" :title="item.name" />
+          <b-img v-for="item in pool" :key="item.id" :src="item.icon" :title="item.name" />
         </draggable>
       </b-col>
     </b-row>
@@ -22,13 +28,13 @@
       <b-col>
         <h3>Radiant</h3>
         <draggable v-model="radiant" :options="{group:'heroes'}"  class="border border-primary" style="min-height: 50px;">
-           <b-img v-for="item in radiant" :key="item.id" :src="item.img" :title="item.name" />
+          <b-img  v-for="item in radiant" :key="item.id" :src="item.icon" :title="item.name" />
         </draggable>
       </b-col>
       <b-col>
         <h3>Dire</h3>
         <draggable v-model="dire" :options="{group:'heroes'}" class="border border-primary" style="min-height: 50px;">
-           <b-img v-for="item in dire" :key="item.id" :src="item.img" :title="item.name" />
+          <b-img  v-for="item in dire" :key="item.id"  :src="item.icon" :title="item.name" />
         </draggable>
       </b-col>
     </b-row>
@@ -45,10 +51,24 @@ import draggable from 'vuedraggable'
 export default {
   name: 'DraftLive', 
   components: { draggable },
+  computed: {
+    pool () {
+      let items = this.heroes
+
+      if (this.filter) {
+        items = items.filter((hero) => {
+          return hero.name.toLowerCase().includes(this.filter.toLowerCase())
+        })
+      }
+
+      return items
+    }
+  },
   data () {
     return {
       'ready': false,
-      'pool': [],
+      'filter': null,
+      'heroes': [],
       'radiant': [],
       'dire': []
     }
@@ -63,14 +83,13 @@ export default {
       let heroes = pool.filter(h => h.enabled === true)
       for (let i = 0; i < heroes.length; i++) {
         const hero = heroes[i]
-        hero.img = hero.img.replace('/banner/', '/icons/')
+        hero.icon = hero.img.replace('/banner/', '/icons/')
+        hero.abilities = hero.abilities.filter(a => a.enabled === true)
       }
-      // let abilities = heroes.map(h => h.abilities).reduce((acc, val) => acc.concat(val), []).filter(a => a.enabled === true)
-      // console.log(abilities)
 
       heroes.sort((lhs, rhs) => lhs.name.localeCompare(rhs.name))
 
-      vm.pool = heroes
+      vm.heroes = heroes
       vm.ready = true
     }).catch(function () {
       vm.$router.push('/error')
