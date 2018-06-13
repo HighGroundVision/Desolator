@@ -85,8 +85,7 @@ let router = new Router({
     {
       path: '/draft',
       name: 'DraftLive',
-      component: DraftLive,
-      meta: { authorization: true }
+      component: DraftLive
     }
   ]
 })
