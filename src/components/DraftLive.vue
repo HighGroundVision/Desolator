@@ -11,31 +11,38 @@
       </b-col>
     </b-row>
     <b-row>
-      <b-col cols="6">
+      <b-col>
         <b-form-input v-model="filter" placeholder="Filter by Hero"  />
       </b-col>
     </b-row>
     <br />
     <b-row>
       <b-col>
-        <draggable v-model="pool" :options="{group:'heroes',sort:false}">
-          <b-img v-for="item in pool" :key="item.id" :src="item.icon" :title="item.name" />
+        <draggable v-model="pool" :options="{group:'heroes',sort:false}" class="text-center">
+          <b-img v-for="item in pool" :key="item.id" :src="item.img" :title="item.name" style="cursor: move;" />
         </draggable>
       </b-col>
     </b-row>
     <hr class="highlighted" />
     <b-row>
-      <b-col>
+      <b-col cols="12" sm="6" class="text-center">
         <h3>Radiant</h3>
-        <draggable v-model="radiant" :options="{group:'heroes'}"  class="border border-primary" style="min-height: 50px;">
-          <b-img  v-for="item in radiant" :key="item.id" :src="item.icon" :title="item.name" />
+        <draggable v-model="radiant" :options="{group:'heroes'}"  class="border border-primary" style="min-height: 55px; padding:10px;">
+           <b-img v-for="item in radiant" :key="item.id" :src="item.img" :title="item.name" style="cursor: move;" />
         </draggable>
       </b-col>
-      <b-col>
+      <b-col cols="12" sm="6" class="text-center">
         <h3>Dire</h3>
-        <draggable v-model="dire" :options="{group:'heroes'}" class="border border-primary" style="min-height: 50px;">
-          <b-img  v-for="item in dire" :key="item.id"  :src="item.icon" :title="item.name" />
+        <draggable v-model="dire" :options="{group:'heroes'}" class="border border-primary" style="min-height: 55px; padding:10px;">
+           <b-img v-for="item in dire" :key="item.id" :src="item.img" :title="item.name" style="cursor: move;" />
         </draggable>
+      </b-col>
+    </b-row>
+    <br />
+    <b-row>
+      <b-col>
+        <b-btn v-if="areHeroesSelected" variant="primary" @click="next">Next</b-btn>
+        <b-btn v-else variant="secondary">Next</b-btn>
       </b-col>
     </b-row>
   </section>
@@ -51,26 +58,41 @@ import draggable from 'vuedraggable'
 export default {
   name: 'DraftLive', 
   components: { draggable },
+  methods: {
+    next () {
+      alert('Next')
+    }
+  },
   computed: {
     pool () {
-      let items = this.heroes
+      let collection = this.heroes
 
+      // Filter by Name
       if (this.filter) {
-        items = items.filter((hero) => {
-          return hero.name.toLowerCase().includes(this.filter.toLowerCase())
-        })
+        let f = this.filter.toLowerCase()
+        collection = collection.filter((h) => { return h.name_lower.includes(f) })
       }
 
-      return items
+      // Filter by Selected
+      collection = collection.filter(h => !this.radiant.includes(h)).filter(h => !this.dire.includes(h))
+
+      // Sort by Name
+      collection.sort((lhs, rhs) => { return lhs.name.localeCompare(rhs.name) })
+
+      return collection
+    },
+    areHeroesSelected () {
+      return this.radiant.length === 5 && this.dire.length === 5
     }
   },
   data () {
     return {
       'ready': false,
-      'filter': null,
       'heroes': [],
+      'filter': null,
       'radiant': [],
-      'dire': []
+      'dire': [],
+      'abilities': []
     }
   },
   created () {
@@ -83,11 +105,9 @@ export default {
       let heroes = pool.filter(h => h.enabled === true)
       for (let i = 0; i < heroes.length; i++) {
         const hero = heroes[i]
-        hero.icon = hero.img.replace('/banner/', '/icons/')
-        hero.abilities = hero.abilities.filter(a => a.enabled === true)
+        hero.name_lower = hero.name.toLowerCase()
+        hero.img = hero.img.replace('/banner/', '/icons/')
       }
-
-      heroes.sort((lhs, rhs) => lhs.name.localeCompare(rhs.name))
 
       vm.heroes = heroes
       vm.ready = true
