@@ -8,7 +8,7 @@
       </b-row>
     </div>
     <!-- STEP # 1 -->
-    <div v-if="phase === 1">
+    <div v-if="step === 1">
       <b-row>
         <b-col>
           <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Suspendisse a risus vel nunc ullamcorper vestibulum in sed quam. Suspendisse facilisis lacinia semper. Nulla facilisi. Orci varius natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Morbi pretium, tellus eget auctor faucibus, lacus mauris feugiat elit, at bibendum elit arcu sed ipsum. Donec dapibus semper ante id dapibus. In auctor mollis neque quis hendrerit. Aenean pharetra tortor orci, ut porttitor lectus cursus a. Nulla gravida rhoncus dolor vitae blandit. Pellentesque porta placerat justo, in efficitur felis aliquam ut. Pellentesque ullamcorper vestibulum magna eget maximus. In at suscipit erat. Maecenas rhoncus dolor ante, at consectetur metus dictum sit amet. Vivamus enim tortor, semper non mollis sed, vehicula sit amet nisl. Mauris lacinia ante sit amet erat dapibus sollicitudin sed quis tortor.</p>
@@ -16,7 +16,7 @@
       </b-row>
       <b-row>
         <b-col>
-          <b-form-input v-model="filter" placeholder="Filter by Hero"  />
+          <b-form-input v-model="filter" @keydown.enter.native="quickPick" placeholder="Filter by Hero"  />
         </b-col>
       </b-row>
       <br />
@@ -42,19 +42,22 @@
           </draggable>
         </b-col>
       </b-row>
-      <br />
+      <hr class="highlighted" />
       <b-row>
         <b-col>
-          <b-btn v-if="phase1Complete" variant="primary" @click="heroesSelected">Next</b-btn>
-          <b-btn v-else variant="secondary">Next</b-btn>
+          <b-btn v-if="step1Complete" variant="primary" @click="heroesSelected" class="btn-block">Next</b-btn>
+          <b-btn v-else variant="secondary" class="btn-block">Next</b-btn>
+        </b-col>
+        <b-col>
+          <b-btn variant="danger" class="btn-block" @click="clear">Clear</b-btn>
         </b-col>
       </b-row>
     </div>
     <!-- STEP # 2 -->
-    <div v-if="phase === 2">
+    <div v-if="step === 2">
       <b-row>
         <b-col>
-          <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Suspendisse a risus vel nunc ullamcorper vestibulum in sed quam. Suspendisse facilisis lacinia semper. Nulla facilisi. Orci varius natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Morbi pretium, tellus eget auctor faucibus, lacus mauris feugiat elit, at bibendum elit arcu sed ipsum. Donec dapibus semper ante id dapibus. In auctor mollis neque quis hendrerit. Aenean pharetra tortor orci, ut porttitor lectus cursus a. Nulla gravida rhoncus dolor vitae blandit. Pellentesque porta placerat justo, in efficitur felis aliquam ut. Pellentesque ullamcorper vestibulum magna eget maximus. In at suscipit erat. Maecenas rhoncus dolor ante, at consectetur metus dictum sit amet. Vivamus enim tortor, semper non mollis sed, vehicula sit amet nisl. Mauris lacinia ante sit amet erat dapibus sollicitudin sed quis tortor.</p>
+          <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Suspendisse a risus vel nunc ullamcorper vestibulum in sed quam. Suspendisse facilisis lacinia semper. Nulla facilisi. Orci varius natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Morbi pretium, tellus eget auctor faucibus, lacus mauris feugiat elit, at bibendum elit arcu sed ipsum. Donec dapibus semper ante id dapibus.</p>
         </b-col>
       </b-row>
       <b-row>
@@ -138,84 +141,39 @@
           </template>
         </b-col>
       </b-row>  
-      <br />
+      <hr class="highlighted" />
       <b-row>
         <b-col>
-          <b-btn v-if="phase2Complete" variant="primary" @click="abilitiesSelected">Next</b-btn>
-          <b-btn v-else variant="secondary">Next</b-btn>
+          <b-btn variant="primary" @click="back" class="btn-block">Back</b-btn>
+        </b-col>
+        <b-col>
+          <b-btn v-if="step2Complete" variant="primary" @click="abilitiesSelected" class="btn-block">Next</b-btn>
+          <b-btn v-else variant="secondary" class="btn-block">Next</b-btn>
+        </b-col>
+        <b-col>
+          <b-btn variant="danger" @click="clear" class="btn-block">Clear</b-btn>
         </b-col>
       </b-row>
     </div>
     <!-- STEP # 3 -->
-    <div v-if="phase === 3">
-      <h3>#WINNING!</h3>
-      <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Suspendisse a risus vel nunc ullamcorper vestibulum in sed quam. Suspendisse facilisis lacinia semper. Nulla facilisi. Orci varius natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Morbi pretium, tellus eget auctor faucibus, lacus mauris feugiat elit, at bibendum elit arcu sed ipsum. Donec dapibus semper ante id dapibus. In auctor mollis neque quis hendrerit. Aenean pharetra tortor orci, ut porttitor lectus cursus a. Nulla gravida rhoncus dolor vitae blandit. Pellentesque porta placerat justo, in efficitur felis aliquam ut. Pellentesque ullamcorper vestibulum magna eget maximus. In at suscipit erat. Maecenas rhoncus dolor ante, at consectetur metus dictum sit amet. Vivamus enim tortor, semper non mollis sed, vehicula sit amet nisl. Mauris lacinia ante sit amet erat dapibus sollicitudin sed quis tortor.</p>
-      <!--
+    <div v-if="step === 3">
       <b-row>
         <b-col>
-          <p>Vivamus sodales risus orci, nec cursus ex pulvinar et. Praesent nunc libero, rutrum et quam et, condimentum scelerisque tellus. In et odio nulla. Morbi lacus nisl, maximus vitae nulla ac, venenatis sagittis nisi. </p>
+          <p>Suspendisse facilisis lacinia semper. Nulla facilisi. Orci varius natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Morbi pretium, tellus eget auctor faucibus, lacus mauris feugiat elit, at bibendum elit arcu sed ipsum. Donec dapibus semper ante id dapibus. In auctor mollis neque quis hendrerit. Aenean pharetra tortor orci, ut porttitor lectus cursus a. Nulla gravida rhoncus dolor vitae blandit.</p>
         </b-col>
       </b-row>
+      <hr class="highlighted" />
       <b-row>
-        <b-col class="text-right">
-          <b-row>
-            <b-col>
-              <b-img :src="radiant[0].ultimate.img" class="ability-icon ability-icon-lg" @click="selectUltimate(radiant[0], radiant[0].ultimate)" />
-              <b-img :src="radiant[1].ultimate.img" class="ability-icon ability-icon-lg" @click="selectUltimate(radiant[1], radiant[1].ultimate)" />
-              <b-img :src="radiant[2].ultimate.img" class="ability-icon ability-icon-lg" @click="selectUltimate(radiant[2], radiant[2].ultimate)" />
-            </b-col>
-          </b-row>
-          <b-row>
-            <b-col>
-              <b-img :src="radiant[3].ultimate.img" class="ability-icon ability-icon-lg" @click="selectUltimate(radiant[3], radiant[3].ultimate)" />
-              <b-img :src="radiant[4].ultimate.img" class="ability-icon ability-icon-lg" @click="selectUltimate(radiant[4], radiant[4].ultimate)" />
-              <b-img :src="radiant[5].ultimate.img" class="ability-icon ability-icon-lg" @click="selectUltimate(radiant[5], radiant[5].ultimate)" />
-            </b-col>
-          </b-row>
-        </b-col>
-        <b-col class="text-left">
-          <b-row>
-            <b-col>
-              <b-img :src="dire[2].ultimate.img" class="ability-icon ability-icon-lg" @click="selectUltimate(dire[2], dire[2].ultimate)" />
-              <b-img :src="dire[1].ultimate.img" class="ability-icon ability-icon-lg" @click="selectUltimate(dire[1], dire[1].ultimate)" />
-              <b-img :src="dire[0].ultimate.img" class="ability-icon ability-icon-lg" @click="selectUltimate(dire[0], dire[0].ultimate)" />
-            </b-col>
-          </b-row>
-          <b-row>
-            <b-col>
-              <b-img :src="dire[5].ultimate.img" class="ability-icon ability-icon-lg" @click="selectUltimate(dire[5], dire[5].ultimate)" />
-              <b-img :src="dire[4].ultimate.img" class="ability-icon ability-icon-lg" @click="selectUltimate(dire[4], dire[4].ultimate)" />
-              <b-img :src="dire[3].ultimate.img" class="ability-icon ability-icon-lg" @click="selectUltimate(dire[3], dire[3].ultimate)" />
-            </b-col>
-          </b-row>
-        </b-col>
-      </b-row>
-      <br />
-      <b-row>
-        <b-col class="text-right">
-          <template v-for="item in radiant">
-            <b-row :key="item.id">
-              <b-col>
-                <template v-for="skill in item.skills">
-                  <b-img :key="skill.id" :src="skill.img" class="ability-icon ability-icon-lg" @click="selectAbility(item, skill)" />
-                </template>
-              </b-col>
-            </b-row>
-          </template>
-        </b-col>
         <b-col>
-          <template v-for="item in dire">
-            <b-row :key="item.id">
-              <b-col>
-                <template v-for="skill in item.skills">
-                  <b-img :key="skill.id" :src="skill.img" class="ability-icon ability-icon-lg"  @click="selectAbility(item, skill)" />
-                </template>
-              </b-col>
-            </b-row>
-          </template>
+          <p>Stuff</p>
         </b-col>
       </b-row>
-      -->
+      <hr class="highlighted" />
+      <b-row>
+        <b-col>
+          <b-btn variant="secondary" @click="clear" class="btn-block">Clear</b-btn>
+        </b-col>
+      </b-row>
     </div>
     <!-- Modal Component -->
     <b-modal ref="RefSelectAbility" title="Select Missing Ability" size="lg" :hide-footer="true" header-bg-variant="dark" header-text-variant="light" body-bg-variant="dark" footer-bg-variant="dark">
@@ -246,11 +204,50 @@ export default {
   name: 'DraftLive', 
   components: { draggable },
   methods: {
+    clear () {
+      // Reset Data
+      this.step = 1
+      this.filter = null
+      this.radiant = []
+      this.dire = []
+      this.selectionType = 0
+      this.selectionHeroIndex = null
+      this.selectionAbilityIndex = null
+      this.abilities = []
+      this.selectedHero = null
+      // Reset query
+      this.$router.replace({query: {}})
+    },
+    back () {
+      if (this.step > 1) {
+        this.step = this.step - 1
+      }
+    },
     heroesSelected () {
-      this.phase = 2
+      this.step = 2
+      let r = this.radiant.map(h => h.id).join(',')
+      let d = this.dire.map(h => h.id).join(',')
+      this.$router.replace({query: {'radiant': r, 'dire': d}})
     },
     abilitiesSelected () {
-      this.phase = 3
+      this.step = 3
+      let abilities = this.abilities.map(a => a.id).join(',')
+      this.$router.replace({query: {'hero': this.selectedHero.id, 'pool': abilities}})
+    },
+    quickPick () {
+      if (this.poolHeroes.length === 1) {
+        let hero = this.poolHeroes[0]
+        this.filter = null
+
+        if (this.radiant.length < 6) {
+          this.radiant.push(hero)
+          return
+        } 
+        if (this.dire.length < 6) {
+          this.dire.push(hero)
+          return
+        } 
+      }
     },
     selectAbility (hero, ability) {
       this.selectionType = 1
@@ -307,10 +304,14 @@ export default {
       get: function () {
         let collection = this.heroes
 
-        // Filter by Name
+        // Filter by Name or by acronym (if 2 letters)
         if (this.filter) {
-          let f = this.filter.toLowerCase()
-          collection = collection.filter((h) => { return h.name_lower.includes(f) })
+          let lower = this.filter.toLowerCase()
+          if (lower.length === 2) {
+            collection = collection.filter((h) => { return h.acronym === lower })
+          } else {
+            collection = collection.filter((h) => { return h.name_lower.includes(lower) })
+          }
         }
 
         // Filter by Selected
@@ -358,17 +359,17 @@ export default {
     teamDire () {
       return this.dire.slice(0, 5)
     },
-    phase1Complete () {
+    step1Complete () {
       return this.radiant.length === 6 && this.dire.length === 6
     },
-    phase2Complete () {
+    step2Complete () {
       return this.abilities.length === 48 && this.selectedHero != null
     }
   },
   data () {
     return {
       'ready': false,
-      'phase': 1,
+      'step': 1,
       'heroes': [],
       'filter': null,
       'radiant': [],
@@ -393,6 +394,7 @@ export default {
         const hero = heroes[i]
         // Hero
         hero.name_lower = hero.name.toLowerCase()
+        hero.acronym = hero.acronym.toLowerCase()
         hero.icon = hero.img.replace('/banner/', '/icons/')
 
         // Abilties
@@ -439,20 +441,50 @@ export default {
       }
 
       if (vm.radiant.length === 6 && vm.dire.length === 6) {
-        let abilities = []
+        let collection = []
         let teams = [vm.radiant, vm.dire]
         for (let i = 0; i < teams.length; i++) {
           const team = teams[i]
           for (let h = 0; h < team.length; h++) {
             const hero = team[h]
             let skills = hero.abilities.filter(a => a.enabled === true)
-            abilities = abilities.concat(skills)
+            collection = collection.concat(skills)
           }
         }
 
-        vm.abilities = abilities
-        vm.phase = 2
+        vm.abilities = collection
+        vm.step = 2
       }
+
+      if (vm.$route.query.hero) {
+        debugger
+        let heroID = parseInt(vm.$route.query.hero)
+        const data = heroes.filter(h => h.id === heroID)
+        if (data.length === 1) {
+          vm.selectedHero = data[0]
+        }
+      }
+
+      if (vm.$route.query.pool) {
+        let collection = []
+        let ids = vm.$route.query.pool.split(',').map(lhs => parseInt(lhs))
+        for (let h = 0; h < heroes.length; h++) {
+          const hero = heroes[h]
+          for (let a = 0; a < hero.abilities.length; a++) {
+            const ability = hero.abilities[a]
+            if (ids.includes(ability.id)) {
+              collection.push(ability)
+            }  
+          }
+        }
+        vm.abilities = collection
+      }
+
+      if (vm.selectedHero != null && vm.abilities.length === 48) {
+        vm.step = 3
+      }
+
+      // http://localhost:8080/#/draft?hero=4&pool=5585,5586,5587,5588,5365,5366,5368,5369,5345,5346,5347,5348,5003,5004,5005,5006,5007,5008,5009,5010,5012,5011,5014,5013,5320,5321,5322,5323,5015,5016,5017,5018,5285,5286,5287,5288,5400,5401,5402,5403,5548,5549,5550,5551,5279,5280,5281,5282
 
       vm.ready = true
     }).catch(function () {
