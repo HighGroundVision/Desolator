@@ -11,7 +11,7 @@
     <div v-if="phase === 1">
       <b-row>
         <b-col>
-          <p>Et excepteur nulla ea occaecat pariatur sunt nulla sunt. Consequat esse ipsum quis exercitation cillum voluptate non sint eu eiusmod officia mollit deserunt aliqua. Sint ipsum minim aliqua consectetur eiusmod cillum reprehenderit commodo non. Sint cillum dolor fugiat ut nostrud. Aliquip nisi irure consectetur consectetur eiusmod eu ullamco aute laboris eiusmod nostrud. Nulla ipsum ad sunt id officia minim sunt.</p>
+          <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Suspendisse a risus vel nunc ullamcorper vestibulum in sed quam. Suspendisse facilisis lacinia semper. Nulla facilisi. Orci varius natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Morbi pretium, tellus eget auctor faucibus, lacus mauris feugiat elit, at bibendum elit arcu sed ipsum. Donec dapibus semper ante id dapibus. In auctor mollis neque quis hendrerit. Aenean pharetra tortor orci, ut porttitor lectus cursus a. Nulla gravida rhoncus dolor vitae blandit. Pellentesque porta placerat justo, in efficitur felis aliquam ut. Pellentesque ullamcorper vestibulum magna eget maximus. In at suscipit erat. Maecenas rhoncus dolor ante, at consectetur metus dictum sit amet. Vivamus enim tortor, semper non mollis sed, vehicula sit amet nisl. Mauris lacinia ante sit amet erat dapibus sollicitudin sed quis tortor.</p>
         </b-col>
       </b-row>
       <b-row>
@@ -22,7 +22,7 @@
       <br />
       <b-row>
         <b-col class="text-center">
-          <draggable v-model="poolHeroes" :options="{group:'heroes',sort:false}">
+          <draggable v-model="poolHeroes" :options="{group:'heroes',sort:false}"  > <!-- -->
             <b-img v-for="item in poolHeroes" :key="item.id" :src="item.icon" :title="item.name" class="moveable" />
           </draggable>
         </b-col>
@@ -54,7 +54,7 @@
     <div v-if="phase === 2">
       <b-row>
         <b-col>
-          <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aenean porttitor rhoncus vehicula. Vivamus sodales risus orci, nec cursus ex pulvinar et. Praesent nunc libero, rutrum et quam et, condimentum scelerisque tellus. In et odio nulla. Morbi lacus nisl, maximus vitae nulla ac, venenatis sagittis nisi. </p>
+          <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Suspendisse a risus vel nunc ullamcorper vestibulum in sed quam. Suspendisse facilisis lacinia semper. Nulla facilisi. Orci varius natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Morbi pretium, tellus eget auctor faucibus, lacus mauris feugiat elit, at bibendum elit arcu sed ipsum. Donec dapibus semper ante id dapibus. In auctor mollis neque quis hendrerit. Aenean pharetra tortor orci, ut porttitor lectus cursus a. Nulla gravida rhoncus dolor vitae blandit. Pellentesque porta placerat justo, in efficitur felis aliquam ut. Pellentesque ullamcorper vestibulum magna eget maximus. In at suscipit erat. Maecenas rhoncus dolor ante, at consectetur metus dictum sit amet. Vivamus enim tortor, semper non mollis sed, vehicula sit amet nisl. Mauris lacinia ante sit amet erat dapibus sollicitudin sed quis tortor.</p>
         </b-col>
       </b-row>
       <b-row>
@@ -148,7 +148,8 @@
     </div>
     <!-- STEP # 3 -->
     <div v-if="phase === 3">
-      <p>#WINNING!</p>
+      <h3>#WINNING!</h3>
+      <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Suspendisse a risus vel nunc ullamcorper vestibulum in sed quam. Suspendisse facilisis lacinia semper. Nulla facilisi. Orci varius natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Morbi pretium, tellus eget auctor faucibus, lacus mauris feugiat elit, at bibendum elit arcu sed ipsum. Donec dapibus semper ante id dapibus. In auctor mollis neque quis hendrerit. Aenean pharetra tortor orci, ut porttitor lectus cursus a. Nulla gravida rhoncus dolor vitae blandit. Pellentesque porta placerat justo, in efficitur felis aliquam ut. Pellentesque ullamcorper vestibulum magna eget maximus. In at suscipit erat. Maecenas rhoncus dolor ante, at consectetur metus dictum sit amet. Vivamus enim tortor, semper non mollis sed, vehicula sit amet nisl. Mauris lacinia ante sit amet erat dapibus sollicitudin sed quis tortor.</p>
       <!--
       <b-row>
         <b-col>
@@ -302,22 +303,25 @@ export default {
     }
   },
   computed: {
-    poolHeroes () {
-      let collection = this.heroes
+    poolHeroes: {
+      get: function () {
+        let collection = this.heroes
 
-      // Filter by Name
-      if (this.filter) {
-        let f = this.filter.toLowerCase()
-        collection = collection.filter((h) => { return h.name_lower.includes(f) })
-      }
+        // Filter by Name
+        if (this.filter) {
+          let f = this.filter.toLowerCase()
+          collection = collection.filter((h) => { return h.name_lower.includes(f) })
+        }
 
-      // Filter by Selected
-      collection = collection.filter(h => !this.radiant.includes(h)).filter(h => !this.dire.includes(h))
+        // Filter by Selected
+        collection = collection.filter(h => !this.radiant.includes(h)).filter(h => !this.dire.includes(h))
 
-      // Sort by Name
-      collection.sort((lhs, rhs) => { return lhs.name.localeCompare(rhs.name) })
+        // Sort by Name
+        collection.sort((lhs, rhs) => { return lhs.name.localeCompare(rhs.name) })
 
-      return collection
+        return collection
+      },
+      set: function () {}
     },
     poolAbilities () {
       let abilities = []
