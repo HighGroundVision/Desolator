@@ -22,8 +22,8 @@
       <br />
       <b-row>
         <b-col class="text-center">
-          <draggable v-model="poolHeroes" :options="{group:'heroes',sort:false}"  > <!-- -->
-            <b-img v-for="item in poolHeroes" :key="item.id" :src="item.icon" :title="item.name" class="moveable" />
+          <draggable v-model="poolHeroes" :options="{group:'heroes',sort:false}"  >
+            <b-img v-for="item in poolHeroes" :key="item.id" :src="item.icon" :title="item.name" @click="pick(item)" class="moveable" />
           </draggable>
         </b-col>
       </b-row>
@@ -224,15 +224,29 @@ export default {
       }
     },
     heroesSelected () {
-      this.step = 2
+      let collection = []
+      let teams = [this.radiant, this.dire]
+      for (let i = 0; i < teams.length; i++) {
+        const team = teams[i]
+        for (let h = 0; h < team.length; h++) {
+          const hero = team[h]
+          let skills = hero.abilities.filter(a => a.enabled === true)
+          collection = collection.concat(skills)
+        }
+      }
+
+      this.abilities = collection
+
       let r = this.radiant.map(h => h.id).join(',')
       let d = this.dire.map(h => h.id).join(',')
       this.$router.replace({query: {'radiant': r, 'dire': d}})
+
+      this.step = 2
     },
     abilitiesSelected () {
-      this.step = 3
       let abilities = this.abilities.map(a => a.id).join(',')
       this.$router.replace({query: {'hero': this.selectedHero.id, 'pool': abilities}})
+      this.step = 3
     },
     quickPick () {
       if (this.poolHeroes.length === 1) {
@@ -247,6 +261,16 @@ export default {
           this.dire.push(hero)
           return
         } 
+      }
+    },
+    pick (hero) {
+      if (this.radiant.length < 6) {
+        this.radiant.push(hero)
+        return
+      }
+      if (this.dire.length < 6) {
+        this.dire.push(hero)
+        return
       }
     },
     selectAbility (hero, ability) {
@@ -363,6 +387,8 @@ export default {
       return this.radiant.length === 6 && this.dire.length === 6
     },
     step2Complete () {
+      console.log('abilities', this.abilities)
+      console.log('hero', this.selectedHero)
       return this.abilities.length === 48 && this.selectedHero != null
     }
   },
