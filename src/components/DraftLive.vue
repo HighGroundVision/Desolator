@@ -135,7 +135,7 @@
           <template v-for="item in teamDire">
             <b-row :key="item.id">
               <b-col>
-                <b-img :src="item.img" class="icon hero-icon-lg" @click="selectHero(item)" v-bind:class="{'border border-warning hero-selected': selectedHero ? selectedHero.id === item.id : false }" />
+                <b-img :src="item.img" class="icon hero-icon-lg" @click="selectHero(item)" v-bind:class="{'border border-warning hero-selected': selectedHero ? selectedHero.id === item.id : false }" />              
               </b-col>
             </b-row>
           </template>
@@ -164,8 +164,35 @@
       </b-row>
       <hr class="highlighted" />
       <b-row>
+        <b-col class="text-center">
+          <h4>Ulltimates</h4>
+          <b-row>
+            <template v-for="skill in ultimates">
+              <b-col :key="skill.id" cols="1">
+                <b-img :src="skill.img" :title="skill.name" fluid  />
+              </b-col>
+            </template>
+          </b-row>
+          <h4>Skills</h4>
+          <b-row>
+            <template v-for="skill in skills">
+              <b-col :key="skill.id" cols="1">
+                <b-img :src="skill.img" :title="skill.name" fluid  />
+              </b-col>
+            </template>
+          </b-row>
+        </b-col>
+      </b-row>
+      <br />
+      <b-row class="text-center">
+        <b-col >
+         <h4>Mine</h4>
+        </b-col>
         <b-col>
-          <p>Stuff</p>
+         <h4>Allies</h4>
+        </b-col>
+        <b-col>
+         <h4>Enemies</h4>
         </b-col>
       </b-row>
       <hr class="highlighted" />
@@ -382,6 +409,12 @@ export default {
     },
     teamDire () {
       return this.dire.slice(0, 5)
+    },
+    skills () {
+      return this.abilities.filter(a => a.ultimate === false)
+    },
+    ultimates () {
+      return this.abilities.filter(a => a.ultimate === true)
     },
     step1Complete () {
       return this.radiant.length === 6 && this.dire.length === 6
