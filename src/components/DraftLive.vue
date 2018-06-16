@@ -516,7 +516,6 @@ export default {
       }
 
       if (vm.$route.query.hero) {
-        debugger
         let heroID = parseInt(vm.$route.query.hero)
         const data = heroes.filter(h => h.id === heroID)
         if (data.length === 1) {
