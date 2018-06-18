@@ -177,7 +177,7 @@
           <b-row>
             <template v-for="skill in skills">
               <b-col :key="skill.id" cols="1">
-                <b-img :src="skill.img" :title="skill.name" fluid  />
+                <b-img :src="skill.img" :title="skill.name" fluid class="icon" />
               </b-col>
             </template>
           </b-row>
