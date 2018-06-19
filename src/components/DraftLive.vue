@@ -184,17 +184,6 @@
         </b-col>
       </b-row>
       <br />
-      <b-row class="text-center">
-        <b-col >
-         <h4>Mine</h4>
-        </b-col>
-        <b-col>
-         <h4>Allies</h4>
-        </b-col>
-        <b-col>
-         <h4>Enemies</h4>
-        </b-col>
-      </b-row>
       <hr class="highlighted" />
       <b-row>
         <b-col>

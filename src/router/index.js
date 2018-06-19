@@ -13,6 +13,9 @@ import Abilities from '@/components/Abilities'
 import Combos from '@/components/Combos'
 import MatchHistory from '@/components/MatchHistory'
 import MatchDetails from '@/components/MatchDetails'
+import Draft from '@/components/Draft'
+import DraftHeroes from '@/components/DraftHeroes'
+import DraftAbilities from '@/components/DraftAbilities'
 import DraftLive from '@/components/DraftLive'
 
 import store from '../store'
@@ -84,6 +87,21 @@ let router = new Router({
     },
     {
       path: '/draft',
+      name: 'Draft',
+      component: Draft
+    },
+    {
+      path: '/draft/heroes',
+      name: 'DraftHeroes',
+      component: DraftHeroes
+    },
+    {
+      path: '/draft/abilities',
+      name: 'DraftAbilities',
+      component: DraftAbilities
+    },
+    {
+      path: '/draft/live',
       name: 'DraftLive',
       component: DraftLive
     }
