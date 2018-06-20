@@ -18,7 +18,7 @@
     <br />
     <b-row>
       <b-col class="text-center">
-        <draggable v-model="heroPool" :options="{group:'heroes',sort:false}"  >
+        <draggable v-model="heroPool" :options="{group:'heroes',sort:false}" @end="pickFromDragDrop" >
           <b-img v-for="item in heroPool" :key="item.id" :src="item.icon" :title="item.name" @click="pickFromClick(item)" class="moveable" />
         </draggable>
       </b-col>
@@ -45,7 +45,7 @@
         <b-btn v-else variant="secondary" class="btn-block">Next</b-btn>
       </b-col>
       <b-col>
-        <b-btn variant="danger" class="btn-block" @click="clear">Clear</b-btn>
+        <b-btn variant="danger" class="btn-block" @click="clear">Reset</b-btn>
       </b-col>
     </b-row>
   </section>
@@ -57,25 +57,27 @@
 <script>
 import axios from 'axios'
 import draggable from 'vuedraggable'
-import {getCollectionFromQueryString} from '@/assets/draft'
+import {getHeroes, filterPool} from '@/assets/draft'
 
 export default {
   name: 'DraftHeroes', 
   components: { draggable },
   methods: {
     clear () {
-      // Reset Data
-      this.step = 1
       this.filter = null
       this.radiant = []
       this.dire = []
-      // Reset query
       this.$router.replace({query: {}})
     },
     next () {
       let r = this.radiant.map(h => h.id).join(',')
       let d = this.dire.map(h => h.id).join(',')
       this.$router.push({name: 'DraftAbilities', query: {'radiant': r, 'dire': d}})
+    },
+    updateQueryString () {
+      let r = this.radiant.map(h => h.id).join(',')
+      let d = this.dire.map(h => h.id).join(',')
+      this.$router.replace({query: {'radiant': r, 'dire': d}})
     },
     pickFromFilter () {
       if (this.heroPool.length === 1) {
@@ -87,6 +89,8 @@ export default {
         }
 
         this.filter = null
+
+        this.updateQueryString()
       }
     },
     pickFromClick (hero) {
@@ -95,6 +99,11 @@ export default {
       } else if (this.dire.length < 6) {
         this.dire.push(hero)
       }
+
+      this.updateQueryString()
+    },
+    pickFromDragDrop () {
+      this.updateQueryString()
     }
   },
   computed: {
@@ -120,22 +129,6 @@ export default {
       },
       set: function () {}
     },
-    radiant: {
-      get: function () {
-        return this.team_radiant
-      },
-      set: function (value) {
-        this.team_radiant = value
-      }
-    },
-    dire: {
-      get: function () {
-        return this.team_dire
-      },
-      set: function (value) {
-        this.team_dire = value
-      }
-    },
     unSelectedHeroes () {
       return this.heroes.filter(h => !this.radiant.includes(h)).filter(h => !this.dire.includes(h))
     },
@@ -148,8 +141,8 @@ export default {
       'ready': false,
       'heroes': [],
       'filter': null,
-      'team_radiant': [],
-      'team_dire': []
+      'radiant': [],
+      'dire': []
     }
   },
   created () {
@@ -159,21 +152,13 @@ export default {
     Promise.all([p1]).then((values) => {
       const pool = values[0]
 
-      let heroes = pool.filter(h => h.enabled === true)
-      for (let i = 0; i < heroes.length; i++) {
-        const hero = heroes[i]
-        // Hero
-        hero.name_lower = hero.name.toLowerCase()
-        hero.acronym = hero.acronym.toLowerCase()
-        hero.icon = hero.img.replace('/banner/', '/icons/')
-      }
+      let heroes = filterPool(pool)
 
       // Preset Values from Query String
-      if (vm.$route.query.radiant) {
-        vm.radiant = getCollectionFromQueryString(vm.$route.query.radiant, heroes)
-      }
-      if (vm.$route.query.dire) {
-        vm.dire = getCollectionFromQueryString(vm.$route.query.radiant, heroes)
+      if (vm.$route.query.radiant && vm.$route.query.dire) {
+        vm.radiant = getHeroes(vm.$route.query.radiant, heroes)
+        vm.dire = getHeroes(vm.$route.query.dire, heroes)
+        vm.updateQueryString()
       }
 
       vm.heroes = heroes

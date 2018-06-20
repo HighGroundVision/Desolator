@@ -11,106 +11,113 @@
       </b-col>
     </b-row>
     <b-row>
-      <b-col cols="3" class="text-center">
-        <template v-for="item in teamRadiant">
-          <b-row :key="item.id">
-            <b-col>
-              <b-img :src="item.img" class="icon hero-icon-lg" @click="selectHero(item)" v-bind:class="{'border border-warning hero-selected': selectedHero ? selectedHero.id === item.id : false }" />
-            </b-col>
-          </b-row>
-        </template>
+      <b-col>
+        <div class="text-center">
+          <h5>Heroes</h5>
+        </div>
       </b-col>
-      <b-col cols="6" class="text-center">         
-        <b-row>
-          <b-col >
-            <b-row>
-              <b-col>
-                <b-img :src="radiant[0].ultimate.img" class="icon ability-icon-lg" @click="selectUltimate(radiant[0], radiant[0].ultimate)" />
-                <b-img :src="radiant[1].ultimate.img" class="icon ability-icon-lg" @click="selectUltimate(radiant[1], radiant[1].ultimate)" />
-                <b-img :src="radiant[2].ultimate.img" class="icon ability-icon-lg" @click="selectUltimate(radiant[2], radiant[2].ultimate)" />
+    </b-row>
+    <b-row>
+      <template v-for="item in radiant" >
+        <b-col :key="item.id" cols="2">
+          <b-img :src="item.img" :title="item.name" @click="selectHero(item)" v-bind:class="isHeroSelected(item)" />
+        </b-col>
+      </template>
+    </b-row>
+    <br />
+    <b-row>
+      <template v-for="item in dire" >
+        <b-col :key="item.id" cols="2">
+          <b-img :src="item.img" :title="item.name" @click="selectHero(item)" v-bind:class="isHeroSelected(item)" />
+        </b-col>
+      </template>
+    </b-row>
+    <hr class="highlighted" />
+    <b-row>
+      <b-col>
+        <div class="text-center">
+          <h5 v-b-toggle.collapseUltimates class="grabable" title="Click to toggle">Ultimates</h5>
+        </div>
+      </b-col>
+    </b-row>
+    <b-row v-if="isUltimatesFull">
+      <b-col>
+        <b-collapse id="collapseUltimates" class="mt-2">
+          <b-row>
+            <template v-for="item in selectedUltimates" >
+              <b-col :key="item.id" cols="1">
+                <b-img :src="item.img" :title="item.name" class="ability-icon-lg" />
               </b-col>
-            </b-row>
-            <b-row>
-              <b-col>
-                <b-img :src="radiant[3].ultimate.img" class="icon ability-icon-lg" @click="selectUltimate(radiant[3], radiant[3].ultimate)" />
-                <b-img :src="radiant[4].ultimate.img" class="icon ability-icon-lg" @click="selectUltimate(radiant[4], radiant[4].ultimate)" />
-                <b-img :src="radiant[5].ultimate.img" class="icon ability-icon-lg" @click="selectUltimate(radiant[5], radiant[5].ultimate)" />
-              </b-col>
-            </b-row>
-          </b-col>
-          <b-col>
-            <b-row>
-              <b-col>
-                <b-img :src="dire[2].ultimate.img" class="icon ability-icon-lg" @click="selectUltimate(dire[2], dire[2].ultimate)" />
-                <b-img :src="dire[1].ultimate.img" class="icon ability-icon-lg" @click="selectUltimate(dire[1], dire[1].ultimate)" />
-                <b-img :src="dire[0].ultimate.img" class="icon ability-icon-lg" @click="selectUltimate(dire[0], dire[0].ultimate)" />
-              </b-col>
-            </b-row>
-            <b-row>
-              <b-col>
-                <b-img :src="dire[5].ultimate.img" class="icon ability-icon-lg" @click="selectUltimate(dire[5], dire[5].ultimate)" />
-                <b-img :src="dire[4].ultimate.img" class="icon ability-icon-lg" @click="selectUltimate(dire[4], dire[4].ultimate)" />
-                <b-img :src="dire[3].ultimate.img" class="icon ability-icon-lg" @click="selectUltimate(dire[3], dire[3].ultimate)" />
-              </b-col>
-            </b-row>
-          </b-col>
-        </b-row>
-        <br />
-        <b-row>
-          <b-col>
-            <template v-for="item in radiant">
-              <b-row :key="item.id">
-                <b-col>
-                  <template v-for="skill in item.skills">
-                    <b-img :key="skill.id" :src="skill.img" class="icon ability-icon-lg" @click="selectAbility(item, skill)" />
-                  </template>
-                </b-col>
-              </b-row>
             </template>
-          </b-col>
-          <b-col>
-            <template v-for="item in dire">
-              <b-row :key="item.id">
-                <b-col>
-                  <template v-for="skill in item.skills">
-                    <b-img :key="skill.id" :src="skill.img" class="icon ability-icon-lg"  @click="selectAbility(item, skill)" />
-                  </template>
-                </b-col>
-              </b-row>
-            </template>
-          </b-col>
-        </b-row>
-      </b-col>
-      <b-col cols="3" class="text-center">
-        <template v-for="item in teamDire">
-          <b-row :key="item.id">
-            <b-col>
-              <b-img :src="item.img" class="icon hero-icon-lg" @click="selectHero(item)" v-bind:class="{'border border-warning hero-selected': selectedHero ? selectedHero.id === item.id : false }" />              
-            </b-col>
           </b-row>
-        </template>
+        </b-collapse>   
       </b-col>
-    </b-row>  
+    </b-row>
+    <b-row v-else>
+      <b-col>
+        <div class="text-center">
+          <b-btn variant="info" @click="findUltimate">Select Missing Ultimate</b-btn>
+        </div>
+      </b-col>
+    </b-row>
+    <hr class="highlighted" />
+    <b-row>
+      <b-col>
+        <div class="text-center">
+          <h5 v-b-toggle.collapseSkills class="grabable" title="Click to toggle">Skills</h5>
+        </div>
+      </b-col>
+    </b-row>
+    <b-row v-if="isSkillsFull">
+      <b-col>
+        <b-collapse id="collapseSkills" class="mt-2">
+          <b-row>
+            <template v-for="item in selectedSkills" >
+              <b-col :key="item.id" cols="1">
+                <b-img :src="item.img" :title="item.name" class="ability-icon-lg" />
+              </b-col>
+            </template>
+          </b-row>
+        </b-collapse>   
+      </b-col>
+    </b-row>
+    <b-row v-else>
+      <b-col>
+        <div class="text-center">
+          <b-btn variant="info" @click="findSkill">Select Missing Skill</b-btn>
+        </div>
+      </b-col>
+    </b-row>
     <hr class="highlighted" />
     <b-row>
       <b-col>
         <b-btn variant="primary" @click="back" class="btn-block">Back</b-btn>
       </b-col>
       <b-col>
-        <b-btn v-if="step2Complete" variant="primary" @click="abilitiesSelected" class="btn-block">Next</b-btn>
+        <b-btn v-if="isStepComplete" variant="primary" @click="next" class="btn-block">Next</b-btn>
         <b-btn v-else variant="secondary" class="btn-block">Next</b-btn>
       </b-col>
       <b-col>
         <b-btn variant="danger" @click="clear" class="btn-block">Clear</b-btn>
       </b-col>
     </b-row>
-    <!-- Modal Component -->
+    <!--Dialog - Skills -->
     <b-modal ref="RefSelectAbility" title="Select Missing Ability" size="lg" :hide-footer="true" header-bg-variant="dark" header-text-variant="light" body-bg-variant="dark" footer-bg-variant="dark">
-      <b-form-input v-model="filter" placeholder="Filter by Hero or Ability"  />
+      <b-form-input v-model="filterSkills" placeholder="Filter by Ability"  />
       <br />
       <div style="height: 300px; overflow-x: none; overflow-y: scroll;">
-        <template v-for="skill in poolAbilities">
-          <b-img :key="skill.id" :src="skill.img" :title="skill.name" @click="replaceAbility(skill)" class="ability-icon ability-icon-lg" />
+        <template v-for="item in availableSkills">
+          <b-img :key="item.id" :src="item.img" :title="item.name" @click="selectSkill(item)" class="ability-icon-lg" />
+        </template>
+      </div>
+    </b-modal>
+    <!--Dialog - Ultimates -->
+    <b-modal ref="RefSelectUltimate" title="Select Missing Ability" size="lg" :hide-footer="true" header-bg-variant="dark" header-text-variant="light" body-bg-variant="dark" footer-bg-variant="dark">
+      <b-form-input v-model="filterUltimate" placeholder="Filter by Ultimate"  />
+      <br />
+      <div style="height: 300px; overflow-x: none; overflow-y: scroll;">
+        <template v-for="item in availableUltimates">
+          <b-img :key="item.id" :src="item.img" :title="item.name" @click="selectUltimate(item)" class="ability-icon-lg" />
         </template>
       </div>
     </b-modal>
@@ -122,66 +129,156 @@
 
 <script>
 import axios from 'axios'
-import {GetUnknownAbility} from '@/assets/draft'
+import {filterPool, getHeroes, getAbilities, extractAbilties} from '@/assets/draft'
 
 export default {
   name: 'DraftAbilities', 
   methods: {
+    packageData () {
+      return {
+        'radiant': this.radiant.map(h => h.id).join(','),
+        'dire': this.dire.map(h => h.id).join(','),
+        'ultimates': this.selectedUltimates.map(h => h.id).join(','),
+        'skills': this.selectedSkills.map(h => h.id).join(',')
+      }
+    },
+    updateQueryString () {
+      let data = this.packageData()
+      this.$router.replace({query: data})
+    },
     clear () {
       this.$router.push({name: 'Draft'})
     },
     back () {
-      this.$router.push({name: 'DraftHeroes', query: this.query})
+      let data = this.packageData()
+      this.$router.push({name: 'DraftHeroes', query: data})
+    },
+    next () {
+      let data = this.packageData()
+      data.hero = this.selectedHero
+      this.$router.push({name: 'DraftLive', query: data})
+    },
+    findSkill () {
+      this.$refs.RefSelectAbility.show()
+    },
+    findUltimate () {
+      this.$refs.RefSelectUltimate.show()
+    },
+    selectSkill (ability) {
+      this.selectedSkills.push(ability)
+      this.$refs.RefSelectAbility.hide()
+      this.filterSkills = null
+
+      this.updateQueryString()
+    },
+    selectUltimate (ultimate) {
+      this.selectedUltimates.push(ultimate)
+      this.$refs.RefSelectUltimate.hide()
+      this.filterUltimate = null
+
+      this.updateQueryString()
+    },
+    selectHero (hero) {
+      this.selectedHero = hero.id
+
+      this.updateQueryString()
+    },
+    isHeroSelected (hero) {
+      return {'border border-warning hero-selected': hero.id === this.selectedHero}
     }
   },
   computed: {
+    abilities () {
+      return [].concat(this.selectedUltimates).concat(this.selectedSkills)
+    },
+    isUltimatesFull () {
+      return this.selectedUltimates.length === 12
+    },
+    isSkillsFull () {
+      return this.selectedSkills.length === 36
+    },
+    availableSkills () {
+      let skills = this.skills
+
+      skills = skills.filter(h => !this.selectedSkills.includes(h))
+
+      if (this.filterSkills) {
+        let f = this.filterSkills.toLowerCase()
+        skills = skills.filter(a => a.name_lower.includes(f))
+      }
+      return skills
+    },
+    availableUltimates () {
+      let ultimates = this.ultimates
+
+      ultimates = ultimates.filter(h => !this.selectedUltimates.includes(h))
+
+      if (this.filterUltimate) {
+        let f = this.filterUltimate.toLowerCase()
+        ultimates = ultimates.filter(a => a.name_lower.includes(f))
+      }
+      return ultimates
+    },
     isStepComplete () {
-      return this.abilities.length === 48 && this.selectedHero != null
+      return this.isUltimatesFull && this.isSkillsFull && this.selectedHero !== 0
     }
   },
   data () {
     return {
       'ready': false,
-      'query': null,
-      'abilities': [],
-      'selectedHero': null
+      // Available Skills, Ultimates & Filters
+      'skills': [],
+      'ultimates': [],
+      'filterSkills': null,
+      'filterUltimate': null,
+      // Teams with heroes
+      'radiant': [],
+      'dire': [],
+      // details for next step
+      'selectedSkills': [],
+      'selectedUltimates': [],
+      'selectedHero': 0
     }
   },
   created () {
     const vm = this
 
-    if (vm.$route.query) {
-      this.query = vm.$route.query
-    } else {
-      this.$router.push({name: 'Draft'})
-    }
-
     let p1 = axios.get('/static/data/draftpool.json').then((reponse) => { return reponse.data })
     Promise.all([p1]).then((values) => {
       const pool = values[0]
+      
+      // Get heroes from Pool
+      let heroes = filterPool(pool)
 
-      let heroes = pool.filter(h => h.enabled === true)
+      // Get Available Skills and Ultimates
+      let availableAbilities = extractAbilties([heroes])
+      vm.skills = availableAbilities.filter(a => a.ultimate === false)
+      vm.ultimates = availableAbilities.filter(a => a.ultimate === true)
 
-      for (let i = 0; i < heroes.length; i++) {
-        const hero = heroes[i]
-        // Hero
-        hero.name_lower = hero.name.toLowerCase()
-        hero.acronym = hero.acronym.toLowerCase()
-        hero.icon = hero.img.replace('/banner/', '/icons/')
+      // Extract Values from Query String
+      if (vm.$route.query.radiant && vm.$route.query.dire) {
+        vm.radiant = getHeroes(vm.$route.query.radiant, heroes)
+        vm.dire = getHeroes(vm.$route.query.dire, heroes)
+      }
 
-        // Abilties
-        let skills = hero.abilities.filter(a => a.enabled === true)
+      // Gruad Teams Are Populated
+      if (vm.radiant.length !== 6 && vm.radiant.length !== 6) {
+        this.$router.push('/draft')
+      }
 
-        hero.skills = skills.filter(a => a.ultimate === false)
-        while (hero.skills.length !== 3) {
-          hero.skills.push(GetUnknownAbility())
-        }
+      if (vm.$route.query.ultimates && vm.$route.query.skills) { 
+        // Get Abilities from Query String
+        vm.selectedSkills = getAbilities(vm.$route.query.skills, vm.skills)
+        vm.selectedUltimates = getAbilities(vm.$route.query.ultimates, vm.ultimates)
+      } else {
+        // Extract Abilities from Teams
+        let teams = [vm.radiant, vm.dire]
+        let abilities = extractAbilties(teams)
+        vm.selectedSkills = abilities.filter(a => a.ultimate === false)
+        vm.selectedUltimates = abilities.filter(a => a.ultimate === true)
 
-        // Ultimate
-        hero.ultimate = skills.filter(a => a.ultimate === true)[0]
-        if (!hero.ultimate) {
-          hero.ultimate = GetUnknownAbility()
-        }
+        // Update the Query String
+        this.updateQueryString()
       }
 
       vm.ready = true
@@ -204,8 +301,8 @@ export default {
 .moveable {
   cursor: move;
 }
-.icon {
-  margin: 5px;
+.grabable {
+  cursor: -webkit-grab; cursor: grab;
 }
 .hero-selected {
   border-width: 4px !important;
