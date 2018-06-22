@@ -186,6 +186,8 @@ export default {
       if (sort) {
         pool.sort((lhs, rhs) => rhs.stats[sort.option] - lhs.stats[sort.option])
       }
+
+      pool = pool.slice(0, 5)
       
       return pool
     }
