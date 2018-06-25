@@ -87,6 +87,15 @@
     <b-row>
       <template v-for="item in abilities" >
         <b-col :key="item.ability.id" cols="1">
+          <span class="rank fa-stack fa-1x">
+            <i class="fas fa-certificate fa-stack-2x text-primary"></i>
+            <span class="fa-stack-1x">{{abilities.indexOf(item)+1}}</span>
+          </span>
+          <div class="commands">
+            <i class="fas fa-check text-success" title="My Team"></i>
+            <i class="fas fa-check text-warning" title="My Owm"></i>
+            <i class="fas fa-times text-danger" title="My Opponents"></i>  
+          </div>
           <b-img :src="item.ability.img" :title="item.ability.name" v-bind:class="getAbilityClass(item)" />
         </b-col>
       </template>
@@ -170,9 +179,9 @@ export default {
     },
     getAbilityClass (item) {
       let data = { 
-        'icon ability-icon-lg': true, 
-        'border border-success': item.stats.rate >= 55,
-        'border border-danger': item.stats.rate < 50
+        'icon ability-icon-lg': true 
+        // 'border border-success': item.stats.rate >= 55,
+        // 'border border-danger': item.stats.rate < 50
         // 'border-primary': item.stats.rate < 55 && item.stats.rate >= 50,
       }
       return data
@@ -187,7 +196,7 @@ export default {
         pool.sort((lhs, rhs) => rhs.stats[sort.option] - lhs.stats[sort.option])
       }
 
-      // pool = pool.slice(0, 5)
+      pool = pool.slice(0, 12)
       
       return pool
     }
@@ -218,14 +227,14 @@ export default {
     const vm = this
 
     this.filter = [
-      { caption: 'Stun', state: true },
-      { caption: 'Nuke', state: true },
-      { caption: 'Disable', state: true },
-      { caption: 'Slow', state: true },
-      { caption: 'Speed', state: true },
-      { caption: 'Attack', state: true },
-      { caption: 'Tank', state: true },
-      { caption: 'Heal', state: true }
+      { caption: 'Stun', state: false },
+      { caption: 'Nuke', state: false },
+      { caption: 'Disable', state: false },
+      { caption: 'Slow', state: false },
+      { caption: 'Speed', state: false },
+      { caption: 'Attack', state: false },
+      { caption: 'Tank', state: false },
+      { caption: 'Heal', state: false }
     ]
 
     this.sort = [
@@ -257,8 +266,7 @@ export default {
 
       // Filter Stats By Hero types
       abilityStats = abilityStats.filter(s => s.type === hero.attack || s.type === hero.primary)
-      // comboStats = comboStats.filter(s => s.type === hero.attack || s.type === hero.primary)
-
+      
       // Get Abilities
       let pool = []
       for (let i = 0; i < indexes.length; i++) {
@@ -300,8 +308,14 @@ export default {
 
 <!-- Add "scoped" attribute to limit CSS to this component only -->
 <style scoped>
-.icon {
-  border-width: 3px !important;
-  margin-bottom: 10px;
+.rank {
+  position: absolute;
+  top: -10px;
+  left: 0px;
+}
+.commands {
+  position: absolute;
+  top: 60px;
+  left: 20px;
 }
 </style>

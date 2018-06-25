@@ -24,7 +24,7 @@
         <table class="table table-borderless table-sm b-table">
           <thead>
             <tr>
-              <th>Status</th>
+              <th>Outcome</th>
               <th>Hero</th>
               <th class="text-center">Abilities</th>
               <th>Date / Duration</th>
