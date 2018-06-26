@@ -11,22 +11,20 @@
       </b-col>
     </b-row>
     <b-row>
-      <b-col cols="2">
-        <b-img :src="hero.img" :title="hero.name" class="hero-icon-profile "></b-img>
+      <b-col>
+        <h2>{{hero.name}}</h2>
       </b-col>
+    </b-row>
+    <b-row>
       <b-col>
         <b-row>
-          <b-col>
-            <h2>{{hero.name}}</h2>
-          </b-col>
-        </b-row>
-        <b-row>
-          <b-col>
-            <b-badge pill variant="secondary">
-              <span style="font-size: 1.5em;">1st Pick</span>
-            </b-badge>
+          <b-col cols="2">
+            <b-img :src="hero.img" :title="hero.name" class="hero-icon-profile "></b-img>
           </b-col>
           <b-col>
+            <div class="align-middle">
+              <i class="fas fa-3x fa-sort text-warning"></i> <span>1st</span> 
+            </div>
             <div v-if="hero.attack === 1">
               <b-img src="https://hgv-hyperstone.azurewebsites.net/mics/type_melee.png" title="Melee" /> Melee
             </div>
@@ -91,11 +89,13 @@
             <i class="fas fa-certificate fa-stack-2x text-primary"></i>
             <span class="fa-stack-1x">{{abilities.indexOf(item)+1}}</span>
           </span>
+          <!--
           <div class="commands">
             <i class="fas fa-check text-success" title="My Team"></i>
             <i class="fas fa-check text-warning" title="My Owm"></i>
             <i class="fas fa-times text-danger" title="My Opponents"></i>  
           </div>
+          -->
           <b-img :src="item.ability.img" :title="item.ability.name" v-bind:class="getAbilityClass(item)" />
         </b-col>
       </template>
@@ -196,7 +196,7 @@ export default {
         pool.sort((lhs, rhs) => rhs.stats[sort.option] - lhs.stats[sort.option])
       }
 
-      pool = pool.slice(0, 12)
+      // pool = pool.slice(0, 12)
       
       return pool
     }
@@ -308,6 +308,9 @@ export default {
 
 <!-- Add "scoped" attribute to limit CSS to this component only -->
 <style scoped>
+.icon {
+  margin-bottom: 10px;
+}
 .rank {
   position: absolute;
   top: -10px;
