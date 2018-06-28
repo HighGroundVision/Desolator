@@ -42,7 +42,7 @@
       </b-col>
       <template v-for="ability in selectedAbilities">
         <b-col :key="ability.id">
-          <b-img :src="ability.img" @click.exact="draft(ability.id)"  class="ability-icon-sm"></b-img>
+          <b-img :src="ability.img" :title="ability.dname"  @click.exact="draft(ability.id)"  class="ability-icon-sm"></b-img>
         </b-col>
       </template>
     </b-row>
@@ -75,7 +75,7 @@
     <b-row>
       <template v-for="item in abilities" >
         <b-col :key="item.ability.id" cols="1">
-          <b-img :src="item.ability.img" :title="item.ability.name" @click.exact="pick(item.ability.id)" @click.alt.exact="draft(item.ability.id)" v-bind:class="getAbilityClass(item)" />
+          <b-img :src="item.ability.img" :title="item.ability.dname" @click.exact="pick(item.ability.id)" @click.alt.exact="draft(item.ability.id)" v-bind:class="getAbilityClass(item)" />
         </b-col>
       </template>
     </b-row>
@@ -84,14 +84,14 @@
       <b-col class="text-center">
         <div>
           <h5>Combos For</h5>
-          <b-img :src="hero.icon" class="hero-icon-sm"></b-img>
+          <b-img :src="hero.icon"  class="hero-icon-sm"></b-img>
         </div>
         <br />
         <ul class="list-unstyled">
           <template v-for="item in combos" >
             <li :key="item.abilities">
               <template v-for="skill in item.skills" >
-                <b-img :key="skill.id" :src="skill.img" @click.exact="pick(skill.id)" @click.alt.exact="draft(skill.id)" v-bind:class="getComboClass(item)"></b-img>
+                <b-img :key="skill.id" :title="skill.dname" :src="skill.img" @click.exact="pick(skill.id)" @click.alt.exact="draft(skill.id)" v-bind:class="getComboClass(item)"></b-img>
               </template>
             </li>
           </template>
@@ -101,14 +101,14 @@
         <b-col :key="skill.id" class="text-center">
           <div>
             <h5>Combos For</h5>
-            <b-img :src="skill.img" @click.exact="draft(skill.id)" class="ability-icon-sm"></b-img>
+            <b-img :src="skill.img" :title="skill.dname"  @click.exact="draft(skill.id)" class="ability-icon-sm"></b-img>
           </div>
           <br />
           <ul class="list-unstyled">
             <template v-for="item in skill.combos" >
               <li :key="item.abilities">
                 <template v-for="skill in item.skills.filter(s => s.id != skill.id)" >
-                  <b-img :key="skill.id" :src="skill.img" @click.exact="pick(skill.id)" @click.alt.exact="draft(skill.id)" v-bind:class="getComboClass(item)"></b-img>
+                  <b-img :key="skill.id" :title="skill.dname" :src="skill.img" @click.exact="pick(skill.id)" @click.alt.exact="draft(skill.id)" v-bind:class="getComboClass(item)"></b-img>
                 </template>
               </li>
             </template>
@@ -320,7 +320,7 @@ export default {
             abilities.push(item.ability)
           }
         } else {
-          abilities.push({ id: i, name: 'empty', img: 'https://hgv-hyperstone.azurewebsites.net/abilities/empty.png', ultimate: false })
+          abilities.push({ id: i, dname: 'Empty', img: 'https://hgv-hyperstone.azurewebsites.net/abilities/empty.png', ultimate: false })
         }
       }
 
@@ -358,10 +358,10 @@ export default {
           let collection = combos.filter(s => s.abilities.includes(id)).slice(0, 10)
           let item = this._pool.filter(s => s.ability.id === id)[0]
           if (item) {
-            skills.push({ id: item.ability.id, name: item.ability.name, img: item.ability.img, ultimate: item.ability.ultimate, combos: collection })
+            skills.push({ id: item.ability.id, dname: item.ability.dname, img: item.ability.img, ultimate: item.ability.ultimate, combos: collection })
           }
         } else {
-          skills.push({ id: i, name: 'empty', img: 'https://hgv-hyperstone.azurewebsites.net/abilities/empty.png', ultimate: false, combos: [] })
+          skills.push({ id: i, dname: 'Empty', img: 'https://hgv-hyperstone.azurewebsites.net/abilities/empty.png', ultimate: false, combos: [] })
         }
       }
 
