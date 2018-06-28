@@ -4,33 +4,32 @@
       <b-col>
         <h1 class="text-warning">Draft</h1>
       </b-col>
-    </b-row>
-    <b-row>
-      <b-col>
-        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Suspendisse a risus vel nunc ullamcorper vestibulum in sed quam. Suspendisse facilisis lacinia semper. Nulla facilisi. Orci varius natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Morbi pretium, tellus eget auctor faucibus, lacus mauris feugiat elit, at bibendum elit arcu sed ipsum. Donec dapibus semper ante id dapibus.</p>
+      <b-col cols="1">
+        <b-btn v-b-modal.modalHelp title="Help"><i class="far fa-question-circle"></i></b-btn>
       </b-col>
     </b-row>
+    <hr class="highlighted" />
     <b-row>
       <b-col>
-        <h2>{{hero.name}}</h2>
-      </b-col>
-    </b-row>
-    <b-row>
-      <b-col>
-        <b-img :src="hero.img" :title="hero.name" class="hero-icon-lg"></b-img>
+        <span>{{hero.name}}</span>
       </b-col>
       <b-col>
-        <div>
-          <b-badge pill variant="secondary">
-            <span style="font-size: 1.5em;">{{pickOrder}} Pick</span>
-          </b-badge>
-        </div>
+        <b-img :src="hero.icon" :title="hero.name" class="hero-icon-sm"></b-img>
+      </b-col>
+      <b-col>
+        <b-badge pill variant="secondary">
+          <span>{{pickOrder}} Pick</span>
+        </b-badge>
+      </b-col>
+      <b-col>
         <div v-if="hero.attack === 1">
           <b-img src="https://hgv-hyperstone.azurewebsites.net/mics/type_melee.png" title="Melee" /> Melee
         </div>
         <div v-if="hero.attack === 2">
           <b-img src="https://hgv-hyperstone.azurewebsites.net/mics/type_range.png" title="Range" /> Range
         </div>
+      </b-col>
+      <b-col>
         <div v-if="hero.primary === 3">
           <b-img src="https://hgv-hyperstone.azurewebsites.net/mics/primary_str.png" title="Str" /> Str
         </div>
@@ -43,7 +42,7 @@
       </b-col>
       <template v-for="ability in selectedAbilities">
         <b-col :key="ability.id">
-          <b-img :src="ability.img" class="ability-icon-lg"></b-img>
+          <b-img :src="ability.img" @click.exact="draft(ability.id)"  class="ability-icon-sm"></b-img>
         </b-col>
       </template>
     </b-row>
@@ -72,7 +71,7 @@
         </b-form>
       </b-col>
     </b-row>
-    <hr class="highlighted" />
+    <br />
     <b-row>
       <template v-for="item in abilities" >
         <b-col :key="item.ability.id" cols="1">
@@ -85,14 +84,14 @@
       <b-col class="text-center">
         <div>
           <h5>Combos For</h5>
-          <b-img :src="hero.icon" class="ability-icon-sm"></b-img>
+          <b-img :src="hero.icon" class="hero-icon-sm"></b-img>
         </div>
         <br />
         <ul class="list-unstyled">
           <template v-for="item in combos" >
             <li :key="item.abilities">
               <template v-for="skill in item.skills" >
-                <b-img :key="skill.id" :src="skill.img" @click.exact="pick(skill.id)" @click.alt.exact="draft(skill.id)"  class="icon ability-icon-lg"></b-img>
+                <b-img :key="skill.id" :src="skill.img" @click.exact="pick(skill.id)" @click.alt.exact="draft(skill.id)" v-bind:class="getComboClass(item)"></b-img>
               </template>
             </li>
           </template>
@@ -107,9 +106,9 @@
           <br />
           <ul class="list-unstyled">
             <template v-for="item in skill.combos" >
-              <li :key="item.abilities" >
+              <li :key="item.abilities">
                 <template v-for="skill in item.skills.filter(s => s.id != skill.id)" >
-                  <b-img :key="skill.id" :src="skill.img" @click.exact="pick(skill.id)" @click.alt.exact="draft(skill.id)" class="icon ability-icon-lg"></b-img>
+                  <b-img :key="skill.id" :src="skill.img" @click.exact="pick(skill.id)" @click.alt.exact="draft(skill.id)" v-bind:class="getComboClass(item)"></b-img>
                 </template>
               </li>
             </template>
@@ -117,6 +116,11 @@
         </b-col>
       </template>
     </b-row>
+    <!--Dialog - Skills -->
+    <b-modal id="modalHelp" title="Help" size="lg" :hide-footer="true" header-bg-variant="dark" header-text-variant="light" body-bg-variant="dark" footer-bg-variant="dark">
+      <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Suspendisse a risus vel nunc ullamcorper vestibulum in sed quam. Suspendisse facilisis lacinia semper. Nulla facilisi. Orci varius natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Morbi pretium, tellus eget auctor faucibus, lacus mauris feugiat elit, at bibendum elit arcu sed ipsum. Donec dapibus semper ante id dapibus.</p>
+      <p>Suspendisse facilisis lacinia semper. Nulla facilisi. Orci varius natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Morbi pretium, tellus eget auctor faucibus, lacus mauris feugiat elit, at bibendum elit arcu sed ipsum. Donec dapibus semper ante id dapibus.</p>
+    </b-modal>
   </section>
   <section v-else class="opaque-background text-center">
     <hgv-loader :color="'#ffc107'"></hgv-loader>
@@ -190,18 +194,18 @@ export default {
       let drafts = this.drafted
 
       let data = { 
-        'icon ability-icon-lg': true,
+        'icon-ability ability-icon-lg': true,
         'picked': picks.includes(item.ability.id),
         'drafted': drafts.includes(item.ability.id),
-        'skill border border-danger': item.stats.rate < 50,
-        'skill border border-primary': item.stats.rate === 50,
-        'skill border border-success': item.stats.rate > 50
+        'skill border border-danger': item.stats.win_rate < 50,
+        'skill border border-primary': item.stats.win_rate === 50,
+        'skill border border-success': item.stats.win_rate > 50
       }
       return data
     },
     getComboClass (stats) {
       let data = { 
-        // 'icon ability-icon-lg': true,
+        'icon-combo ability-icon-lg': true,
         'skill border border-danger': stats.win_rate < 50,
         'skill border border-primary': stats.win_rate === 50,
         'skill border border-success': stats.win_rate > 50
@@ -215,11 +219,22 @@ export default {
         this.picked.push(id)
       }
     },
+    pickUltimates (id) {
+      let item = this._pool.filter(p => p.ability.id === id)[0]
+      if (item.ability.ultimate) {
+        let others = this._pool.filter(p => p.ability.id !== id && p.ability.ultimate === true)
+        for (let i = 0; i < others.length; i++) {
+          const other = others[i]
+          this.picked.push(other.ability.id)
+        }
+      }
+    },
     draft (id) {
       if (this.drafted.includes(id) === true) {
         this.drafted = this.drafted.filter(p => p !== id)
       } else {
         this.drafted.push(id)
+        this.pickUltimates(id)
       }
     }
   },
@@ -238,10 +253,12 @@ export default {
         } else {
           return r + 'th'
         }
+      } else if (d === 5) {
+        return 'Last'
       } else if (d >= 0) {
         return (d + 5) + 'th'
       } else {
-        return ''
+        return '#'
       }
     },
     abilities () {
@@ -283,9 +300,13 @@ export default {
         combos = combos.filter(p => p.skills[0].keywords.includes(item.caption) || p.skills[1].keywords.includes(item.caption))
       }
 
-      combos.sort((lhs, rhs) => rhs.win_rate - lhs.win_rate)
+      let sorts = this.sort.filter(s => s.state === true)
+      for (let i = 0; i < sorts.length; i++) {
+        const item = sorts[i]
+        combos.sort((lhs, rhs) => rhs[item.option] - lhs[item.option])
+      }
 
-      combos = combos.slice(0, 12)
+      combos = combos.slice(0, 10)
       return combos
     },
     selectedAbilities () {
@@ -294,12 +315,16 @@ export default {
       for (let i = 0; i < 4; i++) {
         const id = this.drafted[i]
         if (id) {
-          let item = this.abilities.filter(item => item.ability.id === id)[0]
-          abilities.push(item.ability)
+          let item = this._pool.filter(item => item.ability.id === id)[0]
+          if (item) {
+            abilities.push(item.ability)
+          }
         } else {
-          abilities.push({ id: i, name: 'empty', img: 'https://hgv-hyperstone.azurewebsites.net/abilities/empty.png' })
+          abilities.push({ id: i, name: 'empty', img: 'https://hgv-hyperstone.azurewebsites.net/abilities/empty.png', ultimate: false })
         }
       }
+
+      abilities.sort((lhs, rhs) => lhs.ultimate - rhs.ultimate)
 
       return abilities
     },
@@ -324,19 +349,23 @@ export default {
         combos = combos.filter(p => p.skills[0].keywords.includes(item.caption) || p.skills[1].keywords.includes(item.caption))
       }
 
-      combos.sort((lhs, rhs) => rhs.win_rate - lhs.win_rate)
+      // combos.sort((lhs, rhs) => rhs.win_rate - lhs.win_rate)
 
       let skills = []
       for (let i = 0; i < 4; i++) {
         const id = this.drafted[i]
         if (id) {
-          let collection = combos.filter(s => s.abilities.includes(id)).slice(0, 12)
-          let item = this.abilities.filter(s => s.ability.id === id)[0]
-          skills.push({ id: item.ability.id, name: item.ability.name, img: item.ability.img, combos: collection })
+          let collection = combos.filter(s => s.abilities.includes(id)).slice(0, 10)
+          let item = this._pool.filter(s => s.ability.id === id)[0]
+          if (item) {
+            skills.push({ id: item.ability.id, name: item.ability.name, img: item.ability.img, ultimate: item.ability.ultimate, combos: collection })
+          }
         } else {
-          skills.push({ id: i, name: 'empty', img: 'https://hgv-hyperstone.azurewebsites.net/abilities/empty.png', combos: [] })
+          skills.push({ id: i, name: 'empty', img: 'https://hgv-hyperstone.azurewebsites.net/abilities/empty.png', ultimate: false, combos: [] })
         }
       }
+
+      skills.sort((lhs, rhs) => lhs.ultimate - rhs.ultimate)
 
       return skills
     }
@@ -373,11 +402,12 @@ export default {
       { caption: 'Speed', state: false },
       { caption: 'Attack', state: false },
       { caption: 'Tank', state: false },
-      { caption: 'Heal', state: false }
+      { caption: 'Heal', state: false },
+      { caption: 'Upgradable', state: false }
     ]
 
     this.sort = [
-      { option: 'rate', caption: 'Win Rate', state: true },
+      { option: 'win_rate', caption: 'Win Rate', state: true },
       { option: 'wins', caption: 'Wins', state: false },
       { option: 'picks', caption: 'Picks', state: false }
     ]
@@ -438,7 +468,7 @@ export default {
         
         // Get Stats
         let stats = abilityStats.filter(s => s.abilities.includes(id))
-        let rate = stats.reduce((lhs, rhs) => (lhs.win_rate + rhs.win_rate)) / stats.length
+        let winRate = stats.reduce((lhs, rhs) => (lhs.win_rate + rhs.win_rate)) / stats.length
         let wins = stats.reduce((lhs, rhs) => (lhs.wins + rhs.wins)) / stats.length
         let picks = stats.reduce((lhs, rhs) => (lhs.picks + rhs.picks)) / stats.length
 
@@ -448,7 +478,7 @@ export default {
         let data = {
           'ability': ability,
           'stats': {
-            'rate': rate,
+            'win_rate': winRate,
             'wins': wins,
             'picks': picks
           },
@@ -471,8 +501,11 @@ export default {
 
 <!-- Add "scoped" attribute to limit CSS to this component only -->
 <style scoped>
-.icon {
+.icon-ability {
   margin-bottom: 10px;
+}
+.icon-combo {
+  margin: 5px;
 }
 .rank {
   position: absolute;
@@ -489,9 +522,9 @@ export default {
   border-width: 2px !important;
 }
 .picked {
-    opacity: 0.4;
+    opacity: 0.2;
 }
 .drafted {
-    opacity: 0.6;
+    opacity: 0.4;
 }
 </style>
