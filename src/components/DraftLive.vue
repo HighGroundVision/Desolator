@@ -17,44 +17,35 @@
     </b-row>
     <b-row>
       <b-col>
-        <b-row>
-          <b-col cols="2">
-            <b-img :src="hero.img" :title="hero.name" class="hero-icon-profile "></b-img>
-          </b-col>
-          <b-col>
-            <div class="align-middle">
-              <i class="fas fa-3x fa-sort text-warning"></i> <span>1st</span> 
-            </div>
-            <div v-if="hero.attack === 1">
-              <b-img src="https://hgv-hyperstone.azurewebsites.net/mics/type_melee.png" title="Melee" /> Melee
-            </div>
-            <div v-if="hero.attack === 2">
-              <b-img src="https://hgv-hyperstone.azurewebsites.net/mics/type_range.png" title="Range" /> Range
-            </div>
-            <div v-if="hero.primary === 3">
-              <b-img src="https://hgv-hyperstone.azurewebsites.net/mics/primary_str.png" title="Str" /> Str
-            </div>
-            <div v-if="hero.primary=== 4">
-              <b-img src="https://hgv-hyperstone.azurewebsites.net/mics/primary_agi.png" title="Agi" /> Agi
-            </div>
-            <div v-if="hero.primary === 5">
-              <b-img src="https://hgv-hyperstone.azurewebsites.net/mics/primary_int.png" title="Int"  /> Int
-            </div>
-          </b-col>
-          <b-col>
-            <b-img src="https://hgv-hyperstone.azurewebsites.net/abilities/empty.png" class="ability-icon-lg"></b-img>
-          </b-col>
-          <b-col>
-            <b-img src="https://hgv-hyperstone.azurewebsites.net/abilities/empty.png" class="ability-icon-lg"></b-img>
-          </b-col>
-          <b-col>
-            <b-img src="https://hgv-hyperstone.azurewebsites.net/abilities/empty.png" class="ability-icon-lg"></b-img>    
-          </b-col>
-          <b-col>
-            <b-img src="https://hgv-hyperstone.azurewebsites.net/abilities/empty.png" class="ability-icon-lg"></b-img>
-          </b-col>
-        </b-row>
+        <b-img :src="hero.img" :title="hero.name" class="hero-icon-lg"></b-img>
       </b-col>
+      <b-col>
+        <div>
+          <b-badge pill variant="secondary">
+            <span style="font-size: 1.5em;">{{pickOrder}} Pick</span>
+          </b-badge>
+        </div>
+        <div v-if="hero.attack === 1">
+          <b-img src="https://hgv-hyperstone.azurewebsites.net/mics/type_melee.png" title="Melee" /> Melee
+        </div>
+        <div v-if="hero.attack === 2">
+          <b-img src="https://hgv-hyperstone.azurewebsites.net/mics/type_range.png" title="Range" /> Range
+        </div>
+        <div v-if="hero.primary === 3">
+          <b-img src="https://hgv-hyperstone.azurewebsites.net/mics/primary_str.png" title="Str" /> Str
+        </div>
+        <div v-if="hero.primary=== 4">
+          <b-img src="https://hgv-hyperstone.azurewebsites.net/mics/primary_agi.png" title="Agi" /> Agi
+        </div>
+        <div v-if="hero.primary === 5">
+          <b-img src="https://hgv-hyperstone.azurewebsites.net/mics/primary_int.png" title="Int"  /> Int
+        </div>
+      </b-col>
+      <template v-for="ability in selectedAbilities">
+        <b-col :key="ability.id">
+          <b-img :src="ability.img" class="ability-icon-lg"></b-img>
+        </b-col>
+      </template>
     </b-row>
     <hr class="highlighted" />
     <b-row>
@@ -85,22 +76,47 @@
     <b-row>
       <template v-for="item in abilities" >
         <b-col :key="item.ability.id" cols="1">
-          <span class="rank fa-stack fa-1x">
-            <i class="fas fa-certificate fa-stack-2x text-primary"></i>
-            <span class="fa-stack-1x">{{abilities.indexOf(item)+1}}</span>
-          </span>
-          <!--
-          <div class="commands">
-            <i class="fas fa-check text-success" title="My Team"></i>
-            <i class="fas fa-check text-warning" title="My Owm"></i>
-            <i class="fas fa-times text-danger" title="My Opponents"></i>  
-          </div>
-          -->
-          <b-img :src="item.ability.img" :title="item.ability.name" v-bind:class="getAbilityClass(item)" />
+          <b-img :src="item.ability.img" :title="item.ability.name" @click.exact="pick(item.ability.id)" @click.alt.exact="draft(item.ability.id)" v-bind:class="getAbilityClass(item)" />
         </b-col>
       </template>
     </b-row>
     <hr class="highlighted" />
+    <b-row>
+      <b-col class="text-center">
+        <div>
+          <h5>Combos For</h5>
+          <b-img :src="hero.icon" class="ability-icon-sm"></b-img>
+        </div>
+        <br />
+        <ul class="list-unstyled">
+          <template v-for="item in combos" >
+            <li :key="item.abilities">
+              <template v-for="skill in item.skills" >
+                <b-img :key="skill.id" :src="skill.img" @click.exact="pick(skill.id)" @click.alt.exact="draft(skill.id)"  class="icon ability-icon-lg"></b-img>
+              </template>
+            </li>
+          </template>
+        </ul>
+      </b-col>
+      <template v-for="skill in selectedCombos">
+        <b-col :key="skill.id" class="text-center">
+          <div>
+            <h5>Combos For</h5>
+            <b-img :src="skill.img" @click.exact="draft(skill.id)" class="ability-icon-sm"></b-img>
+          </div>
+          <br />
+          <ul class="list-unstyled">
+            <template v-for="item in skill.combos" >
+              <li :key="item.abilities" >
+                <template v-for="skill in item.skills.filter(s => s.id != skill.id)" >
+                  <b-img :key="skill.id" :src="skill.img" @click.exact="pick(skill.id)" @click.alt.exact="draft(skill.id)" class="icon ability-icon-lg"></b-img>
+                </template>
+              </li>
+            </template>
+          </ul>
+        </b-col>
+      </template>
+    </b-row>
   </section>
   <section v-else class="opaque-background text-center">
     <hgv-loader :color="'#ffc107'"></hgv-loader>
@@ -162,14 +178,6 @@ export default {
       let data = this.packageData()
       this.$router.push({name: 'DraftAbilities', query: data})
     },
-    /*
-    isRadiant (ability) {
-      return this.radiant.includes(ability.id)
-    },
-    isDire (ability) {
-      return this.dire.includes(ability.id)
-    },
-    */
     onSort (selected) {
       for (let i = 0; i < this.sort.length; i++) {
         const item = this.sort[i]
@@ -178,37 +186,164 @@ export default {
       selected.state = true
     },
     getAbilityClass (item) {
+      let picks = this.picked
+      let drafts = this.drafted
+
       let data = { 
-        'icon ability-icon-lg': true 
-        // 'border border-success': item.stats.rate >= 55,
-        // 'border border-danger': item.stats.rate < 50
-        // 'border-primary': item.stats.rate < 55 && item.stats.rate >= 50,
+        'icon ability-icon-lg': true,
+        'picked': picks.includes(item.ability.id),
+        'drafted': drafts.includes(item.ability.id),
+        'skill border border-danger': item.stats.rate < 50,
+        'skill border border-primary': item.stats.rate === 50,
+        'skill border border-success': item.stats.rate > 50
       }
       return data
+    },
+    getComboClass (stats) {
+      let data = { 
+        // 'icon ability-icon-lg': true,
+        'skill border border-danger': stats.win_rate < 50,
+        'skill border border-primary': stats.win_rate === 50,
+        'skill border border-success': stats.win_rate > 50
+      }
+      return data
+    },
+    pick (id) {
+      if (this.picked.includes(id) === true) {
+        this.picked = this.picked.filter(p => p !== id)
+      } else {
+        this.picked.push(id)
+      }
+    },
+    draft (id) {
+      if (this.drafted.includes(id) === true) {
+        this.drafted = this.drafted.filter(p => p !== id)
+      } else {
+        this.drafted.push(id)
+      }
     }
   },
   computed: {
+    pickOrder () {
+      let r = this.radiant.indexOf(this.heroId)
+      let d = this.dire.indexOf(this.heroId)
+
+      if (r >= 0) {
+        if (r === 1) {
+          return '1st'
+        } else if (r === 2) {
+          return '2nd'
+        } else if (r === 3) {
+          return '3rd'
+        } else {
+          return r + 'th'
+        }
+      } else if (d >= 0) {
+        return (d + 5) + 'th'
+      } else {
+        return ''
+      }
+    },
     abilities () {
       let pool = this._pool
 
-      let sort = this.sort.filter(s => s.state === true)[0]
-      if (sort) {
-        pool.sort((lhs, rhs) => rhs.stats[sort.option] - lhs.stats[sort.option])
+      let filters = this.filter.filter(s => s.state === true)
+      for (let i = 0; i < filters.length; i++) {
+        const item = filters[i]
+        pool = pool.filter(p => p.ability.keywords.includes(item.caption))
       }
 
-      // pool = pool.slice(0, 12)
-      
+      let sorts = this.sort.filter(s => s.state === true)
+      for (let i = 0; i < sorts.length; i++) {
+        const item = sorts[i]
+        pool.sort((lhs, rhs) => rhs.stats[item.option] - lhs.stats[item.option])
+      }
+
       return pool
+    },
+    combos () {
+      let combos = this._combos
+      let picks = this.picked
+      let drafts = this.drafted
+      let unavailable = [].concat(picks).concat(drafts)
+
+      combos = combos.filter(s => {
+        for (let i = 0; i < unavailable.length; i++) {
+          const id = unavailable[i]
+          if (s.abilities.includes(id) === true) {
+            return false
+          }
+        }
+        return true
+      })
+
+      let filters = this.filter.filter(s => s.state === true)
+      for (let i = 0; i < filters.length; i++) {
+        const item = filters[i]
+        combos = combos.filter(p => p.skills[0].keywords.includes(item.caption) || p.skills[1].keywords.includes(item.caption))
+      }
+
+      combos.sort((lhs, rhs) => rhs.win_rate - lhs.win_rate)
+
+      combos = combos.slice(0, 12)
+      return combos
+    },
+    selectedAbilities () {
+      let abilities = []
+
+      for (let i = 0; i < 4; i++) {
+        const id = this.drafted[i]
+        if (id) {
+          let item = this.abilities.filter(item => item.ability.id === id)[0]
+          abilities.push(item.ability)
+        } else {
+          abilities.push({ id: i, name: 'empty', img: 'https://hgv-hyperstone.azurewebsites.net/abilities/empty.png' })
+        }
+      }
+
+      return abilities
+    },
+    selectedCombos () {
+      let combos = this._combos
+      let picks = this.picked
+      let unavailable = [].concat(picks)
+
+      combos = combos.filter(s => {
+        for (let i = 0; i < unavailable.length; i++) {
+          const id = unavailable[i]
+          if (s.abilities.includes(id) === true) {
+            return false
+          }
+        }
+        return true
+      })
+
+      let filters = this.filter.filter(s => s.state === true)
+      for (let i = 0; i < filters.length; i++) {
+        const item = filters[i]
+        combos = combos.filter(p => p.skills[0].keywords.includes(item.caption) || p.skills[1].keywords.includes(item.caption))
+      }
+
+      combos.sort((lhs, rhs) => rhs.win_rate - lhs.win_rate)
+
+      let skills = []
+      for (let i = 0; i < 4; i++) {
+        const id = this.drafted[i]
+        if (id) {
+          let collection = combos.filter(s => s.abilities.includes(id)).slice(0, 12)
+          let item = this.abilities.filter(s => s.ability.id === id)[0]
+          skills.push({ id: item.ability.id, name: item.ability.name, img: item.ability.img, combos: collection })
+        } else {
+          skills.push({ id: i, name: 'empty', img: 'https://hgv-hyperstone.azurewebsites.net/abilities/empty.png', combos: [] })
+        }
+      }
+
+      return skills
     }
   },
   data () {
     return {
       'ready': false,
-      // Database
-      // 'heroes': [],
-      // 'abilities': [],
-      // 'abilityStats': [],
-      // 'comboStats': [],
       // Needed for QueryString (if going back a step)
       'radiant': [],
       'dire': [],
@@ -216,11 +351,15 @@ export default {
       'ultimates': [],
       'heroId': 0,
       // Pools of Abilities
-      'pool': [],
+      '_pool': [],
+      '_combos': [],
       // Selected Hero Details
       'hero': null,
       'filter': [],
-      'sort': []
+      'sort': [],
+      // Draft Status
+      'picked': [],
+      'drafted': []
     }
   },
   created () {
@@ -255,18 +394,39 @@ export default {
       let heroes = values.shift()
       let abilities = values.shift()
       let abilityStats = values.shift()
-      // let comboStats = values.shift()
+      let comboStats = values.shift()
 
       // Combined ultimates & skills
       let indexes = [].concat(vm.ultimates).concat(vm.skills)
 
       // Get Hero
       let hero = heroes[vm.heroId]
-      hero.img = hero.img.replace('/banner/', '/profile/npc_dota_hero_')
+      hero.profile = hero.img.replace('/banner/', '/profile/npc_dota_hero_')
+      hero.icon = hero.img.replace('/banner/', '/icons/')
 
       // Filter Stats By Hero types
       abilityStats = abilityStats.filter(s => s.type === hero.attack || s.type === hero.primary)
-      
+      comboStats = comboStats.filter(s => s.type === hero.attack)
+
+      // Filter by Abilties
+      comboStats = comboStats.filter(s => {
+        let keys = s.abilities.split('-')
+        return (indexes.includes(parseInt(keys[0])) && indexes.includes(parseInt(keys[1])))
+      })
+
+      // Get Ability Details
+      for (let c = 0; c < comboStats.length; c++) {
+        let element = comboStats[c]
+        element.skills = []
+
+        let ids = element.abilities.split('-')
+        for (let i = 0; i < ids.length; i++) {
+          const id = ids[i]
+          let ability = abilities[id]
+          element.skills.push(ability) 
+        }
+      }
+
       // Get Abilities
       let pool = []
       for (let i = 0; i < indexes.length; i++) {
@@ -282,21 +442,24 @@ export default {
         let wins = stats.reduce((lhs, rhs) => (lhs.wins + rhs.wins)) / stats.length
         let picks = stats.reduce((lhs, rhs) => (lhs.picks + rhs.picks)) / stats.length
 
-        let stat = {
-          'rate': rate,
-          'wins': wins,
-          'picks': picks
-        }
+        // Get Combos
+        let combos = comboStats.filter(s => s.abilities.includes(id))
         
         let data = {
           'ability': ability,
-          'stats': stat
+          'stats': {
+            'rate': rate,
+            'wins': wins,
+            'picks': picks
+          },
+          'combos': combos
         }
         pool.push(data)
       }
 
       vm.hero = hero
       vm._pool = pool
+      vm._combos = comboStats
       vm.ready = true
     }).catch(function (err) {
       console.log(err)
@@ -315,10 +478,20 @@ export default {
   position: absolute;
   top: -10px;
   left: 0px;
+  z-index: 999;
 }
 .commands {
   position: absolute;
   top: 60px;
   left: 20px;
+}
+.skill {
+  border-width: 2px !important;
+}
+.picked {
+    opacity: 0.4;
+}
+.drafted {
+    opacity: 0.6;
 }
 </style>
