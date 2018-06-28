@@ -11,33 +11,36 @@
     <hr class="highlighted" />
     <b-row>
       <b-col>
-        <span>{{hero.name}}</span>
-      </b-col>
-      <b-col>
         <b-img :src="hero.icon" :title="hero.name" class="hero-icon-sm"></b-img>
       </b-col>
       <b-col>
-        <b-badge pill variant="secondary">
-          <span>{{pickOrder}} Pick</span>
-        </b-badge>
+        <div style="line-height: 32px;">
+          <span>{{hero.name}}</span>
+        </div>
+      </b-col>
+      <b-col>
+        <div style="line-height: 32px;">
+          <i title="Pick Order" class="fa-lg fas fa-sort-amount-down"></i>
+          <span>{{pickOrder}}</span>
+        </div>
       </b-col>
       <b-col>
         <div v-if="hero.attack === 1">
-          <b-img src="https://hgv-hyperstone.azurewebsites.net/mics/type_melee.png" title="Melee" /> Melee
+          <b-img src="https://hgv-hyperstone.azurewebsites.net/mics/type_melee.png" title="Attack Type" /> Melee
         </div>
         <div v-if="hero.attack === 2">
-          <b-img src="https://hgv-hyperstone.azurewebsites.net/mics/type_range.png" title="Range" /> Range
+          <b-img src="https://hgv-hyperstone.azurewebsites.net/mics/type_range.png" title="Attack Type" /> Range
         </div>
       </b-col>
       <b-col>
         <div v-if="hero.primary === 3">
-          <b-img src="https://hgv-hyperstone.azurewebsites.net/mics/primary_str.png" title="Str" /> Str
+          <b-img src="https://hgv-hyperstone.azurewebsites.net/mics/primary_str.png" title="Primary Stat" /> Str
         </div>
         <div v-if="hero.primary=== 4">
-          <b-img src="https://hgv-hyperstone.azurewebsites.net/mics/primary_agi.png" title="Agi" /> Agi
+          <b-img src="https://hgv-hyperstone.azurewebsites.net/mics/primary_agi.png" title="Primary Stat" /> Agi
         </div>
         <div v-if="hero.primary === 5">
-          <b-img src="https://hgv-hyperstone.azurewebsites.net/mics/primary_int.png" title="Int"  /> Int
+          <b-img src="https://hgv-hyperstone.azurewebsites.net/mics/primary_int.png" title="Primary Stat"  /> Int
         </div>
       </b-col>
       <template v-for="ability in selectedAbilities">
@@ -99,7 +102,7 @@
       </b-col>
       <template v-for="skill in selectedCombos">
         <b-col :key="skill.id" class="text-center">
-          <div>
+          <div v-if="skill.combos.length > 0">
             <h5>Combos For</h5>
             <b-img :src="skill.img" :title="skill.dname"  @click.exact="draft(skill.id)" class="ability-icon-sm"></b-img>
           </div>
@@ -213,6 +216,10 @@ export default {
       return data
     },
     pick (id) {
+      if (this.drafted.includes(id)) {
+        return
+      }
+
       if (this.picked.includes(id) === true) {
         this.picked = this.picked.filter(p => p !== id)
       } else {
@@ -230,6 +237,10 @@ export default {
       }
     },
     draft (id) {
+      if (this.picked.includes(id)) {
+        return
+      }
+
       if (this.drafted.includes(id) === true) {
         this.drafted = this.drafted.filter(p => p !== id)
       } else {
@@ -348,8 +359,6 @@ export default {
         const item = filters[i]
         combos = combos.filter(p => p.skills[0].keywords.includes(item.caption) || p.skills[1].keywords.includes(item.caption))
       }
-
-      // combos.sort((lhs, rhs) => rhs.win_rate - lhs.win_rate)
 
       let skills = []
       for (let i = 0; i < 4; i++) {
