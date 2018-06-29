@@ -7,7 +7,7 @@
     </b-row>
     <b-row>
       <b-col>
-        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Suspendisse a risus vel nunc ullamcorper vestibulum in sed quam. Suspendisse facilisis lacinia semper. Nulla facilisi. Orci varius natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Morbi pretium, tellus eget auctor faucibus, lacus mauris feugiat elit, at bibendum elit arcu sed ipsum. Donec dapibus semper ante id dapibus.</p>
+        <p>Please fill in any missing skill or ultimate abilities. To help in this process we show the just the skills or ultimates in a dialog with the ability to filter them by name. Also, you will need to select your hero.</p>
       </b-col>
     </b-row>
     <b-row>

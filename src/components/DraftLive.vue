@@ -122,8 +122,11 @@
     </b-row>
     <!--Dialog - Skills -->
     <b-modal id="modalHelp" title="Help" size="lg" :hide-footer="true" header-bg-variant="dark" header-text-variant="light" body-bg-variant="dark" footer-bg-variant="dark">
-      <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Suspendisse a risus vel nunc ullamcorper vestibulum in sed quam. Suspendisse facilisis lacinia semper. Nulla facilisi. Orci varius natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Morbi pretium, tellus eget auctor faucibus, lacus mauris feugiat elit, at bibendum elit arcu sed ipsum. Donec dapibus semper ante id dapibus.</p>
-      <p>Suspendisse facilisis lacinia semper. Nulla facilisi. Orci varius natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Morbi pretium, tellus eget auctor faucibus, lacus mauris feugiat elit, at bibendum elit arcu sed ipsum. Donec dapibus semper ante id dapibus.</p>
+      <p>You can remove ability from the pool by clicking on them. This will grey them out in the pool and filter them out of combos. You can pick abilties by right clicking. We will automaticly filter out the other Ultimates after you select one.</p>
+      <p>The 1st row contains the Hero details. Which her you selected. What pick order you are. What is your hero's Attack Type and Primary Stat. It will also display any abilties you have selected.</p>
+      <p>The 2nd row contains the filter and sort controls. You can sort the Pool and Combos by Win Rate, Picks, or Wins. You can Filter the reults to highlight abilties match that filter and filter out combos do not match.</p>
+      <p>The 3rd row contains the pool of abilties in the draft. The order is controled by the sort (see above). The borders are Green for greater then 50% win rate, Blue for equal to 50% win rate, and Red for below 50%</p>
+      <p>The 4th row contains the combos for the hero based on the attack type / primary stat and selected the abilities.</p>
     </b-modal>
   </section>
   <section v-else class="opaque-background text-center">

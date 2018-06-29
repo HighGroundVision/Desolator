@@ -7,7 +7,9 @@
     </b-row>
     <b-row>
       <b-col>
-        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Maecenas metus eros, vulputate eu neque non, fringilla pretium massa. Curabitur sed auctor metus. Mauris nunc felis, porttitor ut varius ac, finibus vel nibh. In semper accumsan ullamcorper. Donec sollicitudin, quam sed finibus molestie, purus tortor venenatis massa, vel vehicula mi orci non purus. Aenean fringilla, enim mollis sollicitudin tristique, lorem enim consequat risus, eget auctor arcu turpis ac augue. Sed odio mi, consequat sit amet dui vel, consectetur laoreet diam. Donec pharetra dapibus dictum. Vivamus et dapibus lectus, nec porta leo. Nulla rutrum lorem non lorem gravida pulvinar. Sed lectus nibh, fermentum venenatis vestibulum sed, ultrices auctor dolor. Sed condimentum lacinia mi, et blandit dolor convallis ac. Nulla commodo nibh purus, at sodales dolor ornare vel.</p>
+        <p>Drafting in AD is by far the hardest part of the game mode. People often have little idea what to pick and will often make bad picks for there hero based on the AD Meta.</p>
+        <p>We hope to help stop that! We track each ability pair with the attack type and primary type so the stats of each ability is more revent to your hero's makup. We also do the same with combos.</p>
+        <p>We have creating this drafting wizard to guide you through the process enterign the correct infomation to avire at the Live Draft. We will ask you select the heroes involed. Then fill in any missing Abilities and select your hero.</p>
         <p class="text-center">
           <b-link to="/draft/heroes">
             <b-button variant="success">Start Draft</b-button>
@@ -23,12 +25,6 @@ export default {
   name: 'Draft',
   data () {
     return {}
-  },
-  created () {
-    // vm.$route.query.radiant
-    // vm.$route.query.dire
-    // vm.$route.query.hero
-    // vm.$route.query.pool
   }
 }
 </script>
