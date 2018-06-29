@@ -45,7 +45,7 @@
       </b-col>
       <template v-for="ability in selectedAbilities">
         <b-col :key="ability.id">
-          <b-img :src="ability.img" :title="ability.dname"  @click.exact="draft(ability.id)"  class="ability-icon-sm"></b-img>
+          <b-img :src="ability.img" :title="ability.dname"  @click.right.exact="draft(ability.id)"  class="ability-icon-sm"></b-img>
         </b-col>
       </template>
     </b-row>
@@ -56,7 +56,7 @@
           <span>Filter</span>
           &nbsp;&nbsp;
           <b-button-group>
-            <b-button v-for="f in filter" :pressed.sync="f.state" variant="outline-info" :key="f.caption">
+            <b-button v-for="f in filter" @click="onFilter(f)" :pressed.sync="f.state" variant="outline-info" :key="f.caption">
               {{ f.caption }}
             </b-button>
           </b-button-group>
@@ -78,7 +78,8 @@
     <b-row>
       <template v-for="item in abilities" >
         <b-col :key="item.ability.id" cols="1">
-          <b-img :src="item.ability.img" :title="item.ability.dname" @click.exact="pick(item.ability.id)" @click.alt.exact="draft(item.ability.id)" v-bind:class="getAbilityClass(item)" />
+          <i v-if="item.filtered" class="rank fas fa-certificate fa-stack-2x text-info"></i>
+          <b-img :src="item.ability.img" :title="item.ability.dname"  @click.left.exact="pick(item.ability.id)" @click.right.exact="draft(item.ability.id)" oncontextmenu="return false" v-bind:class="getAbilityClass(item)" />
         </b-col>
       </template>
     </b-row>
@@ -94,7 +95,7 @@
           <template v-for="item in combos" >
             <li :key="item.abilities">
               <template v-for="skill in item.skills" >
-                <b-img :key="skill.id" :title="skill.dname" :src="skill.img" @click.exact="pick(skill.id)" @click.alt.exact="draft(skill.id)" v-bind:class="getComboClass(item)"></b-img>
+                <b-img :key="skill.id" :title="skill.dname" :src="skill.img" @click.left.exact="pick(skill.id)" @click.right.exact="draft(skill.id)" oncontextmenu="return false" v-bind:class="getComboClass(item)"></b-img>
               </template>
             </li>
           </template>
@@ -104,14 +105,14 @@
         <b-col :key="skill.id" class="text-center">
           <div v-if="skill.combos.length > 0">
             <h5>Combos For</h5>
-            <b-img :src="skill.img" :title="skill.dname"  @click.exact="draft(skill.id)" class="ability-icon-sm"></b-img>
+            <b-img :src="skill.img" :title="skill.dname"  @click.left.exact="draft(skill.id)" class="ability-icon-sm"></b-img>
           </div>
           <br />
           <ul class="list-unstyled">
             <template v-for="item in skill.combos" >
               <li :key="item.abilities">
                 <template v-for="skill in item.skills.filter(s => s.id != skill.id)" >
-                  <b-img :key="skill.id" :title="skill.dname" :src="skill.img" @click.exact="pick(skill.id)" @click.alt.exact="draft(skill.id)" v-bind:class="getComboClass(item)"></b-img>
+                  <b-img :key="skill.id" :title="skill.dname" :src="skill.img" @click.left.exact="pick(skill.id)" @click.right.exact="draft(skill.id)" oncontextmenu="return false" v-bind:class="getComboClass(item)"></b-img>
                 </template>
               </li>
             </template>
@@ -136,6 +137,9 @@ import axios from 'axios'
 export default {
   name: 'DraftLive', 
   methods: {
+    openMenu (e) {
+      e.preventDefault()
+    },
     validateAndExtractQuery () {
       if (this.$route.query === undefined) {
         this.clear()
@@ -184,6 +188,19 @@ export default {
     back () {
       let data = this.packageData()
       this.$router.push({name: 'DraftAbilities', query: data})
+    },
+    onFilter (selected) {
+      let clear = this.filter.filter(f => f.caption !== selected.caption)
+      for (let i = 0; i < clear.length; i++) {
+        const element = clear[i]
+        element.state = false
+      }
+
+      let set = this.filter.filter(f => f.caption === selected.caption && selected.stat === false)
+      for (let i = 0; i < set.length; i++) {
+        const element = set[i]
+        element.state = true
+      }
     },
     onSort (selected) {
       for (let i = 0; i < this.sort.length; i++) {
@@ -276,15 +293,25 @@ export default {
       let pool = this._pool
 
       let filters = this.filter.filter(s => s.state === true)
-      for (let i = 0; i < filters.length; i++) {
-        const item = filters[i]
-        pool = pool.filter(p => p.ability.keywords.includes(item.caption))
+      for (let i = 0; i < pool.length; i++) {
+        const item = pool[i]
+        item.filtered = false
+        for (let z = 0; z < filters.length; z++) {
+          const f = filters[z]
+          if (item.ability.keywords.includes(f.caption)) {
+            item.filtered = true
+          }
+        }
       }
 
       let sorts = this.sort.filter(s => s.state === true)
       for (let i = 0; i < sorts.length; i++) {
         const item = sorts[i]
-        pool.sort((lhs, rhs) => rhs.stats[item.option] - lhs.stats[item.option])
+        pool.sort((lhs, rhs) => {
+          let delta = rhs.stats[item.option] - lhs.stats[item.option]
+          let inic = rhs.ability.id - lhs.ability.id
+          return delta === 0 ? inic : delta
+        })
       }
 
       return pool
@@ -304,7 +331,7 @@ export default {
         }
         return true
       })
-
+ 
       let filters = this.filter.filter(s => s.state === true)
       for (let i = 0; i < filters.length; i++) {
         const item = filters[i]
@@ -314,7 +341,11 @@ export default {
       let sorts = this.sort.filter(s => s.state === true)
       for (let i = 0; i < sorts.length; i++) {
         const item = sorts[i]
-        combos.sort((lhs, rhs) => rhs[item.option] - lhs[item.option])
+        combos.sort((lhs, rhs) => {
+          let delta = rhs[item.option] - lhs[item.option]
+          let inic = rhs.abilities.localeCompare(lhs.abilities)
+          return delta === 0 ? inic : delta
+        })
       }
 
       combos = combos.slice(0, 10)
@@ -412,7 +443,7 @@ export default {
       { caption: 'Attack', state: false },
       { caption: 'Tank', state: false },
       { caption: 'Heal', state: false },
-      { caption: 'Upgradable', state: false }
+      { caption: 'Aghanims', state: false }
     ]
 
     this.sort = [
@@ -519,7 +550,7 @@ export default {
 .rank {
   position: absolute;
   top: -10px;
-  left: 0px;
+  left: -25px;
   z-index: 999;
 }
 .commands {
