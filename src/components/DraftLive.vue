@@ -8,7 +8,10 @@
         <b-btn v-b-modal.modalHelp title="Help"><i class="far fa-question-circle"></i></b-btn>
       </b-col>
     </b-row>
+
     <hr class="highlighted" />
+
+    <!-- Hero -->
     <b-row>
       <b-col>
         <b-img :src="hero.icon" :title="hero.name" class="hero-icon-sm"></b-img>
@@ -43,13 +46,11 @@
           <b-img src="https://hgv-hyperstone.azurewebsites.net/mics/primary_int.png" title="Primary Stat"  /> Int
         </div>
       </b-col>
-      <template v-for="ability in selectedAbilities">
-        <b-col :key="ability.id">
-          <b-img :src="ability.img" :title="ability.dname"  @click.right.exact="draft(ability.id)"  class="ability-icon-sm"></b-img>
-        </b-col>
-      </template>
     </b-row>
+
     <hr class="highlighted" />
+
+    <!-- Pool -->
     <b-row>
       <b-col cols="8">
         <b-form inline>
@@ -83,46 +84,58 @@
         </b-col>
       </template>
     </b-row>
+
     <hr class="highlighted" />
-    <b-row>
-      <b-col class="text-center">
-        <div>
+
+    <!-- Drafting Field -->
+    <div class="drafting-field ">
+      <b-row>
+        <b-col>
           <h5>Combos For</h5>
-          <b-img :src="hero.icon"  class="hero-icon-sm"></b-img>
-        </div>
-        <br />
-        <ul class="list-unstyled">
-          <template v-for="item in combos" >
-            <li :key="item.abilities">
-              <template v-for="skill in item.skills" >
-                <b-img :key="skill.id" :title="skill.dname" :src="skill.img" @click.left.exact="pick(skill.id)" @click.right.exact="draft(skill.id)" oncontextmenu="return false" v-bind:class="getComboClass(item)"></b-img>
-              </template>
-            </li>
-          </template>
-        </ul>
-      </b-col>
-      <template v-for="skill in selectedCombos">
-        <b-col :key="skill.id" class="text-center">
-          <div v-if="skill.combos.length > 0">
-            <h5>Combos For</h5>
-            <b-img :src="skill.img" :title="skill.dname"  @click.left.exact="draft(skill.id)" class="ability-icon-sm"></b-img>
-          </div>
-          <br />
-          <ul class="list-unstyled">
-            <template v-for="item in skill.combos" >
-              <li :key="item.abilities">
-                <template v-for="skill in item.skills.filter(s => s.id != skill.id)" >
-                  <b-img :key="skill.id" :title="skill.dname" :src="skill.img" @click.left.exact="pick(skill.id)" @click.right.exact="draft(skill.id)" oncontextmenu="return false" v-bind:class="getComboClass(item)"></b-img>
-                </template>
-              </li>
-            </template>
-          </ul>
         </b-col>
+      </b-row>
+      <b-row>
+        <b-col cols="2">
+          <div>
+            <b-img :src="hero.img"  class="hero-icon-lg"></b-img>
+          </div>
+        </b-col>
+        <template v-for="item in combos" >
+          <b-col :key="item.abilities">
+            <template v-for="skill in item.skills" >
+              <div :key="skill.id">
+                <b-img :title="skill.dname" :src="skill.img" @click.left.exact="pick(skill.id)" @click.right.exact="draft(skill.id)" oncontextmenu="return false" v-bind:class="getComboClass(item)"></b-img>
+              </div>
+            </template>
+          </b-col>
+        </template>
+      </b-row>
+      <template v-for="skill in selectedCombos">
+        <div :key="skill.id" v-if="skill.combos.length > 0">
+          <b-row>
+            <b-col cols="2">
+            <div>
+              <b-img :src="skill.img" :title="skill.dname"  @click.left.exact="draft(skill.id)" class="ability-icon-lg"></b-img>
+            </div>
+          </b-col>
+          <template v-for="item in skill.combos" >
+            <b-col :key="item.abilities">
+              <template v-for="skill in item.skills.filter(s => s.id != skill.id)">
+                <div :key="skill.id">
+                  <b-img :title="skill.dname" :src="skill.img" @click.left.exact="pick(skill.id)" @click.right.exact="draft(skill.id)" oncontextmenu="return false" v-bind:class="getComboClass(item)"></b-img>
+                </div>
+              </template>
+            </b-col>
+          </template>
+          </b-row>
+        </div>
       </template>
-    </b-row>
-    <!--Dialog - Skills -->
+    </div>
+
+    <!--Dialog - Help -->
     <b-modal id="modalHelp" title="Help" size="lg" :hide-footer="true" header-bg-variant="dark" header-text-variant="light" body-bg-variant="dark" footer-bg-variant="dark">
-      <p>You can remove ability from the pool by clicking on them. This will grey them out in the pool and filter them out of combos. You can pick abilties by right clicking. We will automaticly filter out the other Ultimates after you select one.</p>
+      <p>You can remove ability from the pool by clicking on them. This will grey them out in the pool and filter them out of combos.</p>
+      <p>You can pick abilties by right clicking. We will automaticly filter out the other Ultimates after you select one.</p>
       <p>The 1st row contains the Hero details. Which her you selected. What pick order you are. What is your hero's Attack Type and Primary Stat. It will also display any abilties you have selected.</p>
       <p>The 2nd row contains the filter and sort controls. You can sort the Pool and Combos by Win Rate, Picks, or Wins. You can Filter the reults to highlight abilties match that filter and filter out combos do not match.</p>
       <p>The 3rd row contains the pool of abilties in the draft. The order is controled by the sort (see above). The borders are Green for greater then 50% win rate, Blue for equal to 50% win rate, and Red for below 50%</p>
@@ -263,6 +276,12 @@ export default {
 
       if (this.drafted.includes(id) === true) {
         this.drafted = this.drafted.filter(p => p !== id)
+
+        let others = this._pool.filter(p => p.ability.ultimate === true)
+        for (let i = 0; i < others.length; i++) {
+          const other = others[i]
+          this.picked = this.picked.filter(p => p !== other.ability.id)
+        }
       } else {
         this.drafted.push(id)
         this.pickUltimates(id)
@@ -351,7 +370,7 @@ export default {
         })
       }
 
-      combos = combos.slice(0, 10)
+      combos = combos.slice(0, 8)
       return combos
     },
     selectedAbilities () {
@@ -398,7 +417,19 @@ export default {
       for (let i = 0; i < 4; i++) {
         const id = this.drafted[i]
         if (id) {
-          let collection = combos.filter(s => s.abilities.includes(id)).slice(0, 10)
+          let collection = combos.filter(s => s.abilities.includes(id))
+          
+          let sorts = this.sort.filter(s => s.state === true)
+          for (let i = 0; i < sorts.length; i++) {
+            const item = sorts[i]
+            collection = collection.sort((lhs, rhs) => {
+              let delta = rhs[item.option] - lhs[item.option]
+              let inic = rhs.abilities.localeCompare(lhs.abilities)
+              return delta === 0 ? inic : delta
+            })
+          }
+          collection = collection.slice(0, 8)
+
           let item = this._pool.filter(s => s.ability.id === id)[0]
           if (item) {
             skills.push({ id: item.ability.id, dname: item.ability.dname, img: item.ability.img, ultimate: item.ability.ultimate, combos: collection })
@@ -569,5 +600,8 @@ export default {
 }
 .drafted {
     opacity: 0.4;
+}
+.drafting-field {
+  min-width: 600px;
 }
 </style>
