@@ -4,8 +4,14 @@
       <b-col>
         <h1 class="text-warning">Draft</h1>
       </b-col>
-      <b-col cols="1">
-        <b-btn v-b-modal.modalHelp title="Help"><i class="far fa-question-circle"></i></b-btn>
+      <b-col cols="2" class="text-center">
+        <b-btn title="Share With Team" @click="shared" >
+          <b-link id="share-to-team" :to="{ name: 'DraftAbilities', query: packageData()}"></b-link>
+          <i class="fas fa-share-alt"></i>
+        </b-btn>
+        <b-btn v-b-modal.modalHelp title="Help">
+          <i class="far fa-question-circle"></i>
+        </b-btn>
       </b-col>
     </b-row>
 
@@ -90,9 +96,14 @@
     <!-- Drafting Field -->
     <div class="drafting-field ">
       <b-row>
-        <b-col>
+        <b-col cols="2">
           <h5>Combos For</h5>
         </b-col>
+        <template v-for="index in 8">
+          <b-col :key="index" class="text-center">
+            <b-badge variant="secondary"># {{index}}</b-badge>
+          </b-col>
+        </template>
       </b-row>
       <b-row>
         <b-col cols="2">
@@ -101,7 +112,7 @@
           </div>
         </b-col>
         <template v-for="item in combos" >
-          <b-col :key="item.abilities">
+          <b-col :key="item.abilities" class="text-center">
             <template v-for="skill in item.skills" >
               <div :key="skill.id">
                 <b-img :title="skill.dname" :src="skill.img" @click.left.exact="pick(skill.id)" @click.right.exact="draft(skill.id)" oncontextmenu="return false" v-bind:class="getComboClass(item)"></b-img>
@@ -119,7 +130,7 @@
             </div>
           </b-col>
           <template v-for="item in skill.combos" >
-            <b-col :key="item.abilities">
+            <b-col :key="item.abilities" class="text-center">
               <template v-for="skill in item.skills.filter(s => s.id != skill.id)">
                 <div :key="skill.id">
                   <b-img :title="skill.dname" :src="skill.img" @click.left.exact="pick(skill.id)" @click.right.exact="draft(skill.id)" oncontextmenu="return false" v-bind:class="getComboClass(item)"></b-img>
@@ -156,6 +167,7 @@ export default {
     openMenu (e) {
       e.preventDefault()
     },
+    
     validateAndExtractQuery () {
       if (this.$route.query === undefined) {
         this.clear()
@@ -201,9 +213,17 @@ export default {
     clear () {
       this.$router.push({name: 'Draft'})
     },
-    back () {
-      let data = this.packageData()
-      this.$router.push({name: 'DraftAbilities', query: data})
+    shared (event) {
+      let link = document.querySelector('#share-to-team')
+      const el = document.createElement('textarea')
+      el.value = link.href
+      document.body.appendChild(el)
+      el.select()
+      document.execCommand('copy')
+      document.body.removeChild(el)
+      event.preventDefault()
+      
+      // alert('Link Copied')
     },
     onFilter (selected) {
       let clear = this.filter.filter(f => f.caption !== selected.caption)

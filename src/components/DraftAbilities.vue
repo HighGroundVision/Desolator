@@ -7,7 +7,8 @@
     </b-row>
     <b-row>
       <b-col>
-        <p>Please fill in any missing skill or ultimate abilities. To help in this process we show the just the skills or ultimates in a dialog with the ability to filter them by name. Also, you will need to select your hero.</p>
+        <p>Please fill in any missing skill or ultimate abilities. To help in this process we show the just the skills or ultimates in a dialog with the ability to filter them by name.</p>
+        <p>Also, you will need to select your hero.</p>
       </b-col>
     </b-row>
     <b-row>
