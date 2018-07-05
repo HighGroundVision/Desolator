@@ -99,11 +99,18 @@
         <b-col cols="2">
           <h5>Combos For</h5>
         </b-col>
+        <b-col>
+          <div class="text-center">
+            <i title="Sort Order" class="fa-lg fas fa-sort-amount-down fa-rotate-270"></i>
+          </div>
+        </b-col>
+        <!--
         <template v-for="index in 8">
           <b-col :key="index" class="text-center">
             <b-badge variant="secondary"># {{index}}</b-badge>
           </b-col>
         </template>
+        -->
       </b-row>
       <b-row>
         <b-col cols="2">

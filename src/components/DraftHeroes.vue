@@ -81,18 +81,14 @@ export default {
       this.$router.replace({query: {'radiant': r, 'dire': d}})
     },
     pickFromFilter () {
-      if (this.heroPool.length === 1) {
-        let hero = this.heroPool[0]
-        if (this.radiant.length < 6) {
-          this.radiant.push(hero)
-        } else if (this.dire.length < 6) {
-          this.dire.push(hero)
-        }
-
-        this.filter = null
-
-        this.updateQueryString()
+      let hero = this.heroPool[0]
+      this.filter = null
+      if (this.radiant.length < 6) {
+        this.radiant.push(hero)
+      } else if (this.dire.length < 6) {
+        this.dire.push(hero)
       }
+      this.updateQueryString()
     },
     pickFromClick (hero) {
       if (this.radiant.length < 6) {
@@ -114,14 +110,7 @@ export default {
 
         if (this.filter) {
           let lower = this.filter.toLowerCase()
-          collection = collection.filter((h) => { return h.name_lower.includes(lower) })
-
-          /*
-          if (lower.length === 2) {
-            // Filter by acronym (if 2 letters)
-            collection = collection.filter((h) => { return h.acronym === lower })
-          } 
-          */
+          collection = collection.filter((h) => { return h.name_lower.includes(lower) || h.acronym === lower })
         }
 
         // Sort by Name
