@@ -114,13 +114,14 @@ export default {
 
         if (this.filter) {
           let lower = this.filter.toLowerCase()
+          collection = collection.filter((h) => { return h.name_lower.includes(lower) })
+
+          /*
           if (lower.length === 2) {
             // Filter by acronym (if 2 letters)
             collection = collection.filter((h) => { return h.acronym === lower })
-          } else {
-            // Filter by Name
-            collection = collection.filter((h) => { return h.name_lower.includes(lower) })
-          }
+          } 
+          */
         }
 
         // Sort by Name
