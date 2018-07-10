@@ -13,6 +13,11 @@
             <br />
             <span>AD is hard and confusing, luckily I am here to help make it fun!</span>
           </b-alert>
+          <div style="float: right; position: relative; top:-15px;">
+            <a href="https://steamcommunity.com/sharedfiles/filedetails/?id=111384500" target="_blank" class="text-white">
+              <i class="far fa-question-circle" title="I also come in this really cool Courier form too!"></i>
+            </a>
+          </div>
           <b-img src="/static/images/cluckles-speach.png" class="cluckles-speach" />
         </div>
       </b-col>
