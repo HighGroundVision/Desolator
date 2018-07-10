@@ -70,7 +70,7 @@ export default {
       'help': '' + 
         'Karma is calculated from up-votes and down-votes.' + '\u000d' +
         'You can only cast your vote once.' + '\u000d' +
-        'Changes may take some time to propagate through out the system.',
+        'Changes may take some time to propagate throughout the system.',
       'ranking': { 'up': 0, 'down': 0, 'total': 0 }
     }
   },

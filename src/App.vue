@@ -21,7 +21,7 @@
       <hgv-social-follow></hgv-social-follow>
       <footer>
         <div class="text-center">
-          <p>&copy; 2018 - High Ground Vision</p>
+          <p>&copy; 2018 - <a href="https://hgv-tango.azurewebsites.net/" target="_blank">High Ground Vision</a></p>
         </div>
       </footer>
     </b-container>

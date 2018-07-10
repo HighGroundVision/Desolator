@@ -8,7 +8,7 @@
     <b-row>
       <b-col>
         <b-row>
-          <b-col>          
+          <b-col>
             <p>
               Abilities are the heart and soul of Ability Draft (and dare we say Dota itself!) so geting to know your abilities is key to enjoying AD.
               We have collected the most usefull information about abilities into one place including the ability attributes, stats, and combos.
@@ -51,17 +51,16 @@
           </b-col>
         </b-row>
       </b-col>
-      <b-col cols="3">
-        <hgv-social-share :msg="socialMessage"></hgv-social-share>
-      </b-col>
     </b-row>
     <hr class="highlighted" />
     <b-row>
       <b-col>
         <h3>Stats</h3>
         <p>
-          An ability win rate by self is not that valuable as it can generaly effected by the type of hero that try and use those abilities.
+          An ability win rate by self is not that valuable as it can generaly be effected by the type of hero that tries to use that ability.
           We broke out the picks, wins, and win rate by Melee, Range, Str, Agi, Int to give you a better understanding of how that ability will align with your hero.
+        </p>
+        <p>
           We also encourage the community to get involved and help us rank each ability to generate a Karma score.
         </p>
         <div class="text-center">
@@ -147,6 +146,12 @@
           </b-col>
           <b-col>{{stat.wins}} / {{stat.picks}}</b-col>
         </b-row>
+      </b-col>
+    </b-row>
+    <hr class="highlighted" />
+    <b-row>
+      <b-col cols="4" offset="4">
+        <hgv-social-share :msg="socialMessage"></hgv-social-share>
       </b-col>
     </b-row>
   </section>

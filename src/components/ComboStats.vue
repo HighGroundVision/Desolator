@@ -9,13 +9,10 @@
       <b-col>
         <p>
           A good combo can win the game single handed.
-          Knowing which combos have a high impact is import as your team is constructing the draft.
+          Knowing which combos, a high impact have is import as your team is constructing the draft.
           Making sure the right abilities goes to right heroes based on their type, while at the same time trying to deny the enemy team is key to successfull draft.
-          We have collected the most useful information about combos into one place including the abilities attributes, combined and individual stats, and combos.
+          We have collected the most useful information about combos into one place including the abilities attributes, combined and individual stats, and better combos for each ability.
         </p>
-      </b-col>
-      <b-col cols="3">
-        <hgv-social-share :msg="socialMessage"></hgv-social-share>
       </b-col>
     </b-row>
     <b-row>
@@ -27,7 +24,7 @@
           <b-col>
             <b-row>
               <b-col>
-                <h2>{{ability.dname}}</h2>
+                <h2><b-link :to="'/stats/ability/' + ability.id">{{ability.dname}}</b-link></h2>
               </b-col>
             </b-row>
             <b-row>
@@ -63,9 +60,11 @@
           <b-col>
             <h3>Combo Stats</h3>
             <p>
-              A combo win rate by self is not that valuable as it can generaly effected by the type of hero that try and use those that combo.
+              A combo win rate by self is not that valuable as it can generaly be effected by the type of hero that tries to use that combo.
               We broke out the picks, wins, and win rate by Melee, Range, Str, Agi, Int to give you a better understanding of how that combo will align with your hero.
-              We also encourage the community to get involved and help us rank each combo to generate a Karma score.
+            </p>
+            <p>
+              We also encourage the community to get involved and help us rank each ability to generate a Karma score.
             </p>
           </b-col>
         </b-row>
@@ -165,8 +164,8 @@
       <b-col>
         <h3>Better Combos</h3>
         <p>
-          This is the best combo for these abilties; Maybe it is for one but not the other; how far off is it?
-          These are all questions of the past as we will display the 10 combos with a win rate better then this combo. 
+          This is the best combo for these abilties; Maybe it is for one but not the other; How far off is it?
+          We will display the 10 combos with a win rate better then this combo.
           If there are less then this you know that this combo is with in the best for that ability.
         </p>
       </b-col>
@@ -228,6 +227,12 @@
           </b-col>
         </b-row>
         <br />
+      </b-col>
+    </b-row>
+    <hr class="highlighted" />
+    <b-row>
+      <b-col cols="4" offset="4">
+        <hgv-social-share :msg="socialMessage"></hgv-social-share>
       </b-col>
     </b-row>
   </section>

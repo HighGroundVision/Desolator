@@ -6,7 +6,7 @@
           <b-alert variant="warning" show>   
             <strong>Finalizing...</strong>
             <br />
-            <span>Sit tight we are finalizing the login process</span>
+            <span>Sit tight we are finishing the login process.</span>
           </b-alert>
         </div>
       </b-col>

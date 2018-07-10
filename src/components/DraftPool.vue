@@ -3,8 +3,14 @@
       <b-row>
         <b-col cols="8">
           <h1 class="text-warning">Draft Pool</h1>
-          <p>Find out exactly which heroes and which abilities are active. Below are listed the heroes and abilities that make up the draft pool. The active heroes and abilities are in colour while the disabled ones are greyed out.</p>
-          <p>The pool of available heroes and abilities has never been greater than with the 7.07 patch. With only 11 heroes left out of the draft, there are a lot of options to work with.</p>
+          <p>
+            Find out exactly which heroes and which abilities are active. 
+            Below is a list of heroes and abilities that make up the draft pool the active ones are in colour while the disabled ones are greyed out.
+          </p>
+          <p>
+            The pool of available heroes and abilities has never been greater than with the 7.07 patch. 
+            With only 10 heroes left out of the draft, there are a lot of options to work with.
+          </p>
         </b-col>
         <b-col>
           <div class="text-center">

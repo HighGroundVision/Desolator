@@ -5,7 +5,7 @@
         <h1 class="text-warning">Match Details</h1>
         <p>
           We at HGV take a different approach to match details.
-          There are a number of others sites from DotaBuff to OpenDota that will display your match details with great detail.
+          There are a number of others sites that will display your match details with a better summary, more options, and in greater detail.
           But all these sites fail to address AD matches. We assume this is because AD is only a small % of total matches.
         </p>
         <p>
@@ -13,7 +13,7 @@
           We include a match overview to know when the match took place and what was the outcome.
           After that we break down each player showing the hero, abilities, and the ability win rates, cast, hits, damage. 
           We also include the stats for combos these abilities pair into.
-          Thos with a % above 50 are good while those below 50 are bad with the how far away they are indicating the degree.
+          We color coded them for convenience, green (good) for greater then 50% and red (bad) is below 50%
         </p>
         <p>
           Some abilities can not be correctly tracked when parsing relays this way some cast, hits, and damage maybe missing. 

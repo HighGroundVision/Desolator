@@ -1,163 +1,165 @@
 <template>
   <section v-if="ready" class="opaque-background">
-    <b-row>
-      <b-col>
-        <h1 class="text-warning">Draft</h1>
-      </b-col>
-      <b-col cols="2" class="text-center">
-        <b-btn title="Share With Team" @click="shared" >
-          <b-link id="share-to-team" :to="{ name: 'DraftAbilities', query: packageData()}"></b-link>
-          <i class="fas fa-share-alt"></i>
-        </b-btn>
-        <b-btn v-b-modal.modalHelp title="Help">
-          <i class="far fa-question-circle"></i>
-        </b-btn>
-      </b-col>
-    </b-row>
-
-    <hr class="highlighted" />
-
-    <!-- Hero -->
-    <b-row>
-      <b-col>
-        <b-img :src="hero.icon" :title="hero.name" class="hero-icon-sm"></b-img>
-      </b-col>
-      <b-col>
-        <div style="line-height: 32px;">
-          <span>{{hero.name}}</span>
-        </div>
-      </b-col>
-      <b-col>
-        <div style="line-height: 32px;">
-          <i title="Pick Order" class="fa-lg fas fa-sort-amount-down"></i>
-          <span>{{pickOrder}}</span>
-        </div>
-      </b-col>
-      <b-col>
-        <div v-if="hero.attack === 1">
-          <b-img src="https://hgv-hyperstone.azurewebsites.net/mics/type_melee.png" title="Attack Type" /> Melee
-        </div>
-        <div v-if="hero.attack === 2">
-          <b-img src="https://hgv-hyperstone.azurewebsites.net/mics/type_range.png" title="Attack Type" /> Range
-        </div>
-      </b-col>
-      <b-col>
-        <div v-if="hero.primary === 3">
-          <b-img src="https://hgv-hyperstone.azurewebsites.net/mics/primary_str.png" title="Primary Stat" /> Str
-        </div>
-        <div v-if="hero.primary=== 4">
-          <b-img src="https://hgv-hyperstone.azurewebsites.net/mics/primary_agi.png" title="Primary Stat" /> Agi
-        </div>
-        <div v-if="hero.primary === 5">
-          <b-img src="https://hgv-hyperstone.azurewebsites.net/mics/primary_int.png" title="Primary Stat"  /> Int
-        </div>
-      </b-col>
-    </b-row>
-
-    <hr class="highlighted" />
-
-    <!-- Pool -->
-    <b-row>
-      <b-col cols="8">
-        <b-form inline>
-          <span>Filter</span>
-          &nbsp;&nbsp;
-          <b-button-group>
-            <b-button v-for="f in filter" @click="onFilter(f)" :pressed.sync="f.state" variant="outline-info" :key="f.caption">
-              {{ f.caption }}
-            </b-button>
-          </b-button-group>
-         </b-form>
-      </b-col>
-      <b-col cols="4">
-        <b-form inline>
-          <span>Sort</span>
-          &nbsp;&nbsp;
-          <b-button-group>
-            <b-button v-for="s in sort" @click="onSort(s)" :pressed.sync="s.state" variant="outline-info" :key="s.caption">
-              {{ s.caption }}
-            </b-button>
-          </b-button-group>
-        </b-form>
-      </b-col>
-    </b-row>
-    <br />
-    <b-row>
-      <template v-for="item in abilities" >
-        <b-col :key="item.ability.id" cols="1">
-          <i v-if="item.filtered" class="rank fas fa-certificate fa-stack-2x text-info"></i>
-          <b-img :src="item.ability.img" :title="item.ability.dname"  @click.left.exact="pick(item.ability.id)" @click.right.exact="draft(item.ability.id)" oncontextmenu="return false" v-bind:class="getAbilityClass(item)" />
-        </b-col>
-      </template>
-    </b-row>
-
-    <hr class="highlighted" />
-
-    <!-- Drafting Field -->
-    <div class="drafting-field ">
+    <!-- Desktop Formfactor -->
+    <div class="d-none d-lg-block">
       <b-row>
-        <b-col cols="2">
-          <h5>Combos For</h5>
+        <b-col>
+          <h1 class="text-warning">Draft</h1>
+        </b-col>
+        <b-col cols="2" class="text-center">
+          <b-btn title="Share With Team" @click="shared" >
+            <b-link id="share-to-team" :to="{ name: 'DraftAbilities', query: packageData()}"></b-link>
+            <i class="fas fa-share-alt"></i>
+          </b-btn>
+          <b-btn v-b-modal.modalHelp title="Help">
+            <i class="far fa-question-circle"></i>
+          </b-btn>
+        </b-col>
+      </b-row>
+
+      <hr class="highlighted" />
+
+      <!-- Hero -->
+      <b-row>
+        <b-col cols="1">
+          <b-img :src="hero.icon" :title="hero.name" class="hero-icon-sm"></b-img>
         </b-col>
         <b-col>
-          <div class="text-center">
-            <i title="Sort Order" class="fa-lg fas fa-sort-amount-down fa-rotate-270"></i>
+          <div style="line-height: 32px;">
+            <span>{{hero.name}}</span>
           </div>
         </b-col>
-        <!--
-        <template v-for="index in 8">
-          <b-col :key="index" class="text-center">
-            <b-badge variant="secondary"># {{index}}</b-badge>
-          </b-col>
-        </template>
-        -->
+        <b-col>
+          <div style="line-height: 32px;">
+            <i title="Pick Order" class="fa-lg fas fa-sort-amount-down"></i>
+            <span>{{pickOrder}}</span>
+          </div>
+        </b-col>
+        <b-col>
+          <div v-if="hero.attack === 1">
+            <b-img src="https://hgv-hyperstone.azurewebsites.net/mics/type_melee.png" title="Attack Type" /> Melee
+          </div>
+          <div v-if="hero.attack === 2">
+            <b-img src="https://hgv-hyperstone.azurewebsites.net/mics/type_range.png" title="Attack Type" /> Range
+          </div>
+        </b-col>
+        <b-col>
+          <div v-if="hero.primary === 3">
+            <b-img src="https://hgv-hyperstone.azurewebsites.net/mics/primary_str.png" title="Primary Stat" /> Str
+          </div>
+          <div v-if="hero.primary=== 4">
+            <b-img src="https://hgv-hyperstone.azurewebsites.net/mics/primary_agi.png" title="Primary Stat" /> Agi
+          </div>
+          <div v-if="hero.primary === 5">
+            <b-img src="https://hgv-hyperstone.azurewebsites.net/mics/primary_int.png" title="Primary Stat"  /> Int
+          </div>
+        </b-col>
       </b-row>
+
+      <hr class="highlighted" />
+
+      <!-- Pool -->
       <b-row>
-        <b-col cols="2">
-          <div>
-            <b-img :src="hero.img"  class="hero-icon-lg"></b-img>
-          </div>
+        <b-col>
+          <b-form inline class="float-right">          
+            <b-button-group>
+              <b-button v-for="s in sort" @click="onSort(s)" :pressed.sync="s.state" variant="outline-info" :key="s.caption">
+                {{ s.caption }}
+              </b-button>
+            </b-button-group>
+          </b-form>
+          <b-form inline>
+            <b-button-group>
+              <b-button v-for="f in filter" @click="onFilter(f)" :pressed.sync="f.state" variant="outline-info" :key="f.caption">
+                {{ f.caption }}
+              </b-button>
+            </b-button-group>
+          </b-form>
         </b-col>
-        <template v-for="item in combos" >
-          <b-col :key="item.abilities" class="text-center">
-            <template v-for="skill in item.skills" >
-              <div :key="skill.id">
-                <b-img :title="skill.dname" :src="skill.img" @click.left.exact="pick(skill.id)" @click.right.exact="draft(skill.id)" oncontextmenu="return false" v-bind:class="getComboClass(item)"></b-img>
-              </div>
-            </template>
+      </b-row>
+      <br />
+      <b-row>
+        <template v-for="item in abilities" >
+          <b-col :key="item.ability.id" cols="1">
+            <i v-if="item.filtered" class="rank fas fa-certificate fa-stack-2x text-info"></i>
+            <b-img :src="item.ability.img" :title="item.ability.dname"  @click.left.exact="pick(item.ability.id)" @click.right.exact="draft(item.ability.id)" oncontextmenu="return false" v-bind:class="getAbilityClass(item)" />
           </b-col>
         </template>
       </b-row>
-      <template v-for="skill in selectedCombos">
-        <div :key="skill.id" v-if="skill.combos.length > 0">
-          <b-row>
-            <b-col cols="2">
-            <div>
-              <b-img :src="skill.img" :title="skill.dname"  @click.left.exact="draft(skill.id)" class="ability-icon-lg"></b-img>
+
+      <hr class="highlighted" />
+
+      <!-- Drafting Field -->
+      <div class="drafting-field ">
+        <b-row>
+          <b-col cols="2">
+            <h5>Combos For</h5>
+          </b-col>
+          <b-col>
+            <div class="text-center">
+              <i title="Sort Order" class="fa-lg fas fa-sort-amount-down fa-rotate-270"></i>
             </div>
           </b-col>
-          <template v-for="item in skill.combos" >
+        </b-row>
+        <b-row>
+          <b-col cols="2">
+            <div>
+              <b-img :src="hero.img"  class="hero-icon-lg"></b-img>
+            </div>
+          </b-col>
+          <template v-for="item in combos" >
             <b-col :key="item.abilities" class="text-center">
-              <template v-for="skill in item.skills.filter(s => s.id != skill.id)">
+              <template v-for="skill in item.skills" >
                 <div :key="skill.id">
                   <b-img :title="skill.dname" :src="skill.img" @click.left.exact="pick(skill.id)" @click.right.exact="draft(skill.id)" oncontextmenu="return false" v-bind:class="getComboClass(item)"></b-img>
                 </div>
               </template>
             </b-col>
           </template>
-          </b-row>
-        </div>
-      </template>
+        </b-row>
+        <template v-for="skill in selectedCombos">
+          <div :key="skill.id" v-if="skill.combos.length > 0">
+            <b-row>
+              <b-col cols="2">
+              <div>
+                <b-img :src="skill.img" :title="skill.dname"  @click.left.exact="draft(skill.id)" class="ability-icon-lg"></b-img>
+              </div>
+            </b-col>
+            <template v-for="item in skill.combos" >
+              <b-col :key="item.abilities" class="text-center">
+                <template v-for="skill in item.skills.filter(s => s.id != skill.id)">
+                  <div :key="skill.id">
+                    <b-img :title="skill.dname" :src="skill.img" @click.left.exact="pick(skill.id)" @click.right.exact="draft(skill.id)" oncontextmenu="return false" v-bind:class="getComboClass(item)"></b-img>
+                  </div>
+                </template>
+              </b-col>
+            </template>
+            </b-row>
+          </div>
+        </template>
+      </div>
     </div>
 
+    <!-- Moblie Formfactor -->
+    <div class="d-none d-sm-block d-md-block d-lg-none text-center">
+      <b-img src="/static/images/sad.png"></b-img>
+      <p>
+        Ya, We know you want a mobile experience. We are wokring on it! 
+        It is hard to display all the needed infomation is this small format factor.
+      </p>
+    </div>
+    <div class="d-block d-sm-none text-center">
+      <p>We don't do Moblie yet but we are working on it!</p>
+    </div>
+    
     <!--Dialog - Help -->
     <b-modal id="modalHelp" title="Help" size="lg" :hide-footer="true" header-bg-variant="dark" header-text-variant="light" body-bg-variant="dark" footer-bg-variant="dark">
-      <p>You can remove ability from the pool by clicking on them. This will grey them out in the pool and filter them out of combos.</p>
-      <p>You can pick abilties by right clicking. We will automaticly filter out the other Ultimates after you select one.</p>
-      <p>The 1st row contains the Hero details. Which her you selected. What pick order you are. What is your hero's Attack Type and Primary Stat. It will also display any abilties you have selected.</p>
+      <p>You can remove abilities from the pool by clicking on them. This will grey them out in the pool and filter them out of combos.</p>
+      <p>You can pick abilties by right clicking. We will automaticly filter out the other ultimates after you select one.</p>
+      <p>The 1st row contains the details of the Hero you selected. What pick order you are. What is your hero's Attack Type and Primary Stat.</p>
       <p>The 2nd row contains the filter and sort controls. You can sort the Pool and Combos by Win Rate, Picks, or Wins. You can Filter the reults to highlight abilties match that filter and filter out combos do not match.</p>
       <p>The 3rd row contains the pool of abilties in the draft. The order is controled by the sort (see above). The borders are Green for greater then 50% win rate, Blue for equal to 50% win rate, and Red for below 50%</p>
-      <p>The 4th row contains the combos for the hero based on the attack type / primary stat and selected the abilities.</p>
+      <p>The 4th row contains the combos for the hero based on the attack type / primary stat. As well as, combos for the selected the abilities.</p>
     </b-modal>
   </section>
   <section v-else class="opaque-background text-center">
@@ -397,7 +399,7 @@ export default {
         })
       }
 
-      combos = combos.slice(0, 8)
+      combos = combos.slice(0, 5)
       return combos
     },
     selectedAbilities () {
@@ -504,7 +506,7 @@ export default {
       { caption: 'Attack', state: false },
       { caption: 'Tank', state: false },
       { caption: 'Heal', state: false },
-      { caption: 'Aghanims', state: false }
+      { caption: 'Upgradable', state: false }
     ]
 
     this.sort = [

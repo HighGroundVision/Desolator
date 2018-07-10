@@ -8,13 +8,13 @@
     <b-row>
       <b-col>
         <p>
-        We have compiled win rates since 7.07 patch using random sampling every day. 
-        Combos are created by combining all active skills with each other (creating Set A) then all skills are combind with each active ultimate (creating Set B). 
-        Set A is then merge with Set B creating all posible ability combos this is then paired with each type (Str, Agi, Int, Melee, Range) to create ~1M triplets
-        This also means the chance that one of these triplets show up in a match is very low. 
-        To counter act this offset we have filter out of results triplets that do not meet the minimum number of picks. 
-        Which is implemented an average of whole set. 
-        After this filter we are left with ~120,000 triplets.
+          We have compiled win rates since 7.07 patch using random daily sampling. 
+          Combos are created by combining all active skills with each other (creating Set A) then all skills are combind with each active ultimate (creating Set B). 
+          Set A is then merge with Set B creating all posible ability combos this is then paired with each type (Str, Agi, Int, Melee, Range) to create ~1M triplets
+          This also means the chance that one of these triplets show up in a match is very low. 
+          To counter act this offset we have filter out of results triplets that do not meet the minimum number of picks. 
+          Which is implemented an average of whole set. 
+          After this filter we are left with ~120,000 triplets.
         </p>
         <p>Below we highlight the top 10 combos under each category.</p>
       </b-col>

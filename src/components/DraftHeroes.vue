@@ -7,8 +7,8 @@
     </b-row>
     <b-row>
       <b-col>
-        <p>Please select the heroes in the draft. Make sure you reorder then into the correct order has the appear in the draft. You can reorder them with draft and drop after selection.</p>
-        <p>We have tried to speed up this process by giving you a number of options to select the hero. You can click on the hero icon, drag and drop it correct team, or search for the hero name and shortforms (pressing enter with only one hero in the list will auto add them to draft and reset the list).</p>
+        <p>Please select the heroes in the draft. Make sure you reorder then into the correct order has the appear in the draft. You can reorder them with drag and drop after selection.</p>
+        <p>We have tried to speed up this process by giving you a number of options to select the hero. You can click on the hero icon, drag and drop it correct team, or search for the hero name and shortforms. Pressing Enter will select the 1st hero and reset the list.</p>
       </b-col>
     </b-row>
     <b-row>

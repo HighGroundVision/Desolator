@@ -9,7 +9,7 @@
       <b-col>
         <p>
           Because of a number of limitations with the STEAM API, It may take some time for your matches to populate. 
-          After a filtered list of just your AD matches will be available.
+          After, a filtered list of just your AD matches will be available.
           A request to update this list is made every time you login and is cached for 1 hour. 
           It while take approximately 5-10 minutues to poplulate cache with your lastest matches.
         </p>

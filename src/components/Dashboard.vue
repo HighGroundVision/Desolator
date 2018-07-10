@@ -17,7 +17,7 @@
         </div>
       </b-col>
       <b-col>
-        <b-alert variant="warning" show>
+        <b-alert v-if="construction" variant="warning" show>
           <b-row>
             <b-col>
               <strong>Under Construction</strong>
@@ -47,7 +47,9 @@
 export default {
   name: 'Dashboard',
   data () {
-    return {}
+    return {
+      construction: false
+    }
   }
 }
 </script>
