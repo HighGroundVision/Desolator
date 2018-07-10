@@ -21,7 +21,7 @@
       <hgv-social-follow></hgv-social-follow>
       <footer>
         <div class="text-center">
-          <p>&copy; 2018 - <a href="https://hgv-tango.azurewebsites.net/" target="_blank">High Ground Vision</a></p>
+          <p>&copy; {{year}} - <a href="https://hgv-tango.azurewebsites.net/" target="_blank">High Ground Vision</a></p>
         </div>
       </footer>
     </b-container>
@@ -30,7 +30,12 @@
 
 <script>
 export default {
-  name: 'app'
+  name: 'app',
+  data () {
+    return {
+      'year': new Date().getFullYear()
+    }
+  }
 }
 </script>
 
