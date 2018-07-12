@@ -16,7 +16,21 @@
           Which is implemented an average of whole set. 
           After this filter we are left with ~120,000 triplets.
         </p>
-        <p>Below we highlight the top 10 combos under each category.</p>
+      </b-col>
+    </b-row>
+    <b-row>
+      <b-col>
+        <div class="text-center">
+          <b-btn variant="primary" v-b-modal.modalSearch >Search For Combo</b-btn>
+        </div>
+      </b-col>
+    </b-row>
+    <hr class="highlighted" />
+    <b-row>
+      <b-col>
+        <div class="text-center">
+          <p>Below we highlight the top 10 combos under each category.</p>
+        </div>
       </b-col>
     </b-row>
     <b-row>
@@ -173,6 +187,36 @@
         </b-row>
       </b-col>
     </b-row>
+    <!--Dialog - Help -->
+    <b-modal id="modalSearch" title="Search" size="lg" :hide-footer="true" header-bg-variant="dark" header-text-variant="light" body-bg-variant="dark" footer-bg-variant="dark">
+      <b-form>
+        <b-form-group>
+          <b-form-input v-model="searchAbility1" placeholder="Ability 1"  />
+        </b-form-group>
+        <b-form-group>
+          <b-form-input v-model="searchAbility2" placeholder="Ability 2"  />
+        </b-form-group>
+        <b-form-group>
+          <b-btn variant="primary" @click="search">Find</b-btn>
+        </b-form-group>
+      </b-form>
+      <hr class="highlighted" />
+       <b-container class="serachResults">
+        <template v-for="item in searchList">
+          <b-row :key="item.key" >
+            <template v-for="ability in item.abilities">
+              <b-col :key="ability.id">
+                <b-img :src="ability.img" class="ability-icon-sm" ></b-img>
+                <span>{{ability.name}}</span>
+              </b-col>
+            </template>
+            <b-col>
+              <b-link :to="'/stats/abilities/' + item.key">Details</b-link>
+            </b-col>
+          </b-row>
+        </template>
+      </b-container>
+    </b-modal>
   </section>
   <section v-else class="opaque-background text-center">
     <hgv-loader :color="'#ffc107'"></hgv-loader>
@@ -184,29 +228,74 @@ import axios from 'axios'
 
 export default {
   name: 'CombosList',
+  methods: {
+    format: function (stat) {
+      if (Array.isArray(stat)) {
+        return stat.join(' / ')
+      } else {
+        return stat
+      }
+    },
+    search () {
+      let filter1 = (this.searchAbility1) ? this.searchAbility1.toLowerCase() : ''
+      let filter2 = (this.searchAbility2) ? this.searchAbility2.toLowerCase() : ''
+      if (filter1 === '' && filter2 === '') {
+        return
+      }
+
+      let abilities1 = this.abilities.filter(_ => _.name.toLowerCase().includes(filter1))
+      let abilities2 = this.abilities.filter(_ => _.name.toLowerCase().includes(filter2))
+
+      let collection = []
+      for (const item1 of abilities1) {
+        for (const item2 of abilities2) {
+          if (item1.id === item2.id) {
+            continue
+          }
+          if (item1.ultimate === true && item2.ultimate === true) {
+            continue
+          }
+
+          let data = {
+            'key': (item1.id < item2.id) ? item1.id + '-' + item2.id : item2.id + '-' + item1.id,
+            'abilities': [item1, item2]
+          }
+          collection.push(data)
+        }
+      }
+
+      this.searchList = collection
+    }
+  },
   data () {
     return {
       'ready': false,
+      'abilities': [],
       'topMelee': [],
       'topRange': [],
       'topStr': [],
       'topAgi': [],
-      'topInt': []
+      'topInt': [],
+      'searchAbility1': null,
+      'searchAbility2': null,
+      'searchList': []
     }
   },
   created: function () {
     const vm = this
 
     let web = [
+      axios.get('/static/data/draftpool.json').then((reponse) => { return reponse.data }),
       axios.get('/static/data/abilities.json').then((reponse) => { return reponse.data }),
       axios.get('/static/data/stats-combos.json').then((reponse) => { return reponse.data }),
       axios.get(process.env.API_BASE_URL + 'ComboRanking').then((reponse) => { return reponse.data })
     ]
 
     Promise.all(web).then((values) => {
-      const abilitiesDB = values[0]
-      const statsDB = values[1]
-      const rankingsDB = values[2]
+      const poolDB = values[0]
+      const abilitiesDB = values[1]
+      const statsDB = values[2]
+      const rankingsDB = values[3]
 
       let melee = []
       let range = []
@@ -245,6 +334,23 @@ export default {
         }
       }
 
+      for (var h in poolDB) {
+        let hero = poolDB[h]
+        if (hero.enabled === false) {
+          continue
+        }
+
+        for (var a in hero.abilities) {
+          let ability = hero.abilities[a]
+          if (ability.enabled === false) {
+            continue
+          }
+
+          vm.abilities.push(ability)
+        }
+      }
+
+      vm.stats = 
       vm.topMelee = melee
       vm.topRange = range
       vm.topStr = str
@@ -254,19 +360,15 @@ export default {
     }).catch(function () {
       vm.$router.push('/error')
     })
-  },
-  methods: {
-    format: function (stat) {
-      if (Array.isArray(stat)) {
-        return stat.join(' / ')
-      } else {
-        return stat
-      }
-    }
   }
 }
 </script>
 
 <!-- Add "scoped" attribute to limit CSS to this component only -->
 <style scoped>
+.serachResults {
+  height: 300px;
+  overflow-x: none;
+  overflow-y: auto;
+}
 </style>
