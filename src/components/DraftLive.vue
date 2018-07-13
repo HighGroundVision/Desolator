@@ -81,8 +81,11 @@
       <b-row>
         <template v-for="item in abilities" >
           <b-col :key="item.ability.id" cols="1">
-            <i v-if="item.filtered" class="rank fas fa-certificate fa-stack-2x text-info"></i>
-            <b-img :src="item.ability.img" :title="item.ability.dname"  @click.left.exact="pick(item.ability.id)" @click.right.exact="draft(item.ability.id)" oncontextmenu="return false" v-bind:class="getAbilityClass(item)" />
+            <div style="width: 64px">
+              <i v-if="item.filtered" class="filter-abilities fas fa-certificate fa-stack-2x text-info"></i>
+              <span class="rate-abilities badge" v-bind:class="getRateClass(item.stats)">{{Math.round(item.stats.win_rate)}}%</span>
+              <b-img :src="item.ability.img" :title="item.ability.dname"  @click.left.exact="pick(item.ability.id)" @click.right.exact="draft(item.ability.id)" oncontextmenu="return false" v-bind:class="getAbilityClass(item)" />
+            </div>
           </b-col>
         </template>
       </b-row>
@@ -95,11 +98,6 @@
           <b-col cols="2">
             <h5>Combos For</h5>
           </b-col>
-          <b-col>
-            <div class="text-center">
-              <i title="Sort Order" class="fa-lg fas fa-sort-amount-down fa-rotate-270"></i>
-            </div>
-          </b-col>
         </b-row>
         <b-row>
           <b-col cols="2">
@@ -108,12 +106,15 @@
             </div>
           </b-col>
           <template v-for="item in combos" >
-            <b-col :key="item.abilities" class="text-center">
-              <template v-for="skill in item.skills" >
-                <div :key="skill.id">
-                  <b-img :title="skill.dname" :src="skill.img" @click.left.exact="pick(skill.id)" @click.right.exact="draft(skill.id)" oncontextmenu="return false" v-bind:class="getComboClass(item)"></b-img>
-                </div>
-              </template>
+            <b-col :key="item.abilities" >
+              <div style="width: 64px">
+                <span class="rate-combo badge" v-bind:class="getRateClass(item)">{{item.win_rate}} %</span>
+                <template v-for="skill in item.skills" >
+                  <div :key="skill.id">
+                    <b-img :title="skill.dname" :src="skill.img" @click.left.exact="pick(skill.id)" @click.right.exact="draft(skill.id)" oncontextmenu="return false" v-bind:class="getComboClass(item)"></b-img>
+                  </div>
+                </template>
+              </div>
             </b-col>
           </template>
         </b-row>
@@ -126,9 +127,10 @@
               </div>
             </b-col>
             <template v-for="item in skill.combos" >
-              <b-col :key="item.abilities" class="text-center">
+              <b-col :key="item.abilities">
                 <template v-for="skill in item.skills.filter(s => s.id != skill.id)">
                   <div :key="skill.id">
+                    <span class="rate-combo badge" v-bind:class="getRateClass(item)">{{item.win_rate}} %</span>
                     <b-img :title="skill.dname" :src="skill.img" @click.left.exact="pick(skill.id)" @click.right.exact="draft(skill.id)" oncontextmenu="return false" v-bind:class="getComboClass(item)"></b-img>
                   </div>
                 </template>
@@ -231,8 +233,6 @@ export default {
       document.execCommand('copy')
       document.body.removeChild(el)
       event.preventDefault()
-      
-      // alert('Link Copied')
     },
     onFilter (selected) {
       let clear = this.filter.filter(f => f.caption !== selected.caption)
@@ -274,6 +274,14 @@ export default {
         'skill border border-danger': stats.win_rate < 50,
         'skill border border-primary': stats.win_rate === 50,
         'skill border border-success': stats.win_rate > 50
+      }
+      return data
+    },
+    getRateClass (stats) {
+      let data = { 
+        'badge-danger': stats.win_rate < 50,
+        'badge-primary': stats.win_rate === 50,
+        'badge-success': stats.win_rate > 50
       }
       return data
     },
@@ -457,7 +465,7 @@ export default {
               return delta === 0 ? inic : delta
             })
           }
-          collection = collection.slice(0, 8)
+          collection = collection.slice(0, 5)
 
           let item = this._pool.filter(s => s.ability.id === id)[0]
           if (item) {
@@ -610,10 +618,22 @@ export default {
 .icon-combo {
   margin: 5px;
 }
-.rank {
+.filter-abilities {
   position: absolute;
   top: -10px;
-  left: -25px;
+  left: 25px;
+  z-index: 999;
+}
+.rate-abilities {
+  position: absolute;
+  top: -5px;
+  left: 0px;
+  z-index: 999;
+}
+.rate-combo {
+  position: absolute;
+  top: 2px;
+  /*left: 0px;*/
   z-index: 999;
 }
 .commands {
