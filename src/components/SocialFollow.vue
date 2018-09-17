@@ -36,8 +36,8 @@ export default {
 .sticky li{
   border-radius: 5px 5px 5px 5px; 
   list-style-type:none;
-  background-color: #0B1425;
-  color:#efefef;
+  background-color: #f8f9fa;
+  color:#0b1425;
   height:43px;
   padding:0px;
   margin:0px 0px 1px 0px;
@@ -63,7 +63,7 @@ export default {
 }
 .sticky li p a{
   text-decoration:none;
-  color:#ffff;
+  color:#0b1425;
 }
 .sticky li p a:hover{
   text-decoration:underline;

@@ -1,24 +1,25 @@
 <template>
   <div id="app">
     <b-container>
-      <header>
-        <b-navbar toggleable="md" type="dark" class="opaque-background">
+      <header class="top-spacing">
+        <b-navbar toggleable="md" type="light" variant="light" class="rounded">
           <b-navbar-toggle target="nav_collapse"></b-navbar-toggle>
           <b-navbar-brand to="/">[HGV] Ability Drafter</b-navbar-brand>
           <b-collapse is-nav id="nav_collapse">
             <b-navbar-nav class="mr-auto">
               <b-nav-item to="/pool">Pool</b-nav-item>
+              <b-nav-item to="/heroes">Heroes</b-nav-item>
               <b-nav-item to="/abilities">Abilities</b-nav-item>
-              <b-nav-item to="/combos">Combos</b-nav-item>
-              <b-nav-item to="/match/history">Matches</b-nav-item>
               <b-nav-item to="/draft">Draft</b-nav-item>
             </b-navbar-nav>
-            <hgv-authentication></hgv-authentication>
           </b-collapse>
         </b-navbar>
       </header>
+    </b-container>
+    <b-container class="top-spacing">
       <router-view></router-view>
       <hgv-social-follow></hgv-social-follow>
+      <hr class="highlighted" />
       <footer>
         <div class="text-center">
           <p>&copy; {{year}} - <a href="https://hgv-tango.azurewebsites.net/" target="_blank">High Ground Vision</a></p>
@@ -40,4 +41,7 @@ export default {
 </script>
 
 <style>
+.top-spacing {
+  padding-top: 10px;
+}
 </style>
