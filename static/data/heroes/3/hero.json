@@ -1,0 +1,685 @@
+{
+  "id": 3,
+  "name": "Bane",
+  "key": "npc_dota_hero_bane",
+  "image_profile": "https://hgv-hyperstone.azurewebsites.net/heroes/profile/npc_dota_hero_bane.png",
+  "image_icon": "https://hgv-hyperstone.azurewebsites.net/heroes/icons/npc_dota_hero_bane.png",
+  "image_banner": "https://hgv-hyperstone.azurewebsites.net/heroes/banner/npc_dota_hero_bane.png",
+  "enabled": true,
+  "new_player_enable": true,
+  "captains_mode_enabled": true,
+  "ability_draft_enabled": true,
+  "complexity": 2,
+  "roles": [
+    {
+      "role": "Support",
+      "level": 2
+    },
+    {
+      "role": "Disabler",
+      "level": 3
+    },
+    {
+      "role": "Nuker",
+      "level": 1
+    },
+    {
+      "role": "Durable",
+      "level": 1
+    }
+  ],
+  "bot_implemented": true,
+  "abilities": [
+    {
+      "id": 5012,
+      "key": "bane_enfeeble",
+      "name": "Enfeeble",
+      "description": "Weakens an enemy unit, reducing its physical damage.",
+      "image": "https://hgv-hyperstone.azurewebsites.net/abilities/bane_enfeeble.png",
+      "hero_id": 3,
+      "ability_type": "DOTA_ABILITY_TYPE_BASIC",
+      "ability_behaviors": [
+        "DOTA_ABILITY_BEHAVIOR_UNIT_TARGET",
+        "DOTA_ABILITY_BEHAVIOR_IGNORE_BACKSWING"
+      ],
+      "ability_unit_target_team": "DOTA_UNIT_TARGET_TEAM_ENEMY",
+      "ability_unit_target_type": [
+        "DOTA_UNIT_TARGET_HERO"
+      ],
+      "ability_unit_target_flags": [
+        "DOTA_UNIT_TARGET_FLAG_NOT_ANCIENTS"
+      ],
+      "spell_immunity_type": "SPELL_IMMUNITY_ENEMIES_NO",
+      "spell_dispellable_type": "SPELL_DISPELLABLE_NO",
+      "ability_unit_damage_type": null,
+      "is_skill": true,
+      "is_ultimate": false,
+      "has_scepter_upgrade": false,
+      "on_castbar": true,
+      "on_learnbar": true,
+      "ability_cast_range": [
+        1000
+      ],
+      "ability_cast_range_buffer": 250,
+      "ability_cast_point": [
+        0.4
+      ],
+      "ability_channel_time": [
+        0.0,
+        0.0,
+        0.0,
+        0.0
+      ],
+      "ability_cooldown": [
+        8.0
+      ],
+      "ability_duration": [
+        8.0,
+        12.0,
+        16.0,
+        20.0
+      ],
+      "ability_damage": [
+        0.0,
+        0.0,
+        0.0,
+        0.0
+      ],
+      "ability_mana_cost": [
+        95.0
+      ],
+      "ability_modifier_support_value": 1.0,
+      "ability_modifier_support_bonus": 0.0,
+      "fight_recap_level": 0,
+      "ability_draft_enabled": true,
+      "linked": null,
+      "ability_special": {
+        "enfeeble_attack_reduction": [
+          30.0,
+          60.0,
+          90.0,
+          120.0
+        ],
+        "enfeeble_tooltip_duration": [
+          8.0,
+          12.0,
+          16.0,
+          20.0
+        ]
+      }
+    },
+    {
+      "id": 5011,
+      "key": "bane_brain_sap",
+      "name": "Brain Sap",
+      "description": "Feasts on the vital energies of an enemy unit, healing Bane and dealing damage.\\n\\nUpgradable by Aghanim's Scepter.",
+      "image": "https://hgv-hyperstone.azurewebsites.net/abilities/bane_brain_sap.png",
+      "hero_id": 3,
+      "ability_type": "DOTA_ABILITY_TYPE_BASIC",
+      "ability_behaviors": [
+        "DOTA_ABILITY_BEHAVIOR_UNIT_TARGET"
+      ],
+      "ability_unit_target_team": "DOTA_UNIT_TARGET_TEAM_ENEMY",
+      "ability_unit_target_type": [
+        "DOTA_UNIT_TARGET_HERO",
+        "DOTA_UNIT_TARGET_BASIC"
+      ],
+      "ability_unit_target_flags": [],
+      "spell_immunity_type": "SPELL_IMMUNITY_ENEMIES_NO",
+      "spell_dispellable_type": null,
+      "ability_unit_damage_type": "DAMAGE_TYPE_PURE",
+      "is_skill": true,
+      "is_ultimate": false,
+      "has_scepter_upgrade": true,
+      "on_castbar": true,
+      "on_learnbar": true,
+      "ability_cast_range": [
+        600
+      ],
+      "ability_cast_range_buffer": 250,
+      "ability_cast_point": [
+        0.4
+      ],
+      "ability_channel_time": [
+        0.0,
+        0.0,
+        0.0,
+        0.0
+      ],
+      "ability_cooldown": [
+        14.0,
+        13.0,
+        12.0,
+        11.0
+      ],
+      "ability_duration": [
+        0.0,
+        0.0,
+        0.0,
+        0.0
+      ],
+      "ability_damage": [
+        0.0,
+        0.0,
+        0.0,
+        0.0
+      ],
+      "ability_mana_cost": [
+        90.0,
+        115.0,
+        140.0,
+        165.0
+      ],
+      "ability_modifier_support_value": 1.0,
+      "ability_modifier_support_bonus": 0.0,
+      "fight_recap_level": 1,
+      "ability_draft_enabled": true,
+      "linked": null,
+      "ability_special": {
+        "brain_sap_damage": [
+          75.0,
+          150.0,
+          225.0,
+          300.0
+        ],
+        "tooltip_brain_sap_heal_amt": [
+          75.0,
+          150.0,
+          225.0,
+          300.0
+        ],
+        "cooldown_scepter": [
+          1.5
+        ]
+      }
+    },
+    {
+      "id": 5014,
+      "key": "bane_nightmare",
+      "name": "Nightmare",
+      "description": "Puts the target enemy or friendly Hero to sleep. Sleeping units are awakened when attacked, but the Nightmare passes to the attacking unit. Bane can attack nightmared targets freely.",
+      "image": "https://hgv-hyperstone.azurewebsites.net/abilities/bane_nightmare.png",
+      "hero_id": 3,
+      "ability_type": "DOTA_ABILITY_TYPE_BASIC",
+      "ability_behaviors": [
+        "DOTA_ABILITY_BEHAVIOR_UNIT_TARGET",
+        "DOTA_ABILITY_BEHAVIOR_DONT_RESUME_ATTACK"
+      ],
+      "ability_unit_target_team": "DOTA_UNIT_TARGET_TEAM_BOTH",
+      "ability_unit_target_type": [
+        "DOTA_UNIT_TARGET_HERO",
+        "DOTA_UNIT_TARGET_CREEP"
+      ],
+      "ability_unit_target_flags": [
+        "DOTA_UNIT_TARGET_FLAG_NOT_MAGIC_IMMUNE_ALLIES"
+      ],
+      "spell_immunity_type": "SPELL_IMMUNITY_ALLIES_NO",
+      "spell_dispellable_type": "SPELL_DISPELLABLE_YES",
+      "ability_unit_damage_type": "DAMAGE_TYPE_PURE",
+      "is_skill": true,
+      "is_ultimate": false,
+      "has_scepter_upgrade": false,
+      "on_castbar": true,
+      "on_learnbar": true,
+      "ability_cast_range": [
+        425,
+        500,
+        575,
+        650
+      ],
+      "ability_cast_range_buffer": 250,
+      "ability_cast_point": [
+        0.4
+      ],
+      "ability_channel_time": [
+        0.0,
+        0.0,
+        0.0,
+        0.0
+      ],
+      "ability_cooldown": [
+        22.0,
+        19.0,
+        16.0,
+        13.0
+      ],
+      "ability_duration": [
+        4.0,
+        5.0,
+        6.0,
+        7.0
+      ],
+      "ability_damage": [
+        0.0,
+        0.0,
+        0.0,
+        0.0
+      ],
+      "ability_mana_cost": [
+        165.0,
+        165.0,
+        165.0,
+        165.0
+      ],
+      "ability_modifier_support_value": 0.5,
+      "ability_modifier_support_bonus": 0.0,
+      "fight_recap_level": 0,
+      "ability_draft_enabled": true,
+      "linked": null,
+      "ability_special": {
+        "nightmare_invuln_time": [
+          1.0
+        ],
+        "duration": [
+          4.0,
+          5.0,
+          6.0,
+          7.0
+        ],
+        "animation_rate": [
+          0.2,
+          0.2,
+          0.2,
+          0.2
+        ],
+        "cast_range_tooltip": [
+          425.0,
+          500.0,
+          575.0,
+          650.0
+        ]
+      }
+    },
+    {
+      "id": 6251,
+      "key": "generic_hidden",
+      "name": null,
+      "description": null,
+      "image": "https://hgv-hyperstone.azurewebsites.net/abilities/generic_hidden.png",
+      "hero_id": 3,
+      "ability_type": "DOTA_ABILITY_TYPE_BASIC",
+      "ability_behaviors": [
+        "DOTA_ABILITY_BEHAVIOR_HIDDEN",
+        "DOTA_ABILITY_BEHAVIOR_NOT_LEARNABLE"
+      ],
+      "ability_unit_target_team": null,
+      "ability_unit_target_type": [],
+      "ability_unit_target_flags": [],
+      "spell_immunity_type": null,
+      "spell_dispellable_type": null,
+      "ability_unit_damage_type": null,
+      "is_skill": true,
+      "is_ultimate": false,
+      "has_scepter_upgrade": false,
+      "on_castbar": true,
+      "on_learnbar": true,
+      "ability_cast_range": [
+        0
+      ],
+      "ability_cast_range_buffer": 250,
+      "ability_cast_point": [
+        0.0,
+        0.0,
+        0.0,
+        0.0
+      ],
+      "ability_channel_time": [
+        0.0,
+        0.0,
+        0.0,
+        0.0
+      ],
+      "ability_cooldown": [
+        0.0,
+        0.0,
+        0.0,
+        0.0
+      ],
+      "ability_duration": [
+        0.0,
+        0.0,
+        0.0,
+        0.0
+      ],
+      "ability_damage": [
+        0.0,
+        0.0,
+        0.0,
+        0.0
+      ],
+      "ability_mana_cost": [
+        0.0,
+        0.0,
+        0.0,
+        0.0
+      ],
+      "ability_modifier_support_value": 1.0,
+      "ability_modifier_support_bonus": 0.0,
+      "fight_recap_level": 0,
+      "ability_draft_enabled": false,
+      "linked": null,
+      "ability_special": {}
+    },
+    {
+      "id": 6251,
+      "key": "generic_hidden",
+      "name": null,
+      "description": null,
+      "image": "https://hgv-hyperstone.azurewebsites.net/abilities/generic_hidden.png",
+      "hero_id": 3,
+      "ability_type": "DOTA_ABILITY_TYPE_BASIC",
+      "ability_behaviors": [
+        "DOTA_ABILITY_BEHAVIOR_HIDDEN",
+        "DOTA_ABILITY_BEHAVIOR_NOT_LEARNABLE"
+      ],
+      "ability_unit_target_team": null,
+      "ability_unit_target_type": [],
+      "ability_unit_target_flags": [],
+      "spell_immunity_type": null,
+      "spell_dispellable_type": null,
+      "ability_unit_damage_type": null,
+      "is_skill": true,
+      "is_ultimate": false,
+      "has_scepter_upgrade": false,
+      "on_castbar": true,
+      "on_learnbar": true,
+      "ability_cast_range": [
+        0
+      ],
+      "ability_cast_range_buffer": 250,
+      "ability_cast_point": [
+        0.0,
+        0.0,
+        0.0,
+        0.0
+      ],
+      "ability_channel_time": [
+        0.0,
+        0.0,
+        0.0,
+        0.0
+      ],
+      "ability_cooldown": [
+        0.0,
+        0.0,
+        0.0,
+        0.0
+      ],
+      "ability_duration": [
+        0.0,
+        0.0,
+        0.0,
+        0.0
+      ],
+      "ability_damage": [
+        0.0,
+        0.0,
+        0.0,
+        0.0
+      ],
+      "ability_mana_cost": [
+        0.0,
+        0.0,
+        0.0,
+        0.0
+      ],
+      "ability_modifier_support_value": 1.0,
+      "ability_modifier_support_bonus": 0.0,
+      "fight_recap_level": 0,
+      "ability_draft_enabled": false,
+      "linked": null,
+      "ability_special": {}
+    },
+    {
+      "id": 5013,
+      "key": "bane_fiends_grip",
+      "name": "Fiend's Grip",
+      "description": "CHANNELED - Grips an enemy unit, disabling it and causing heavy damage over time, while stealing mana every 0.5 seconds based on the unit's maximum mana.",
+      "image": "https://hgv-hyperstone.azurewebsites.net/abilities/bane_fiends_grip.png",
+      "hero_id": 3,
+      "ability_type": "DOTA_ABILITY_TYPE_ULTIMATE",
+      "ability_behaviors": [
+        "DOTA_ABILITY_BEHAVIOR_UNIT_TARGET",
+        "DOTA_ABILITY_BEHAVIOR_CHANNELLED"
+      ],
+      "ability_unit_target_team": "DOTA_UNIT_TARGET_TEAM_ENEMY",
+      "ability_unit_target_type": [
+        "DOTA_UNIT_TARGET_HERO",
+        "DOTA_UNIT_TARGET_BASIC"
+      ],
+      "ability_unit_target_flags": [
+        "DOTA_UNIT_TARGET_FLAG_MAGIC_IMMUNE_ENEMIES"
+      ],
+      "spell_immunity_type": "SPELL_IMMUNITY_ENEMIES_YES",
+      "spell_dispellable_type": "SPELL_DISPELLABLE_YES_STRONG",
+      "ability_unit_damage_type": "DAMAGE_TYPE_MAGICAL",
+      "is_skill": false,
+      "is_ultimate": true,
+      "has_scepter_upgrade": false,
+      "on_castbar": true,
+      "on_learnbar": true,
+      "ability_cast_range": [
+        625
+      ],
+      "ability_cast_range_buffer": 250,
+      "ability_cast_point": [
+        0.4
+      ],
+      "ability_channel_time": [
+        5.0,
+        5.0,
+        5.0
+      ],
+      "ability_cooldown": [
+        120.0,
+        110.0,
+        100.0
+      ],
+      "ability_duration": [
+        0.0,
+        0.0,
+        0.0,
+        0.0
+      ],
+      "ability_damage": [
+        0.0,
+        0.0,
+        0.0,
+        0.0
+      ],
+      "ability_mana_cost": [
+        200.0,
+        300.0,
+        400.0
+      ],
+      "ability_modifier_support_value": 1.0,
+      "ability_modifier_support_bonus": 0.0,
+      "fight_recap_level": 2,
+      "ability_draft_enabled": true,
+      "linked": null,
+      "ability_special": {
+        "fiend_grip_tick_interval": [
+          0.5
+        ],
+        "fiend_grip_mana_drain": [
+          5.0
+        ],
+        "fiend_grip_duration": [
+          5.0,
+          5.0,
+          5.0
+        ],
+        "fiend_grip_damage": [
+          100.0,
+          155.0,
+          215.0
+        ]
+      }
+    },
+    {
+      "id": 5523,
+      "key": "bane_nightmare_end",
+      "name": "Nightmare End",
+      "description": "Ends all ongoing Nightmares.",
+      "image": "https://hgv-hyperstone.azurewebsites.net/abilities/bane_nightmare_end.png",
+      "hero_id": 3,
+      "ability_type": "DOTA_ABILITY_TYPE_BASIC",
+      "ability_behaviors": [
+        "DOTA_ABILITY_BEHAVIOR_HIDDEN",
+        "DOTA_ABILITY_BEHAVIOR_NO_TARGET",
+        "DOTA_ABILITY_BEHAVIOR_TOGGLE",
+        "DOTA_ABILITY_BEHAVIOR_IGNORE_PSEUDO_QUEUE"
+      ],
+      "ability_unit_target_team": null,
+      "ability_unit_target_type": [],
+      "ability_unit_target_flags": [],
+      "spell_immunity_type": null,
+      "spell_dispellable_type": null,
+      "ability_unit_damage_type": null,
+      "is_skill": true,
+      "is_ultimate": false,
+      "has_scepter_upgrade": false,
+      "on_castbar": true,
+      "on_learnbar": true,
+      "ability_cast_range": [
+        0
+      ],
+      "ability_cast_range_buffer": 250,
+      "ability_cast_point": [
+        0.0,
+        0.0,
+        0.0,
+        0.0
+      ],
+      "ability_channel_time": [
+        0.0,
+        0.0,
+        0.0,
+        0.0
+      ],
+      "ability_cooldown": [
+        0.0,
+        0.0,
+        0.0,
+        0.0
+      ],
+      "ability_duration": [
+        0.0,
+        0.0,
+        0.0,
+        0.0
+      ],
+      "ability_damage": [
+        0.0,
+        0.0,
+        0.0,
+        0.0
+      ],
+      "ability_mana_cost": [
+        0.0,
+        0.0,
+        0.0,
+        0.0
+      ],
+      "ability_modifier_support_value": 1.0,
+      "ability_modifier_support_bonus": 0.0,
+      "fight_recap_level": 0,
+      "ability_draft_enabled": false,
+      "linked": null,
+      "ability_special": {}
+    }
+  ],
+  "talents": [
+    {
+      "id": 5933,
+      "key": "special_bonus_armor_6",
+      "name": "+6 Armor",
+      "description": null
+    },
+    {
+      "id": 6003,
+      "key": "special_bonus_cast_range_100",
+      "name": "+100 Cast Range",
+      "description": null
+    },
+    {
+      "id": 6826,
+      "key": "special_bonus_unique_bane_4",
+      "name": "Enfeeble Steals Damage",
+      "description": "Bane gains damage equal to the damage stolen for the duration of Enfeeble."
+    },
+    {
+      "id": 6447,
+      "key": "special_bonus_exp_boost_40",
+      "name": "+40% XP Gain",
+      "description": null
+    },
+    {
+      "id": 6068,
+      "key": "special_bonus_unique_bane_1",
+      "name": "+100 Enfeeble Damage Reduction",
+      "description": null
+    },
+    {
+      "id": 7130,
+      "key": "special_bonus_movement_speed_65",
+      "name": "+65 Movement Speed",
+      "description": null
+    },
+    {
+      "id": 6069,
+      "key": "special_bonus_unique_bane_2",
+      "name": "+250 Brain Sap Damage/Heal",
+      "description": null
+    },
+    {
+      "id": 6609,
+      "key": "special_bonus_unique_bane_3",
+      "name": "+7s Fiend's Grip Duration",
+      "description": null
+    }
+  ],
+  "legs": 4,
+  "armor_physical": 1.0,
+  "magical_resistance": 25,
+  "attack_capabilities": "DOTA_UNIT_CAP_RANGED_ATTACK",
+  "attack_damage_min": 35,
+  "attack_damage_max": 41,
+  "attack_rate": 1.7,
+  "attack_animation_point": 0.3,
+  "attack_acquisition_range": 800,
+  "attack_range": 400,
+  "projectile_speed": 900,
+  "attribute_primary": "DOTA_ATTRIBUTE_INTELLECT",
+  "attribute_base_strength": 23,
+  "attribute_strength_gain": 2.4,
+  "attribute_base_intelligence": 23,
+  "attribute_intelligence_gain": 2.4,
+  "attribute_base_agility": 23,
+  "attribute_agility_gain": 2.4,
+  "status_health": 200,
+  "status_health_regen": 1.5,
+  "status_mana": 75,
+  "status_mana_regen": 0.9,
+  "bounty_xp": 62,
+  "bounty_gold_min": 0,
+  "bounty_gold_max": 0,
+  "movement_capabilities": "DOTA_UNIT_CAP_MOVE_GROUND",
+  "movement_speed": 310,
+  "movement_turn_rate": 0.6,
+  "has_aggressive_stance": false,
+  "team": 1,
+  "team_name": "Radiant",
+  "vision_daytime_range": 1800,
+  "vision_nighttime_range": 0,
+  "bot": {
+    "hero_types": null,
+    "solo_desire": 0,
+    "requires_babysit": 0,
+    "provides_babysit": 0,
+    "survival_rating": 0,
+    "requires_farm": 0,
+    "provides_setup": 0,
+    "requires_setup": 0
+  }
+}

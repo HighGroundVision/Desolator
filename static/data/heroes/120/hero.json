@@ -1,0 +1,739 @@
+{
+  "id": 120,
+  "name": "Pangolier",
+  "key": "npc_dota_hero_pangolier",
+  "image_profile": "https://hgv-hyperstone.azurewebsites.net/heroes/profile/npc_dota_hero_pangolier.png",
+  "image_icon": "https://hgv-hyperstone.azurewebsites.net/heroes/icons/npc_dota_hero_pangolier.png",
+  "image_banner": "https://hgv-hyperstone.azurewebsites.net/heroes/banner/npc_dota_hero_pangolier.png",
+  "enabled": true,
+  "new_player_enable": true,
+  "captains_mode_enabled": true,
+  "ability_draft_enabled": true,
+  "complexity": 2,
+  "roles": [
+    {
+      "role": "Carry",
+      "level": 2
+    },
+    {
+      "role": "Nuker",
+      "level": 2
+    },
+    {
+      "role": "Disabler",
+      "level": 1
+    },
+    {
+      "role": "Durable",
+      "level": 1
+    },
+    {
+      "role": "Escape",
+      "level": 2
+    },
+    {
+      "role": "Initiator",
+      "level": 2
+    }
+  ],
+  "bot_implemented": false,
+  "abilities": [
+    {
+      "id": 6344,
+      "key": "pangolier_swashbuckle",
+      "name": "Swashbuckle",
+      "description": "Vector Targeted. Pangolier dashes along the target line, then slashes all enemies in the drawn direction with several quick swipes.\\n\\nHeartpiercer has a chance to activate from this damage.",
+      "image": "https://hgv-hyperstone.azurewebsites.net/abilities/pangolier_swashbuckle.png",
+      "hero_id": 120,
+      "ability_type": "DOTA_ABILITY_TYPE_BASIC",
+      "ability_behaviors": [
+        "DOTA_ABILITY_BEHAVIOR_POINT",
+        "DOTA_ABILITY_BEHAVIOR_DONT_RESUME_MOVEMENT",
+        "DOTA_ABILITY_BEHAVIOR_ROOT_DISABLES"
+      ],
+      "ability_unit_target_team": null,
+      "ability_unit_target_type": [],
+      "ability_unit_target_flags": [],
+      "spell_immunity_type": "SPELL_IMMUNITY_ENEMIES_YES",
+      "spell_dispellable_type": "SPELL_DISPELLABLE_NO",
+      "ability_unit_damage_type": "DAMAGE_TYPE_PHYSICAL",
+      "is_skill": true,
+      "is_ultimate": false,
+      "has_scepter_upgrade": false,
+      "on_castbar": true,
+      "on_learnbar": true,
+      "ability_cast_range": [
+        1000
+      ],
+      "ability_cast_range_buffer": 250,
+      "ability_cast_point": [
+        0.0
+      ],
+      "ability_channel_time": [
+        0.0,
+        0.0,
+        0.0,
+        0.0
+      ],
+      "ability_cooldown": [
+        20.0,
+        16.0,
+        12.0,
+        8.0
+      ],
+      "ability_duration": [
+        0.0,
+        0.0,
+        0.0,
+        0.0
+      ],
+      "ability_damage": [
+        0.0,
+        0.0,
+        0.0,
+        0.0
+      ],
+      "ability_mana_cost": [
+        80.0,
+        90.0,
+        100.0,
+        110.0
+      ],
+      "ability_modifier_support_value": 1.0,
+      "ability_modifier_support_bonus": 0.0,
+      "fight_recap_level": 0,
+      "ability_draft_enabled": true,
+      "linked": null,
+      "ability_special": {
+        "dash_range": [
+          1000.0
+        ],
+        "range": [
+          900.0
+        ],
+        "dash_speed": [
+          2000.0
+        ],
+        "attack_interval": [
+          0.1,
+          0.1,
+          0.1,
+          0.1
+        ],
+        "damage": [
+          24.0,
+          42.0,
+          60.0,
+          78.0
+        ],
+        "start_radius": [
+          125.0
+        ],
+        "end_radius": [
+          125.0
+        ],
+        "strikes": [
+          4.0
+        ]
+      }
+    },
+    {
+      "id": 6461,
+      "key": "pangolier_shield_crash",
+      "name": "Shield Crash",
+      "description": "Pangolier jumps in the air and slams back to the ground, damaging all enemies in a radius. For each enemy hero hit, he gains a percentage of incoming damage reduction for a short time.\\n\\nForward movement is maintained if Shield Crash is used while Rolling Thunder is active, and allows Rolling Thunder to clear walls or cliffs.",
+      "image": "https://hgv-hyperstone.azurewebsites.net/abilities/pangolier_shield_crash.png",
+      "hero_id": 120,
+      "ability_type": "DOTA_ABILITY_TYPE_BASIC",
+      "ability_behaviors": [
+        "DOTA_ABILITY_BEHAVIOR_NO_TARGET",
+        "DOTA_ABILITY_BEHAVIOR_IMMEDIATE"
+      ],
+      "ability_unit_target_team": null,
+      "ability_unit_target_type": [],
+      "ability_unit_target_flags": [],
+      "spell_immunity_type": "SPELL_IMMUNITY_ENEMIES_NO",
+      "spell_dispellable_type": "SPELL_DISPELLABLE_YES",
+      "ability_unit_damage_type": "DAMAGE_TYPE_MAGICAL",
+      "is_skill": true,
+      "is_ultimate": false,
+      "has_scepter_upgrade": false,
+      "on_castbar": true,
+      "on_learnbar": true,
+      "ability_cast_range": [
+        0
+      ],
+      "ability_cast_range_buffer": 250,
+      "ability_cast_point": [
+        0.0,
+        0.0,
+        0.0,
+        0.0
+      ],
+      "ability_channel_time": [
+        0.0,
+        0.0,
+        0.0,
+        0.0
+      ],
+      "ability_cooldown": [
+        19.0,
+        17.0,
+        15.0,
+        13.0
+      ],
+      "ability_duration": [
+        0.0,
+        0.0,
+        0.0,
+        0.0
+      ],
+      "ability_damage": [
+        0.0,
+        0.0,
+        0.0,
+        0.0
+      ],
+      "ability_mana_cost": [
+        90.0,
+        100.0,
+        110.0,
+        120.0
+      ],
+      "ability_modifier_support_value": 1.0,
+      "ability_modifier_support_bonus": 0.0,
+      "fight_recap_level": 1,
+      "ability_draft_enabled": true,
+      "linked": null,
+      "ability_special": {
+        "damage": [
+          75.0,
+          150.0,
+          225.0,
+          300.0
+        ],
+        "hero_stacks": [
+          9.0,
+          12.0,
+          15.0,
+          18.0
+        ],
+        "duration": [
+          10.0
+        ],
+        "radius": [
+          500.0
+        ],
+        "jump_duration": [
+          0.4
+        ],
+        "jump_duration_gyroshell": [
+          0.75
+        ],
+        "jump_height": [
+          250.0
+        ],
+        "jump_height_gyroshell": [
+          350.0
+        ],
+        "jump_horizontal_distance": [
+          225.0
+        ]
+      }
+    },
+    {
+      "id": 6346,
+      "key": "pangolier_heartpiercer",
+      "name": "Heartpiercer",
+      "description": "Pangolier reads his enemies perfectly, deftly slipping his blade past defenses. Each attack has a chance to negate enemy armor and slow the target for a duration, activating after a short delay.",
+      "image": "https://hgv-hyperstone.azurewebsites.net/abilities/pangolier_heartpiercer.png",
+      "hero_id": 120,
+      "ability_type": "DOTA_ABILITY_TYPE_BASIC",
+      "ability_behaviors": [
+        "DOTA_ABILITY_BEHAVIOR_PASSIVE"
+      ],
+      "ability_unit_target_team": null,
+      "ability_unit_target_type": [],
+      "ability_unit_target_flags": [],
+      "spell_immunity_type": "SPELL_IMMUNITY_ENEMIES_NO",
+      "spell_dispellable_type": "SPELL_DISPELLABLE_YES",
+      "ability_unit_damage_type": null,
+      "is_skill": true,
+      "is_ultimate": false,
+      "has_scepter_upgrade": false,
+      "on_castbar": true,
+      "on_learnbar": true,
+      "ability_cast_range": [
+        0
+      ],
+      "ability_cast_range_buffer": 250,
+      "ability_cast_point": [
+        0.0,
+        0.0,
+        0.0,
+        0.0
+      ],
+      "ability_channel_time": [
+        0.0,
+        0.0,
+        0.0,
+        0.0
+      ],
+      "ability_cooldown": [
+        0.0,
+        0.0,
+        0.0,
+        0.0
+      ],
+      "ability_duration": [
+        0.0,
+        0.0,
+        0.0,
+        0.0
+      ],
+      "ability_damage": [
+        0.0,
+        0.0,
+        0.0,
+        0.0
+      ],
+      "ability_mana_cost": [
+        0.0,
+        0.0,
+        0.0,
+        0.0
+      ],
+      "ability_modifier_support_value": 1.0,
+      "ability_modifier_support_bonus": 0.0,
+      "fight_recap_level": 0,
+      "ability_draft_enabled": true,
+      "linked": null,
+      "ability_special": {
+        "chance_pct": [
+          15.0
+        ],
+        "duration": [
+          2.0,
+          3.0,
+          4.0,
+          5.0
+        ],
+        "slow_pct": [
+          -35.0,
+          -40.0,
+          -45.0,
+          -50.0
+        ],
+        "debuff_delay": [
+          2.0
+        ]
+      }
+    },
+    {
+      "id": 6251,
+      "key": "generic_hidden",
+      "name": null,
+      "description": null,
+      "image": "https://hgv-hyperstone.azurewebsites.net/abilities/generic_hidden.png",
+      "hero_id": 120,
+      "ability_type": "DOTA_ABILITY_TYPE_BASIC",
+      "ability_behaviors": [
+        "DOTA_ABILITY_BEHAVIOR_HIDDEN",
+        "DOTA_ABILITY_BEHAVIOR_NOT_LEARNABLE"
+      ],
+      "ability_unit_target_team": null,
+      "ability_unit_target_type": [],
+      "ability_unit_target_flags": [],
+      "spell_immunity_type": null,
+      "spell_dispellable_type": null,
+      "ability_unit_damage_type": null,
+      "is_skill": true,
+      "is_ultimate": false,
+      "has_scepter_upgrade": false,
+      "on_castbar": true,
+      "on_learnbar": true,
+      "ability_cast_range": [
+        0
+      ],
+      "ability_cast_range_buffer": 250,
+      "ability_cast_point": [
+        0.0,
+        0.0,
+        0.0,
+        0.0
+      ],
+      "ability_channel_time": [
+        0.0,
+        0.0,
+        0.0,
+        0.0
+      ],
+      "ability_cooldown": [
+        0.0,
+        0.0,
+        0.0,
+        0.0
+      ],
+      "ability_duration": [
+        0.0,
+        0.0,
+        0.0,
+        0.0
+      ],
+      "ability_damage": [
+        0.0,
+        0.0,
+        0.0,
+        0.0
+      ],
+      "ability_mana_cost": [
+        0.0,
+        0.0,
+        0.0,
+        0.0
+      ],
+      "ability_modifier_support_value": 1.0,
+      "ability_modifier_support_bonus": 0.0,
+      "fight_recap_level": 0,
+      "ability_draft_enabled": false,
+      "linked": null,
+      "ability_special": {}
+    },
+    {
+      "id": 6251,
+      "key": "generic_hidden",
+      "name": null,
+      "description": null,
+      "image": "https://hgv-hyperstone.azurewebsites.net/abilities/generic_hidden.png",
+      "hero_id": 120,
+      "ability_type": "DOTA_ABILITY_TYPE_BASIC",
+      "ability_behaviors": [
+        "DOTA_ABILITY_BEHAVIOR_HIDDEN",
+        "DOTA_ABILITY_BEHAVIOR_NOT_LEARNABLE"
+      ],
+      "ability_unit_target_team": null,
+      "ability_unit_target_type": [],
+      "ability_unit_target_flags": [],
+      "spell_immunity_type": null,
+      "spell_dispellable_type": null,
+      "ability_unit_damage_type": null,
+      "is_skill": true,
+      "is_ultimate": false,
+      "has_scepter_upgrade": false,
+      "on_castbar": true,
+      "on_learnbar": true,
+      "ability_cast_range": [
+        0
+      ],
+      "ability_cast_range_buffer": 250,
+      "ability_cast_point": [
+        0.0,
+        0.0,
+        0.0,
+        0.0
+      ],
+      "ability_channel_time": [
+        0.0,
+        0.0,
+        0.0,
+        0.0
+      ],
+      "ability_cooldown": [
+        0.0,
+        0.0,
+        0.0,
+        0.0
+      ],
+      "ability_duration": [
+        0.0,
+        0.0,
+        0.0,
+        0.0
+      ],
+      "ability_damage": [
+        0.0,
+        0.0,
+        0.0,
+        0.0
+      ],
+      "ability_mana_cost": [
+        0.0,
+        0.0,
+        0.0,
+        0.0
+      ],
+      "ability_modifier_support_value": 1.0,
+      "ability_modifier_support_bonus": 0.0,
+      "fight_recap_level": 0,
+      "ability_draft_enabled": false,
+      "linked": null,
+      "ability_special": {}
+    },
+    {
+      "id": 6343,
+      "key": "pangolier_gyroshell",
+      "name": "Rolling Thunder",
+      "description": "Pangolier curls into a magic-immune ball and rolls out. When rolling, he moves at an increased speed and can move through trees, but has a decreased ability to turn. Striking enemies knocks them back, inflicting damage and stunning them when they land. \\n\\nColliding with walls or cliffs will cause a temporary pause while Pangolier reverses in direction.\\n\\nDISPEL TYPE: Basic Dispel",
+      "image": "https://hgv-hyperstone.azurewebsites.net/abilities/pangolier_gyroshell.png",
+      "hero_id": 120,
+      "ability_type": "DOTA_ABILITY_TYPE_ULTIMATE",
+      "ability_behaviors": [
+        "DOTA_ABILITY_BEHAVIOR_NO_TARGET",
+        "DOTA_ABILITY_BEHAVIOR_ROOT_DISABLES",
+        "DOTA_ABILITY_BEHAVIOR_IGNORE_BACKSWING"
+      ],
+      "ability_unit_target_team": null,
+      "ability_unit_target_type": [],
+      "ability_unit_target_flags": [],
+      "spell_immunity_type": "SPELL_IMMUNITY_ENEMIES_NO",
+      "spell_dispellable_type": "SPELL_DISPELLABLE_NO",
+      "ability_unit_damage_type": "DAMAGE_TYPE_MAGICAL",
+      "is_skill": false,
+      "is_ultimate": true,
+      "has_scepter_upgrade": false,
+      "on_castbar": true,
+      "on_learnbar": true,
+      "ability_cast_range": [
+        0
+      ],
+      "ability_cast_range_buffer": 250,
+      "ability_cast_point": [
+        1.2
+      ],
+      "ability_channel_time": [
+        0.0,
+        0.0,
+        0.0,
+        0.0
+      ],
+      "ability_cooldown": [
+        70.0
+      ],
+      "ability_duration": [
+        0.0,
+        0.0,
+        0.0,
+        0.0
+      ],
+      "ability_damage": [
+        200.0,
+        275.0,
+        350.0
+      ],
+      "ability_mana_cost": [
+        100.0
+      ],
+      "ability_modifier_support_value": 1.0,
+      "ability_modifier_support_bonus": 0.0,
+      "fight_recap_level": 1,
+      "ability_draft_enabled": true,
+      "linked": null,
+      "ability_special": {
+        "cast_time_tooltip": [
+          1.2
+        ],
+        "tick_interval": [
+          0.05
+        ],
+        "forward_move_speed": [
+          600.0
+        ],
+        "turn_rate_boosted": [
+          165.0
+        ],
+        "turn_rate": [
+          120.0
+        ],
+        "radius": [
+          400.0
+        ],
+        "hit_radius": [
+          150.0
+        ],
+        "bounce_duration": [
+          0.4
+        ],
+        "stun_duration": [
+          1.0,
+          1.25,
+          1.5
+        ],
+        "knockback_radius": [
+          150.0
+        ],
+        "duration": [
+          8.0
+        ],
+        "jump_recover_time": [
+          0.25
+        ]
+      }
+    },
+    {
+      "id": 6459,
+      "key": "pangolier_gyroshell_stop",
+      "name": "Stop Rolling",
+      "description": "Halt!",
+      "image": "https://hgv-hyperstone.azurewebsites.net/abilities/pangolier_gyroshell_stop.png",
+      "hero_id": 120,
+      "ability_type": "DOTA_ABILITY_TYPE_ULTIMATE",
+      "ability_behaviors": [
+        "DOTA_ABILITY_BEHAVIOR_NO_TARGET",
+        "DOTA_ABILITY_BEHAVIOR_NOT_LEARNABLE",
+        "DOTA_ABILITY_BEHAVIOR_HIDDEN",
+        "DOTA_ABILITY_BEHAVIOR_DONT_RESUME_ATTACK",
+        "DOTA_ABILITY_BEHAVIOR_IMMEDIATE"
+      ],
+      "ability_unit_target_team": null,
+      "ability_unit_target_type": [],
+      "ability_unit_target_flags": [],
+      "spell_immunity_type": null,
+      "spell_dispellable_type": null,
+      "ability_unit_damage_type": null,
+      "is_skill": false,
+      "is_ultimate": true,
+      "has_scepter_upgrade": false,
+      "on_castbar": true,
+      "on_learnbar": true,
+      "ability_cast_range": [
+        0
+      ],
+      "ability_cast_range_buffer": 250,
+      "ability_cast_point": [
+        0.0,
+        0.0,
+        0.0,
+        0.0
+      ],
+      "ability_channel_time": [
+        0.0,
+        0.0,
+        0.0,
+        0.0
+      ],
+      "ability_cooldown": [
+        0.0,
+        0.0,
+        0.0,
+        0.0
+      ],
+      "ability_duration": [
+        0.0,
+        0.0,
+        0.0,
+        0.0
+      ],
+      "ability_damage": [
+        0.0,
+        0.0,
+        0.0,
+        0.0
+      ],
+      "ability_mana_cost": [
+        0.0,
+        0.0,
+        0.0,
+        0.0
+      ],
+      "ability_modifier_support_value": 1.0,
+      "ability_modifier_support_bonus": 0.0,
+      "fight_recap_level": 0,
+      "ability_draft_enabled": false,
+      "linked": null,
+      "ability_special": {}
+    }
+  ],
+  "talents": [
+    {
+      "id": 7132,
+      "key": "special_bonus_mp_regen_150",
+      "name": "+1.5 Mana Regen",
+      "description": null
+    },
+    {
+      "id": 5919,
+      "key": "special_bonus_movement_speed_25",
+      "name": "+25 Movement Speed",
+      "description": null
+    },
+    {
+      "id": 6463,
+      "key": "special_bonus_unique_pangolier_2",
+      "name": "2s Shield Crash CD in Ball",
+      "description": null
+    },
+    {
+      "id": 9135,
+      "key": "special_bonus_unique_pangolier_6",
+      "name": "+2s Rolling Thunder Duration",
+      "description": null
+    },
+    {
+      "id": 9060,
+      "key": "special_bonus_unique_pangolier_3",
+      "name": "+40 Swashbuckle Damage",
+      "description": null
+    },
+    {
+      "id": 6080,
+      "key": "special_bonus_strength_20",
+      "name": "+20 Strength",
+      "description": null
+    },
+    {
+      "id": 9061,
+      "key": "special_bonus_unique_pangolier_4",
+      "name": "-3s Swashbuckle Cooldown",
+      "description": null
+    },
+    {
+      "id": 9062,
+      "key": "special_bonus_unique_pangolier_5",
+      "name": "-35s Rolling Thunder Cooldown",
+      "description": null
+    }
+  ],
+  "legs": 2,
+  "armor_physical": 1.0,
+  "magical_resistance": 25,
+  "attack_capabilities": "DOTA_UNIT_CAP_MELEE_ATTACK",
+  "attack_damage_min": 29,
+  "attack_damage_max": 35,
+  "attack_rate": 1.7,
+  "attack_animation_point": 0.33,
+  "attack_acquisition_range": 600,
+  "attack_range": 150,
+  "projectile_speed": 900,
+  "attribute_primary": "DOTA_ATTRIBUTE_AGILITY",
+  "attribute_base_strength": 17,
+  "attribute_strength_gain": 2.5,
+  "attribute_base_intelligence": 16,
+  "attribute_intelligence_gain": 1.9,
+  "attribute_base_agility": 18,
+  "attribute_agility_gain": 2.8,
+  "status_health": 200,
+  "status_health_regen": 1.75,
+  "status_mana": 75,
+  "status_mana_regen": 0.9,
+  "bounty_xp": 62,
+  "bounty_gold_min": 0,
+  "bounty_gold_max": 0,
+  "movement_capabilities": "DOTA_UNIT_CAP_MOVE_GROUND",
+  "movement_speed": 305,
+  "movement_turn_rate": 1.0,
+  "has_aggressive_stance": true,
+  "team": 1,
+  "team_name": "Radiant",
+  "vision_daytime_range": 1800,
+  "vision_nighttime_range": 0,
+  "bot": {
+    "hero_types": null,
+    "solo_desire": 0,
+    "requires_babysit": 0,
+    "provides_babysit": 0,
+    "survival_rating": 0,
+    "requires_farm": 0,
+    "provides_setup": 0,
+    "requires_setup": 0
+  }
+}

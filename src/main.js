@@ -16,6 +16,7 @@ import SocialFollow from '@/components/SocialFollow.vue'
 // CSS
 import 'bootstrap/dist/css/bootstrap.min.css'
 import 'bootstrap-vue/dist/bootstrap-vue.css'
+import '@/assets/boostrap.min.css'
 import '@/assets/main.css'
 
 Vue.use(VueResource)

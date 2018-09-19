@@ -1,0 +1,653 @@
+{
+  "id": 71,
+  "name": "Spirit Breaker",
+  "key": "npc_dota_hero_spirit_breaker",
+  "image_profile": "https://hgv-hyperstone.azurewebsites.net/heroes/profile/npc_dota_hero_spirit_breaker.png",
+  "image_icon": "https://hgv-hyperstone.azurewebsites.net/heroes/icons/npc_dota_hero_spirit_breaker.png",
+  "image_banner": "https://hgv-hyperstone.azurewebsites.net/heroes/banner/npc_dota_hero_spirit_breaker.png",
+  "enabled": true,
+  "new_player_enable": true,
+  "captains_mode_enabled": true,
+  "ability_draft_enabled": true,
+  "complexity": 1,
+  "roles": [
+    {
+      "role": "Carry",
+      "level": 1
+    },
+    {
+      "role": "Initiator",
+      "level": 2
+    },
+    {
+      "role": "Disabler",
+      "level": 2
+    },
+    {
+      "role": "Durable",
+      "level": 2
+    },
+    {
+      "role": "Escape",
+      "level": 1
+    }
+  ],
+  "bot_implemented": false,
+  "abilities": [
+    {
+      "id": 5353,
+      "key": "spirit_breaker_charge_of_darkness",
+      "name": "Charge of Darkness",
+      "description": "Spirit Breaker fixes his sight on an enemy unit and starts charging through all objects.  All enemy units passed through and the targeted unit will be hit by a Greater Bash.  If the targeted unit dies, Spirit Breaker will change his target to the nearest enemy unit to that location.",
+      "image": "https://hgv-hyperstone.azurewebsites.net/abilities/spirit_breaker_charge_of_darkness.png",
+      "hero_id": 71,
+      "ability_type": "DOTA_ABILITY_TYPE_BASIC",
+      "ability_behaviors": [
+        "DOTA_ABILITY_BEHAVIOR_UNIT_TARGET",
+        "DOTA_ABILITY_BEHAVIOR_DONT_ALERT_TARGET",
+        "DOTA_ABILITY_BEHAVIOR_ROOT_DISABLES"
+      ],
+      "ability_unit_target_team": "DOTA_UNIT_TARGET_TEAM_ENEMY",
+      "ability_unit_target_type": [
+        "DOTA_UNIT_TARGET_HERO",
+        "DOTA_UNIT_TARGET_BASIC"
+      ],
+      "ability_unit_target_flags": [],
+      "spell_immunity_type": "SPELL_IMMUNITY_ENEMIES_NO",
+      "spell_dispellable_type": "SPELL_DISPELLABLE_NO",
+      "ability_unit_damage_type": null,
+      "is_skill": true,
+      "is_ultimate": false,
+      "has_scepter_upgrade": false,
+      "on_castbar": true,
+      "on_learnbar": true,
+      "ability_cast_range": [
+        0
+      ],
+      "ability_cast_range_buffer": 250,
+      "ability_cast_point": [
+        0.47,
+        0.47,
+        0.47,
+        0.47
+      ],
+      "ability_channel_time": [
+        0.0,
+        0.0,
+        0.0,
+        0.0
+      ],
+      "ability_cooldown": [
+        12.0
+      ],
+      "ability_duration": [
+        0.0,
+        0.0,
+        0.0,
+        0.0
+      ],
+      "ability_damage": [
+        0.0,
+        0.0,
+        0.0,
+        0.0
+      ],
+      "ability_mana_cost": [
+        100.0,
+        100.0,
+        100.0,
+        100.0
+      ],
+      "ability_modifier_support_value": 0.3,
+      "ability_modifier_support_bonus": 0.0,
+      "fight_recap_level": 1,
+      "ability_draft_enabled": true,
+      "linked": null,
+      "ability_special": {
+        "movement_speed": [
+          600.0,
+          650.0,
+          700.0,
+          750.0
+        ],
+        "stun_duration": [
+          1.2,
+          1.6,
+          2.0,
+          2.4
+        ],
+        "bash_radius": [
+          300.0,
+          300.0,
+          300.0,
+          300.0
+        ],
+        "vision_radius": [
+          400.0,
+          400.0,
+          400.0,
+          400.0
+        ],
+        "vision_duration": [
+          0.94,
+          0.94,
+          0.94,
+          0.94
+        ]
+      }
+    },
+    {
+      "id": 5354,
+      "key": "spirit_breaker_empowering_haste",
+      "name": "Empowering Haste",
+      "description": "Causes Spirit Breaker to gain power with higher movement speed. His presence increases the movement speed of nearby allied units. Can be cast to improve the movement speed bonus for %duration% seconds.",
+      "image": "https://hgv-hyperstone.azurewebsites.net/abilities/spirit_breaker_empowering_haste.png",
+      "hero_id": 71,
+      "ability_type": "DOTA_ABILITY_TYPE_BASIC",
+      "ability_behaviors": [
+        "DOTA_ABILITY_BEHAVIOR_NO_TARGET",
+        "DOTA_ABILITY_BEHAVIOR_IMMEDIATE",
+        "DOTA_ABILITY_BEHAVIOR_AURA"
+      ],
+      "ability_unit_target_team": "DOTA_UNIT_TARGET_TEAM_FRIENDLY",
+      "ability_unit_target_type": [],
+      "ability_unit_target_flags": [],
+      "spell_immunity_type": null,
+      "spell_dispellable_type": "SPELL_DISPELLABLE_NO",
+      "ability_unit_damage_type": null,
+      "is_skill": true,
+      "is_ultimate": false,
+      "has_scepter_upgrade": false,
+      "on_castbar": true,
+      "on_learnbar": true,
+      "ability_cast_range": [
+        0
+      ],
+      "ability_cast_range_buffer": 250,
+      "ability_cast_point": [
+        0.0,
+        0.0,
+        0.0,
+        0.0
+      ],
+      "ability_channel_time": [
+        0.0,
+        0.0,
+        0.0,
+        0.0
+      ],
+      "ability_cooldown": [
+        20.0
+      ],
+      "ability_duration": [
+        0.0,
+        0.0,
+        0.0,
+        0.0
+      ],
+      "ability_damage": [
+        0.0,
+        0.0,
+        0.0,
+        0.0
+      ],
+      "ability_mana_cost": [
+        0.0,
+        0.0,
+        0.0,
+        0.0
+      ],
+      "ability_modifier_support_value": 1.0,
+      "ability_modifier_support_bonus": 0.0,
+      "fight_recap_level": 0,
+      "ability_draft_enabled": true,
+      "linked": null,
+      "ability_special": {}
+    },
+    {
+      "id": 5355,
+      "key": "spirit_breaker_greater_bash",
+      "name": "Greater Bash",
+      "description": "Gives a chance to stun and knockback an enemy unit on an attack, as well as gaining bonus movement speed after a bash occurs. Deals a percentage of movement speed as damage.",
+      "image": "https://hgv-hyperstone.azurewebsites.net/abilities/spirit_breaker_greater_bash.png",
+      "hero_id": 71,
+      "ability_type": "DOTA_ABILITY_TYPE_BASIC",
+      "ability_behaviors": [
+        "DOTA_ABILITY_BEHAVIOR_PASSIVE"
+      ],
+      "ability_unit_target_team": null,
+      "ability_unit_target_type": [],
+      "ability_unit_target_flags": [],
+      "spell_immunity_type": "SPELL_IMMUNITY_ENEMIES_YES",
+      "spell_dispellable_type": "SPELL_DISPELLABLE_YES_STRONG",
+      "ability_unit_damage_type": "DAMAGE_TYPE_MAGICAL",
+      "is_skill": true,
+      "is_ultimate": false,
+      "has_scepter_upgrade": false,
+      "on_castbar": true,
+      "on_learnbar": true,
+      "ability_cast_range": [
+        0
+      ],
+      "ability_cast_range_buffer": 250,
+      "ability_cast_point": [
+        0.0,
+        0.0,
+        0.0,
+        0.0
+      ],
+      "ability_channel_time": [
+        0.0,
+        0.0,
+        0.0,
+        0.0
+      ],
+      "ability_cooldown": [
+        1.5,
+        1.5,
+        1.5,
+        1.5
+      ],
+      "ability_duration": [
+        0.0,
+        0.0,
+        0.0,
+        0.0
+      ],
+      "ability_damage": [
+        0.0,
+        0.0,
+        0.0,
+        0.0
+      ],
+      "ability_mana_cost": [
+        0.0,
+        0.0,
+        0.0,
+        0.0
+      ],
+      "ability_modifier_support_value": 1.0,
+      "ability_modifier_support_bonus": 40.0,
+      "fight_recap_level": 0,
+      "ability_draft_enabled": true,
+      "linked": null,
+      "ability_special": {
+        "chance_pct": [
+          17.0,
+          17.0,
+          17.0,
+          17.0
+        ],
+        "damage": [
+          12.0,
+          24.0,
+          36.0,
+          48.0
+        ],
+        "duration": [
+          1.2,
+          1.4,
+          1.6,
+          1.8
+        ],
+        "knockback_duration": [
+          0.5,
+          0.5,
+          0.5,
+          0.5
+        ],
+        "knockback_distance": [
+          143.0,
+          152.0,
+          158.0,
+          162.0
+        ],
+        "knockback_height": [
+          50.0,
+          50.0,
+          50.0,
+          50.0
+        ],
+        "bonus_movespeed_pct": [
+          17.0
+        ],
+        "movespeed_duration": [
+          3.0,
+          3.0,
+          3.0,
+          3.0
+        ]
+      }
+    },
+    {
+      "id": 6251,
+      "key": "generic_hidden",
+      "name": null,
+      "description": null,
+      "image": "https://hgv-hyperstone.azurewebsites.net/abilities/generic_hidden.png",
+      "hero_id": 71,
+      "ability_type": "DOTA_ABILITY_TYPE_BASIC",
+      "ability_behaviors": [
+        "DOTA_ABILITY_BEHAVIOR_HIDDEN",
+        "DOTA_ABILITY_BEHAVIOR_NOT_LEARNABLE"
+      ],
+      "ability_unit_target_team": null,
+      "ability_unit_target_type": [],
+      "ability_unit_target_flags": [],
+      "spell_immunity_type": null,
+      "spell_dispellable_type": null,
+      "ability_unit_damage_type": null,
+      "is_skill": true,
+      "is_ultimate": false,
+      "has_scepter_upgrade": false,
+      "on_castbar": true,
+      "on_learnbar": true,
+      "ability_cast_range": [
+        0
+      ],
+      "ability_cast_range_buffer": 250,
+      "ability_cast_point": [
+        0.0,
+        0.0,
+        0.0,
+        0.0
+      ],
+      "ability_channel_time": [
+        0.0,
+        0.0,
+        0.0,
+        0.0
+      ],
+      "ability_cooldown": [
+        0.0,
+        0.0,
+        0.0,
+        0.0
+      ],
+      "ability_duration": [
+        0.0,
+        0.0,
+        0.0,
+        0.0
+      ],
+      "ability_damage": [
+        0.0,
+        0.0,
+        0.0,
+        0.0
+      ],
+      "ability_mana_cost": [
+        0.0,
+        0.0,
+        0.0,
+        0.0
+      ],
+      "ability_modifier_support_value": 1.0,
+      "ability_modifier_support_bonus": 0.0,
+      "fight_recap_level": 0,
+      "ability_draft_enabled": false,
+      "linked": null,
+      "ability_special": {}
+    },
+    {
+      "id": 6251,
+      "key": "generic_hidden",
+      "name": null,
+      "description": null,
+      "image": "https://hgv-hyperstone.azurewebsites.net/abilities/generic_hidden.png",
+      "hero_id": 71,
+      "ability_type": "DOTA_ABILITY_TYPE_BASIC",
+      "ability_behaviors": [
+        "DOTA_ABILITY_BEHAVIOR_HIDDEN",
+        "DOTA_ABILITY_BEHAVIOR_NOT_LEARNABLE"
+      ],
+      "ability_unit_target_team": null,
+      "ability_unit_target_type": [],
+      "ability_unit_target_flags": [],
+      "spell_immunity_type": null,
+      "spell_dispellable_type": null,
+      "ability_unit_damage_type": null,
+      "is_skill": true,
+      "is_ultimate": false,
+      "has_scepter_upgrade": false,
+      "on_castbar": true,
+      "on_learnbar": true,
+      "ability_cast_range": [
+        0
+      ],
+      "ability_cast_range_buffer": 250,
+      "ability_cast_point": [
+        0.0,
+        0.0,
+        0.0,
+        0.0
+      ],
+      "ability_channel_time": [
+        0.0,
+        0.0,
+        0.0,
+        0.0
+      ],
+      "ability_cooldown": [
+        0.0,
+        0.0,
+        0.0,
+        0.0
+      ],
+      "ability_duration": [
+        0.0,
+        0.0,
+        0.0,
+        0.0
+      ],
+      "ability_damage": [
+        0.0,
+        0.0,
+        0.0,
+        0.0
+      ],
+      "ability_mana_cost": [
+        0.0,
+        0.0,
+        0.0,
+        0.0
+      ],
+      "ability_modifier_support_value": 1.0,
+      "ability_modifier_support_bonus": 0.0,
+      "fight_recap_level": 0,
+      "ability_draft_enabled": false,
+      "linked": null,
+      "ability_special": {}
+    },
+    {
+      "id": 5356,
+      "key": "spirit_breaker_nether_strike",
+      "name": "Nether Strike",
+      "description": "Spirit Breaker slips into the nether realm, reappearing next to his hapless victim. Upon reappearing, a Greater Bash of the current level occurs and deals bonus damage. Knocks back for double the normal distance. \\n\\nUpgradable by Aghanim's Scepter.",
+      "image": "https://hgv-hyperstone.azurewebsites.net/abilities/spirit_breaker_nether_strike.png",
+      "hero_id": 71,
+      "ability_type": "DOTA_ABILITY_TYPE_ULTIMATE",
+      "ability_behaviors": [
+        "DOTA_ABILITY_BEHAVIOR_UNIT_TARGET",
+        "DOTA_ABILITY_BEHAVIOR_IGNORE_BACKSWING"
+      ],
+      "ability_unit_target_team": "DOTA_UNIT_TARGET_TEAM_ENEMY",
+      "ability_unit_target_type": [
+        "DOTA_UNIT_TARGET_HERO",
+        "DOTA_UNIT_TARGET_BASIC"
+      ],
+      "ability_unit_target_flags": [
+        "DOTA_UNIT_TARGET_FLAG_MAGIC_IMMUNE_ENEMIES"
+      ],
+      "spell_immunity_type": "SPELL_IMMUNITY_ENEMIES_YES",
+      "spell_dispellable_type": null,
+      "ability_unit_damage_type": "DAMAGE_TYPE_MAGICAL",
+      "is_skill": false,
+      "is_ultimate": true,
+      "has_scepter_upgrade": true,
+      "on_castbar": true,
+      "on_learnbar": true,
+      "ability_cast_range": [
+        700
+      ],
+      "ability_cast_range_buffer": 500,
+      "ability_cast_point": [
+        1.2
+      ],
+      "ability_channel_time": [
+        0.0,
+        0.0,
+        0.0,
+        0.0
+      ],
+      "ability_cooldown": [
+        100.0,
+        80.0,
+        60.0
+      ],
+      "ability_duration": [
+        0.0,
+        0.0,
+        0.0,
+        0.0
+      ],
+      "ability_damage": [
+        0.0,
+        0.0,
+        0.0,
+        0.0
+      ],
+      "ability_mana_cost": [
+        125.0,
+        150.0,
+        175.0
+      ],
+      "ability_modifier_support_value": 1.0,
+      "ability_modifier_support_bonus": 0.0,
+      "fight_recap_level": 2,
+      "ability_draft_enabled": true,
+      "linked": null,
+      "ability_special": {
+        "damage": [
+          150.0,
+          200.0,
+          250.0
+        ],
+        "fade_time": [
+          1.0,
+          1.0,
+          1.0
+        ],
+        "tooltip_range": [
+          700.0
+        ],
+        "cast_range_scepter": [
+          850.0
+        ],
+        "bash_radius_scepter": [
+          250.0,
+          250.0,
+          250.0
+        ],
+        "cooldown_scepter": [
+          20.0,
+          20.0,
+          20.0
+        ]
+      }
+    }
+  ],
+  "talents": [
+    {
+      "id": 7019,
+      "key": "special_bonus_night_vision_600",
+      "name": "+600 Night Vision",
+      "description": null
+    },
+    {
+      "id": 5932,
+      "key": "special_bonus_armor_5",
+      "name": "+5 Armor",
+      "description": null
+    },
+    {
+      "id": 5912,
+      "key": "special_bonus_hp_regen_10",
+      "name": "+10 Health Regen",
+      "description": null
+    },
+    {
+      "id": 5940,
+      "key": "special_bonus_attack_damage_40",
+      "name": "+40 Damage",
+      "description": null
+    },
+    {
+      "id": 6543,
+      "key": "special_bonus_unique_spirit_breaker_3",
+      "name": "+30% Greater Bash Damage",
+      "description": null
+    },
+    {
+      "id": 6296,
+      "key": "special_bonus_unique_spirit_breaker_2",
+      "name": "+400 Charge Speed",
+      "description": null
+    },
+    {
+      "id": 6149,
+      "key": "special_bonus_unique_spirit_breaker_1",
+      "name": "+25% Greater Bash Chance",
+      "description": null
+    },
+    {
+      "id": 6905,
+      "key": "special_bonus_hp_800",
+      "name": "+800 Health",
+      "description": null
+    }
+  ],
+  "legs": 2,
+  "armor_physical": 2.0,
+  "magical_resistance": 25,
+  "attack_capabilities": "DOTA_UNIT_CAP_MELEE_ATTACK",
+  "attack_damage_min": 31,
+  "attack_damage_max": 41,
+  "attack_rate": 1.9,
+  "attack_animation_point": 0.6,
+  "attack_acquisition_range": 600,
+  "attack_range": 150,
+  "projectile_speed": 900,
+  "attribute_primary": "DOTA_ATTRIBUTE_STRENGTH",
+  "attribute_base_strength": 29,
+  "attribute_strength_gain": 2.7,
+  "attribute_base_intelligence": 14,
+  "attribute_intelligence_gain": 1.8,
+  "attribute_base_agility": 17,
+  "attribute_agility_gain": 1.7,
+  "status_health": 200,
+  "status_health_regen": 1.5,
+  "status_mana": 75,
+  "status_mana_regen": 0.9,
+  "bounty_xp": 62,
+  "bounty_gold_min": 0,
+  "bounty_gold_max": 0,
+  "movement_capabilities": "DOTA_UNIT_CAP_MOVE_GROUND",
+  "movement_speed": 280,
+  "movement_turn_rate": 0.5,
+  "has_aggressive_stance": false,
+  "team": 1,
+  "team_name": "Radiant",
+  "vision_daytime_range": 1800,
+  "vision_nighttime_range": 0,
+  "bot": {
+    "hero_types": null,
+    "solo_desire": 0,
+    "requires_babysit": 0,
+    "provides_babysit": 0,
+    "survival_rating": 0,
+    "requires_farm": 0,
+    "provides_setup": 0,
+    "requires_setup": 0
+  }
+}

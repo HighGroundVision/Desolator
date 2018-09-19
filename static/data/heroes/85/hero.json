@@ -1,0 +1,664 @@
+{
+  "id": 85,
+  "name": "Undying",
+  "key": "npc_dota_hero_undying",
+  "image_profile": "https://hgv-hyperstone.azurewebsites.net/heroes/profile/npc_dota_hero_undying.png",
+  "image_icon": "https://hgv-hyperstone.azurewebsites.net/heroes/icons/npc_dota_hero_undying.png",
+  "image_banner": "https://hgv-hyperstone.azurewebsites.net/heroes/banner/npc_dota_hero_undying.png",
+  "enabled": true,
+  "new_player_enable": true,
+  "captains_mode_enabled": true,
+  "ability_draft_enabled": true,
+  "complexity": 1,
+  "roles": [
+    {
+      "role": "Support",
+      "level": 1
+    },
+    {
+      "role": "Durable",
+      "level": 2
+    },
+    {
+      "role": "Disabler",
+      "level": 1
+    },
+    {
+      "role": "Nuker",
+      "level": 1
+    }
+  ],
+  "bot_implemented": false,
+  "abilities": [
+    {
+      "id": 5442,
+      "key": "undying_decay",
+      "name": "Decay",
+      "description": "Undying steals strength from all enemy heroes in an area, dealing base damage as he claims the enemy's strength for himself.\\n\\nUpgradable by Aghanim's Scepter.",
+      "image": "https://hgv-hyperstone.azurewebsites.net/abilities/undying_decay.png",
+      "hero_id": 85,
+      "ability_type": "DOTA_ABILITY_TYPE_BASIC",
+      "ability_behaviors": [
+        "DOTA_ABILITY_BEHAVIOR_AOE",
+        "DOTA_ABILITY_BEHAVIOR_POINT",
+        "DOTA_ABILITY_BEHAVIOR_IGNORE_BACKSWING"
+      ],
+      "ability_unit_target_team": null,
+      "ability_unit_target_type": [
+        "DOTA_UNIT_TARGET_HERO",
+        "DOTA_UNIT_TARGET_CREEP"
+      ],
+      "ability_unit_target_flags": [],
+      "spell_immunity_type": "SPELL_IMMUNITY_ENEMIES_NO",
+      "spell_dispellable_type": "SPELL_DISPELLABLE_NO",
+      "ability_unit_damage_type": "DAMAGE_TYPE_MAGICAL",
+      "is_skill": true,
+      "is_ultimate": false,
+      "has_scepter_upgrade": true,
+      "on_castbar": true,
+      "on_learnbar": true,
+      "ability_cast_range": [
+        650
+      ],
+      "ability_cast_range_buffer": 250,
+      "ability_cast_point": [
+        0.45,
+        0.45,
+        0.45,
+        0.45
+      ],
+      "ability_channel_time": [
+        0.0,
+        0.0,
+        0.0,
+        0.0
+      ],
+      "ability_cooldown": [
+        10.0,
+        8.0,
+        6.0,
+        4.0
+      ],
+      "ability_duration": [
+        21.0,
+        24.0,
+        27.0,
+        30.0
+      ],
+      "ability_damage": [
+        0.0,
+        0.0,
+        0.0,
+        0.0
+      ],
+      "ability_mana_cost": [
+        70.0,
+        85.0,
+        100.0,
+        115.0
+      ],
+      "ability_modifier_support_value": 1.0,
+      "ability_modifier_support_bonus": 0.0,
+      "fight_recap_level": 1,
+      "ability_draft_enabled": true,
+      "linked": null,
+      "ability_special": {
+        "decay_damage": [
+          20.0,
+          50.0,
+          80.0,
+          110.0
+        ],
+        "str_steal": [
+          4.0
+        ],
+        "decay_duration": [
+          45.0
+        ],
+        "radius": [
+          325.0
+        ],
+        "str_scale_up": [
+          2.0
+        ],
+        "str_steal_scepter": [
+          10.0
+        ]
+      }
+    },
+    {
+      "id": 5443,
+      "key": "undying_soul_rip",
+      "name": "Soul Rip",
+      "description": "Undying rips health away from all nearby units and uses it to heal an ally, or damage an enemy. Soul Rip can also be used to heal Tombstone.",
+      "image": "https://hgv-hyperstone.azurewebsites.net/abilities/undying_soul_rip.png",
+      "hero_id": 85,
+      "ability_type": "DOTA_ABILITY_TYPE_BASIC",
+      "ability_behaviors": [
+        "DOTA_ABILITY_BEHAVIOR_UNIT_TARGET",
+        "DOTA_ABILITY_BEHAVIOR_IGNORE_BACKSWING"
+      ],
+      "ability_unit_target_team": "DOTA_UNIT_TARGET_TEAM_CUSTOM",
+      "ability_unit_target_type": [
+        "DOTA_UNIT_TARGET_CUSTOM"
+      ],
+      "ability_unit_target_flags": [],
+      "spell_immunity_type": "SPELL_IMMUNITY_ENEMIES_NO",
+      "spell_dispellable_type": null,
+      "ability_unit_damage_type": "DAMAGE_TYPE_MAGICAL",
+      "is_skill": true,
+      "is_ultimate": false,
+      "has_scepter_upgrade": false,
+      "on_castbar": true,
+      "on_learnbar": true,
+      "ability_cast_range": [
+        750
+      ],
+      "ability_cast_range_buffer": 250,
+      "ability_cast_point": [
+        0.45,
+        0.45,
+        0.45,
+        0.45
+      ],
+      "ability_channel_time": [
+        0.0,
+        0.0,
+        0.0,
+        0.0
+      ],
+      "ability_cooldown": [
+        24.0,
+        18.0,
+        12.0,
+        6.0
+      ],
+      "ability_duration": [
+        0.0,
+        0.0,
+        0.0,
+        0.0
+      ],
+      "ability_damage": [
+        0.0,
+        0.0,
+        0.0,
+        0.0
+      ],
+      "ability_mana_cost": [
+        80.0,
+        95.0,
+        110.0,
+        125.0
+      ],
+      "ability_modifier_support_value": 0.0,
+      "ability_modifier_support_bonus": 0.0,
+      "fight_recap_level": 1,
+      "ability_draft_enabled": true,
+      "linked": null,
+      "ability_special": {
+        "damage_per_unit": [
+          18.0,
+          22.0,
+          26.0,
+          30.0
+        ],
+        "max_units": [
+          10.0,
+          12.0,
+          14.0,
+          16.0
+        ],
+        "radius": [
+          1300.0
+        ],
+        "tombstone_heal": [
+          2.0,
+          4.0,
+          6.0,
+          8.0
+        ]
+      }
+    },
+    {
+      "id": 5444,
+      "key": "undying_tombstone",
+      "name": "Tombstone",
+      "description": "Summons a tombstone at the target point.  Zombies will frequently spawn next to every enemy unit in the area around the Tombstone, and attack them.  Zombies have the Deathlust ability, which causes their attacks to slow the target, and if the target reaches below a certain amount of health, increases the attack and movement speed of the zombie.",
+      "image": "https://hgv-hyperstone.azurewebsites.net/abilities/undying_tombstone.png",
+      "hero_id": 85,
+      "ability_type": "DOTA_ABILITY_TYPE_BASIC",
+      "ability_behaviors": [
+        "DOTA_ABILITY_BEHAVIOR_POINT",
+        "DOTA_ABILITY_BEHAVIOR_IGNORE_BACKSWING"
+      ],
+      "ability_unit_target_team": null,
+      "ability_unit_target_type": [],
+      "ability_unit_target_flags": [],
+      "spell_immunity_type": "SPELL_IMMUNITY_ENEMIES_YES",
+      "spell_dispellable_type": null,
+      "ability_unit_damage_type": null,
+      "is_skill": true,
+      "is_ultimate": false,
+      "has_scepter_upgrade": false,
+      "on_castbar": true,
+      "on_learnbar": true,
+      "ability_cast_range": [
+        600
+      ],
+      "ability_cast_range_buffer": 250,
+      "ability_cast_point": [
+        0.45,
+        0.45,
+        0.45,
+        0.45
+      ],
+      "ability_channel_time": [
+        0.0,
+        0.0,
+        0.0,
+        0.0
+      ],
+      "ability_cooldown": [
+        85.0,
+        80.0,
+        75.0,
+        70.0
+      ],
+      "ability_duration": [
+        0.0,
+        0.0,
+        0.0,
+        0.0
+      ],
+      "ability_damage": [
+        0.0,
+        0.0,
+        0.0,
+        0.0
+      ],
+      "ability_mana_cost": [
+        120.0,
+        130.0,
+        140.0,
+        150.0
+      ],
+      "ability_modifier_support_value": 1.0,
+      "ability_modifier_support_bonus": 0.0,
+      "fight_recap_level": 1,
+      "ability_draft_enabled": true,
+      "linked": null,
+      "ability_special": {
+        "tombstone_health": [
+          8.0,
+          10.0,
+          12.0,
+          16.0
+        ],
+        "hits_to_destroy_tooltip": [
+          4.0,
+          5.0,
+          6.0,
+          8.0
+        ],
+        "duration": [
+          30.0
+        ],
+        "radius": [
+          1200.0
+        ],
+        "health_threshold": [
+          100.0,
+          200.0,
+          300.0,
+          400.0
+        ],
+        "health_threshold_pct_tooltip": [
+          20.0,
+          25.0,
+          30.0,
+          35.0
+        ],
+        "zombie_interval": [
+          4.0,
+          3.5,
+          3.0,
+          2.5
+        ]
+      }
+    },
+    {
+      "id": 6251,
+      "key": "generic_hidden",
+      "name": null,
+      "description": null,
+      "image": "https://hgv-hyperstone.azurewebsites.net/abilities/generic_hidden.png",
+      "hero_id": 85,
+      "ability_type": "DOTA_ABILITY_TYPE_BASIC",
+      "ability_behaviors": [
+        "DOTA_ABILITY_BEHAVIOR_HIDDEN",
+        "DOTA_ABILITY_BEHAVIOR_NOT_LEARNABLE"
+      ],
+      "ability_unit_target_team": null,
+      "ability_unit_target_type": [],
+      "ability_unit_target_flags": [],
+      "spell_immunity_type": null,
+      "spell_dispellable_type": null,
+      "ability_unit_damage_type": null,
+      "is_skill": true,
+      "is_ultimate": false,
+      "has_scepter_upgrade": false,
+      "on_castbar": true,
+      "on_learnbar": true,
+      "ability_cast_range": [
+        0
+      ],
+      "ability_cast_range_buffer": 250,
+      "ability_cast_point": [
+        0.0,
+        0.0,
+        0.0,
+        0.0
+      ],
+      "ability_channel_time": [
+        0.0,
+        0.0,
+        0.0,
+        0.0
+      ],
+      "ability_cooldown": [
+        0.0,
+        0.0,
+        0.0,
+        0.0
+      ],
+      "ability_duration": [
+        0.0,
+        0.0,
+        0.0,
+        0.0
+      ],
+      "ability_damage": [
+        0.0,
+        0.0,
+        0.0,
+        0.0
+      ],
+      "ability_mana_cost": [
+        0.0,
+        0.0,
+        0.0,
+        0.0
+      ],
+      "ability_modifier_support_value": 1.0,
+      "ability_modifier_support_bonus": 0.0,
+      "fight_recap_level": 0,
+      "ability_draft_enabled": false,
+      "linked": null,
+      "ability_special": {}
+    },
+    {
+      "id": 6251,
+      "key": "generic_hidden",
+      "name": null,
+      "description": null,
+      "image": "https://hgv-hyperstone.azurewebsites.net/abilities/generic_hidden.png",
+      "hero_id": 85,
+      "ability_type": "DOTA_ABILITY_TYPE_BASIC",
+      "ability_behaviors": [
+        "DOTA_ABILITY_BEHAVIOR_HIDDEN",
+        "DOTA_ABILITY_BEHAVIOR_NOT_LEARNABLE"
+      ],
+      "ability_unit_target_team": null,
+      "ability_unit_target_type": [],
+      "ability_unit_target_flags": [],
+      "spell_immunity_type": null,
+      "spell_dispellable_type": null,
+      "ability_unit_damage_type": null,
+      "is_skill": true,
+      "is_ultimate": false,
+      "has_scepter_upgrade": false,
+      "on_castbar": true,
+      "on_learnbar": true,
+      "ability_cast_range": [
+        0
+      ],
+      "ability_cast_range_buffer": 250,
+      "ability_cast_point": [
+        0.0,
+        0.0,
+        0.0,
+        0.0
+      ],
+      "ability_channel_time": [
+        0.0,
+        0.0,
+        0.0,
+        0.0
+      ],
+      "ability_cooldown": [
+        0.0,
+        0.0,
+        0.0,
+        0.0
+      ],
+      "ability_duration": [
+        0.0,
+        0.0,
+        0.0,
+        0.0
+      ],
+      "ability_damage": [
+        0.0,
+        0.0,
+        0.0,
+        0.0
+      ],
+      "ability_mana_cost": [
+        0.0,
+        0.0,
+        0.0,
+        0.0
+      ],
+      "ability_modifier_support_value": 1.0,
+      "ability_modifier_support_bonus": 0.0,
+      "fight_recap_level": 0,
+      "ability_draft_enabled": false,
+      "linked": null,
+      "ability_special": {}
+    },
+    {
+      "id": 5447,
+      "key": "undying_flesh_golem",
+      "name": "Flesh Golem",
+      "description": "Undying transforms into a horrifying flesh golem that possesses a Plague Aura.  This aura slows all enemy units within 750 range and amplifies the damage they take; the closer to Undying, the more damage and slow.  When a plagued unit dies, Undying is healed equal to a percentage of his own maximum health.",
+      "image": "https://hgv-hyperstone.azurewebsites.net/abilities/undying_flesh_golem.png",
+      "hero_id": 85,
+      "ability_type": "DOTA_ABILITY_TYPE_ULTIMATE",
+      "ability_behaviors": [
+        "DOTA_ABILITY_BEHAVIOR_NO_TARGET",
+        "DOTA_ABILITY_BEHAVIOR_IMMEDIATE"
+      ],
+      "ability_unit_target_team": null,
+      "ability_unit_target_type": [],
+      "ability_unit_target_flags": [],
+      "spell_immunity_type": "SPELL_IMMUNITY_ENEMIES_YES",
+      "spell_dispellable_type": "SPELL_DISPELLABLE_NO",
+      "ability_unit_damage_type": null,
+      "is_skill": false,
+      "is_ultimate": true,
+      "has_scepter_upgrade": false,
+      "on_castbar": true,
+      "on_learnbar": true,
+      "ability_cast_range": [
+        0
+      ],
+      "ability_cast_range_buffer": 250,
+      "ability_cast_point": [
+        0.0,
+        0.0,
+        0.0,
+        0.0
+      ],
+      "ability_channel_time": [
+        0.0,
+        0.0,
+        0.0,
+        0.0
+      ],
+      "ability_cooldown": [
+        75.0,
+        75.0,
+        75.0
+      ],
+      "ability_duration": [
+        0.0,
+        0.0,
+        0.0,
+        0.0
+      ],
+      "ability_damage": [
+        0.0,
+        0.0,
+        0.0,
+        0.0
+      ],
+      "ability_mana_cost": [
+        100.0,
+        100.0,
+        100.0
+      ],
+      "ability_modifier_support_value": 1.0,
+      "ability_modifier_support_bonus": 0.0,
+      "fight_recap_level": 2,
+      "ability_draft_enabled": true,
+      "linked": null,
+      "ability_special": {
+        "duration": [
+          30.0
+        ],
+        "radius": [
+          750.0
+        ],
+        "full_power_radius": [
+          200.0
+        ],
+        "max_damage_amp": [
+          20.0,
+          25.0,
+          30.0
+        ],
+        "min_damage_amp": [
+          1.0
+        ],
+        "max_speed_slow": [
+          20.0
+        ],
+        "min_speed_slow": [
+          1.0
+        ],
+        "death_heal": [
+          15.0,
+          20.0,
+          25.0
+        ],
+        "death_heal_creep": [
+          2.0
+        ]
+      }
+    }
+  ],
+  "talents": [
+    {
+      "id": 6056,
+      "key": "special_bonus_cast_range_150",
+      "name": "+150 Cast Range",
+      "description": null
+    },
+    {
+      "id": 5911,
+      "key": "special_bonus_hp_regen_8",
+      "name": "+8 Health Regen",
+      "description": null
+    },
+    {
+      "id": 6546,
+      "key": "special_bonus_unique_undying_3",
+      "name": "Tombstone On Death",
+      "description": null
+    },
+    {
+      "id": 6971,
+      "key": "special_bonus_unique_undying_4",
+      "name": "+50 Decay Duration",
+      "description": null
+    },
+    {
+      "id": 6155,
+      "key": "special_bonus_unique_undying",
+      "name": "+30 Tombstone Zombie Damage",
+      "description": null
+    },
+    {
+      "id": 6972,
+      "key": "special_bonus_unique_undying_5",
+      "name": "+6 Tombstone Attacks to Destroy",
+      "description": null
+    },
+    {
+      "id": 6677,
+      "key": "special_bonus_reincarnation_200",
+      "name": "Gains Reincarnation 200 CD",
+      "description": null
+    },
+    {
+      "id": 6420,
+      "key": "special_bonus_unique_undying_2",
+      "name": "-2s Decay Cooldown",
+      "description": null
+    }
+  ],
+  "legs": 2,
+  "armor_physical": 2.0,
+  "magical_resistance": 25,
+  "attack_capabilities": "DOTA_UNIT_CAP_MELEE_ATTACK",
+  "attack_damage_min": 35,
+  "attack_damage_max": 43,
+  "attack_rate": 1.7,
+  "attack_animation_point": 0.3,
+  "attack_acquisition_range": 600,
+  "attack_range": 150,
+  "projectile_speed": 900,
+  "attribute_primary": "DOTA_ATTRIBUTE_STRENGTH",
+  "attribute_base_strength": 22,
+  "attribute_strength_gain": 2.4,
+  "attribute_base_intelligence": 27,
+  "attribute_intelligence_gain": 2.8,
+  "attribute_base_agility": 10,
+  "attribute_agility_gain": 0.8,
+  "status_health": 200,
+  "status_health_regen": 1.5,
+  "status_mana": 75,
+  "status_mana_regen": 0.9,
+  "bounty_xp": 62,
+  "bounty_gold_min": 0,
+  "bounty_gold_max": 0,
+  "movement_capabilities": "DOTA_UNIT_CAP_MOVE_GROUND",
+  "movement_speed": 305,
+  "movement_turn_rate": 0.6,
+  "has_aggressive_stance": false,
+  "team": 1,
+  "team_name": "Radiant",
+  "vision_daytime_range": 1800,
+  "vision_nighttime_range": 0,
+  "bot": {
+    "hero_types": null,
+    "solo_desire": 0,
+    "requires_babysit": 0,
+    "provides_babysit": 0,
+    "survival_rating": 0,
+    "requires_farm": 0,
+    "provides_setup": 0,
+    "requires_setup": 0
+  }
+}

@@ -1,0 +1,643 @@
+{
+  "id": 59,
+  "name": "Huskar",
+  "key": "npc_dota_hero_huskar",
+  "image_profile": "https://hgv-hyperstone.azurewebsites.net/heroes/profile/npc_dota_hero_huskar.png",
+  "image_icon": "https://hgv-hyperstone.azurewebsites.net/heroes/icons/npc_dota_hero_huskar.png",
+  "image_banner": "https://hgv-hyperstone.azurewebsites.net/heroes/banner/npc_dota_hero_huskar.png",
+  "enabled": true,
+  "new_player_enable": true,
+  "captains_mode_enabled": true,
+  "ability_draft_enabled": true,
+  "complexity": 1,
+  "roles": [
+    {
+      "role": "Carry",
+      "level": 2
+    },
+    {
+      "role": "Durable",
+      "level": 2
+    },
+    {
+      "role": "Initiator",
+      "level": 1
+    }
+  ],
+  "bot_implemented": false,
+  "abilities": [
+    {
+      "id": 5271,
+      "key": "huskar_inner_vitality",
+      "name": "Inner Vitality",
+      "description": "Unlocks the regenerative power of a friendly unit, with healing based upon its primary attribute. If the target is below 35%, it will heal faster.  Lasts 16 seconds.",
+      "image": "https://hgv-hyperstone.azurewebsites.net/abilities/huskar_inner_vitality.png",
+      "hero_id": 59,
+      "ability_type": "DOTA_ABILITY_TYPE_BASIC",
+      "ability_behaviors": [
+        "DOTA_ABILITY_BEHAVIOR_UNIT_TARGET",
+        "DOTA_ABILITY_BEHAVIOR_DONT_RESUME_ATTACK"
+      ],
+      "ability_unit_target_team": "DOTA_UNIT_TARGET_TEAM_FRIENDLY",
+      "ability_unit_target_type": [
+        "DOTA_UNIT_TARGET_HERO"
+      ],
+      "ability_unit_target_flags": [],
+      "spell_immunity_type": null,
+      "spell_dispellable_type": "SPELL_DISPELLABLE_YES",
+      "ability_unit_damage_type": null,
+      "is_skill": true,
+      "is_ultimate": false,
+      "has_scepter_upgrade": false,
+      "on_castbar": true,
+      "on_learnbar": true,
+      "ability_cast_range": [
+        800
+      ],
+      "ability_cast_range_buffer": 250,
+      "ability_cast_point": [
+        0.3,
+        0.3,
+        0.3,
+        0.3
+      ],
+      "ability_channel_time": [
+        0.0,
+        0.0,
+        0.0,
+        0.0
+      ],
+      "ability_cooldown": [
+        22.0,
+        18.0,
+        14.0,
+        10.0
+      ],
+      "ability_duration": [
+        16.0,
+        16.0,
+        16.0,
+        16.0
+      ],
+      "ability_damage": [
+        0.0,
+        0.0,
+        0.0,
+        0.0
+      ],
+      "ability_mana_cost": [
+        140.0,
+        150.0,
+        160.0,
+        170.0
+      ],
+      "ability_modifier_support_value": 0.0,
+      "ability_modifier_support_bonus": 0.0,
+      "fight_recap_level": 0,
+      "ability_draft_enabled": true,
+      "linked": null,
+      "ability_special": {
+        "heal": [
+          12.0
+        ],
+        "attrib_bonus": [
+          0.06,
+          0.08,
+          0.1,
+          0.12
+        ],
+        "hurt_attrib_bonus": [
+          0.22,
+          0.3,
+          0.38,
+          0.46
+        ],
+        "hurt_percent": [
+          0.35
+        ],
+        "tooltip_attrib_bonus": [
+          6.0,
+          8.0,
+          10.0,
+          12.0
+        ],
+        "tooltip_hurt_attrib_bonus": [
+          22.0,
+          30.0,
+          38.0,
+          46.0
+        ]
+      }
+    },
+    {
+      "id": 5272,
+      "key": "huskar_burning_spear",
+      "name": "Burning Spear",
+      "description": "Huskar sets his spears aflame, dealing damage over time with his regular attack.  Multiple attacks will stack additional damage.  Each attack drains some of Huskar's health.  Lasts 8 seconds.",
+      "image": "https://hgv-hyperstone.azurewebsites.net/abilities/huskar_burning_spear.png",
+      "hero_id": 59,
+      "ability_type": "DOTA_ABILITY_TYPE_BASIC",
+      "ability_behaviors": [
+        "DOTA_ABILITY_BEHAVIOR_UNIT_TARGET",
+        "DOTA_ABILITY_BEHAVIOR_AUTOCAST",
+        "DOTA_ABILITY_BEHAVIOR_ATTACK"
+      ],
+      "ability_unit_target_team": "DOTA_UNIT_TARGET_TEAM_ENEMY",
+      "ability_unit_target_type": [
+        "DOTA_UNIT_TARGET_HERO",
+        "DOTA_UNIT_TARGET_BASIC"
+      ],
+      "ability_unit_target_flags": [],
+      "spell_immunity_type": "SPELL_IMMUNITY_ENEMIES_NO",
+      "spell_dispellable_type": "SPELL_DISPELLABLE_NO",
+      "ability_unit_damage_type": "DAMAGE_TYPE_MAGICAL",
+      "is_skill": true,
+      "is_ultimate": false,
+      "has_scepter_upgrade": false,
+      "on_castbar": true,
+      "on_learnbar": true,
+      "ability_cast_range": [
+        450
+      ],
+      "ability_cast_range_buffer": 250,
+      "ability_cast_point": [
+        0.0,
+        0.0,
+        0.0,
+        0.0
+      ],
+      "ability_channel_time": [
+        0.0,
+        0.0,
+        0.0,
+        0.0
+      ],
+      "ability_cooldown": [
+        0.0,
+        0.0,
+        0.0,
+        0.0
+      ],
+      "ability_duration": [
+        8.0
+      ],
+      "ability_damage": [
+        0.0,
+        0.0,
+        0.0,
+        0.0
+      ],
+      "ability_mana_cost": [
+        0.0,
+        0.0,
+        0.0,
+        0.0
+      ],
+      "ability_modifier_support_value": 1.0,
+      "ability_modifier_support_bonus": 0.0,
+      "fight_recap_level": 0,
+      "ability_draft_enabled": true,
+      "linked": null,
+      "ability_special": {
+        "health_cost": [
+          15.0
+        ],
+        "burn_damage": [
+          5.0,
+          10.0,
+          15.0,
+          20.0
+        ]
+      }
+    },
+    {
+      "id": 5273,
+      "key": "huskar_berserkers_blood",
+      "name": "Berserker's Blood",
+      "description": "Huskar's injuries feed his power, giving increased attack speed and magic damage resistance based on missing health.",
+      "image": "https://hgv-hyperstone.azurewebsites.net/abilities/huskar_berserkers_blood.png",
+      "hero_id": 59,
+      "ability_type": "DOTA_ABILITY_TYPE_BASIC",
+      "ability_behaviors": [
+        "DOTA_ABILITY_BEHAVIOR_PASSIVE"
+      ],
+      "ability_unit_target_team": null,
+      "ability_unit_target_type": [],
+      "ability_unit_target_flags": [],
+      "spell_immunity_type": null,
+      "spell_dispellable_type": null,
+      "ability_unit_damage_type": null,
+      "is_skill": true,
+      "is_ultimate": false,
+      "has_scepter_upgrade": false,
+      "on_castbar": true,
+      "on_learnbar": true,
+      "ability_cast_range": [
+        0
+      ],
+      "ability_cast_range_buffer": 250,
+      "ability_cast_point": [
+        0.0,
+        0.0,
+        0.0,
+        0.0
+      ],
+      "ability_channel_time": [
+        0.0,
+        0.0,
+        0.0,
+        0.0
+      ],
+      "ability_cooldown": [
+        0.0,
+        0.0,
+        0.0,
+        0.0
+      ],
+      "ability_duration": [
+        0.0,
+        0.0,
+        0.0,
+        0.0
+      ],
+      "ability_damage": [
+        0.0,
+        0.0,
+        0.0,
+        0.0
+      ],
+      "ability_mana_cost": [
+        0.0,
+        0.0,
+        0.0,
+        0.0
+      ],
+      "ability_modifier_support_value": 1.0,
+      "ability_modifier_support_bonus": 0.0,
+      "fight_recap_level": 0,
+      "ability_draft_enabled": true,
+      "linked": null,
+      "ability_special": {
+        "maximum_attack_speed": [
+          220.0,
+          260.0,
+          300.0,
+          340.0
+        ],
+        "maximum_resistance": [
+          20.0,
+          30.0,
+          40.0,
+          50.0
+        ],
+        "hp_threshold_max": [
+          10.0
+        ]
+      }
+    },
+    {
+      "id": 6251,
+      "key": "generic_hidden",
+      "name": null,
+      "description": null,
+      "image": "https://hgv-hyperstone.azurewebsites.net/abilities/generic_hidden.png",
+      "hero_id": 59,
+      "ability_type": "DOTA_ABILITY_TYPE_BASIC",
+      "ability_behaviors": [
+        "DOTA_ABILITY_BEHAVIOR_HIDDEN",
+        "DOTA_ABILITY_BEHAVIOR_NOT_LEARNABLE"
+      ],
+      "ability_unit_target_team": null,
+      "ability_unit_target_type": [],
+      "ability_unit_target_flags": [],
+      "spell_immunity_type": null,
+      "spell_dispellable_type": null,
+      "ability_unit_damage_type": null,
+      "is_skill": true,
+      "is_ultimate": false,
+      "has_scepter_upgrade": false,
+      "on_castbar": true,
+      "on_learnbar": true,
+      "ability_cast_range": [
+        0
+      ],
+      "ability_cast_range_buffer": 250,
+      "ability_cast_point": [
+        0.0,
+        0.0,
+        0.0,
+        0.0
+      ],
+      "ability_channel_time": [
+        0.0,
+        0.0,
+        0.0,
+        0.0
+      ],
+      "ability_cooldown": [
+        0.0,
+        0.0,
+        0.0,
+        0.0
+      ],
+      "ability_duration": [
+        0.0,
+        0.0,
+        0.0,
+        0.0
+      ],
+      "ability_damage": [
+        0.0,
+        0.0,
+        0.0,
+        0.0
+      ],
+      "ability_mana_cost": [
+        0.0,
+        0.0,
+        0.0,
+        0.0
+      ],
+      "ability_modifier_support_value": 1.0,
+      "ability_modifier_support_bonus": 0.0,
+      "fight_recap_level": 0,
+      "ability_draft_enabled": false,
+      "linked": null,
+      "ability_special": {}
+    },
+    {
+      "id": 6251,
+      "key": "generic_hidden",
+      "name": null,
+      "description": null,
+      "image": "https://hgv-hyperstone.azurewebsites.net/abilities/generic_hidden.png",
+      "hero_id": 59,
+      "ability_type": "DOTA_ABILITY_TYPE_BASIC",
+      "ability_behaviors": [
+        "DOTA_ABILITY_BEHAVIOR_HIDDEN",
+        "DOTA_ABILITY_BEHAVIOR_NOT_LEARNABLE"
+      ],
+      "ability_unit_target_team": null,
+      "ability_unit_target_type": [],
+      "ability_unit_target_flags": [],
+      "spell_immunity_type": null,
+      "spell_dispellable_type": null,
+      "ability_unit_damage_type": null,
+      "is_skill": true,
+      "is_ultimate": false,
+      "has_scepter_upgrade": false,
+      "on_castbar": true,
+      "on_learnbar": true,
+      "ability_cast_range": [
+        0
+      ],
+      "ability_cast_range_buffer": 250,
+      "ability_cast_point": [
+        0.0,
+        0.0,
+        0.0,
+        0.0
+      ],
+      "ability_channel_time": [
+        0.0,
+        0.0,
+        0.0,
+        0.0
+      ],
+      "ability_cooldown": [
+        0.0,
+        0.0,
+        0.0,
+        0.0
+      ],
+      "ability_duration": [
+        0.0,
+        0.0,
+        0.0,
+        0.0
+      ],
+      "ability_damage": [
+        0.0,
+        0.0,
+        0.0,
+        0.0
+      ],
+      "ability_mana_cost": [
+        0.0,
+        0.0,
+        0.0,
+        0.0
+      ],
+      "ability_modifier_support_value": 1.0,
+      "ability_modifier_support_bonus": 0.0,
+      "fight_recap_level": 0,
+      "ability_draft_enabled": false,
+      "linked": null,
+      "ability_special": {}
+    },
+    {
+      "id": 5274,
+      "key": "huskar_life_break",
+      "name": "Life Break",
+      "description": "Huskar draws upon his health to break an enemy's life, leaping at a target within attack range to shatter a percentage of that hero's current health, and slowing them.  While leaping, Huskar is Spell Immune.\\n\\nDISPEL TYPE: Basic Dispel\\n\\nUpgradable by Aghanim's Scepter.",
+      "image": "https://hgv-hyperstone.azurewebsites.net/abilities/huskar_life_break.png",
+      "hero_id": 59,
+      "ability_type": "DOTA_ABILITY_TYPE_ULTIMATE",
+      "ability_behaviors": [
+        "DOTA_ABILITY_BEHAVIOR_UNIT_TARGET"
+      ],
+      "ability_unit_target_team": "DOTA_UNIT_TARGET_TEAM_ENEMY",
+      "ability_unit_target_type": [
+        "DOTA_UNIT_TARGET_HERO",
+        "DOTA_UNIT_TARGET_CREEP"
+      ],
+      "ability_unit_target_flags": [
+        "DOTA_UNIT_TARGET_FLAG_MAGIC_IMMUNE_ENEMIES"
+      ],
+      "spell_immunity_type": "SPELL_IMMUNITY_ENEMIES_YES",
+      "spell_dispellable_type": "SPELL_DISPELLABLE_YES",
+      "ability_unit_damage_type": "DAMAGE_TYPE_MAGICAL",
+      "is_skill": false,
+      "is_ultimate": true,
+      "has_scepter_upgrade": true,
+      "on_castbar": true,
+      "on_learnbar": true,
+      "ability_cast_range": [
+        550
+      ],
+      "ability_cast_range_buffer": 250,
+      "ability_cast_point": [
+        0.3,
+        0.3,
+        0.3
+      ],
+      "ability_channel_time": [
+        0.0,
+        0.0,
+        0.0,
+        0.0
+      ],
+      "ability_cooldown": [
+        12.0
+      ],
+      "ability_duration": [
+        4.0,
+        5.0,
+        6.0
+      ],
+      "ability_damage": [
+        0.0,
+        0.0,
+        0.0,
+        0.0
+      ],
+      "ability_mana_cost": [
+        0.0,
+        0.0,
+        0.0
+      ],
+      "ability_modifier_support_value": 1.0,
+      "ability_modifier_support_bonus": 0.0,
+      "fight_recap_level": 2,
+      "ability_draft_enabled": true,
+      "linked": null,
+      "ability_special": {
+        "health_cost_percent": [
+          0.34,
+          0.39,
+          0.44
+        ],
+        "health_damage": [
+          0.34,
+          0.39,
+          0.44
+        ],
+        "health_damage_scepter": [
+          0.65
+        ],
+        "charge_speed": [
+          1200.0
+        ],
+        "tooltip_health_damage": [
+          34.0,
+          38.0,
+          42.0
+        ],
+        "tooltip_health_cost_percent": [
+          34.0,
+          38.0,
+          42.0
+        ],
+        "movespeed": [
+          -40.0,
+          -50.0,
+          -60.0
+        ],
+        "slow_durtion_tooltip": [
+          4.0,
+          5.0,
+          6.0
+        ],
+        "tooltip_health_damage_scepter": [
+          65.0
+        ],
+        "cooldown_scepter": [
+          4.0
+        ]
+      }
+    }
+  ],
+  "talents": [
+    {
+      "id": 6405,
+      "key": "special_bonus_hp_225",
+      "name": "+225 Health",
+      "description": null
+    },
+    {
+      "id": 5960,
+      "key": "special_bonus_attack_damage_20",
+      "name": "+20 Damage",
+      "description": null
+    },
+    {
+      "id": 6380,
+      "key": "special_bonus_unique_huskar_2",
+      "name": "+10 Burning Spears DPS",
+      "description": null
+    },
+    {
+      "id": 6289,
+      "key": "special_bonus_lifesteal_15",
+      "name": "15% Lifesteal",
+      "description": null
+    },
+    {
+      "id": 6145,
+      "key": "special_bonus_strength_15",
+      "name": "+15 Strength",
+      "description": null
+    },
+    {
+      "id": 6204,
+      "key": "special_bonus_unique_huskar",
+      "name": "+400 Life Break Cast Range",
+      "description": null
+    },
+    {
+      "id": 5963,
+      "key": "special_bonus_attack_range_150",
+      "name": "+150 Attack Range",
+      "description": null
+    },
+    {
+      "id": 7143,
+      "key": "special_bonus_unique_huskar_5",
+      "name": "Burning Spears Pure Damage",
+      "description": "Pierces Spell Immunity."
+    }
+  ],
+  "legs": 2,
+  "armor_physical": -2.0,
+  "magical_resistance": 25,
+  "attack_capabilities": "DOTA_UNIT_CAP_RANGED_ATTACK",
+  "attack_damage_min": 19,
+  "attack_damage_max": 24,
+  "attack_rate": 1.6,
+  "attack_animation_point": 0.4,
+  "attack_acquisition_range": 800,
+  "attack_range": 400,
+  "projectile_speed": 1400,
+  "attribute_primary": "DOTA_ATTRIBUTE_STRENGTH",
+  "attribute_base_strength": 21,
+  "attribute_strength_gain": 2.7,
+  "attribute_base_intelligence": 18,
+  "attribute_intelligence_gain": 1.5,
+  "attribute_base_agility": 15,
+  "attribute_agility_gain": 1.4,
+  "status_health": 200,
+  "status_health_regen": 1.5,
+  "status_mana": 75,
+  "status_mana_regen": 0.9,
+  "bounty_xp": 62,
+  "bounty_gold_min": 0,
+  "bounty_gold_max": 0,
+  "movement_capabilities": "DOTA_UNIT_CAP_MOVE_GROUND",
+  "movement_speed": 290,
+  "movement_turn_rate": 0.5,
+  "has_aggressive_stance": true,
+  "team": 1,
+  "team_name": "Radiant",
+  "vision_daytime_range": 1800,
+  "vision_nighttime_range": 0,
+  "bot": {
+    "hero_types": null,
+    "solo_desire": 0,
+    "requires_babysit": 0,
+    "provides_babysit": 0,
+    "survival_rating": 0,
+    "requires_farm": 0,
+    "provides_setup": 0,
+    "requires_setup": 0
+  }
+}

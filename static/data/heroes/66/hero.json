@@ -1,0 +1,620 @@
+{
+  "id": 66,
+  "name": "Chen",
+  "key": "npc_dota_hero_chen",
+  "image_profile": "https://hgv-hyperstone.azurewebsites.net/heroes/profile/npc_dota_hero_chen.png",
+  "image_icon": "https://hgv-hyperstone.azurewebsites.net/heroes/icons/npc_dota_hero_chen.png",
+  "image_banner": "https://hgv-hyperstone.azurewebsites.net/heroes/banner/npc_dota_hero_chen.png",
+  "enabled": true,
+  "new_player_enable": false,
+  "captains_mode_enabled": true,
+  "ability_draft_enabled": true,
+  "complexity": 3,
+  "roles": [
+    {
+      "role": "Support",
+      "level": 2
+    },
+    {
+      "role": "Jungler",
+      "level": 3
+    },
+    {
+      "role": "Pusher",
+      "level": 2
+    }
+  ],
+  "bot_implemented": false,
+  "abilities": [
+    {
+      "id": 5328,
+      "key": "chen_penitence",
+      "name": "Penitence",
+      "description": "Forces an enemy unit to move slower and take more damage from attacks and spells.",
+      "image": "https://hgv-hyperstone.azurewebsites.net/abilities/chen_penitence.png",
+      "hero_id": 66,
+      "ability_type": "DOTA_ABILITY_TYPE_BASIC",
+      "ability_behaviors": [
+        "DOTA_ABILITY_BEHAVIOR_UNIT_TARGET"
+      ],
+      "ability_unit_target_team": "DOTA_UNIT_TARGET_TEAM_ENEMY",
+      "ability_unit_target_type": [
+        "DOTA_UNIT_TARGET_HERO",
+        "DOTA_UNIT_TARGET_BASIC"
+      ],
+      "ability_unit_target_flags": [],
+      "spell_immunity_type": "SPELL_IMMUNITY_ENEMIES_NO",
+      "spell_dispellable_type": "SPELL_DISPELLABLE_YES",
+      "ability_unit_damage_type": null,
+      "is_skill": true,
+      "is_ultimate": false,
+      "has_scepter_upgrade": false,
+      "on_castbar": true,
+      "on_learnbar": true,
+      "ability_cast_range": [
+        800
+      ],
+      "ability_cast_range_buffer": 250,
+      "ability_cast_point": [
+        0.3,
+        0.3,
+        0.3,
+        0.3
+      ],
+      "ability_channel_time": [
+        0.0,
+        0.0,
+        0.0,
+        0.0
+      ],
+      "ability_cooldown": [
+        14.0,
+        13.0,
+        12.0,
+        11.0
+      ],
+      "ability_duration": [
+        0.0,
+        0.0,
+        0.0,
+        0.0
+      ],
+      "ability_damage": [
+        0.0,
+        0.0,
+        0.0,
+        0.0
+      ],
+      "ability_mana_cost": [
+        70.0
+      ],
+      "ability_modifier_support_value": 1.0,
+      "ability_modifier_support_bonus": 0.0,
+      "fight_recap_level": 0,
+      "ability_draft_enabled": true,
+      "linked": null,
+      "ability_special": {
+        "duration": [
+          5.0,
+          6.0,
+          7.0,
+          8.0
+        ],
+        "speed": [
+          2000.0,
+          2000.0,
+          2000.0,
+          2000.0
+        ],
+        "bonus_movement_speed": [
+          -18.0,
+          -24.0,
+          -30.0,
+          -36.0
+        ],
+        "bonus_damage_taken": [
+          18.0,
+          24.0,
+          30.0,
+          36.0
+        ]
+      }
+    },
+    {
+      "id": 5329,
+      "key": "chen_test_of_faith",
+      "name": "Test of Faith",
+      "description": "Deals random damage to test an enemy unit's faith. Heals a random amount to allied units. Always applies the maximum effect when cast on yourself.",
+      "image": "https://hgv-hyperstone.azurewebsites.net/abilities/chen_test_of_faith.png",
+      "hero_id": 66,
+      "ability_type": "DOTA_ABILITY_TYPE_BASIC",
+      "ability_behaviors": [
+        "DOTA_ABILITY_BEHAVIOR_UNIT_TARGET"
+      ],
+      "ability_unit_target_team": "DOTA_UNIT_TARGET_TEAM_BOTH",
+      "ability_unit_target_type": [
+        "DOTA_UNIT_TARGET_HERO",
+        "DOTA_UNIT_TARGET_BASIC"
+      ],
+      "ability_unit_target_flags": [],
+      "spell_immunity_type": "SPELL_IMMUNITY_ENEMIES_NO",
+      "spell_dispellable_type": null,
+      "ability_unit_damage_type": "DAMAGE_TYPE_PURE",
+      "is_skill": true,
+      "is_ultimate": false,
+      "has_scepter_upgrade": false,
+      "on_castbar": true,
+      "on_learnbar": true,
+      "ability_cast_range": [
+        600,
+        600,
+        600,
+        600
+      ],
+      "ability_cast_range_buffer": 250,
+      "ability_cast_point": [
+        0.3,
+        0.3,
+        0.3,
+        0.3
+      ],
+      "ability_channel_time": [
+        0.0,
+        0.0,
+        0.0,
+        0.0
+      ],
+      "ability_cooldown": [
+        16.0
+      ],
+      "ability_duration": [
+        0.0,
+        0.0,
+        0.0,
+        0.0
+      ],
+      "ability_damage": [
+        0.0,
+        0.0,
+        0.0,
+        0.0
+      ],
+      "ability_mana_cost": [
+        60.0,
+        80.0,
+        100.0,
+        120.0
+      ],
+      "ability_modifier_support_value": 1.0,
+      "ability_modifier_support_bonus": 0.0,
+      "fight_recap_level": 1,
+      "ability_draft_enabled": true,
+      "linked": null,
+      "ability_special": {
+        "damage_min": [
+          50.0,
+          100.0,
+          150.0,
+          200.0
+        ],
+        "damage_max": [
+          100.0,
+          200.0,
+          300.0,
+          400.0
+        ],
+        "heal_min": [
+          25.0,
+          50.0,
+          75.0,
+          100.0
+        ],
+        "heal_max": [
+          50.0,
+          100.0,
+          150.0,
+          200.0
+        ]
+      }
+    },
+    {
+      "id": 5330,
+      "key": "chen_holy_persuasion",
+      "name": "Holy Persuasion",
+      "description": "Chen takes control of an enemy or neutral creep. If the persuaded creep's base health is naturally below the health minimum, its base health will be raised to the health minimum.\\n\\nCan be cast on allies to teleport them back to base. If cast on Chen, all units controlled by Chen will be teleported to him.  \\n\\nUpgradable by Aghanim's Scepter.",
+      "image": "https://hgv-hyperstone.azurewebsites.net/abilities/chen_holy_persuasion.png",
+      "hero_id": 66,
+      "ability_type": "DOTA_ABILITY_TYPE_BASIC",
+      "ability_behaviors": [
+        "DOTA_ABILITY_BEHAVIOR_UNIT_TARGET",
+        "DOTA_ABILITY_BEHAVIOR_DONT_RESUME_ATTACK"
+      ],
+      "ability_unit_target_team": null,
+      "ability_unit_target_type": [],
+      "ability_unit_target_flags": [],
+      "spell_immunity_type": "SPELL_IMMUNITY_ENEMIES_YES",
+      "spell_dispellable_type": "SPELL_DISPELLABLE_NO",
+      "ability_unit_damage_type": null,
+      "is_skill": true,
+      "is_ultimate": false,
+      "has_scepter_upgrade": true,
+      "on_castbar": true,
+      "on_learnbar": true,
+      "ability_cast_range": [
+        600
+      ],
+      "ability_cast_range_buffer": 250,
+      "ability_cast_point": [
+        0.3,
+        0.3,
+        0.3,
+        0.3
+      ],
+      "ability_channel_time": [
+        0.0,
+        0.0,
+        0.0,
+        0.0
+      ],
+      "ability_cooldown": [
+        32.0,
+        24.0,
+        18.0,
+        10.0
+      ],
+      "ability_duration": [
+        0.0,
+        0.0,
+        0.0,
+        0.0
+      ],
+      "ability_damage": [
+        0.0,
+        0.0,
+        0.0,
+        0.0
+      ],
+      "ability_mana_cost": [
+        70.0,
+        90.0,
+        110.0,
+        130.0
+      ],
+      "ability_modifier_support_value": 1.0,
+      "ability_modifier_support_bonus": 0.0,
+      "fight_recap_level": 0,
+      "ability_draft_enabled": true,
+      "linked": null,
+      "ability_special": {
+        "max_units": [
+          1.0,
+          2.0,
+          3.0,
+          4.0
+        ],
+        "level_req": [
+          6.0
+        ],
+        "health_min": [
+          700.0,
+          800.0,
+          900.0,
+          1000.0
+        ],
+        "teleport_delay": [
+          6.0
+        ]
+      }
+    },
+    {
+      "id": 6251,
+      "key": "generic_hidden",
+      "name": null,
+      "description": null,
+      "image": "https://hgv-hyperstone.azurewebsites.net/abilities/generic_hidden.png",
+      "hero_id": 66,
+      "ability_type": "DOTA_ABILITY_TYPE_BASIC",
+      "ability_behaviors": [
+        "DOTA_ABILITY_BEHAVIOR_HIDDEN",
+        "DOTA_ABILITY_BEHAVIOR_NOT_LEARNABLE"
+      ],
+      "ability_unit_target_team": null,
+      "ability_unit_target_type": [],
+      "ability_unit_target_flags": [],
+      "spell_immunity_type": null,
+      "spell_dispellable_type": null,
+      "ability_unit_damage_type": null,
+      "is_skill": true,
+      "is_ultimate": false,
+      "has_scepter_upgrade": false,
+      "on_castbar": true,
+      "on_learnbar": true,
+      "ability_cast_range": [
+        0
+      ],
+      "ability_cast_range_buffer": 250,
+      "ability_cast_point": [
+        0.0,
+        0.0,
+        0.0,
+        0.0
+      ],
+      "ability_channel_time": [
+        0.0,
+        0.0,
+        0.0,
+        0.0
+      ],
+      "ability_cooldown": [
+        0.0,
+        0.0,
+        0.0,
+        0.0
+      ],
+      "ability_duration": [
+        0.0,
+        0.0,
+        0.0,
+        0.0
+      ],
+      "ability_damage": [
+        0.0,
+        0.0,
+        0.0,
+        0.0
+      ],
+      "ability_mana_cost": [
+        0.0,
+        0.0,
+        0.0,
+        0.0
+      ],
+      "ability_modifier_support_value": 1.0,
+      "ability_modifier_support_bonus": 0.0,
+      "fight_recap_level": 0,
+      "ability_draft_enabled": false,
+      "linked": null,
+      "ability_special": {}
+    },
+    {
+      "id": 6251,
+      "key": "generic_hidden",
+      "name": null,
+      "description": null,
+      "image": "https://hgv-hyperstone.azurewebsites.net/abilities/generic_hidden.png",
+      "hero_id": 66,
+      "ability_type": "DOTA_ABILITY_TYPE_BASIC",
+      "ability_behaviors": [
+        "DOTA_ABILITY_BEHAVIOR_HIDDEN",
+        "DOTA_ABILITY_BEHAVIOR_NOT_LEARNABLE"
+      ],
+      "ability_unit_target_team": null,
+      "ability_unit_target_type": [],
+      "ability_unit_target_flags": [],
+      "spell_immunity_type": null,
+      "spell_dispellable_type": null,
+      "ability_unit_damage_type": null,
+      "is_skill": true,
+      "is_ultimate": false,
+      "has_scepter_upgrade": false,
+      "on_castbar": true,
+      "on_learnbar": true,
+      "ability_cast_range": [
+        0
+      ],
+      "ability_cast_range_buffer": 250,
+      "ability_cast_point": [
+        0.0,
+        0.0,
+        0.0,
+        0.0
+      ],
+      "ability_channel_time": [
+        0.0,
+        0.0,
+        0.0,
+        0.0
+      ],
+      "ability_cooldown": [
+        0.0,
+        0.0,
+        0.0,
+        0.0
+      ],
+      "ability_duration": [
+        0.0,
+        0.0,
+        0.0,
+        0.0
+      ],
+      "ability_damage": [
+        0.0,
+        0.0,
+        0.0,
+        0.0
+      ],
+      "ability_mana_cost": [
+        0.0,
+        0.0,
+        0.0,
+        0.0
+      ],
+      "ability_modifier_support_value": 1.0,
+      "ability_modifier_support_bonus": 0.0,
+      "fight_recap_level": 0,
+      "ability_draft_enabled": false,
+      "linked": null,
+      "ability_special": {}
+    },
+    {
+      "id": 5331,
+      "key": "chen_hand_of_god",
+      "name": "Hand of God",
+      "description": "Heals all allied heroes on the map as well as all units under Chen's control.",
+      "image": "https://hgv-hyperstone.azurewebsites.net/abilities/chen_hand_of_god.png",
+      "hero_id": 66,
+      "ability_type": "DOTA_ABILITY_TYPE_ULTIMATE",
+      "ability_behaviors": [
+        "DOTA_ABILITY_BEHAVIOR_NO_TARGET"
+      ],
+      "ability_unit_target_team": null,
+      "ability_unit_target_type": [],
+      "ability_unit_target_flags": [],
+      "spell_immunity_type": "SPELL_IMMUNITY_ALLIES_YES",
+      "spell_dispellable_type": null,
+      "ability_unit_damage_type": null,
+      "is_skill": false,
+      "is_ultimate": true,
+      "has_scepter_upgrade": false,
+      "on_castbar": true,
+      "on_learnbar": true,
+      "ability_cast_range": [
+        0
+      ],
+      "ability_cast_range_buffer": 250,
+      "ability_cast_point": [
+        0.3,
+        0.3,
+        0.3
+      ],
+      "ability_channel_time": [
+        0.0,
+        0.0,
+        0.0,
+        0.0
+      ],
+      "ability_cooldown": [
+        160.0,
+        140.0,
+        120.0
+      ],
+      "ability_duration": [
+        0.0,
+        0.0,
+        0.0,
+        0.0
+      ],
+      "ability_damage": [
+        0.0,
+        0.0,
+        0.0,
+        0.0
+      ],
+      "ability_mana_cost": [
+        200.0,
+        300.0,
+        400.0
+      ],
+      "ability_modifier_support_value": 1.0,
+      "ability_modifier_support_bonus": 0.0,
+      "fight_recap_level": 2,
+      "ability_draft_enabled": true,
+      "linked": null,
+      "ability_special": {
+        "heal_amount": [
+          250.0,
+          400.0,
+          550.0
+        ],
+        "ancient_creeps_scepter": [
+          1.0,
+          2.0,
+          3.0
+        ]
+      }
+    }
+  ],
+  "talents": [
+    {
+      "id": 6372,
+      "key": "special_bonus_exp_boost_35",
+      "name": "+35% XP Gain",
+      "description": null
+    },
+    {
+      "id": 6114,
+      "key": "special_bonus_cast_range_200",
+      "name": "+200 Cast Range",
+      "description": null
+    },
+    {
+      "id": 5970,
+      "key": "special_bonus_armor_7",
+      "name": "+7 Armor",
+      "description": null
+    },
+    {
+      "id": 6363,
+      "key": "special_bonus_unique_chen_3",
+      "name": "-10s Test of Faith Cooldown",
+      "description": null
+    },
+    {
+      "id": 6026,
+      "key": "special_bonus_gold_income_30",
+      "name": "+180 Gold/Min",
+      "description": null
+    },
+    {
+      "id": 6535,
+      "key": "special_bonus_unique_chen_4",
+      "name": "+1000 Holy Persuasion Minimum Health",
+      "description": null
+    },
+    {
+      "id": 6259,
+      "key": "special_bonus_unique_chen_1",
+      "name": "+4 Holy Persuasion Max Units",
+      "description": null
+    },
+    {
+      "id": 6260,
+      "key": "special_bonus_unique_chen_2",
+      "name": "+400 Hand of God Heal",
+      "description": null
+    }
+  ],
+  "legs": 2,
+  "armor_physical": -1.0,
+  "magical_resistance": 25,
+  "attack_capabilities": "DOTA_UNIT_CAP_RANGED_ATTACK",
+  "attack_damage_min": 29,
+  "attack_damage_max": 39,
+  "attack_rate": 1.7,
+  "attack_animation_point": 0.5,
+  "attack_acquisition_range": 800,
+  "attack_range": 650,
+  "projectile_speed": 1100,
+  "attribute_primary": "DOTA_ATTRIBUTE_INTELLECT",
+  "attribute_base_strength": 25,
+  "attribute_strength_gain": 1.8,
+  "attribute_base_intelligence": 19,
+  "attribute_intelligence_gain": 2.8,
+  "attribute_base_agility": 15,
+  "attribute_agility_gain": 2.1,
+  "status_health": 200,
+  "status_health_regen": 1.5,
+  "status_mana": 75,
+  "status_mana_regen": 0.9,
+  "bounty_xp": 62,
+  "bounty_gold_min": 0,
+  "bounty_gold_max": 0,
+  "movement_capabilities": "DOTA_UNIT_CAP_MOVE_GROUND",
+  "movement_speed": 310,
+  "movement_turn_rate": 0.6,
+  "has_aggressive_stance": false,
+  "team": 1,
+  "team_name": "Radiant",
+  "vision_daytime_range": 1800,
+  "vision_nighttime_range": 0,
+  "bot": {
+    "hero_types": null,
+    "solo_desire": 0,
+    "requires_babysit": 0,
+    "provides_babysit": 0,
+    "survival_rating": 0,
+    "requires_farm": 0,
+    "provides_setup": 0,
+    "requires_setup": 0
+  }
+}

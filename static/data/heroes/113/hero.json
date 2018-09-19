@@ -1,0 +1,613 @@
+{
+  "id": 113,
+  "name": "Arc Warden",
+  "key": "npc_dota_hero_arc_warden",
+  "image_profile": "https://hgv-hyperstone.azurewebsites.net/heroes/profile/npc_dota_hero_arc_warden.png",
+  "image_icon": "https://hgv-hyperstone.azurewebsites.net/heroes/icons/npc_dota_hero_arc_warden.png",
+  "image_banner": "https://hgv-hyperstone.azurewebsites.net/heroes/banner/npc_dota_hero_arc_warden.png",
+  "enabled": true,
+  "new_player_enable": false,
+  "captains_mode_enabled": true,
+  "ability_draft_enabled": true,
+  "complexity": 3,
+  "roles": [
+    {
+      "role": "Carry",
+      "level": 3
+    },
+    {
+      "role": "Escape",
+      "level": 3
+    },
+    {
+      "role": "Nuker",
+      "level": 1
+    }
+  ],
+  "bot_implemented": false,
+  "abilities": [
+    {
+      "id": 5677,
+      "key": "arc_warden_flux",
+      "name": "Flux",
+      "description": "Infuses a lone enemy unit with swirling, volatile energy, slowing its movement speed and dealing damage over time. The effect is muted if another enemy unit is near the target.",
+      "image": "https://hgv-hyperstone.azurewebsites.net/abilities/arc_warden_flux.png",
+      "hero_id": 113,
+      "ability_type": "DOTA_ABILITY_TYPE_BASIC",
+      "ability_behaviors": [
+        "DOTA_ABILITY_BEHAVIOR_UNIT_TARGET"
+      ],
+      "ability_unit_target_team": "DOTA_UNIT_TARGET_TEAM_ENEMY",
+      "ability_unit_target_type": [
+        "DOTA_UNIT_TARGET_HERO",
+        "DOTA_UNIT_TARGET_BASIC"
+      ],
+      "ability_unit_target_flags": [],
+      "spell_immunity_type": "SPELL_IMMUNITY_ENEMIES_NO",
+      "spell_dispellable_type": "SPELL_DISPELLABLE_YES",
+      "ability_unit_damage_type": "DAMAGE_TYPE_MAGICAL",
+      "is_skill": true,
+      "is_ultimate": false,
+      "has_scepter_upgrade": false,
+      "on_castbar": true,
+      "on_learnbar": true,
+      "ability_cast_range": [
+        500,
+        600,
+        700,
+        800
+      ],
+      "ability_cast_range_buffer": 250,
+      "ability_cast_point": [
+        0.3,
+        0.3,
+        0.3,
+        0.3
+      ],
+      "ability_channel_time": [
+        0.0,
+        0.0,
+        0.0,
+        0.0
+      ],
+      "ability_cooldown": [
+        16.0
+      ],
+      "ability_duration": [
+        0.0,
+        0.0,
+        0.0,
+        0.0
+      ],
+      "ability_damage": [
+        0.0,
+        0.0,
+        0.0,
+        0.0
+      ],
+      "ability_mana_cost": [
+        75.0
+      ],
+      "ability_modifier_support_value": 1.0,
+      "ability_modifier_support_bonus": 0.0,
+      "fight_recap_level": 1,
+      "ability_draft_enabled": true,
+      "linked": null,
+      "ability_special": {
+        "duration": [
+          6.0
+        ],
+        "damage_per_second": [
+          15.0,
+          30.0,
+          45.0,
+          60.0
+        ],
+        "search_radius": [
+          225.0
+        ],
+        "think_interval": [
+          0.5
+        ],
+        "move_speed_slow_pct": [
+          20.0,
+          30.0,
+          40.0,
+          50.0
+        ],
+        "cast_range_tooltip": [
+          500.0,
+          600.0,
+          700.0,
+          800.0
+        ]
+      }
+    },
+    {
+      "id": 5678,
+      "key": "arc_warden_magnetic_field",
+      "name": "Magnetic Field",
+      "description": "Generates a circular distortion field of magnetic energy that protects allied heroes and buildings within it by evading attacks coming from outside the field.",
+      "image": "https://hgv-hyperstone.azurewebsites.net/abilities/arc_warden_magnetic_field.png",
+      "hero_id": 113,
+      "ability_type": "DOTA_ABILITY_TYPE_BASIC",
+      "ability_behaviors": [
+        "DOTA_ABILITY_BEHAVIOR_POINT",
+        "DOTA_ABILITY_BEHAVIOR_AOE",
+        "DOTA_ABILITY_BEHAVIOR_IGNORE_BACKSWING"
+      ],
+      "ability_unit_target_team": null,
+      "ability_unit_target_type": [],
+      "ability_unit_target_flags": [],
+      "spell_immunity_type": "SPELL_IMMUNITY_ENEMIES_NO",
+      "spell_dispellable_type": null,
+      "ability_unit_damage_type": null,
+      "is_skill": true,
+      "is_ultimate": false,
+      "has_scepter_upgrade": false,
+      "on_castbar": true,
+      "on_learnbar": true,
+      "ability_cast_range": [
+        900
+      ],
+      "ability_cast_range_buffer": 250,
+      "ability_cast_point": [
+        0.3
+      ],
+      "ability_channel_time": [
+        0.0,
+        0.0,
+        0.0,
+        0.0
+      ],
+      "ability_cooldown": [
+        20.0
+      ],
+      "ability_duration": [
+        0.0,
+        0.0,
+        0.0,
+        0.0
+      ],
+      "ability_damage": [
+        0.0,
+        0.0,
+        0.0,
+        0.0
+      ],
+      "ability_mana_cost": [
+        50.0,
+        70.0,
+        90.0,
+        110.0
+      ],
+      "ability_modifier_support_value": 1.0,
+      "ability_modifier_support_bonus": 0.0,
+      "fight_recap_level": 1,
+      "ability_draft_enabled": true,
+      "linked": null,
+      "ability_special": {
+        "radius": [
+          300.0
+        ],
+        "duration": [
+          3.5,
+          4.5,
+          5.5,
+          6.5
+        ],
+        "attack_speed_bonus": [
+          50.0,
+          60.0,
+          70.0,
+          80.0
+        ],
+        "evasion_chance": [
+          100.0
+        ]
+      }
+    },
+    {
+      "id": 5679,
+      "key": "arc_warden_spark_wraith",
+      "name": "Spark Wraith",
+      "description": "Summons a Spark Wraith that slowly materializes and patrols a targeted area until an enemy comes within its range. Once a target has been found the wraith fuses with them, dealing magical damage and slowing the unit.",
+      "image": "https://hgv-hyperstone.azurewebsites.net/abilities/arc_warden_spark_wraith.png",
+      "hero_id": 113,
+      "ability_type": "DOTA_ABILITY_TYPE_BASIC",
+      "ability_behaviors": [
+        "DOTA_ABILITY_BEHAVIOR_POINT",
+        "DOTA_ABILITY_BEHAVIOR_AOE"
+      ],
+      "ability_unit_target_team": null,
+      "ability_unit_target_type": [],
+      "ability_unit_target_flags": [],
+      "spell_immunity_type": "SPELL_IMMUNITY_ENEMIES_NO",
+      "spell_dispellable_type": null,
+      "ability_unit_damage_type": "DAMAGE_TYPE_MAGICAL",
+      "is_skill": true,
+      "is_ultimate": false,
+      "has_scepter_upgrade": false,
+      "on_castbar": true,
+      "on_learnbar": true,
+      "ability_cast_range": [
+        2000
+      ],
+      "ability_cast_range_buffer": 250,
+      "ability_cast_point": [
+        0.3
+      ],
+      "ability_channel_time": [
+        0.0,
+        0.0,
+        0.0,
+        0.0
+      ],
+      "ability_cooldown": [
+        4.0,
+        4.0,
+        4.0,
+        4.0
+      ],
+      "ability_duration": [
+        0.0,
+        0.0,
+        0.0,
+        0.0
+      ],
+      "ability_damage": [
+        0.0,
+        0.0,
+        0.0,
+        0.0
+      ],
+      "ability_mana_cost": [
+        80.0
+      ],
+      "ability_modifier_support_value": 1.0,
+      "ability_modifier_support_bonus": 0.0,
+      "fight_recap_level": 1,
+      "ability_draft_enabled": true,
+      "linked": null,
+      "ability_special": {
+        "radius": [
+          375.0
+        ],
+        "activation_delay": [
+          2.0
+        ],
+        "duration": [
+          50.0
+        ],
+        "wraith_speed": [
+          400.0
+        ],
+        "spark_damage": [
+          100.0,
+          160.0,
+          220.0,
+          280.0
+        ],
+        "think_interval": [
+          0.2
+        ],
+        "wraith_vision_radius": [
+          300.0
+        ],
+        "wraith_vision_duration": [
+          3.34
+        ],
+        "ministun_duration": [
+          0.4,
+          0.5,
+          0.6,
+          0.7
+        ]
+      }
+    },
+    {
+      "id": 6251,
+      "key": "generic_hidden",
+      "name": null,
+      "description": null,
+      "image": "https://hgv-hyperstone.azurewebsites.net/abilities/generic_hidden.png",
+      "hero_id": 113,
+      "ability_type": "DOTA_ABILITY_TYPE_BASIC",
+      "ability_behaviors": [
+        "DOTA_ABILITY_BEHAVIOR_HIDDEN",
+        "DOTA_ABILITY_BEHAVIOR_NOT_LEARNABLE"
+      ],
+      "ability_unit_target_team": null,
+      "ability_unit_target_type": [],
+      "ability_unit_target_flags": [],
+      "spell_immunity_type": null,
+      "spell_dispellable_type": null,
+      "ability_unit_damage_type": null,
+      "is_skill": true,
+      "is_ultimate": false,
+      "has_scepter_upgrade": false,
+      "on_castbar": true,
+      "on_learnbar": true,
+      "ability_cast_range": [
+        0
+      ],
+      "ability_cast_range_buffer": 250,
+      "ability_cast_point": [
+        0.0,
+        0.0,
+        0.0,
+        0.0
+      ],
+      "ability_channel_time": [
+        0.0,
+        0.0,
+        0.0,
+        0.0
+      ],
+      "ability_cooldown": [
+        0.0,
+        0.0,
+        0.0,
+        0.0
+      ],
+      "ability_duration": [
+        0.0,
+        0.0,
+        0.0,
+        0.0
+      ],
+      "ability_damage": [
+        0.0,
+        0.0,
+        0.0,
+        0.0
+      ],
+      "ability_mana_cost": [
+        0.0,
+        0.0,
+        0.0,
+        0.0
+      ],
+      "ability_modifier_support_value": 1.0,
+      "ability_modifier_support_bonus": 0.0,
+      "fight_recap_level": 0,
+      "ability_draft_enabled": false,
+      "linked": null,
+      "ability_special": {}
+    },
+    {
+      "id": 6251,
+      "key": "generic_hidden",
+      "name": null,
+      "description": null,
+      "image": "https://hgv-hyperstone.azurewebsites.net/abilities/generic_hidden.png",
+      "hero_id": 113,
+      "ability_type": "DOTA_ABILITY_TYPE_BASIC",
+      "ability_behaviors": [
+        "DOTA_ABILITY_BEHAVIOR_HIDDEN",
+        "DOTA_ABILITY_BEHAVIOR_NOT_LEARNABLE"
+      ],
+      "ability_unit_target_team": null,
+      "ability_unit_target_type": [],
+      "ability_unit_target_flags": [],
+      "spell_immunity_type": null,
+      "spell_dispellable_type": null,
+      "ability_unit_damage_type": null,
+      "is_skill": true,
+      "is_ultimate": false,
+      "has_scepter_upgrade": false,
+      "on_castbar": true,
+      "on_learnbar": true,
+      "ability_cast_range": [
+        0
+      ],
+      "ability_cast_range_buffer": 250,
+      "ability_cast_point": [
+        0.0,
+        0.0,
+        0.0,
+        0.0
+      ],
+      "ability_channel_time": [
+        0.0,
+        0.0,
+        0.0,
+        0.0
+      ],
+      "ability_cooldown": [
+        0.0,
+        0.0,
+        0.0,
+        0.0
+      ],
+      "ability_duration": [
+        0.0,
+        0.0,
+        0.0,
+        0.0
+      ],
+      "ability_damage": [
+        0.0,
+        0.0,
+        0.0,
+        0.0
+      ],
+      "ability_mana_cost": [
+        0.0,
+        0.0,
+        0.0,
+        0.0
+      ],
+      "ability_modifier_support_value": 1.0,
+      "ability_modifier_support_bonus": 0.0,
+      "fight_recap_level": 0,
+      "ability_draft_enabled": false,
+      "linked": null,
+      "ability_special": {}
+    },
+    {
+      "id": 5683,
+      "key": "arc_warden_tempest_double",
+      "name": "Tempest Double",
+      "description": "Briefly refocusing its fractured elements into a single form, the Arc Warden is able to create a perfect electrical duplication of itself. The duplicate can use all of Arc Warden's current items and spells, except consumables and items that drop on death. The duplicate has separate item and ability cooldowns.",
+      "image": "https://hgv-hyperstone.azurewebsites.net/abilities/arc_warden_tempest_double.png",
+      "hero_id": 113,
+      "ability_type": "DOTA_ABILITY_TYPE_ULTIMATE",
+      "ability_behaviors": [
+        "DOTA_ABILITY_BEHAVIOR_NO_TARGET"
+      ],
+      "ability_unit_target_team": null,
+      "ability_unit_target_type": [],
+      "ability_unit_target_flags": [],
+      "spell_immunity_type": null,
+      "spell_dispellable_type": null,
+      "ability_unit_damage_type": null,
+      "is_skill": false,
+      "is_ultimate": true,
+      "has_scepter_upgrade": false,
+      "on_castbar": true,
+      "on_learnbar": true,
+      "ability_cast_range": [
+        0
+      ],
+      "ability_cast_range_buffer": 250,
+      "ability_cast_point": [
+        0.15
+      ],
+      "ability_channel_time": [
+        0.0,
+        0.0,
+        0.0,
+        0.0
+      ],
+      "ability_cooldown": [
+        60.0,
+        50.0,
+        40.0
+      ],
+      "ability_duration": [
+        0.0,
+        0.0,
+        0.0,
+        0.0
+      ],
+      "ability_damage": [
+        0.0,
+        0.0,
+        0.0,
+        0.0
+      ],
+      "ability_mana_cost": [
+        0.0,
+        0.0,
+        0.0,
+        0.0
+      ],
+      "ability_modifier_support_value": 1.0,
+      "ability_modifier_support_bonus": 0.0,
+      "fight_recap_level": 2,
+      "ability_draft_enabled": false,
+      "linked": null,
+      "ability_special": {
+        "duration": [
+          14.0,
+          16.0,
+          18.0
+        ]
+      }
+    }
+  ],
+  "talents": [
+    {
+      "id": 5950,
+      "key": "special_bonus_cooldown_reduction_8",
+      "name": "8% Cooldown Reduction",
+      "description": null
+    },
+    {
+      "id": 6016,
+      "key": "special_bonus_attack_speed_25",
+      "name": "+25 Attack Speed",
+      "description": null
+    },
+    {
+      "id": 6195,
+      "key": "special_bonus_hp_350",
+      "name": "+350 Health",
+      "description": null
+    },
+    {
+      "id": 7120,
+      "key": "special_bonus_unique_arc_warden_5",
+      "name": "+400 Flux Cast Range",
+      "description": null
+    },
+    {
+      "id": 7104,
+      "key": "special_bonus_unique_arc_warden_3",
+      "name": "-1.5s Spark Wraith Cooldown",
+      "description": null
+    },
+    {
+      "id": 5944,
+      "key": "special_bonus_attack_range_125",
+      "name": "+125 Attack Range",
+      "description": null
+    },
+    {
+      "id": 6121,
+      "key": "special_bonus_lifesteal_30",
+      "name": "30% Lifesteal",
+      "description": null
+    },
+    {
+      "id": 6287,
+      "key": "special_bonus_unique_arc_warden",
+      "name": "+350 Spark Wraith Damage",
+      "description": null
+    }
+  ],
+  "legs": 2,
+  "armor_physical": -2.0,
+  "magical_resistance": 25,
+  "attack_capabilities": "DOTA_UNIT_CAP_RANGED_ATTACK",
+  "attack_damage_min": 31,
+  "attack_damage_max": 41,
+  "attack_rate": 1.7,
+  "attack_animation_point": 0.3,
+  "attack_acquisition_range": 800,
+  "attack_range": 625,
+  "projectile_speed": 900,
+  "attribute_primary": "DOTA_ATTRIBUTE_AGILITY",
+  "attribute_base_strength": 25,
+  "attribute_strength_gain": 3.0,
+  "attribute_base_intelligence": 24,
+  "attribute_intelligence_gain": 2.6,
+  "attribute_base_agility": 15,
+  "attribute_agility_gain": 1.8,
+  "status_health": 200,
+  "status_health_regen": 1.75,
+  "status_mana": 75,
+  "status_mana_regen": 0.9,
+  "bounty_xp": 62,
+  "bounty_gold_min": 0,
+  "bounty_gold_max": 0,
+  "movement_capabilities": "DOTA_UNIT_CAP_MOVE_GROUND",
+  "movement_speed": 280,
+  "movement_turn_rate": 0.6,
+  "has_aggressive_stance": false,
+  "team": 1,
+  "team_name": "Radiant",
+  "vision_daytime_range": 1800,
+  "vision_nighttime_range": 0,
+  "bot": {
+    "hero_types": null,
+    "solo_desire": 0,
+    "requires_babysit": 0,
+    "provides_babysit": 0,
+    "survival_rating": 0,
+    "requires_farm": 0,
+    "provides_setup": 0,
+    "requires_setup": 0
+  }
+}

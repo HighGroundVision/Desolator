@@ -1,0 +1,639 @@
+{
+  "id": 94,
+  "name": "Medusa",
+  "key": "npc_dota_hero_medusa",
+  "image_profile": "https://hgv-hyperstone.azurewebsites.net/heroes/profile/npc_dota_hero_medusa.png",
+  "image_icon": "https://hgv-hyperstone.azurewebsites.net/heroes/icons/npc_dota_hero_medusa.png",
+  "image_banner": "https://hgv-hyperstone.azurewebsites.net/heroes/banner/npc_dota_hero_medusa.png",
+  "enabled": true,
+  "new_player_enable": true,
+  "captains_mode_enabled": true,
+  "ability_draft_enabled": true,
+  "complexity": 1,
+  "roles": [
+    {
+      "role": "Carry",
+      "level": 3
+    },
+    {
+      "role": "Disabler",
+      "level": 1
+    },
+    {
+      "role": "Durable",
+      "level": 1
+    }
+  ],
+  "bot_implemented": false,
+  "abilities": [
+    {
+      "id": 5504,
+      "key": "medusa_split_shot",
+      "name": "Split Shot",
+      "description": "Medusa magically splits her shot into several arrows. These arrows deal a lower percent of her normal damage.\\n\\nThe extra targets will not receive other attack effects (such as critical strike).",
+      "image": "https://hgv-hyperstone.azurewebsites.net/abilities/medusa_split_shot.png",
+      "hero_id": 94,
+      "ability_type": "DOTA_ABILITY_TYPE_BASIC",
+      "ability_behaviors": [
+        "DOTA_ABILITY_BEHAVIOR_PASSIVE"
+      ],
+      "ability_unit_target_team": null,
+      "ability_unit_target_type": [],
+      "ability_unit_target_flags": [],
+      "spell_immunity_type": "SPELL_IMMUNITY_ENEMIES_YES",
+      "spell_dispellable_type": "SPELL_DISPELLABLE_NO",
+      "ability_unit_damage_type": null,
+      "is_skill": true,
+      "is_ultimate": false,
+      "has_scepter_upgrade": false,
+      "on_castbar": true,
+      "on_learnbar": true,
+      "ability_cast_range": [
+        0
+      ],
+      "ability_cast_range_buffer": 250,
+      "ability_cast_point": [
+        0.4,
+        0.4,
+        0.4,
+        0.4
+      ],
+      "ability_channel_time": [
+        0.0,
+        0.0,
+        0.0,
+        0.0
+      ],
+      "ability_cooldown": [
+        0.0,
+        0.0,
+        0.0,
+        0.0
+      ],
+      "ability_duration": [
+        0.0,
+        0.0,
+        0.0,
+        0.0
+      ],
+      "ability_damage": [
+        0.0,
+        0.0,
+        0.0,
+        0.0
+      ],
+      "ability_mana_cost": [
+        0.0,
+        0.0,
+        0.0,
+        0.0
+      ],
+      "ability_modifier_support_value": 1.0,
+      "ability_modifier_support_bonus": 0.0,
+      "fight_recap_level": 0,
+      "ability_draft_enabled": true,
+      "linked": null,
+      "ability_special": {
+        "damage_modifier": [
+          -70.0,
+          -55.0,
+          -40.0,
+          -25.0
+        ],
+        "damage_modifier_tooltip": [
+          30.0,
+          45.0,
+          60.0,
+          75.0
+        ],
+        "arrow_count": [
+          3.0
+        ],
+        "split_shot_bonus_range": [
+          100.0
+        ]
+      }
+    },
+    {
+      "id": 5505,
+      "key": "medusa_mystic_snake",
+      "name": "Mystic Snake",
+      "description": "A mystic snake made of energy jumps from target to target dealing damage and stealing mana. After it reaches its last target, it returns to Medusa to replenish her with mana. The snake deals more damage per jump and steals 11/14/17/20% of the targets' total mana. Deals Pure damage to units petrified by Stone Gaze.\\n\\nUpgradable by Aghanim's Scepter.",
+      "image": "https://hgv-hyperstone.azurewebsites.net/abilities/medusa_mystic_snake.png",
+      "hero_id": 94,
+      "ability_type": "DOTA_ABILITY_TYPE_BASIC",
+      "ability_behaviors": [
+        "DOTA_ABILITY_BEHAVIOR_UNIT_TARGET"
+      ],
+      "ability_unit_target_team": "DOTA_UNIT_TARGET_TEAM_ENEMY",
+      "ability_unit_target_type": [
+        "DOTA_UNIT_TARGET_HERO",
+        "DOTA_UNIT_TARGET_BASIC"
+      ],
+      "ability_unit_target_flags": [],
+      "spell_immunity_type": "SPELL_IMMUNITY_ENEMIES_NO",
+      "spell_dispellable_type": null,
+      "ability_unit_damage_type": "DAMAGE_TYPE_MAGICAL",
+      "is_skill": true,
+      "is_ultimate": false,
+      "has_scepter_upgrade": true,
+      "on_castbar": true,
+      "on_learnbar": true,
+      "ability_cast_range": [
+        700
+      ],
+      "ability_cast_range_buffer": 250,
+      "ability_cast_point": [
+        0.4,
+        0.4,
+        0.4,
+        0.4
+      ],
+      "ability_channel_time": [
+        0.0,
+        0.0,
+        0.0,
+        0.0
+      ],
+      "ability_cooldown": [
+        11.0
+      ],
+      "ability_duration": [
+        0.0,
+        0.0,
+        0.0,
+        0.0
+      ],
+      "ability_damage": [
+        0.0,
+        0.0,
+        0.0,
+        0.0
+      ],
+      "ability_mana_cost": [
+        140.0,
+        150.0,
+        160.0,
+        170.0
+      ],
+      "ability_modifier_support_value": 1.0,
+      "ability_modifier_support_bonus": 0.0,
+      "fight_recap_level": 1,
+      "ability_draft_enabled": true,
+      "linked": null,
+      "ability_special": {
+        "radius": [
+          475.0,
+          475.0,
+          475.0,
+          475.0
+        ],
+        "snake_jumps": [
+          3.0,
+          4.0,
+          5.0,
+          6.0
+        ],
+        "jump_delay": [
+          0.25,
+          0.25,
+          0.25,
+          0.25
+        ],
+        "snake_damage": [
+          80.0,
+          120.0,
+          160.0,
+          200.0
+        ],
+        "snake_mana_steal": [
+          11.0,
+          14.0,
+          17.0,
+          20.0
+        ],
+        "snake_scale": [
+          35.0
+        ],
+        "initial_speed": [
+          800.0
+        ],
+        "return_speed": [
+          800.0
+        ],
+        "stone_form_scepter_base": [
+          1.0
+        ],
+        "stone_form_scepter_increment": [
+          0.3
+        ]
+      }
+    },
+    {
+      "id": 5506,
+      "key": "medusa_mana_shield",
+      "name": "Mana Shield",
+      "description": "Creates a shield that absorbs 60% of the incoming damage in exchange for Medusa's mana.",
+      "image": "https://hgv-hyperstone.azurewebsites.net/abilities/medusa_mana_shield.png",
+      "hero_id": 94,
+      "ability_type": "DOTA_ABILITY_TYPE_BASIC",
+      "ability_behaviors": [
+        "DOTA_ABILITY_BEHAVIOR_NO_TARGET",
+        "DOTA_ABILITY_BEHAVIOR_TOGGLE",
+        "DOTA_ABILITY_BEHAVIOR_IMMEDIATE"
+      ],
+      "ability_unit_target_team": null,
+      "ability_unit_target_type": [],
+      "ability_unit_target_flags": [],
+      "spell_immunity_type": null,
+      "spell_dispellable_type": "SPELL_DISPELLABLE_NO",
+      "ability_unit_damage_type": null,
+      "is_skill": true,
+      "is_ultimate": false,
+      "has_scepter_upgrade": false,
+      "on_castbar": true,
+      "on_learnbar": true,
+      "ability_cast_range": [
+        0
+      ],
+      "ability_cast_range_buffer": 250,
+      "ability_cast_point": [
+        0.4,
+        0.4,
+        0.4,
+        0.4
+      ],
+      "ability_channel_time": [
+        0.0,
+        0.0,
+        0.0,
+        0.0
+      ],
+      "ability_cooldown": [
+        0.0,
+        0.0,
+        0.0,
+        0.0
+      ],
+      "ability_duration": [
+        0.0,
+        0.0,
+        0.0,
+        0.0
+      ],
+      "ability_damage": [
+        0.0,
+        0.0,
+        0.0,
+        0.0
+      ],
+      "ability_mana_cost": [
+        0.0,
+        0.0,
+        0.0,
+        0.0
+      ],
+      "ability_modifier_support_value": 1.0,
+      "ability_modifier_support_bonus": 0.0,
+      "fight_recap_level": 0,
+      "ability_draft_enabled": true,
+      "linked": null,
+      "ability_special": {
+        "damage_per_mana": [
+          1.6,
+          1.9,
+          2.2,
+          2.5
+        ],
+        "absorption_tooltip": [
+          60.0
+        ]
+      }
+    },
+    {
+      "id": 6251,
+      "key": "generic_hidden",
+      "name": null,
+      "description": null,
+      "image": "https://hgv-hyperstone.azurewebsites.net/abilities/generic_hidden.png",
+      "hero_id": 94,
+      "ability_type": "DOTA_ABILITY_TYPE_BASIC",
+      "ability_behaviors": [
+        "DOTA_ABILITY_BEHAVIOR_HIDDEN",
+        "DOTA_ABILITY_BEHAVIOR_NOT_LEARNABLE"
+      ],
+      "ability_unit_target_team": null,
+      "ability_unit_target_type": [],
+      "ability_unit_target_flags": [],
+      "spell_immunity_type": null,
+      "spell_dispellable_type": null,
+      "ability_unit_damage_type": null,
+      "is_skill": true,
+      "is_ultimate": false,
+      "has_scepter_upgrade": false,
+      "on_castbar": true,
+      "on_learnbar": true,
+      "ability_cast_range": [
+        0
+      ],
+      "ability_cast_range_buffer": 250,
+      "ability_cast_point": [
+        0.0,
+        0.0,
+        0.0,
+        0.0
+      ],
+      "ability_channel_time": [
+        0.0,
+        0.0,
+        0.0,
+        0.0
+      ],
+      "ability_cooldown": [
+        0.0,
+        0.0,
+        0.0,
+        0.0
+      ],
+      "ability_duration": [
+        0.0,
+        0.0,
+        0.0,
+        0.0
+      ],
+      "ability_damage": [
+        0.0,
+        0.0,
+        0.0,
+        0.0
+      ],
+      "ability_mana_cost": [
+        0.0,
+        0.0,
+        0.0,
+        0.0
+      ],
+      "ability_modifier_support_value": 1.0,
+      "ability_modifier_support_bonus": 0.0,
+      "fight_recap_level": 0,
+      "ability_draft_enabled": false,
+      "linked": null,
+      "ability_special": {}
+    },
+    {
+      "id": 6251,
+      "key": "generic_hidden",
+      "name": null,
+      "description": null,
+      "image": "https://hgv-hyperstone.azurewebsites.net/abilities/generic_hidden.png",
+      "hero_id": 94,
+      "ability_type": "DOTA_ABILITY_TYPE_BASIC",
+      "ability_behaviors": [
+        "DOTA_ABILITY_BEHAVIOR_HIDDEN",
+        "DOTA_ABILITY_BEHAVIOR_NOT_LEARNABLE"
+      ],
+      "ability_unit_target_team": null,
+      "ability_unit_target_type": [],
+      "ability_unit_target_flags": [],
+      "spell_immunity_type": null,
+      "spell_dispellable_type": null,
+      "ability_unit_damage_type": null,
+      "is_skill": true,
+      "is_ultimate": false,
+      "has_scepter_upgrade": false,
+      "on_castbar": true,
+      "on_learnbar": true,
+      "ability_cast_range": [
+        0
+      ],
+      "ability_cast_range_buffer": 250,
+      "ability_cast_point": [
+        0.0,
+        0.0,
+        0.0,
+        0.0
+      ],
+      "ability_channel_time": [
+        0.0,
+        0.0,
+        0.0,
+        0.0
+      ],
+      "ability_cooldown": [
+        0.0,
+        0.0,
+        0.0,
+        0.0
+      ],
+      "ability_duration": [
+        0.0,
+        0.0,
+        0.0,
+        0.0
+      ],
+      "ability_damage": [
+        0.0,
+        0.0,
+        0.0,
+        0.0
+      ],
+      "ability_mana_cost": [
+        0.0,
+        0.0,
+        0.0,
+        0.0
+      ],
+      "ability_modifier_support_value": 1.0,
+      "ability_modifier_support_bonus": 0.0,
+      "fight_recap_level": 0,
+      "ability_draft_enabled": false,
+      "linked": null,
+      "ability_special": {}
+    },
+    {
+      "id": 5507,
+      "key": "medusa_stone_gaze",
+      "name": "Stone Gaze",
+      "description": "Any enemy units looking at Medusa will have their movement and attack speed slowed.  If 2 seconds of total time is accumulated looking at Medusa while Stone Gaze is active, that unit will turn to stone.  Petrified units are stunned, have 100% magic damage resistance, and take bonus physical damage.  If the petrified unit is an illusion, it is immediately killed.",
+      "image": "https://hgv-hyperstone.azurewebsites.net/abilities/medusa_stone_gaze.png",
+      "hero_id": 94,
+      "ability_type": "DOTA_ABILITY_TYPE_ULTIMATE",
+      "ability_behaviors": [
+        "DOTA_ABILITY_BEHAVIOR_NO_TARGET"
+      ],
+      "ability_unit_target_team": null,
+      "ability_unit_target_type": [],
+      "ability_unit_target_flags": [],
+      "spell_immunity_type": "SPELL_IMMUNITY_ENEMIES_YES",
+      "spell_dispellable_type": "SPELL_DISPELLABLE_NO",
+      "ability_unit_damage_type": "DAMAGE_TYPE_MAGICAL",
+      "is_skill": false,
+      "is_ultimate": true,
+      "has_scepter_upgrade": false,
+      "on_castbar": true,
+      "on_learnbar": true,
+      "ability_cast_range": [
+        1000,
+        1000,
+        1000
+      ],
+      "ability_cast_range_buffer": 250,
+      "ability_cast_point": [
+        0.4,
+        0.4,
+        0.4
+      ],
+      "ability_channel_time": [
+        0.0,
+        0.0,
+        0.0,
+        0.0
+      ],
+      "ability_cooldown": [
+        90.0
+      ],
+      "ability_duration": [
+        0.0,
+        0.0,
+        0.0,
+        0.0
+      ],
+      "ability_damage": [
+        0.0,
+        0.0,
+        0.0,
+        0.0
+      ],
+      "ability_mana_cost": [
+        200.0,
+        200.0,
+        200.0
+      ],
+      "ability_modifier_support_value": 1.0,
+      "ability_modifier_support_bonus": 0.0,
+      "fight_recap_level": 2,
+      "ability_draft_enabled": true,
+      "linked": null,
+      "ability_special": {
+        "radius": [
+          1000.0,
+          1000.0,
+          1000.0
+        ],
+        "duration": [
+          5.0,
+          6.0,
+          7.0
+        ],
+        "slow": [
+          35.0
+        ],
+        "stone_duration": [
+          3.0
+        ],
+        "face_duration": [
+          2.0
+        ],
+        "vision_cone": [
+          0.08715
+        ],
+        "bonus_physical_damage": [
+          50.0
+        ]
+      }
+    }
+  ],
+  "talents": [
+    {
+      "id": 5960,
+      "key": "special_bonus_attack_damage_20",
+      "name": "+20 Damage",
+      "description": null
+    },
+    {
+      "id": 5972,
+      "key": "special_bonus_evasion_15",
+      "name": "15% Evasion",
+      "description": null
+    },
+    {
+      "id": 5907,
+      "key": "special_bonus_attack_speed_30",
+      "name": "+30 Attack Speed",
+      "description": null
+    },
+    {
+      "id": 6687,
+      "key": "special_bonus_unique_medusa_3",
+      "name": "+20% Mystic Snake Mana Steal",
+      "description": null
+    },
+    {
+      "id": 7059,
+      "key": "special_bonus_mp_700",
+      "name": "+700 Mana",
+      "description": null
+    },
+    {
+      "id": 6182,
+      "key": "special_bonus_unique_medusa",
+      "name": "+2.5s Stone Gaze Duration",
+      "description": "The duration of the stun is not affected."
+    },
+    {
+      "id": 6392,
+      "key": "special_bonus_unique_medusa_2",
+      "name": "+7 Split Shot Targets",
+      "description": null
+    },
+    {
+      "id": 6803,
+      "key": "special_bonus_unique_medusa_4",
+      "name": "Split Shot Uses Modifiers",
+      "description": "Allows on-hit effects to apply to the secondary attacks from Split Shot."
+    }
+  ],
+  "legs": 0,
+  "armor_physical": -1.0,
+  "magical_resistance": 25,
+  "attack_capabilities": "DOTA_UNIT_CAP_RANGED_ATTACK",
+  "attack_damage_min": 24,
+  "attack_damage_max": 30,
+  "attack_rate": 1.7,
+  "attack_animation_point": 0.5,
+  "attack_acquisition_range": 800,
+  "attack_range": 600,
+  "projectile_speed": 1200,
+  "attribute_primary": "DOTA_ATTRIBUTE_AGILITY",
+  "attribute_base_strength": 15,
+  "attribute_strength_gain": 1.3,
+  "attribute_base_intelligence": 19,
+  "attribute_intelligence_gain": 2.1,
+  "attribute_base_agility": 20,
+  "attribute_agility_gain": 2.5,
+  "status_health": 200,
+  "status_health_regen": 1.5,
+  "status_mana": 75,
+  "status_mana_regen": 0.9,
+  "bounty_xp": 62,
+  "bounty_gold_min": 0,
+  "bounty_gold_max": 0,
+  "movement_capabilities": "DOTA_UNIT_CAP_MOVE_GROUND",
+  "movement_speed": 275,
+  "movement_turn_rate": 0.5,
+  "has_aggressive_stance": true,
+  "team": 1,
+  "team_name": "Radiant",
+  "vision_daytime_range": 1800,
+  "vision_nighttime_range": 0,
+  "bot": {
+    "hero_types": null,
+    "solo_desire": 0,
+    "requires_babysit": 0,
+    "provides_babysit": 0,
+    "survival_rating": 0,
+    "requires_farm": 0,
+    "provides_setup": 0,
+    "requires_setup": 0
+  }
+}

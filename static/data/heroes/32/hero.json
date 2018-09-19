@@ -1,0 +1,607 @@
+{
+  "id": 32,
+  "name": "Riki",
+  "key": "npc_dota_hero_riki",
+  "image_profile": "https://hgv-hyperstone.azurewebsites.net/heroes/profile/npc_dota_hero_riki.png",
+  "image_icon": "https://hgv-hyperstone.azurewebsites.net/heroes/icons/npc_dota_hero_riki.png",
+  "image_banner": "https://hgv-hyperstone.azurewebsites.net/heroes/banner/npc_dota_hero_riki.png",
+  "enabled": true,
+  "new_player_enable": true,
+  "captains_mode_enabled": true,
+  "ability_draft_enabled": true,
+  "complexity": 1,
+  "roles": [
+    {
+      "role": "Carry",
+      "level": 2
+    },
+    {
+      "role": "Escape",
+      "level": 2
+    },
+    {
+      "role": "Disabler",
+      "level": 1
+    }
+  ],
+  "bot_implemented": false,
+  "abilities": [
+    {
+      "id": 5142,
+      "key": "riki_smoke_screen",
+      "name": "Smoke Screen",
+      "description": "Throws down a smoke bomb, silencing enemies, and causing them to miss most attacks, as well as slowing movement.",
+      "image": "https://hgv-hyperstone.azurewebsites.net/abilities/riki_smoke_screen.png",
+      "hero_id": 32,
+      "ability_type": "DOTA_ABILITY_TYPE_BASIC",
+      "ability_behaviors": [
+        "DOTA_ABILITY_BEHAVIOR_AOE",
+        "DOTA_ABILITY_BEHAVIOR_POINT",
+        "DOTA_ABILITY_BEHAVIOR_IGNORE_BACKSWING"
+      ],
+      "ability_unit_target_team": null,
+      "ability_unit_target_type": [],
+      "ability_unit_target_flags": [],
+      "spell_immunity_type": "SPELL_IMMUNITY_ENEMIES_NO",
+      "spell_dispellable_type": "SPELL_DISPELLABLE_NO",
+      "ability_unit_damage_type": null,
+      "is_skill": true,
+      "is_ultimate": false,
+      "has_scepter_upgrade": false,
+      "on_castbar": true,
+      "on_learnbar": true,
+      "ability_cast_range": [
+        550
+      ],
+      "ability_cast_range_buffer": 250,
+      "ability_cast_point": [
+        0.2
+      ],
+      "ability_channel_time": [
+        0.0,
+        0.0,
+        0.0,
+        0.0
+      ],
+      "ability_cooldown": [
+        17.0,
+        15.0,
+        13.0,
+        11.0
+      ],
+      "ability_duration": [
+        6.0
+      ],
+      "ability_damage": [
+        0.0,
+        0.0,
+        0.0,
+        0.0
+      ],
+      "ability_mana_cost": [
+        90.0
+      ],
+      "ability_modifier_support_value": 1.0,
+      "ability_modifier_support_bonus": 0.0,
+      "fight_recap_level": 0,
+      "ability_draft_enabled": true,
+      "linked": null,
+      "ability_special": {
+        "radius": [
+          325.0
+        ],
+        "miss_rate": [
+          40.0,
+          50.0,
+          60.0,
+          70.0
+        ],
+        "movement_speed_reduction": [
+          10.0,
+          15.0,
+          20.0,
+          25.0
+        ],
+        "turn_reduction": [
+          0.0
+        ],
+        "duration": [
+          6.0
+        ]
+      }
+    },
+    {
+      "id": 5143,
+      "key": "riki_blink_strike",
+      "name": "Blink Strike",
+      "description": "Teleports behind the target unit, striking for bonus damage if it is an enemy.",
+      "image": "https://hgv-hyperstone.azurewebsites.net/abilities/riki_blink_strike.png",
+      "hero_id": 32,
+      "ability_type": "DOTA_ABILITY_TYPE_BASIC",
+      "ability_behaviors": [
+        "DOTA_ABILITY_BEHAVIOR_UNIT_TARGET",
+        "DOTA_ABILITY_BEHAVIOR_IGNORE_BACKSWING",
+        "DOTA_ABILITY_BEHAVIOR_ROOT_DISABLES"
+      ],
+      "ability_unit_target_team": "DOTA_UNIT_TARGET_TEAM_CUSTOM",
+      "ability_unit_target_type": [
+        "DOTA_UNIT_TARGET_CUSTOM"
+      ],
+      "ability_unit_target_flags": [],
+      "spell_immunity_type": "SPELL_IMMUNITY_ENEMIES_YES",
+      "spell_dispellable_type": null,
+      "ability_unit_damage_type": "DAMAGE_TYPE_MAGICAL",
+      "is_skill": true,
+      "is_ultimate": false,
+      "has_scepter_upgrade": false,
+      "on_castbar": true,
+      "on_learnbar": true,
+      "ability_cast_range": [
+        500,
+        600,
+        700,
+        800
+      ],
+      "ability_cast_range_buffer": 250,
+      "ability_cast_point": [
+        0.3
+      ],
+      "ability_channel_time": [
+        0.0,
+        0.0,
+        0.0,
+        0.0
+      ],
+      "ability_cooldown": [
+        16.0,
+        12.0,
+        8.0,
+        4.0
+      ],
+      "ability_duration": [
+        0.0,
+        0.0,
+        0.0,
+        0.0
+      ],
+      "ability_damage": [
+        0.0,
+        0.0,
+        0.0,
+        0.0
+      ],
+      "ability_mana_cost": [
+        50.0
+      ],
+      "ability_modifier_support_value": 1.0,
+      "ability_modifier_support_bonus": 0.0,
+      "fight_recap_level": 0,
+      "ability_draft_enabled": true,
+      "linked": null,
+      "ability_special": {
+        "tooltip_range": [
+          500.0,
+          600.0,
+          700.0,
+          800.0
+        ],
+        "bonus_damage": [
+          100.0
+        ]
+      }
+    },
+    {
+      "id": 5144,
+      "key": "riki_permanent_invisibility",
+      "name": "Cloak and Dagger",
+      "description": "Riki fades into the shadows, becoming invisible. Every time Riki strikes his enemy from behind, he deals bonus damage based on his Agility. When Riki attacks, he becomes visible.",
+      "image": "https://hgv-hyperstone.azurewebsites.net/abilities/riki_permanent_invisibility.png",
+      "hero_id": 32,
+      "ability_type": "DOTA_ABILITY_TYPE_BASIC",
+      "ability_behaviors": [
+        "DOTA_ABILITY_BEHAVIOR_PASSIVE"
+      ],
+      "ability_unit_target_team": null,
+      "ability_unit_target_type": [],
+      "ability_unit_target_flags": [],
+      "spell_immunity_type": "SPELL_IMMUNITY_ENEMIES_YES",
+      "spell_dispellable_type": "SPELL_DISPELLABLE_NO",
+      "ability_unit_damage_type": "DAMAGE_TYPE_PHYSICAL",
+      "is_skill": true,
+      "is_ultimate": false,
+      "has_scepter_upgrade": false,
+      "on_castbar": true,
+      "on_learnbar": true,
+      "ability_cast_range": [
+        0
+      ],
+      "ability_cast_range_buffer": 250,
+      "ability_cast_point": [
+        0.0,
+        0.0,
+        0.0,
+        0.0
+      ],
+      "ability_channel_time": [
+        0.0,
+        0.0,
+        0.0,
+        0.0
+      ],
+      "ability_cooldown": [
+        0.0,
+        0.0,
+        0.0,
+        0.0
+      ],
+      "ability_duration": [
+        0.0,
+        0.0,
+        0.0,
+        0.0
+      ],
+      "ability_damage": [
+        0.0,
+        0.0,
+        0.0,
+        0.0
+      ],
+      "ability_mana_cost": [
+        0.0,
+        0.0,
+        0.0,
+        0.0
+      ],
+      "ability_modifier_support_value": 1.0,
+      "ability_modifier_support_bonus": 0.0,
+      "fight_recap_level": 0,
+      "ability_draft_enabled": true,
+      "linked": null,
+      "ability_special": {
+        "damage_multiplier": [
+          0.4,
+          0.6,
+          0.8,
+          1.0
+        ],
+        "backstab_angle": [
+          105.0,
+          105.0,
+          105.0,
+          105.0
+        ],
+        "fade_time": [
+          0.0,
+          0.0,
+          0.0,
+          0.0
+        ],
+        "fade_delay": [
+          7.5,
+          6.0,
+          4.5,
+          3.0
+        ]
+      }
+    },
+    {
+      "id": 6251,
+      "key": "generic_hidden",
+      "name": null,
+      "description": null,
+      "image": "https://hgv-hyperstone.azurewebsites.net/abilities/generic_hidden.png",
+      "hero_id": 32,
+      "ability_type": "DOTA_ABILITY_TYPE_BASIC",
+      "ability_behaviors": [
+        "DOTA_ABILITY_BEHAVIOR_HIDDEN",
+        "DOTA_ABILITY_BEHAVIOR_NOT_LEARNABLE"
+      ],
+      "ability_unit_target_team": null,
+      "ability_unit_target_type": [],
+      "ability_unit_target_flags": [],
+      "spell_immunity_type": null,
+      "spell_dispellable_type": null,
+      "ability_unit_damage_type": null,
+      "is_skill": true,
+      "is_ultimate": false,
+      "has_scepter_upgrade": false,
+      "on_castbar": true,
+      "on_learnbar": true,
+      "ability_cast_range": [
+        0
+      ],
+      "ability_cast_range_buffer": 250,
+      "ability_cast_point": [
+        0.0,
+        0.0,
+        0.0,
+        0.0
+      ],
+      "ability_channel_time": [
+        0.0,
+        0.0,
+        0.0,
+        0.0
+      ],
+      "ability_cooldown": [
+        0.0,
+        0.0,
+        0.0,
+        0.0
+      ],
+      "ability_duration": [
+        0.0,
+        0.0,
+        0.0,
+        0.0
+      ],
+      "ability_damage": [
+        0.0,
+        0.0,
+        0.0,
+        0.0
+      ],
+      "ability_mana_cost": [
+        0.0,
+        0.0,
+        0.0,
+        0.0
+      ],
+      "ability_modifier_support_value": 1.0,
+      "ability_modifier_support_bonus": 0.0,
+      "fight_recap_level": 0,
+      "ability_draft_enabled": false,
+      "linked": null,
+      "ability_special": {}
+    },
+    {
+      "id": 6251,
+      "key": "generic_hidden",
+      "name": null,
+      "description": null,
+      "image": "https://hgv-hyperstone.azurewebsites.net/abilities/generic_hidden.png",
+      "hero_id": 32,
+      "ability_type": "DOTA_ABILITY_TYPE_BASIC",
+      "ability_behaviors": [
+        "DOTA_ABILITY_BEHAVIOR_HIDDEN",
+        "DOTA_ABILITY_BEHAVIOR_NOT_LEARNABLE"
+      ],
+      "ability_unit_target_team": null,
+      "ability_unit_target_type": [],
+      "ability_unit_target_flags": [],
+      "spell_immunity_type": null,
+      "spell_dispellable_type": null,
+      "ability_unit_damage_type": null,
+      "is_skill": true,
+      "is_ultimate": false,
+      "has_scepter_upgrade": false,
+      "on_castbar": true,
+      "on_learnbar": true,
+      "ability_cast_range": [
+        0
+      ],
+      "ability_cast_range_buffer": 250,
+      "ability_cast_point": [
+        0.0,
+        0.0,
+        0.0,
+        0.0
+      ],
+      "ability_channel_time": [
+        0.0,
+        0.0,
+        0.0,
+        0.0
+      ],
+      "ability_cooldown": [
+        0.0,
+        0.0,
+        0.0,
+        0.0
+      ],
+      "ability_duration": [
+        0.0,
+        0.0,
+        0.0,
+        0.0
+      ],
+      "ability_damage": [
+        0.0,
+        0.0,
+        0.0,
+        0.0
+      ],
+      "ability_mana_cost": [
+        0.0,
+        0.0,
+        0.0,
+        0.0
+      ],
+      "ability_modifier_support_value": 1.0,
+      "ability_modifier_support_bonus": 0.0,
+      "fight_recap_level": 0,
+      "ability_draft_enabled": false,
+      "linked": null,
+      "ability_special": {}
+    },
+    {
+      "id": 5145,
+      "key": "riki_tricks_of_the_trade",
+      "name": "Tricks of the Trade",
+      "description": "CHANNELED - Riki phases out of the world while striking random enemy heroes from behind in an area around him.\\n\\nUpgradable by Aghanim's Scepter.",
+      "image": "https://hgv-hyperstone.azurewebsites.net/abilities/riki_tricks_of_the_trade.png",
+      "hero_id": 32,
+      "ability_type": "DOTA_ABILITY_TYPE_ULTIMATE",
+      "ability_behaviors": [
+        "DOTA_ABILITY_BEHAVIOR_NO_TARGET",
+        "DOTA_ABILITY_BEHAVIOR_DONT_RESUME_MOVEMENT",
+        "DOTA_ABILITY_BEHAVIOR_CHANNELLED",
+        "DOTA_ABILITY_BEHAVIOR_DONT_RESUME_ATTACK",
+        "DOTA_ABILITY_BEHAVIOR_ROOT_DISABLES"
+      ],
+      "ability_unit_target_team": "DOTA_UNIT_TARGET_TEAM_FRIENDLY",
+      "ability_unit_target_type": [
+        "DOTA_UNIT_TARGET_HERO"
+      ],
+      "ability_unit_target_flags": [
+        "DOTA_UNIT_TARGET_FLAG_NOT_CREEP_HERO"
+      ],
+      "spell_immunity_type": null,
+      "spell_dispellable_type": null,
+      "ability_unit_damage_type": null,
+      "is_skill": false,
+      "is_ultimate": true,
+      "has_scepter_upgrade": true,
+      "on_castbar": true,
+      "on_learnbar": true,
+      "ability_cast_range": [
+        1000
+      ],
+      "ability_cast_range_buffer": 250,
+      "ability_cast_point": [
+        0.3
+      ],
+      "ability_channel_time": [
+        4.0,
+        5.0,
+        6.0
+      ],
+      "ability_cooldown": [
+        50.0,
+        45.0,
+        40.0
+      ],
+      "ability_duration": [
+        0.0,
+        0.0,
+        0.0,
+        0.0
+      ],
+      "ability_damage": [
+        0.0,
+        0.0,
+        0.0,
+        0.0
+      ],
+      "ability_mana_cost": [
+        75.0
+      ],
+      "ability_modifier_support_value": 1.0,
+      "ability_modifier_support_bonus": 0.0,
+      "fight_recap_level": 0,
+      "ability_draft_enabled": true,
+      "linked": null,
+      "ability_special": {
+        "range": [
+          500.0
+        ],
+        "attack_rate": [
+          0.6,
+          0.55,
+          0.5
+        ],
+        "duration_tooltip": [
+          4.0,
+          5.0,
+          6.0
+        ],
+        "scepter_bonus": [
+          4.0
+        ]
+      }
+    }
+  ],
+  "talents": [
+    {
+      "id": 5910,
+      "key": "special_bonus_hp_regen_5",
+      "name": "+5 Health Regen",
+      "description": null
+    },
+    {
+      "id": 6014,
+      "key": "special_bonus_agility_8",
+      "name": "+8 Agility",
+      "description": null
+    },
+    {
+      "id": 7045,
+      "key": "special_bonus_20_crit_15",
+      "name": "+20% Critical Strike (1.5x)",
+      "description": null
+    },
+    {
+      "id": 6193,
+      "key": "special_bonus_unique_riki_2",
+      "name": "-7s Smoke Screen Cooldown",
+      "description": null
+    },
+    {
+      "id": 6330,
+      "key": "special_bonus_unique_riki_1",
+      "name": "+0.20 Backstab Multiplier",
+      "description": null
+    },
+    {
+      "id": 6865,
+      "key": "special_bonus_unique_riki_3",
+      "name": "+900 Blink Strike Cast Range",
+      "description": null
+    },
+    {
+      "id": 6866,
+      "key": "special_bonus_unique_riki_4",
+      "name": "+400 Tricks of the Trade AoE",
+      "description": null
+    },
+    {
+      "id": 6867,
+      "key": "special_bonus_unique_riki_5",
+      "name": "Cloak and Dagger Doesn't Reveal",
+      "description": "No actions take Riki out of invisibility, only revealed by sources of True Sight."
+    }
+  ],
+  "legs": 2,
+  "armor_physical": 1.0,
+  "magical_resistance": 25,
+  "attack_capabilities": "DOTA_UNIT_CAP_MELEE_ATTACK",
+  "attack_damage_min": 11,
+  "attack_damage_max": 15,
+  "attack_rate": 1.7,
+  "attack_animation_point": 0.3,
+  "attack_acquisition_range": 600,
+  "attack_range": 150,
+  "projectile_speed": 900,
+  "attribute_primary": "DOTA_ATTRIBUTE_AGILITY",
+  "attribute_base_strength": 18,
+  "attribute_strength_gain": 1.9,
+  "attribute_base_intelligence": 14,
+  "attribute_intelligence_gain": 1.3,
+  "attribute_base_agility": 30,
+  "attribute_agility_gain": 2.2,
+  "status_health": 200,
+  "status_health_regen": 3.0,
+  "status_mana": 75,
+  "status_mana_regen": 0.9,
+  "bounty_xp": 62,
+  "bounty_gold_min": 0,
+  "bounty_gold_max": 0,
+  "movement_capabilities": "DOTA_UNIT_CAP_MOVE_GROUND",
+  "movement_speed": 275,
+  "movement_turn_rate": 0.6,
+  "has_aggressive_stance": false,
+  "team": 1,
+  "team_name": "Radiant",
+  "vision_daytime_range": 1800,
+  "vision_nighttime_range": 0,
+  "bot": {
+    "hero_types": null,
+    "solo_desire": 0,
+    "requires_babysit": 0,
+    "provides_babysit": 0,
+    "survival_rating": 0,
+    "requires_farm": 0,
+    "provides_setup": 0,
+    "requires_setup": 0
+  }
+}

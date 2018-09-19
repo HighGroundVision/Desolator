@@ -1,0 +1,652 @@
+{
+  "id": 49,
+  "name": "Dragon Knight",
+  "key": "npc_dota_hero_dragon_knight",
+  "image_profile": "https://hgv-hyperstone.azurewebsites.net/heroes/profile/npc_dota_hero_dragon_knight.png",
+  "image_icon": "https://hgv-hyperstone.azurewebsites.net/heroes/icons/npc_dota_hero_dragon_knight.png",
+  "image_banner": "https://hgv-hyperstone.azurewebsites.net/heroes/banner/npc_dota_hero_dragon_knight.png",
+  "enabled": true,
+  "new_player_enable": true,
+  "captains_mode_enabled": true,
+  "ability_draft_enabled": true,
+  "complexity": 1,
+  "roles": [
+    {
+      "role": "Carry",
+      "level": 2
+    },
+    {
+      "role": "Pusher",
+      "level": 3
+    },
+    {
+      "role": "Durable",
+      "level": 2
+    },
+    {
+      "role": "Disabler",
+      "level": 2
+    },
+    {
+      "role": "Initiator",
+      "level": 1
+    },
+    {
+      "role": "Nuker",
+      "level": 1
+    }
+  ],
+  "bot_implemented": true,
+  "abilities": [
+    {
+      "id": 5226,
+      "key": "dragon_knight_breathe_fire",
+      "name": "Breathe Fire",
+      "description": "Unleashes a breath of fire in front of Dragon Knight that burns enemies and reduces the damage their attacks deal.",
+      "image": "https://hgv-hyperstone.azurewebsites.net/abilities/dragon_knight_breathe_fire.png",
+      "hero_id": 49,
+      "ability_type": "DOTA_ABILITY_TYPE_BASIC",
+      "ability_behaviors": [
+        "DOTA_ABILITY_BEHAVIOR_DIRECTIONAL",
+        "DOTA_ABILITY_BEHAVIOR_POINT",
+        "DOTA_ABILITY_BEHAVIOR_UNIT_TARGET"
+      ],
+      "ability_unit_target_team": "DOTA_UNIT_TARGET_TEAM_ENEMY",
+      "ability_unit_target_type": [
+        "DOTA_UNIT_TARGET_HERO",
+        "DOTA_UNIT_TARGET_BASIC"
+      ],
+      "ability_unit_target_flags": [
+        "DOTA_UNIT_TARGET_FLAG_MAGIC_IMMUNE_ENEMIES"
+      ],
+      "spell_immunity_type": "SPELL_IMMUNITY_ENEMIES_NO",
+      "spell_dispellable_type": "SPELL_DISPELLABLE_YES",
+      "ability_unit_damage_type": "DAMAGE_TYPE_MAGICAL",
+      "is_skill": true,
+      "is_ultimate": false,
+      "has_scepter_upgrade": false,
+      "on_castbar": true,
+      "on_learnbar": true,
+      "ability_cast_range": [
+        600
+      ],
+      "ability_cast_range_buffer": 250,
+      "ability_cast_point": [
+        0.2
+      ],
+      "ability_channel_time": [
+        0.0,
+        0.0,
+        0.0,
+        0.0
+      ],
+      "ability_cooldown": [
+        14.0,
+        13.0,
+        12.0,
+        11.0
+      ],
+      "ability_duration": [
+        0.0,
+        0.0,
+        0.0,
+        0.0
+      ],
+      "ability_damage": [
+        90.0,
+        170.0,
+        240.0,
+        300.0
+      ],
+      "ability_mana_cost": [
+        100.0,
+        110.0,
+        120.0,
+        130.0
+      ],
+      "ability_modifier_support_value": 1.0,
+      "ability_modifier_support_bonus": 0.0,
+      "fight_recap_level": 1,
+      "ability_draft_enabled": true,
+      "linked": null,
+      "ability_special": {
+        "start_radius": [
+          150.0,
+          150.0,
+          150.0,
+          150.0
+        ],
+        "end_radius": [
+          250.0,
+          250.0,
+          250.0,
+          250.0
+        ],
+        "range": [
+          750.0
+        ],
+        "speed": [
+          1050.0
+        ],
+        "reduction": [
+          -25.0
+        ],
+        "duration": [
+          11.0
+        ]
+      }
+    },
+    {
+      "id": 5227,
+      "key": "dragon_knight_dragon_tail",
+      "name": "Dragon Tail",
+      "description": "Dragon Knight smites an enemy unit in melee range with his shield, stunning it while dealing minor damage.  When in Elder Dragon Form, the cast range increases to 400.",
+      "image": "https://hgv-hyperstone.azurewebsites.net/abilities/dragon_knight_dragon_tail.png",
+      "hero_id": 49,
+      "ability_type": "DOTA_ABILITY_TYPE_BASIC",
+      "ability_behaviors": [
+        "DOTA_ABILITY_BEHAVIOR_UNIT_TARGET"
+      ],
+      "ability_unit_target_team": "DOTA_UNIT_TARGET_TEAM_ENEMY",
+      "ability_unit_target_type": [
+        "DOTA_UNIT_TARGET_HERO",
+        "DOTA_UNIT_TARGET_BASIC"
+      ],
+      "ability_unit_target_flags": [],
+      "spell_immunity_type": "SPELL_IMMUNITY_ENEMIES_NO",
+      "spell_dispellable_type": "SPELL_DISPELLABLE_YES_STRONG",
+      "ability_unit_damage_type": "DAMAGE_TYPE_MAGICAL",
+      "is_skill": true,
+      "is_ultimate": false,
+      "has_scepter_upgrade": false,
+      "on_castbar": true,
+      "on_learnbar": true,
+      "ability_cast_range": [
+        150
+      ],
+      "ability_cast_range_buffer": 250,
+      "ability_cast_point": [
+        0.0,
+        0.0,
+        0.0,
+        0.0
+      ],
+      "ability_channel_time": [
+        0.0,
+        0.0,
+        0.0,
+        0.0
+      ],
+      "ability_cooldown": [
+        12.0,
+        11.0,
+        10.0,
+        9.0
+      ],
+      "ability_duration": [
+        0.0,
+        0.0,
+        0.0,
+        0.0
+      ],
+      "ability_damage": [
+        25.0,
+        50.0,
+        75.0,
+        100.0
+      ],
+      "ability_mana_cost": [
+        100.0,
+        100.0,
+        100.0,
+        100.0
+      ],
+      "ability_modifier_support_value": 1.0,
+      "ability_modifier_support_bonus": 0.0,
+      "fight_recap_level": 1,
+      "ability_draft_enabled": true,
+      "linked": null,
+      "ability_special": {
+        "stun_duration": [
+          2.5,
+          2.75,
+          3.0,
+          3.25
+        ],
+        "dragon_cast_range": [
+          400.0
+        ],
+        "projectile_speed": [
+          1600.0
+        ]
+      }
+    },
+    {
+      "id": 5228,
+      "key": "dragon_knight_dragon_blood",
+      "name": "Dragon Blood",
+      "description": "The life blood of the Dragon improves health regeneration and strengthens armor.",
+      "image": "https://hgv-hyperstone.azurewebsites.net/abilities/dragon_knight_dragon_blood.png",
+      "hero_id": 49,
+      "ability_type": "DOTA_ABILITY_TYPE_BASIC",
+      "ability_behaviors": [
+        "DOTA_ABILITY_BEHAVIOR_PASSIVE"
+      ],
+      "ability_unit_target_team": null,
+      "ability_unit_target_type": [],
+      "ability_unit_target_flags": [],
+      "spell_immunity_type": null,
+      "spell_dispellable_type": null,
+      "ability_unit_damage_type": null,
+      "is_skill": true,
+      "is_ultimate": false,
+      "has_scepter_upgrade": false,
+      "on_castbar": true,
+      "on_learnbar": true,
+      "ability_cast_range": [
+        0
+      ],
+      "ability_cast_range_buffer": 250,
+      "ability_cast_point": [
+        0.0,
+        0.0,
+        0.0,
+        0.0
+      ],
+      "ability_channel_time": [
+        0.0,
+        0.0,
+        0.0,
+        0.0
+      ],
+      "ability_cooldown": [
+        0.0,
+        0.0,
+        0.0,
+        0.0
+      ],
+      "ability_duration": [
+        0.0,
+        0.0,
+        0.0,
+        0.0
+      ],
+      "ability_damage": [
+        0.0,
+        0.0,
+        0.0,
+        0.0
+      ],
+      "ability_mana_cost": [
+        0.0,
+        0.0,
+        0.0,
+        0.0
+      ],
+      "ability_modifier_support_value": 1.0,
+      "ability_modifier_support_bonus": 0.0,
+      "fight_recap_level": 0,
+      "ability_draft_enabled": true,
+      "linked": null,
+      "ability_special": {
+        "bonus_health_regen": [
+          4.0,
+          6.0,
+          8.0,
+          10.0
+        ],
+        "bonus_armor": [
+          3.0,
+          6.0,
+          9.0,
+          12.0
+        ]
+      }
+    },
+    {
+      "id": 6251,
+      "key": "generic_hidden",
+      "name": null,
+      "description": null,
+      "image": "https://hgv-hyperstone.azurewebsites.net/abilities/generic_hidden.png",
+      "hero_id": 49,
+      "ability_type": "DOTA_ABILITY_TYPE_BASIC",
+      "ability_behaviors": [
+        "DOTA_ABILITY_BEHAVIOR_HIDDEN",
+        "DOTA_ABILITY_BEHAVIOR_NOT_LEARNABLE"
+      ],
+      "ability_unit_target_team": null,
+      "ability_unit_target_type": [],
+      "ability_unit_target_flags": [],
+      "spell_immunity_type": null,
+      "spell_dispellable_type": null,
+      "ability_unit_damage_type": null,
+      "is_skill": true,
+      "is_ultimate": false,
+      "has_scepter_upgrade": false,
+      "on_castbar": true,
+      "on_learnbar": true,
+      "ability_cast_range": [
+        0
+      ],
+      "ability_cast_range_buffer": 250,
+      "ability_cast_point": [
+        0.0,
+        0.0,
+        0.0,
+        0.0
+      ],
+      "ability_channel_time": [
+        0.0,
+        0.0,
+        0.0,
+        0.0
+      ],
+      "ability_cooldown": [
+        0.0,
+        0.0,
+        0.0,
+        0.0
+      ],
+      "ability_duration": [
+        0.0,
+        0.0,
+        0.0,
+        0.0
+      ],
+      "ability_damage": [
+        0.0,
+        0.0,
+        0.0,
+        0.0
+      ],
+      "ability_mana_cost": [
+        0.0,
+        0.0,
+        0.0,
+        0.0
+      ],
+      "ability_modifier_support_value": 1.0,
+      "ability_modifier_support_bonus": 0.0,
+      "fight_recap_level": 0,
+      "ability_draft_enabled": false,
+      "linked": null,
+      "ability_special": {}
+    },
+    {
+      "id": 6251,
+      "key": "generic_hidden",
+      "name": null,
+      "description": null,
+      "image": "https://hgv-hyperstone.azurewebsites.net/abilities/generic_hidden.png",
+      "hero_id": 49,
+      "ability_type": "DOTA_ABILITY_TYPE_BASIC",
+      "ability_behaviors": [
+        "DOTA_ABILITY_BEHAVIOR_HIDDEN",
+        "DOTA_ABILITY_BEHAVIOR_NOT_LEARNABLE"
+      ],
+      "ability_unit_target_team": null,
+      "ability_unit_target_type": [],
+      "ability_unit_target_flags": [],
+      "spell_immunity_type": null,
+      "spell_dispellable_type": null,
+      "ability_unit_damage_type": null,
+      "is_skill": true,
+      "is_ultimate": false,
+      "has_scepter_upgrade": false,
+      "on_castbar": true,
+      "on_learnbar": true,
+      "ability_cast_range": [
+        0
+      ],
+      "ability_cast_range_buffer": 250,
+      "ability_cast_point": [
+        0.0,
+        0.0,
+        0.0,
+        0.0
+      ],
+      "ability_channel_time": [
+        0.0,
+        0.0,
+        0.0,
+        0.0
+      ],
+      "ability_cooldown": [
+        0.0,
+        0.0,
+        0.0,
+        0.0
+      ],
+      "ability_duration": [
+        0.0,
+        0.0,
+        0.0,
+        0.0
+      ],
+      "ability_damage": [
+        0.0,
+        0.0,
+        0.0,
+        0.0
+      ],
+      "ability_mana_cost": [
+        0.0,
+        0.0,
+        0.0,
+        0.0
+      ],
+      "ability_modifier_support_value": 1.0,
+      "ability_modifier_support_bonus": 0.0,
+      "fight_recap_level": 0,
+      "ability_draft_enabled": false,
+      "linked": null,
+      "ability_special": {}
+    },
+    {
+      "id": 5229,
+      "key": "dragon_knight_elder_dragon_form",
+      "name": "Elder Dragon Form",
+      "description": "Dragon Knight takes the form of one of three powerful elder dragons, increasing his speed, and Dragon Tail's range, while granting him new powers.\\n<font color=\\\"#9acd32\\\">LEVEL 1 Green Dragon</font> - Corrosive Breath: attacks deal 20 poison damage per second for 5 seconds. Works on structures.\\n<font color=\\\"#ff0000\\\">LEVEL 2 Red Dragon</font> - Splash Attack: attacks damage all enemy units in a 300 radius, with Corrosive Breath added to the targets.\\n<font color=\\\"#87ceeb\\\">LEVEL 3 Blue Dragon</font> - Frost Breath: slows movement speed by 30% and attack speed by 30 of enemy units in Splash Attack range for 3 seconds, with Corrosive Breath added to the targets.",
+      "image": "https://hgv-hyperstone.azurewebsites.net/abilities/dragon_knight_elder_dragon_form.png",
+      "hero_id": 49,
+      "ability_type": "DOTA_ABILITY_TYPE_ULTIMATE",
+      "ability_behaviors": [
+        "DOTA_ABILITY_BEHAVIOR_NO_TARGET"
+      ],
+      "ability_unit_target_team": null,
+      "ability_unit_target_type": [],
+      "ability_unit_target_flags": [],
+      "spell_immunity_type": "SPELL_IMMUNITY_ENEMIES_YES",
+      "spell_dispellable_type": "SPELL_DISPELLABLE_NO",
+      "ability_unit_damage_type": null,
+      "is_skill": false,
+      "is_ultimate": true,
+      "has_scepter_upgrade": false,
+      "on_castbar": true,
+      "on_learnbar": true,
+      "ability_cast_range": [
+        0
+      ],
+      "ability_cast_range_buffer": 250,
+      "ability_cast_point": [
+        0.0,
+        0.0,
+        0.0,
+        0.0
+      ],
+      "ability_channel_time": [
+        0.0,
+        0.0,
+        0.0,
+        0.0
+      ],
+      "ability_cooldown": [
+        115.0
+      ],
+      "ability_duration": [
+        0.0,
+        0.0,
+        0.0,
+        0.0
+      ],
+      "ability_damage": [
+        0.0,
+        0.0,
+        0.0,
+        0.0
+      ],
+      "ability_mana_cost": [
+        50.0,
+        50.0,
+        50.0
+      ],
+      "ability_modifier_support_value": 0.35,
+      "ability_modifier_support_bonus": 0.0,
+      "fight_recap_level": 2,
+      "ability_draft_enabled": false,
+      "linked": null,
+      "ability_special": {
+        "duration": [
+          60.0
+        ],
+        "bonus_movement_speed": [
+          30.0
+        ],
+        "bonus_attack_range": [
+          350.0
+        ],
+        "bonus_attack_damage": [
+          0.0
+        ],
+        "corrosive_breath_damage": [
+          20.0,
+          20.0,
+          20.0
+        ],
+        "corrosive_breath_duration": [
+          5.0,
+          5.0,
+          5.0
+        ],
+        "splash_radius": [
+          150.0,
+          225.0,
+          300.0
+        ],
+        "splash_damage_percent": [
+          100.0,
+          75.0,
+          50.0
+        ],
+        "frost_bonus_movement_speed": [
+          -30.0
+        ],
+        "frost_bonus_attack_speed": [
+          -20.0
+        ],
+        "frost_duration": [
+          3.0,
+          3.0,
+          3.0
+        ],
+        "frost_aoe": [
+          300.0
+        ]
+      }
+    }
+  ],
+  "talents": [
+    {
+      "id": 5961,
+      "key": "special_bonus_mp_regen_2",
+      "name": "+2 Mana Regen",
+      "description": null
+    },
+    {
+      "id": 7113,
+      "key": "special_bonus_unique_dragon_knight_3",
+      "name": "-20% Breathe Fire Damage Reduction",
+      "description": null
+    },
+    {
+      "id": 5939,
+      "key": "special_bonus_attack_damage_30",
+      "name": "+30 Damage",
+      "description": null
+    },
+    {
+      "id": 5993,
+      "key": "special_bonus_hp_300",
+      "name": "+300 Health",
+      "description": null
+    },
+    {
+      "id": 5957,
+      "key": "special_bonus_gold_income_25",
+      "name": "+150 Gold/Min",
+      "description": null
+    },
+    {
+      "id": 6090,
+      "key": "special_bonus_unique_dragon_knight",
+      "name": "2x Dragon Blood HP Regen/Armor",
+      "description": null
+    },
+    {
+      "id": 6633,
+      "key": "special_bonus_strength_40",
+      "name": "+40 Strength",
+      "description": null
+    },
+    {
+      "id": 6635,
+      "key": "special_bonus_unique_dragon_knight_2",
+      "name": "+1.75s Dragon Tail",
+      "description": null
+    }
+  ],
+  "legs": 2,
+  "armor_physical": 0.0,
+  "magical_resistance": 25,
+  "attack_capabilities": "DOTA_UNIT_CAP_MELEE_ATTACK",
+  "attack_damage_min": 31,
+  "attack_damage_max": 37,
+  "attack_rate": 1.7,
+  "attack_animation_point": 0.5,
+  "attack_acquisition_range": 600,
+  "attack_range": 150,
+  "projectile_speed": 900,
+  "attribute_primary": "DOTA_ATTRIBUTE_STRENGTH",
+  "attribute_base_strength": 19,
+  "attribute_strength_gain": 3.1,
+  "attribute_base_intelligence": 15,
+  "attribute_intelligence_gain": 1.7,
+  "attribute_base_agility": 19,
+  "attribute_agility_gain": 2.0,
+  "status_health": 200,
+  "status_health_regen": 1.5,
+  "status_mana": 75,
+  "status_mana_regen": 0.9,
+  "bounty_xp": 62,
+  "bounty_gold_min": 0,
+  "bounty_gold_max": 0,
+  "movement_capabilities": "DOTA_UNIT_CAP_MOVE_GROUND",
+  "movement_speed": 280,
+  "movement_turn_rate": 0.6,
+  "has_aggressive_stance": false,
+  "team": 1,
+  "team_name": "Radiant",
+  "vision_daytime_range": 1800,
+  "vision_nighttime_range": 0,
+  "bot": {
+    "hero_types": null,
+    "solo_desire": 0,
+    "requires_babysit": 0,
+    "provides_babysit": 0,
+    "survival_rating": 0,
+    "requires_farm": 0,
+    "provides_setup": 0,
+    "requires_setup": 0
+  }
+}

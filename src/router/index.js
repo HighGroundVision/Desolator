@@ -1,8 +1,13 @@
 import Vue from 'vue'
 import Router from 'vue-router'
 
-import ErrorHandler from '@/components/Error'
-import Dashboard from '@/components/Dashboard'
+import PageError from '@/components/Error'
+import PageDashboard from '@/components/Dashboard'
+import PagePool from '@/components/Pool'
+import PageHeroes from '@/components/Heroes'
+import PageHero from '@/components/Hero'
+import PageAbilities from '@/components/Abilities'
+import PageAbility from '@/components/Ability'
 
 Vue.use(Router)
 
@@ -11,12 +16,37 @@ let router = new Router({
     {
       path: '/',
       name: 'Home',
-      component: Dashboard
+      component: PageDashboard
+    },
+    {
+      path: '/pool',
+      name: 'Pool',
+      component: PagePool
+    },
+    {
+      path: '/hero/:id',
+      name: 'Hero',
+      component: PageHero
+    },
+    {
+      path: '/heroes',
+      name: 'Heroes',
+      component: PageHeroes
+    },
+    {
+      path: '/abilities',
+      name: 'Abilities',
+      component: PageAbilities
+    },
+    {
+      path: '/ability/:id',
+      name: 'Ability',
+      component: PageAbility
     },
     {
       path: '/error',
       name: 'Error',
-      component: ErrorHandler
+      component: PageError
     }
   ]
 })

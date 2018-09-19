@@ -1,0 +1,641 @@
+{
+  "id": 99,
+  "name": "Bristleback",
+  "key": "npc_dota_hero_bristleback",
+  "image_profile": "https://hgv-hyperstone.azurewebsites.net/heroes/profile/npc_dota_hero_bristleback.png",
+  "image_icon": "https://hgv-hyperstone.azurewebsites.net/heroes/icons/npc_dota_hero_bristleback.png",
+  "image_banner": "https://hgv-hyperstone.azurewebsites.net/heroes/banner/npc_dota_hero_bristleback.png",
+  "enabled": true,
+  "new_player_enable": true,
+  "captains_mode_enabled": true,
+  "ability_draft_enabled": true,
+  "complexity": 1,
+  "roles": [
+    {
+      "role": "Carry",
+      "level": 2
+    },
+    {
+      "role": "Durable",
+      "level": 3
+    },
+    {
+      "role": "Initiator",
+      "level": 1
+    },
+    {
+      "role": "Nuker",
+      "level": 1
+    }
+  ],
+  "bot_implemented": true,
+  "abilities": [
+    {
+      "id": 5548,
+      "key": "bristleback_viscous_nasal_goo",
+      "name": "Viscous Nasal Goo",
+      "description": "Covers a target in snot, causing it to have reduced armor and movement speed.  Multiple casts stack and refresh the duration.\\n\\nUpgradable by Aghanim's Scepter.",
+      "image": "https://hgv-hyperstone.azurewebsites.net/abilities/bristleback_viscous_nasal_goo.png",
+      "hero_id": 99,
+      "ability_type": "DOTA_ABILITY_TYPE_BASIC",
+      "ability_behaviors": [
+        "DOTA_ABILITY_BEHAVIOR_UNIT_TARGET",
+        "DOTA_ABILITY_BEHAVIOR_IGNORE_BACKSWING"
+      ],
+      "ability_unit_target_team": "DOTA_UNIT_TARGET_TEAM_ENEMY",
+      "ability_unit_target_type": [
+        "DOTA_UNIT_TARGET_HERO",
+        "DOTA_UNIT_TARGET_BASIC"
+      ],
+      "ability_unit_target_flags": [],
+      "spell_immunity_type": "SPELL_IMMUNITY_ENEMIES_NO",
+      "spell_dispellable_type": "SPELL_DISPELLABLE_YES",
+      "ability_unit_damage_type": null,
+      "is_skill": true,
+      "is_ultimate": false,
+      "has_scepter_upgrade": true,
+      "on_castbar": true,
+      "on_learnbar": true,
+      "ability_cast_range": [
+        600
+      ],
+      "ability_cast_range_buffer": 250,
+      "ability_cast_point": [
+        0.3
+      ],
+      "ability_channel_time": [
+        0.0,
+        0.0,
+        0.0,
+        0.0
+      ],
+      "ability_cooldown": [
+        1.5,
+        1.5,
+        1.5,
+        1.5
+      ],
+      "ability_duration": [
+        0.0,
+        0.0,
+        0.0,
+        0.0
+      ],
+      "ability_damage": [
+        0.0,
+        0.0,
+        0.0,
+        0.0
+      ],
+      "ability_mana_cost": [
+        25.0
+      ],
+      "ability_modifier_support_value": 1.0,
+      "ability_modifier_support_bonus": 0.0,
+      "fight_recap_level": 1,
+      "ability_draft_enabled": true,
+      "linked": null,
+      "ability_special": {
+        "goo_speed": [
+          1000.0
+        ],
+        "goo_duration": [
+          5.0
+        ],
+        "base_armor": [
+          2.0
+        ],
+        "armor_per_stack": [
+          1.0,
+          1.4,
+          1.8,
+          2.2
+        ],
+        "base_move_slow": [
+          20.0
+        ],
+        "move_slow_per_stack": [
+          3.0,
+          6.0,
+          9.0,
+          12.0
+        ],
+        "stack_limit": [
+          4.0
+        ],
+        "goo_duration_creep": [
+          10.0
+        ],
+        "radius_scepter": [
+          750.0
+        ]
+      }
+    },
+    {
+      "id": 5549,
+      "key": "bristleback_quill_spray",
+      "name": "Quill Spray",
+      "description": "Sprays enemy units with quills dealing damage in an area of effect around Bristleback.  Deals bonus damage for every time a unit was hit by Quill Spray in the last 14 seconds.",
+      "image": "https://hgv-hyperstone.azurewebsites.net/abilities/bristleback_quill_spray.png",
+      "hero_id": 99,
+      "ability_type": "DOTA_ABILITY_TYPE_BASIC",
+      "ability_behaviors": [
+        "DOTA_ABILITY_BEHAVIOR_NO_TARGET",
+        "DOTA_ABILITY_BEHAVIOR_IMMEDIATE"
+      ],
+      "ability_unit_target_team": null,
+      "ability_unit_target_type": [],
+      "ability_unit_target_flags": [],
+      "spell_immunity_type": "SPELL_IMMUNITY_ENEMIES_YES",
+      "spell_dispellable_type": "SPELL_DISPELLABLE_NO",
+      "ability_unit_damage_type": "DAMAGE_TYPE_PHYSICAL",
+      "is_skill": true,
+      "is_ultimate": false,
+      "has_scepter_upgrade": false,
+      "on_castbar": true,
+      "on_learnbar": true,
+      "ability_cast_range": [
+        650
+      ],
+      "ability_cast_range_buffer": 250,
+      "ability_cast_point": [
+        0.0,
+        0.0,
+        0.0,
+        0.0
+      ],
+      "ability_channel_time": [
+        0.0,
+        0.0,
+        0.0,
+        0.0
+      ],
+      "ability_cooldown": [
+        3.0,
+        3.0,
+        3.0,
+        3.0
+      ],
+      "ability_duration": [
+        0.0,
+        0.0,
+        0.0,
+        0.0
+      ],
+      "ability_damage": [
+        0.0,
+        0.0,
+        0.0,
+        0.0
+      ],
+      "ability_mana_cost": [
+        35.0,
+        35.0,
+        35.0,
+        35.0
+      ],
+      "ability_modifier_support_value": 1.0,
+      "ability_modifier_support_bonus": 0.0,
+      "fight_recap_level": 1,
+      "ability_draft_enabled": true,
+      "linked": null,
+      "ability_special": {
+        "radius": [
+          700.0
+        ],
+        "quill_base_damage": [
+          20.0,
+          40.0,
+          60.0,
+          80.0
+        ],
+        "quill_stack_damage": [
+          30.0,
+          32.0,
+          34.0,
+          36.0
+        ],
+        "quill_stack_duration": [
+          14.0
+        ],
+        "max_damage": [
+          550.0
+        ],
+        "projectile_speed": [
+          2400.0
+        ]
+      }
+    },
+    {
+      "id": 5550,
+      "key": "bristleback_bristleback",
+      "name": "Bristleback",
+      "description": "Bristleback takes less damage if hit on the sides or rear.  If Bristleback takes 210 damage from the rear, he releases a Quill Spray of the current level.",
+      "image": "https://hgv-hyperstone.azurewebsites.net/abilities/bristleback_bristleback.png",
+      "hero_id": 99,
+      "ability_type": "DOTA_ABILITY_TYPE_BASIC",
+      "ability_behaviors": [
+        "DOTA_ABILITY_BEHAVIOR_PASSIVE"
+      ],
+      "ability_unit_target_team": null,
+      "ability_unit_target_type": [],
+      "ability_unit_target_flags": [],
+      "spell_immunity_type": null,
+      "spell_dispellable_type": null,
+      "ability_unit_damage_type": null,
+      "is_skill": true,
+      "is_ultimate": false,
+      "has_scepter_upgrade": false,
+      "on_castbar": true,
+      "on_learnbar": true,
+      "ability_cast_range": [
+        0
+      ],
+      "ability_cast_range_buffer": 250,
+      "ability_cast_point": [
+        0.0,
+        0.0,
+        0.0,
+        0.0
+      ],
+      "ability_channel_time": [
+        0.0,
+        0.0,
+        0.0,
+        0.0
+      ],
+      "ability_cooldown": [
+        0.0,
+        0.0,
+        0.0,
+        0.0
+      ],
+      "ability_duration": [
+        0.0,
+        0.0,
+        0.0,
+        0.0
+      ],
+      "ability_damage": [
+        0.0,
+        0.0,
+        0.0,
+        0.0
+      ],
+      "ability_mana_cost": [
+        0.0,
+        0.0,
+        0.0,
+        0.0
+      ],
+      "ability_modifier_support_value": 1.0,
+      "ability_modifier_support_bonus": 0.0,
+      "fight_recap_level": 0,
+      "ability_draft_enabled": true,
+      "linked": null,
+      "ability_special": {
+        "side_damage_reduction": [
+          8.0,
+          12.0,
+          16.0,
+          20.0
+        ],
+        "back_damage_reduction": [
+          16.0,
+          24.0,
+          32.0,
+          40.0
+        ],
+        "side_angle": [
+          110.0
+        ],
+        "back_angle": [
+          70.0
+        ],
+        "quill_release_threshold": [
+          210.0
+        ]
+      }
+    },
+    {
+      "id": 6251,
+      "key": "generic_hidden",
+      "name": null,
+      "description": null,
+      "image": "https://hgv-hyperstone.azurewebsites.net/abilities/generic_hidden.png",
+      "hero_id": 99,
+      "ability_type": "DOTA_ABILITY_TYPE_BASIC",
+      "ability_behaviors": [
+        "DOTA_ABILITY_BEHAVIOR_HIDDEN",
+        "DOTA_ABILITY_BEHAVIOR_NOT_LEARNABLE"
+      ],
+      "ability_unit_target_team": null,
+      "ability_unit_target_type": [],
+      "ability_unit_target_flags": [],
+      "spell_immunity_type": null,
+      "spell_dispellable_type": null,
+      "ability_unit_damage_type": null,
+      "is_skill": true,
+      "is_ultimate": false,
+      "has_scepter_upgrade": false,
+      "on_castbar": true,
+      "on_learnbar": true,
+      "ability_cast_range": [
+        0
+      ],
+      "ability_cast_range_buffer": 250,
+      "ability_cast_point": [
+        0.0,
+        0.0,
+        0.0,
+        0.0
+      ],
+      "ability_channel_time": [
+        0.0,
+        0.0,
+        0.0,
+        0.0
+      ],
+      "ability_cooldown": [
+        0.0,
+        0.0,
+        0.0,
+        0.0
+      ],
+      "ability_duration": [
+        0.0,
+        0.0,
+        0.0,
+        0.0
+      ],
+      "ability_damage": [
+        0.0,
+        0.0,
+        0.0,
+        0.0
+      ],
+      "ability_mana_cost": [
+        0.0,
+        0.0,
+        0.0,
+        0.0
+      ],
+      "ability_modifier_support_value": 1.0,
+      "ability_modifier_support_bonus": 0.0,
+      "fight_recap_level": 0,
+      "ability_draft_enabled": false,
+      "linked": null,
+      "ability_special": {}
+    },
+    {
+      "id": 6251,
+      "key": "generic_hidden",
+      "name": null,
+      "description": null,
+      "image": "https://hgv-hyperstone.azurewebsites.net/abilities/generic_hidden.png",
+      "hero_id": 99,
+      "ability_type": "DOTA_ABILITY_TYPE_BASIC",
+      "ability_behaviors": [
+        "DOTA_ABILITY_BEHAVIOR_HIDDEN",
+        "DOTA_ABILITY_BEHAVIOR_NOT_LEARNABLE"
+      ],
+      "ability_unit_target_team": null,
+      "ability_unit_target_type": [],
+      "ability_unit_target_flags": [],
+      "spell_immunity_type": null,
+      "spell_dispellable_type": null,
+      "ability_unit_damage_type": null,
+      "is_skill": true,
+      "is_ultimate": false,
+      "has_scepter_upgrade": false,
+      "on_castbar": true,
+      "on_learnbar": true,
+      "ability_cast_range": [
+        0
+      ],
+      "ability_cast_range_buffer": 250,
+      "ability_cast_point": [
+        0.0,
+        0.0,
+        0.0,
+        0.0
+      ],
+      "ability_channel_time": [
+        0.0,
+        0.0,
+        0.0,
+        0.0
+      ],
+      "ability_cooldown": [
+        0.0,
+        0.0,
+        0.0,
+        0.0
+      ],
+      "ability_duration": [
+        0.0,
+        0.0,
+        0.0,
+        0.0
+      ],
+      "ability_damage": [
+        0.0,
+        0.0,
+        0.0,
+        0.0
+      ],
+      "ability_mana_cost": [
+        0.0,
+        0.0,
+        0.0,
+        0.0
+      ],
+      "ability_modifier_support_value": 1.0,
+      "ability_modifier_support_bonus": 0.0,
+      "fight_recap_level": 0,
+      "ability_draft_enabled": false,
+      "linked": null,
+      "ability_special": {}
+    },
+    {
+      "id": 5551,
+      "key": "bristleback_warpath",
+      "name": "Warpath",
+      "description": "Bristleback works himself up into a fury every time he casts a spell, increasing his movement speed and damage.",
+      "image": "https://hgv-hyperstone.azurewebsites.net/abilities/bristleback_warpath.png",
+      "hero_id": 99,
+      "ability_type": "DOTA_ABILITY_TYPE_ULTIMATE",
+      "ability_behaviors": [
+        "DOTA_ABILITY_BEHAVIOR_PASSIVE"
+      ],
+      "ability_unit_target_team": null,
+      "ability_unit_target_type": [],
+      "ability_unit_target_flags": [],
+      "spell_immunity_type": null,
+      "spell_dispellable_type": "SPELL_DISPELLABLE_NO",
+      "ability_unit_damage_type": null,
+      "is_skill": false,
+      "is_ultimate": true,
+      "has_scepter_upgrade": false,
+      "on_castbar": true,
+      "on_learnbar": true,
+      "ability_cast_range": [
+        0
+      ],
+      "ability_cast_range_buffer": 250,
+      "ability_cast_point": [
+        0.0,
+        0.0,
+        0.0,
+        0.0
+      ],
+      "ability_channel_time": [
+        0.0,
+        0.0,
+        0.0,
+        0.0
+      ],
+      "ability_cooldown": [
+        0.0,
+        0.0,
+        0.0,
+        0.0
+      ],
+      "ability_duration": [
+        10.0,
+        10.0,
+        10.0
+      ],
+      "ability_damage": [
+        0.0,
+        0.0,
+        0.0,
+        0.0
+      ],
+      "ability_mana_cost": [
+        0.0,
+        0.0,
+        0.0,
+        0.0
+      ],
+      "ability_modifier_support_value": 1.0,
+      "ability_modifier_support_bonus": 0.0,
+      "fight_recap_level": 0,
+      "ability_draft_enabled": true,
+      "linked": null,
+      "ability_special": {
+        "damage_per_stack": [
+          18.0,
+          24.0,
+          30.0
+        ],
+        "move_speed_per_stack": [
+          3.0,
+          4.0,
+          5.0
+        ],
+        "stack_duration": [
+          14.0
+        ],
+        "max_stacks": [
+          5.0,
+          7.0,
+          9.0
+        ]
+      }
+    }
+  ],
+  "talents": [
+    {
+      "id": 5918,
+      "key": "special_bonus_movement_speed_20",
+      "name": "+20 Movement Speed",
+      "description": null
+    },
+    {
+      "id": 5961,
+      "key": "special_bonus_mp_regen_2",
+      "name": "+2 Mana Regen",
+      "description": null
+    },
+    {
+      "id": 5903,
+      "key": "special_bonus_hp_250",
+      "name": "+250 Health",
+      "description": null
+    },
+    {
+      "id": 6083,
+      "key": "special_bonus_unique_bristleback",
+      "name": "+6 Max Goo Stacks",
+      "description": null
+    },
+    {
+      "id": 6079,
+      "key": "special_bonus_hp_regen_20",
+      "name": "+20 Health Regen",
+      "description": null
+    },
+    {
+      "id": 6360,
+      "key": "special_bonus_unique_bristleback_2",
+      "name": "+25 Quill Stack Damage",
+      "description": null
+    },
+    {
+      "id": 6550,
+      "key": "special_bonus_spell_lifesteal_15",
+      "name": "15% Spell Lifesteal",
+      "description": null
+    },
+    {
+      "id": 6615,
+      "key": "special_bonus_unique_bristleback_3",
+      "name": "+30 Warpath Damage Per Stack",
+      "description": null
+    }
+  ],
+  "legs": 2,
+  "armor_physical": 0.0,
+  "magical_resistance": 25,
+  "attack_capabilities": "DOTA_UNIT_CAP_MELEE_ATTACK",
+  "attack_damage_min": 22,
+  "attack_damage_max": 32,
+  "attack_rate": 1.8,
+  "attack_animation_point": 0.3,
+  "attack_acquisition_range": 600,
+  "attack_range": 150,
+  "projectile_speed": 900,
+  "attribute_primary": "DOTA_ATTRIBUTE_STRENGTH",
+  "attribute_base_strength": 22,
+  "attribute_strength_gain": 2.2,
+  "attribute_base_intelligence": 14,
+  "attribute_intelligence_gain": 2.8,
+  "attribute_base_agility": 17,
+  "attribute_agility_gain": 1.8,
+  "status_health": 200,
+  "status_health_regen": 1.5,
+  "status_mana": 75,
+  "status_mana_regen": 0.9,
+  "bounty_xp": 62,
+  "bounty_gold_min": 0,
+  "bounty_gold_max": 0,
+  "movement_capabilities": "DOTA_UNIT_CAP_MOVE_GROUND",
+  "movement_speed": 285,
+  "movement_turn_rate": 1.0,
+  "has_aggressive_stance": true,
+  "team": 1,
+  "team_name": "Radiant",
+  "vision_daytime_range": 1800,
+  "vision_nighttime_range": 0,
+  "bot": {
+    "hero_types": null,
+    "solo_desire": 0,
+    "requires_babysit": 0,
+    "provides_babysit": 0,
+    "survival_rating": 0,
+    "requires_farm": 0,
+    "provides_setup": 0,
+    "requires_setup": 0
+  }
+}

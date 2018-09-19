@@ -1,0 +1,640 @@
+{
+  "id": 31,
+  "name": "Lich",
+  "key": "npc_dota_hero_lich",
+  "image_profile": "https://hgv-hyperstone.azurewebsites.net/heroes/profile/npc_dota_hero_lich.png",
+  "image_icon": "https://hgv-hyperstone.azurewebsites.net/heroes/icons/npc_dota_hero_lich.png",
+  "image_banner": "https://hgv-hyperstone.azurewebsites.net/heroes/banner/npc_dota_hero_lich.png",
+  "enabled": true,
+  "new_player_enable": true,
+  "captains_mode_enabled": true,
+  "ability_draft_enabled": true,
+  "complexity": 1,
+  "roles": [
+    {
+      "role": "Support",
+      "level": 3
+    },
+    {
+      "role": "Nuker",
+      "level": 2
+    }
+  ],
+  "bot_implemented": true,
+  "abilities": [
+    {
+      "id": 5134,
+      "key": "lich_frost_nova",
+      "name": "Frost Blast",
+      "description": "Blasts the target enemy unit with damaging frost, dealing area damage and slowing movement and attack rates for 4 seconds.  The primary target takes the most damage.",
+      "image": "https://hgv-hyperstone.azurewebsites.net/abilities/lich_frost_nova.png",
+      "hero_id": 31,
+      "ability_type": "DOTA_ABILITY_TYPE_BASIC",
+      "ability_behaviors": [
+        "DOTA_ABILITY_BEHAVIOR_UNIT_TARGET",
+        "DOTA_ABILITY_BEHAVIOR_AOE"
+      ],
+      "ability_unit_target_team": "DOTA_UNIT_TARGET_TEAM_ENEMY",
+      "ability_unit_target_type": [
+        "DOTA_UNIT_TARGET_HERO",
+        "DOTA_UNIT_TARGET_BASIC"
+      ],
+      "ability_unit_target_flags": [],
+      "spell_immunity_type": "SPELL_IMMUNITY_ENEMIES_NO",
+      "spell_dispellable_type": "SPELL_DISPELLABLE_YES",
+      "ability_unit_damage_type": "DAMAGE_TYPE_MAGICAL",
+      "is_skill": true,
+      "is_ultimate": false,
+      "has_scepter_upgrade": false,
+      "on_castbar": true,
+      "on_learnbar": true,
+      "ability_cast_range": [
+        600
+      ],
+      "ability_cast_range_buffer": 250,
+      "ability_cast_point": [
+        0.4,
+        0.4,
+        0.4,
+        0.4
+      ],
+      "ability_channel_time": [
+        0.0,
+        0.0,
+        0.0,
+        0.0
+      ],
+      "ability_cooldown": [
+        7.0
+      ],
+      "ability_duration": [
+        4.0,
+        4.0,
+        4.0,
+        4.0
+      ],
+      "ability_damage": [
+        50.0,
+        100.0,
+        150.0,
+        200.0
+      ],
+      "ability_mana_cost": [
+        125.0,
+        150.0,
+        170.0,
+        190.0
+      ],
+      "ability_modifier_support_value": 0.3,
+      "ability_modifier_support_bonus": 0.0,
+      "fight_recap_level": 1,
+      "ability_draft_enabled": true,
+      "linked": null,
+      "ability_special": {
+        "radius": [
+          200.0,
+          200.0,
+          200.0,
+          200.0
+        ],
+        "slow_movement_speed": [
+          -30.0
+        ],
+        "slow_attack_speed": [
+          -30.0
+        ],
+        "aoe_damage": [
+          75.0,
+          100.0,
+          125.0,
+          150.0
+        ]
+      }
+    },
+    {
+      "id": 5135,
+      "key": "lich_frost_armor",
+      "name": "Ice Armor",
+      "description": "Creates a shield around the target friendly unit or building, which adds armor and slows attacking units. Lasts 40 seconds.",
+      "image": "https://hgv-hyperstone.azurewebsites.net/abilities/lich_frost_armor.png",
+      "hero_id": 31,
+      "ability_type": "DOTA_ABILITY_TYPE_BASIC",
+      "ability_behaviors": [
+        "DOTA_ABILITY_BEHAVIOR_UNIT_TARGET",
+        "DOTA_ABILITY_BEHAVIOR_AUTOCAST",
+        "DOTA_ABILITY_BEHAVIOR_DONT_RESUME_ATTACK"
+      ],
+      "ability_unit_target_team": "DOTA_UNIT_TARGET_TEAM_FRIENDLY",
+      "ability_unit_target_type": [
+        "DOTA_UNIT_TARGET_HERO",
+        "DOTA_UNIT_TARGET_BASIC",
+        "DOTA_UNIT_TARGET_BUILDING"
+      ],
+      "ability_unit_target_flags": [
+        "DOTA_UNIT_TARGET_FLAG_INVULNERABLE"
+      ],
+      "spell_immunity_type": "SPELL_IMMUNITY_ALLIES_YES",
+      "spell_dispellable_type": "SPELL_DISPELLABLE_YES",
+      "ability_unit_damage_type": null,
+      "is_skill": true,
+      "is_ultimate": false,
+      "has_scepter_upgrade": false,
+      "on_castbar": true,
+      "on_learnbar": true,
+      "ability_cast_range": [
+        1000
+      ],
+      "ability_cast_range_buffer": 250,
+      "ability_cast_point": [
+        0.4,
+        0.4,
+        0.4,
+        0.4
+      ],
+      "ability_channel_time": [
+        0.0,
+        0.0,
+        0.0,
+        0.0
+      ],
+      "ability_cooldown": [
+        5.0,
+        5.0,
+        5.0,
+        5.0
+      ],
+      "ability_duration": [
+        40.0,
+        40.0,
+        40.0,
+        40.0
+      ],
+      "ability_damage": [
+        0.0,
+        0.0,
+        0.0,
+        0.0
+      ],
+      "ability_mana_cost": [
+        50.0,
+        50.0,
+        50.0,
+        50.0
+      ],
+      "ability_modifier_support_value": 0.3,
+      "ability_modifier_support_bonus": 0.0,
+      "fight_recap_level": 0,
+      "ability_draft_enabled": true,
+      "linked": null,
+      "ability_special": {
+        "armor_bonus": [
+          4.0,
+          6.0,
+          8.0,
+          10.0
+        ],
+        "slow_duration": [
+          2.0,
+          2.0,
+          2.0,
+          2.0
+        ],
+        "slow_movement_speed": [
+          -8.0,
+          -16.0,
+          -24.0,
+          -32.0
+        ],
+        "slow_attack_speed": [
+          -8.0,
+          -16.0,
+          -24.0,
+          -32.0
+        ]
+      }
+    },
+    {
+      "id": 5136,
+      "key": "lich_dark_ritual",
+      "name": "Sacrifice",
+      "description": "Sacrifices a friendly creep and converts its current hit points into mana for Lich.",
+      "image": "https://hgv-hyperstone.azurewebsites.net/abilities/lich_dark_ritual.png",
+      "hero_id": 31,
+      "ability_type": "DOTA_ABILITY_TYPE_BASIC",
+      "ability_behaviors": [
+        "DOTA_ABILITY_BEHAVIOR_UNIT_TARGET",
+        "DOTA_ABILITY_BEHAVIOR_DONT_RESUME_ATTACK"
+      ],
+      "ability_unit_target_team": "DOTA_UNIT_TARGET_TEAM_FRIENDLY",
+      "ability_unit_target_type": [
+        "DOTA_UNIT_TARGET_BASIC"
+      ],
+      "ability_unit_target_flags": [
+        "DOTA_UNIT_TARGET_FLAG_NOT_SUMMONED",
+        "|",
+        "DOTA_UNIT_TARGET_FLAG_NOT_ANCIENTS",
+        "|",
+        "DOTA_UNIT_TARGET_FLAG_NOT_CREEP_HERO"
+      ],
+      "spell_immunity_type": null,
+      "spell_dispellable_type": null,
+      "ability_unit_damage_type": null,
+      "is_skill": true,
+      "is_ultimate": false,
+      "has_scepter_upgrade": false,
+      "on_castbar": true,
+      "on_learnbar": true,
+      "ability_cast_range": [
+        400
+      ],
+      "ability_cast_range_buffer": 250,
+      "ability_cast_point": [
+        0.4,
+        0.4,
+        0.4,
+        0.4
+      ],
+      "ability_channel_time": [
+        0.0,
+        0.0,
+        0.0,
+        0.0
+      ],
+      "ability_cooldown": [
+        60.0,
+        46.0,
+        32.0,
+        18.0
+      ],
+      "ability_duration": [
+        0.0,
+        0.0,
+        0.0,
+        0.0
+      ],
+      "ability_damage": [
+        0.0,
+        0.0,
+        0.0,
+        0.0
+      ],
+      "ability_mana_cost": [
+        0.0
+      ],
+      "ability_modifier_support_value": 1.0,
+      "ability_modifier_support_bonus": 0.0,
+      "fight_recap_level": 0,
+      "ability_draft_enabled": true,
+      "linked": null,
+      "ability_special": {
+        "health_conversion": [
+          55.0,
+          70.0,
+          85.0,
+          100.0
+        ]
+      }
+    },
+    {
+      "id": 6251,
+      "key": "generic_hidden",
+      "name": null,
+      "description": null,
+      "image": "https://hgv-hyperstone.azurewebsites.net/abilities/generic_hidden.png",
+      "hero_id": 31,
+      "ability_type": "DOTA_ABILITY_TYPE_BASIC",
+      "ability_behaviors": [
+        "DOTA_ABILITY_BEHAVIOR_HIDDEN",
+        "DOTA_ABILITY_BEHAVIOR_NOT_LEARNABLE"
+      ],
+      "ability_unit_target_team": null,
+      "ability_unit_target_type": [],
+      "ability_unit_target_flags": [],
+      "spell_immunity_type": null,
+      "spell_dispellable_type": null,
+      "ability_unit_damage_type": null,
+      "is_skill": true,
+      "is_ultimate": false,
+      "has_scepter_upgrade": false,
+      "on_castbar": true,
+      "on_learnbar": true,
+      "ability_cast_range": [
+        0
+      ],
+      "ability_cast_range_buffer": 250,
+      "ability_cast_point": [
+        0.0,
+        0.0,
+        0.0,
+        0.0
+      ],
+      "ability_channel_time": [
+        0.0,
+        0.0,
+        0.0,
+        0.0
+      ],
+      "ability_cooldown": [
+        0.0,
+        0.0,
+        0.0,
+        0.0
+      ],
+      "ability_duration": [
+        0.0,
+        0.0,
+        0.0,
+        0.0
+      ],
+      "ability_damage": [
+        0.0,
+        0.0,
+        0.0,
+        0.0
+      ],
+      "ability_mana_cost": [
+        0.0,
+        0.0,
+        0.0,
+        0.0
+      ],
+      "ability_modifier_support_value": 1.0,
+      "ability_modifier_support_bonus": 0.0,
+      "fight_recap_level": 0,
+      "ability_draft_enabled": false,
+      "linked": null,
+      "ability_special": {}
+    },
+    {
+      "id": 6251,
+      "key": "generic_hidden",
+      "name": null,
+      "description": null,
+      "image": "https://hgv-hyperstone.azurewebsites.net/abilities/generic_hidden.png",
+      "hero_id": 31,
+      "ability_type": "DOTA_ABILITY_TYPE_BASIC",
+      "ability_behaviors": [
+        "DOTA_ABILITY_BEHAVIOR_HIDDEN",
+        "DOTA_ABILITY_BEHAVIOR_NOT_LEARNABLE"
+      ],
+      "ability_unit_target_team": null,
+      "ability_unit_target_type": [],
+      "ability_unit_target_flags": [],
+      "spell_immunity_type": null,
+      "spell_dispellable_type": null,
+      "ability_unit_damage_type": null,
+      "is_skill": true,
+      "is_ultimate": false,
+      "has_scepter_upgrade": false,
+      "on_castbar": true,
+      "on_learnbar": true,
+      "ability_cast_range": [
+        0
+      ],
+      "ability_cast_range_buffer": 250,
+      "ability_cast_point": [
+        0.0,
+        0.0,
+        0.0,
+        0.0
+      ],
+      "ability_channel_time": [
+        0.0,
+        0.0,
+        0.0,
+        0.0
+      ],
+      "ability_cooldown": [
+        0.0,
+        0.0,
+        0.0,
+        0.0
+      ],
+      "ability_duration": [
+        0.0,
+        0.0,
+        0.0,
+        0.0
+      ],
+      "ability_damage": [
+        0.0,
+        0.0,
+        0.0,
+        0.0
+      ],
+      "ability_mana_cost": [
+        0.0,
+        0.0,
+        0.0,
+        0.0
+      ],
+      "ability_modifier_support_value": 1.0,
+      "ability_modifier_support_bonus": 0.0,
+      "fight_recap_level": 0,
+      "ability_draft_enabled": false,
+      "linked": null,
+      "ability_special": {}
+    },
+    {
+      "id": 5137,
+      "key": "lich_chain_frost",
+      "name": "Chain Frost",
+      "description": "Releases an orb of frost that bounces between nearby enemy units up to 10/10/10 times, slowing and damaging each time it hits. \\n\\nUpgradable by Aghanim's Scepter.",
+      "image": "https://hgv-hyperstone.azurewebsites.net/abilities/lich_chain_frost.png",
+      "hero_id": 31,
+      "ability_type": "DOTA_ABILITY_TYPE_ULTIMATE",
+      "ability_behaviors": [
+        "DOTA_ABILITY_BEHAVIOR_UNIT_TARGET"
+      ],
+      "ability_unit_target_team": "DOTA_UNIT_TARGET_TEAM_ENEMY",
+      "ability_unit_target_type": [
+        "DOTA_UNIT_TARGET_HERO",
+        "DOTA_UNIT_TARGET_BASIC"
+      ],
+      "ability_unit_target_flags": [
+        "DOTA_UNIT_TARGET_FLAG_MAGIC_IMMUNE_ENEMIES"
+      ],
+      "spell_immunity_type": "SPELL_IMMUNITY_ENEMIES_NO",
+      "spell_dispellable_type": "SPELL_DISPELLABLE_YES",
+      "ability_unit_damage_type": "DAMAGE_TYPE_MAGICAL",
+      "is_skill": false,
+      "is_ultimate": true,
+      "has_scepter_upgrade": true,
+      "on_castbar": true,
+      "on_learnbar": true,
+      "ability_cast_range": [
+        750
+      ],
+      "ability_cast_range_buffer": 250,
+      "ability_cast_point": [
+        0.3
+      ],
+      "ability_channel_time": [
+        0.0,
+        0.0,
+        0.0,
+        0.0
+      ],
+      "ability_cooldown": [
+        100.0,
+        80.0,
+        60.0
+      ],
+      "ability_duration": [
+        0.0,
+        0.0,
+        0.0,
+        0.0
+      ],
+      "ability_damage": [
+        0.0,
+        0.0,
+        0.0,
+        0.0
+      ],
+      "ability_mana_cost": [
+        200.0,
+        325.0,
+        500.0
+      ],
+      "ability_modifier_support_value": 0.0,
+      "ability_modifier_support_bonus": 0.0,
+      "fight_recap_level": 2,
+      "ability_draft_enabled": true,
+      "linked": null,
+      "ability_special": {
+        "damage": [
+          300.0,
+          400.0,
+          500.0
+        ],
+        "jumps": [
+          10.0,
+          10.0,
+          10.0
+        ],
+        "jump_range": [
+          600.0
+        ],
+        "slow_movement_speed": [
+          -65.0
+        ],
+        "slow_attack_speed": [
+          -65.0
+        ],
+        "slow_duration": [
+          2.5
+        ],
+        "projectile_speed": [
+          850.0
+        ],
+        "vision_radius": [
+          800.0
+        ],
+        "damage_scepter": [
+          400.0,
+          500.0,
+          600.0
+        ],
+        "cast_range_scepter": [
+          850.0,
+          850.0,
+          850.0
+        ]
+      }
+    }
+  ],
+  "talents": [
+    {
+      "id": 5959,
+      "key": "special_bonus_hp_200",
+      "name": "+200 Health",
+      "description": null
+    },
+    {
+      "id": 5919,
+      "key": "special_bonus_movement_speed_25",
+      "name": "+25 Movement Speed",
+      "description": null
+    },
+    {
+      "id": 6112,
+      "key": "special_bonus_attack_damage_120",
+      "name": "+120 Damage",
+      "description": null
+    },
+    {
+      "id": 6387,
+      "key": "special_bonus_unique_lich_3",
+      "name": "-4s Frost Blast Cooldown",
+      "description": null
+    },
+    {
+      "id": 6120,
+      "key": "special_bonus_cast_range_175",
+      "name": "+175 Cast Range",
+      "description": null
+    },
+    {
+      "id": 6026,
+      "key": "special_bonus_gold_income_30",
+      "name": "+180 Gold/Min",
+      "description": null
+    },
+    {
+      "id": 6039,
+      "key": "special_bonus_unique_lich_1",
+      "name": "Ice Armor Provides +30 HP Regen",
+      "description": null
+    },
+    {
+      "id": 6292,
+      "key": "special_bonus_unique_lich_2",
+      "name": "Attacks Apply 40% MS and AS Slow",
+      "description": null
+    }
+  ],
+  "legs": 2,
+  "armor_physical": -1.0,
+  "magical_resistance": 25,
+  "attack_capabilities": "DOTA_UNIT_CAP_RANGED_ATTACK",
+  "attack_damage_min": 26,
+  "attack_damage_max": 35,
+  "attack_rate": 1.7,
+  "attack_animation_point": 0.46,
+  "attack_acquisition_range": 800,
+  "attack_range": 550,
+  "projectile_speed": 900,
+  "attribute_primary": "DOTA_ATTRIBUTE_INTELLECT",
+  "attribute_base_strength": 20,
+  "attribute_strength_gain": 1.85,
+  "attribute_base_intelligence": 16,
+  "attribute_intelligence_gain": 3.25,
+  "attribute_base_agility": 15,
+  "attribute_agility_gain": 2.0,
+  "status_health": 200,
+  "status_health_regen": 1.5,
+  "status_mana": 75,
+  "status_mana_regen": 0.9,
+  "bounty_xp": 62,
+  "bounty_gold_min": 0,
+  "bounty_gold_max": 0,
+  "movement_capabilities": "DOTA_UNIT_CAP_MOVE_GROUND",
+  "movement_speed": 315,
+  "movement_turn_rate": 0.5,
+  "has_aggressive_stance": false,
+  "team": 1,
+  "team_name": "Radiant",
+  "vision_daytime_range": 1800,
+  "vision_nighttime_range": 0,
+  "bot": {
+    "hero_types": null,
+    "solo_desire": 0,
+    "requires_babysit": 0,
+    "provides_babysit": 0,
+    "survival_rating": 0,
+    "requires_farm": 0,
+    "provides_setup": 0,
+    "requires_setup": 0
+  }
+}

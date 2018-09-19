@@ -1,0 +1,647 @@
+{
+  "id": 47,
+  "name": "Viper",
+  "key": "npc_dota_hero_viper",
+  "image_profile": "https://hgv-hyperstone.azurewebsites.net/heroes/profile/npc_dota_hero_viper.png",
+  "image_icon": "https://hgv-hyperstone.azurewebsites.net/heroes/icons/npc_dota_hero_viper.png",
+  "image_banner": "https://hgv-hyperstone.azurewebsites.net/heroes/banner/npc_dota_hero_viper.png",
+  "enabled": true,
+  "new_player_enable": true,
+  "captains_mode_enabled": true,
+  "ability_draft_enabled": true,
+  "complexity": 1,
+  "roles": [
+    {
+      "role": "Carry",
+      "level": 1
+    },
+    {
+      "role": "Durable",
+      "level": 2
+    },
+    {
+      "role": "Initiator",
+      "level": 1
+    },
+    {
+      "role": "Disabler",
+      "level": 1
+    }
+  ],
+  "bot_implemented": true,
+  "abilities": [
+    {
+      "id": 5218,
+      "key": "viper_poison_attack",
+      "name": "Poison Attack",
+      "description": "Intensifies Viper's venom, adding an effect to his normal attack that slows attack and movement speed while dealing damage over time based on how low the target is.",
+      "image": "https://hgv-hyperstone.azurewebsites.net/abilities/viper_poison_attack.png",
+      "hero_id": 47,
+      "ability_type": "DOTA_ABILITY_TYPE_BASIC",
+      "ability_behaviors": [
+        "DOTA_ABILITY_BEHAVIOR_UNIT_TARGET",
+        "DOTA_ABILITY_BEHAVIOR_AUTOCAST",
+        "DOTA_ABILITY_BEHAVIOR_ATTACK"
+      ],
+      "ability_unit_target_team": "DOTA_UNIT_TARGET_TEAM_ENEMY",
+      "ability_unit_target_type": [
+        "DOTA_UNIT_TARGET_HERO",
+        "DOTA_UNIT_TARGET_BASIC"
+      ],
+      "ability_unit_target_flags": [],
+      "spell_immunity_type": "SPELL_IMMUNITY_ENEMIES_NO",
+      "spell_dispellable_type": "SPELL_DISPELLABLE_YES",
+      "ability_unit_damage_type": "DAMAGE_TYPE_MAGICAL",
+      "is_skill": true,
+      "is_ultimate": false,
+      "has_scepter_upgrade": false,
+      "on_castbar": true,
+      "on_learnbar": true,
+      "ability_cast_range": [
+        600
+      ],
+      "ability_cast_range_buffer": 250,
+      "ability_cast_point": [
+        0.0
+      ],
+      "ability_channel_time": [
+        0.0,
+        0.0,
+        0.0,
+        0.0
+      ],
+      "ability_cooldown": [
+        6.0,
+        4.0,
+        2.0,
+        0.0
+      ],
+      "ability_duration": [
+        0.0,
+        0.0,
+        0.0,
+        0.0
+      ],
+      "ability_damage": [
+        0.0,
+        0.0,
+        0.0,
+        0.0
+      ],
+      "ability_mana_cost": [
+        40.0,
+        35.0,
+        30.0,
+        25.0
+      ],
+      "ability_modifier_support_value": 1.0,
+      "ability_modifier_support_bonus": 0.0,
+      "fight_recap_level": 0,
+      "ability_draft_enabled": true,
+      "linked": null,
+      "ability_special": {
+        "duration": [
+          3.0
+        ],
+        "damage": [
+          0.25,
+          0.5,
+          0.75,
+          1.0
+        ],
+        "bonus_movement_speed": [
+          -25.0,
+          -30.0,
+          -35.0,
+          -40.0
+        ],
+        "bonus_attack_speed": [
+          -25.0,
+          -30.0,
+          -35.0,
+          -40.0
+        ]
+      }
+    },
+    {
+      "id": 5219,
+      "key": "viper_nethertoxin",
+      "name": "Nethertoxin",
+      "description": "Viper releases a Nethertoxin at the targeted area. Units in that area take damage over time, have lower resistance and their passives do not work.",
+      "image": "https://hgv-hyperstone.azurewebsites.net/abilities/viper_nethertoxin.png",
+      "hero_id": 47,
+      "ability_type": "DOTA_ABILITY_TYPE_BASIC",
+      "ability_behaviors": [
+        "DOTA_ABILITY_BEHAVIOR_POINT",
+        "DOTA_ABILITY_BEHAVIOR_AOE"
+      ],
+      "ability_unit_target_team": null,
+      "ability_unit_target_type": [],
+      "ability_unit_target_flags": [],
+      "spell_immunity_type": "SPELL_IMMUNITY_ENEMIES_NO",
+      "spell_dispellable_type": null,
+      "ability_unit_damage_type": "DAMAGE_TYPE_MAGICAL",
+      "is_skill": true,
+      "is_ultimate": false,
+      "has_scepter_upgrade": false,
+      "on_castbar": true,
+      "on_learnbar": true,
+      "ability_cast_range": [
+        900
+      ],
+      "ability_cast_range_buffer": 250,
+      "ability_cast_point": [
+        0.2
+      ],
+      "ability_channel_time": [
+        0.0,
+        0.0,
+        0.0,
+        0.0
+      ],
+      "ability_cooldown": [
+        5.0
+      ],
+      "ability_duration": [
+        0.0,
+        0.0,
+        0.0,
+        0.0
+      ],
+      "ability_damage": [
+        0.0,
+        0.0,
+        0.0,
+        0.0
+      ],
+      "ability_mana_cost": [
+        75.0
+      ],
+      "ability_modifier_support_value": 1.0,
+      "ability_modifier_support_bonus": 0.0,
+      "fight_recap_level": 0,
+      "ability_draft_enabled": true,
+      "linked": null,
+      "ability_special": {
+        "damage": [
+          20.0,
+          30.0,
+          40.0,
+          50.0
+        ],
+        "radius": [
+          300.0
+        ],
+        "magic_resistance": [
+          -10.0,
+          -15.0,
+          -20.0,
+          -25.0
+        ],
+        "duration": [
+          8.0
+        ],
+        "projectile_speed": [
+          2000.0
+        ]
+      }
+    },
+    {
+      "id": 5220,
+      "key": "viper_corrosive_skin",
+      "name": "Corrosive Skin",
+      "description": "Viper exudes an infectious toxin that damages and slows the attack speed of any enemy that damages it in a 1400 radius. The acid exudate also increases Viper's resistance to magic.",
+      "image": "https://hgv-hyperstone.azurewebsites.net/abilities/viper_corrosive_skin.png",
+      "hero_id": 47,
+      "ability_type": "DOTA_ABILITY_TYPE_BASIC",
+      "ability_behaviors": [
+        "DOTA_ABILITY_BEHAVIOR_PASSIVE"
+      ],
+      "ability_unit_target_team": null,
+      "ability_unit_target_type": [],
+      "ability_unit_target_flags": [],
+      "spell_immunity_type": "SPELL_IMMUNITY_ENEMIES_NO",
+      "spell_dispellable_type": "SPELL_DISPELLABLE_YES",
+      "ability_unit_damage_type": "DAMAGE_TYPE_MAGICAL",
+      "is_skill": true,
+      "is_ultimate": false,
+      "has_scepter_upgrade": false,
+      "on_castbar": true,
+      "on_learnbar": true,
+      "ability_cast_range": [
+        0
+      ],
+      "ability_cast_range_buffer": 250,
+      "ability_cast_point": [
+        0.0,
+        0.0,
+        0.0,
+        0.0
+      ],
+      "ability_channel_time": [
+        0.0,
+        0.0,
+        0.0,
+        0.0
+      ],
+      "ability_cooldown": [
+        0.0,
+        0.0,
+        0.0,
+        0.0
+      ],
+      "ability_duration": [
+        0.0,
+        0.0,
+        0.0,
+        0.0
+      ],
+      "ability_damage": [
+        0.0,
+        0.0,
+        0.0,
+        0.0
+      ],
+      "ability_mana_cost": [
+        0.0,
+        0.0,
+        0.0,
+        0.0
+      ],
+      "ability_modifier_support_value": 1.0,
+      "ability_modifier_support_bonus": 10.0,
+      "fight_recap_level": 0,
+      "ability_draft_enabled": true,
+      "linked": null,
+      "ability_special": {
+        "duration": [
+          4.0
+        ],
+        "bonus_attack_speed": [
+          8.0,
+          16.0,
+          24.0,
+          32.0
+        ],
+        "bonus_magic_resistance": [
+          10.0,
+          15.0,
+          20.0,
+          25.0
+        ],
+        "damage": [
+          8.0,
+          16.0,
+          24.0,
+          32.0
+        ],
+        "max_range_tooltip": [
+          1400.0
+        ]
+      }
+    },
+    {
+      "id": 6251,
+      "key": "generic_hidden",
+      "name": null,
+      "description": null,
+      "image": "https://hgv-hyperstone.azurewebsites.net/abilities/generic_hidden.png",
+      "hero_id": 47,
+      "ability_type": "DOTA_ABILITY_TYPE_BASIC",
+      "ability_behaviors": [
+        "DOTA_ABILITY_BEHAVIOR_HIDDEN",
+        "DOTA_ABILITY_BEHAVIOR_NOT_LEARNABLE"
+      ],
+      "ability_unit_target_team": null,
+      "ability_unit_target_type": [],
+      "ability_unit_target_flags": [],
+      "spell_immunity_type": null,
+      "spell_dispellable_type": null,
+      "ability_unit_damage_type": null,
+      "is_skill": true,
+      "is_ultimate": false,
+      "has_scepter_upgrade": false,
+      "on_castbar": true,
+      "on_learnbar": true,
+      "ability_cast_range": [
+        0
+      ],
+      "ability_cast_range_buffer": 250,
+      "ability_cast_point": [
+        0.0,
+        0.0,
+        0.0,
+        0.0
+      ],
+      "ability_channel_time": [
+        0.0,
+        0.0,
+        0.0,
+        0.0
+      ],
+      "ability_cooldown": [
+        0.0,
+        0.0,
+        0.0,
+        0.0
+      ],
+      "ability_duration": [
+        0.0,
+        0.0,
+        0.0,
+        0.0
+      ],
+      "ability_damage": [
+        0.0,
+        0.0,
+        0.0,
+        0.0
+      ],
+      "ability_mana_cost": [
+        0.0,
+        0.0,
+        0.0,
+        0.0
+      ],
+      "ability_modifier_support_value": 1.0,
+      "ability_modifier_support_bonus": 0.0,
+      "fight_recap_level": 0,
+      "ability_draft_enabled": false,
+      "linked": null,
+      "ability_special": {}
+    },
+    {
+      "id": 6251,
+      "key": "generic_hidden",
+      "name": null,
+      "description": null,
+      "image": "https://hgv-hyperstone.azurewebsites.net/abilities/generic_hidden.png",
+      "hero_id": 47,
+      "ability_type": "DOTA_ABILITY_TYPE_BASIC",
+      "ability_behaviors": [
+        "DOTA_ABILITY_BEHAVIOR_HIDDEN",
+        "DOTA_ABILITY_BEHAVIOR_NOT_LEARNABLE"
+      ],
+      "ability_unit_target_team": null,
+      "ability_unit_target_type": [],
+      "ability_unit_target_flags": [],
+      "spell_immunity_type": null,
+      "spell_dispellable_type": null,
+      "ability_unit_damage_type": null,
+      "is_skill": true,
+      "is_ultimate": false,
+      "has_scepter_upgrade": false,
+      "on_castbar": true,
+      "on_learnbar": true,
+      "ability_cast_range": [
+        0
+      ],
+      "ability_cast_range_buffer": 250,
+      "ability_cast_point": [
+        0.0,
+        0.0,
+        0.0,
+        0.0
+      ],
+      "ability_channel_time": [
+        0.0,
+        0.0,
+        0.0,
+        0.0
+      ],
+      "ability_cooldown": [
+        0.0,
+        0.0,
+        0.0,
+        0.0
+      ],
+      "ability_duration": [
+        0.0,
+        0.0,
+        0.0,
+        0.0
+      ],
+      "ability_damage": [
+        0.0,
+        0.0,
+        0.0,
+        0.0
+      ],
+      "ability_mana_cost": [
+        0.0,
+        0.0,
+        0.0,
+        0.0
+      ],
+      "ability_modifier_support_value": 1.0,
+      "ability_modifier_support_bonus": 0.0,
+      "fight_recap_level": 0,
+      "ability_draft_enabled": false,
+      "linked": null,
+      "ability_special": {}
+    },
+    {
+      "id": 5221,
+      "key": "viper_viper_strike",
+      "name": "Viper Strike",
+      "description": "Viper slows the targeted enemy unit's movement and attack speed while also dealing poison damage over time.  The slowing effect reduces over the duration of the poison.\\n\\nUpgradable by Aghanim's Scepter.",
+      "image": "https://hgv-hyperstone.azurewebsites.net/abilities/viper_viper_strike.png",
+      "hero_id": 47,
+      "ability_type": "DOTA_ABILITY_TYPE_ULTIMATE",
+      "ability_behaviors": [
+        "DOTA_ABILITY_BEHAVIOR_UNIT_TARGET"
+      ],
+      "ability_unit_target_team": "DOTA_UNIT_TARGET_TEAM_ENEMY",
+      "ability_unit_target_type": [
+        "DOTA_UNIT_TARGET_HERO",
+        "DOTA_UNIT_TARGET_BASIC"
+      ],
+      "ability_unit_target_flags": [
+        "DOTA_UNIT_TARGET_FLAG_MAGIC_IMMUNE_ENEMIES"
+      ],
+      "spell_immunity_type": "SPELL_IMMUNITY_ENEMIES_YES",
+      "spell_dispellable_type": "SPELL_DISPELLABLE_NO",
+      "ability_unit_damage_type": "DAMAGE_TYPE_MAGICAL",
+      "is_skill": false,
+      "is_ultimate": true,
+      "has_scepter_upgrade": true,
+      "on_castbar": true,
+      "on_learnbar": true,
+      "ability_cast_range": [
+        500
+      ],
+      "ability_cast_range_buffer": 250,
+      "ability_cast_point": [
+        0.3,
+        0.3,
+        0.3
+      ],
+      "ability_channel_time": [
+        0.0,
+        0.0,
+        0.0,
+        0.0
+      ],
+      "ability_cooldown": [
+        50.0,
+        40.0,
+        30.0
+      ],
+      "ability_duration": [
+        0.0,
+        0.0,
+        0.0,
+        0.0
+      ],
+      "ability_damage": [
+        0.0,
+        0.0,
+        0.0,
+        0.0
+      ],
+      "ability_mana_cost": [
+        125.0,
+        175.0,
+        250.0
+      ],
+      "ability_modifier_support_value": 1.0,
+      "ability_modifier_support_bonus": 0.0,
+      "fight_recap_level": 2,
+      "ability_draft_enabled": true,
+      "linked": null,
+      "ability_special": {
+        "duration": [
+          5.0
+        ],
+        "damage": [
+          60.0,
+          100.0,
+          145.0
+        ],
+        "bonus_movement_speed": [
+          -40.0,
+          -60.0,
+          -80.0
+        ],
+        "bonus_attack_speed": [
+          -40.0,
+          -60.0,
+          -80.0
+        ],
+        "mana_cost_scepter": [
+          125.0,
+          125.0,
+          125.0
+        ],
+        "cooldown_scepter": [
+          10.0
+        ],
+        "cast_range_scepter": [
+          900.0
+        ],
+        "projectile_speed": [
+          1200.0
+        ],
+        "max_charges": [
+          2.0
+        ],
+        "charge_restore_time": [
+          30.0
+        ]
+      }
+    }
+  ],
+  "talents": [
+    {
+      "id": 5906,
+      "key": "special_bonus_attack_speed_20",
+      "name": "+20 Attack Speed",
+      "description": null
+    },
+    {
+      "id": 6565,
+      "key": "special_bonus_spell_lifesteal_8",
+      "name": "8% Spell Lifesteal",
+      "description": null
+    },
+    {
+      "id": 5943,
+      "key": "special_bonus_attack_range_100",
+      "name": "+100 Attack Range",
+      "description": null
+    },
+    {
+      "id": 6156,
+      "key": "special_bonus_unique_viper_1",
+      "name": "+6 Corrosive Skin Stats",
+      "description": null
+    },
+    {
+      "id": 6165,
+      "key": "special_bonus_unique_viper_2",
+      "name": "+100 Viper Strike DPS",
+      "description": null
+    },
+    {
+      "id": 6820,
+      "key": "special_bonus_unique_viper_4",
+      "name": "Poison Attack Affects Buildings",
+      "description": null
+    },
+    {
+      "id": 6819,
+      "key": "special_bonus_unique_viper_3",
+      "name": "Nethertoxin Silences",
+      "description": null
+    },
+    {
+      "id": 6112,
+      "key": "special_bonus_attack_damage_120",
+      "name": "+120 Damage",
+      "description": null
+    }
+  ],
+  "legs": 0,
+  "armor_physical": -2.0,
+  "magical_resistance": 25,
+  "attack_capabilities": "DOTA_UNIT_CAP_RANGED_ATTACK",
+  "attack_damage_min": 23,
+  "attack_damage_max": 25,
+  "attack_rate": 1.7,
+  "attack_animation_point": 0.33,
+  "attack_acquisition_range": 800,
+  "attack_range": 575,
+  "projectile_speed": 1200,
+  "attribute_primary": "DOTA_ATTRIBUTE_AGILITY",
+  "attribute_base_strength": 21,
+  "attribute_strength_gain": 2.4,
+  "attribute_base_intelligence": 15,
+  "attribute_intelligence_gain": 1.8,
+  "attribute_base_agility": 21,
+  "attribute_agility_gain": 2.9,
+  "status_health": 200,
+  "status_health_regen": 1.5,
+  "status_mana": 75,
+  "status_mana_regen": 0.9,
+  "bounty_xp": 62,
+  "bounty_gold_min": 0,
+  "bounty_gold_max": 0,
+  "movement_capabilities": "DOTA_UNIT_CAP_MOVE_GROUND",
+  "movement_speed": 275,
+  "movement_turn_rate": 0.5,
+  "has_aggressive_stance": false,
+  "team": 1,
+  "team_name": "Radiant",
+  "vision_daytime_range": 1800,
+  "vision_nighttime_range": 0,
+  "bot": {
+    "hero_types": null,
+    "solo_desire": 0,
+    "requires_babysit": 0,
+    "provides_babysit": 0,
+    "survival_rating": 0,
+    "requires_farm": 0,
+    "provides_setup": 0,
+    "requires_setup": 0
+  }
+}

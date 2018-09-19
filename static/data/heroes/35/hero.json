@@ -1,0 +1,604 @@
+{
+  "id": 35,
+  "name": "Sniper",
+  "key": "npc_dota_hero_sniper",
+  "image_profile": "https://hgv-hyperstone.azurewebsites.net/heroes/profile/npc_dota_hero_sniper.png",
+  "image_icon": "https://hgv-hyperstone.azurewebsites.net/heroes/icons/npc_dota_hero_sniper.png",
+  "image_banner": "https://hgv-hyperstone.azurewebsites.net/heroes/banner/npc_dota_hero_sniper.png",
+  "enabled": true,
+  "new_player_enable": true,
+  "captains_mode_enabled": true,
+  "ability_draft_enabled": true,
+  "complexity": 1,
+  "roles": [
+    {
+      "role": "Carry",
+      "level": 3
+    },
+    {
+      "role": "Nuker",
+      "level": 1
+    }
+  ],
+  "bot_implemented": true,
+  "abilities": [
+    {
+      "id": 5154,
+      "key": "sniper_shrapnel",
+      "name": "Shrapnel",
+      "description": "Consumes a charge to launch a ball of shrapnel that showers the target area in explosive pellets. Enemies are subject to damage and slowed movement. Reveals the targeted area. Shrapnel charges restore every 55 seconds.",
+      "image": "https://hgv-hyperstone.azurewebsites.net/abilities/sniper_shrapnel.png",
+      "hero_id": 35,
+      "ability_type": "DOTA_ABILITY_TYPE_BASIC",
+      "ability_behaviors": [
+        "DOTA_ABILITY_BEHAVIOR_AOE",
+        "DOTA_ABILITY_BEHAVIOR_POINT",
+        "DOTA_ABILITY_BEHAVIOR_IGNORE_BACKSWING"
+      ],
+      "ability_unit_target_team": null,
+      "ability_unit_target_type": [],
+      "ability_unit_target_flags": [],
+      "spell_immunity_type": "SPELL_IMMUNITY_ENEMIES_NO",
+      "spell_dispellable_type": "SPELL_DISPELLABLE_NO",
+      "ability_unit_damage_type": "DAMAGE_TYPE_MAGICAL",
+      "is_skill": true,
+      "is_ultimate": false,
+      "has_scepter_upgrade": false,
+      "on_castbar": true,
+      "on_learnbar": true,
+      "ability_cast_range": [
+        1800
+      ],
+      "ability_cast_range_buffer": 250,
+      "ability_cast_point": [
+        0.3,
+        0.3,
+        0.3,
+        0.3
+      ],
+      "ability_channel_time": [
+        0.0,
+        0.0,
+        0.0,
+        0.0
+      ],
+      "ability_cooldown": [
+        0.0
+      ],
+      "ability_duration": [
+        0.0,
+        0.0,
+        0.0,
+        0.0
+      ],
+      "ability_damage": [
+        0.0,
+        0.0,
+        0.0,
+        0.0
+      ],
+      "ability_mana_cost": [
+        50.0
+      ],
+      "ability_modifier_support_value": 0.25,
+      "ability_modifier_support_bonus": 0.0,
+      "fight_recap_level": 1,
+      "ability_draft_enabled": true,
+      "linked": null,
+      "ability_special": {
+        "slow_movement_speed": [
+          -15.0,
+          -20.0,
+          -25.0,
+          -30.0
+        ],
+        "radius": [
+          450.0
+        ],
+        "shrapnel_damage": [
+          15.0,
+          35.0,
+          55.0,
+          75.0
+        ],
+        "duration": [
+          10.0
+        ],
+        "damage_delay": [
+          1.2
+        ],
+        "slow_duration": [
+          2.0,
+          2.0,
+          2.0,
+          2.0
+        ],
+        "max_charges": [
+          3.0
+        ],
+        "charge_restore_time": [
+          55.0
+        ]
+      }
+    },
+    {
+      "id": 5155,
+      "key": "sniper_headshot",
+      "name": "Headshot",
+      "description": "Sniper increases his accuracy, giving him a chance to deal extra damage and briefly stop the movements of his enemies.",
+      "image": "https://hgv-hyperstone.azurewebsites.net/abilities/sniper_headshot.png",
+      "hero_id": 35,
+      "ability_type": "DOTA_ABILITY_TYPE_BASIC",
+      "ability_behaviors": [
+        "DOTA_ABILITY_BEHAVIOR_PASSIVE"
+      ],
+      "ability_unit_target_team": null,
+      "ability_unit_target_type": [],
+      "ability_unit_target_flags": [],
+      "spell_immunity_type": "SPELL_IMMUNITY_ENEMIES_NO",
+      "spell_dispellable_type": null,
+      "ability_unit_damage_type": "DAMAGE_TYPE_PHYSICAL",
+      "is_skill": true,
+      "is_ultimate": false,
+      "has_scepter_upgrade": false,
+      "on_castbar": true,
+      "on_learnbar": true,
+      "ability_cast_range": [
+        0
+      ],
+      "ability_cast_range_buffer": 250,
+      "ability_cast_point": [
+        0.0,
+        0.0,
+        0.0,
+        0.0
+      ],
+      "ability_channel_time": [
+        0.0,
+        0.0,
+        0.0,
+        0.0
+      ],
+      "ability_cooldown": [
+        0.0,
+        0.0,
+        0.0,
+        0.0
+      ],
+      "ability_duration": [
+        0.0,
+        0.0,
+        0.0,
+        0.0
+      ],
+      "ability_damage": [
+        20.0,
+        50.0,
+        80.0,
+        110.0
+      ],
+      "ability_mana_cost": [
+        0.0,
+        0.0,
+        0.0,
+        0.0
+      ],
+      "ability_modifier_support_value": 1.0,
+      "ability_modifier_support_bonus": 0.0,
+      "fight_recap_level": 0,
+      "ability_draft_enabled": true,
+      "linked": null,
+      "ability_special": {
+        "slow_duration": [
+          0.5
+        ],
+        "proc_chance": [
+          40.0
+        ],
+        "slow": [
+          -100.0
+        ]
+      }
+    },
+    {
+      "id": 5156,
+      "key": "sniper_take_aim",
+      "name": "Take Aim",
+      "description": "Extends the attack range of Sniper's rifle.",
+      "image": "https://hgv-hyperstone.azurewebsites.net/abilities/sniper_take_aim.png",
+      "hero_id": 35,
+      "ability_type": "DOTA_ABILITY_TYPE_BASIC",
+      "ability_behaviors": [
+        "DOTA_ABILITY_BEHAVIOR_PASSIVE"
+      ],
+      "ability_unit_target_team": null,
+      "ability_unit_target_type": [],
+      "ability_unit_target_flags": [],
+      "spell_immunity_type": null,
+      "spell_dispellable_type": null,
+      "ability_unit_damage_type": null,
+      "is_skill": true,
+      "is_ultimate": false,
+      "has_scepter_upgrade": false,
+      "on_castbar": true,
+      "on_learnbar": true,
+      "ability_cast_range": [
+        0
+      ],
+      "ability_cast_range_buffer": 250,
+      "ability_cast_point": [
+        0.0,
+        0.0,
+        0.0,
+        0.0
+      ],
+      "ability_channel_time": [
+        0.0,
+        0.0,
+        0.0,
+        0.0
+      ],
+      "ability_cooldown": [
+        0.0,
+        0.0,
+        0.0,
+        0.0
+      ],
+      "ability_duration": [
+        0.0,
+        0.0,
+        0.0,
+        0.0
+      ],
+      "ability_damage": [
+        0.0,
+        0.0,
+        0.0,
+        0.0
+      ],
+      "ability_mana_cost": [
+        0.0,
+        0.0,
+        0.0,
+        0.0
+      ],
+      "ability_modifier_support_value": 1.0,
+      "ability_modifier_support_bonus": 0.0,
+      "fight_recap_level": 0,
+      "ability_draft_enabled": true,
+      "linked": null,
+      "ability_special": {
+        "bonus_attack_range": [
+          100.0,
+          200.0,
+          300.0,
+          400.0
+        ]
+      }
+    },
+    {
+      "id": 6251,
+      "key": "generic_hidden",
+      "name": null,
+      "description": null,
+      "image": "https://hgv-hyperstone.azurewebsites.net/abilities/generic_hidden.png",
+      "hero_id": 35,
+      "ability_type": "DOTA_ABILITY_TYPE_BASIC",
+      "ability_behaviors": [
+        "DOTA_ABILITY_BEHAVIOR_HIDDEN",
+        "DOTA_ABILITY_BEHAVIOR_NOT_LEARNABLE"
+      ],
+      "ability_unit_target_team": null,
+      "ability_unit_target_type": [],
+      "ability_unit_target_flags": [],
+      "spell_immunity_type": null,
+      "spell_dispellable_type": null,
+      "ability_unit_damage_type": null,
+      "is_skill": true,
+      "is_ultimate": false,
+      "has_scepter_upgrade": false,
+      "on_castbar": true,
+      "on_learnbar": true,
+      "ability_cast_range": [
+        0
+      ],
+      "ability_cast_range_buffer": 250,
+      "ability_cast_point": [
+        0.0,
+        0.0,
+        0.0,
+        0.0
+      ],
+      "ability_channel_time": [
+        0.0,
+        0.0,
+        0.0,
+        0.0
+      ],
+      "ability_cooldown": [
+        0.0,
+        0.0,
+        0.0,
+        0.0
+      ],
+      "ability_duration": [
+        0.0,
+        0.0,
+        0.0,
+        0.0
+      ],
+      "ability_damage": [
+        0.0,
+        0.0,
+        0.0,
+        0.0
+      ],
+      "ability_mana_cost": [
+        0.0,
+        0.0,
+        0.0,
+        0.0
+      ],
+      "ability_modifier_support_value": 1.0,
+      "ability_modifier_support_bonus": 0.0,
+      "fight_recap_level": 0,
+      "ability_draft_enabled": false,
+      "linked": null,
+      "ability_special": {}
+    },
+    {
+      "id": 6251,
+      "key": "generic_hidden",
+      "name": null,
+      "description": null,
+      "image": "https://hgv-hyperstone.azurewebsites.net/abilities/generic_hidden.png",
+      "hero_id": 35,
+      "ability_type": "DOTA_ABILITY_TYPE_BASIC",
+      "ability_behaviors": [
+        "DOTA_ABILITY_BEHAVIOR_HIDDEN",
+        "DOTA_ABILITY_BEHAVIOR_NOT_LEARNABLE"
+      ],
+      "ability_unit_target_team": null,
+      "ability_unit_target_type": [],
+      "ability_unit_target_flags": [],
+      "spell_immunity_type": null,
+      "spell_dispellable_type": null,
+      "ability_unit_damage_type": null,
+      "is_skill": true,
+      "is_ultimate": false,
+      "has_scepter_upgrade": false,
+      "on_castbar": true,
+      "on_learnbar": true,
+      "ability_cast_range": [
+        0
+      ],
+      "ability_cast_range_buffer": 250,
+      "ability_cast_point": [
+        0.0,
+        0.0,
+        0.0,
+        0.0
+      ],
+      "ability_channel_time": [
+        0.0,
+        0.0,
+        0.0,
+        0.0
+      ],
+      "ability_cooldown": [
+        0.0,
+        0.0,
+        0.0,
+        0.0
+      ],
+      "ability_duration": [
+        0.0,
+        0.0,
+        0.0,
+        0.0
+      ],
+      "ability_damage": [
+        0.0,
+        0.0,
+        0.0,
+        0.0
+      ],
+      "ability_mana_cost": [
+        0.0,
+        0.0,
+        0.0,
+        0.0
+      ],
+      "ability_modifier_support_value": 1.0,
+      "ability_modifier_support_bonus": 0.0,
+      "fight_recap_level": 0,
+      "ability_draft_enabled": false,
+      "linked": null,
+      "ability_special": {}
+    },
+    {
+      "id": 5157,
+      "key": "sniper_assassinate",
+      "name": "Assassinate",
+      "description": "Sniper locks onto a target enemy unit and, after a short aiming duration, fires a devastating shot that deals damage at long range and mini-stuns the target.\\n\\nUpgradable by Aghanim's Scepter.",
+      "image": "https://hgv-hyperstone.azurewebsites.net/abilities/sniper_assassinate.png",
+      "hero_id": 35,
+      "ability_type": "DOTA_ABILITY_TYPE_ULTIMATE",
+      "ability_behaviors": [
+        "DOTA_ABILITY_BEHAVIOR_UNIT_TARGET",
+        "DOTA_ABILITY_BEHAVIOR_NORMAL_WHEN_STOLEN"
+      ],
+      "ability_unit_target_team": "DOTA_UNIT_TARGET_TEAM_ENEMY",
+      "ability_unit_target_type": [
+        "DOTA_UNIT_TARGET_HERO",
+        "DOTA_UNIT_TARGET_BASIC"
+      ],
+      "ability_unit_target_flags": [
+        "DOTA_UNIT_TARGET_FLAG_MAGIC_IMMUNE_ENEMIES",
+        "|",
+        "DOTA_UNIT_TARGET_FLAG_INVULNERABLE"
+      ],
+      "spell_immunity_type": "SPELL_IMMUNITY_ENEMIES_YES",
+      "spell_dispellable_type": "SPELL_DISPELLABLE_NO",
+      "ability_unit_damage_type": "DAMAGE_TYPE_MAGICAL",
+      "is_skill": false,
+      "is_ultimate": true,
+      "has_scepter_upgrade": true,
+      "on_castbar": true,
+      "on_learnbar": true,
+      "ability_cast_range": [
+        3000
+      ],
+      "ability_cast_range_buffer": 600,
+      "ability_cast_point": [
+        2.0,
+        2.0,
+        2.0
+      ],
+      "ability_channel_time": [
+        0.0,
+        0.0,
+        0.0,
+        0.0
+      ],
+      "ability_cooldown": [
+        20.0,
+        15.0,
+        10.0
+      ],
+      "ability_duration": [
+        0.0,
+        0.0,
+        0.0,
+        0.0
+      ],
+      "ability_damage": [
+        320.0,
+        485.0,
+        650.0
+      ],
+      "ability_mana_cost": [
+        175.0,
+        225.0,
+        275.0
+      ],
+      "ability_modifier_support_value": 0.0,
+      "ability_modifier_support_bonus": 0.0,
+      "fight_recap_level": 2,
+      "ability_draft_enabled": true,
+      "linked": null,
+      "ability_special": {
+        "projectile_speed": [
+          2500.0,
+          2500.0,
+          2500.0
+        ],
+        "tooltip_range": [
+          3000.0
+        ],
+        "total_cast_time_tooltip": [
+          2.0
+        ],
+        "scepter_radius": [
+          400.0
+        ],
+        "scepter_crit_bonus": [
+          280.0
+        ]
+      }
+    }
+  ],
+  "talents": [
+    {
+      "id": 6222,
+      "key": "special_bonus_cooldown_reduction_25",
+      "name": "25% Cooldown Reduction",
+      "description": null
+    },
+    {
+      "id": 5960,
+      "key": "special_bonus_attack_damage_20",
+      "name": "+20 Damage",
+      "description": null
+    },
+    {
+      "id": 6210,
+      "key": "special_bonus_attack_speed_40",
+      "name": "+40 Attack Speed",
+      "description": null
+    },
+    {
+      "id": 6305,
+      "key": "special_bonus_unique_sniper_1",
+      "name": "+35 Shrapnel DPS",
+      "description": null
+    },
+    {
+      "id": 6896,
+      "key": "special_bonus_unique_sniper_3",
+      "name": "+35 Knockback Distance Headshot",
+      "description": null
+    },
+    {
+      "id": 6897,
+      "key": "special_bonus_unique_sniper_4",
+      "name": "-1.5s Assassinate Cast Time",
+      "description": null
+    },
+    {
+      "id": 5944,
+      "key": "special_bonus_attack_range_125",
+      "name": "+125 Attack Range",
+      "description": null
+    },
+    {
+      "id": 6198,
+      "key": "special_bonus_unique_sniper_2",
+      "name": "+6 Shrapnel Charges",
+      "description": null
+    }
+  ],
+  "legs": 2,
+  "armor_physical": -1.0,
+  "magical_resistance": 25,
+  "attack_capabilities": "DOTA_UNIT_CAP_RANGED_ATTACK",
+  "attack_damage_min": 15,
+  "attack_damage_max": 21,
+  "attack_rate": 1.7,
+  "attack_animation_point": 0.17,
+  "attack_acquisition_range": 950,
+  "attack_range": 550,
+  "projectile_speed": 3000,
+  "attribute_primary": "DOTA_ATTRIBUTE_AGILITY",
+  "attribute_base_strength": 17,
+  "attribute_strength_gain": 1.7,
+  "attribute_base_intelligence": 15,
+  "attribute_intelligence_gain": 2.6,
+  "attribute_base_agility": 21,
+  "attribute_agility_gain": 2.7,
+  "status_health": 200,
+  "status_health_regen": 1.5,
+  "status_mana": 75,
+  "status_mana_regen": 0.9,
+  "bounty_xp": 62,
+  "bounty_gold_min": 0,
+  "bounty_gold_max": 0,
+  "movement_capabilities": "DOTA_UNIT_CAP_MOVE_GROUND",
+  "movement_speed": 285,
+  "movement_turn_rate": 0.7,
+  "has_aggressive_stance": true,
+  "team": 1,
+  "team_name": "Radiant",
+  "vision_daytime_range": 1800,
+  "vision_nighttime_range": 0,
+  "bot": {
+    "hero_types": null,
+    "solo_desire": 0,
+    "requires_babysit": 0,
+    "provides_babysit": 0,
+    "survival_rating": 0,
+    "requires_farm": 0,
+    "provides_setup": 0,
+    "requires_setup": 0
+  }
+}

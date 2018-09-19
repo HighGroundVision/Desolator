@@ -1,0 +1,644 @@
+{
+  "id": 43,
+  "name": "Death Prophet",
+  "key": "npc_dota_hero_death_prophet",
+  "image_profile": "https://hgv-hyperstone.azurewebsites.net/heroes/profile/npc_dota_hero_death_prophet.png",
+  "image_icon": "https://hgv-hyperstone.azurewebsites.net/heroes/icons/npc_dota_hero_death_prophet.png",
+  "image_banner": "https://hgv-hyperstone.azurewebsites.net/heroes/banner/npc_dota_hero_death_prophet.png",
+  "enabled": true,
+  "new_player_enable": true,
+  "captains_mode_enabled": true,
+  "ability_draft_enabled": true,
+  "complexity": 1,
+  "roles": [
+    {
+      "role": "Carry",
+      "level": 1
+    },
+    {
+      "role": "Pusher",
+      "level": 3
+    },
+    {
+      "role": "Nuker",
+      "level": 1
+    },
+    {
+      "role": "Disabler",
+      "level": 1
+    }
+  ],
+  "bot_implemented": true,
+  "abilities": [
+    {
+      "id": 5090,
+      "key": "death_prophet_carrion_swarm",
+      "name": "Crypt Swarm",
+      "description": "Sends a swarm of winged beasts to savage enemy units in front of Death Prophet.",
+      "image": "https://hgv-hyperstone.azurewebsites.net/abilities/death_prophet_carrion_swarm.png",
+      "hero_id": 43,
+      "ability_type": "DOTA_ABILITY_TYPE_BASIC",
+      "ability_behaviors": [
+        "DOTA_ABILITY_BEHAVIOR_UNIT_TARGET",
+        "DOTA_ABILITY_BEHAVIOR_POINT"
+      ],
+      "ability_unit_target_team": "DOTA_UNIT_TARGET_TEAM_ENEMY",
+      "ability_unit_target_type": [
+        "DOTA_UNIT_TARGET_HERO",
+        "DOTA_UNIT_TARGET_BASIC"
+      ],
+      "ability_unit_target_flags": [],
+      "spell_immunity_type": "SPELL_IMMUNITY_ENEMIES_NO",
+      "spell_dispellable_type": null,
+      "ability_unit_damage_type": "DAMAGE_TYPE_MAGICAL",
+      "is_skill": true,
+      "is_ultimate": false,
+      "has_scepter_upgrade": false,
+      "on_castbar": true,
+      "on_learnbar": true,
+      "ability_cast_range": [
+        600
+      ],
+      "ability_cast_range_buffer": 250,
+      "ability_cast_point": [
+        0.5
+      ],
+      "ability_channel_time": [
+        0.0,
+        0.0,
+        0.0,
+        0.0
+      ],
+      "ability_cooldown": [
+        8.0,
+        7.0,
+        6.0,
+        5.0
+      ],
+      "ability_duration": [
+        0.0,
+        0.0,
+        0.0,
+        0.0
+      ],
+      "ability_damage": [
+        75.0,
+        150.0,
+        225.0,
+        300.0
+      ],
+      "ability_mana_cost": [
+        105.0,
+        120.0,
+        140.0,
+        165.0
+      ],
+      "ability_modifier_support_value": 1.0,
+      "ability_modifier_support_bonus": 0.0,
+      "fight_recap_level": 1,
+      "ability_draft_enabled": true,
+      "linked": null,
+      "ability_special": {
+        "start_radius": [
+          110.0,
+          110.0,
+          110.0,
+          110.0
+        ],
+        "end_radius": [
+          300.0,
+          300.0,
+          300.0,
+          300.0
+        ],
+        "range": [
+          810.0,
+          810.0,
+          810.0,
+          810.0
+        ],
+        "speed": [
+          1100.0,
+          1100.0,
+          1100.0,
+          1100.0
+        ]
+      }
+    },
+    {
+      "id": 5091,
+      "key": "death_prophet_silence",
+      "name": "Silence",
+      "description": "Prevents enemy units in a target area from casting spells.",
+      "image": "https://hgv-hyperstone.azurewebsites.net/abilities/death_prophet_silence.png",
+      "hero_id": 43,
+      "ability_type": "DOTA_ABILITY_TYPE_BASIC",
+      "ability_behaviors": [
+        "DOTA_ABILITY_BEHAVIOR_AOE",
+        "DOTA_ABILITY_BEHAVIOR_POINT"
+      ],
+      "ability_unit_target_team": null,
+      "ability_unit_target_type": [],
+      "ability_unit_target_flags": [],
+      "spell_immunity_type": "SPELL_IMMUNITY_ENEMIES_NO",
+      "spell_dispellable_type": "SPELL_DISPELLABLE_YES",
+      "ability_unit_damage_type": null,
+      "is_skill": true,
+      "is_ultimate": false,
+      "has_scepter_upgrade": false,
+      "on_castbar": true,
+      "on_learnbar": true,
+      "ability_cast_range": [
+        900
+      ],
+      "ability_cast_range_buffer": 250,
+      "ability_cast_point": [
+        0.5,
+        0.5,
+        0.5,
+        0.5
+      ],
+      "ability_channel_time": [
+        0.0,
+        0.0,
+        0.0,
+        0.0
+      ],
+      "ability_cooldown": [
+        15.0,
+        14.0,
+        13.0,
+        12.0
+      ],
+      "ability_duration": [
+        3.0,
+        4.0,
+        5.0,
+        6.0
+      ],
+      "ability_damage": [
+        0.0,
+        0.0,
+        0.0,
+        0.0
+      ],
+      "ability_mana_cost": [
+        80.0,
+        90.0,
+        100.0,
+        110.0
+      ],
+      "ability_modifier_support_value": 1.0,
+      "ability_modifier_support_bonus": 0.0,
+      "fight_recap_level": 0,
+      "ability_draft_enabled": true,
+      "linked": null,
+      "ability_special": {
+        "radius": [
+          425.0
+        ],
+        "duration": [
+          3.0,
+          4.0,
+          5.0,
+          6.0
+        ]
+      }
+    },
+    {
+      "id": 5685,
+      "key": "death_prophet_spirit_siphon",
+      "name": "Spirit Siphon",
+      "description": "Creates a spirit link between Death Prophet and an enemy unit, draining 14 + 1/2.5/4/5.5% Max HP per second and slowing the enemy's movement speed by 5/10/15/20%.",
+      "image": "https://hgv-hyperstone.azurewebsites.net/abilities/death_prophet_spirit_siphon.png",
+      "hero_id": 43,
+      "ability_type": "DOTA_ABILITY_TYPE_BASIC",
+      "ability_behaviors": [
+        "DOTA_ABILITY_BEHAVIOR_UNIT_TARGET",
+        "DOTA_ABILITY_BEHAVIOR_IGNORE_BACKSWING"
+      ],
+      "ability_unit_target_team": "DOTA_UNIT_TARGET_TEAM_ENEMY",
+      "ability_unit_target_type": [
+        "DOTA_UNIT_TARGET_HERO",
+        "DOTA_UNIT_TARGET_BASIC"
+      ],
+      "ability_unit_target_flags": [],
+      "spell_immunity_type": "SPELL_IMMUNITY_ENEMIES_NO",
+      "spell_dispellable_type": "SPELL_DISPELLABLE_NO",
+      "ability_unit_damage_type": "DAMAGE_TYPE_MAGICAL",
+      "is_skill": true,
+      "is_ultimate": false,
+      "has_scepter_upgrade": false,
+      "on_castbar": true,
+      "on_learnbar": true,
+      "ability_cast_range": [
+        500
+      ],
+      "ability_cast_range_buffer": 250,
+      "ability_cast_point": [
+        0.1
+      ],
+      "ability_channel_time": [
+        0.0,
+        0.0,
+        0.0,
+        0.0
+      ],
+      "ability_cooldown": [
+        0.0
+      ],
+      "ability_duration": [
+        0.0,
+        0.0,
+        0.0,
+        0.0
+      ],
+      "ability_damage": [
+        0.0,
+        0.0,
+        0.0,
+        0.0
+      ],
+      "ability_mana_cost": [
+        70.0
+      ],
+      "ability_modifier_support_value": 1.0,
+      "ability_modifier_support_bonus": 0.0,
+      "fight_recap_level": 1,
+      "ability_draft_enabled": true,
+      "linked": null,
+      "ability_special": {
+        "damage": [
+          14.0
+        ],
+        "damage_pct": [
+          1.0,
+          2.5,
+          4.0,
+          5.5
+        ],
+        "haunt_duration": [
+          6.0
+        ],
+        "movement_slow": [
+          5.0,
+          10.0,
+          15.0,
+          20.0
+        ],
+        "siphon_buffer": [
+          250.0
+        ],
+        "max_charges": [
+          1.0,
+          2.0,
+          3.0,
+          4.0
+        ],
+        "charge_restore_time": [
+          60.0,
+          55.0,
+          50.0,
+          45.0
+        ]
+      }
+    },
+    {
+      "id": 6251,
+      "key": "generic_hidden",
+      "name": null,
+      "description": null,
+      "image": "https://hgv-hyperstone.azurewebsites.net/abilities/generic_hidden.png",
+      "hero_id": 43,
+      "ability_type": "DOTA_ABILITY_TYPE_BASIC",
+      "ability_behaviors": [
+        "DOTA_ABILITY_BEHAVIOR_HIDDEN",
+        "DOTA_ABILITY_BEHAVIOR_NOT_LEARNABLE"
+      ],
+      "ability_unit_target_team": null,
+      "ability_unit_target_type": [],
+      "ability_unit_target_flags": [],
+      "spell_immunity_type": null,
+      "spell_dispellable_type": null,
+      "ability_unit_damage_type": null,
+      "is_skill": true,
+      "is_ultimate": false,
+      "has_scepter_upgrade": false,
+      "on_castbar": true,
+      "on_learnbar": true,
+      "ability_cast_range": [
+        0
+      ],
+      "ability_cast_range_buffer": 250,
+      "ability_cast_point": [
+        0.0,
+        0.0,
+        0.0,
+        0.0
+      ],
+      "ability_channel_time": [
+        0.0,
+        0.0,
+        0.0,
+        0.0
+      ],
+      "ability_cooldown": [
+        0.0,
+        0.0,
+        0.0,
+        0.0
+      ],
+      "ability_duration": [
+        0.0,
+        0.0,
+        0.0,
+        0.0
+      ],
+      "ability_damage": [
+        0.0,
+        0.0,
+        0.0,
+        0.0
+      ],
+      "ability_mana_cost": [
+        0.0,
+        0.0,
+        0.0,
+        0.0
+      ],
+      "ability_modifier_support_value": 1.0,
+      "ability_modifier_support_bonus": 0.0,
+      "fight_recap_level": 0,
+      "ability_draft_enabled": false,
+      "linked": null,
+      "ability_special": {}
+    },
+    {
+      "id": 6251,
+      "key": "generic_hidden",
+      "name": null,
+      "description": null,
+      "image": "https://hgv-hyperstone.azurewebsites.net/abilities/generic_hidden.png",
+      "hero_id": 43,
+      "ability_type": "DOTA_ABILITY_TYPE_BASIC",
+      "ability_behaviors": [
+        "DOTA_ABILITY_BEHAVIOR_HIDDEN",
+        "DOTA_ABILITY_BEHAVIOR_NOT_LEARNABLE"
+      ],
+      "ability_unit_target_team": null,
+      "ability_unit_target_type": [],
+      "ability_unit_target_flags": [],
+      "spell_immunity_type": null,
+      "spell_dispellable_type": null,
+      "ability_unit_damage_type": null,
+      "is_skill": true,
+      "is_ultimate": false,
+      "has_scepter_upgrade": false,
+      "on_castbar": true,
+      "on_learnbar": true,
+      "ability_cast_range": [
+        0
+      ],
+      "ability_cast_range_buffer": 250,
+      "ability_cast_point": [
+        0.0,
+        0.0,
+        0.0,
+        0.0
+      ],
+      "ability_channel_time": [
+        0.0,
+        0.0,
+        0.0,
+        0.0
+      ],
+      "ability_cooldown": [
+        0.0,
+        0.0,
+        0.0,
+        0.0
+      ],
+      "ability_duration": [
+        0.0,
+        0.0,
+        0.0,
+        0.0
+      ],
+      "ability_damage": [
+        0.0,
+        0.0,
+        0.0,
+        0.0
+      ],
+      "ability_mana_cost": [
+        0.0,
+        0.0,
+        0.0,
+        0.0
+      ],
+      "ability_modifier_support_value": 1.0,
+      "ability_modifier_support_bonus": 0.0,
+      "fight_recap_level": 0,
+      "ability_draft_enabled": false,
+      "linked": null,
+      "ability_special": {}
+    },
+    {
+      "id": 5093,
+      "key": "death_prophet_exorcism",
+      "name": "Exorcism",
+      "description": "Unleashes evil spirits to drain the life of nearby enemy units and structures. At the end of the spell's duration, Death Prophet is healed in proportion to the damage dealt.  Lasts 35 seconds.",
+      "image": "https://hgv-hyperstone.azurewebsites.net/abilities/death_prophet_exorcism.png",
+      "hero_id": 43,
+      "ability_type": "DOTA_ABILITY_TYPE_ULTIMATE",
+      "ability_behaviors": [
+        "DOTA_ABILITY_BEHAVIOR_NO_TARGET"
+      ],
+      "ability_unit_target_team": null,
+      "ability_unit_target_type": [],
+      "ability_unit_target_flags": [],
+      "spell_immunity_type": "SPELL_IMMUNITY_ENEMIES_YES",
+      "spell_dispellable_type": "SPELL_DISPELLABLE_NO",
+      "ability_unit_damage_type": "DAMAGE_TYPE_PHYSICAL",
+      "is_skill": false,
+      "is_ultimate": true,
+      "has_scepter_upgrade": false,
+      "on_castbar": true,
+      "on_learnbar": true,
+      "ability_cast_range": [
+        0
+      ],
+      "ability_cast_range_buffer": 250,
+      "ability_cast_point": [
+        0.5,
+        0.5,
+        0.5
+      ],
+      "ability_channel_time": [
+        0.0,
+        0.0,
+        0.0,
+        0.0
+      ],
+      "ability_cooldown": [
+        145.0
+      ],
+      "ability_duration": [
+        35.0
+      ],
+      "ability_damage": [
+        0.0,
+        0.0,
+        0.0,
+        0.0
+      ],
+      "ability_mana_cost": [
+        200.0,
+        300.0,
+        400.0
+      ],
+      "ability_modifier_support_value": 1.0,
+      "ability_modifier_support_bonus": 0.0,
+      "fight_recap_level": 2,
+      "ability_draft_enabled": true,
+      "linked": null,
+      "ability_special": {
+        "radius": [
+          700.0,
+          700.0,
+          700.0
+        ],
+        "spirits": [
+          8.0,
+          16.0,
+          24.0
+        ],
+        "spirit_speed": [
+          500.0,
+          500.0,
+          500.0
+        ],
+        "max_distance": [
+          2000.0,
+          2000.0,
+          2000.0
+        ],
+        "give_up_distance": [
+          1200.0,
+          1200.0,
+          1200.0
+        ],
+        "min_damage": [
+          56.0
+        ],
+        "max_damage": [
+          61.0
+        ],
+        "heal_percent": [
+          25.0,
+          25.0,
+          25.0
+        ],
+        "average_damage": [
+          58.0
+        ],
+        "ghost_spawn_rate": [
+          0.35
+        ]
+      }
+    }
+  ],
+  "talents": [
+    {
+      "id": 5940,
+      "key": "special_bonus_attack_damage_40",
+      "name": "+40 Damage",
+      "description": null
+    },
+    {
+      "id": 6299,
+      "key": "special_bonus_magic_resistance_12",
+      "name": "+12% Magic Resistance",
+      "description": null
+    },
+    {
+      "id": 6628,
+      "key": "special_bonus_unique_death_prophet_3",
+      "name": "+1% Max Health Spirit Siphon",
+      "description": null
+    },
+    {
+      "id": 6056,
+      "key": "special_bonus_cast_range_150",
+      "name": "+150 Cast Range",
+      "description": null
+    },
+    {
+      "id": 6235,
+      "key": "special_bonus_hp_500",
+      "name": "+500 Health",
+      "description": null
+    },
+    {
+      "id": 6367,
+      "key": "special_bonus_unique_death_prophet_2",
+      "name": "-2s Crypt Swarm Cooldown",
+      "description": null
+    },
+    {
+      "id": 6805,
+      "key": "special_bonus_unique_death_prophet_4",
+      "name": "Exorcism Grants Haste",
+      "description": "While Exorcism is active, Death Prophet moves at 550 movement speed and cannot be slowed."
+    },
+    {
+      "id": 6191,
+      "key": "special_bonus_unique_death_prophet",
+      "name": "+8 Exorcism Spirits",
+      "description": null
+    }
+  ],
+  "legs": 2,
+  "armor_physical": 0.0,
+  "magical_resistance": 25,
+  "attack_capabilities": "DOTA_UNIT_CAP_RANGED_ATTACK",
+  "attack_damage_min": 26,
+  "attack_damage_max": 38,
+  "attack_rate": 1.7,
+  "attack_animation_point": 0.56,
+  "attack_acquisition_range": 800,
+  "attack_range": 600,
+  "projectile_speed": 1000,
+  "attribute_primary": "DOTA_ATTRIBUTE_INTELLECT",
+  "attribute_base_strength": 19,
+  "attribute_strength_gain": 2.9,
+  "attribute_base_intelligence": 21,
+  "attribute_intelligence_gain": 3.0,
+  "attribute_base_agility": 14,
+  "attribute_agility_gain": 1.4,
+  "status_health": 200,
+  "status_health_regen": 1.5,
+  "status_mana": 75,
+  "status_mana_regen": 0.9,
+  "bounty_xp": 62,
+  "bounty_gold_min": 0,
+  "bounty_gold_max": 0,
+  "movement_capabilities": "DOTA_UNIT_CAP_MOVE_GROUND",
+  "movement_speed": 305,
+  "movement_turn_rate": 0.5,
+  "has_aggressive_stance": false,
+  "team": 1,
+  "team_name": "Radiant",
+  "vision_daytime_range": 1800,
+  "vision_nighttime_range": 0,
+  "bot": {
+    "hero_types": null,
+    "solo_desire": 0,
+    "requires_babysit": 0,
+    "provides_babysit": 0,
+    "survival_rating": 0,
+    "requires_farm": 0,
+    "provides_setup": 0,
+    "requires_setup": 0
+  }
+}

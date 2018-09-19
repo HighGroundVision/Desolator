@@ -1,0 +1,602 @@
+{
+  "id": 109,
+  "name": "Terrorblade",
+  "key": "npc_dota_hero_terrorblade",
+  "image_profile": "https://hgv-hyperstone.azurewebsites.net/heroes/profile/npc_dota_hero_terrorblade.png",
+  "image_icon": "https://hgv-hyperstone.azurewebsites.net/heroes/icons/npc_dota_hero_terrorblade.png",
+  "image_banner": "https://hgv-hyperstone.azurewebsites.net/heroes/banner/npc_dota_hero_terrorblade.png",
+  "enabled": true,
+  "new_player_enable": true,
+  "captains_mode_enabled": true,
+  "ability_draft_enabled": true,
+  "complexity": 2,
+  "roles": [
+    {
+      "role": "Carry",
+      "level": 3
+    },
+    {
+      "role": "Pusher",
+      "level": 2
+    },
+    {
+      "role": "Nuker",
+      "level": 1
+    }
+  ],
+  "bot_implemented": false,
+  "abilities": [
+    {
+      "id": 5619,
+      "key": "terrorblade_reflection",
+      "name": "Reflection",
+      "description": "Terrorblade brings forth an invulnerable dark reflection of all nearby enemy heroes. Affected enemy heroes are slowed and attacked by their reflection.",
+      "image": "https://hgv-hyperstone.azurewebsites.net/abilities/terrorblade_reflection.png",
+      "hero_id": 109,
+      "ability_type": "DOTA_ABILITY_TYPE_BASIC",
+      "ability_behaviors": [
+        "DOTA_ABILITY_BEHAVIOR_NO_TARGET"
+      ],
+      "ability_unit_target_team": null,
+      "ability_unit_target_type": [],
+      "ability_unit_target_flags": [],
+      "spell_immunity_type": "SPELL_IMMUNITY_ENEMIES_NO",
+      "spell_dispellable_type": "SPELL_DISPELLABLE_YES",
+      "ability_unit_damage_type": null,
+      "is_skill": true,
+      "is_ultimate": false,
+      "has_scepter_upgrade": false,
+      "on_castbar": true,
+      "on_learnbar": true,
+      "ability_cast_range": [
+        0
+      ],
+      "ability_cast_range_buffer": 250,
+      "ability_cast_point": [
+        0.3
+      ],
+      "ability_channel_time": [
+        0.0,
+        0.0,
+        0.0,
+        0.0
+      ],
+      "ability_cooldown": [
+        22.0,
+        20.0,
+        18.0,
+        16.0
+      ],
+      "ability_duration": [
+        0.0,
+        0.0,
+        0.0,
+        0.0
+      ],
+      "ability_damage": [
+        0.0,
+        0.0,
+        0.0,
+        0.0
+      ],
+      "ability_mana_cost": [
+        50.0
+      ],
+      "ability_modifier_support_value": 1.0,
+      "ability_modifier_support_bonus": 0.0,
+      "fight_recap_level": 1,
+      "ability_draft_enabled": true,
+      "linked": null,
+      "ability_special": {
+        "illusion_duration": [
+          2.5,
+          3.5,
+          4.5,
+          5.5
+        ],
+        "illusion_outgoing_damage": [
+          60.0,
+          40.0,
+          20.0,
+          0.0
+        ],
+        "illusion_outgoing_tooltip": [
+          40.0,
+          60.0,
+          80.0,
+          100.0
+        ],
+        "move_slow": [
+          25.0
+        ],
+        "range": [
+          900.0
+        ]
+      }
+    },
+    {
+      "id": 5620,
+      "key": "terrorblade_conjure_image",
+      "name": "Conjure Image",
+      "description": "Creates an illusion of Terrorblade that deals damage.",
+      "image": "https://hgv-hyperstone.azurewebsites.net/abilities/terrorblade_conjure_image.png",
+      "hero_id": 109,
+      "ability_type": "DOTA_ABILITY_TYPE_BASIC",
+      "ability_behaviors": [
+        "DOTA_ABILITY_BEHAVIOR_NO_TARGET"
+      ],
+      "ability_unit_target_team": null,
+      "ability_unit_target_type": [],
+      "ability_unit_target_flags": [],
+      "spell_immunity_type": null,
+      "spell_dispellable_type": null,
+      "ability_unit_damage_type": null,
+      "is_skill": true,
+      "is_ultimate": false,
+      "has_scepter_upgrade": false,
+      "on_castbar": true,
+      "on_learnbar": true,
+      "ability_cast_range": [
+        0
+      ],
+      "ability_cast_range_buffer": 250,
+      "ability_cast_point": [
+        0.15
+      ],
+      "ability_channel_time": [
+        0.0,
+        0.0,
+        0.0,
+        0.0
+      ],
+      "ability_cooldown": [
+        16.0
+      ],
+      "ability_duration": [
+        0.0,
+        0.0,
+        0.0,
+        0.0
+      ],
+      "ability_damage": [
+        0.0,
+        0.0,
+        0.0,
+        0.0
+      ],
+      "ability_mana_cost": [
+        70.0
+      ],
+      "ability_modifier_support_value": 1.0,
+      "ability_modifier_support_bonus": 0.0,
+      "fight_recap_level": 0,
+      "ability_draft_enabled": true,
+      "linked": null,
+      "ability_special": {
+        "illusion_duration": [
+          34.0
+        ],
+        "illusion_outgoing_damage": [
+          70.0,
+          60.0,
+          50.0,
+          40.0
+        ],
+        "illusion_outgoing_tooltip": [
+          30.0,
+          40.0,
+          50.0,
+          60.0
+        ],
+        "illusion_incoming_damage": [
+          300.0
+        ],
+        "illusion_incoming_damage_total_tooltip": [
+          400.0
+        ]
+      }
+    },
+    {
+      "id": 5621,
+      "key": "terrorblade_metamorphosis",
+      "name": "Metamorphosis",
+      "description": "Terrorblade transforms into a powerful demon with a ranged attack. Any of Terrorblade's illusions that are within 900 range will also be transformed by Metamorphosis.",
+      "image": "https://hgv-hyperstone.azurewebsites.net/abilities/terrorblade_metamorphosis.png",
+      "hero_id": 109,
+      "ability_type": "DOTA_ABILITY_TYPE_BASIC",
+      "ability_behaviors": [
+        "DOTA_ABILITY_BEHAVIOR_NO_TARGET",
+        "DOTA_ABILITY_BEHAVIOR_IMMEDIATE"
+      ],
+      "ability_unit_target_team": null,
+      "ability_unit_target_type": [],
+      "ability_unit_target_flags": [],
+      "spell_immunity_type": null,
+      "spell_dispellable_type": "SPELL_DISPELLABLE_NO",
+      "ability_unit_damage_type": null,
+      "is_skill": true,
+      "is_ultimate": false,
+      "has_scepter_upgrade": false,
+      "on_castbar": true,
+      "on_learnbar": true,
+      "ability_cast_range": [
+        0
+      ],
+      "ability_cast_range_buffer": 250,
+      "ability_cast_point": [
+        0.0
+      ],
+      "ability_channel_time": [
+        0.0,
+        0.0,
+        0.0,
+        0.0
+      ],
+      "ability_cooldown": [
+        155.0
+      ],
+      "ability_duration": [
+        0.0,
+        0.0,
+        0.0,
+        0.0
+      ],
+      "ability_damage": [
+        0.0,
+        0.0,
+        0.0,
+        0.0
+      ],
+      "ability_mana_cost": [
+        100.0
+      ],
+      "ability_modifier_support_value": 1.0,
+      "ability_modifier_support_bonus": 0.0,
+      "fight_recap_level": 0,
+      "ability_draft_enabled": false,
+      "linked": null,
+      "ability_special": {
+        "duration": [
+          40.0,
+          44.0,
+          48.0,
+          52.0
+        ],
+        "transformation_time": [
+          0.35
+        ],
+        "base_attack_time": [
+          1.5
+        ],
+        "bonus_range": [
+          400.0
+        ],
+        "tooltip_attack_range": [
+          550.0
+        ],
+        "bonus_damage": [
+          20.0,
+          40.0,
+          60.0,
+          80.0
+        ],
+        "speed_loss": [
+          25.0
+        ],
+        "metamorph_aura_tooltip": [
+          900.0
+        ]
+      }
+    },
+    {
+      "id": 6251,
+      "key": "generic_hidden",
+      "name": null,
+      "description": null,
+      "image": "https://hgv-hyperstone.azurewebsites.net/abilities/generic_hidden.png",
+      "hero_id": 109,
+      "ability_type": "DOTA_ABILITY_TYPE_BASIC",
+      "ability_behaviors": [
+        "DOTA_ABILITY_BEHAVIOR_HIDDEN",
+        "DOTA_ABILITY_BEHAVIOR_NOT_LEARNABLE"
+      ],
+      "ability_unit_target_team": null,
+      "ability_unit_target_type": [],
+      "ability_unit_target_flags": [],
+      "spell_immunity_type": null,
+      "spell_dispellable_type": null,
+      "ability_unit_damage_type": null,
+      "is_skill": true,
+      "is_ultimate": false,
+      "has_scepter_upgrade": false,
+      "on_castbar": true,
+      "on_learnbar": true,
+      "ability_cast_range": [
+        0
+      ],
+      "ability_cast_range_buffer": 250,
+      "ability_cast_point": [
+        0.0,
+        0.0,
+        0.0,
+        0.0
+      ],
+      "ability_channel_time": [
+        0.0,
+        0.0,
+        0.0,
+        0.0
+      ],
+      "ability_cooldown": [
+        0.0,
+        0.0,
+        0.0,
+        0.0
+      ],
+      "ability_duration": [
+        0.0,
+        0.0,
+        0.0,
+        0.0
+      ],
+      "ability_damage": [
+        0.0,
+        0.0,
+        0.0,
+        0.0
+      ],
+      "ability_mana_cost": [
+        0.0,
+        0.0,
+        0.0,
+        0.0
+      ],
+      "ability_modifier_support_value": 1.0,
+      "ability_modifier_support_bonus": 0.0,
+      "fight_recap_level": 0,
+      "ability_draft_enabled": false,
+      "linked": null,
+      "ability_special": {}
+    },
+    {
+      "id": 6251,
+      "key": "generic_hidden",
+      "name": null,
+      "description": null,
+      "image": "https://hgv-hyperstone.azurewebsites.net/abilities/generic_hidden.png",
+      "hero_id": 109,
+      "ability_type": "DOTA_ABILITY_TYPE_BASIC",
+      "ability_behaviors": [
+        "DOTA_ABILITY_BEHAVIOR_HIDDEN",
+        "DOTA_ABILITY_BEHAVIOR_NOT_LEARNABLE"
+      ],
+      "ability_unit_target_team": null,
+      "ability_unit_target_type": [],
+      "ability_unit_target_flags": [],
+      "spell_immunity_type": null,
+      "spell_dispellable_type": null,
+      "ability_unit_damage_type": null,
+      "is_skill": true,
+      "is_ultimate": false,
+      "has_scepter_upgrade": false,
+      "on_castbar": true,
+      "on_learnbar": true,
+      "ability_cast_range": [
+        0
+      ],
+      "ability_cast_range_buffer": 250,
+      "ability_cast_point": [
+        0.0,
+        0.0,
+        0.0,
+        0.0
+      ],
+      "ability_channel_time": [
+        0.0,
+        0.0,
+        0.0,
+        0.0
+      ],
+      "ability_cooldown": [
+        0.0,
+        0.0,
+        0.0,
+        0.0
+      ],
+      "ability_duration": [
+        0.0,
+        0.0,
+        0.0,
+        0.0
+      ],
+      "ability_damage": [
+        0.0,
+        0.0,
+        0.0,
+        0.0
+      ],
+      "ability_mana_cost": [
+        0.0,
+        0.0,
+        0.0,
+        0.0
+      ],
+      "ability_modifier_support_value": 1.0,
+      "ability_modifier_support_bonus": 0.0,
+      "fight_recap_level": 0,
+      "ability_draft_enabled": false,
+      "linked": null,
+      "ability_special": {}
+    },
+    {
+      "id": 5622,
+      "key": "terrorblade_sunder",
+      "name": "Sunder",
+      "description": "Severs the life from both Terrorblade and a target hero, exchanging a percentage of both units' current health. Some health points must remain.",
+      "image": "https://hgv-hyperstone.azurewebsites.net/abilities/terrorblade_sunder.png",
+      "hero_id": 109,
+      "ability_type": "DOTA_ABILITY_TYPE_ULTIMATE",
+      "ability_behaviors": [
+        "DOTA_ABILITY_BEHAVIOR_UNIT_TARGET",
+        "DOTA_ABILITY_BEHAVIOR_DONT_RESUME_ATTACK"
+      ],
+      "ability_unit_target_team": "DOTA_UNIT_TARGET_TEAM_BOTH",
+      "ability_unit_target_type": [
+        "DOTA_UNIT_TARGET_CUSTOM"
+      ],
+      "ability_unit_target_flags": [
+        "DOTA_UNIT_TARGET_FLAG_NOT_CREEP_HERO",
+        "|",
+        "DOTA_UNIT_TARGET_FLAG_MAGIC_IMMUNE_ENEMIES"
+      ],
+      "spell_immunity_type": "SPELL_IMMUNITY_ENEMIES_YES",
+      "spell_dispellable_type": null,
+      "ability_unit_damage_type": null,
+      "is_skill": false,
+      "is_ultimate": true,
+      "has_scepter_upgrade": false,
+      "on_castbar": true,
+      "on_learnbar": true,
+      "ability_cast_range": [
+        475
+      ],
+      "ability_cast_range_buffer": 250,
+      "ability_cast_point": [
+        0.35
+      ],
+      "ability_channel_time": [
+        0.0,
+        0.0,
+        0.0,
+        0.0
+      ],
+      "ability_cooldown": [
+        120.0,
+        80.0,
+        40.0
+      ],
+      "ability_duration": [
+        0.0,
+        0.0,
+        0.0,
+        0.0
+      ],
+      "ability_damage": [
+        0.0,
+        0.0,
+        0.0,
+        0.0
+      ],
+      "ability_mana_cost": [
+        200.0,
+        100.0,
+        0.0
+      ],
+      "ability_modifier_support_value": 1.0,
+      "ability_modifier_support_bonus": 0.0,
+      "fight_recap_level": 2,
+      "ability_draft_enabled": true,
+      "linked": null,
+      "ability_special": {
+        "hit_point_minimum_pct": [
+          35.0,
+          30.0,
+          25.0
+        ]
+      }
+    }
+  ],
+  "talents": [
+    {
+      "id": 5918,
+      "key": "special_bonus_movement_speed_20",
+      "name": "+20 Movement Speed",
+      "description": null
+    },
+    {
+      "id": 5971,
+      "key": "special_bonus_evasion_10",
+      "name": "10% Evasion",
+      "description": null
+    },
+    {
+      "id": 5993,
+      "key": "special_bonus_hp_300",
+      "name": "+300 Health",
+      "description": null
+    },
+    {
+      "id": 6016,
+      "key": "special_bonus_attack_speed_25",
+      "name": "+25 Attack Speed",
+      "description": null
+    },
+    {
+      "id": 6168,
+      "key": "special_bonus_all_stats_10",
+      "name": "+10 All Stats",
+      "description": null
+    },
+    {
+      "id": 6942,
+      "key": "special_bonus_unique_terrorblade_2",
+      "name": "-10s Reflection Cooldown",
+      "description": null
+    },
+    {
+      "id": 6107,
+      "key": "special_bonus_unique_terrorblade",
+      "name": "-35s Sunder Cooldown",
+      "description": null
+    },
+    {
+      "id": 6943,
+      "key": "special_bonus_unique_terrorblade_3",
+      "name": "+300 Metamorphosis Attack Range",
+      "description": null
+    }
+  ],
+  "legs": 2,
+  "armor_physical": 7.0,
+  "magical_resistance": 25,
+  "attack_capabilities": "DOTA_UNIT_CAP_MELEE_ATTACK",
+  "attack_damage_min": 26,
+  "attack_damage_max": 32,
+  "attack_rate": 1.5,
+  "attack_animation_point": 0.3,
+  "attack_acquisition_range": 600,
+  "attack_range": 150,
+  "projectile_speed": 900,
+  "attribute_primary": "DOTA_ATTRIBUTE_AGILITY",
+  "attribute_base_strength": 16,
+  "attribute_strength_gain": 1.7,
+  "attribute_base_intelligence": 19,
+  "attribute_intelligence_gain": 1.6,
+  "attribute_base_agility": 22,
+  "attribute_agility_gain": 4.2,
+  "status_health": 200,
+  "status_health_regen": 1.5,
+  "status_mana": 75,
+  "status_mana_regen": 0.9,
+  "bounty_xp": 62,
+  "bounty_gold_min": 0,
+  "bounty_gold_max": 0,
+  "movement_capabilities": "DOTA_UNIT_CAP_MOVE_GROUND",
+  "movement_speed": 310,
+  "movement_turn_rate": 0.5,
+  "has_aggressive_stance": false,
+  "team": 1,
+  "team_name": "Radiant",
+  "vision_daytime_range": 1800,
+  "vision_nighttime_range": 0,
+  "bot": {
+    "hero_types": null,
+    "solo_desire": 0,
+    "requires_babysit": 0,
+    "provides_babysit": 0,
+    "survival_rating": 0,
+    "requires_farm": 0,
+    "provides_setup": 0,
+    "requires_setup": 0
+  }
+}

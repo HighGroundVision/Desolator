@@ -1,0 +1,618 @@
+{
+  "id": 44,
+  "name": "Phantom Assassin",
+  "key": "npc_dota_hero_phantom_assassin",
+  "image_profile": "https://hgv-hyperstone.azurewebsites.net/heroes/profile/npc_dota_hero_phantom_assassin.png",
+  "image_icon": "https://hgv-hyperstone.azurewebsites.net/heroes/icons/npc_dota_hero_phantom_assassin.png",
+  "image_banner": "https://hgv-hyperstone.azurewebsites.net/heroes/banner/npc_dota_hero_phantom_assassin.png",
+  "enabled": true,
+  "new_player_enable": true,
+  "captains_mode_enabled": true,
+  "ability_draft_enabled": true,
+  "complexity": 1,
+  "roles": [
+    {
+      "role": "Carry",
+      "level": 3
+    },
+    {
+      "role": "Escape",
+      "level": 1
+    }
+  ],
+  "bot_implemented": true,
+  "abilities": [
+    {
+      "id": 5190,
+      "key": "phantom_assassin_stifling_dagger",
+      "name": "Stifling Dagger",
+      "description": "Throws a dagger slowing the enemy unit's movement speed, dealing 65+25/40/55/70% of Phantom Assassin's attack damage as physical damage and applying attack effects from items and abilities.",
+      "image": "https://hgv-hyperstone.azurewebsites.net/abilities/phantom_assassin_stifling_dagger.png",
+      "hero_id": 44,
+      "ability_type": "DOTA_ABILITY_TYPE_BASIC",
+      "ability_behaviors": [
+        "DOTA_ABILITY_BEHAVIOR_UNIT_TARGET"
+      ],
+      "ability_unit_target_team": "DOTA_UNIT_TARGET_TEAM_ENEMY",
+      "ability_unit_target_type": [
+        "DOTA_UNIT_TARGET_HERO",
+        "DOTA_UNIT_TARGET_CREEP"
+      ],
+      "ability_unit_target_flags": [
+        "DOTA_UNIT_TARGET_FLAG_MAGIC_IMMUNE_ENEMIES"
+      ],
+      "spell_immunity_type": "SPELL_IMMUNITY_ENEMIES_NO",
+      "spell_dispellable_type": "SPELL_DISPELLABLE_YES",
+      "ability_unit_damage_type": "DAMAGE_TYPE_PHYSICAL",
+      "is_skill": true,
+      "is_ultimate": false,
+      "has_scepter_upgrade": false,
+      "on_castbar": true,
+      "on_learnbar": true,
+      "ability_cast_range": [
+        525,
+        750,
+        975,
+        1200
+      ],
+      "ability_cast_range_buffer": 250,
+      "ability_cast_point": [
+        0.3,
+        0.3,
+        0.3,
+        0.3
+      ],
+      "ability_channel_time": [
+        0.0,
+        0.0,
+        0.0,
+        0.0
+      ],
+      "ability_cooldown": [
+        6.0
+      ],
+      "ability_duration": [
+        1.0,
+        2.0,
+        3.0,
+        4.0
+      ],
+      "ability_damage": [
+        0.0,
+        0.0,
+        0.0,
+        0.0
+      ],
+      "ability_mana_cost": [
+        30.0,
+        25.0,
+        20.0,
+        15.0
+      ],
+      "ability_modifier_support_value": 1.0,
+      "ability_modifier_support_bonus": 0.0,
+      "fight_recap_level": 0,
+      "ability_draft_enabled": true,
+      "linked": null,
+      "ability_special": {
+        "move_slow": [
+          -50.0
+        ],
+        "dagger_speed": [
+          1200.0
+        ],
+        "duration": [
+          1.75,
+          2.5,
+          3.25,
+          4.0
+        ],
+        "base_damage": [
+          65.0
+        ],
+        "attack_factor": [
+          -75.0,
+          -60.0,
+          -45.0,
+          -30.0
+        ],
+        "attack_factor_tooltip": [
+          25.0,
+          40.0,
+          55.0,
+          70.0
+        ],
+        "tooltip_range": [
+          525.0,
+          750.0,
+          975.0,
+          1200.0
+        ]
+      }
+    },
+    {
+      "id": 5191,
+      "key": "phantom_assassin_phantom_strike",
+      "name": "Phantom Strike",
+      "description": "Teleports to a unit, friendly or enemy, and grants bonus attack speed while attacking if it's an enemy unit.",
+      "image": "https://hgv-hyperstone.azurewebsites.net/abilities/phantom_assassin_phantom_strike.png",
+      "hero_id": 44,
+      "ability_type": "DOTA_ABILITY_TYPE_BASIC",
+      "ability_behaviors": [
+        "DOTA_ABILITY_BEHAVIOR_UNIT_TARGET",
+        "DOTA_ABILITY_BEHAVIOR_ROOT_DISABLES"
+      ],
+      "ability_unit_target_team": "DOTA_UNIT_TARGET_TEAM_CUSTOM",
+      "ability_unit_target_type": [
+        "DOTA_UNIT_TARGET_CUSTOM"
+      ],
+      "ability_unit_target_flags": [],
+      "spell_immunity_type": "SPELL_IMMUNITY_ENEMIES_YES",
+      "spell_dispellable_type": "SPELL_DISPELLABLE_YES",
+      "ability_unit_damage_type": null,
+      "is_skill": true,
+      "is_ultimate": false,
+      "has_scepter_upgrade": false,
+      "on_castbar": true,
+      "on_learnbar": true,
+      "ability_cast_range": [
+        1000,
+        1000,
+        1000,
+        1000
+      ],
+      "ability_cast_range_buffer": 250,
+      "ability_cast_point": [
+        0.3,
+        0.3,
+        0.3,
+        0.3
+      ],
+      "ability_channel_time": [
+        0.0,
+        0.0,
+        0.0,
+        0.0
+      ],
+      "ability_cooldown": [
+        14.0,
+        11.0,
+        8.0,
+        5.0
+      ],
+      "ability_duration": [
+        3.0,
+        3.0,
+        3.0,
+        3.0
+      ],
+      "ability_damage": [
+        0.0,
+        0.0,
+        0.0,
+        0.0
+      ],
+      "ability_mana_cost": [
+        50.0,
+        50.0,
+        50.0,
+        50.0
+      ],
+      "ability_modifier_support_value": 1.0,
+      "ability_modifier_support_bonus": 0.0,
+      "fight_recap_level": 0,
+      "ability_draft_enabled": true,
+      "linked": null,
+      "ability_special": {
+        "bonus_attack_speed": [
+          130.0
+        ],
+        "bonus_max_attack_count": [
+          4.0
+        ],
+        "tooltip_range": [
+          1000.0,
+          1000.0,
+          1000.0,
+          1000.0
+        ]
+      }
+    },
+    {
+      "id": 5192,
+      "key": "phantom_assassin_blur",
+      "name": "Blur",
+      "description": "Phantom Assassin focuses inward, increasing her ability to evade enemy attacks, and allowing her to blur her body to disappear from the enemy team's minimap when far from enemy heroes.\\n\\nStacks diminishingly with other sources of Evasion.",
+      "image": "https://hgv-hyperstone.azurewebsites.net/abilities/phantom_assassin_blur.png",
+      "hero_id": 44,
+      "ability_type": "DOTA_ABILITY_TYPE_BASIC",
+      "ability_behaviors": [
+        "DOTA_ABILITY_BEHAVIOR_PASSIVE"
+      ],
+      "ability_unit_target_team": null,
+      "ability_unit_target_type": [],
+      "ability_unit_target_flags": [],
+      "spell_immunity_type": null,
+      "spell_dispellable_type": null,
+      "ability_unit_damage_type": null,
+      "is_skill": true,
+      "is_ultimate": false,
+      "has_scepter_upgrade": false,
+      "on_castbar": true,
+      "on_learnbar": true,
+      "ability_cast_range": [
+        0
+      ],
+      "ability_cast_range_buffer": 250,
+      "ability_cast_point": [
+        0.0,
+        0.0,
+        0.0,
+        0.0
+      ],
+      "ability_channel_time": [
+        0.0,
+        0.0,
+        0.0,
+        0.0
+      ],
+      "ability_cooldown": [
+        0.0,
+        0.0,
+        0.0,
+        0.0
+      ],
+      "ability_duration": [
+        0.0,
+        0.0,
+        0.0,
+        0.0
+      ],
+      "ability_damage": [
+        0.0,
+        0.0,
+        0.0,
+        0.0
+      ],
+      "ability_mana_cost": [
+        0.0,
+        0.0,
+        0.0,
+        0.0
+      ],
+      "ability_modifier_support_value": 1.0,
+      "ability_modifier_support_bonus": 0.0,
+      "fight_recap_level": 0,
+      "ability_draft_enabled": true,
+      "linked": null,
+      "ability_special": {
+        "bonus_evasion": [
+          20.0,
+          30.0,
+          40.0,
+          50.0
+        ],
+        "transparency_fade": [
+          0.0
+        ],
+        "radius": [
+          1600.0,
+          1600.0,
+          1600.0,
+          1600.0
+        ]
+      }
+    },
+    {
+      "id": 6251,
+      "key": "generic_hidden",
+      "name": null,
+      "description": null,
+      "image": "https://hgv-hyperstone.azurewebsites.net/abilities/generic_hidden.png",
+      "hero_id": 44,
+      "ability_type": "DOTA_ABILITY_TYPE_BASIC",
+      "ability_behaviors": [
+        "DOTA_ABILITY_BEHAVIOR_HIDDEN",
+        "DOTA_ABILITY_BEHAVIOR_NOT_LEARNABLE"
+      ],
+      "ability_unit_target_team": null,
+      "ability_unit_target_type": [],
+      "ability_unit_target_flags": [],
+      "spell_immunity_type": null,
+      "spell_dispellable_type": null,
+      "ability_unit_damage_type": null,
+      "is_skill": true,
+      "is_ultimate": false,
+      "has_scepter_upgrade": false,
+      "on_castbar": true,
+      "on_learnbar": true,
+      "ability_cast_range": [
+        0
+      ],
+      "ability_cast_range_buffer": 250,
+      "ability_cast_point": [
+        0.0,
+        0.0,
+        0.0,
+        0.0
+      ],
+      "ability_channel_time": [
+        0.0,
+        0.0,
+        0.0,
+        0.0
+      ],
+      "ability_cooldown": [
+        0.0,
+        0.0,
+        0.0,
+        0.0
+      ],
+      "ability_duration": [
+        0.0,
+        0.0,
+        0.0,
+        0.0
+      ],
+      "ability_damage": [
+        0.0,
+        0.0,
+        0.0,
+        0.0
+      ],
+      "ability_mana_cost": [
+        0.0,
+        0.0,
+        0.0,
+        0.0
+      ],
+      "ability_modifier_support_value": 1.0,
+      "ability_modifier_support_bonus": 0.0,
+      "fight_recap_level": 0,
+      "ability_draft_enabled": false,
+      "linked": null,
+      "ability_special": {}
+    },
+    {
+      "id": 6251,
+      "key": "generic_hidden",
+      "name": null,
+      "description": null,
+      "image": "https://hgv-hyperstone.azurewebsites.net/abilities/generic_hidden.png",
+      "hero_id": 44,
+      "ability_type": "DOTA_ABILITY_TYPE_BASIC",
+      "ability_behaviors": [
+        "DOTA_ABILITY_BEHAVIOR_HIDDEN",
+        "DOTA_ABILITY_BEHAVIOR_NOT_LEARNABLE"
+      ],
+      "ability_unit_target_team": null,
+      "ability_unit_target_type": [],
+      "ability_unit_target_flags": [],
+      "spell_immunity_type": null,
+      "spell_dispellable_type": null,
+      "ability_unit_damage_type": null,
+      "is_skill": true,
+      "is_ultimate": false,
+      "has_scepter_upgrade": false,
+      "on_castbar": true,
+      "on_learnbar": true,
+      "ability_cast_range": [
+        0
+      ],
+      "ability_cast_range_buffer": 250,
+      "ability_cast_point": [
+        0.0,
+        0.0,
+        0.0,
+        0.0
+      ],
+      "ability_channel_time": [
+        0.0,
+        0.0,
+        0.0,
+        0.0
+      ],
+      "ability_cooldown": [
+        0.0,
+        0.0,
+        0.0,
+        0.0
+      ],
+      "ability_duration": [
+        0.0,
+        0.0,
+        0.0,
+        0.0
+      ],
+      "ability_damage": [
+        0.0,
+        0.0,
+        0.0,
+        0.0
+      ],
+      "ability_mana_cost": [
+        0.0,
+        0.0,
+        0.0,
+        0.0
+      ],
+      "ability_modifier_support_value": 1.0,
+      "ability_modifier_support_bonus": 0.0,
+      "fight_recap_level": 0,
+      "ability_draft_enabled": false,
+      "linked": null,
+      "ability_special": {}
+    },
+    {
+      "id": 5193,
+      "key": "phantom_assassin_coup_de_grace",
+      "name": "Coup de Grace",
+      "description": "Phantom Assassin refines her combat abilities, gaining a chance of delivering a devastating critical strike to enemy units. Stifling Dagger shares the same critical strike chance.",
+      "image": "https://hgv-hyperstone.azurewebsites.net/abilities/phantom_assassin_coup_de_grace.png",
+      "hero_id": 44,
+      "ability_type": "DOTA_ABILITY_TYPE_ULTIMATE",
+      "ability_behaviors": [
+        "DOTA_ABILITY_BEHAVIOR_PASSIVE"
+      ],
+      "ability_unit_target_team": null,
+      "ability_unit_target_type": [],
+      "ability_unit_target_flags": [],
+      "spell_immunity_type": "SPELL_IMMUNITY_ENEMIES_YES",
+      "spell_dispellable_type": null,
+      "ability_unit_damage_type": null,
+      "is_skill": false,
+      "is_ultimate": true,
+      "has_scepter_upgrade": false,
+      "on_castbar": true,
+      "on_learnbar": true,
+      "ability_cast_range": [
+        0
+      ],
+      "ability_cast_range_buffer": 250,
+      "ability_cast_point": [
+        0.0,
+        0.0,
+        0.0,
+        0.0
+      ],
+      "ability_channel_time": [
+        0.0,
+        0.0,
+        0.0,
+        0.0
+      ],
+      "ability_cooldown": [
+        0.0,
+        0.0,
+        0.0,
+        0.0
+      ],
+      "ability_duration": [
+        0.0,
+        0.0,
+        0.0,
+        0.0
+      ],
+      "ability_damage": [
+        0.0,
+        0.0,
+        0.0,
+        0.0
+      ],
+      "ability_mana_cost": [
+        0.0,
+        0.0,
+        0.0,
+        0.0
+      ],
+      "ability_modifier_support_value": 1.0,
+      "ability_modifier_support_bonus": 0.0,
+      "fight_recap_level": 0,
+      "ability_draft_enabled": true,
+      "linked": null,
+      "ability_special": {
+        "crit_chance": [
+          15.0
+        ],
+        "crit_bonus": [
+          230.0,
+          340.0,
+          450.0
+        ]
+      }
+    }
+  ],
+  "talents": [
+    {
+      "id": 5902,
+      "key": "special_bonus_hp_150",
+      "name": "+150 Health",
+      "description": null
+    },
+    {
+      "id": 5938,
+      "key": "special_bonus_attack_damage_15",
+      "name": "+15 Damage",
+      "description": null
+    },
+    {
+      "id": 7011,
+      "key": "special_bonus_corruption_4",
+      "name": "-4 Armor Corruption",
+      "description": null
+    },
+    {
+      "id": 6603,
+      "key": "special_bonus_cleave_20",
+      "name": "+20% Cleave",
+      "description": null
+    },
+    {
+      "id": 6078,
+      "key": "special_bonus_lifesteal_20",
+      "name": "20% Lifesteal",
+      "description": null
+    },
+    {
+      "id": 6192,
+      "key": "special_bonus_unique_phantom_assassin",
+      "name": "Triple Strike Stifling Dagger",
+      "description": "Launches a two extra Stifling Daggers towards random visible enemies within the cast range."
+    },
+    {
+      "id": 6847,
+      "key": "special_bonus_unique_phantom_assassin_2",
+      "name": "+5% Coup de Grace",
+      "description": null
+    },
+    {
+      "id": 6848,
+      "key": "special_bonus_unique_phantom_assassin_3",
+      "name": "+25% Blur Evasion",
+      "description": null
+    }
+  ],
+  "legs": 2,
+  "armor_physical": 1.0,
+  "magical_resistance": 25,
+  "attack_capabilities": "DOTA_UNIT_CAP_MELEE_ATTACK",
+  "attack_damage_min": 23,
+  "attack_damage_max": 25,
+  "attack_rate": 1.7,
+  "attack_animation_point": 0.3,
+  "attack_acquisition_range": 600,
+  "attack_range": 150,
+  "projectile_speed": 900,
+  "attribute_primary": "DOTA_ATTRIBUTE_AGILITY",
+  "attribute_base_strength": 21,
+  "attribute_strength_gain": 2.15,
+  "attribute_base_intelligence": 15,
+  "attribute_intelligence_gain": 1.4,
+  "attribute_base_agility": 23,
+  "attribute_agility_gain": 3.15,
+  "status_health": 200,
+  "status_health_regen": 1.75,
+  "status_mana": 75,
+  "status_mana_regen": 0.9,
+  "bounty_xp": 62,
+  "bounty_gold_min": 0,
+  "bounty_gold_max": 0,
+  "movement_capabilities": "DOTA_UNIT_CAP_MOVE_GROUND",
+  "movement_speed": 305,
+  "movement_turn_rate": 0.6,
+  "has_aggressive_stance": true,
+  "team": 1,
+  "team_name": "Radiant",
+  "vision_daytime_range": 1800,
+  "vision_nighttime_range": 0,
+  "bot": {
+    "hero_types": null,
+    "solo_desire": 0,
+    "requires_babysit": 0,
+    "provides_babysit": 0,
+    "survival_rating": 0,
+    "requires_farm": 0,
+    "provides_setup": 0,
+    "requires_setup": 0
+  }
+}

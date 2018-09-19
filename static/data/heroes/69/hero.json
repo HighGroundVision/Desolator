@@ -1,0 +1,641 @@
+{
+  "id": 69,
+  "name": "Doom",
+  "key": "npc_dota_hero_doom_bringer",
+  "image_profile": "https://hgv-hyperstone.azurewebsites.net/heroes/profile/npc_dota_hero_doom_bringer.png",
+  "image_icon": "https://hgv-hyperstone.azurewebsites.net/heroes/icons/npc_dota_hero_doom_bringer.png",
+  "image_banner": "https://hgv-hyperstone.azurewebsites.net/heroes/banner/npc_dota_hero_doom_bringer.png",
+  "enabled": true,
+  "new_player_enable": true,
+  "captains_mode_enabled": true,
+  "ability_draft_enabled": true,
+  "complexity": 2,
+  "roles": [
+    {
+      "role": "Carry",
+      "level": 1
+    },
+    {
+      "role": "Disabler",
+      "level": 2
+    },
+    {
+      "role": "Initiator",
+      "level": 2
+    },
+    {
+      "role": "Durable",
+      "level": 2
+    },
+    {
+      "role": "Nuker",
+      "level": 1
+    }
+  ],
+  "bot_implemented": false,
+  "abilities": [
+    {
+      "id": 5339,
+      "key": "doom_bringer_devour",
+      "name": "Devour",
+      "description": "Consumes an enemy or neutral creep, acquiring any special abilities that it possessed.",
+      "image": "https://hgv-hyperstone.azurewebsites.net/abilities/doom_bringer_devour.png",
+      "hero_id": 69,
+      "ability_type": "DOTA_ABILITY_TYPE_BASIC",
+      "ability_behaviors": [
+        "DOTA_ABILITY_BEHAVIOR_UNIT_TARGET",
+        "DOTA_ABILITY_BEHAVIOR_DONT_RESUME_ATTACK"
+      ],
+      "ability_unit_target_team": "DOTA_UNIT_TARGET_TEAM_CUSTOM",
+      "ability_unit_target_type": [
+        "DOTA_UNIT_TARGET_CUSTOM"
+      ],
+      "ability_unit_target_flags": [
+        "DOTA_UNIT_TARGET_FLAG_NOT_CREEP_HERO"
+      ],
+      "spell_immunity_type": null,
+      "spell_dispellable_type": "SPELL_DISPELLABLE_NO",
+      "ability_unit_damage_type": null,
+      "is_skill": true,
+      "is_ultimate": false,
+      "has_scepter_upgrade": false,
+      "on_castbar": true,
+      "on_learnbar": true,
+      "ability_cast_range": [
+        300,
+        300,
+        300,
+        300
+      ],
+      "ability_cast_range_buffer": 250,
+      "ability_cast_point": [
+        0.3,
+        0.3,
+        0.3,
+        0.3
+      ],
+      "ability_channel_time": [
+        0.0,
+        0.0,
+        0.0,
+        0.0
+      ],
+      "ability_cooldown": [
+        70.0,
+        60.0,
+        50.0,
+        40.0
+      ],
+      "ability_duration": [
+        0.0,
+        0.0,
+        0.0,
+        0.0
+      ],
+      "ability_damage": [
+        0.0,
+        0.0,
+        0.0,
+        0.0
+      ],
+      "ability_mana_cost": [
+        40.0,
+        50.0,
+        60.0,
+        70.0
+      ],
+      "ability_modifier_support_value": 1.0,
+      "ability_modifier_support_bonus": 0.0,
+      "fight_recap_level": 0,
+      "ability_draft_enabled": false,
+      "linked": null,
+      "ability_special": {
+        "bonus_gold": [
+          25.0,
+          50.0,
+          75.0,
+          100.0
+        ],
+        "health_per_second": [
+          20.0,
+          20.0,
+          20.0,
+          20.0
+        ]
+      }
+    },
+    {
+      "id": 5340,
+      "key": "doom_bringer_scorched_earth",
+      "name": "Scorched Earth",
+      "description": "Carpets the nearby earth in flames which damage enemies and heal Doom, while also granting him increased movement speed.",
+      "image": "https://hgv-hyperstone.azurewebsites.net/abilities/doom_bringer_scorched_earth.png",
+      "hero_id": 69,
+      "ability_type": "DOTA_ABILITY_TYPE_BASIC",
+      "ability_behaviors": [
+        "DOTA_ABILITY_BEHAVIOR_NO_TARGET"
+      ],
+      "ability_unit_target_team": null,
+      "ability_unit_target_type": [],
+      "ability_unit_target_flags": [],
+      "spell_immunity_type": "SPELL_IMMUNITY_ENEMIES_NO",
+      "spell_dispellable_type": "SPELL_DISPELLABLE_NO",
+      "ability_unit_damage_type": "DAMAGE_TYPE_MAGICAL",
+      "is_skill": true,
+      "is_ultimate": false,
+      "has_scepter_upgrade": false,
+      "on_castbar": true,
+      "on_learnbar": true,
+      "ability_cast_range": [
+        600,
+        600,
+        600,
+        600
+      ],
+      "ability_cast_range_buffer": 250,
+      "ability_cast_point": [
+        0.0,
+        0.0,
+        0.0,
+        0.0
+      ],
+      "ability_channel_time": [
+        0.0,
+        0.0,
+        0.0,
+        0.0
+      ],
+      "ability_cooldown": [
+        55.0
+      ],
+      "ability_duration": [
+        0.0,
+        0.0,
+        0.0,
+        0.0
+      ],
+      "ability_damage": [
+        0.0,
+        0.0,
+        0.0,
+        0.0
+      ],
+      "ability_mana_cost": [
+        60.0,
+        65.0,
+        70.0,
+        75.0
+      ],
+      "ability_modifier_support_value": 1.0,
+      "ability_modifier_support_bonus": 0.0,
+      "fight_recap_level": 1,
+      "ability_draft_enabled": true,
+      "linked": null,
+      "ability_special": {
+        "damage_per_second": [
+          16.0,
+          24.0,
+          32.0,
+          40.0
+        ],
+        "regen": [
+          12.0,
+          18.0,
+          24.0,
+          30.0
+        ],
+        "radius": [
+          600.0,
+          600.0,
+          600.0,
+          600.0
+        ],
+        "bonus_movement_speed_pct": [
+          11.0,
+          12.0,
+          13.0,
+          14.0
+        ],
+        "duration": [
+          10.0,
+          12.0,
+          14.0,
+          16.0
+        ]
+      }
+    },
+    {
+      "id": 5341,
+      "key": "doom_bringer_infernal_blade",
+      "name": "Infernal Blade",
+      "description": "Doom swings his burning sword, igniting the enemy. Stuns for 0.6 seconds and applies a 4 second burn that deals 25 + 1.25/2.5/3.75/5% of the target's Max HP as damage per second.",
+      "image": "https://hgv-hyperstone.azurewebsites.net/abilities/doom_bringer_infernal_blade.png",
+      "hero_id": 69,
+      "ability_type": "DOTA_ABILITY_TYPE_BASIC",
+      "ability_behaviors": [
+        "DOTA_ABILITY_BEHAVIOR_UNIT_TARGET",
+        "DOTA_ABILITY_BEHAVIOR_AUTOCAST",
+        "DOTA_ABILITY_BEHAVIOR_ATTACK"
+      ],
+      "ability_unit_target_team": "DOTA_UNIT_TARGET_TEAM_ENEMY",
+      "ability_unit_target_type": [
+        "DOTA_UNIT_TARGET_HERO",
+        "DOTA_UNIT_TARGET_BASIC"
+      ],
+      "ability_unit_target_flags": [],
+      "spell_immunity_type": "SPELL_IMMUNITY_ENEMIES_NO",
+      "spell_dispellable_type": "SPELL_DISPELLABLE_YES",
+      "ability_unit_damage_type": "DAMAGE_TYPE_MAGICAL",
+      "is_skill": true,
+      "is_ultimate": false,
+      "has_scepter_upgrade": false,
+      "on_castbar": true,
+      "on_learnbar": true,
+      "ability_cast_range": [
+        150
+      ],
+      "ability_cast_range_buffer": 250,
+      "ability_cast_point": [
+        0.0,
+        0.0,
+        0.0,
+        0.0
+      ],
+      "ability_channel_time": [
+        0.0,
+        0.0,
+        0.0,
+        0.0
+      ],
+      "ability_cooldown": [
+        16.0,
+        12.0,
+        8.0,
+        4.0
+      ],
+      "ability_duration": [
+        0.0,
+        0.0,
+        0.0,
+        0.0
+      ],
+      "ability_damage": [
+        0.0,
+        0.0,
+        0.0,
+        0.0
+      ],
+      "ability_mana_cost": [
+        40.0
+      ],
+      "ability_modifier_support_value": 1.0,
+      "ability_modifier_support_bonus": 0.0,
+      "fight_recap_level": 0,
+      "ability_draft_enabled": true,
+      "linked": null,
+      "ability_special": {
+        "burn_damage": [
+          25.0
+        ],
+        "burn_damage_pct": [
+          1.25,
+          2.5,
+          3.75,
+          5.0
+        ],
+        "burn_duration": [
+          4.0
+        ],
+        "ministun_duration": [
+          0.6
+        ]
+      }
+    },
+    {
+      "id": 5343,
+      "key": "doom_bringer_empty1",
+      "name": "Devoured Ability",
+      "description": "This slot will be replaced with abilities acquired using Devour.",
+      "image": "https://hgv-hyperstone.azurewebsites.net/abilities/doom_bringer_empty1.png",
+      "hero_id": 69,
+      "ability_type": "DOTA_ABILITY_TYPE_BASIC",
+      "ability_behaviors": [
+        "DOTA_ABILITY_BEHAVIOR_PASSIVE",
+        "DOTA_ABILITY_BEHAVIOR_NOT_LEARNABLE"
+      ],
+      "ability_unit_target_team": null,
+      "ability_unit_target_type": [],
+      "ability_unit_target_flags": [],
+      "spell_immunity_type": null,
+      "spell_dispellable_type": null,
+      "ability_unit_damage_type": null,
+      "is_skill": true,
+      "is_ultimate": false,
+      "has_scepter_upgrade": false,
+      "on_castbar": true,
+      "on_learnbar": true,
+      "ability_cast_range": [
+        0
+      ],
+      "ability_cast_range_buffer": 250,
+      "ability_cast_point": [
+        0.0,
+        0.0,
+        0.0,
+        0.0
+      ],
+      "ability_channel_time": [
+        0.0,
+        0.0,
+        0.0,
+        0.0
+      ],
+      "ability_cooldown": [
+        0.0,
+        0.0,
+        0.0,
+        0.0
+      ],
+      "ability_duration": [
+        0.0,
+        0.0,
+        0.0,
+        0.0
+      ],
+      "ability_damage": [
+        0.0,
+        0.0,
+        0.0,
+        0.0
+      ],
+      "ability_mana_cost": [
+        0.0,
+        0.0,
+        0.0,
+        0.0
+      ],
+      "ability_modifier_support_value": 1.0,
+      "ability_modifier_support_bonus": 0.0,
+      "fight_recap_level": 0,
+      "ability_draft_enabled": false,
+      "linked": null,
+      "ability_special": {}
+    },
+    {
+      "id": 5344,
+      "key": "doom_bringer_empty2",
+      "name": "Devoured Ability",
+      "description": "This slot will be replaced with abilities acquired using Devour.",
+      "image": "https://hgv-hyperstone.azurewebsites.net/abilities/doom_bringer_empty2.png",
+      "hero_id": 69,
+      "ability_type": "DOTA_ABILITY_TYPE_BASIC",
+      "ability_behaviors": [
+        "DOTA_ABILITY_BEHAVIOR_PASSIVE",
+        "DOTA_ABILITY_BEHAVIOR_NOT_LEARNABLE"
+      ],
+      "ability_unit_target_team": null,
+      "ability_unit_target_type": [],
+      "ability_unit_target_flags": [],
+      "spell_immunity_type": null,
+      "spell_dispellable_type": null,
+      "ability_unit_damage_type": null,
+      "is_skill": true,
+      "is_ultimate": false,
+      "has_scepter_upgrade": false,
+      "on_castbar": true,
+      "on_learnbar": true,
+      "ability_cast_range": [
+        0
+      ],
+      "ability_cast_range_buffer": 250,
+      "ability_cast_point": [
+        0.0,
+        0.0,
+        0.0,
+        0.0
+      ],
+      "ability_channel_time": [
+        0.0,
+        0.0,
+        0.0,
+        0.0
+      ],
+      "ability_cooldown": [
+        0.0,
+        0.0,
+        0.0,
+        0.0
+      ],
+      "ability_duration": [
+        0.0,
+        0.0,
+        0.0,
+        0.0
+      ],
+      "ability_damage": [
+        0.0,
+        0.0,
+        0.0,
+        0.0
+      ],
+      "ability_mana_cost": [
+        0.0,
+        0.0,
+        0.0,
+        0.0
+      ],
+      "ability_modifier_support_value": 1.0,
+      "ability_modifier_support_bonus": 0.0,
+      "fight_recap_level": 0,
+      "ability_draft_enabled": false,
+      "linked": null,
+      "ability_special": {}
+    },
+    {
+      "id": 5342,
+      "key": "doom_bringer_doom",
+      "name": "Doom",
+      "description": "Inflicts a curse that prevents an enemy Hero from casting spells or using items, while taking damage over time.\\n\\nUpgradable by Aghanim's Scepter.\\n\\nDISPEL TYPE: Basic Dispel",
+      "image": "https://hgv-hyperstone.azurewebsites.net/abilities/doom_bringer_doom.png",
+      "hero_id": 69,
+      "ability_type": "DOTA_ABILITY_TYPE_ULTIMATE",
+      "ability_behaviors": [
+        "DOTA_ABILITY_BEHAVIOR_UNIT_TARGET"
+      ],
+      "ability_unit_target_team": "DOTA_UNIT_TARGET_TEAM_ENEMY",
+      "ability_unit_target_type": [
+        "DOTA_UNIT_TARGET_HERO",
+        "DOTA_UNIT_TARGET_BASIC"
+      ],
+      "ability_unit_target_flags": [
+        "DOTA_UNIT_TARGET_FLAG_MAGIC_IMMUNE_ENEMIES",
+        "|",
+        "DOTA_UNIT_TARGET_FLAG_NOT_ANCIENTS"
+      ],
+      "spell_immunity_type": "SPELL_IMMUNITY_ENEMIES_YES",
+      "spell_dispellable_type": "SPELL_DISPELLABLE_NO",
+      "ability_unit_damage_type": "DAMAGE_TYPE_PURE",
+      "is_skill": false,
+      "is_ultimate": true,
+      "has_scepter_upgrade": true,
+      "on_castbar": true,
+      "on_learnbar": true,
+      "ability_cast_range": [
+        550,
+        550,
+        550
+      ],
+      "ability_cast_range_buffer": 250,
+      "ability_cast_point": [
+        0.5
+      ],
+      "ability_channel_time": [
+        0.0,
+        0.0,
+        0.0,
+        0.0
+      ],
+      "ability_cooldown": [
+        145.0
+      ],
+      "ability_duration": [
+        0.0,
+        0.0,
+        0.0,
+        0.0
+      ],
+      "ability_damage": [
+        0.0,
+        0.0,
+        0.0,
+        0.0
+      ],
+      "ability_mana_cost": [
+        150.0,
+        200.0,
+        250.0
+      ],
+      "ability_modifier_support_value": 1.0,
+      "ability_modifier_support_bonus": 0.0,
+      "fight_recap_level": 2,
+      "ability_draft_enabled": true,
+      "linked": null,
+      "ability_special": {
+        "duration": [
+          16.0
+        ],
+        "damage": [
+          25.0,
+          40.0,
+          55.0
+        ],
+        "duration_scepter": [
+          16.0
+        ],
+        "damage_scepter": [
+          20.0,
+          35.0,
+          50.0
+        ],
+        "deniable_pct": [
+          25.0,
+          25.0,
+          25.0
+        ]
+      }
+    }
+  ],
+  "talents": [
+    {
+      "id": 6370,
+      "key": "special_bonus_unique_doom_4",
+      "name": "+10 Scorched Earth Damage/Heal",
+      "description": null
+    },
+    {
+      "id": 7123,
+      "key": "special_bonus_unique_doom_6",
+      "name": "+16% Scorched Earth Movement Speed",
+      "description": null
+    },
+    {
+      "id": 5973,
+      "key": "special_bonus_evasion_20",
+      "name": "20% Evasion",
+      "description": null
+    },
+    {
+      "id": 6369,
+      "key": "special_bonus_unique_doom_3",
+      "name": "+150 Devour Bonus Gold",
+      "description": null
+    },
+    {
+      "id": 6371,
+      "key": "special_bonus_unique_doom_5",
+      "name": "+40 Doom DPS",
+      "description": null
+    },
+    {
+      "id": 6314,
+      "key": "special_bonus_unique_doom_2",
+      "name": "Devour Can Target Ancients",
+      "description": null
+    },
+    {
+      "id": 6073,
+      "key": "special_bonus_unique_doom_1",
+      "name": "+3% Infernal Blade Damage",
+      "description": null
+    },
+    {
+      "id": 6827,
+      "key": "special_bonus_cleave_100",
+      "name": "+100% Cleave",
+      "description": null
+    }
+  ],
+  "legs": 2,
+  "armor_physical": -1.0,
+  "magical_resistance": 25,
+  "attack_capabilities": "DOTA_UNIT_CAP_MELEE_ATTACK",
+  "attack_damage_min": 27,
+  "attack_damage_max": 43,
+  "attack_rate": 2.0,
+  "attack_animation_point": 0.5,
+  "attack_acquisition_range": 600,
+  "attack_range": 150,
+  "projectile_speed": 900,
+  "attribute_primary": "DOTA_ATTRIBUTE_STRENGTH",
+  "attribute_base_strength": 26,
+  "attribute_strength_gain": 3.5,
+  "attribute_base_intelligence": 15,
+  "attribute_intelligence_gain": 2.1,
+  "attribute_base_agility": 11,
+  "attribute_agility_gain": 0.9,
+  "status_health": 200,
+  "status_health_regen": 1.5,
+  "status_mana": 75,
+  "status_mana_regen": 0.9,
+  "bounty_xp": 62,
+  "bounty_gold_min": 0,
+  "bounty_gold_max": 0,
+  "movement_capabilities": "DOTA_UNIT_CAP_MOVE_GROUND",
+  "movement_speed": 280,
+  "movement_turn_rate": 0.5,
+  "has_aggressive_stance": false,
+  "team": 1,
+  "team_name": "Radiant",
+  "vision_daytime_range": 1800,
+  "vision_nighttime_range": 0,
+  "bot": {
+    "hero_types": null,
+    "solo_desire": 0,
+    "requires_babysit": 0,
+    "provides_babysit": 0,
+    "survival_rating": 0,
+    "requires_farm": 0,
+    "provides_setup": 0,
+    "requires_setup": 0
+  }
+}

@@ -1,0 +1,939 @@
+{
+  "id": 110,
+  "name": "Phoenix",
+  "key": "npc_dota_hero_phoenix",
+  "image_profile": "https://hgv-hyperstone.azurewebsites.net/heroes/profile/npc_dota_hero_phoenix.png",
+  "image_icon": "https://hgv-hyperstone.azurewebsites.net/heroes/icons/npc_dota_hero_phoenix.png",
+  "image_banner": "https://hgv-hyperstone.azurewebsites.net/heroes/banner/npc_dota_hero_phoenix.png",
+  "enabled": true,
+  "new_player_enable": true,
+  "captains_mode_enabled": true,
+  "ability_draft_enabled": true,
+  "complexity": 2,
+  "roles": [
+    {
+      "role": "Support",
+      "level": 1
+    },
+    {
+      "role": "Nuker",
+      "level": 3
+    },
+    {
+      "role": "Initiator",
+      "level": 2
+    },
+    {
+      "role": "Escape",
+      "level": 2
+    },
+    {
+      "role": "Disabler",
+      "level": 1
+    }
+  ],
+  "bot_implemented": false,
+  "abilities": [
+    {
+      "id": 5623,
+      "key": "phoenix_icarus_dive",
+      "name": "Icarus Dive",
+      "description": "Phoenix dives forward in an arc with a fixed distance in the targeted direction, dealing damage over time and slowing the movement speed of any units it comes into contact with, and then orbiting back to its original position. If Phoenix casts Supernova, the dive ends.",
+      "image": "https://hgv-hyperstone.azurewebsites.net/abilities/phoenix_icarus_dive.png",
+      "hero_id": 110,
+      "ability_type": "DOTA_ABILITY_TYPE_BASIC",
+      "ability_behaviors": [
+        "DOTA_ABILITY_BEHAVIOR_POINT",
+        "DOTA_ABILITY_BEHAVIOR_IGNORE_BACKSWING",
+        "DOTA_ABILITY_BEHAVIOR_ROOT_DISABLES"
+      ],
+      "ability_unit_target_team": null,
+      "ability_unit_target_type": [],
+      "ability_unit_target_flags": [],
+      "spell_immunity_type": "SPELL_IMMUNITY_ENEMIES_NO",
+      "spell_dispellable_type": "SPELL_DISPELLABLE_YES",
+      "ability_unit_damage_type": "DAMAGE_TYPE_MAGICAL",
+      "is_skill": true,
+      "is_ultimate": false,
+      "has_scepter_upgrade": false,
+      "on_castbar": true,
+      "on_learnbar": true,
+      "ability_cast_range": [
+        0
+      ],
+      "ability_cast_range_buffer": 250,
+      "ability_cast_point": [
+        0.2
+      ],
+      "ability_channel_time": [
+        0.0,
+        0.0,
+        0.0,
+        0.0
+      ],
+      "ability_cooldown": [
+        36.0
+      ],
+      "ability_duration": [
+        0.0,
+        0.0,
+        0.0,
+        0.0
+      ],
+      "ability_damage": [
+        0.0,
+        0.0,
+        0.0,
+        0.0
+      ],
+      "ability_mana_cost": [
+        0.0
+      ],
+      "ability_modifier_support_value": 1.0,
+      "ability_modifier_support_bonus": 0.0,
+      "fight_recap_level": 1,
+      "ability_draft_enabled": true,
+      "linked": null,
+      "ability_special": {
+        "hp_cost_perc": [
+          15.0
+        ],
+        "dash_length": [
+          1400.0
+        ],
+        "dash_width": [
+          500.0
+        ],
+        "hit_radius": [
+          200.0
+        ],
+        "burn_duration": [
+          4.0
+        ],
+        "damage_per_second": [
+          10.0,
+          30.0,
+          50.0,
+          70.0
+        ],
+        "burn_tick_interval": [
+          1.0
+        ],
+        "slow_movement_speed_pct": [
+          -28.0
+        ],
+        "dive_duration": [
+          2.0
+        ]
+      }
+    },
+    {
+      "id": 5625,
+      "key": "phoenix_fire_spirits",
+      "name": "Fire Spirits",
+      "description": "Summons 4 fire spirits that circle around Phoenix. Each spirit can be launched independently at a targeted area of effect. Affected enemy units take damage over time and have their attack speed greatly reduced.",
+      "image": "https://hgv-hyperstone.azurewebsites.net/abilities/phoenix_fire_spirits.png",
+      "hero_id": 110,
+      "ability_type": "DOTA_ABILITY_TYPE_BASIC",
+      "ability_behaviors": [
+        "DOTA_ABILITY_BEHAVIOR_NO_TARGET",
+        "DOTA_ABILITY_BEHAVIOR_IMMEDIATE"
+      ],
+      "ability_unit_target_team": null,
+      "ability_unit_target_type": [],
+      "ability_unit_target_flags": [],
+      "spell_immunity_type": "SPELL_IMMUNITY_ENEMIES_NO",
+      "spell_dispellable_type": "SPELL_DISPELLABLE_YES",
+      "ability_unit_damage_type": "DAMAGE_TYPE_MAGICAL",
+      "is_skill": true,
+      "is_ultimate": false,
+      "has_scepter_upgrade": false,
+      "on_castbar": true,
+      "on_learnbar": true,
+      "ability_cast_range": [
+        1400
+      ],
+      "ability_cast_range_buffer": 250,
+      "ability_cast_point": [
+        0.01,
+        0.01,
+        0.01,
+        0.01
+      ],
+      "ability_channel_time": [
+        0.0,
+        0.0,
+        0.0,
+        0.0
+      ],
+      "ability_cooldown": [
+        45.0,
+        40.0,
+        35.0,
+        30.0
+      ],
+      "ability_duration": [
+        0.0,
+        0.0,
+        0.0,
+        0.0
+      ],
+      "ability_damage": [
+        0.0,
+        0.0,
+        0.0,
+        0.0
+      ],
+      "ability_mana_cost": [
+        80.0,
+        90.0,
+        100.0,
+        110.0
+      ],
+      "ability_modifier_support_value": 1.0,
+      "ability_modifier_support_bonus": 0.0,
+      "fight_recap_level": 1,
+      "ability_draft_enabled": true,
+      "linked": null,
+      "ability_special": {
+        "hp_cost_perc": [
+          20.0
+        ],
+        "spirit_duration": [
+          20.0
+        ],
+        "spirit_speed": [
+          900.0,
+          900.0,
+          900.0,
+          900.0
+        ],
+        "radius": [
+          175.0,
+          175.0,
+          175.0,
+          175.0
+        ],
+        "duration": [
+          4.0
+        ],
+        "attackspeed_slow": [
+          -80.0,
+          -100.0,
+          -120.0,
+          -140.0
+        ],
+        "damage_per_second": [
+          20.0,
+          40.0,
+          60.0,
+          80.0
+        ],
+        "spirit_count": [
+          4.0
+        ],
+        "tick_interval": [
+          1.0
+        ]
+      }
+    },
+    {
+      "id": 5626,
+      "key": "phoenix_sun_ray",
+      "name": "Sun Ray",
+      "description": "Phoenix expels a beam of light at the cost of its own health. The beam damages enemies and heals allies for a base amount plus a percentage of their health. The percentage increases as the beam continues to fire.",
+      "image": "https://hgv-hyperstone.azurewebsites.net/abilities/phoenix_sun_ray.png",
+      "hero_id": 110,
+      "ability_type": "DOTA_ABILITY_TYPE_BASIC",
+      "ability_behaviors": [
+        "DOTA_ABILITY_BEHAVIOR_POINT"
+      ],
+      "ability_unit_target_team": null,
+      "ability_unit_target_type": [],
+      "ability_unit_target_flags": [],
+      "spell_immunity_type": "SPELL_IMMUNITY_ENEMIES_NO",
+      "spell_dispellable_type": "SPELL_DISPELLABLE_NO",
+      "ability_unit_damage_type": "DAMAGE_TYPE_MAGICAL",
+      "is_skill": true,
+      "is_ultimate": false,
+      "has_scepter_upgrade": false,
+      "on_castbar": true,
+      "on_learnbar": true,
+      "ability_cast_range": [
+        1300
+      ],
+      "ability_cast_range_buffer": 250,
+      "ability_cast_point": [
+        0.01
+      ],
+      "ability_channel_time": [
+        0.0,
+        0.0,
+        0.0,
+        0.0
+      ],
+      "ability_cooldown": [
+        26.0
+      ],
+      "ability_duration": [
+        6.0
+      ],
+      "ability_damage": [
+        0.0,
+        0.0,
+        0.0,
+        0.0
+      ],
+      "ability_mana_cost": [
+        100.0
+      ],
+      "ability_modifier_support_value": 1.0,
+      "ability_modifier_support_bonus": 0.0,
+      "fight_recap_level": 1,
+      "ability_draft_enabled": false,
+      "linked": null,
+      "ability_special": {
+        "hp_cost_perc_per_second": [
+          6.0
+        ],
+        "base_damage": [
+          14.0,
+          20.0,
+          26.0,
+          32.0
+        ],
+        "hp_perc_damage": [
+          1.5,
+          3.25,
+          5.0,
+          6.75
+        ],
+        "base_heal": [
+          7.0,
+          10.0,
+          13.0,
+          16.0
+        ],
+        "hp_perc_heal": [
+          0.625,
+          1.25,
+          1.875,
+          2.5
+        ],
+        "radius": [
+          130.0
+        ],
+        "tick_interval": [
+          0.2
+        ],
+        "forward_move_speed": [
+          250.0
+        ],
+        "beam_range": [
+          1300.0
+        ],
+        "turn_rate_initial": [
+          250.0
+        ],
+        "turn_rate": [
+          25.0
+        ],
+        "tooltip_duration": [
+          6.0
+        ]
+      }
+    },
+    {
+      "id": 5628,
+      "key": "phoenix_sun_ray_toggle_move",
+      "name": "Toggle Movement",
+      "description": "Toggles slow forward movement during Sun Ray firing.",
+      "image": "https://hgv-hyperstone.azurewebsites.net/abilities/phoenix_sun_ray_toggle_move.png",
+      "hero_id": 110,
+      "ability_type": "DOTA_ABILITY_TYPE_BASIC",
+      "ability_behaviors": [
+        "DOTA_ABILITY_BEHAVIOR_NO_TARGET",
+        "DOTA_ABILITY_BEHAVIOR_NOT_LEARNABLE",
+        "DOTA_ABILITY_BEHAVIOR_DONT_RESUME_ATTACK",
+        "DOTA_ABILITY_BEHAVIOR_IMMEDIATE"
+      ],
+      "ability_unit_target_team": null,
+      "ability_unit_target_type": [],
+      "ability_unit_target_flags": [],
+      "spell_immunity_type": null,
+      "spell_dispellable_type": null,
+      "ability_unit_damage_type": null,
+      "is_skill": true,
+      "is_ultimate": false,
+      "has_scepter_upgrade": false,
+      "on_castbar": true,
+      "on_learnbar": true,
+      "ability_cast_range": [
+        0
+      ],
+      "ability_cast_range_buffer": 250,
+      "ability_cast_point": [
+        0.0,
+        0.0,
+        0.0,
+        0.0
+      ],
+      "ability_channel_time": [
+        0.0,
+        0.0,
+        0.0,
+        0.0
+      ],
+      "ability_cooldown": [
+        0.0,
+        0.0,
+        0.0,
+        0.0
+      ],
+      "ability_duration": [
+        0.0,
+        0.0,
+        0.0,
+        0.0
+      ],
+      "ability_damage": [
+        0.0,
+        0.0,
+        0.0,
+        0.0
+      ],
+      "ability_mana_cost": [
+        0.0,
+        0.0,
+        0.0,
+        0.0
+      ],
+      "ability_modifier_support_value": 1.0,
+      "ability_modifier_support_bonus": 0.0,
+      "fight_recap_level": 0,
+      "ability_draft_enabled": false,
+      "linked": null,
+      "ability_special": {}
+    },
+    {
+      "id": 6251,
+      "key": "generic_hidden",
+      "name": null,
+      "description": null,
+      "image": "https://hgv-hyperstone.azurewebsites.net/abilities/generic_hidden.png",
+      "hero_id": 110,
+      "ability_type": "DOTA_ABILITY_TYPE_BASIC",
+      "ability_behaviors": [
+        "DOTA_ABILITY_BEHAVIOR_HIDDEN",
+        "DOTA_ABILITY_BEHAVIOR_NOT_LEARNABLE"
+      ],
+      "ability_unit_target_team": null,
+      "ability_unit_target_type": [],
+      "ability_unit_target_flags": [],
+      "spell_immunity_type": null,
+      "spell_dispellable_type": null,
+      "ability_unit_damage_type": null,
+      "is_skill": true,
+      "is_ultimate": false,
+      "has_scepter_upgrade": false,
+      "on_castbar": true,
+      "on_learnbar": true,
+      "ability_cast_range": [
+        0
+      ],
+      "ability_cast_range_buffer": 250,
+      "ability_cast_point": [
+        0.0,
+        0.0,
+        0.0,
+        0.0
+      ],
+      "ability_channel_time": [
+        0.0,
+        0.0,
+        0.0,
+        0.0
+      ],
+      "ability_cooldown": [
+        0.0,
+        0.0,
+        0.0,
+        0.0
+      ],
+      "ability_duration": [
+        0.0,
+        0.0,
+        0.0,
+        0.0
+      ],
+      "ability_damage": [
+        0.0,
+        0.0,
+        0.0,
+        0.0
+      ],
+      "ability_mana_cost": [
+        0.0,
+        0.0,
+        0.0,
+        0.0
+      ],
+      "ability_modifier_support_value": 1.0,
+      "ability_modifier_support_bonus": 0.0,
+      "fight_recap_level": 0,
+      "ability_draft_enabled": false,
+      "linked": null,
+      "ability_special": {}
+    },
+    {
+      "id": 5630,
+      "key": "phoenix_supernova",
+      "name": "Supernova",
+      "description": "The Phoenix willingly ends its current life for the chance to be reborn. Transforms into a burning sun that scorches enemies in a huge area. The sun can be destroyed by attacks from enemy Heroes. After 6 seconds the sun explodes, stunning all nearby enemies while restoring Phoenix to full health and mana with refreshed abilities.\\n\\nUpgradable by Aghanim's Scepter.\\n\\nDISPEL TYPE: Strong Dispel",
+      "image": "https://hgv-hyperstone.azurewebsites.net/abilities/phoenix_supernova.png",
+      "hero_id": 110,
+      "ability_type": "DOTA_ABILITY_TYPE_ULTIMATE",
+      "ability_behaviors": [
+        "DOTA_ABILITY_BEHAVIOR_NO_TARGET",
+        "DOTA_ABILITY_BEHAVIOR_DONT_RESUME_ATTACK"
+      ],
+      "ability_unit_target_team": "DOTA_UNIT_TARGET_TEAM_FRIENDLY",
+      "ability_unit_target_type": [
+        "DOTA_UNIT_TARGET_HERO"
+      ],
+      "ability_unit_target_flags": [
+        "DOTA_UNIT_TARGET_FLAG_NOT_CREEP_HERO"
+      ],
+      "spell_immunity_type": "SPELL_IMMUNITY_ENEMIES_YES",
+      "spell_dispellable_type": "SPELL_DISPELLABLE_NO",
+      "ability_unit_damage_type": "DAMAGE_TYPE_MAGICAL",
+      "is_skill": false,
+      "is_ultimate": true,
+      "has_scepter_upgrade": true,
+      "on_castbar": true,
+      "on_learnbar": true,
+      "ability_cast_range": [
+        500
+      ],
+      "ability_cast_range_buffer": 250,
+      "ability_cast_point": [
+        0.01
+      ],
+      "ability_channel_time": [
+        0.0,
+        0.0,
+        0.0,
+        0.0
+      ],
+      "ability_cooldown": [
+        110.0,
+        110.0,
+        110.0
+      ],
+      "ability_duration": [
+        6.0
+      ],
+      "ability_damage": [
+        0.0,
+        0.0,
+        0.0,
+        0.0
+      ],
+      "ability_mana_cost": [
+        200.0,
+        200.0,
+        200.0
+      ],
+      "ability_modifier_support_value": 1.0,
+      "ability_modifier_support_bonus": 0.0,
+      "fight_recap_level": 2,
+      "ability_draft_enabled": true,
+      "linked": null,
+      "ability_special": {
+        "aura_radius": [
+          1300.0
+        ],
+        "damage_per_sec": [
+          60.0,
+          90.0,
+          120.0
+        ],
+        "stun_duration": [
+          2.0,
+          2.5,
+          3.0
+        ],
+        "max_hero_attacks": [
+          5.0,
+          8.0,
+          11.0
+        ],
+        "max_hero_attacks_scepter": [
+          7.0,
+          10.0,
+          13.0
+        ],
+        "tooltip_duration": [
+          6.0
+        ],
+        "cast_range_tooltip_scepter": [
+          500.0
+        ]
+      }
+    },
+    {
+      "id": 5631,
+      "key": "phoenix_launch_fire_spirit",
+      "name": "Launch Fire Spirit",
+      "description": "Each fire spirit can be launched independently at a targeted area of effect. Affected enemy units take damage over time and have their attack speed greatly reduced. Reveals the area it strikes for 1 second.",
+      "image": "https://hgv-hyperstone.azurewebsites.net/abilities/phoenix_launch_fire_spirit.png",
+      "hero_id": 110,
+      "ability_type": "DOTA_ABILITY_TYPE_BASIC",
+      "ability_behaviors": [
+        "DOTA_ABILITY_BEHAVIOR_POINT",
+        "DOTA_ABILITY_BEHAVIOR_AOE",
+        "DOTA_ABILITY_BEHAVIOR_IGNORE_BACKSWING",
+        "DOTA_ABILITY_BEHAVIOR_HIDDEN"
+      ],
+      "ability_unit_target_team": null,
+      "ability_unit_target_type": [],
+      "ability_unit_target_flags": [],
+      "spell_immunity_type": "SPELL_IMMUNITY_ENEMIES_NO",
+      "spell_dispellable_type": null,
+      "ability_unit_damage_type": "DAMAGE_TYPE_MAGICAL",
+      "is_skill": true,
+      "is_ultimate": false,
+      "has_scepter_upgrade": false,
+      "on_castbar": true,
+      "on_learnbar": true,
+      "ability_cast_range": [
+        1400
+      ],
+      "ability_cast_range_buffer": 250,
+      "ability_cast_point": [
+        0.01,
+        0.01,
+        0.01,
+        0.01
+      ],
+      "ability_channel_time": [
+        0.0,
+        0.0,
+        0.0,
+        0.0
+      ],
+      "ability_cooldown": [
+        0.0,
+        0.0,
+        0.0,
+        0.0
+      ],
+      "ability_duration": [
+        0.0,
+        0.0,
+        0.0,
+        0.0
+      ],
+      "ability_damage": [
+        0.0,
+        0.0,
+        0.0,
+        0.0
+      ],
+      "ability_mana_cost": [
+        0.0,
+        0.0,
+        0.0,
+        0.0
+      ],
+      "ability_modifier_support_value": 1.0,
+      "ability_modifier_support_bonus": 0.0,
+      "fight_recap_level": 0,
+      "ability_draft_enabled": false,
+      "linked": null,
+      "ability_special": {
+        "hp_cost_perc": [
+          20.0
+        ],
+        "spirit_duration": [
+          20.0,
+          20.0,
+          20.0,
+          20.0
+        ],
+        "spirit_speed": [
+          900.0,
+          900.0,
+          900.0,
+          900.0
+        ],
+        "radius": [
+          175.0,
+          175.0,
+          175.0,
+          175.0
+        ],
+        "duration": [
+          4.0
+        ],
+        "attackspeed_slow": [
+          -80.0,
+          -100.0,
+          -120.0,
+          -140.0
+        ],
+        "damage_per_second": [
+          20.0,
+          40.0,
+          60.0,
+          80.0
+        ],
+        "spirit_count": [
+          4.0
+        ],
+        "tick_interval": [
+          1.0
+        ]
+      }
+    },
+    {
+      "id": 5624,
+      "key": "phoenix_icarus_dive_stop",
+      "name": "Stop Icarus Dive",
+      "description": "Immediately cancels the dive.",
+      "image": "https://hgv-hyperstone.azurewebsites.net/abilities/phoenix_icarus_dive_stop.png",
+      "hero_id": 110,
+      "ability_type": "DOTA_ABILITY_TYPE_BASIC",
+      "ability_behaviors": [
+        "DOTA_ABILITY_BEHAVIOR_IMMEDIATE",
+        "DOTA_ABILITY_BEHAVIOR_NO_TARGET",
+        "DOTA_ABILITY_BEHAVIOR_NOT_LEARNABLE",
+        "DOTA_ABILITY_BEHAVIOR_HIDDEN",
+        "DOTA_ABILITY_BEHAVIOR_DONT_RESUME_ATTACK"
+      ],
+      "ability_unit_target_team": null,
+      "ability_unit_target_type": [],
+      "ability_unit_target_flags": [],
+      "spell_immunity_type": null,
+      "spell_dispellable_type": null,
+      "ability_unit_damage_type": null,
+      "is_skill": true,
+      "is_ultimate": false,
+      "has_scepter_upgrade": false,
+      "on_castbar": true,
+      "on_learnbar": true,
+      "ability_cast_range": [
+        0
+      ],
+      "ability_cast_range_buffer": 250,
+      "ability_cast_point": [
+        0.0,
+        0.0,
+        0.0,
+        0.0
+      ],
+      "ability_channel_time": [
+        0.0,
+        0.0,
+        0.0,
+        0.0
+      ],
+      "ability_cooldown": [
+        0.0,
+        0.0,
+        0.0,
+        0.0
+      ],
+      "ability_duration": [
+        0.0,
+        0.0,
+        0.0,
+        0.0
+      ],
+      "ability_damage": [
+        0.0,
+        0.0,
+        0.0,
+        0.0
+      ],
+      "ability_mana_cost": [
+        0.0,
+        0.0,
+        0.0,
+        0.0
+      ],
+      "ability_modifier_support_value": 1.0,
+      "ability_modifier_support_bonus": 0.0,
+      "fight_recap_level": 0,
+      "ability_draft_enabled": false,
+      "linked": null,
+      "ability_special": {}
+    },
+    {
+      "id": 5627,
+      "key": "phoenix_sun_ray_stop",
+      "name": "Stop Sun Ray",
+      "description": "Immediately stops the Sun Ray.",
+      "image": "https://hgv-hyperstone.azurewebsites.net/abilities/phoenix_sun_ray_stop.png",
+      "hero_id": 110,
+      "ability_type": "DOTA_ABILITY_TYPE_BASIC",
+      "ability_behaviors": [
+        "DOTA_ABILITY_BEHAVIOR_NO_TARGET",
+        "DOTA_ABILITY_BEHAVIOR_NOT_LEARNABLE",
+        "DOTA_ABILITY_BEHAVIOR_HIDDEN",
+        "DOTA_ABILITY_BEHAVIOR_DONT_RESUME_ATTACK",
+        "DOTA_ABILITY_BEHAVIOR_IMMEDIATE"
+      ],
+      "ability_unit_target_team": null,
+      "ability_unit_target_type": [],
+      "ability_unit_target_flags": [],
+      "spell_immunity_type": null,
+      "spell_dispellable_type": null,
+      "ability_unit_damage_type": null,
+      "is_skill": true,
+      "is_ultimate": false,
+      "has_scepter_upgrade": false,
+      "on_castbar": true,
+      "on_learnbar": true,
+      "ability_cast_range": [
+        0
+      ],
+      "ability_cast_range_buffer": 250,
+      "ability_cast_point": [
+        0.0,
+        0.0,
+        0.0,
+        0.0
+      ],
+      "ability_channel_time": [
+        0.0,
+        0.0,
+        0.0,
+        0.0
+      ],
+      "ability_cooldown": [
+        0.0,
+        0.0,
+        0.0,
+        0.0
+      ],
+      "ability_duration": [
+        0.0,
+        0.0,
+        0.0,
+        0.0
+      ],
+      "ability_damage": [
+        0.0,
+        0.0,
+        0.0,
+        0.0
+      ],
+      "ability_mana_cost": [
+        0.0,
+        0.0,
+        0.0,
+        0.0
+      ],
+      "ability_modifier_support_value": 1.0,
+      "ability_modifier_support_bonus": 0.0,
+      "fight_recap_level": 0,
+      "ability_draft_enabled": false,
+      "linked": null,
+      "ability_special": {}
+    }
+  ],
+  "talents": [
+    {
+      "id": 6007,
+      "key": "special_bonus_gold_income_15",
+      "name": "+90 Gold/Min",
+      "description": null
+    },
+    {
+      "id": 5949,
+      "key": "special_bonus_spell_amplify_8",
+      "name": "+8% Spell Amplification",
+      "description": null
+    },
+    {
+      "id": 6401,
+      "key": "special_bonus_unique_phoenix_3",
+      "name": "+40 Fire Spirits DPS",
+      "description": null
+    },
+    {
+      "id": 6235,
+      "key": "special_bonus_hp_500",
+      "name": "+500 Health",
+      "description": null
+    },
+    {
+      "id": 6852,
+      "key": "special_bonus_unique_phoenix_4",
+      "name": "+1400 Icarus Dive Cast Range",
+      "description": null
+    },
+    {
+      "id": 6085,
+      "key": "special_bonus_unique_phoenix_2",
+      "name": "+1.25s Supernova Stun Duration",
+      "description": null
+    },
+    {
+      "id": 6227,
+      "key": "special_bonus_unique_phoenix_1",
+      "name": "+3 Supernova Hit Count",
+      "description": null
+    },
+    {
+      "id": 6915,
+      "key": "special_bonus_unique_phoenix_5",
+      "name": "+2% Max Health Sun Ray Damage",
+      "description": null
+    }
+  ],
+  "legs": 2,
+  "armor_physical": -2.0,
+  "magical_resistance": 25,
+  "attack_capabilities": "DOTA_UNIT_CAP_RANGED_ATTACK",
+  "attack_damage_min": 26,
+  "attack_damage_max": 36,
+  "attack_rate": 1.7,
+  "attack_animation_point": 0.35,
+  "attack_acquisition_range": 800,
+  "attack_range": 500,
+  "projectile_speed": 1100,
+  "attribute_primary": "DOTA_ATTRIBUTE_STRENGTH",
+  "attribute_base_strength": 19,
+  "attribute_strength_gain": 3.2,
+  "attribute_base_intelligence": 18,
+  "attribute_intelligence_gain": 1.8,
+  "attribute_base_agility": 12,
+  "attribute_agility_gain": 1.3,
+  "status_health": 200,
+  "status_health_regen": 1.5,
+  "status_mana": 75,
+  "status_mana_regen": 0.9,
+  "bounty_xp": 62,
+  "bounty_gold_min": 0,
+  "bounty_gold_max": 0,
+  "movement_capabilities": "DOTA_UNIT_CAP_MOVE_GROUND",
+  "movement_speed": 280,
+  "movement_turn_rate": 1.0,
+  "has_aggressive_stance": false,
+  "team": 1,
+  "team_name": "Radiant",
+  "vision_daytime_range": 1800,
+  "vision_nighttime_range": 0,
+  "bot": {
+    "hero_types": null,
+    "solo_desire": 0,
+    "requires_babysit": 0,
+    "provides_babysit": 0,
+    "survival_rating": 0,
+    "requires_farm": 0,
+    "provides_setup": 0,
+    "requires_setup": 0
+  }
+}

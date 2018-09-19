@@ -1,0 +1,628 @@
+{
+  "id": 104,
+  "name": "Legion Commander",
+  "key": "npc_dota_hero_legion_commander",
+  "image_profile": "https://hgv-hyperstone.azurewebsites.net/heroes/profile/npc_dota_hero_legion_commander.png",
+  "image_icon": "https://hgv-hyperstone.azurewebsites.net/heroes/icons/npc_dota_hero_legion_commander.png",
+  "image_banner": "https://hgv-hyperstone.azurewebsites.net/heroes/banner/npc_dota_hero_legion_commander.png",
+  "enabled": true,
+  "new_player_enable": true,
+  "captains_mode_enabled": true,
+  "ability_draft_enabled": true,
+  "complexity": 1,
+  "roles": [
+    {
+      "role": "Carry",
+      "level": 1
+    },
+    {
+      "role": "Disabler",
+      "level": 2
+    },
+    {
+      "role": "Initiator",
+      "level": 1
+    },
+    {
+      "role": "Durable",
+      "level": 1
+    },
+    {
+      "role": "Nuker",
+      "level": 1
+    }
+  ],
+  "bot_implemented": false,
+  "abilities": [
+    {
+      "id": 5595,
+      "key": "legion_commander_overwhelming_odds",
+      "name": "Overwhelming Odds",
+      "description": "Turns the enemies' numbers against them, dealing damage and granting you bonus movement speed per unit or per hero.  Deals bonus damage to illusions and summoned units as a percent of their current health.",
+      "image": "https://hgv-hyperstone.azurewebsites.net/abilities/legion_commander_overwhelming_odds.png",
+      "hero_id": 104,
+      "ability_type": "DOTA_ABILITY_TYPE_BASIC",
+      "ability_behaviors": [
+        "DOTA_ABILITY_BEHAVIOR_AOE",
+        "DOTA_ABILITY_BEHAVIOR_POINT",
+        "DOTA_ABILITY_BEHAVIOR_IGNORE_BACKSWING"
+      ],
+      "ability_unit_target_team": null,
+      "ability_unit_target_type": [],
+      "ability_unit_target_flags": [],
+      "spell_immunity_type": "SPELL_IMMUNITY_ENEMIES_NO",
+      "spell_dispellable_type": "SPELL_DISPELLABLE_YES",
+      "ability_unit_damage_type": "DAMAGE_TYPE_MAGICAL",
+      "is_skill": true,
+      "is_ultimate": false,
+      "has_scepter_upgrade": false,
+      "on_castbar": true,
+      "on_learnbar": true,
+      "ability_cast_range": [
+        1000
+      ],
+      "ability_cast_range_buffer": 250,
+      "ability_cast_point": [
+        0.3,
+        0.3,
+        0.3,
+        0.3
+      ],
+      "ability_channel_time": [
+        0.0,
+        0.0,
+        0.0,
+        0.0
+      ],
+      "ability_cooldown": [
+        15.0
+      ],
+      "ability_duration": [
+        0.0,
+        0.0,
+        0.0,
+        0.0
+      ],
+      "ability_damage": [
+        0.0,
+        0.0,
+        0.0,
+        0.0
+      ],
+      "ability_mana_cost": [
+        100.0,
+        110.0,
+        120.0,
+        130.0
+      ],
+      "ability_modifier_support_value": 1.0,
+      "ability_modifier_support_bonus": 0.0,
+      "fight_recap_level": 1,
+      "ability_draft_enabled": true,
+      "linked": null,
+      "ability_special": {
+        "damage": [
+          40.0,
+          60.0,
+          80.0,
+          100.0
+        ],
+        "damage_per_unit": [
+          14.0,
+          16.0,
+          18.0,
+          20.0
+        ],
+        "damage_per_hero": [
+          30.0,
+          60.0,
+          90.0,
+          120.0
+        ],
+        "illusion_dmg_pct": [
+          25.0
+        ],
+        "bonus_speed_creeps": [
+          3.0
+        ],
+        "bonus_speed_heroes": [
+          9.0
+        ],
+        "duration": [
+          7.0
+        ],
+        "radius": [
+          330.0
+        ]
+      }
+    },
+    {
+      "id": 5596,
+      "key": "legion_commander_press_the_attack",
+      "name": "Press The Attack",
+      "description": "Removes debuffs and disables from the target friendly unit, and grants bonus attack speed and health regen for a short time.\\n\\nDISPEL TYPE: Strong Dispel",
+      "image": "https://hgv-hyperstone.azurewebsites.net/abilities/legion_commander_press_the_attack.png",
+      "hero_id": 104,
+      "ability_type": "DOTA_ABILITY_TYPE_BASIC",
+      "ability_behaviors": [
+        "DOTA_ABILITY_BEHAVIOR_UNIT_TARGET"
+      ],
+      "ability_unit_target_team": "DOTA_UNIT_TARGET_TEAM_FRIENDLY",
+      "ability_unit_target_type": [
+        "DOTA_UNIT_TARGET_HERO",
+        "DOTA_UNIT_TARGET_BASIC"
+      ],
+      "ability_unit_target_flags": [
+        "DOTA_UNIT_TARGET_FLAG_NOT_MAGIC_IMMUNE_ALLIES"
+      ],
+      "spell_immunity_type": "SPELL_IMMUNITY_ALLIES_NO",
+      "spell_dispellable_type": "SPELL_DISPELLABLE_YES",
+      "ability_unit_damage_type": null,
+      "is_skill": true,
+      "is_ultimate": false,
+      "has_scepter_upgrade": false,
+      "on_castbar": true,
+      "on_learnbar": true,
+      "ability_cast_range": [
+        700
+      ],
+      "ability_cast_range_buffer": 250,
+      "ability_cast_point": [
+        0.2
+      ],
+      "ability_channel_time": [
+        0.0,
+        0.0,
+        0.0,
+        0.0
+      ],
+      "ability_cooldown": [
+        16.0,
+        15.0,
+        14.0,
+        13.0
+      ],
+      "ability_duration": [
+        0.0,
+        0.0,
+        0.0,
+        0.0
+      ],
+      "ability_damage": [
+        0.0,
+        0.0,
+        0.0,
+        0.0
+      ],
+      "ability_mana_cost": [
+        110.0
+      ],
+      "ability_modifier_support_value": 3.0,
+      "ability_modifier_support_bonus": 0.0,
+      "fight_recap_level": 0,
+      "ability_draft_enabled": true,
+      "linked": null,
+      "ability_special": {
+        "duration": [
+          5.0
+        ],
+        "attack_speed": [
+          65.0,
+          90.0,
+          115.0,
+          140.0
+        ],
+        "hp_regen": [
+          30.0,
+          35.0,
+          40.0,
+          45.0
+        ]
+      }
+    },
+    {
+      "id": 5597,
+      "key": "legion_commander_moment_of_courage",
+      "name": "Moment of Courage",
+      "description": "When attacked, Legion Commander has a chance to immediately counterattack with bonus lifesteal.",
+      "image": "https://hgv-hyperstone.azurewebsites.net/abilities/legion_commander_moment_of_courage.png",
+      "hero_id": 104,
+      "ability_type": "DOTA_ABILITY_TYPE_BASIC",
+      "ability_behaviors": [
+        "DOTA_ABILITY_BEHAVIOR_PASSIVE"
+      ],
+      "ability_unit_target_team": null,
+      "ability_unit_target_type": [],
+      "ability_unit_target_flags": [],
+      "spell_immunity_type": null,
+      "spell_dispellable_type": null,
+      "ability_unit_damage_type": null,
+      "is_skill": true,
+      "is_ultimate": false,
+      "has_scepter_upgrade": false,
+      "on_castbar": true,
+      "on_learnbar": true,
+      "ability_cast_range": [
+        0
+      ],
+      "ability_cast_range_buffer": 250,
+      "ability_cast_point": [
+        0.0,
+        0.0,
+        0.0,
+        0.0
+      ],
+      "ability_channel_time": [
+        0.0,
+        0.0,
+        0.0,
+        0.0
+      ],
+      "ability_cooldown": [
+        2.3,
+        1.8,
+        1.3,
+        0.8
+      ],
+      "ability_duration": [
+        0.0,
+        0.0,
+        0.0,
+        0.0
+      ],
+      "ability_damage": [
+        0.0,
+        0.0,
+        0.0,
+        0.0
+      ],
+      "ability_mana_cost": [
+        0.0,
+        0.0,
+        0.0,
+        0.0
+      ],
+      "ability_modifier_support_value": 1.0,
+      "ability_modifier_support_bonus": 0.0,
+      "fight_recap_level": 0,
+      "ability_draft_enabled": true,
+      "linked": null,
+      "ability_special": {
+        "trigger_chance": [
+          25.0
+        ],
+        "buff_duration": [
+          1.0
+        ],
+        "hp_leech_percent": [
+          55.0,
+          65.0,
+          75.0,
+          85.0
+        ]
+      }
+    },
+    {
+      "id": 6251,
+      "key": "generic_hidden",
+      "name": null,
+      "description": null,
+      "image": "https://hgv-hyperstone.azurewebsites.net/abilities/generic_hidden.png",
+      "hero_id": 104,
+      "ability_type": "DOTA_ABILITY_TYPE_BASIC",
+      "ability_behaviors": [
+        "DOTA_ABILITY_BEHAVIOR_HIDDEN",
+        "DOTA_ABILITY_BEHAVIOR_NOT_LEARNABLE"
+      ],
+      "ability_unit_target_team": null,
+      "ability_unit_target_type": [],
+      "ability_unit_target_flags": [],
+      "spell_immunity_type": null,
+      "spell_dispellable_type": null,
+      "ability_unit_damage_type": null,
+      "is_skill": true,
+      "is_ultimate": false,
+      "has_scepter_upgrade": false,
+      "on_castbar": true,
+      "on_learnbar": true,
+      "ability_cast_range": [
+        0
+      ],
+      "ability_cast_range_buffer": 250,
+      "ability_cast_point": [
+        0.0,
+        0.0,
+        0.0,
+        0.0
+      ],
+      "ability_channel_time": [
+        0.0,
+        0.0,
+        0.0,
+        0.0
+      ],
+      "ability_cooldown": [
+        0.0,
+        0.0,
+        0.0,
+        0.0
+      ],
+      "ability_duration": [
+        0.0,
+        0.0,
+        0.0,
+        0.0
+      ],
+      "ability_damage": [
+        0.0,
+        0.0,
+        0.0,
+        0.0
+      ],
+      "ability_mana_cost": [
+        0.0,
+        0.0,
+        0.0,
+        0.0
+      ],
+      "ability_modifier_support_value": 1.0,
+      "ability_modifier_support_bonus": 0.0,
+      "fight_recap_level": 0,
+      "ability_draft_enabled": false,
+      "linked": null,
+      "ability_special": {}
+    },
+    {
+      "id": 6251,
+      "key": "generic_hidden",
+      "name": null,
+      "description": null,
+      "image": "https://hgv-hyperstone.azurewebsites.net/abilities/generic_hidden.png",
+      "hero_id": 104,
+      "ability_type": "DOTA_ABILITY_TYPE_BASIC",
+      "ability_behaviors": [
+        "DOTA_ABILITY_BEHAVIOR_HIDDEN",
+        "DOTA_ABILITY_BEHAVIOR_NOT_LEARNABLE"
+      ],
+      "ability_unit_target_team": null,
+      "ability_unit_target_type": [],
+      "ability_unit_target_flags": [],
+      "spell_immunity_type": null,
+      "spell_dispellable_type": null,
+      "ability_unit_damage_type": null,
+      "is_skill": true,
+      "is_ultimate": false,
+      "has_scepter_upgrade": false,
+      "on_castbar": true,
+      "on_learnbar": true,
+      "ability_cast_range": [
+        0
+      ],
+      "ability_cast_range_buffer": 250,
+      "ability_cast_point": [
+        0.0,
+        0.0,
+        0.0,
+        0.0
+      ],
+      "ability_channel_time": [
+        0.0,
+        0.0,
+        0.0,
+        0.0
+      ],
+      "ability_cooldown": [
+        0.0,
+        0.0,
+        0.0,
+        0.0
+      ],
+      "ability_duration": [
+        0.0,
+        0.0,
+        0.0,
+        0.0
+      ],
+      "ability_damage": [
+        0.0,
+        0.0,
+        0.0,
+        0.0
+      ],
+      "ability_mana_cost": [
+        0.0,
+        0.0,
+        0.0,
+        0.0
+      ],
+      "ability_modifier_support_value": 1.0,
+      "ability_modifier_support_bonus": 0.0,
+      "fight_recap_level": 0,
+      "ability_draft_enabled": false,
+      "linked": null,
+      "ability_special": {}
+    },
+    {
+      "id": 5598,
+      "key": "legion_commander_duel",
+      "name": "Duel",
+      "description": "Legion Commander and the target enemy hero are forced to attack each other for a short duration.  Neither hero can use items or abilities.  If either hero dies during the duration, the hero winning the Duel gains permanent bonus damage.\\n\\nUpgradable by Aghanim's Scepter.",
+      "image": "https://hgv-hyperstone.azurewebsites.net/abilities/legion_commander_duel.png",
+      "hero_id": 104,
+      "ability_type": "DOTA_ABILITY_TYPE_ULTIMATE",
+      "ability_behaviors": [
+        "DOTA_ABILITY_BEHAVIOR_UNIT_TARGET"
+      ],
+      "ability_unit_target_team": "DOTA_UNIT_TARGET_TEAM_ENEMY",
+      "ability_unit_target_type": [
+        "DOTA_UNIT_TARGET_HERO"
+      ],
+      "ability_unit_target_flags": [
+        "DOTA_UNIT_TARGET_FLAG_MAGIC_IMMUNE_ENEMIES",
+        "|",
+        "DOTA_UNIT_TARGET_FLAG_NOT_CREEP_HERO"
+      ],
+      "spell_immunity_type": "SPELL_IMMUNITY_ENEMIES_YES",
+      "spell_dispellable_type": "SPELL_DISPELLABLE_NO",
+      "ability_unit_damage_type": null,
+      "is_skill": false,
+      "is_ultimate": true,
+      "has_scepter_upgrade": true,
+      "on_castbar": true,
+      "on_learnbar": true,
+      "ability_cast_range": [
+        150
+      ],
+      "ability_cast_range_buffer": 250,
+      "ability_cast_point": [
+        0.3,
+        0.3,
+        0.3,
+        0.3
+      ],
+      "ability_channel_time": [
+        0.0,
+        0.0,
+        0.0,
+        0.0
+      ],
+      "ability_cooldown": [
+        50.0,
+        50.0,
+        50.0
+      ],
+      "ability_duration": [
+        0.0,
+        0.0,
+        0.0,
+        0.0
+      ],
+      "ability_damage": [
+        0.0,
+        0.0,
+        0.0,
+        0.0
+      ],
+      "ability_mana_cost": [
+        75.0,
+        75.0,
+        75.0
+      ],
+      "ability_modifier_support_value": 3.0,
+      "ability_modifier_support_bonus": 0.0,
+      "fight_recap_level": 2,
+      "ability_draft_enabled": true,
+      "linked": null,
+      "ability_special": {
+        "duration": [
+          4.0,
+          4.75,
+          5.5
+        ],
+        "duration_scepter": [
+          6.0,
+          7.0,
+          8.0
+        ],
+        "reward_damage": [
+          10.0,
+          18.0,
+          26.0
+        ]
+      }
+    }
+  ],
+  "talents": [
+    {
+      "id": 5982,
+      "key": "special_bonus_strength_8",
+      "name": "+8 Strength",
+      "description": null
+    },
+    {
+      "id": 5987,
+      "key": "special_bonus_exp_boost_25",
+      "name": "+25% XP Gain",
+      "description": null
+    },
+    {
+      "id": 5907,
+      "key": "special_bonus_attack_speed_30",
+      "name": "+30 Attack Speed",
+      "description": null
+    },
+    {
+      "id": 6671,
+      "key": "special_bonus_unique_legion_commander_4",
+      "name": "+50 Overwhelming Odds Hero Damage",
+      "description": null
+    },
+    {
+      "id": 6306,
+      "key": "special_bonus_movement_speed_50",
+      "name": "+50 Movement Speed",
+      "description": null
+    },
+    {
+      "id": 6526,
+      "key": "special_bonus_unique_legion_commander_3",
+      "name": "+10% Moment Proc Chance",
+      "description": null
+    },
+    {
+      "id": 6218,
+      "key": "special_bonus_unique_legion_commander",
+      "name": "+40 Duel Damage Bonus",
+      "description": null
+    },
+    {
+      "id": 6449,
+      "key": "special_bonus_unique_legion_commander_2",
+      "name": "-10s Press The Attack Cooldown",
+      "description": null
+    }
+  ],
+  "legs": 2,
+  "armor_physical": -1.0,
+  "magical_resistance": 25,
+  "attack_capabilities": "DOTA_UNIT_CAP_MELEE_ATTACK",
+  "attack_damage_min": 35,
+  "attack_damage_max": 39,
+  "attack_rate": 1.7,
+  "attack_animation_point": 0.46,
+  "attack_acquisition_range": 600,
+  "attack_range": 150,
+  "projectile_speed": 900,
+  "attribute_primary": "DOTA_ATTRIBUTE_STRENGTH",
+  "attribute_base_strength": 26,
+  "attribute_strength_gain": 2.9,
+  "attribute_base_intelligence": 20,
+  "attribute_intelligence_gain": 2.2,
+  "attribute_base_agility": 18,
+  "attribute_agility_gain": 1.7,
+  "status_health": 200,
+  "status_health_regen": 1.5,
+  "status_mana": 75,
+  "status_mana_regen": 0.9,
+  "bounty_xp": 62,
+  "bounty_gold_min": 0,
+  "bounty_gold_max": 0,
+  "movement_capabilities": "DOTA_UNIT_CAP_MOVE_GROUND",
+  "movement_speed": 315,
+  "movement_turn_rate": 0.5,
+  "has_aggressive_stance": false,
+  "team": 1,
+  "team_name": "Radiant",
+  "vision_daytime_range": 1800,
+  "vision_nighttime_range": 0,
+  "bot": {
+    "hero_types": null,
+    "solo_desire": 0,
+    "requires_babysit": 0,
+    "provides_babysit": 0,
+    "survival_rating": 0,
+    "requires_farm": 0,
+    "provides_setup": 0,
+    "requires_setup": 0
+  }
+}

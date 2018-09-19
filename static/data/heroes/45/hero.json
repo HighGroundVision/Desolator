@@ -1,0 +1,628 @@
+{
+  "id": 45,
+  "name": "Pugna",
+  "key": "npc_dota_hero_pugna",
+  "image_profile": "https://hgv-hyperstone.azurewebsites.net/heroes/profile/npc_dota_hero_pugna.png",
+  "image_icon": "https://hgv-hyperstone.azurewebsites.net/heroes/icons/npc_dota_hero_pugna.png",
+  "image_banner": "https://hgv-hyperstone.azurewebsites.net/heroes/banner/npc_dota_hero_pugna.png",
+  "enabled": true,
+  "new_player_enable": true,
+  "captains_mode_enabled": true,
+  "ability_draft_enabled": true,
+  "complexity": 2,
+  "roles": [
+    {
+      "role": "Nuker",
+      "level": 2
+    },
+    {
+      "role": "Pusher",
+      "level": 2
+    }
+  ],
+  "bot_implemented": false,
+  "abilities": [
+    {
+      "id": 5186,
+      "key": "pugna_nether_blast",
+      "name": "Nether Blast",
+      "description": "An exploding pulse deals damage to enemies and structures in the area.  Deals half damage to structures.",
+      "image": "https://hgv-hyperstone.azurewebsites.net/abilities/pugna_nether_blast.png",
+      "hero_id": 45,
+      "ability_type": "DOTA_ABILITY_TYPE_BASIC",
+      "ability_behaviors": [
+        "DOTA_ABILITY_BEHAVIOR_AOE",
+        "DOTA_ABILITY_BEHAVIOR_POINT",
+        "DOTA_ABILITY_BEHAVIOR_IGNORE_BACKSWING"
+      ],
+      "ability_unit_target_team": null,
+      "ability_unit_target_type": [],
+      "ability_unit_target_flags": [],
+      "spell_immunity_type": "SPELL_IMMUNITY_ENEMIES_NO",
+      "spell_dispellable_type": null,
+      "ability_unit_damage_type": "DAMAGE_TYPE_MAGICAL",
+      "is_skill": true,
+      "is_ultimate": false,
+      "has_scepter_upgrade": false,
+      "on_castbar": true,
+      "on_learnbar": true,
+      "ability_cast_range": [
+        400
+      ],
+      "ability_cast_range_buffer": 250,
+      "ability_cast_point": [
+        0.2,
+        0.2,
+        0.2,
+        0.2
+      ],
+      "ability_channel_time": [
+        0.0,
+        0.0,
+        0.0,
+        0.0
+      ],
+      "ability_cooldown": [
+        5.0
+      ],
+      "ability_duration": [
+        0.0,
+        0.0,
+        0.0,
+        0.0
+      ],
+      "ability_damage": [
+        0.0,
+        0.0,
+        0.0,
+        0.0
+      ],
+      "ability_mana_cost": [
+        85.0,
+        105.0,
+        125.0,
+        145.0
+      ],
+      "ability_modifier_support_value": 1.0,
+      "ability_modifier_support_bonus": 0.0,
+      "fight_recap_level": 1,
+      "ability_draft_enabled": true,
+      "linked": null,
+      "ability_special": {
+        "structure_damage_mod": [
+          0.5
+        ],
+        "delay": [
+          0.9,
+          0.9,
+          0.9,
+          0.9
+        ],
+        "radius": [
+          400.0,
+          400.0,
+          400.0,
+          400.0
+        ],
+        "blast_damage": [
+          100.0,
+          175.0,
+          250.0,
+          325.0
+        ]
+      }
+    },
+    {
+      "id": 5187,
+      "key": "pugna_decrepify",
+      "name": "Decrepify",
+      "description": "A powerful banishing spell that slows a unit and renders it unable to attack or be attacked. Afflicted units take extra magic damage.",
+      "image": "https://hgv-hyperstone.azurewebsites.net/abilities/pugna_decrepify.png",
+      "hero_id": 45,
+      "ability_type": "DOTA_ABILITY_TYPE_BASIC",
+      "ability_behaviors": [
+        "DOTA_ABILITY_BEHAVIOR_UNIT_TARGET",
+        "DOTA_ABILITY_BEHAVIOR_DONT_RESUME_ATTACK"
+      ],
+      "ability_unit_target_team": "DOTA_UNIT_TARGET_TEAM_CUSTOM",
+      "ability_unit_target_type": [
+        "DOTA_UNIT_TARGET_CUSTOM"
+      ],
+      "ability_unit_target_flags": [],
+      "spell_immunity_type": "SPELL_IMMUNITY_ENEMIES_NO",
+      "spell_dispellable_type": "SPELL_DISPELLABLE_YES",
+      "ability_unit_damage_type": null,
+      "is_skill": true,
+      "is_ultimate": false,
+      "has_scepter_upgrade": false,
+      "on_castbar": true,
+      "on_learnbar": true,
+      "ability_cast_range": [
+        700,
+        700,
+        700,
+        700
+      ],
+      "ability_cast_range_buffer": 250,
+      "ability_cast_point": [
+        0.2,
+        0.2,
+        0.2,
+        0.2
+      ],
+      "ability_channel_time": [
+        0.0,
+        0.0,
+        0.0,
+        0.0
+      ],
+      "ability_cooldown": [
+        15.0,
+        12.0,
+        9.0,
+        6.0
+      ],
+      "ability_duration": [
+        3.5
+      ],
+      "ability_damage": [
+        0.0,
+        0.0,
+        0.0,
+        0.0
+      ],
+      "ability_mana_cost": [
+        60.0
+      ],
+      "ability_modifier_support_value": 1.0,
+      "ability_modifier_support_bonus": 0.0,
+      "fight_recap_level": 0,
+      "ability_draft_enabled": true,
+      "linked": null,
+      "ability_special": {
+        "bonus_spell_damage_pct_allies": [
+          -25.0
+        ],
+        "bonus_movement_speed_allies": [
+          0.0
+        ],
+        "bonus_spell_damage_pct": [
+          -30.0,
+          -40.0,
+          -50.0,
+          -60.0
+        ],
+        "bonus_movement_speed": [
+          -30.0,
+          -40.0,
+          -50.0,
+          -60.0
+        ],
+        "tooltip_duration": [
+          3.5
+        ]
+      }
+    },
+    {
+      "id": 5188,
+      "key": "pugna_nether_ward",
+      "name": "Nether Ward",
+      "description": "Pugna places a Nether Ward at the target location. The ward reduces the mana regeneration of nearby enemy heroes, and will fire at any enemy hero who casts a spell. Nether Ward deals damage equal to the damage multiplier times the mana spent by the enemy hero.",
+      "image": "https://hgv-hyperstone.azurewebsites.net/abilities/pugna_nether_ward.png",
+      "hero_id": 45,
+      "ability_type": "DOTA_ABILITY_TYPE_BASIC",
+      "ability_behaviors": [
+        "DOTA_ABILITY_BEHAVIOR_POINT"
+      ],
+      "ability_unit_target_team": null,
+      "ability_unit_target_type": [],
+      "ability_unit_target_flags": [],
+      "spell_immunity_type": "SPELL_IMMUNITY_ENEMIES_YES",
+      "spell_dispellable_type": null,
+      "ability_unit_damage_type": "DAMAGE_TYPE_MAGICAL",
+      "is_skill": true,
+      "is_ultimate": false,
+      "has_scepter_upgrade": false,
+      "on_castbar": true,
+      "on_learnbar": true,
+      "ability_cast_range": [
+        150
+      ],
+      "ability_cast_range_buffer": 250,
+      "ability_cast_point": [
+        0.2,
+        0.2,
+        0.2,
+        0.2
+      ],
+      "ability_channel_time": [
+        0.0,
+        0.0,
+        0.0,
+        0.0
+      ],
+      "ability_cooldown": [
+        35.0,
+        35.0,
+        35.0,
+        35.0
+      ],
+      "ability_duration": [
+        30.0
+      ],
+      "ability_damage": [
+        0.0,
+        0.0,
+        0.0,
+        0.0
+      ],
+      "ability_mana_cost": [
+        80.0,
+        80.0,
+        80.0,
+        80.0
+      ],
+      "ability_modifier_support_value": 1.0,
+      "ability_modifier_support_bonus": 0.0,
+      "fight_recap_level": 1,
+      "ability_draft_enabled": true,
+      "linked": null,
+      "ability_special": {
+        "radius": [
+          1600.0
+        ],
+        "mana_multiplier": [
+          1.25,
+          1.5,
+          1.75,
+          2.0
+        ],
+        "mana_regen": [
+          0.25,
+          0.5,
+          0.75,
+          1.0
+        ],
+        "attacks_to_destroy_tooltip": [
+          4.0,
+          4.0,
+          4.0,
+          4.0
+        ],
+        "ward_duration_tooltip": [
+          30.0
+        ]
+      }
+    },
+    {
+      "id": 6251,
+      "key": "generic_hidden",
+      "name": null,
+      "description": null,
+      "image": "https://hgv-hyperstone.azurewebsites.net/abilities/generic_hidden.png",
+      "hero_id": 45,
+      "ability_type": "DOTA_ABILITY_TYPE_BASIC",
+      "ability_behaviors": [
+        "DOTA_ABILITY_BEHAVIOR_HIDDEN",
+        "DOTA_ABILITY_BEHAVIOR_NOT_LEARNABLE"
+      ],
+      "ability_unit_target_team": null,
+      "ability_unit_target_type": [],
+      "ability_unit_target_flags": [],
+      "spell_immunity_type": null,
+      "spell_dispellable_type": null,
+      "ability_unit_damage_type": null,
+      "is_skill": true,
+      "is_ultimate": false,
+      "has_scepter_upgrade": false,
+      "on_castbar": true,
+      "on_learnbar": true,
+      "ability_cast_range": [
+        0
+      ],
+      "ability_cast_range_buffer": 250,
+      "ability_cast_point": [
+        0.0,
+        0.0,
+        0.0,
+        0.0
+      ],
+      "ability_channel_time": [
+        0.0,
+        0.0,
+        0.0,
+        0.0
+      ],
+      "ability_cooldown": [
+        0.0,
+        0.0,
+        0.0,
+        0.0
+      ],
+      "ability_duration": [
+        0.0,
+        0.0,
+        0.0,
+        0.0
+      ],
+      "ability_damage": [
+        0.0,
+        0.0,
+        0.0,
+        0.0
+      ],
+      "ability_mana_cost": [
+        0.0,
+        0.0,
+        0.0,
+        0.0
+      ],
+      "ability_modifier_support_value": 1.0,
+      "ability_modifier_support_bonus": 0.0,
+      "fight_recap_level": 0,
+      "ability_draft_enabled": false,
+      "linked": null,
+      "ability_special": {}
+    },
+    {
+      "id": 6251,
+      "key": "generic_hidden",
+      "name": null,
+      "description": null,
+      "image": "https://hgv-hyperstone.azurewebsites.net/abilities/generic_hidden.png",
+      "hero_id": 45,
+      "ability_type": "DOTA_ABILITY_TYPE_BASIC",
+      "ability_behaviors": [
+        "DOTA_ABILITY_BEHAVIOR_HIDDEN",
+        "DOTA_ABILITY_BEHAVIOR_NOT_LEARNABLE"
+      ],
+      "ability_unit_target_team": null,
+      "ability_unit_target_type": [],
+      "ability_unit_target_flags": [],
+      "spell_immunity_type": null,
+      "spell_dispellable_type": null,
+      "ability_unit_damage_type": null,
+      "is_skill": true,
+      "is_ultimate": false,
+      "has_scepter_upgrade": false,
+      "on_castbar": true,
+      "on_learnbar": true,
+      "ability_cast_range": [
+        0
+      ],
+      "ability_cast_range_buffer": 250,
+      "ability_cast_point": [
+        0.0,
+        0.0,
+        0.0,
+        0.0
+      ],
+      "ability_channel_time": [
+        0.0,
+        0.0,
+        0.0,
+        0.0
+      ],
+      "ability_cooldown": [
+        0.0,
+        0.0,
+        0.0,
+        0.0
+      ],
+      "ability_duration": [
+        0.0,
+        0.0,
+        0.0,
+        0.0
+      ],
+      "ability_damage": [
+        0.0,
+        0.0,
+        0.0,
+        0.0
+      ],
+      "ability_mana_cost": [
+        0.0,
+        0.0,
+        0.0,
+        0.0
+      ],
+      "ability_modifier_support_value": 1.0,
+      "ability_modifier_support_bonus": 0.0,
+      "fight_recap_level": 0,
+      "ability_draft_enabled": false,
+      "linked": null,
+      "ability_special": {}
+    },
+    {
+      "id": 5189,
+      "key": "pugna_life_drain",
+      "name": "Life Drain",
+      "description": "CHANNELED - When cast on an enemy, Pugna drains health from the target enemy unit to heal himself and granting vision over the target. If Pugna has full HP, and the enemy target is a Hero, Life Drain will restore mana instead.\\n\\nWhen cast on an ally, Pugna will drain his own health into his ally.\\n\\nUpgradable by Aghanim's Scepter.",
+      "image": "https://hgv-hyperstone.azurewebsites.net/abilities/pugna_life_drain.png",
+      "hero_id": 45,
+      "ability_type": "DOTA_ABILITY_TYPE_ULTIMATE",
+      "ability_behaviors": [
+        "DOTA_ABILITY_BEHAVIOR_UNIT_TARGET",
+        "DOTA_ABILITY_BEHAVIOR_CHANNELLED",
+        "DOTA_ABILITY_BEHAVIOR_IGNORE_BACKSWING"
+      ],
+      "ability_unit_target_team": "DOTA_UNIT_TARGET_TEAM_BOTH",
+      "ability_unit_target_type": [
+        "DOTA_UNIT_TARGET_HERO",
+        "DOTA_UNIT_TARGET_BASIC"
+      ],
+      "ability_unit_target_flags": [
+        "DOTA_UNIT_TARGET_FLAG_MAGIC_IMMUNE_ENEMIES",
+        "|",
+        "DOTA_UNIT_TARGET_FLAG_FOW_VISIBLE"
+      ],
+      "spell_immunity_type": "SPELL_IMMUNITY_ENEMIES_YES",
+      "spell_dispellable_type": "SPELL_DISPELLABLE_NO",
+      "ability_unit_damage_type": "DAMAGE_TYPE_MAGICAL",
+      "is_skill": false,
+      "is_ultimate": true,
+      "has_scepter_upgrade": true,
+      "on_castbar": true,
+      "on_learnbar": true,
+      "ability_cast_range": [
+        700
+      ],
+      "ability_cast_range_buffer": 250,
+      "ability_cast_point": [
+        0.2,
+        0.2,
+        0.2
+      ],
+      "ability_channel_time": [
+        10.0
+      ],
+      "ability_cooldown": [
+        22.0,
+        22.0,
+        22.0
+      ],
+      "ability_duration": [
+        0.0,
+        0.0,
+        0.0,
+        0.0
+      ],
+      "ability_damage": [
+        0.0,
+        0.0,
+        0.0,
+        0.0
+      ],
+      "ability_mana_cost": [
+        125.0,
+        175.0,
+        225.0
+      ],
+      "ability_modifier_support_value": 0.0,
+      "ability_modifier_support_bonus": 0.0,
+      "fight_recap_level": 1,
+      "ability_draft_enabled": true,
+      "linked": null,
+      "ability_special": {
+        "health_drain": [
+          150.0,
+          225.0,
+          300.0
+        ],
+        "cast_range_tooltip": [
+          700.0
+        ],
+        "duration_tooltip": [
+          10.0
+        ],
+        "scepter_cooldown": [
+          0.0,
+          0.0,
+          0.0
+        ],
+        "tick_rate": [
+          0.25,
+          0.25,
+          0.25
+        ],
+        "drain_buffer": [
+          200.0
+        ]
+      }
+    }
+  ],
+  "talents": [
+    {
+      "id": 5919,
+      "key": "special_bonus_movement_speed_25",
+      "name": "+25 Movement Speed",
+      "description": null
+    },
+    {
+      "id": 6405,
+      "key": "special_bonus_hp_225",
+      "name": "+225 Health",
+      "description": null
+    },
+    {
+      "id": 6448,
+      "key": "special_bonus_unique_pugna_4",
+      "name": "-1s Netherblast Cooldown",
+      "description": null
+    },
+    {
+      "id": 6859,
+      "key": "special_bonus_unique_pugna_6",
+      "name": "+3 Nether Ward Health",
+      "description": null
+    },
+    {
+      "id": 6220,
+      "key": "special_bonus_unique_pugna_1",
+      "name": "+25% Life Drain Heal",
+      "description": null
+    },
+    {
+      "id": 6541,
+      "key": "special_bonus_unique_pugna_5",
+      "name": "+2s Decrepify Duration",
+      "description": null
+    },
+    {
+      "id": 6238,
+      "key": "special_bonus_unique_pugna_2",
+      "name": "+200 Nether Blast Damage",
+      "description": null
+    },
+    {
+      "id": 6403,
+      "key": "special_bonus_unique_pugna_3",
+      "name": "+1.75 Netherward Damage Per Mana",
+      "description": null
+    }
+  ],
+  "legs": 2,
+  "armor_physical": 0.0,
+  "magical_resistance": 25,
+  "attack_capabilities": "DOTA_UNIT_CAP_RANGED_ATTACK",
+  "attack_damage_min": 19,
+  "attack_damage_max": 27,
+  "attack_rate": 1.7,
+  "attack_animation_point": 0.5,
+  "attack_acquisition_range": 800,
+  "attack_range": 630,
+  "projectile_speed": 900,
+  "attribute_primary": "DOTA_ATTRIBUTE_INTELLECT",
+  "attribute_base_strength": 19,
+  "attribute_strength_gain": 1.8,
+  "attribute_base_intelligence": 24,
+  "attribute_intelligence_gain": 4.5,
+  "attribute_base_agility": 16,
+  "attribute_agility_gain": 1.0,
+  "status_health": 200,
+  "status_health_regen": 1.5,
+  "status_mana": 75,
+  "status_mana_regen": 0.9,
+  "bounty_xp": 62,
+  "bounty_gold_min": 0,
+  "bounty_gold_max": 0,
+  "movement_capabilities": "DOTA_UNIT_CAP_MOVE_GROUND",
+  "movement_speed": 335,
+  "movement_turn_rate": 0.5,
+  "has_aggressive_stance": false,
+  "team": 1,
+  "team_name": "Radiant",
+  "vision_daytime_range": 1800,
+  "vision_nighttime_range": 0,
+  "bot": {
+    "hero_types": null,
+    "solo_desire": 0,
+    "requires_babysit": 0,
+    "provides_babysit": 0,
+    "survival_rating": 0,
+    "requires_farm": 0,
+    "provides_setup": 0,
+    "requires_setup": 0
+  }
+}

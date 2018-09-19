@@ -1,0 +1,637 @@
+{
+  "id": 95,
+  "name": "Troll Warlord",
+  "key": "npc_dota_hero_troll_warlord",
+  "image_profile": "https://hgv-hyperstone.azurewebsites.net/heroes/profile/npc_dota_hero_troll_warlord.png",
+  "image_icon": "https://hgv-hyperstone.azurewebsites.net/heroes/icons/npc_dota_hero_troll_warlord.png",
+  "image_banner": "https://hgv-hyperstone.azurewebsites.net/heroes/banner/npc_dota_hero_troll_warlord.png",
+  "enabled": true,
+  "new_player_enable": true,
+  "captains_mode_enabled": true,
+  "ability_draft_enabled": true,
+  "complexity": 2,
+  "roles": [
+    {
+      "role": "Carry",
+      "level": 3
+    },
+    {
+      "role": "Pusher",
+      "level": 2
+    },
+    {
+      "role": "Disabler",
+      "level": 1
+    },
+    {
+      "role": "Durable",
+      "level": 1
+    }
+  ],
+  "bot_implemented": false,
+  "abilities": [
+    {
+      "id": 5508,
+      "key": "troll_warlord_berserkers_rage",
+      "name": "Berserker's Rage",
+      "description": "While active, Troll Warlord swaps from using ranged to melee attacks. Melee attacks have a chance to bash, dealing bonus damage and stunning the target. Berserker's Rage also grants additional movement speed, armor, and increased attack speed.\\n\\nWhirling Axes has different functionality while Berserker's Rage is active.",
+      "image": "https://hgv-hyperstone.azurewebsites.net/abilities/troll_warlord_berserkers_rage.png",
+      "hero_id": 95,
+      "ability_type": "DOTA_ABILITY_TYPE_BASIC",
+      "ability_behaviors": [
+        "DOTA_ABILITY_BEHAVIOR_NO_TARGET",
+        "DOTA_ABILITY_BEHAVIOR_TOGGLE",
+        "DOTA_ABILITY_BEHAVIOR_IMMEDIATE"
+      ],
+      "ability_unit_target_team": null,
+      "ability_unit_target_type": [],
+      "ability_unit_target_flags": [],
+      "spell_immunity_type": null,
+      "spell_dispellable_type": null,
+      "ability_unit_damage_type": null,
+      "is_skill": true,
+      "is_ultimate": false,
+      "has_scepter_upgrade": false,
+      "on_castbar": true,
+      "on_learnbar": true,
+      "ability_cast_range": [
+        0
+      ],
+      "ability_cast_range_buffer": 250,
+      "ability_cast_point": [
+        0.2,
+        0.2,
+        0.2,
+        0.2
+      ],
+      "ability_channel_time": [
+        0.0,
+        0.0,
+        0.0,
+        0.0
+      ],
+      "ability_cooldown": [
+        0.0,
+        0.0,
+        0.0,
+        0.0
+      ],
+      "ability_duration": [
+        0.0,
+        0.0,
+        0.0,
+        0.0
+      ],
+      "ability_damage": [
+        0.0,
+        0.0,
+        0.0,
+        0.0
+      ],
+      "ability_mana_cost": [
+        0.0,
+        0.0,
+        0.0,
+        0.0
+      ],
+      "ability_modifier_support_value": 1.0,
+      "ability_modifier_support_bonus": 0.0,
+      "fight_recap_level": 0,
+      "ability_draft_enabled": false,
+      "linked": null,
+      "ability_special": {
+        "bonus_hp": [
+          0.0
+        ],
+        "bonus_move_speed": [
+          10.0,
+          20.0,
+          30.0,
+          40.0
+        ],
+        "bonus_armor": [
+          6.0
+        ],
+        "bonus_range": [
+          350.0
+        ],
+        "base_attack_time": [
+          1.45
+        ],
+        "bash_chance": [
+          10.0
+        ],
+        "bash_duration": [
+          0.8,
+          1.2,
+          1.6,
+          2.0
+        ],
+        "bash_damage": [
+          20.0,
+          30.0,
+          40.0,
+          50.0
+        ]
+      }
+    },
+    {
+      "id": 5509,
+      "key": "troll_warlord_whirling_axes_ranged",
+      "name": "Whirling Axes (Ranged)",
+      "description": "Troll hurls a fistful of five axes in a cone shape over 900 range, slowing and damaging enemy units.",
+      "image": "https://hgv-hyperstone.azurewebsites.net/abilities/troll_warlord_whirling_axes_ranged.png",
+      "hero_id": 95,
+      "ability_type": "DOTA_ABILITY_TYPE_BASIC",
+      "ability_behaviors": [
+        "DOTA_ABILITY_BEHAVIOR_UNIT_TARGET",
+        "DOTA_ABILITY_BEHAVIOR_POINT",
+        "DOTA_ABILITY_BEHAVIOR_IGNORE_BACKSWING"
+      ],
+      "ability_unit_target_team": "DOTA_UNIT_TARGET_TEAM_ENEMY",
+      "ability_unit_target_type": [
+        "DOTA_UNIT_TARGET_HERO",
+        "DOTA_UNIT_TARGET_BASIC"
+      ],
+      "ability_unit_target_flags": [],
+      "spell_immunity_type": "SPELL_IMMUNITY_ENEMIES_NO",
+      "spell_dispellable_type": "SPELL_DISPELLABLE_YES",
+      "ability_unit_damage_type": "DAMAGE_TYPE_MAGICAL",
+      "is_skill": true,
+      "is_ultimate": false,
+      "has_scepter_upgrade": false,
+      "on_castbar": true,
+      "on_learnbar": true,
+      "ability_cast_range": [
+        1000
+      ],
+      "ability_cast_range_buffer": 250,
+      "ability_cast_point": [
+        0.2,
+        0.2,
+        0.2,
+        0.2
+      ],
+      "ability_channel_time": [
+        0.0,
+        0.0,
+        0.0,
+        0.0
+      ],
+      "ability_cooldown": [
+        9.0
+      ],
+      "ability_duration": [
+        0.0,
+        0.0,
+        0.0,
+        0.0
+      ],
+      "ability_damage": [
+        0.0,
+        0.0,
+        0.0,
+        0.0
+      ],
+      "ability_mana_cost": [
+        50.0
+      ],
+      "ability_modifier_support_value": 1.0,
+      "ability_modifier_support_bonus": 0.0,
+      "fight_recap_level": 1,
+      "ability_draft_enabled": false,
+      "linked": null,
+      "ability_special": {
+        "axe_width": [
+          100.0
+        ],
+        "axe_speed": [
+          1500.0
+        ],
+        "axe_range": [
+          1000.0
+        ],
+        "axe_damage": [
+          75.0
+        ],
+        "axe_slow_duration": [
+          2.5,
+          3.0,
+          3.5,
+          4.0
+        ],
+        "movement_speed": [
+          40.0
+        ],
+        "axe_spread": [
+          25.0
+        ],
+        "axe_count": [
+          5.0
+        ]
+      }
+    },
+    {
+      "id": 5510,
+      "key": "troll_warlord_whirling_axes_melee",
+      "name": "Whirling Axes (Melee)",
+      "description": "Troll hurls two axes around him in a close range area of effect, damaging enemy units and causing them to miss some attacks.",
+      "image": "https://hgv-hyperstone.azurewebsites.net/abilities/troll_warlord_whirling_axes_melee.png",
+      "hero_id": 95,
+      "ability_type": "DOTA_ABILITY_TYPE_BASIC",
+      "ability_behaviors": [
+        "DOTA_ABILITY_BEHAVIOR_NO_TARGET",
+        "DOTA_ABILITY_BEHAVIOR_IMMEDIATE"
+      ],
+      "ability_unit_target_team": null,
+      "ability_unit_target_type": [],
+      "ability_unit_target_flags": [],
+      "spell_immunity_type": "SPELL_IMMUNITY_ENEMIES_NO",
+      "spell_dispellable_type": "SPELL_DISPELLABLE_YES",
+      "ability_unit_damage_type": "DAMAGE_TYPE_MAGICAL",
+      "is_skill": true,
+      "is_ultimate": false,
+      "has_scepter_upgrade": false,
+      "on_castbar": true,
+      "on_learnbar": true,
+      "ability_cast_range": [
+        0
+      ],
+      "ability_cast_range_buffer": 250,
+      "ability_cast_point": [
+        0.0
+      ],
+      "ability_channel_time": [
+        0.0,
+        0.0,
+        0.0,
+        0.0
+      ],
+      "ability_cooldown": [
+        9.0
+      ],
+      "ability_duration": [
+        0.0,
+        0.0,
+        0.0,
+        0.0
+      ],
+      "ability_damage": [
+        0.0,
+        0.0,
+        0.0,
+        0.0
+      ],
+      "ability_mana_cost": [
+        50.0
+      ],
+      "ability_modifier_support_value": 1.0,
+      "ability_modifier_support_bonus": 0.0,
+      "fight_recap_level": 1,
+      "ability_draft_enabled": false,
+      "linked": null,
+      "ability_special": {
+        "damage": [
+          75.0,
+          125.0,
+          175.0,
+          225.0
+        ],
+        "hit_radius": [
+          100.0
+        ],
+        "max_range": [
+          450.0
+        ],
+        "axe_movement_speed": [
+          1250.0
+        ],
+        "blind_duration": [
+          5.0
+        ],
+        "blind_pct": [
+          60.0
+        ],
+        "whirl_duration": [
+          3.0
+        ]
+      }
+    },
+    {
+      "id": 5511,
+      "key": "troll_warlord_fervor",
+      "name": "Fervor",
+      "description": "With each continuous blow on the same target, Troll gains increased attack speed.  If Troll changes targets, the stacks drop to zero.",
+      "image": "https://hgv-hyperstone.azurewebsites.net/abilities/troll_warlord_fervor.png",
+      "hero_id": 95,
+      "ability_type": "DOTA_ABILITY_TYPE_BASIC",
+      "ability_behaviors": [
+        "DOTA_ABILITY_BEHAVIOR_PASSIVE"
+      ],
+      "ability_unit_target_team": null,
+      "ability_unit_target_type": [],
+      "ability_unit_target_flags": [],
+      "spell_immunity_type": null,
+      "spell_dispellable_type": "SPELL_DISPELLABLE_NO",
+      "ability_unit_damage_type": null,
+      "is_skill": true,
+      "is_ultimate": false,
+      "has_scepter_upgrade": false,
+      "on_castbar": true,
+      "on_learnbar": true,
+      "ability_cast_range": [
+        0
+      ],
+      "ability_cast_range_buffer": 250,
+      "ability_cast_point": [
+        0.0,
+        0.0,
+        0.0,
+        0.0
+      ],
+      "ability_channel_time": [
+        0.0,
+        0.0,
+        0.0,
+        0.0
+      ],
+      "ability_cooldown": [
+        0.0,
+        0.0,
+        0.0,
+        0.0
+      ],
+      "ability_duration": [
+        0.0,
+        0.0,
+        0.0,
+        0.0
+      ],
+      "ability_damage": [
+        0.0,
+        0.0,
+        0.0,
+        0.0
+      ],
+      "ability_mana_cost": [
+        0.0,
+        0.0,
+        0.0,
+        0.0
+      ],
+      "ability_modifier_support_value": 1.0,
+      "ability_modifier_support_bonus": 0.0,
+      "fight_recap_level": 0,
+      "ability_draft_enabled": true,
+      "linked": null,
+      "ability_special": {
+        "max_stacks": [
+          7.0
+        ],
+        "attack_speed": [
+          15.0,
+          20.0,
+          25.0,
+          30.0
+        ]
+      }
+    },
+    {
+      "id": 6251,
+      "key": "generic_hidden",
+      "name": null,
+      "description": null,
+      "image": "https://hgv-hyperstone.azurewebsites.net/abilities/generic_hidden.png",
+      "hero_id": 95,
+      "ability_type": "DOTA_ABILITY_TYPE_BASIC",
+      "ability_behaviors": [
+        "DOTA_ABILITY_BEHAVIOR_HIDDEN",
+        "DOTA_ABILITY_BEHAVIOR_NOT_LEARNABLE"
+      ],
+      "ability_unit_target_team": null,
+      "ability_unit_target_type": [],
+      "ability_unit_target_flags": [],
+      "spell_immunity_type": null,
+      "spell_dispellable_type": null,
+      "ability_unit_damage_type": null,
+      "is_skill": true,
+      "is_ultimate": false,
+      "has_scepter_upgrade": false,
+      "on_castbar": true,
+      "on_learnbar": true,
+      "ability_cast_range": [
+        0
+      ],
+      "ability_cast_range_buffer": 250,
+      "ability_cast_point": [
+        0.0,
+        0.0,
+        0.0,
+        0.0
+      ],
+      "ability_channel_time": [
+        0.0,
+        0.0,
+        0.0,
+        0.0
+      ],
+      "ability_cooldown": [
+        0.0,
+        0.0,
+        0.0,
+        0.0
+      ],
+      "ability_duration": [
+        0.0,
+        0.0,
+        0.0,
+        0.0
+      ],
+      "ability_damage": [
+        0.0,
+        0.0,
+        0.0,
+        0.0
+      ],
+      "ability_mana_cost": [
+        0.0,
+        0.0,
+        0.0,
+        0.0
+      ],
+      "ability_modifier_support_value": 1.0,
+      "ability_modifier_support_bonus": 0.0,
+      "fight_recap_level": 0,
+      "ability_draft_enabled": false,
+      "linked": null,
+      "ability_special": {}
+    },
+    {
+      "id": 5512,
+      "key": "troll_warlord_battle_trance",
+      "name": "Battle Trance",
+      "description": "Troll's presence on the battlefield increases the attack speed of himself and all allied heroes.",
+      "image": "https://hgv-hyperstone.azurewebsites.net/abilities/troll_warlord_battle_trance.png",
+      "hero_id": 95,
+      "ability_type": "DOTA_ABILITY_TYPE_ULTIMATE",
+      "ability_behaviors": [
+        "DOTA_ABILITY_BEHAVIOR_NO_TARGET",
+        "DOTA_ABILITY_BEHAVIOR_IMMEDIATE"
+      ],
+      "ability_unit_target_team": null,
+      "ability_unit_target_type": [],
+      "ability_unit_target_flags": [],
+      "spell_immunity_type": null,
+      "spell_dispellable_type": "SPELL_DISPELLABLE_NO",
+      "ability_unit_damage_type": null,
+      "is_skill": false,
+      "is_ultimate": true,
+      "has_scepter_upgrade": false,
+      "on_castbar": true,
+      "on_learnbar": true,
+      "ability_cast_range": [
+        0
+      ],
+      "ability_cast_range_buffer": 250,
+      "ability_cast_point": [
+        0.0,
+        0.0,
+        0.0
+      ],
+      "ability_channel_time": [
+        0.0,
+        0.0,
+        0.0,
+        0.0
+      ],
+      "ability_cooldown": [
+        35.0
+      ],
+      "ability_duration": [
+        0.0,
+        0.0,
+        0.0,
+        0.0
+      ],
+      "ability_damage": [
+        0.0,
+        0.0,
+        0.0,
+        0.0
+      ],
+      "ability_mana_cost": [
+        75.0,
+        75.0,
+        75.0
+      ],
+      "ability_modifier_support_value": 1.0,
+      "ability_modifier_support_bonus": 0.0,
+      "fight_recap_level": 2,
+      "ability_draft_enabled": true,
+      "linked": null,
+      "ability_special": {
+        "trance_duration": [
+          5.0
+        ],
+        "attack_speed": [
+          60.0,
+          120.0,
+          180.0
+        ]
+      }
+    }
+  ],
+  "talents": [
+    {
+      "id": 6029,
+      "key": "special_bonus_agility_10",
+      "name": "+10 Agility",
+      "description": null
+    },
+    {
+      "id": 5903,
+      "key": "special_bonus_hp_250",
+      "name": "+250 Health",
+      "description": null
+    },
+    {
+      "id": 6958,
+      "key": "special_bonus_unique_troll_warlord_2",
+      "name": "+3 Max Fervor Stacks",
+      "description": null
+    },
+    {
+      "id": 6959,
+      "key": "special_bonus_unique_troll_warlord_3",
+      "name": "+75 Whirling Axes Damage",
+      "description": null
+    },
+    {
+      "id": 5973,
+      "key": "special_bonus_evasion_20",
+      "name": "20% Evasion",
+      "description": null
+    },
+    {
+      "id": 5941,
+      "key": "special_bonus_attack_damage_50",
+      "name": "+50 Damage",
+      "description": null
+    },
+    {
+      "id": 6154,
+      "key": "special_bonus_unique_troll_warlord",
+      "name": "-6s Whirling Axes Cooldown",
+      "description": null
+    },
+    {
+      "id": 6960,
+      "key": "special_bonus_unique_troll_warlord_4",
+      "name": "Battle Trance Dispels",
+      "description": "Applies a basic dispel to Troll Warlord and all buffed Heroes."
+    }
+  ],
+  "legs": 2,
+  "armor_physical": -1.0,
+  "magical_resistance": 25,
+  "attack_capabilities": "DOTA_UNIT_CAP_RANGED_ATTACK",
+  "attack_damage_min": 17,
+  "attack_damage_max": 35,
+  "attack_rate": 1.7,
+  "attack_animation_point": 0.3,
+  "attack_acquisition_range": 800,
+  "attack_range": 500,
+  "projectile_speed": 1200,
+  "attribute_primary": "DOTA_ATTRIBUTE_AGILITY",
+  "attribute_base_strength": 21,
+  "attribute_strength_gain": 2.5,
+  "attribute_base_intelligence": 13,
+  "attribute_intelligence_gain": 1.0,
+  "attribute_base_agility": 21,
+  "attribute_agility_gain": 2.5,
+  "status_health": 200,
+  "status_health_regen": 1.75,
+  "status_mana": 75,
+  "status_mana_regen": 0.9,
+  "bounty_xp": 62,
+  "bounty_gold_min": 0,
+  "bounty_gold_max": 0,
+  "movement_capabilities": "DOTA_UNIT_CAP_MOVE_GROUND",
+  "movement_speed": 295,
+  "movement_turn_rate": 0.5,
+  "has_aggressive_stance": false,
+  "team": 1,
+  "team_name": "Radiant",
+  "vision_daytime_range": 1800,
+  "vision_nighttime_range": 0,
+  "bot": {
+    "hero_types": null,
+    "solo_desire": 0,
+    "requires_babysit": 0,
+    "provides_babysit": 0,
+    "survival_rating": 0,
+    "requires_farm": 0,
+    "provides_setup": 0,
+    "requires_setup": 0
+  }
+}

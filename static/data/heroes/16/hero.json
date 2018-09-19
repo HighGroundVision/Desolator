@@ -1,0 +1,672 @@
+{
+  "id": 16,
+  "name": "Sand King",
+  "key": "npc_dota_hero_sand_king",
+  "image_profile": "https://hgv-hyperstone.azurewebsites.net/heroes/profile/npc_dota_hero_sand_king.png",
+  "image_icon": "https://hgv-hyperstone.azurewebsites.net/heroes/icons/npc_dota_hero_sand_king.png",
+  "image_banner": "https://hgv-hyperstone.azurewebsites.net/heroes/banner/npc_dota_hero_sand_king.png",
+  "enabled": true,
+  "new_player_enable": true,
+  "captains_mode_enabled": true,
+  "ability_draft_enabled": true,
+  "complexity": 2,
+  "roles": [
+    {
+      "role": "Initiator",
+      "level": 3
+    },
+    {
+      "role": "Disabler",
+      "level": 2
+    },
+    {
+      "role": "Support",
+      "level": 1
+    },
+    {
+      "role": "Nuker",
+      "level": 2
+    },
+    {
+      "role": "Escape",
+      "level": 2
+    },
+    {
+      "role": "Jungler",
+      "level": 1
+    }
+  ],
+  "bot_implemented": true,
+  "abilities": [
+    {
+      "id": 5102,
+      "key": "sandking_burrowstrike",
+      "name": "Burrowstrike",
+      "description": "Sand King burrows into the ground and tunnels forward, damaging and stunning enemy units above him as he resurfaces.\\n\\nUpgradable by Aghanim's Scepter.",
+      "image": "https://hgv-hyperstone.azurewebsites.net/abilities/sandking_burrowstrike.png",
+      "hero_id": 16,
+      "ability_type": "DOTA_ABILITY_TYPE_BASIC",
+      "ability_behaviors": [
+        "DOTA_ABILITY_BEHAVIOR_POINT",
+        "DOTA_ABILITY_BEHAVIOR_UNIT_TARGET",
+        "DOTA_ABILITY_BEHAVIOR_ROOT_DISABLES"
+      ],
+      "ability_unit_target_team": "DOTA_UNIT_TARGET_TEAM_ENEMY",
+      "ability_unit_target_type": [
+        "DOTA_UNIT_TARGET_HERO",
+        "DOTA_UNIT_TARGET_BASIC"
+      ],
+      "ability_unit_target_flags": [],
+      "spell_immunity_type": "SPELL_IMMUNITY_ENEMIES_NO",
+      "spell_dispellable_type": "SPELL_DISPELLABLE_YES_STRONG",
+      "ability_unit_damage_type": "DAMAGE_TYPE_MAGICAL",
+      "is_skill": true,
+      "is_ultimate": false,
+      "has_scepter_upgrade": true,
+      "on_castbar": true,
+      "on_learnbar": true,
+      "ability_cast_range": [
+        350,
+        450,
+        550,
+        650
+      ],
+      "ability_cast_range_buffer": 250,
+      "ability_cast_point": [
+        0.0,
+        0.0,
+        0.0,
+        0.0
+      ],
+      "ability_channel_time": [
+        0.0,
+        0.0,
+        0.0,
+        0.0
+      ],
+      "ability_cooldown": [
+        14.0,
+        13.0,
+        12.0,
+        11.0
+      ],
+      "ability_duration": [
+        0.0,
+        0.0,
+        0.0,
+        0.0
+      ],
+      "ability_damage": [
+        85.0,
+        150.0,
+        215.0,
+        280.0
+      ],
+      "ability_mana_cost": [
+        110.0,
+        120.0,
+        130.0,
+        140.0
+      ],
+      "ability_modifier_support_value": 1.0,
+      "ability_modifier_support_bonus": 0.0,
+      "fight_recap_level": 1,
+      "ability_draft_enabled": true,
+      "linked": null,
+      "ability_special": {
+        "burrow_width": [
+          150.0
+        ],
+        "burrow_duration": [
+          1.9,
+          2.0,
+          2.1,
+          2.2
+        ],
+        "burrow_speed": [
+          2000.0
+        ],
+        "burrow_anim_time": [
+          0.52
+        ],
+        "tooltip_range": [
+          350.0,
+          450.0,
+          550.0,
+          650.0
+        ],
+        "cast_range_scepter": [
+          700.0,
+          900.0,
+          1100.0,
+          1300.0
+        ],
+        "burrow_speed_scepter": [
+          3000.0
+        ]
+      }
+    },
+    {
+      "id": 5103,
+      "key": "sandking_sand_storm",
+      "name": "Sand Storm",
+      "description": "CHANNELED - Sand King creates a fearsome sandstorm that damages enemy units while hiding him from vision.  The invisibility remains for a short duration after the sandstorm ends.",
+      "image": "https://hgv-hyperstone.azurewebsites.net/abilities/sandking_sand_storm.png",
+      "hero_id": 16,
+      "ability_type": "DOTA_ABILITY_TYPE_BASIC",
+      "ability_behaviors": [
+        "DOTA_ABILITY_BEHAVIOR_NO_TARGET",
+        "DOTA_ABILITY_BEHAVIOR_CHANNELLED",
+        "DOTA_ABILITY_BEHAVIOR_DONT_RESUME_ATTACK"
+      ],
+      "ability_unit_target_team": null,
+      "ability_unit_target_type": [],
+      "ability_unit_target_flags": [],
+      "spell_immunity_type": "SPELL_IMMUNITY_ENEMIES_NO",
+      "spell_dispellable_type": "SPELL_DISPELLABLE_NO",
+      "ability_unit_damage_type": "DAMAGE_TYPE_MAGICAL",
+      "is_skill": true,
+      "is_ultimate": false,
+      "has_scepter_upgrade": false,
+      "on_castbar": true,
+      "on_learnbar": true,
+      "ability_cast_range": [
+        0
+      ],
+      "ability_cast_range_buffer": 250,
+      "ability_cast_point": [
+        0.0,
+        0.0,
+        0.0,
+        0.0
+      ],
+      "ability_channel_time": [
+        50.0
+      ],
+      "ability_cooldown": [
+        34.0,
+        26.0,
+        18.0,
+        10.0
+      ],
+      "ability_duration": [
+        50.0
+      ],
+      "ability_damage": [
+        0.0,
+        0.0,
+        0.0,
+        0.0
+      ],
+      "ability_mana_cost": [
+        60.0,
+        50.0,
+        40.0,
+        30.0
+      ],
+      "ability_modifier_support_value": 1.0,
+      "ability_modifier_support_bonus": 0.0,
+      "fight_recap_level": 1,
+      "ability_draft_enabled": true,
+      "linked": null,
+      "ability_special": {
+        "sand_storm_invis_delay": [
+          0.9,
+          1.1,
+          1.3,
+          1.5
+        ],
+        "sand_storm_radius": [
+          525.0
+        ],
+        "AbilityDuration": [
+          50.0
+        ],
+        "sand_storm_damage": [
+          40.0,
+          60.0,
+          80.0,
+          100.0
+        ]
+      }
+    },
+    {
+      "id": 5104,
+      "key": "sandking_caustic_finale",
+      "name": "Caustic Finale",
+      "description": "Sand King's attacks inject a venom that causes enemy units to violently explode when its timer expires, or when the unit dies, damaging and slowing nearby enemies. Deals less damage if its timer expires.",
+      "image": "https://hgv-hyperstone.azurewebsites.net/abilities/sandking_caustic_finale.png",
+      "hero_id": 16,
+      "ability_type": "DOTA_ABILITY_TYPE_BASIC",
+      "ability_behaviors": [
+        "DOTA_ABILITY_BEHAVIOR_PASSIVE"
+      ],
+      "ability_unit_target_team": null,
+      "ability_unit_target_type": [],
+      "ability_unit_target_flags": [],
+      "spell_immunity_type": "SPELL_IMMUNITY_ENEMIES_NO",
+      "spell_dispellable_type": "SPELL_DISPELLABLE_YES",
+      "ability_unit_damage_type": "DAMAGE_TYPE_MAGICAL",
+      "is_skill": true,
+      "is_ultimate": false,
+      "has_scepter_upgrade": false,
+      "on_castbar": true,
+      "on_learnbar": true,
+      "ability_cast_range": [
+        0
+      ],
+      "ability_cast_range_buffer": 250,
+      "ability_cast_point": [
+        0.0,
+        0.0,
+        0.0,
+        0.0
+      ],
+      "ability_channel_time": [
+        0.0,
+        0.0,
+        0.0,
+        0.0
+      ],
+      "ability_cooldown": [
+        0.0,
+        0.0,
+        0.0,
+        0.0
+      ],
+      "ability_duration": [
+        0.0,
+        0.0,
+        0.0,
+        0.0
+      ],
+      "ability_damage": [
+        0.0,
+        0.0,
+        0.0,
+        0.0
+      ],
+      "ability_mana_cost": [
+        0.0,
+        0.0,
+        0.0,
+        0.0
+      ],
+      "ability_modifier_support_value": 1.0,
+      "ability_modifier_support_bonus": 0.0,
+      "fight_recap_level": 0,
+      "ability_draft_enabled": true,
+      "linked": null,
+      "ability_special": {
+        "caustic_finale_radius": [
+          400.0
+        ],
+        "caustic_finale_damage": [
+          90.0,
+          130.0,
+          170.0,
+          220.0
+        ],
+        "caustic_finale_damage_expire": [
+          20.0,
+          50.0,
+          80.0,
+          110.0
+        ],
+        "caustic_finale_duration": [
+          6.0
+        ],
+        "caustic_finale_slow": [
+          -15.0,
+          -20.0,
+          -25.0,
+          -30.0
+        ],
+        "caustic_finale_slow_duration": [
+          3.0
+        ],
+        "caustic_finale_expire_dmg_pct_tooltip": [
+          50.0
+        ]
+      }
+    },
+    {
+      "id": 6251,
+      "key": "generic_hidden",
+      "name": null,
+      "description": null,
+      "image": "https://hgv-hyperstone.azurewebsites.net/abilities/generic_hidden.png",
+      "hero_id": 16,
+      "ability_type": "DOTA_ABILITY_TYPE_BASIC",
+      "ability_behaviors": [
+        "DOTA_ABILITY_BEHAVIOR_HIDDEN",
+        "DOTA_ABILITY_BEHAVIOR_NOT_LEARNABLE"
+      ],
+      "ability_unit_target_team": null,
+      "ability_unit_target_type": [],
+      "ability_unit_target_flags": [],
+      "spell_immunity_type": null,
+      "spell_dispellable_type": null,
+      "ability_unit_damage_type": null,
+      "is_skill": true,
+      "is_ultimate": false,
+      "has_scepter_upgrade": false,
+      "on_castbar": true,
+      "on_learnbar": true,
+      "ability_cast_range": [
+        0
+      ],
+      "ability_cast_range_buffer": 250,
+      "ability_cast_point": [
+        0.0,
+        0.0,
+        0.0,
+        0.0
+      ],
+      "ability_channel_time": [
+        0.0,
+        0.0,
+        0.0,
+        0.0
+      ],
+      "ability_cooldown": [
+        0.0,
+        0.0,
+        0.0,
+        0.0
+      ],
+      "ability_duration": [
+        0.0,
+        0.0,
+        0.0,
+        0.0
+      ],
+      "ability_damage": [
+        0.0,
+        0.0,
+        0.0,
+        0.0
+      ],
+      "ability_mana_cost": [
+        0.0,
+        0.0,
+        0.0,
+        0.0
+      ],
+      "ability_modifier_support_value": 1.0,
+      "ability_modifier_support_bonus": 0.0,
+      "fight_recap_level": 0,
+      "ability_draft_enabled": false,
+      "linked": null,
+      "ability_special": {}
+    },
+    {
+      "id": 6251,
+      "key": "generic_hidden",
+      "name": null,
+      "description": null,
+      "image": "https://hgv-hyperstone.azurewebsites.net/abilities/generic_hidden.png",
+      "hero_id": 16,
+      "ability_type": "DOTA_ABILITY_TYPE_BASIC",
+      "ability_behaviors": [
+        "DOTA_ABILITY_BEHAVIOR_HIDDEN",
+        "DOTA_ABILITY_BEHAVIOR_NOT_LEARNABLE"
+      ],
+      "ability_unit_target_team": null,
+      "ability_unit_target_type": [],
+      "ability_unit_target_flags": [],
+      "spell_immunity_type": null,
+      "spell_dispellable_type": null,
+      "ability_unit_damage_type": null,
+      "is_skill": true,
+      "is_ultimate": false,
+      "has_scepter_upgrade": false,
+      "on_castbar": true,
+      "on_learnbar": true,
+      "ability_cast_range": [
+        0
+      ],
+      "ability_cast_range_buffer": 250,
+      "ability_cast_point": [
+        0.0,
+        0.0,
+        0.0,
+        0.0
+      ],
+      "ability_channel_time": [
+        0.0,
+        0.0,
+        0.0,
+        0.0
+      ],
+      "ability_cooldown": [
+        0.0,
+        0.0,
+        0.0,
+        0.0
+      ],
+      "ability_duration": [
+        0.0,
+        0.0,
+        0.0,
+        0.0
+      ],
+      "ability_damage": [
+        0.0,
+        0.0,
+        0.0,
+        0.0
+      ],
+      "ability_mana_cost": [
+        0.0,
+        0.0,
+        0.0,
+        0.0
+      ],
+      "ability_modifier_support_value": 1.0,
+      "ability_modifier_support_bonus": 0.0,
+      "fight_recap_level": 0,
+      "ability_draft_enabled": false,
+      "linked": null,
+      "ability_special": {}
+    },
+    {
+      "id": 5105,
+      "key": "sandking_epicenter",
+      "name": "Epicenter",
+      "description": "CHANNELED - After channeling for 2 seconds, Sand King sends a disturbance into the earth, causing it to shudder violently. All enemies caught within range will take damage and become slowed. Each subsequent pulse increases the radius of damage dealt.",
+      "image": "https://hgv-hyperstone.azurewebsites.net/abilities/sandking_epicenter.png",
+      "hero_id": 16,
+      "ability_type": "DOTA_ABILITY_TYPE_ULTIMATE",
+      "ability_behaviors": [
+        "DOTA_ABILITY_BEHAVIOR_CHANNELLED",
+        "DOTA_ABILITY_BEHAVIOR_NO_TARGET",
+        "DOTA_ABILITY_BEHAVIOR_IGNORE_BACKSWING"
+      ],
+      "ability_unit_target_team": null,
+      "ability_unit_target_type": [],
+      "ability_unit_target_flags": [],
+      "spell_immunity_type": "SPELL_IMMUNITY_ENEMIES_NO",
+      "spell_dispellable_type": "SPELL_DISPELLABLE_NO",
+      "ability_unit_damage_type": "DAMAGE_TYPE_MAGICAL",
+      "is_skill": false,
+      "is_ultimate": true,
+      "has_scepter_upgrade": false,
+      "on_castbar": true,
+      "on_learnbar": true,
+      "ability_cast_range": [
+        0
+      ],
+      "ability_cast_range_buffer": 250,
+      "ability_cast_point": [
+        0.0,
+        0.0,
+        0.0,
+        0.0
+      ],
+      "ability_channel_time": [
+        2.0,
+        2.0,
+        2.0
+      ],
+      "ability_cooldown": [
+        120.0,
+        110.0,
+        100.0
+      ],
+      "ability_duration": [
+        3.0,
+        3.0,
+        3.0
+      ],
+      "ability_damage": [
+        0.0,
+        0.0,
+        0.0,
+        0.0
+      ],
+      "ability_mana_cost": [
+        150.0,
+        225.0,
+        300.0
+      ],
+      "ability_modifier_support_value": 0.2,
+      "ability_modifier_support_bonus": 0.0,
+      "fight_recap_level": 2,
+      "ability_draft_enabled": true,
+      "linked": null,
+      "ability_special": {
+        "epicenter_radius": [
+          275.0,
+          325.0,
+          375.0,
+          425.0,
+          475.0,
+          525.0,
+          575.0,
+          650.0,
+          675.0,
+          700.0,
+          725.0,
+          750.0,
+          775.0,
+          800.0
+        ],
+        "epicenter_pulses": [
+          6.0,
+          8.0,
+          10.0
+        ],
+        "epicenter_damage": [
+          110.0,
+          110.0,
+          110.0
+        ],
+        "epicenter_slow": [
+          -30.0,
+          -30.0,
+          -30.0
+        ],
+        "epicenter_slow_as": [
+          -30.0
+        ],
+        "epicenter_slow_duration_tooltip": [
+          3.0
+        ]
+      }
+    }
+  ],
+  "talents": [
+    {
+      "id": 5919,
+      "key": "special_bonus_movement_speed_25",
+      "name": "+25 Movement Speed",
+      "description": null
+    },
+    {
+      "id": 5959,
+      "key": "special_bonus_hp_200",
+      "name": "+200 Health",
+      "description": null
+    },
+    {
+      "id": 6409,
+      "key": "special_bonus_unique_sand_king_2",
+      "name": "+50 Sand Storm DPS",
+      "description": null
+    },
+    {
+      "id": 6530,
+      "key": "special_bonus_unique_sand_king_3",
+      "name": "-50 Epicenter Attack Slow",
+      "description": null
+    },
+    {
+      "id": 6004,
+      "key": "special_bonus_armor_10",
+      "name": "+10 Armor",
+      "description": null
+    },
+    {
+      "id": 6207,
+      "key": "special_bonus_unique_sand_king",
+      "name": "+4 Epicenter Pulses",
+      "description": null
+    },
+    {
+      "id": 8351,
+      "key": "special_bonus_hp_regen_35",
+      "name": "+35 Health Regen",
+      "description": null
+    },
+    {
+      "id": 6872,
+      "key": "special_bonus_unique_sand_king_4",
+      "name": "50% Sand Storm Slow and Blind",
+      "description": "Enemy units in range of Sand Storm have their movement speed slowed by %value%%% and miss %value%%% of their attacks."
+    }
+  ],
+  "legs": 6,
+  "armor_physical": -1.0,
+  "magical_resistance": 25,
+  "attack_capabilities": "DOTA_UNIT_CAP_MELEE_ATTACK",
+  "attack_damage_min": 25,
+  "attack_damage_max": 35,
+  "attack_rate": 1.7,
+  "attack_animation_point": 0.53,
+  "attack_acquisition_range": 600,
+  "attack_range": 150,
+  "projectile_speed": 900,
+  "attribute_primary": "DOTA_ATTRIBUTE_STRENGTH",
+  "attribute_base_strength": 22,
+  "attribute_strength_gain": 2.9,
+  "attribute_base_intelligence": 16,
+  "attribute_intelligence_gain": 1.8,
+  "attribute_base_agility": 19,
+  "attribute_agility_gain": 2.1,
+  "status_health": 200,
+  "status_health_regen": 1.5,
+  "status_mana": 75,
+  "status_mana_regen": 0.9,
+  "bounty_xp": 62,
+  "bounty_gold_min": 0,
+  "bounty_gold_max": 0,
+  "movement_capabilities": "DOTA_UNIT_CAP_MOVE_GROUND",
+  "movement_speed": 285,
+  "movement_turn_rate": 0.5,
+  "has_aggressive_stance": false,
+  "team": 1,
+  "team_name": "Radiant",
+  "vision_daytime_range": 1800,
+  "vision_nighttime_range": 0,
+  "bot": {
+    "hero_types": null,
+    "solo_desire": 0,
+    "requires_babysit": 0,
+    "provides_babysit": 0,
+    "survival_rating": 0,
+    "requires_farm": 0,
+    "provides_setup": 0,
+    "requires_setup": 0
+  }
+}

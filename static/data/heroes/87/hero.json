@@ -1,0 +1,637 @@
+{
+  "id": 87,
+  "name": "Disruptor",
+  "key": "npc_dota_hero_disruptor",
+  "image_profile": "https://hgv-hyperstone.azurewebsites.net/heroes/profile/npc_dota_hero_disruptor.png",
+  "image_icon": "https://hgv-hyperstone.azurewebsites.net/heroes/icons/npc_dota_hero_disruptor.png",
+  "image_banner": "https://hgv-hyperstone.azurewebsites.net/heroes/banner/npc_dota_hero_disruptor.png",
+  "enabled": true,
+  "new_player_enable": true,
+  "captains_mode_enabled": true,
+  "ability_draft_enabled": true,
+  "complexity": 2,
+  "roles": [
+    {
+      "role": "Support",
+      "level": 2
+    },
+    {
+      "role": "Disabler",
+      "level": 2
+    },
+    {
+      "role": "Nuker",
+      "level": 1
+    },
+    {
+      "role": "Initiator",
+      "level": 1
+    }
+  ],
+  "bot_implemented": false,
+  "abilities": [
+    {
+      "id": 5458,
+      "key": "disruptor_thunder_strike",
+      "name": "Thunder Strike",
+      "description": "Repeatedly strikes the targeted unit with lightning.  Each strike damages nearby enemy units in a small radius.  Provides vision of its target.",
+      "image": "https://hgv-hyperstone.azurewebsites.net/abilities/disruptor_thunder_strike.png",
+      "hero_id": 87,
+      "ability_type": "DOTA_ABILITY_TYPE_BASIC",
+      "ability_behaviors": [
+        "DOTA_ABILITY_BEHAVIOR_UNIT_TARGET",
+        "DOTA_ABILITY_BEHAVIOR_IGNORE_BACKSWING"
+      ],
+      "ability_unit_target_team": "DOTA_UNIT_TARGET_TEAM_ENEMY",
+      "ability_unit_target_type": [
+        "DOTA_UNIT_TARGET_HERO",
+        "DOTA_UNIT_TARGET_BASIC"
+      ],
+      "ability_unit_target_flags": [],
+      "spell_immunity_type": "SPELL_IMMUNITY_ENEMIES_NO",
+      "spell_dispellable_type": "SPELL_DISPELLABLE_YES",
+      "ability_unit_damage_type": "DAMAGE_TYPE_MAGICAL",
+      "is_skill": true,
+      "is_ultimate": false,
+      "has_scepter_upgrade": false,
+      "on_castbar": true,
+      "on_learnbar": true,
+      "ability_cast_range": [
+        800,
+        800,
+        800,
+        800
+      ],
+      "ability_cast_range_buffer": 250,
+      "ability_cast_point": [
+        0.05,
+        0.05,
+        0.05,
+        0.05
+      ],
+      "ability_channel_time": [
+        0.0,
+        0.0,
+        0.0,
+        0.0
+      ],
+      "ability_cooldown": [
+        18.0,
+        15.0,
+        12.0,
+        9.0
+      ],
+      "ability_duration": [
+        0.0,
+        0.0,
+        0.0,
+        0.0
+      ],
+      "ability_damage": [
+        0.0,
+        0.0,
+        0.0,
+        0.0
+      ],
+      "ability_mana_cost": [
+        130.0,
+        130.0,
+        130.0,
+        130.0
+      ],
+      "ability_modifier_support_value": 1.0,
+      "ability_modifier_support_bonus": 0.0,
+      "fight_recap_level": 1,
+      "ability_draft_enabled": true,
+      "linked": null,
+      "ability_special": {
+        "radius": [
+          240.0,
+          240.0,
+          240.0,
+          240.0
+        ],
+        "strikes": [
+          4.0,
+          4.0,
+          4.0,
+          4.0
+        ],
+        "strike_interval": [
+          2.0,
+          2.0,
+          2.0,
+          2.0
+        ],
+        "strike_damage": [
+          40.0,
+          60.0,
+          80.0,
+          100.0
+        ]
+      }
+    },
+    {
+      "id": 5459,
+      "key": "disruptor_glimpse",
+      "name": "Glimpse",
+      "description": "Teleports the target hero back to where it was 4 seconds ago.  Instantly kills illusions.",
+      "image": "https://hgv-hyperstone.azurewebsites.net/abilities/disruptor_glimpse.png",
+      "hero_id": 87,
+      "ability_type": "DOTA_ABILITY_TYPE_BASIC",
+      "ability_behaviors": [
+        "DOTA_ABILITY_BEHAVIOR_UNIT_TARGET"
+      ],
+      "ability_unit_target_team": "DOTA_UNIT_TARGET_TEAM_ENEMY",
+      "ability_unit_target_type": [
+        "DOTA_UNIT_TARGET_HERO"
+      ],
+      "ability_unit_target_flags": [
+        "DOTA_UNIT_TARGET_FLAG_NOT_CREEP_HERO"
+      ],
+      "spell_immunity_type": "SPELL_IMMUNITY_ENEMIES_NO",
+      "spell_dispellable_type": "SPELL_DISPELLABLE_NO",
+      "ability_unit_damage_type": null,
+      "is_skill": true,
+      "is_ultimate": false,
+      "has_scepter_upgrade": false,
+      "on_castbar": true,
+      "on_learnbar": true,
+      "ability_cast_range": [
+        600,
+        1000,
+        1400,
+        1800
+      ],
+      "ability_cast_range_buffer": 250,
+      "ability_cast_point": [
+        0.05,
+        0.05,
+        0.05,
+        0.05
+      ],
+      "ability_channel_time": [
+        0.0,
+        0.0,
+        0.0,
+        0.0
+      ],
+      "ability_cooldown": [
+        60.0,
+        46.0,
+        32.0,
+        18.0
+      ],
+      "ability_duration": [
+        0.0,
+        0.0,
+        0.0,
+        0.0
+      ],
+      "ability_damage": [
+        0.0,
+        0.0,
+        0.0,
+        0.0
+      ],
+      "ability_mana_cost": [
+        100.0
+      ],
+      "ability_modifier_support_value": 1.0,
+      "ability_modifier_support_bonus": 0.0,
+      "fight_recap_level": 1,
+      "ability_draft_enabled": true,
+      "linked": null,
+      "ability_special": {
+        "backtrack_time": [
+          4.0,
+          4.0,
+          4.0,
+          4.0
+        ],
+        "cast_range": [
+          600.0,
+          1000.0,
+          1400.0,
+          1800.0
+        ]
+      }
+    },
+    {
+      "id": 5460,
+      "key": "disruptor_kinetic_field",
+      "name": "Kinetic Field",
+      "description": "After a short formation time, creates a circular barrier of kinetic energy that enemies can't pass.",
+      "image": "https://hgv-hyperstone.azurewebsites.net/abilities/disruptor_kinetic_field.png",
+      "hero_id": 87,
+      "ability_type": "DOTA_ABILITY_TYPE_BASIC",
+      "ability_behaviors": [
+        "DOTA_ABILITY_BEHAVIOR_POINT",
+        "DOTA_ABILITY_BEHAVIOR_AOE",
+        "DOTA_ABILITY_BEHAVIOR_IGNORE_BACKSWING"
+      ],
+      "ability_unit_target_team": null,
+      "ability_unit_target_type": [],
+      "ability_unit_target_flags": [],
+      "spell_immunity_type": "SPELL_IMMUNITY_ENEMIES_NO",
+      "spell_dispellable_type": null,
+      "ability_unit_damage_type": null,
+      "is_skill": true,
+      "is_ultimate": false,
+      "has_scepter_upgrade": false,
+      "on_castbar": true,
+      "on_learnbar": true,
+      "ability_cast_range": [
+        900,
+        900,
+        900,
+        900
+      ],
+      "ability_cast_range_buffer": 250,
+      "ability_cast_point": [
+        0.05,
+        0.05,
+        0.05,
+        0.05
+      ],
+      "ability_channel_time": [
+        0.0,
+        0.0,
+        0.0,
+        0.0
+      ],
+      "ability_cooldown": [
+        19.0,
+        16.0,
+        13.0,
+        10.0
+      ],
+      "ability_duration": [
+        0.0,
+        0.0,
+        0.0,
+        0.0
+      ],
+      "ability_damage": [
+        0.0,
+        0.0,
+        0.0,
+        0.0
+      ],
+      "ability_mana_cost": [
+        70.0,
+        70.0,
+        70.0,
+        70.0
+      ],
+      "ability_modifier_support_value": 1.0,
+      "ability_modifier_support_bonus": 0.0,
+      "fight_recap_level": 1,
+      "ability_draft_enabled": true,
+      "linked": null,
+      "ability_special": {
+        "radius": [
+          340.0
+        ],
+        "formation_time": [
+          1.2,
+          1.2,
+          1.2,
+          1.2
+        ],
+        "duration": [
+          2.6,
+          3.2,
+          3.8,
+          4.4
+        ]
+      }
+    },
+    {
+      "id": 6251,
+      "key": "generic_hidden",
+      "name": null,
+      "description": null,
+      "image": "https://hgv-hyperstone.azurewebsites.net/abilities/generic_hidden.png",
+      "hero_id": 87,
+      "ability_type": "DOTA_ABILITY_TYPE_BASIC",
+      "ability_behaviors": [
+        "DOTA_ABILITY_BEHAVIOR_HIDDEN",
+        "DOTA_ABILITY_BEHAVIOR_NOT_LEARNABLE"
+      ],
+      "ability_unit_target_team": null,
+      "ability_unit_target_type": [],
+      "ability_unit_target_flags": [],
+      "spell_immunity_type": null,
+      "spell_dispellable_type": null,
+      "ability_unit_damage_type": null,
+      "is_skill": true,
+      "is_ultimate": false,
+      "has_scepter_upgrade": false,
+      "on_castbar": true,
+      "on_learnbar": true,
+      "ability_cast_range": [
+        0
+      ],
+      "ability_cast_range_buffer": 250,
+      "ability_cast_point": [
+        0.0,
+        0.0,
+        0.0,
+        0.0
+      ],
+      "ability_channel_time": [
+        0.0,
+        0.0,
+        0.0,
+        0.0
+      ],
+      "ability_cooldown": [
+        0.0,
+        0.0,
+        0.0,
+        0.0
+      ],
+      "ability_duration": [
+        0.0,
+        0.0,
+        0.0,
+        0.0
+      ],
+      "ability_damage": [
+        0.0,
+        0.0,
+        0.0,
+        0.0
+      ],
+      "ability_mana_cost": [
+        0.0,
+        0.0,
+        0.0,
+        0.0
+      ],
+      "ability_modifier_support_value": 1.0,
+      "ability_modifier_support_bonus": 0.0,
+      "fight_recap_level": 0,
+      "ability_draft_enabled": false,
+      "linked": null,
+      "ability_special": {}
+    },
+    {
+      "id": 6251,
+      "key": "generic_hidden",
+      "name": null,
+      "description": null,
+      "image": "https://hgv-hyperstone.azurewebsites.net/abilities/generic_hidden.png",
+      "hero_id": 87,
+      "ability_type": "DOTA_ABILITY_TYPE_BASIC",
+      "ability_behaviors": [
+        "DOTA_ABILITY_BEHAVIOR_HIDDEN",
+        "DOTA_ABILITY_BEHAVIOR_NOT_LEARNABLE"
+      ],
+      "ability_unit_target_team": null,
+      "ability_unit_target_type": [],
+      "ability_unit_target_flags": [],
+      "spell_immunity_type": null,
+      "spell_dispellable_type": null,
+      "ability_unit_damage_type": null,
+      "is_skill": true,
+      "is_ultimate": false,
+      "has_scepter_upgrade": false,
+      "on_castbar": true,
+      "on_learnbar": true,
+      "ability_cast_range": [
+        0
+      ],
+      "ability_cast_range_buffer": 250,
+      "ability_cast_point": [
+        0.0,
+        0.0,
+        0.0,
+        0.0
+      ],
+      "ability_channel_time": [
+        0.0,
+        0.0,
+        0.0,
+        0.0
+      ],
+      "ability_cooldown": [
+        0.0,
+        0.0,
+        0.0,
+        0.0
+      ],
+      "ability_duration": [
+        0.0,
+        0.0,
+        0.0,
+        0.0
+      ],
+      "ability_damage": [
+        0.0,
+        0.0,
+        0.0,
+        0.0
+      ],
+      "ability_mana_cost": [
+        0.0,
+        0.0,
+        0.0,
+        0.0
+      ],
+      "ability_modifier_support_value": 1.0,
+      "ability_modifier_support_bonus": 0.0,
+      "fight_recap_level": 0,
+      "ability_draft_enabled": false,
+      "linked": null,
+      "ability_special": {}
+    },
+    {
+      "id": 5461,
+      "key": "disruptor_static_storm",
+      "name": "Static Storm",
+      "description": "Creates a damaging static storm that also silences all enemy units in the area for the duration.  The damage starts off weak, but increases in power over the duration.\\n\\nUpgradable by Aghanim's Scepter.",
+      "image": "https://hgv-hyperstone.azurewebsites.net/abilities/disruptor_static_storm.png",
+      "hero_id": 87,
+      "ability_type": "DOTA_ABILITY_TYPE_ULTIMATE",
+      "ability_behaviors": [
+        "DOTA_ABILITY_BEHAVIOR_POINT",
+        "DOTA_ABILITY_BEHAVIOR_AOE",
+        "DOTA_ABILITY_BEHAVIOR_IGNORE_BACKSWING"
+      ],
+      "ability_unit_target_team": null,
+      "ability_unit_target_type": [],
+      "ability_unit_target_flags": [],
+      "spell_immunity_type": "SPELL_IMMUNITY_ENEMIES_NO",
+      "spell_dispellable_type": "SPELL_DISPELLABLE_NO",
+      "ability_unit_damage_type": "DAMAGE_TYPE_MAGICAL",
+      "is_skill": false,
+      "is_ultimate": true,
+      "has_scepter_upgrade": true,
+      "on_castbar": true,
+      "on_learnbar": true,
+      "ability_cast_range": [
+        800,
+        800,
+        800,
+        800
+      ],
+      "ability_cast_range_buffer": 250,
+      "ability_cast_point": [
+        0.05,
+        0.05,
+        0.05,
+        0.05
+      ],
+      "ability_channel_time": [
+        0.0,
+        0.0,
+        0.0,
+        0.0
+      ],
+      "ability_cooldown": [
+        90.0,
+        80.0,
+        70.0
+      ],
+      "ability_duration": [
+        0.0,
+        0.0,
+        0.0,
+        0.0
+      ],
+      "ability_damage": [
+        0.0,
+        0.0,
+        0.0,
+        0.0
+      ],
+      "ability_mana_cost": [
+        125.0,
+        175.0,
+        225.0
+      ],
+      "ability_modifier_support_value": 1.0,
+      "ability_modifier_support_bonus": 0.0,
+      "fight_recap_level": 2,
+      "ability_draft_enabled": true,
+      "linked": null,
+      "ability_special": {
+        "radius": [
+          450.0
+        ],
+        "pulses": [
+          20.0
+        ],
+        "damage_max": [
+          200.0,
+          250.0,
+          300.0
+        ],
+        "duration": [
+          5.0
+        ],
+        "duration_scepter": [
+          7.0
+        ],
+        "pulses_scepter": [
+          28.0
+        ]
+      }
+    }
+  ],
+  "talents": [
+    {
+      "id": 5959,
+      "key": "special_bonus_hp_200",
+      "name": "+200 Health",
+      "description": null
+    },
+    {
+      "id": 6536,
+      "key": "special_bonus_unique_disruptor_3",
+      "name": "+40 Thunder Strike Damage",
+      "description": null
+    },
+    {
+      "id": 6056,
+      "key": "special_bonus_cast_range_150",
+      "name": "+150 Cast Range",
+      "description": null
+    },
+    {
+      "id": 6368,
+      "key": "special_bonus_unique_disruptor_2",
+      "name": "-3s Kinetic Field Cooldown",
+      "description": null
+    },
+    {
+      "id": 6026,
+      "key": "special_bonus_gold_income_30",
+      "name": "+180 Gold/Min",
+      "description": null
+    },
+    {
+      "id": 6215,
+      "key": "special_bonus_unique_disruptor",
+      "name": "+4 Thunder Strike Hits",
+      "description": null
+    },
+    {
+      "id": 6630,
+      "key": "special_bonus_unique_disruptor_4",
+      "name": "-10s Glimpse Cooldown",
+      "description": null
+    },
+    {
+      "id": 6812,
+      "key": "special_bonus_unique_disruptor_5",
+      "name": "+4s Kinetic Field Duration",
+      "description": null
+    }
+  ],
+  "legs": 2,
+  "armor_physical": -1.0,
+  "magical_resistance": 25,
+  "attack_capabilities": "DOTA_UNIT_CAP_RANGED_ATTACK",
+  "attack_damage_min": 29,
+  "attack_damage_max": 33,
+  "attack_rate": 1.7,
+  "attack_animation_point": 0.4,
+  "attack_acquisition_range": 800,
+  "attack_range": 600,
+  "projectile_speed": 1200,
+  "attribute_primary": "DOTA_ATTRIBUTE_INTELLECT",
+  "attribute_base_strength": 21,
+  "attribute_strength_gain": 2.2,
+  "attribute_base_intelligence": 20,
+  "attribute_intelligence_gain": 2.5,
+  "attribute_base_agility": 15,
+  "attribute_agility_gain": 1.4,
+  "status_health": 200,
+  "status_health_regen": 1.5,
+  "status_mana": 75,
+  "status_mana_regen": 0.9,
+  "bounty_xp": 62,
+  "bounty_gold_min": 0,
+  "bounty_gold_max": 0,
+  "movement_capabilities": "DOTA_UNIT_CAP_MOVE_GROUND",
+  "movement_speed": 300,
+  "movement_turn_rate": 0.5,
+  "has_aggressive_stance": false,
+  "team": 1,
+  "team_name": "Radiant",
+  "vision_daytime_range": 1800,
+  "vision_nighttime_range": 0,
+  "bot": {
+    "hero_types": null,
+    "solo_desire": 0,
+    "requires_babysit": 0,
+    "provides_babysit": 0,
+    "survival_rating": 0,
+    "requires_farm": 0,
+    "provides_setup": 0,
+    "requires_setup": 0
+  }
+}

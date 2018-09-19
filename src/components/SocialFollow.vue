@@ -28,7 +28,7 @@ export default {
   padding:0px;
   margin:0px;
   position:fixed;
-  right:-135px;
+  right:-136px;
   top:230px;
   width:210px;
   z-index: 1100;

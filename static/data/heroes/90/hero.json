@@ -1,0 +1,952 @@
+{
+  "id": 90,
+  "name": "Keeper of the Light",
+  "key": "npc_dota_hero_keeper_of_the_light",
+  "image_profile": "https://hgv-hyperstone.azurewebsites.net/heroes/profile/npc_dota_hero_keeper_of_the_light.png",
+  "image_icon": "https://hgv-hyperstone.azurewebsites.net/heroes/icons/npc_dota_hero_keeper_of_the_light.png",
+  "image_banner": "https://hgv-hyperstone.azurewebsites.net/heroes/banner/npc_dota_hero_keeper_of_the_light.png",
+  "enabled": true,
+  "new_player_enable": true,
+  "captains_mode_enabled": true,
+  "ability_draft_enabled": true,
+  "complexity": 2,
+  "roles": [
+    {
+      "role": "Support",
+      "level": 3
+    },
+    {
+      "role": "Nuker",
+      "level": 2
+    },
+    {
+      "role": "Disabler",
+      "level": 1
+    },
+    {
+      "role": "Jungler",
+      "level": 1
+    }
+  ],
+  "bot_implemented": false,
+  "abilities": [
+    {
+      "id": 5471,
+      "key": "keeper_of_the_light_illuminate",
+      "name": "Illuminate",
+      "description": "Channels light energy, building power the longer it's channeled.  Once released, a wave is sent forth that deals damage and gives vision in its path.  The longer it is channeled, the more damage is dealt.\\n\\nUpgradable by Aghanim's Scepter.",
+      "image": "https://hgv-hyperstone.azurewebsites.net/abilities/keeper_of_the_light_illuminate.png",
+      "hero_id": 90,
+      "ability_type": "DOTA_ABILITY_TYPE_BASIC",
+      "ability_behaviors": [
+        "DOTA_ABILITY_BEHAVIOR_POINT",
+        "DOTA_ABILITY_BEHAVIOR_CHANNELLED"
+      ],
+      "ability_unit_target_team": null,
+      "ability_unit_target_type": [],
+      "ability_unit_target_flags": [],
+      "spell_immunity_type": "SPELL_IMMUNITY_ENEMIES_NO",
+      "spell_dispellable_type": null,
+      "ability_unit_damage_type": "DAMAGE_TYPE_MAGICAL",
+      "is_skill": true,
+      "is_ultimate": false,
+      "has_scepter_upgrade": false,
+      "on_castbar": true,
+      "on_learnbar": true,
+      "ability_cast_range": [
+        1800
+      ],
+      "ability_cast_range_buffer": 250,
+      "ability_cast_point": [
+        0.3,
+        0.3,
+        0.3,
+        0.3
+      ],
+      "ability_channel_time": [
+        2.0,
+        3.0,
+        4.0,
+        5.0
+      ],
+      "ability_cooldown": [
+        10.0,
+        10.0,
+        10.0,
+        10.0
+      ],
+      "ability_duration": [
+        0.0,
+        0.0,
+        0.0,
+        0.0
+      ],
+      "ability_damage": [
+        0.0,
+        0.0,
+        0.0,
+        0.0
+      ],
+      "ability_mana_cost": [
+        150.0,
+        160.0,
+        170.0,
+        180.0
+      ],
+      "ability_modifier_support_value": 1.0,
+      "ability_modifier_support_bonus": 0.0,
+      "fight_recap_level": 1,
+      "ability_draft_enabled": true,
+      "linked": null,
+      "ability_special": {
+        "damage_per_second": [
+          100.0,
+          100.0,
+          100.0,
+          100.0
+        ],
+        "max_channel_time": [
+          2.0,
+          3.0,
+          4.0,
+          5.0
+        ],
+        "radius": [
+          375.0
+        ],
+        "range": [
+          1550.0
+        ],
+        "speed": [
+          1050.0
+        ],
+        "vision_radius": [
+          800.0,
+          800.0,
+          800.0,
+          800.0
+        ],
+        "vision_duration": [
+          3.34,
+          3.34,
+          3.34,
+          3.34
+        ],
+        "channel_vision_radius": [
+          375.0
+        ],
+        "channel_vision_interval": [
+          0.5
+        ],
+        "channel_vision_duration": [
+          10.34
+        ],
+        "channel_vision_step": [
+          150.0
+        ],
+        "total_damage": [
+          200.0,
+          300.0,
+          400.0,
+          500.0
+        ]
+      }
+    },
+    {
+      "id": 5472,
+      "key": "keeper_of_the_light_mana_leak",
+      "name": "Mana Leak",
+      "description": "Weakens an enemy's magical essence, causing them to lose mana as they move.  If the enemy loses all of its mana, it will be stunned.",
+      "image": "https://hgv-hyperstone.azurewebsites.net/abilities/keeper_of_the_light_mana_leak.png",
+      "hero_id": 90,
+      "ability_type": "DOTA_ABILITY_TYPE_BASIC",
+      "ability_behaviors": [
+        "DOTA_ABILITY_BEHAVIOR_UNIT_TARGET"
+      ],
+      "ability_unit_target_team": "DOTA_UNIT_TARGET_TEAM_ENEMY",
+      "ability_unit_target_type": [
+        "DOTA_UNIT_TARGET_HERO",
+        "DOTA_UNIT_TARGET_BASIC"
+      ],
+      "ability_unit_target_flags": [],
+      "spell_immunity_type": "SPELL_IMMUNITY_ENEMIES_NO",
+      "spell_dispellable_type": "SPELL_DISPELLABLE_YES",
+      "ability_unit_damage_type": null,
+      "is_skill": true,
+      "is_ultimate": false,
+      "has_scepter_upgrade": false,
+      "on_castbar": true,
+      "on_learnbar": true,
+      "ability_cast_range": [
+        400,
+        500,
+        600,
+        700
+      ],
+      "ability_cast_range_buffer": 250,
+      "ability_cast_point": [
+        0.3,
+        0.3,
+        0.3,
+        0.3
+      ],
+      "ability_channel_time": [
+        0.0,
+        0.0,
+        0.0,
+        0.0
+      ],
+      "ability_cooldown": [
+        16.0,
+        14.0,
+        12.0,
+        10.0
+      ],
+      "ability_duration": [
+        0.0,
+        0.0,
+        0.0,
+        0.0
+      ],
+      "ability_damage": [
+        0.0,
+        0.0,
+        0.0,
+        0.0
+      ],
+      "ability_mana_cost": [
+        160.0
+      ],
+      "ability_modifier_support_value": 1.0,
+      "ability_modifier_support_bonus": 0.0,
+      "fight_recap_level": 0,
+      "ability_draft_enabled": false,
+      "linked": null,
+      "ability_special": {
+        "duration": [
+          4.0,
+          5.0,
+          6.0,
+          7.0
+        ],
+        "mana_leak_pct": [
+          5.0
+        ],
+        "stun_duration": [
+          1.5,
+          2.0,
+          2.5,
+          3.0
+        ],
+        "cast_range_tooltip": [
+          400.0,
+          500.0,
+          600.0,
+          700.0
+        ]
+      }
+    },
+    {
+      "id": 5473,
+      "key": "keeper_of_the_light_chakra_magic",
+      "name": "Chakra Magic",
+      "description": "Restores mana to the target unit, increases its mana capacity, and reduces the cooldown of the next spell they cast.",
+      "image": "https://hgv-hyperstone.azurewebsites.net/abilities/keeper_of_the_light_chakra_magic.png",
+      "hero_id": 90,
+      "ability_type": "DOTA_ABILITY_TYPE_BASIC",
+      "ability_behaviors": [
+        "DOTA_ABILITY_BEHAVIOR_UNIT_TARGET"
+      ],
+      "ability_unit_target_team": "DOTA_UNIT_TARGET_TEAM_FRIENDLY",
+      "ability_unit_target_type": [
+        "DOTA_UNIT_TARGET_HERO",
+        "DOTA_UNIT_TARGET_BASIC"
+      ],
+      "ability_unit_target_flags": [],
+      "spell_immunity_type": "SPELL_IMMUNITY_ALLIES_YES",
+      "spell_dispellable_type": "SPELL_DISPELLABLE_YES",
+      "ability_unit_damage_type": null,
+      "is_skill": true,
+      "is_ultimate": false,
+      "has_scepter_upgrade": false,
+      "on_castbar": true,
+      "on_learnbar": true,
+      "ability_cast_range": [
+        900,
+        900,
+        900,
+        900
+      ],
+      "ability_cast_range_buffer": 250,
+      "ability_cast_point": [
+        0.3,
+        0.3,
+        0.3,
+        0.3
+      ],
+      "ability_channel_time": [
+        0.0,
+        0.0,
+        0.0,
+        0.0
+      ],
+      "ability_cooldown": [
+        17.0,
+        16.0,
+        15.0,
+        14.0
+      ],
+      "ability_duration": [
+        0.0,
+        0.0,
+        0.0,
+        0.0
+      ],
+      "ability_damage": [
+        0.0,
+        0.0,
+        0.0,
+        0.0
+      ],
+      "ability_mana_cost": [
+        0.0
+      ],
+      "ability_modifier_support_value": 3.0,
+      "ability_modifier_support_bonus": 0.0,
+      "fight_recap_level": 0,
+      "ability_draft_enabled": true,
+      "linked": null,
+      "ability_special": {
+        "mana_restore": [
+          75.0,
+          150.0,
+          225.0,
+          300.0
+        ],
+        "cooldown_reduction": [
+          3.0,
+          4.0,
+          5.0,
+          6.0
+        ],
+        "duration": [
+          15.0
+        ]
+      }
+    },
+    {
+      "id": 5475,
+      "key": "keeper_of_the_light_recall",
+      "name": "Recall",
+      "description": "After a short delay, teleports the targeted friendly hero to your location.  If the targeted friendly hero takes player based damage during this time, the ability is interrupted.",
+      "image": "https://hgv-hyperstone.azurewebsites.net/abilities/keeper_of_the_light_recall.png",
+      "hero_id": 90,
+      "ability_type": "DOTA_ABILITY_TYPE_BASIC",
+      "ability_behaviors": [
+        "DOTA_ABILITY_BEHAVIOR_POINT",
+        "DOTA_ABILITY_BEHAVIOR_CHANNELLED",
+        "DOTA_ABILITY_BEHAVIOR_UNIT_TARGET",
+        "DOTA_ABILITY_BEHAVIOR_NO_TARGET",
+        "DOTA_ABILITY_BEHAVIOR_DONT_RESUME_ATTACK",
+        "DOTA_ABILITY_BEHAVIOR_NOT_LEARNABLE",
+        "DOTA_ABILITY_BEHAVIOR_SHOW_IN_GUIDES"
+      ],
+      "ability_unit_target_team": "DOTA_UNIT_TARGET_TEAM_FRIENDLY",
+      "ability_unit_target_type": [
+        "DOTA_UNIT_TARGET_CUSTOM"
+      ],
+      "ability_unit_target_flags": [
+        "DOTA_UNIT_TARGET_FLAG_INVULNERABLE"
+      ],
+      "spell_immunity_type": "SPELL_IMMUNITY_ALLIES_YES",
+      "spell_dispellable_type": "SPELL_DISPELLABLE_YES",
+      "ability_unit_damage_type": null,
+      "is_skill": true,
+      "is_ultimate": false,
+      "has_scepter_upgrade": false,
+      "on_castbar": true,
+      "on_learnbar": true,
+      "ability_cast_range": [
+        0
+      ],
+      "ability_cast_range_buffer": 250,
+      "ability_cast_point": [
+        0.3,
+        0.3,
+        0.3
+      ],
+      "ability_channel_time": [
+        0.0,
+        0.0,
+        0.0,
+        0.0
+      ],
+      "ability_cooldown": [
+        15.0
+      ],
+      "ability_duration": [
+        0.0,
+        0.0,
+        0.0,
+        0.0
+      ],
+      "ability_damage": [
+        0.0,
+        0.0,
+        0.0,
+        0.0
+      ],
+      "ability_mana_cost": [
+        100.0,
+        100.0,
+        100.0
+      ],
+      "ability_modifier_support_value": 1.0,
+      "ability_modifier_support_bonus": 0.0,
+      "fight_recap_level": 0,
+      "ability_draft_enabled": false,
+      "linked": null,
+      "ability_special": {
+        "teleport_delay": [
+          5.0,
+          4.0,
+          3.0
+        ]
+      }
+    },
+    {
+      "id": 5476,
+      "key": "keeper_of_the_light_blinding_light",
+      "name": "Blinding Light",
+      "description": "A blinding light flashes over the targeted area, knocking back and blinding the units in the area, causing them to miss attacks.",
+      "image": "https://hgv-hyperstone.azurewebsites.net/abilities/keeper_of_the_light_blinding_light.png",
+      "hero_id": 90,
+      "ability_type": "DOTA_ABILITY_TYPE_BASIC",
+      "ability_behaviors": [
+        "DOTA_ABILITY_BEHAVIOR_AOE",
+        "DOTA_ABILITY_BEHAVIOR_POINT",
+        "DOTA_ABILITY_BEHAVIOR_NOT_LEARNABLE",
+        "DOTA_ABILITY_BEHAVIOR_SHOW_IN_GUIDES"
+      ],
+      "ability_unit_target_team": null,
+      "ability_unit_target_type": [],
+      "ability_unit_target_flags": [],
+      "spell_immunity_type": "SPELL_IMMUNITY_ENEMIES_NO",
+      "spell_dispellable_type": "SPELL_DISPELLABLE_YES",
+      "ability_unit_damage_type": null,
+      "is_skill": true,
+      "is_ultimate": false,
+      "has_scepter_upgrade": false,
+      "on_castbar": true,
+      "on_learnbar": true,
+      "ability_cast_range": [
+        900,
+        900,
+        900
+      ],
+      "ability_cast_range_buffer": 250,
+      "ability_cast_point": [
+        0.3,
+        0.3,
+        0.3,
+        0.3
+      ],
+      "ability_channel_time": [
+        0.0,
+        0.0,
+        0.0,
+        0.0
+      ],
+      "ability_cooldown": [
+        20.0,
+        16.0,
+        12.0
+      ],
+      "ability_duration": [
+        0.0,
+        0.0,
+        0.0,
+        0.0
+      ],
+      "ability_damage": [
+        0.0,
+        0.0,
+        0.0,
+        0.0
+      ],
+      "ability_mana_cost": [
+        50.0,
+        50.0,
+        50.0
+      ],
+      "ability_modifier_support_value": 1.0,
+      "ability_modifier_support_bonus": 0.0,
+      "fight_recap_level": 0,
+      "ability_draft_enabled": true,
+      "linked": null,
+      "ability_special": {
+        "radius": [
+          675.0,
+          675.0,
+          675.0
+        ],
+        "miss_duration": [
+          4.0,
+          5.0,
+          6.0
+        ],
+        "miss_rate": [
+          80.0,
+          80.0,
+          80.0
+        ],
+        "knockback_distance": [
+          525.0
+        ],
+        "knockback_height": [
+          50.0,
+          50.0,
+          50.0
+        ],
+        "knockback_duration": [
+          0.4,
+          0.4,
+          0.4
+        ]
+      }
+    },
+    {
+      "id": 5474,
+      "key": "keeper_of_the_light_spirit_form",
+      "name": "Spirit Form",
+      "description": "Ezalor temporarily turns his body luminescent, gaining various abilities.  Illuminate is now channeled by a separate spirit, and gains the Blinding Light and Recall abilities.\\n\\nUpgradable by Aghanim's Scepter.",
+      "image": "https://hgv-hyperstone.azurewebsites.net/abilities/keeper_of_the_light_spirit_form.png",
+      "hero_id": 90,
+      "ability_type": "DOTA_ABILITY_TYPE_ULTIMATE",
+      "ability_behaviors": [
+        "DOTA_ABILITY_BEHAVIOR_NO_TARGET"
+      ],
+      "ability_unit_target_team": null,
+      "ability_unit_target_type": [],
+      "ability_unit_target_flags": [],
+      "spell_immunity_type": null,
+      "spell_dispellable_type": "SPELL_DISPELLABLE_NO",
+      "ability_unit_damage_type": null,
+      "is_skill": false,
+      "is_ultimate": true,
+      "has_scepter_upgrade": true,
+      "on_castbar": true,
+      "on_learnbar": true,
+      "ability_cast_range": [
+        0
+      ],
+      "ability_cast_range_buffer": 250,
+      "ability_cast_point": [
+        0.0,
+        0.0,
+        0.0,
+        0.0
+      ],
+      "ability_channel_time": [
+        0.0,
+        0.0,
+        0.0,
+        0.0
+      ],
+      "ability_cooldown": [
+        80.0,
+        70.0,
+        60.0
+      ],
+      "ability_duration": [
+        0.0,
+        0.0,
+        0.0,
+        0.0
+      ],
+      "ability_damage": [
+        0.0,
+        0.0,
+        0.0,
+        0.0
+      ],
+      "ability_mana_cost": [
+        100.0,
+        100.0,
+        100.0
+      ],
+      "ability_modifier_support_value": 0.35,
+      "ability_modifier_support_bonus": 0.0,
+      "fight_recap_level": 0,
+      "ability_draft_enabled": false,
+      "linked": null,
+      "ability_special": {
+        "duration": [
+          40.0,
+          40.0,
+          40.0
+        ]
+      }
+    },
+    {
+      "id": 5477,
+      "key": "keeper_of_the_light_illuminate_end",
+      "name": "Release Illuminate",
+      "description": "Release the channel early.",
+      "image": "https://hgv-hyperstone.azurewebsites.net/abilities/keeper_of_the_light_illuminate_end.png",
+      "hero_id": 90,
+      "ability_type": "DOTA_ABILITY_TYPE_BASIC",
+      "ability_behaviors": [
+        "DOTA_ABILITY_BEHAVIOR_NO_TARGET",
+        "DOTA_ABILITY_BEHAVIOR_NOT_LEARNABLE",
+        "DOTA_ABILITY_BEHAVIOR_HIDDEN",
+        "DOTA_ABILITY_BEHAVIOR_DONT_RESUME_ATTACK"
+      ],
+      "ability_unit_target_team": null,
+      "ability_unit_target_type": [],
+      "ability_unit_target_flags": [],
+      "spell_immunity_type": null,
+      "spell_dispellable_type": null,
+      "ability_unit_damage_type": null,
+      "is_skill": true,
+      "is_ultimate": false,
+      "has_scepter_upgrade": false,
+      "on_castbar": true,
+      "on_learnbar": true,
+      "ability_cast_range": [
+        0
+      ],
+      "ability_cast_range_buffer": 250,
+      "ability_cast_point": [
+        0.0,
+        0.0,
+        0.0,
+        0.0
+      ],
+      "ability_channel_time": [
+        0.0,
+        0.0,
+        0.0,
+        0.0
+      ],
+      "ability_cooldown": [
+        0.0,
+        0.0,
+        0.0,
+        0.0
+      ],
+      "ability_duration": [
+        0.0,
+        0.0,
+        0.0,
+        0.0
+      ],
+      "ability_damage": [
+        0.0,
+        0.0,
+        0.0,
+        0.0
+      ],
+      "ability_mana_cost": [
+        0.0,
+        0.0,
+        0.0,
+        0.0
+      ],
+      "ability_modifier_support_value": 1.0,
+      "ability_modifier_support_bonus": 0.0,
+      "fight_recap_level": 0,
+      "ability_draft_enabled": false,
+      "linked": null,
+      "ability_special": {}
+    },
+    {
+      "id": 5479,
+      "key": "keeper_of_the_light_spirit_form_illuminate",
+      "name": "Illuminate",
+      "description": "Channels light energy, building power the longer it's channeled.  Once released, a wave is sent forth that deals damage and gives vision in its path.  The longer it is channeled, the more damage is dealt.\\n\\nUpgradable by Aghanim's Scepter.",
+      "image": "https://hgv-hyperstone.azurewebsites.net/abilities/keeper_of_the_light_spirit_form_illuminate.png",
+      "hero_id": 90,
+      "ability_type": "DOTA_ABILITY_TYPE_BASIC",
+      "ability_behaviors": [
+        "DOTA_ABILITY_BEHAVIOR_POINT",
+        "DOTA_ABILITY_BEHAVIOR_HIDDEN",
+        "DOTA_ABILITY_BEHAVIOR_SHOW_IN_GUIDES"
+      ],
+      "ability_unit_target_team": null,
+      "ability_unit_target_type": [],
+      "ability_unit_target_flags": [],
+      "spell_immunity_type": "SPELL_IMMUNITY_ENEMIES_NO",
+      "spell_dispellable_type": null,
+      "ability_unit_damage_type": "DAMAGE_TYPE_MAGICAL",
+      "is_skill": true,
+      "is_ultimate": false,
+      "has_scepter_upgrade": true,
+      "on_castbar": true,
+      "on_learnbar": true,
+      "ability_cast_range": [
+        1800
+      ],
+      "ability_cast_range_buffer": 250,
+      "ability_cast_point": [
+        0.3,
+        0.3,
+        0.3,
+        0.3
+      ],
+      "ability_channel_time": [
+        0.0,
+        0.0,
+        0.0,
+        0.0
+      ],
+      "ability_cooldown": [
+        10.0,
+        10.0,
+        10.0,
+        10.0
+      ],
+      "ability_duration": [
+        0.0,
+        0.0,
+        0.0,
+        0.0
+      ],
+      "ability_damage": [
+        0.0,
+        0.0,
+        0.0,
+        0.0
+      ],
+      "ability_mana_cost": [
+        150.0,
+        160.0,
+        170.0,
+        180.0
+      ],
+      "ability_modifier_support_value": 1.0,
+      "ability_modifier_support_bonus": 0.0,
+      "fight_recap_level": 1,
+      "ability_draft_enabled": false,
+      "linked": null,
+      "ability_special": {
+        "damage_per_second": [
+          100.0,
+          100.0,
+          100.0,
+          100.0
+        ],
+        "max_channel_time": [
+          2.0,
+          3.0,
+          4.0,
+          5.0
+        ],
+        "radius": [
+          375.0
+        ],
+        "range": [
+          1550.0
+        ],
+        "speed": [
+          1050.0
+        ],
+        "vision_radius": [
+          800.0,
+          800.0,
+          800.0,
+          800.0
+        ],
+        "vision_duration": [
+          3.34,
+          3.34,
+          3.34,
+          3.34
+        ],
+        "channel_vision_radius": [
+          375.0
+        ],
+        "channel_vision_interval": [
+          0.5
+        ],
+        "channel_vision_duration": [
+          10.34
+        ],
+        "channel_vision_step": [
+          150.0
+        ],
+        "total_damage": [
+          200.0,
+          300.0,
+          400.0,
+          500.0
+        ]
+      }
+    },
+    {
+      "id": 5503,
+      "key": "keeper_of_the_light_spirit_form_illuminate_end",
+      "name": "Release Illuminate",
+      "description": "Release the channel early.",
+      "image": "https://hgv-hyperstone.azurewebsites.net/abilities/keeper_of_the_light_spirit_form_illuminate_end.png",
+      "hero_id": 90,
+      "ability_type": "DOTA_ABILITY_TYPE_BASIC",
+      "ability_behaviors": [
+        "DOTA_ABILITY_BEHAVIOR_NO_TARGET",
+        "DOTA_ABILITY_BEHAVIOR_NOT_LEARNABLE",
+        "DOTA_ABILITY_BEHAVIOR_HIDDEN",
+        "DOTA_ABILITY_BEHAVIOR_DONT_RESUME_ATTACK"
+      ],
+      "ability_unit_target_team": null,
+      "ability_unit_target_type": [],
+      "ability_unit_target_flags": [],
+      "spell_immunity_type": null,
+      "spell_dispellable_type": null,
+      "ability_unit_damage_type": null,
+      "is_skill": true,
+      "is_ultimate": false,
+      "has_scepter_upgrade": false,
+      "on_castbar": true,
+      "on_learnbar": true,
+      "ability_cast_range": [
+        0
+      ],
+      "ability_cast_range_buffer": 250,
+      "ability_cast_point": [
+        0.0,
+        0.0,
+        0.0,
+        0.0
+      ],
+      "ability_channel_time": [
+        0.0,
+        0.0,
+        0.0,
+        0.0
+      ],
+      "ability_cooldown": [
+        0.0,
+        0.0,
+        0.0,
+        0.0
+      ],
+      "ability_duration": [
+        0.0,
+        0.0,
+        0.0,
+        0.0
+      ],
+      "ability_damage": [
+        0.0,
+        0.0,
+        0.0,
+        0.0
+      ],
+      "ability_mana_cost": [
+        0.0,
+        0.0,
+        0.0,
+        0.0
+      ],
+      "ability_modifier_support_value": 1.0,
+      "ability_modifier_support_bonus": 0.0,
+      "fight_recap_level": 0,
+      "ability_draft_enabled": false,
+      "linked": null,
+      "ability_special": {}
+    }
+  ],
+  "talents": [
+    {
+      "id": 6565,
+      "key": "special_bonus_spell_lifesteal_8",
+      "name": "8% Spell Lifesteal",
+      "description": null
+    },
+    {
+      "id": 5919,
+      "key": "special_bonus_movement_speed_25",
+      "name": "+25 Movement Speed",
+      "description": null
+    },
+    {
+      "id": 6447,
+      "key": "special_bonus_exp_boost_40",
+      "name": "+40% XP Gain",
+      "description": null
+    },
+    {
+      "id": 6930,
+      "key": "special_bonus_cast_range_350",
+      "name": "+350 Cast Range",
+      "description": null
+    },
+    {
+      "id": 6663,
+      "key": "special_bonus_magic_resistance_40",
+      "name": "+40% Magic Resistance",
+      "description": null
+    },
+    {
+      "id": 6527,
+      "key": "special_bonus_unique_keeper_of_the_light_2",
+      "name": "+300 Chakra Magic Mana",
+      "description": null
+    },
+    {
+      "id": 6665,
+      "key": "special_bonus_unique_keeper_of_the_light_3",
+      "name": "+2s Mana Leak Stun",
+      "description": null
+    },
+    {
+      "id": 6217,
+      "key": "special_bonus_unique_keeper_of_the_light",
+      "name": "+200 Illuminate Damage/Heal",
+      "description": null
+    }
+  ],
+  "legs": 2,
+  "armor_physical": -1.0,
+  "magical_resistance": 25,
+  "attack_capabilities": "DOTA_UNIT_CAP_RANGED_ATTACK",
+  "attack_damage_min": 20,
+  "attack_damage_max": 27,
+  "attack_rate": 1.7,
+  "attack_animation_point": 0.3,
+  "attack_acquisition_range": 800,
+  "attack_range": 600,
+  "projectile_speed": 900,
+  "attribute_primary": "DOTA_ATTRIBUTE_INTELLECT",
+  "attribute_base_strength": 16,
+  "attribute_strength_gain": 2.1,
+  "attribute_base_intelligence": 23,
+  "attribute_intelligence_gain": 2.8,
+  "attribute_base_agility": 15,
+  "attribute_agility_gain": 1.6,
+  "status_health": 200,
+  "status_health_regen": 1.5,
+  "status_mana": 75,
+  "status_mana_regen": 0.9,
+  "bounty_xp": 62,
+  "bounty_gold_min": 0,
+  "bounty_gold_max": 0,
+  "movement_capabilities": "DOTA_UNIT_CAP_MOVE_GROUND",
+  "movement_speed": 335,
+  "movement_turn_rate": 0.5,
+  "has_aggressive_stance": false,
+  "team": 1,
+  "team_name": "Radiant",
+  "vision_daytime_range": 1800,
+  "vision_nighttime_range": 0,
+  "bot": {
+    "hero_types": null,
+    "solo_desire": 0,
+    "requires_babysit": 0,
+    "provides_babysit": 0,
+    "survival_rating": 0,
+    "requires_farm": 0,
+    "provides_setup": 0,
+    "requires_setup": 0
+  }
+}

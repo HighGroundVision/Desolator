@@ -1,0 +1,617 @@
+{
+  "id": 22,
+  "name": "Zeus",
+  "key": "npc_dota_hero_zuus",
+  "image_profile": "https://hgv-hyperstone.azurewebsites.net/heroes/profile/npc_dota_hero_zuus.png",
+  "image_icon": "https://hgv-hyperstone.azurewebsites.net/heroes/icons/npc_dota_hero_zuus.png",
+  "image_banner": "https://hgv-hyperstone.azurewebsites.net/heroes/banner/npc_dota_hero_zuus.png",
+  "enabled": true,
+  "new_player_enable": true,
+  "captains_mode_enabled": true,
+  "ability_draft_enabled": true,
+  "complexity": 1,
+  "roles": [
+    {
+      "role": "Nuker",
+      "level": 3
+    }
+  ],
+  "bot_implemented": true,
+  "abilities": [
+    {
+      "id": 5110,
+      "key": "zuus_arc_lightning",
+      "name": "Arc Lightning",
+      "description": "Hurls a bolt of lightning that leaps through nearby enemy units.",
+      "image": "https://hgv-hyperstone.azurewebsites.net/abilities/zuus_arc_lightning.png",
+      "hero_id": 22,
+      "ability_type": "DOTA_ABILITY_TYPE_BASIC",
+      "ability_behaviors": [
+        "DOTA_ABILITY_BEHAVIOR_UNIT_TARGET"
+      ],
+      "ability_unit_target_team": "DOTA_UNIT_TARGET_TEAM_ENEMY",
+      "ability_unit_target_type": [
+        "DOTA_UNIT_TARGET_HERO",
+        "DOTA_UNIT_TARGET_BASIC"
+      ],
+      "ability_unit_target_flags": [],
+      "spell_immunity_type": "SPELL_IMMUNITY_ENEMIES_NO",
+      "spell_dispellable_type": null,
+      "ability_unit_damage_type": "DAMAGE_TYPE_MAGICAL",
+      "is_skill": true,
+      "is_ultimate": false,
+      "has_scepter_upgrade": false,
+      "on_castbar": true,
+      "on_learnbar": true,
+      "ability_cast_range": [
+        850
+      ],
+      "ability_cast_range_buffer": 250,
+      "ability_cast_point": [
+        0.2
+      ],
+      "ability_channel_time": [
+        0.0,
+        0.0,
+        0.0,
+        0.0
+      ],
+      "ability_cooldown": [
+        1.6
+      ],
+      "ability_duration": [
+        0.0,
+        0.0,
+        0.0,
+        0.0
+      ],
+      "ability_damage": [
+        0.0,
+        0.0,
+        0.0,
+        0.0
+      ],
+      "ability_mana_cost": [
+        65.0,
+        70.0,
+        75.0,
+        80.0
+      ],
+      "ability_modifier_support_value": 1.0,
+      "ability_modifier_support_bonus": 0.0,
+      "fight_recap_level": 0,
+      "ability_draft_enabled": true,
+      "linked": null,
+      "ability_special": {
+        "arc_damage": [
+          70.0,
+          95.0,
+          120.0,
+          145.0
+        ],
+        "radius": [
+          500.0,
+          500.0,
+          500.0,
+          500.0
+        ],
+        "jump_count": [
+          5.0,
+          7.0,
+          9.0,
+          15.0
+        ],
+        "jump_delay": [
+          0.25,
+          0.25,
+          0.25,
+          0.25
+        ]
+      }
+    },
+    {
+      "id": 5111,
+      "key": "zuus_lightning_bolt",
+      "name": "Lightning Bolt",
+      "description": "Calls down a bolt of lightning to strike an enemy unit, causing damage and a mini-stun. When cast, Lightning Bolt briefly provides unobstructed vision and True Sight around the target in a 750 radius. Can be cast on the ground, affecting the closest enemy hero in 325 range.",
+      "image": "https://hgv-hyperstone.azurewebsites.net/abilities/zuus_lightning_bolt.png",
+      "hero_id": 22,
+      "ability_type": "DOTA_ABILITY_TYPE_BASIC",
+      "ability_behaviors": [
+        "DOTA_ABILITY_BEHAVIOR_UNIT_TARGET",
+        "DOTA_ABILITY_BEHAVIOR_POINT"
+      ],
+      "ability_unit_target_team": "DOTA_UNIT_TARGET_TEAM_ENEMY",
+      "ability_unit_target_type": [
+        "DOTA_UNIT_TARGET_HERO",
+        "DOTA_UNIT_TARGET_BASIC"
+      ],
+      "ability_unit_target_flags": [],
+      "spell_immunity_type": "SPELL_IMMUNITY_ENEMIES_NO",
+      "spell_dispellable_type": null,
+      "ability_unit_damage_type": "DAMAGE_TYPE_MAGICAL",
+      "is_skill": true,
+      "is_ultimate": false,
+      "has_scepter_upgrade": false,
+      "on_castbar": true,
+      "on_learnbar": true,
+      "ability_cast_range": [
+        700,
+        750,
+        800,
+        850
+      ],
+      "ability_cast_range_buffer": 250,
+      "ability_cast_point": [
+        0.4,
+        0.4,
+        0.4,
+        0.4
+      ],
+      "ability_channel_time": [
+        0.0,
+        0.0,
+        0.0,
+        0.0
+      ],
+      "ability_cooldown": [
+        6.0,
+        6.0,
+        6.0,
+        6.0
+      ],
+      "ability_duration": [
+        0.0,
+        0.0,
+        0.0,
+        0.0
+      ],
+      "ability_damage": [
+        125.0,
+        200.0,
+        275.0,
+        350.0
+      ],
+      "ability_mana_cost": [
+        90.0,
+        105.0,
+        120.0,
+        135.0
+      ],
+      "ability_modifier_support_value": 0.1,
+      "ability_modifier_support_bonus": 0.0,
+      "fight_recap_level": 1,
+      "ability_draft_enabled": true,
+      "linked": null,
+      "ability_special": {
+        "cast_range_tooltip": [
+          700.0,
+          750.0,
+          800.0,
+          850.0
+        ],
+        "true_sight_radius": [
+          750.0
+        ],
+        "sight_radius_day": [
+          750.0
+        ],
+        "sight_radius_night": [
+          750.0
+        ],
+        "sight_duration": [
+          4.5
+        ],
+        "spread_aoe": [
+          325.0
+        ]
+      }
+    },
+    {
+      "id": 5112,
+      "key": "zuus_static_field",
+      "name": "Static Field",
+      "description": "Zeus shocks all nearby enemy units whenever he casts a spell, causing damage proportional to their current health.",
+      "image": "https://hgv-hyperstone.azurewebsites.net/abilities/zuus_static_field.png",
+      "hero_id": 22,
+      "ability_type": "DOTA_ABILITY_TYPE_BASIC",
+      "ability_behaviors": [
+        "DOTA_ABILITY_BEHAVIOR_PASSIVE"
+      ],
+      "ability_unit_target_team": null,
+      "ability_unit_target_type": [],
+      "ability_unit_target_flags": [],
+      "spell_immunity_type": "SPELL_IMMUNITY_ENEMIES_NO",
+      "spell_dispellable_type": null,
+      "ability_unit_damage_type": "DAMAGE_TYPE_MAGICAL",
+      "is_skill": true,
+      "is_ultimate": false,
+      "has_scepter_upgrade": false,
+      "on_castbar": true,
+      "on_learnbar": true,
+      "ability_cast_range": [
+        1200
+      ],
+      "ability_cast_range_buffer": 250,
+      "ability_cast_point": [
+        0.0,
+        0.0,
+        0.0,
+        0.0
+      ],
+      "ability_channel_time": [
+        0.0,
+        0.0,
+        0.0,
+        0.0
+      ],
+      "ability_cooldown": [
+        0.0,
+        0.0,
+        0.0,
+        0.0
+      ],
+      "ability_duration": [
+        0.0,
+        0.0,
+        0.0,
+        0.0
+      ],
+      "ability_damage": [
+        0.0,
+        0.0,
+        0.0,
+        0.0
+      ],
+      "ability_mana_cost": [
+        0.0,
+        0.0,
+        0.0,
+        0.0
+      ],
+      "ability_modifier_support_value": 1.0,
+      "ability_modifier_support_bonus": 0.0,
+      "fight_recap_level": 0,
+      "ability_draft_enabled": true,
+      "linked": null,
+      "ability_special": {
+        "radius": [
+          1200.0
+        ],
+        "damage_health_pct": [
+          4.0,
+          6.0,
+          8.0,
+          10.0
+        ]
+      }
+    },
+    {
+      "id": 6325,
+      "key": "zuus_cloud",
+      "name": "Nimbus",
+      "description": "Creates a storm cloud anywhere on the map that automatically casts Lightning Bolt on nearby enemies.",
+      "image": "https://hgv-hyperstone.azurewebsites.net/abilities/zuus_cloud.png",
+      "hero_id": 22,
+      "ability_type": "DOTA_ABILITY_TYPE_BASIC",
+      "ability_behaviors": [
+        "DOTA_ABILITY_BEHAVIOR_POINT",
+        "DOTA_ABILITY_BEHAVIOR_AOE",
+        "DOTA_ABILITY_BEHAVIOR_HIDDEN",
+        "DOTA_ABILITY_BEHAVIOR_SHOW_IN_GUIDES"
+      ],
+      "ability_unit_target_team": null,
+      "ability_unit_target_type": [],
+      "ability_unit_target_flags": [],
+      "spell_immunity_type": "SPELL_IMMUNITY_ENEMIES_NO",
+      "spell_dispellable_type": null,
+      "ability_unit_damage_type": "DAMAGE_TYPE_MAGICAL",
+      "is_skill": true,
+      "is_ultimate": false,
+      "has_scepter_upgrade": true,
+      "on_castbar": true,
+      "on_learnbar": true,
+      "ability_cast_range": [
+        0
+      ],
+      "ability_cast_range_buffer": 250,
+      "ability_cast_point": [
+        0.2
+      ],
+      "ability_channel_time": [
+        0.0,
+        0.0,
+        0.0,
+        0.0
+      ],
+      "ability_cooldown": [
+        35.0
+      ],
+      "ability_duration": [
+        0.0,
+        0.0,
+        0.0,
+        0.0
+      ],
+      "ability_damage": [
+        0.0,
+        0.0,
+        0.0,
+        0.0
+      ],
+      "ability_mana_cost": [
+        275.0
+      ],
+      "ability_modifier_support_value": 0.1,
+      "ability_modifier_support_bonus": 0.0,
+      "fight_recap_level": 1,
+      "ability_draft_enabled": false,
+      "linked": null,
+      "ability_special": {
+        "cloud_duration": [
+          35.0
+        ],
+        "cloud_bolt_interval": [
+          2.25
+        ],
+        "cloud_radius": [
+          450.0
+        ]
+      }
+    },
+    {
+      "id": 6251,
+      "key": "generic_hidden",
+      "name": null,
+      "description": null,
+      "image": "https://hgv-hyperstone.azurewebsites.net/abilities/generic_hidden.png",
+      "hero_id": 22,
+      "ability_type": "DOTA_ABILITY_TYPE_BASIC",
+      "ability_behaviors": [
+        "DOTA_ABILITY_BEHAVIOR_HIDDEN",
+        "DOTA_ABILITY_BEHAVIOR_NOT_LEARNABLE"
+      ],
+      "ability_unit_target_team": null,
+      "ability_unit_target_type": [],
+      "ability_unit_target_flags": [],
+      "spell_immunity_type": null,
+      "spell_dispellable_type": null,
+      "ability_unit_damage_type": null,
+      "is_skill": true,
+      "is_ultimate": false,
+      "has_scepter_upgrade": false,
+      "on_castbar": true,
+      "on_learnbar": true,
+      "ability_cast_range": [
+        0
+      ],
+      "ability_cast_range_buffer": 250,
+      "ability_cast_point": [
+        0.0,
+        0.0,
+        0.0,
+        0.0
+      ],
+      "ability_channel_time": [
+        0.0,
+        0.0,
+        0.0,
+        0.0
+      ],
+      "ability_cooldown": [
+        0.0,
+        0.0,
+        0.0,
+        0.0
+      ],
+      "ability_duration": [
+        0.0,
+        0.0,
+        0.0,
+        0.0
+      ],
+      "ability_damage": [
+        0.0,
+        0.0,
+        0.0,
+        0.0
+      ],
+      "ability_mana_cost": [
+        0.0,
+        0.0,
+        0.0,
+        0.0
+      ],
+      "ability_modifier_support_value": 1.0,
+      "ability_modifier_support_bonus": 0.0,
+      "fight_recap_level": 0,
+      "ability_draft_enabled": false,
+      "linked": null,
+      "ability_special": {}
+    },
+    {
+      "id": 5113,
+      "key": "zuus_thundergods_wrath",
+      "name": "Thundergod's Wrath",
+      "description": "Strikes all enemy heroes with a bolt of lightning, no matter where they may be.  Thundergod's Wrath also provides True Sight around each hero struck.  If an enemy hero is invisible, it takes no damage, but the True Sight is still created at that hero's location.",
+      "image": "https://hgv-hyperstone.azurewebsites.net/abilities/zuus_thundergods_wrath.png",
+      "hero_id": 22,
+      "ability_type": "DOTA_ABILITY_TYPE_ULTIMATE",
+      "ability_behaviors": [
+        "DOTA_ABILITY_BEHAVIOR_NO_TARGET"
+      ],
+      "ability_unit_target_team": null,
+      "ability_unit_target_type": [],
+      "ability_unit_target_flags": [],
+      "spell_immunity_type": "SPELL_IMMUNITY_ENEMIES_NO",
+      "spell_dispellable_type": null,
+      "ability_unit_damage_type": "DAMAGE_TYPE_MAGICAL",
+      "is_skill": false,
+      "is_ultimate": true,
+      "has_scepter_upgrade": false,
+      "on_castbar": true,
+      "on_learnbar": true,
+      "ability_cast_range": [
+        0
+      ],
+      "ability_cast_range_buffer": 250,
+      "ability_cast_point": [
+        0.4,
+        0.4,
+        0.4,
+        0.4
+      ],
+      "ability_channel_time": [
+        0.0,
+        0.0,
+        0.0,
+        0.0
+      ],
+      "ability_cooldown": [
+        90.0
+      ],
+      "ability_duration": [
+        0.0,
+        0.0,
+        0.0,
+        0.0
+      ],
+      "ability_damage": [
+        0.0,
+        0.0,
+        0.0,
+        0.0
+      ],
+      "ability_mana_cost": [
+        225.0,
+        325.0,
+        450.0
+      ],
+      "ability_modifier_support_value": 1.0,
+      "ability_modifier_support_bonus": 0.0,
+      "fight_recap_level": 2,
+      "ability_draft_enabled": true,
+      "linked": null,
+      "ability_special": {
+        "true_sight_radius": [
+          900.0,
+          900.0,
+          900.0
+        ],
+        "true_sight_radius_tooltip": [
+          500.0
+        ],
+        "sight_radius_day": [
+          500.0
+        ],
+        "sight_radius_night": [
+          500.0
+        ],
+        "sight_duration": [
+          3.0,
+          3.0,
+          3.0,
+          3.0
+        ],
+        "damage": [
+          225.0,
+          325.0,
+          425.0
+        ]
+      }
+    }
+  ],
+  "talents": [
+    {
+      "id": 5933,
+      "key": "special_bonus_armor_6",
+      "name": "+6 Armor",
+      "description": null
+    },
+    {
+      "id": 5987,
+      "key": "special_bonus_exp_boost_25",
+      "name": "+25% XP Gain",
+      "description": null
+    },
+    {
+      "id": 6141,
+      "key": "special_bonus_movement_speed_30",
+      "name": "+30 Movement Speed",
+      "description": null
+    },
+    {
+      "id": 6157,
+      "key": "special_bonus_unique_zeus",
+      "name": "+1.5% Static Field Damage",
+      "description": null
+    },
+    {
+      "id": 5951,
+      "key": "special_bonus_cooldown_reduction_15",
+      "name": "15% Cooldown Reduction",
+      "description": null
+    },
+    {
+      "id": 6518,
+      "key": "special_bonus_unique_zeus_3",
+      "name": "+0.5s Lightning Bolt Ministun",
+      "description": null
+    },
+    {
+      "id": 7117,
+      "key": "special_bonus_cast_range_275",
+      "name": "+275 Cast Range",
+      "description": null
+    },
+    {
+      "id": 6501,
+      "key": "special_bonus_unique_zeus_2",
+      "name": "+155 Arc Lightning Damage",
+      "description": null
+    }
+  ],
+  "legs": 2,
+  "armor_physical": 0.0,
+  "magical_resistance": 25,
+  "attack_capabilities": "DOTA_UNIT_CAP_RANGED_ATTACK",
+  "attack_damage_min": 33,
+  "attack_damage_max": 41,
+  "attack_rate": 1.7,
+  "attack_animation_point": 0.633,
+  "attack_acquisition_range": 800,
+  "attack_range": 380,
+  "projectile_speed": 1100,
+  "attribute_primary": "DOTA_ATTRIBUTE_INTELLECT",
+  "attribute_base_strength": 21,
+  "attribute_strength_gain": 2.1,
+  "attribute_base_intelligence": 20,
+  "attribute_intelligence_gain": 2.7,
+  "attribute_base_agility": 11,
+  "attribute_agility_gain": 1.2,
+  "status_health": 200,
+  "status_health_regen": 1.5,
+  "status_mana": 75,
+  "status_mana_regen": 0.9,
+  "bounty_xp": 62,
+  "bounty_gold_min": 0,
+  "bounty_gold_max": 0,
+  "movement_capabilities": "DOTA_UNIT_CAP_MOVE_GROUND",
+  "movement_speed": 300,
+  "movement_turn_rate": 0.6,
+  "has_aggressive_stance": false,
+  "team": 1,
+  "team_name": "Radiant",
+  "vision_daytime_range": 1800,
+  "vision_nighttime_range": 0,
+  "bot": {
+    "hero_types": null,
+    "solo_desire": 0,
+    "requires_babysit": 0,
+    "provides_babysit": 0,
+    "survival_rating": 0,
+    "requires_farm": 0,
+    "provides_setup": 0,
+    "requires_setup": 0
+  }
+}

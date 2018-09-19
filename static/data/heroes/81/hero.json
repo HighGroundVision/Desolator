@@ -1,0 +1,644 @@
+{
+  "id": 81,
+  "name": "Chaos Knight",
+  "key": "npc_dota_hero_chaos_knight",
+  "image_profile": "https://hgv-hyperstone.azurewebsites.net/heroes/profile/npc_dota_hero_chaos_knight.png",
+  "image_icon": "https://hgv-hyperstone.azurewebsites.net/heroes/icons/npc_dota_hero_chaos_knight.png",
+  "image_banner": "https://hgv-hyperstone.azurewebsites.net/heroes/banner/npc_dota_hero_chaos_knight.png",
+  "enabled": true,
+  "new_player_enable": true,
+  "captains_mode_enabled": true,
+  "ability_draft_enabled": true,
+  "complexity": 1,
+  "roles": [
+    {
+      "role": "Carry",
+      "level": 3
+    },
+    {
+      "role": "Disabler",
+      "level": 2
+    },
+    {
+      "role": "Durable",
+      "level": 2
+    },
+    {
+      "role": "Pusher",
+      "level": 2
+    },
+    {
+      "role": "Initiator",
+      "level": 1
+    }
+  ],
+  "bot_implemented": true,
+  "abilities": [
+    {
+      "id": 5426,
+      "key": "chaos_knight_chaos_bolt",
+      "name": "Chaos Bolt",
+      "description": "Throws a mysterious bolt of energy at the target unit. It stuns for a random duration and deals random damage.",
+      "image": "https://hgv-hyperstone.azurewebsites.net/abilities/chaos_knight_chaos_bolt.png",
+      "hero_id": 81,
+      "ability_type": "DOTA_ABILITY_TYPE_BASIC",
+      "ability_behaviors": [
+        "DOTA_ABILITY_BEHAVIOR_UNIT_TARGET"
+      ],
+      "ability_unit_target_team": "DOTA_UNIT_TARGET_TEAM_ENEMY",
+      "ability_unit_target_type": [
+        "DOTA_UNIT_TARGET_HERO",
+        "DOTA_UNIT_TARGET_BASIC"
+      ],
+      "ability_unit_target_flags": [],
+      "spell_immunity_type": "SPELL_IMMUNITY_ENEMIES_NO",
+      "spell_dispellable_type": "SPELL_DISPELLABLE_YES_STRONG",
+      "ability_unit_damage_type": "DAMAGE_TYPE_MAGICAL",
+      "is_skill": true,
+      "is_ultimate": false,
+      "has_scepter_upgrade": false,
+      "on_castbar": true,
+      "on_learnbar": true,
+      "ability_cast_range": [
+        500
+      ],
+      "ability_cast_range_buffer": 250,
+      "ability_cast_point": [
+        0.4,
+        0.4,
+        0.4,
+        0.4
+      ],
+      "ability_channel_time": [
+        0.0,
+        0.0,
+        0.0,
+        0.0
+      ],
+      "ability_cooldown": [
+        10.0,
+        10.0,
+        10.0,
+        10.0
+      ],
+      "ability_duration": [
+        0.0,
+        0.0,
+        0.0,
+        0.0
+      ],
+      "ability_damage": [
+        0.0,
+        0.0,
+        0.0,
+        0.0
+      ],
+      "ability_mana_cost": [
+        140.0,
+        140.0,
+        140.0,
+        140.0
+      ],
+      "ability_modifier_support_value": 1.0,
+      "ability_modifier_support_bonus": 0.0,
+      "fight_recap_level": 1,
+      "ability_draft_enabled": true,
+      "linked": null,
+      "ability_special": {
+        "chaos_bolt_speed": [
+          1000.0
+        ],
+        "stun_min": [
+          1.0,
+          1.0,
+          1.0,
+          2.0
+        ],
+        "stun_max": [
+          2.0,
+          3.0,
+          4.0,
+          4.0
+        ],
+        "damage_min": [
+          75.0,
+          100.0,
+          125.0,
+          150.0
+        ],
+        "damage_max": [
+          200.0,
+          225.0,
+          250.0,
+          275.0
+        ]
+      }
+    },
+    {
+      "id": 5427,
+      "key": "chaos_knight_reality_rift",
+      "name": "Reality Rift",
+      "description": "Teleports you, any images you have and the target unit to a random point along the line between the two of you. Reduces the target's armor for 8 seconds.",
+      "image": "https://hgv-hyperstone.azurewebsites.net/abilities/chaos_knight_reality_rift.png",
+      "hero_id": 81,
+      "ability_type": "DOTA_ABILITY_TYPE_BASIC",
+      "ability_behaviors": [
+        "DOTA_ABILITY_BEHAVIOR_UNIT_TARGET",
+        "DOTA_ABILITY_BEHAVIOR_ROOT_DISABLES"
+      ],
+      "ability_unit_target_team": "DOTA_UNIT_TARGET_TEAM_ENEMY",
+      "ability_unit_target_type": [
+        "DOTA_UNIT_TARGET_HERO",
+        "DOTA_UNIT_TARGET_BASIC"
+      ],
+      "ability_unit_target_flags": [],
+      "spell_immunity_type": "SPELL_IMMUNITY_ENEMIES_NO",
+      "spell_dispellable_type": "SPELL_DISPELLABLE_YES",
+      "ability_unit_damage_type": null,
+      "is_skill": true,
+      "is_ultimate": false,
+      "has_scepter_upgrade": false,
+      "on_castbar": true,
+      "on_learnbar": true,
+      "ability_cast_range": [
+        550,
+        600,
+        650,
+        700
+      ],
+      "ability_cast_range_buffer": 250,
+      "ability_cast_point": [
+        0.3
+      ],
+      "ability_channel_time": [
+        0.0,
+        0.0,
+        0.0,
+        0.0
+      ],
+      "ability_cooldown": [
+        18.0,
+        14.0,
+        10.0,
+        6.0
+      ],
+      "ability_duration": [
+        0.0,
+        0.0,
+        0.0,
+        0.0
+      ],
+      "ability_damage": [
+        0.0,
+        0.0,
+        0.0,
+        0.0
+      ],
+      "ability_mana_cost": [
+        50.0
+      ],
+      "ability_modifier_support_value": 1.0,
+      "ability_modifier_support_bonus": 0.0,
+      "fight_recap_level": 1,
+      "ability_draft_enabled": true,
+      "linked": null,
+      "ability_special": {
+        "cast_range": [
+          550.0,
+          600.0,
+          650.0,
+          700.0
+        ],
+        "armor_reduction": [
+          1.0,
+          3.0,
+          5.0,
+          7.0
+        ],
+        "armor_duration": [
+          8.0
+        ]
+      }
+    },
+    {
+      "id": 5428,
+      "key": "chaos_knight_chaos_strike",
+      "name": "Chaos Strike",
+      "description": "Each of Chaos Knight's attacks has a chance to deal bonus damage, also causing the critical strike to lifesteal for 75% of the damage.",
+      "image": "https://hgv-hyperstone.azurewebsites.net/abilities/chaos_knight_chaos_strike.png",
+      "hero_id": 81,
+      "ability_type": "DOTA_ABILITY_TYPE_BASIC",
+      "ability_behaviors": [
+        "DOTA_ABILITY_BEHAVIOR_PASSIVE"
+      ],
+      "ability_unit_target_team": null,
+      "ability_unit_target_type": [],
+      "ability_unit_target_flags": [],
+      "spell_immunity_type": null,
+      "spell_dispellable_type": "SPELL_DISPELLABLE_YES",
+      "ability_unit_damage_type": null,
+      "is_skill": true,
+      "is_ultimate": false,
+      "has_scepter_upgrade": false,
+      "on_castbar": true,
+      "on_learnbar": true,
+      "ability_cast_range": [
+        0
+      ],
+      "ability_cast_range_buffer": 250,
+      "ability_cast_point": [
+        0.0,
+        0.0,
+        0.0,
+        0.0
+      ],
+      "ability_channel_time": [
+        0.0,
+        0.0,
+        0.0,
+        0.0
+      ],
+      "ability_cooldown": [
+        0.0,
+        0.0,
+        0.0,
+        0.0
+      ],
+      "ability_duration": [
+        0.0,
+        0.0,
+        0.0,
+        0.0
+      ],
+      "ability_damage": [
+        0.0,
+        0.0,
+        0.0,
+        0.0
+      ],
+      "ability_mana_cost": [
+        0.0,
+        0.0,
+        0.0,
+        0.0
+      ],
+      "ability_modifier_support_value": 1.0,
+      "ability_modifier_support_bonus": 0.0,
+      "fight_recap_level": 0,
+      "ability_draft_enabled": true,
+      "linked": null,
+      "ability_special": {
+        "crit_chance": [
+          12.0
+        ],
+        "crit_damage": [
+          125.0,
+          175.0,
+          225.0,
+          275.0
+        ],
+        "lifesteal": [
+          75.0
+        ]
+      }
+    },
+    {
+      "id": 6251,
+      "key": "generic_hidden",
+      "name": null,
+      "description": null,
+      "image": "https://hgv-hyperstone.azurewebsites.net/abilities/generic_hidden.png",
+      "hero_id": 81,
+      "ability_type": "DOTA_ABILITY_TYPE_BASIC",
+      "ability_behaviors": [
+        "DOTA_ABILITY_BEHAVIOR_HIDDEN",
+        "DOTA_ABILITY_BEHAVIOR_NOT_LEARNABLE"
+      ],
+      "ability_unit_target_team": null,
+      "ability_unit_target_type": [],
+      "ability_unit_target_flags": [],
+      "spell_immunity_type": null,
+      "spell_dispellable_type": null,
+      "ability_unit_damage_type": null,
+      "is_skill": true,
+      "is_ultimate": false,
+      "has_scepter_upgrade": false,
+      "on_castbar": true,
+      "on_learnbar": true,
+      "ability_cast_range": [
+        0
+      ],
+      "ability_cast_range_buffer": 250,
+      "ability_cast_point": [
+        0.0,
+        0.0,
+        0.0,
+        0.0
+      ],
+      "ability_channel_time": [
+        0.0,
+        0.0,
+        0.0,
+        0.0
+      ],
+      "ability_cooldown": [
+        0.0,
+        0.0,
+        0.0,
+        0.0
+      ],
+      "ability_duration": [
+        0.0,
+        0.0,
+        0.0,
+        0.0
+      ],
+      "ability_damage": [
+        0.0,
+        0.0,
+        0.0,
+        0.0
+      ],
+      "ability_mana_cost": [
+        0.0,
+        0.0,
+        0.0,
+        0.0
+      ],
+      "ability_modifier_support_value": 1.0,
+      "ability_modifier_support_bonus": 0.0,
+      "fight_recap_level": 0,
+      "ability_draft_enabled": false,
+      "linked": null,
+      "ability_special": {}
+    },
+    {
+      "id": 6251,
+      "key": "generic_hidden",
+      "name": null,
+      "description": null,
+      "image": "https://hgv-hyperstone.azurewebsites.net/abilities/generic_hidden.png",
+      "hero_id": 81,
+      "ability_type": "DOTA_ABILITY_TYPE_BASIC",
+      "ability_behaviors": [
+        "DOTA_ABILITY_BEHAVIOR_HIDDEN",
+        "DOTA_ABILITY_BEHAVIOR_NOT_LEARNABLE"
+      ],
+      "ability_unit_target_team": null,
+      "ability_unit_target_type": [],
+      "ability_unit_target_flags": [],
+      "spell_immunity_type": null,
+      "spell_dispellable_type": null,
+      "ability_unit_damage_type": null,
+      "is_skill": true,
+      "is_ultimate": false,
+      "has_scepter_upgrade": false,
+      "on_castbar": true,
+      "on_learnbar": true,
+      "ability_cast_range": [
+        0
+      ],
+      "ability_cast_range_buffer": 250,
+      "ability_cast_point": [
+        0.0,
+        0.0,
+        0.0,
+        0.0
+      ],
+      "ability_channel_time": [
+        0.0,
+        0.0,
+        0.0,
+        0.0
+      ],
+      "ability_cooldown": [
+        0.0,
+        0.0,
+        0.0,
+        0.0
+      ],
+      "ability_duration": [
+        0.0,
+        0.0,
+        0.0,
+        0.0
+      ],
+      "ability_damage": [
+        0.0,
+        0.0,
+        0.0,
+        0.0
+      ],
+      "ability_mana_cost": [
+        0.0,
+        0.0,
+        0.0,
+        0.0
+      ],
+      "ability_modifier_support_value": 1.0,
+      "ability_modifier_support_bonus": 0.0,
+      "fight_recap_level": 0,
+      "ability_draft_enabled": false,
+      "linked": null,
+      "ability_special": {}
+    },
+    {
+      "id": 5429,
+      "key": "chaos_knight_phantasm",
+      "name": "Phantasm",
+      "description": "Summons several phantasmal copies of the Chaos Knight from alternate dimensions. There is a 50% chance an extra phantasm will be summoned. The phantasms deal 100/100/100% damage, but take 260% damage.\\n\\nUpgradeable by Aghanim's Scepter.\\nDISPEL TYPE: Basic Dispel",
+      "image": "https://hgv-hyperstone.azurewebsites.net/abilities/chaos_knight_phantasm.png",
+      "hero_id": 81,
+      "ability_type": "DOTA_ABILITY_TYPE_ULTIMATE",
+      "ability_behaviors": [
+        "DOTA_ABILITY_BEHAVIOR_NO_TARGET"
+      ],
+      "ability_unit_target_team": "DOTA_UNIT_TARGET_TEAM_FRIENDLY",
+      "ability_unit_target_type": [
+        "DOTA_UNIT_TARGET_HERO"
+      ],
+      "ability_unit_target_flags": [
+        "DOTA_UNIT_TARGET_FLAG_NOT_CREEP_HERO"
+      ],
+      "spell_immunity_type": null,
+      "spell_dispellable_type": null,
+      "ability_unit_damage_type": null,
+      "is_skill": false,
+      "is_ultimate": true,
+      "has_scepter_upgrade": true,
+      "on_castbar": true,
+      "on_learnbar": true,
+      "ability_cast_range": [
+        1200
+      ],
+      "ability_cast_range_buffer": 250,
+      "ability_cast_point": [
+        0.4,
+        0.4,
+        0.4
+      ],
+      "ability_channel_time": [
+        0.0,
+        0.0,
+        0.0,
+        0.0
+      ],
+      "ability_cooldown": [
+        145.0
+      ],
+      "ability_duration": [
+        0.0,
+        0.0,
+        0.0,
+        0.0
+      ],
+      "ability_damage": [
+        0.0,
+        0.0,
+        0.0,
+        0.0
+      ],
+      "ability_mana_cost": [
+        125.0,
+        200.0,
+        275.0
+      ],
+      "ability_modifier_support_value": 1.0,
+      "ability_modifier_support_bonus": 0.0,
+      "fight_recap_level": 2,
+      "ability_draft_enabled": true,
+      "linked": null,
+      "ability_special": {
+        "images_count": [
+          1.0,
+          2.0,
+          3.0
+        ],
+        "extra_phantasm_chance_pct_tooltip": [
+          50.0
+        ],
+        "illusion_duration": [
+          42.0
+        ],
+        "outgoing_damage": [
+          0.0,
+          0.0,
+          0.0
+        ],
+        "outgoing_damage_tooltip": [
+          100.0,
+          100.0,
+          100.0
+        ],
+        "incoming_damage": [
+          160.0
+        ],
+        "incoming_damage_tooltip": [
+          260.0
+        ],
+        "invuln_duration": [
+          0.5
+        ],
+        "vision_radius": [
+          400.0
+        ],
+        "cooldown_scepter": [
+          110.0
+        ]
+      }
+    }
+  ],
+  "talents": [
+    {
+      "id": 5921,
+      "key": "special_bonus_all_stats_5",
+      "name": "+5 All Stats",
+      "description": null
+    },
+    {
+      "id": 5918,
+      "key": "special_bonus_movement_speed_20",
+      "name": "+20 Movement Speed",
+      "description": null
+    },
+    {
+      "id": 6145,
+      "key": "special_bonus_strength_15",
+      "name": "+15 Strength",
+      "description": null
+    },
+    {
+      "id": 6190,
+      "key": "special_bonus_cooldown_reduction_12",
+      "name": "12% Cooldown Reduction",
+      "description": null
+    },
+    {
+      "id": 5957,
+      "key": "special_bonus_gold_income_25",
+      "name": "+150 Gold/Min",
+      "description": null
+    },
+    {
+      "id": 6133,
+      "key": "special_bonus_unique_chaos_knight",
+      "name": "Reality Rift Pierces Spell Immune",
+      "description": null
+    },
+    {
+      "id": 6618,
+      "key": "special_bonus_unique_chaos_knight_2",
+      "name": "-7 Reality Rift Armor Reduction",
+      "description": null
+    },
+    {
+      "id": 6619,
+      "key": "special_bonus_unique_chaos_knight_3",
+      "name": "+2 Max Chaos Bolt Duration",
+      "description": null
+    }
+  ],
+  "legs": 2,
+  "armor_physical": 1.0,
+  "magical_resistance": 25,
+  "attack_capabilities": "DOTA_UNIT_CAP_MELEE_ATTACK",
+  "attack_damage_min": 29,
+  "attack_damage_max": 59,
+  "attack_rate": 1.7,
+  "attack_animation_point": 0.5,
+  "attack_acquisition_range": 600,
+  "attack_range": 150,
+  "projectile_speed": 900,
+  "attribute_primary": "DOTA_ATTRIBUTE_STRENGTH",
+  "attribute_base_strength": 22,
+  "attribute_strength_gain": 3.2,
+  "attribute_base_intelligence": 18,
+  "attribute_intelligence_gain": 1.2,
+  "attribute_base_agility": 14,
+  "attribute_agility_gain": 2.1,
+  "status_health": 200,
+  "status_health_regen": 1.5,
+  "status_mana": 75,
+  "status_mana_regen": 0.9,
+  "bounty_xp": 62,
+  "bounty_gold_min": 0,
+  "bounty_gold_max": 0,
+  "movement_capabilities": "DOTA_UNIT_CAP_MOVE_GROUND",
+  "movement_speed": 320,
+  "movement_turn_rate": 0.5,
+  "has_aggressive_stance": false,
+  "team": 1,
+  "team_name": "Radiant",
+  "vision_daytime_range": 1800,
+  "vision_nighttime_range": 0,
+  "bot": {
+    "hero_types": null,
+    "solo_desire": 0,
+    "requires_babysit": 0,
+    "provides_babysit": 0,
+    "survival_rating": 0,
+    "requires_farm": 0,
+    "provides_setup": 0,
+    "requires_setup": 0
+  }
+}

@@ -1,0 +1,621 @@
+{
+  "id": 9,
+  "name": "Mirana",
+  "key": "npc_dota_hero_mirana",
+  "image_profile": "https://hgv-hyperstone.azurewebsites.net/heroes/profile/npc_dota_hero_mirana.png",
+  "image_icon": "https://hgv-hyperstone.azurewebsites.net/heroes/icons/npc_dota_hero_mirana.png",
+  "image_banner": "https://hgv-hyperstone.azurewebsites.net/heroes/banner/npc_dota_hero_mirana.png",
+  "enabled": true,
+  "new_player_enable": true,
+  "captains_mode_enabled": true,
+  "ability_draft_enabled": true,
+  "complexity": 2,
+  "roles": [
+    {
+      "role": "Carry",
+      "level": 1
+    },
+    {
+      "role": "Support",
+      "level": 1
+    },
+    {
+      "role": "Escape",
+      "level": 2
+    },
+    {
+      "role": "Nuker",
+      "level": 1
+    },
+    {
+      "role": "Disabler",
+      "level": 1
+    }
+  ],
+  "bot_implemented": false,
+  "abilities": [
+    {
+      "id": 5051,
+      "key": "mirana_starfall",
+      "name": "Starstorm",
+      "description": "Calls down a wave of meteors to damage nearby enemy units. The closest enemy unit to Mirana in a 425 radius will be struck a second time for 75% of the damage.\\n\\nUpgradable by Aghanim's Scepter.",
+      "image": "https://hgv-hyperstone.azurewebsites.net/abilities/mirana_starfall.png",
+      "hero_id": 9,
+      "ability_type": "DOTA_ABILITY_TYPE_BASIC",
+      "ability_behaviors": [
+        "DOTA_ABILITY_BEHAVIOR_NO_TARGET",
+        "DOTA_ABILITY_BEHAVIOR_IGNORE_BACKSWING"
+      ],
+      "ability_unit_target_team": null,
+      "ability_unit_target_type": [],
+      "ability_unit_target_flags": [],
+      "spell_immunity_type": "SPELL_IMMUNITY_ENEMIES_NO",
+      "spell_dispellable_type": null,
+      "ability_unit_damage_type": "DAMAGE_TYPE_MAGICAL",
+      "is_skill": true,
+      "is_ultimate": false,
+      "has_scepter_upgrade": true,
+      "on_castbar": true,
+      "on_learnbar": true,
+      "ability_cast_range": [
+        0
+      ],
+      "ability_cast_range_buffer": 250,
+      "ability_cast_point": [
+        0.5,
+        0.5,
+        0.5,
+        0.5
+      ],
+      "ability_channel_time": [
+        0.0,
+        0.0,
+        0.0,
+        0.0
+      ],
+      "ability_cooldown": [
+        12.0,
+        12.0,
+        12.0,
+        12.0
+      ],
+      "ability_duration": [
+        10.0,
+        10.0,
+        10.0,
+        10.0
+      ],
+      "ability_damage": [
+        75.0,
+        150.0,
+        225.0,
+        300.0
+      ],
+      "ability_mana_cost": [
+        80.0,
+        105.0,
+        130.0,
+        155.0
+      ],
+      "ability_modifier_support_value": 1.0,
+      "ability_modifier_support_bonus": 0.0,
+      "fight_recap_level": 1,
+      "ability_draft_enabled": true,
+      "linked": null,
+      "ability_special": {
+        "starfall_radius": [
+          650.0
+        ],
+        "starfall_secondary_radius": [
+          425.0
+        ],
+        "interval_scepter": [
+          10.0
+        ]
+      }
+    },
+    {
+      "id": 5048,
+      "key": "mirana_arrow",
+      "name": "Sacred Arrow",
+      "description": "Fires a long-range arrow with deadly precision, which stuns and damages the first enemy unit it strikes. The stun duration ranges from 0.01 to 5 seconds, with bonus damage up to 140 added, based on the distance the arrow travels to its target. Instantly kills the first non-ancient creep it hits.",
+      "image": "https://hgv-hyperstone.azurewebsites.net/abilities/mirana_arrow.png",
+      "hero_id": 9,
+      "ability_type": "DOTA_ABILITY_TYPE_BASIC",
+      "ability_behaviors": [
+        "DOTA_ABILITY_BEHAVIOR_DIRECTIONAL",
+        "DOTA_ABILITY_BEHAVIOR_POINT",
+        "DOTA_ABILITY_BEHAVIOR_IGNORE_BACKSWING"
+      ],
+      "ability_unit_target_team": null,
+      "ability_unit_target_type": [],
+      "ability_unit_target_flags": [],
+      "spell_immunity_type": "SPELL_IMMUNITY_ENEMIES_NO",
+      "spell_dispellable_type": "SPELL_DISPELLABLE_YES_STRONG",
+      "ability_unit_damage_type": "DAMAGE_TYPE_MAGICAL",
+      "is_skill": true,
+      "is_ultimate": false,
+      "has_scepter_upgrade": false,
+      "on_castbar": true,
+      "on_learnbar": true,
+      "ability_cast_range": [
+        3000
+      ],
+      "ability_cast_range_buffer": 250,
+      "ability_cast_point": [
+        0.5,
+        0.5,
+        0.5,
+        0.5
+      ],
+      "ability_channel_time": [
+        0.0,
+        0.0,
+        0.0,
+        0.0
+      ],
+      "ability_cooldown": [
+        17.0
+      ],
+      "ability_duration": [
+        3.11,
+        3.11,
+        3.11,
+        3.11
+      ],
+      "ability_damage": [
+        50.0,
+        140.0,
+        230.0,
+        320.0
+      ],
+      "ability_mana_cost": [
+        100.0,
+        100.0,
+        100.0,
+        100.0
+      ],
+      "ability_modifier_support_value": 1.0,
+      "ability_modifier_support_bonus": 0.0,
+      "fight_recap_level": 1,
+      "ability_draft_enabled": true,
+      "linked": null,
+      "ability_special": {
+        "arrow_speed": [
+          857.0
+        ],
+        "arrow_width": [
+          115.0
+        ],
+        "arrow_range": [
+          3000.0
+        ],
+        "arrow_max_stunrange": [
+          1500.0
+        ],
+        "arrow_min_stun": [
+          0.01
+        ],
+        "arrow_max_stun": [
+          5.0
+        ],
+        "arrow_bonus_damage": [
+          140.0
+        ],
+        "arrow_vision": [
+          500.0
+        ]
+      }
+    },
+    {
+      "id": 5050,
+      "key": "mirana_leap",
+      "name": "Leap",
+      "description": "Mirana leaps forward into battle, empowering herself with a ferocious roar that grants bonus attack and movement speed. Speed bonus lasts 2.5 seconds.",
+      "image": "https://hgv-hyperstone.azurewebsites.net/abilities/mirana_leap.png",
+      "hero_id": 9,
+      "ability_type": "DOTA_ABILITY_TYPE_BASIC",
+      "ability_behaviors": [
+        "DOTA_ABILITY_BEHAVIOR_NO_TARGET",
+        "DOTA_ABILITY_BEHAVIOR_IGNORE_BACKSWING",
+        "DOTA_ABILITY_BEHAVIOR_ROOT_DISABLES"
+      ],
+      "ability_unit_target_team": null,
+      "ability_unit_target_type": [],
+      "ability_unit_target_flags": [],
+      "spell_immunity_type": null,
+      "spell_dispellable_type": "SPELL_DISPELLABLE_YES",
+      "ability_unit_damage_type": null,
+      "is_skill": true,
+      "is_ultimate": false,
+      "has_scepter_upgrade": false,
+      "on_castbar": true,
+      "on_learnbar": true,
+      "ability_cast_range": [
+        0
+      ],
+      "ability_cast_range_buffer": 250,
+      "ability_cast_point": [
+        0.0,
+        0.0,
+        0.0,
+        0.0
+      ],
+      "ability_channel_time": [
+        0.0,
+        0.0,
+        0.0,
+        0.0
+      ],
+      "ability_cooldown": [
+        0.0
+      ],
+      "ability_duration": [
+        0.0,
+        0.0,
+        0.0,
+        0.0
+      ],
+      "ability_damage": [
+        0.0,
+        0.0,
+        0.0,
+        0.0
+      ],
+      "ability_mana_cost": [
+        40.0
+      ],
+      "ability_modifier_support_value": 1.0,
+      "ability_modifier_support_bonus": 0.0,
+      "fight_recap_level": 0,
+      "ability_draft_enabled": true,
+      "linked": null,
+      "ability_special": {
+        "leap_distance": [
+          550.0
+        ],
+        "leap_speed": [
+          1300.0
+        ],
+        "leap_acceleration": [
+          6000.0
+        ],
+        "leap_speedbonus": [
+          8.0,
+          16.0,
+          24.0,
+          32.0
+        ],
+        "leap_speedbonus_as": [
+          60.0,
+          80.0,
+          100.0,
+          120.0
+        ],
+        "leap_bonus_duration": [
+          2.5
+        ],
+        "max_charges": [
+          3.0
+        ],
+        "charge_restore_time": [
+          60.0,
+          50.0,
+          40.0,
+          30.0
+        ]
+      }
+    },
+    {
+      "id": 6251,
+      "key": "generic_hidden",
+      "name": null,
+      "description": null,
+      "image": "https://hgv-hyperstone.azurewebsites.net/abilities/generic_hidden.png",
+      "hero_id": 9,
+      "ability_type": "DOTA_ABILITY_TYPE_BASIC",
+      "ability_behaviors": [
+        "DOTA_ABILITY_BEHAVIOR_HIDDEN",
+        "DOTA_ABILITY_BEHAVIOR_NOT_LEARNABLE"
+      ],
+      "ability_unit_target_team": null,
+      "ability_unit_target_type": [],
+      "ability_unit_target_flags": [],
+      "spell_immunity_type": null,
+      "spell_dispellable_type": null,
+      "ability_unit_damage_type": null,
+      "is_skill": true,
+      "is_ultimate": false,
+      "has_scepter_upgrade": false,
+      "on_castbar": true,
+      "on_learnbar": true,
+      "ability_cast_range": [
+        0
+      ],
+      "ability_cast_range_buffer": 250,
+      "ability_cast_point": [
+        0.0,
+        0.0,
+        0.0,
+        0.0
+      ],
+      "ability_channel_time": [
+        0.0,
+        0.0,
+        0.0,
+        0.0
+      ],
+      "ability_cooldown": [
+        0.0,
+        0.0,
+        0.0,
+        0.0
+      ],
+      "ability_duration": [
+        0.0,
+        0.0,
+        0.0,
+        0.0
+      ],
+      "ability_damage": [
+        0.0,
+        0.0,
+        0.0,
+        0.0
+      ],
+      "ability_mana_cost": [
+        0.0,
+        0.0,
+        0.0,
+        0.0
+      ],
+      "ability_modifier_support_value": 1.0,
+      "ability_modifier_support_bonus": 0.0,
+      "fight_recap_level": 0,
+      "ability_draft_enabled": false,
+      "linked": null,
+      "ability_special": {}
+    },
+    {
+      "id": 6251,
+      "key": "generic_hidden",
+      "name": null,
+      "description": null,
+      "image": "https://hgv-hyperstone.azurewebsites.net/abilities/generic_hidden.png",
+      "hero_id": 9,
+      "ability_type": "DOTA_ABILITY_TYPE_BASIC",
+      "ability_behaviors": [
+        "DOTA_ABILITY_BEHAVIOR_HIDDEN",
+        "DOTA_ABILITY_BEHAVIOR_NOT_LEARNABLE"
+      ],
+      "ability_unit_target_team": null,
+      "ability_unit_target_type": [],
+      "ability_unit_target_flags": [],
+      "spell_immunity_type": null,
+      "spell_dispellable_type": null,
+      "ability_unit_damage_type": null,
+      "is_skill": true,
+      "is_ultimate": false,
+      "has_scepter_upgrade": false,
+      "on_castbar": true,
+      "on_learnbar": true,
+      "ability_cast_range": [
+        0
+      ],
+      "ability_cast_range_buffer": 250,
+      "ability_cast_point": [
+        0.0,
+        0.0,
+        0.0,
+        0.0
+      ],
+      "ability_channel_time": [
+        0.0,
+        0.0,
+        0.0,
+        0.0
+      ],
+      "ability_cooldown": [
+        0.0,
+        0.0,
+        0.0,
+        0.0
+      ],
+      "ability_duration": [
+        0.0,
+        0.0,
+        0.0,
+        0.0
+      ],
+      "ability_damage": [
+        0.0,
+        0.0,
+        0.0,
+        0.0
+      ],
+      "ability_mana_cost": [
+        0.0,
+        0.0,
+        0.0,
+        0.0
+      ],
+      "ability_modifier_support_value": 1.0,
+      "ability_modifier_support_bonus": 0.0,
+      "fight_recap_level": 0,
+      "ability_draft_enabled": false,
+      "linked": null,
+      "ability_special": {}
+    },
+    {
+      "id": 5049,
+      "key": "mirana_invis",
+      "name": "Moonlight Shadow",
+      "description": "Turns Mirana and all allied heroes invisible. If a hero is revealed, invisibility will restore after the fade delay as long as Moonlight Shadow's duration has not expired.",
+      "image": "https://hgv-hyperstone.azurewebsites.net/abilities/mirana_invis.png",
+      "hero_id": 9,
+      "ability_type": "DOTA_ABILITY_TYPE_ULTIMATE",
+      "ability_behaviors": [
+        "DOTA_ABILITY_BEHAVIOR_NO_TARGET",
+        "DOTA_ABILITY_BEHAVIOR_DONT_RESUME_ATTACK",
+        "DOTA_ABILITY_BEHAVIOR_IGNORE_BACKSWING"
+      ],
+      "ability_unit_target_team": null,
+      "ability_unit_target_type": [],
+      "ability_unit_target_flags": [],
+      "spell_immunity_type": null,
+      "spell_dispellable_type": "SPELL_DISPELLABLE_NO",
+      "ability_unit_damage_type": null,
+      "is_skill": false,
+      "is_ultimate": true,
+      "has_scepter_upgrade": false,
+      "on_castbar": true,
+      "on_learnbar": true,
+      "ability_cast_range": [
+        0
+      ],
+      "ability_cast_range_buffer": 250,
+      "ability_cast_point": [
+        0.5,
+        0.5,
+        0.5
+      ],
+      "ability_channel_time": [
+        0.0,
+        0.0,
+        0.0,
+        0.0
+      ],
+      "ability_cooldown": [
+        140.0,
+        120.0,
+        100.0
+      ],
+      "ability_duration": [
+        0.0,
+        0.0,
+        0.0,
+        0.0
+      ],
+      "ability_damage": [
+        0.0,
+        0.0,
+        0.0,
+        0.0
+      ],
+      "ability_mana_cost": [
+        75.0
+      ],
+      "ability_modifier_support_value": 1.0,
+      "ability_modifier_support_bonus": 0.0,
+      "fight_recap_level": 2,
+      "ability_draft_enabled": true,
+      "linked": null,
+      "ability_special": {
+        "fade_delay": [
+          2.5,
+          2.0,
+          1.5
+        ],
+        "duration": [
+          18.0
+        ],
+        "bonus_movement_speed": [
+          15.0
+        ]
+      }
+    }
+  ],
+  "talents": [
+    {
+      "id": 5938,
+      "key": "special_bonus_attack_damage_15",
+      "name": "+15 Damage",
+      "description": null
+    },
+    {
+      "id": 5959,
+      "key": "special_bonus_hp_200",
+      "name": "+200 Health",
+      "description": null
+    },
+    {
+      "id": 6397,
+      "key": "special_bonus_unique_mirana_3",
+      "name": "-5s Sacred Arrow cooldown",
+      "description": null
+    },
+    {
+      "id": 6013,
+      "key": "special_bonus_unique_mirana_1",
+      "name": "+80 Leap Attack Speed",
+      "description": null
+    },
+    {
+      "id": 6326,
+      "key": "special_bonus_spell_amplify_12",
+      "name": "+12% Spell Amplification",
+      "description": null
+    },
+    {
+      "id": 6830,
+      "key": "special_bonus_mana_break_25",
+      "name": "+25 Mana Break",
+      "description": null
+    },
+    {
+      "id": 6242,
+      "key": "special_bonus_unique_mirana_2",
+      "name": "+2 Multishot Sacred Arrows",
+      "description": "The extra arrows are launched in a cone shape, 30 degrees to the left and right of the original arrow, and cannot hit the same target."
+    },
+    {
+      "id": 6692,
+      "key": "special_bonus_unique_mirana_4",
+      "name": "-70 Moonlight Shadow Cooldown",
+      "description": null
+    }
+  ],
+  "legs": 2,
+  "armor_physical": -1.0,
+  "magical_resistance": 25,
+  "attack_capabilities": "DOTA_UNIT_CAP_RANGED_ATTACK",
+  "attack_damage_min": 25,
+  "attack_damage_max": 30,
+  "attack_rate": 1.7,
+  "attack_animation_point": 0.3,
+  "attack_acquisition_range": 800,
+  "attack_range": 630,
+  "projectile_speed": 900,
+  "attribute_primary": "DOTA_ATTRIBUTE_AGILITY",
+  "attribute_base_strength": 18,
+  "attribute_strength_gain": 2.15,
+  "attribute_base_intelligence": 17,
+  "attribute_intelligence_gain": 1.65,
+  "attribute_base_agility": 18,
+  "attribute_agility_gain": 3.2,
+  "status_health": 200,
+  "status_health_regen": 1.5,
+  "status_mana": 75,
+  "status_mana_regen": 0.9,
+  "bounty_xp": 62,
+  "bounty_gold_min": 0,
+  "bounty_gold_max": 0,
+  "movement_capabilities": "DOTA_UNIT_CAP_MOVE_GROUND",
+  "movement_speed": 295,
+  "movement_turn_rate": 0.5,
+  "has_aggressive_stance": true,
+  "team": 1,
+  "team_name": "Radiant",
+  "vision_daytime_range": 1800,
+  "vision_nighttime_range": 0,
+  "bot": {
+    "hero_types": null,
+    "solo_desire": 0,
+    "requires_babysit": 0,
+    "provides_babysit": 0,
+    "survival_rating": 0,
+    "requires_farm": 0,
+    "provides_setup": 0,
+    "requires_setup": 0
+  }
+}

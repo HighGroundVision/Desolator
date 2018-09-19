@@ -1,0 +1,659 @@
+{
+  "id": 84,
+  "name": "Ogre Magi",
+  "key": "npc_dota_hero_ogre_magi",
+  "image_profile": "https://hgv-hyperstone.azurewebsites.net/heroes/profile/npc_dota_hero_ogre_magi.png",
+  "image_icon": "https://hgv-hyperstone.azurewebsites.net/heroes/icons/npc_dota_hero_ogre_magi.png",
+  "image_banner": "https://hgv-hyperstone.azurewebsites.net/heroes/banner/npc_dota_hero_ogre_magi.png",
+  "enabled": true,
+  "new_player_enable": true,
+  "captains_mode_enabled": true,
+  "ability_draft_enabled": true,
+  "complexity": 1,
+  "roles": [
+    {
+      "role": "Support",
+      "level": 2
+    },
+    {
+      "role": "Nuker",
+      "level": 2
+    },
+    {
+      "role": "Disabler",
+      "level": 2
+    },
+    {
+      "role": "Durable",
+      "level": 1
+    },
+    {
+      "role": "Initiator",
+      "level": 1
+    }
+  ],
+  "bot_implemented": false,
+  "abilities": [
+    {
+      "id": 5438,
+      "key": "ogre_magi_fireblast",
+      "name": "Fireblast",
+      "description": "Blasts an enemy unit with a wave of fire, dealing damage and stunning the target.",
+      "image": "https://hgv-hyperstone.azurewebsites.net/abilities/ogre_magi_fireblast.png",
+      "hero_id": 84,
+      "ability_type": "DOTA_ABILITY_TYPE_BASIC",
+      "ability_behaviors": [
+        "DOTA_ABILITY_BEHAVIOR_UNIT_TARGET"
+      ],
+      "ability_unit_target_team": "DOTA_UNIT_TARGET_TEAM_ENEMY",
+      "ability_unit_target_type": [
+        "DOTA_UNIT_TARGET_HERO",
+        "DOTA_UNIT_TARGET_BASIC"
+      ],
+      "ability_unit_target_flags": [],
+      "spell_immunity_type": "SPELL_IMMUNITY_ENEMIES_NO",
+      "spell_dispellable_type": "SPELL_DISPELLABLE_YES_STRONG",
+      "ability_unit_damage_type": "DAMAGE_TYPE_MAGICAL",
+      "is_skill": true,
+      "is_ultimate": false,
+      "has_scepter_upgrade": false,
+      "on_castbar": true,
+      "on_learnbar": true,
+      "ability_cast_range": [
+        475
+      ],
+      "ability_cast_range_buffer": 250,
+      "ability_cast_point": [
+        0.45
+      ],
+      "ability_channel_time": [
+        0.0,
+        0.0,
+        0.0,
+        0.0
+      ],
+      "ability_cooldown": [
+        12.0
+      ],
+      "ability_duration": [
+        0.0,
+        0.0,
+        0.0,
+        0.0
+      ],
+      "ability_damage": [
+        0.0,
+        0.0,
+        0.0,
+        0.0
+      ],
+      "ability_mana_cost": [
+        75.0,
+        85.0,
+        95.0,
+        105.0
+      ],
+      "ability_modifier_support_value": 1.0,
+      "ability_modifier_support_bonus": 0.0,
+      "fight_recap_level": 1,
+      "ability_draft_enabled": true,
+      "linked": null,
+      "ability_special": {
+        "stun_duration": [
+          1.5
+        ],
+        "multicast_delay": [
+          0.5
+        ],
+        "fireblast_damage": [
+          60.0,
+          120.0,
+          180.0,
+          240.0
+        ]
+      }
+    },
+    {
+      "id": 5439,
+      "key": "ogre_magi_ignite",
+      "name": "Ignite",
+      "description": "Drenches a target in volatile chemicals, causing it to burst into flames. The target is in immense pain, taking damage and moving more slowly.",
+      "image": "https://hgv-hyperstone.azurewebsites.net/abilities/ogre_magi_ignite.png",
+      "hero_id": 84,
+      "ability_type": "DOTA_ABILITY_TYPE_BASIC",
+      "ability_behaviors": [
+        "DOTA_ABILITY_BEHAVIOR_UNIT_TARGET",
+        "DOTA_ABILITY_BEHAVIOR_AOE"
+      ],
+      "ability_unit_target_team": "DOTA_UNIT_TARGET_TEAM_ENEMY",
+      "ability_unit_target_type": [
+        "DOTA_UNIT_TARGET_HERO",
+        "DOTA_UNIT_TARGET_BASIC"
+      ],
+      "ability_unit_target_flags": [],
+      "spell_immunity_type": "SPELL_IMMUNITY_ENEMIES_NO",
+      "spell_dispellable_type": "SPELL_DISPELLABLE_YES",
+      "ability_unit_damage_type": "DAMAGE_TYPE_MAGICAL",
+      "is_skill": true,
+      "is_ultimate": false,
+      "has_scepter_upgrade": false,
+      "on_castbar": true,
+      "on_learnbar": true,
+      "ability_cast_range": [
+        700
+      ],
+      "ability_cast_range_buffer": 250,
+      "ability_cast_point": [
+        0.45
+      ],
+      "ability_channel_time": [
+        0.0,
+        0.0,
+        0.0,
+        0.0
+      ],
+      "ability_cooldown": [
+        15.0
+      ],
+      "ability_duration": [
+        0.0,
+        0.0,
+        0.0,
+        0.0
+      ],
+      "ability_damage": [
+        0.0,
+        0.0,
+        0.0,
+        0.0
+      ],
+      "ability_mana_cost": [
+        90.0
+      ],
+      "ability_modifier_support_value": 1.0,
+      "ability_modifier_support_bonus": 0.0,
+      "fight_recap_level": 1,
+      "ability_draft_enabled": true,
+      "linked": null,
+      "ability_special": {
+        "duration": [
+          5.0,
+          6.0,
+          7.0,
+          8.0
+        ],
+        "burn_damage": [
+          26.0,
+          34.0,
+          42.0,
+          50.0
+        ],
+        "slow_movement_speed_pct": [
+          -20.0,
+          -22.0,
+          -24.0,
+          -26.0
+        ],
+        "projectile_speed": [
+          1000.0
+        ],
+        "multicast_delay": [
+          0.5
+        ]
+      }
+    },
+    {
+      "id": 5440,
+      "key": "ogre_magi_bloodlust",
+      "name": "Bloodlust",
+      "description": "Incites a frenzy in a friendly unit, increasing its movement speed and attack speed. Can be cast on towers.",
+      "image": "https://hgv-hyperstone.azurewebsites.net/abilities/ogre_magi_bloodlust.png",
+      "hero_id": 84,
+      "ability_type": "DOTA_ABILITY_TYPE_BASIC",
+      "ability_behaviors": [
+        "DOTA_ABILITY_BEHAVIOR_UNIT_TARGET",
+        "DOTA_ABILITY_BEHAVIOR_AUTOCAST",
+        "DOTA_ABILITY_BEHAVIOR_DONT_RESUME_ATTACK"
+      ],
+      "ability_unit_target_team": "DOTA_UNIT_TARGET_TEAM_FRIENDLY",
+      "ability_unit_target_type": [
+        "DOTA_UNIT_TARGET_HERO",
+        "DOTA_UNIT_TARGET_BASIC",
+        "DOTA_UNIT_TARGET_BUILDING"
+      ],
+      "ability_unit_target_flags": [
+        "DOTA_UNIT_TARGET_FLAG_INVULNERABLE"
+      ],
+      "spell_immunity_type": "SPELL_IMMUNITY_ALLIES_YES",
+      "spell_dispellable_type": "SPELL_DISPELLABLE_YES",
+      "ability_unit_damage_type": null,
+      "is_skill": true,
+      "is_ultimate": false,
+      "has_scepter_upgrade": false,
+      "on_castbar": true,
+      "on_learnbar": true,
+      "ability_cast_range": [
+        600
+      ],
+      "ability_cast_range_buffer": 250,
+      "ability_cast_point": [
+        0.45
+      ],
+      "ability_channel_time": [
+        0.0,
+        0.0,
+        0.0,
+        0.0
+      ],
+      "ability_cooldown": [
+        20.0
+      ],
+      "ability_duration": [
+        0.0,
+        0.0,
+        0.0,
+        0.0
+      ],
+      "ability_damage": [
+        0.0,
+        0.0,
+        0.0,
+        0.0
+      ],
+      "ability_mana_cost": [
+        65.0
+      ],
+      "ability_modifier_support_value": 1.0,
+      "ability_modifier_support_bonus": 0.0,
+      "fight_recap_level": 0,
+      "ability_draft_enabled": true,
+      "linked": null,
+      "ability_special": {
+        "modelscale": [
+          25.0
+        ],
+        "bonus_movement_speed": [
+          10.0,
+          12.0,
+          14.0,
+          16.0
+        ],
+        "bonus_attack_speed": [
+          30.0,
+          40.0,
+          50.0,
+          60.0
+        ],
+        "self_bonus": [
+          30.0,
+          50.0,
+          70.0,
+          90.0
+        ],
+        "duration": [
+          30.0
+        ]
+      }
+    },
+    {
+      "id": 5466,
+      "key": "ogre_magi_unrefined_fireblast",
+      "name": "Unrefined Fireblast",
+      "description": "Blasts an enemy unit with a wave of fire, dealing damage and stunning the target. Its mana cost is 60% of Ogre Magi's current mana.",
+      "image": "https://hgv-hyperstone.azurewebsites.net/abilities/ogre_magi_unrefined_fireblast.png",
+      "hero_id": 84,
+      "ability_type": "DOTA_ABILITY_TYPE_BASIC",
+      "ability_behaviors": [
+        "DOTA_ABILITY_BEHAVIOR_UNIT_TARGET"
+      ],
+      "ability_unit_target_team": "DOTA_UNIT_TARGET_TEAM_ENEMY",
+      "ability_unit_target_type": [
+        "DOTA_UNIT_TARGET_HERO",
+        "DOTA_UNIT_TARGET_BASIC"
+      ],
+      "ability_unit_target_flags": [],
+      "spell_immunity_type": "SPELL_IMMUNITY_ENEMIES_NO",
+      "spell_dispellable_type": "SPELL_DISPELLABLE_YES_STRONG",
+      "ability_unit_damage_type": "DAMAGE_TYPE_MAGICAL",
+      "is_skill": true,
+      "is_ultimate": false,
+      "has_scepter_upgrade": true,
+      "on_castbar": true,
+      "on_learnbar": true,
+      "ability_cast_range": [
+        475
+      ],
+      "ability_cast_range_buffer": 250,
+      "ability_cast_point": [
+        0.45
+      ],
+      "ability_channel_time": [
+        0.0,
+        0.0,
+        0.0,
+        0.0
+      ],
+      "ability_cooldown": [
+        6.0
+      ],
+      "ability_duration": [
+        0.0,
+        0.0,
+        0.0,
+        0.0
+      ],
+      "ability_damage": [
+        0.0,
+        0.0,
+        0.0,
+        0.0
+      ],
+      "ability_mana_cost": [
+        400.0
+      ],
+      "ability_modifier_support_value": 1.0,
+      "ability_modifier_support_bonus": 0.0,
+      "fight_recap_level": 1,
+      "ability_draft_enabled": false,
+      "linked": null,
+      "ability_special": {
+        "stun_duration": [
+          1.5
+        ],
+        "multicast_delay": [
+          0.5
+        ],
+        "scepter_mana": [
+          0.6
+        ],
+        "fireblast_damage": [
+          275.0
+        ]
+      }
+    },
+    {
+      "id": 6251,
+      "key": "generic_hidden",
+      "name": null,
+      "description": null,
+      "image": "https://hgv-hyperstone.azurewebsites.net/abilities/generic_hidden.png",
+      "hero_id": 84,
+      "ability_type": "DOTA_ABILITY_TYPE_BASIC",
+      "ability_behaviors": [
+        "DOTA_ABILITY_BEHAVIOR_HIDDEN",
+        "DOTA_ABILITY_BEHAVIOR_NOT_LEARNABLE"
+      ],
+      "ability_unit_target_team": null,
+      "ability_unit_target_type": [],
+      "ability_unit_target_flags": [],
+      "spell_immunity_type": null,
+      "spell_dispellable_type": null,
+      "ability_unit_damage_type": null,
+      "is_skill": true,
+      "is_ultimate": false,
+      "has_scepter_upgrade": false,
+      "on_castbar": true,
+      "on_learnbar": true,
+      "ability_cast_range": [
+        0
+      ],
+      "ability_cast_range_buffer": 250,
+      "ability_cast_point": [
+        0.0,
+        0.0,
+        0.0,
+        0.0
+      ],
+      "ability_channel_time": [
+        0.0,
+        0.0,
+        0.0,
+        0.0
+      ],
+      "ability_cooldown": [
+        0.0,
+        0.0,
+        0.0,
+        0.0
+      ],
+      "ability_duration": [
+        0.0,
+        0.0,
+        0.0,
+        0.0
+      ],
+      "ability_damage": [
+        0.0,
+        0.0,
+        0.0,
+        0.0
+      ],
+      "ability_mana_cost": [
+        0.0,
+        0.0,
+        0.0,
+        0.0
+      ],
+      "ability_modifier_support_value": 1.0,
+      "ability_modifier_support_bonus": 0.0,
+      "fight_recap_level": 0,
+      "ability_draft_enabled": false,
+      "linked": null,
+      "ability_special": {}
+    },
+    {
+      "id": 5441,
+      "key": "ogre_magi_multicast",
+      "name": "Multicast",
+      "description": "Enables Ogre Magi to cast his spells multiple times with each use, while also granting his spells greater potency:\\n<font color=\\\"#EEF10D\\\">Fireblast</font> has its cooldown decreased, its range increased.\\n<font color=\\\"#DE8930\\\">Ignite</font> hits enemies in an area, its range is increased, and it may be cast onto random nearby enemies when used.\\n<font color=\\\"#E34F4F\\\">Bloodlust</font> has its cooldown reduced, and may be cast on random nearby allies when used.",
+      "image": "https://hgv-hyperstone.azurewebsites.net/abilities/ogre_magi_multicast.png",
+      "hero_id": 84,
+      "ability_type": "DOTA_ABILITY_TYPE_ULTIMATE",
+      "ability_behaviors": [
+        "DOTA_ABILITY_BEHAVIOR_PASSIVE"
+      ],
+      "ability_unit_target_team": null,
+      "ability_unit_target_type": [],
+      "ability_unit_target_flags": [],
+      "spell_immunity_type": null,
+      "spell_dispellable_type": null,
+      "ability_unit_damage_type": null,
+      "is_skill": false,
+      "is_ultimate": true,
+      "has_scepter_upgrade": false,
+      "on_castbar": true,
+      "on_learnbar": true,
+      "ability_cast_range": [
+        0
+      ],
+      "ability_cast_range_buffer": 250,
+      "ability_cast_point": [
+        0.0,
+        0.0,
+        0.0,
+        0.0
+      ],
+      "ability_channel_time": [
+        0.0,
+        0.0,
+        0.0,
+        0.0
+      ],
+      "ability_cooldown": [
+        0.0,
+        0.0,
+        0.0,
+        0.0
+      ],
+      "ability_duration": [
+        0.0,
+        0.0,
+        0.0,
+        0.0
+      ],
+      "ability_damage": [
+        0.0,
+        0.0,
+        0.0,
+        0.0
+      ],
+      "ability_mana_cost": [
+        0.0,
+        0.0,
+        0.0,
+        0.0
+      ],
+      "ability_modifier_support_value": 1.0,
+      "ability_modifier_support_bonus": 0.0,
+      "fight_recap_level": 0,
+      "ability_draft_enabled": false,
+      "linked": null,
+      "ability_special": {
+        "multicast_2_times": [
+          0.6,
+          0.6,
+          0.6
+        ],
+        "multicast_3_times": [
+          0.0,
+          0.3,
+          0.3
+        ],
+        "multicast_4_times": [
+          0.0,
+          0.0,
+          0.15
+        ],
+        "fireblast_cooldown": [
+          2.0,
+          4.0,
+          6.0
+        ],
+        "ignite_aoe": [
+          150.0,
+          300.0,
+          450.0
+        ],
+        "ignite_cast_range": [
+          150.0,
+          300.0,
+          450.0
+        ],
+        "bloodlust_aoe": [
+          575.0
+        ],
+        "bloodlust_cooldown": [
+          5.0,
+          10.0,
+          15.0
+        ],
+        "multicast_2_times_tooltip": [
+          60.0
+        ],
+        "multicast_3_times_tooltip": [
+          0.0,
+          30.0,
+          30.0
+        ],
+        "multicast_4_times_tooltip": [
+          0.0,
+          0.0,
+          15.0
+        ]
+      }
+    }
+  ],
+  "talents": [
+    {
+      "id": 6007,
+      "key": "special_bonus_gold_income_15",
+      "name": "+90 Gold/Min",
+      "description": null
+    },
+    {
+      "id": 6003,
+      "key": "special_bonus_cast_range_100",
+      "name": "+100 Cast Range",
+      "description": null
+    },
+    {
+      "id": 5968,
+      "key": "special_bonus_attack_damage_90",
+      "name": "+90 Damage",
+      "description": null
+    },
+    {
+      "id": 5993,
+      "key": "special_bonus_hp_300",
+      "name": "+300 Health",
+      "description": null
+    },
+    {
+      "id": 6633,
+      "key": "special_bonus_strength_40",
+      "name": "+40 Strength",
+      "description": null
+    },
+    {
+      "id": 6183,
+      "key": "special_bonus_unique_ogre_magi",
+      "name": "+40 Bloodlust AS",
+      "description": null
+    },
+    {
+      "id": 6706,
+      "key": "special_bonus_movement_speed_90",
+      "name": "+90 Movement Speed",
+      "description": null
+    },
+    {
+      "id": 6707,
+      "key": "special_bonus_unique_ogre_magi_2",
+      "name": "+275 Fireblast Damage",
+      "description": null
+    }
+  ],
+  "legs": 2,
+  "armor_physical": 6.0,
+  "magical_resistance": 25,
+  "attack_capabilities": "DOTA_UNIT_CAP_MELEE_ATTACK",
+  "attack_damage_min": 43,
+  "attack_damage_max": 49,
+  "attack_rate": 1.7,
+  "attack_animation_point": 0.3,
+  "attack_acquisition_range": 600,
+  "attack_range": 150,
+  "projectile_speed": 900,
+  "attribute_primary": "DOTA_ATTRIBUTE_INTELLECT",
+  "attribute_base_strength": 25,
+  "attribute_strength_gain": 3.5,
+  "attribute_base_intelligence": 15,
+  "attribute_intelligence_gain": 2.0,
+  "attribute_base_agility": 14,
+  "attribute_agility_gain": 1.55,
+  "status_health": 200,
+  "status_health_regen": 4.75,
+  "status_mana": 75,
+  "status_mana_regen": 0.9,
+  "bounty_xp": 62,
+  "bounty_gold_min": 0,
+  "bounty_gold_max": 0,
+  "movement_capabilities": "DOTA_UNIT_CAP_MOVE_GROUND",
+  "movement_speed": 285,
+  "movement_turn_rate": 0.6,
+  "has_aggressive_stance": false,
+  "team": 1,
+  "team_name": "Radiant",
+  "vision_daytime_range": 1800,
+  "vision_nighttime_range": 0,
+  "bot": {
+    "hero_types": null,
+    "solo_desire": 0,
+    "requires_babysit": 0,
+    "provides_babysit": 0,
+    "survival_rating": 0,
+    "requires_farm": 0,
+    "provides_setup": 0,
+    "requires_setup": 0
+  }
+}

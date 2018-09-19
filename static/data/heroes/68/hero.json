@@ -1,0 +1,745 @@
+{
+  "id": 68,
+  "name": "Ancient Apparition",
+  "key": "npc_dota_hero_ancient_apparition",
+  "image_profile": "https://hgv-hyperstone.azurewebsites.net/heroes/profile/npc_dota_hero_ancient_apparition.png",
+  "image_icon": "https://hgv-hyperstone.azurewebsites.net/heroes/icons/npc_dota_hero_ancient_apparition.png",
+  "image_banner": "https://hgv-hyperstone.azurewebsites.net/heroes/banner/npc_dota_hero_ancient_apparition.png",
+  "enabled": true,
+  "new_player_enable": true,
+  "captains_mode_enabled": true,
+  "ability_draft_enabled": true,
+  "complexity": 2,
+  "roles": [
+    {
+      "role": "Support",
+      "level": 2
+    },
+    {
+      "role": "Disabler",
+      "level": 1
+    },
+    {
+      "role": "Nuker",
+      "level": 1
+    }
+  ],
+  "bot_implemented": false,
+  "abilities": [
+    {
+      "id": 5345,
+      "key": "ancient_apparition_cold_feet",
+      "name": "Cold Feet",
+      "description": "Places a frozen hex on an enemy unit that deals damage over time, but can be dispelled by moving away from the initial cast point.  If the enemy unit doesn't move outside of the given range, it will be stunned and frozen in place after 4 seconds.",
+      "image": "https://hgv-hyperstone.azurewebsites.net/abilities/ancient_apparition_cold_feet.png",
+      "hero_id": 68,
+      "ability_type": "DOTA_ABILITY_TYPE_BASIC",
+      "ability_behaviors": [
+        "DOTA_ABILITY_BEHAVIOR_UNIT_TARGET",
+        "DOTA_ABILITY_BEHAVIOR_IGNORE_BACKSWING"
+      ],
+      "ability_unit_target_team": "DOTA_UNIT_TARGET_TEAM_ENEMY",
+      "ability_unit_target_type": [
+        "DOTA_UNIT_TARGET_HERO",
+        "DOTA_UNIT_TARGET_BASIC"
+      ],
+      "ability_unit_target_flags": [],
+      "spell_immunity_type": "SPELL_IMMUNITY_ENEMIES_NO",
+      "spell_dispellable_type": "SPELL_DISPELLABLE_YES",
+      "ability_unit_damage_type": "DAMAGE_TYPE_MAGICAL",
+      "is_skill": true,
+      "is_ultimate": false,
+      "has_scepter_upgrade": false,
+      "on_castbar": true,
+      "on_learnbar": true,
+      "ability_cast_range": [
+        700,
+        800,
+        900,
+        1000
+      ],
+      "ability_cast_range_buffer": 250,
+      "ability_cast_point": [
+        0.01,
+        0.01,
+        0.01,
+        0.01
+      ],
+      "ability_channel_time": [
+        0.0,
+        0.0,
+        0.0,
+        0.0
+      ],
+      "ability_cooldown": [
+        10.0,
+        9.0,
+        8.0,
+        7.0
+      ],
+      "ability_duration": [
+        4.0,
+        4.0,
+        4.0,
+        4.0
+      ],
+      "ability_damage": [
+        0.0,
+        0.0,
+        0.0,
+        0.0
+      ],
+      "ability_mana_cost": [
+        125.0
+      ],
+      "ability_modifier_support_value": 0.5,
+      "ability_modifier_support_bonus": 0.0,
+      "fight_recap_level": 1,
+      "ability_draft_enabled": true,
+      "linked": null,
+      "ability_special": {
+        "damage": [
+          30.0,
+          50.0,
+          70.0,
+          90.0
+        ],
+        "break_distance": [
+          740.0,
+          740.0,
+          740.0,
+          740.0
+        ],
+        "stun_duration": [
+          2.0,
+          2.5,
+          3.0,
+          3.5
+        ],
+        "cast_range_tooltip": [
+          700.0,
+          800.0,
+          900.0,
+          1000.0
+        ],
+        "charge_restore_time": [
+          10.0,
+          9.0,
+          8.0,
+          7.0
+        ]
+      }
+    },
+    {
+      "id": 5346,
+      "key": "ancient_apparition_ice_vortex",
+      "name": "Ice Vortex",
+      "description": "Creates a vortex of icy energy that slows movement speed and increases magic damage done in its range.",
+      "image": "https://hgv-hyperstone.azurewebsites.net/abilities/ancient_apparition_ice_vortex.png",
+      "hero_id": 68,
+      "ability_type": "DOTA_ABILITY_TYPE_BASIC",
+      "ability_behaviors": [
+        "DOTA_ABILITY_BEHAVIOR_AOE",
+        "DOTA_ABILITY_BEHAVIOR_POINT",
+        "DOTA_ABILITY_BEHAVIOR_IGNORE_BACKSWING"
+      ],
+      "ability_unit_target_team": null,
+      "ability_unit_target_type": [],
+      "ability_unit_target_flags": [],
+      "spell_immunity_type": "SPELL_IMMUNITY_ENEMIES_NO",
+      "spell_dispellable_type": "SPELL_DISPELLABLE_NO",
+      "ability_unit_damage_type": null,
+      "is_skill": true,
+      "is_ultimate": false,
+      "has_scepter_upgrade": false,
+      "on_castbar": true,
+      "on_learnbar": true,
+      "ability_cast_range": [
+        1500,
+        1500,
+        1500,
+        1500
+      ],
+      "ability_cast_range_buffer": 250,
+      "ability_cast_point": [
+        0.01,
+        0.01,
+        0.01,
+        0.01
+      ],
+      "ability_channel_time": [
+        0.0,
+        0.0,
+        0.0,
+        0.0
+      ],
+      "ability_cooldown": [
+        4.0
+      ],
+      "ability_duration": [
+        16.0
+      ],
+      "ability_damage": [
+        0.0,
+        0.0,
+        0.0,
+        0.0
+      ],
+      "ability_mana_cost": [
+        65.0,
+        80.0,
+        95.0,
+        110.0
+      ],
+      "ability_modifier_support_value": 1.0,
+      "ability_modifier_support_bonus": 0.0,
+      "fight_recap_level": 0,
+      "ability_draft_enabled": true,
+      "linked": null,
+      "ability_special": {
+        "radius": [
+          275.0,
+          275.0,
+          275.0,
+          275.0
+        ],
+        "movement_speed_pct": [
+          -15.0,
+          -20.0,
+          -25.0,
+          -30.0
+        ],
+        "spell_resist_pct": [
+          -15.0,
+          -20.0,
+          -25.0,
+          -30.0
+        ],
+        "vision_aoe": [
+          200.0,
+          200.0,
+          200.0,
+          200.0
+        ],
+        "vortex_duration": [
+          16.0
+        ]
+      }
+    },
+    {
+      "id": 5347,
+      "key": "ancient_apparition_chilling_touch",
+      "name": "Chilling Touch",
+      "description": "A frigid gust enchants allied heroes, granting them bonus magical damage for a given number of physical attacks. Each attack slows the enemy movement speed.  Ancient Apparition always receives the buff.",
+      "image": "https://hgv-hyperstone.azurewebsites.net/abilities/ancient_apparition_chilling_touch.png",
+      "hero_id": 68,
+      "ability_type": "DOTA_ABILITY_TYPE_BASIC",
+      "ability_behaviors": [
+        "DOTA_ABILITY_BEHAVIOR_AOE",
+        "DOTA_ABILITY_BEHAVIOR_POINT",
+        "DOTA_ABILITY_BEHAVIOR_IGNORE_BACKSWING"
+      ],
+      "ability_unit_target_team": null,
+      "ability_unit_target_type": [],
+      "ability_unit_target_flags": [],
+      "spell_immunity_type": "SPELL_IMMUNITY_ENEMIES_NO",
+      "spell_dispellable_type": "SPELL_DISPELLABLE_YES",
+      "ability_unit_damage_type": "DAMAGE_TYPE_MAGICAL",
+      "is_skill": true,
+      "is_ultimate": false,
+      "has_scepter_upgrade": false,
+      "on_castbar": true,
+      "on_learnbar": true,
+      "ability_cast_range": [
+        800,
+        800,
+        800,
+        800
+      ],
+      "ability_cast_range_buffer": 250,
+      "ability_cast_point": [
+        0.01,
+        0.01,
+        0.01,
+        0.01
+      ],
+      "ability_channel_time": [
+        0.0,
+        0.0,
+        0.0,
+        0.0
+      ],
+      "ability_cooldown": [
+        50.0,
+        42.0,
+        34.0,
+        26.0
+      ],
+      "ability_duration": [
+        20.0,
+        24.0,
+        28.0,
+        32.0
+      ],
+      "ability_damage": [
+        0.0,
+        0.0,
+        0.0,
+        0.0
+      ],
+      "ability_mana_cost": [
+        110.0,
+        120.0,
+        130.0,
+        140.0
+      ],
+      "ability_modifier_support_value": 1.0,
+      "ability_modifier_support_bonus": 0.0,
+      "fight_recap_level": 0,
+      "ability_draft_enabled": true,
+      "linked": null,
+      "ability_special": {
+        "radius": [
+          525.0
+        ],
+        "max_attacks": [
+          3.0,
+          4.0,
+          5.0,
+          6.0
+        ],
+        "bonus_damage": [
+          20.0,
+          40.0,
+          60.0,
+          80.0
+        ],
+        "move_speed_pct": [
+          30.0
+        ],
+        "move_speed_duration": [
+          0.3
+        ],
+        "buff_duration": [
+          20.0,
+          24.0,
+          28.0,
+          32.0
+        ]
+      }
+    },
+    {
+      "id": 6251,
+      "key": "generic_hidden",
+      "name": null,
+      "description": null,
+      "image": "https://hgv-hyperstone.azurewebsites.net/abilities/generic_hidden.png",
+      "hero_id": 68,
+      "ability_type": "DOTA_ABILITY_TYPE_BASIC",
+      "ability_behaviors": [
+        "DOTA_ABILITY_BEHAVIOR_HIDDEN",
+        "DOTA_ABILITY_BEHAVIOR_NOT_LEARNABLE"
+      ],
+      "ability_unit_target_team": null,
+      "ability_unit_target_type": [],
+      "ability_unit_target_flags": [],
+      "spell_immunity_type": null,
+      "spell_dispellable_type": null,
+      "ability_unit_damage_type": null,
+      "is_skill": true,
+      "is_ultimate": false,
+      "has_scepter_upgrade": false,
+      "on_castbar": true,
+      "on_learnbar": true,
+      "ability_cast_range": [
+        0
+      ],
+      "ability_cast_range_buffer": 250,
+      "ability_cast_point": [
+        0.0,
+        0.0,
+        0.0,
+        0.0
+      ],
+      "ability_channel_time": [
+        0.0,
+        0.0,
+        0.0,
+        0.0
+      ],
+      "ability_cooldown": [
+        0.0,
+        0.0,
+        0.0,
+        0.0
+      ],
+      "ability_duration": [
+        0.0,
+        0.0,
+        0.0,
+        0.0
+      ],
+      "ability_damage": [
+        0.0,
+        0.0,
+        0.0,
+        0.0
+      ],
+      "ability_mana_cost": [
+        0.0,
+        0.0,
+        0.0,
+        0.0
+      ],
+      "ability_modifier_support_value": 1.0,
+      "ability_modifier_support_bonus": 0.0,
+      "fight_recap_level": 0,
+      "ability_draft_enabled": false,
+      "linked": null,
+      "ability_special": {}
+    },
+    {
+      "id": 6251,
+      "key": "generic_hidden",
+      "name": null,
+      "description": null,
+      "image": "https://hgv-hyperstone.azurewebsites.net/abilities/generic_hidden.png",
+      "hero_id": 68,
+      "ability_type": "DOTA_ABILITY_TYPE_BASIC",
+      "ability_behaviors": [
+        "DOTA_ABILITY_BEHAVIOR_HIDDEN",
+        "DOTA_ABILITY_BEHAVIOR_NOT_LEARNABLE"
+      ],
+      "ability_unit_target_team": null,
+      "ability_unit_target_type": [],
+      "ability_unit_target_flags": [],
+      "spell_immunity_type": null,
+      "spell_dispellable_type": null,
+      "ability_unit_damage_type": null,
+      "is_skill": true,
+      "is_ultimate": false,
+      "has_scepter_upgrade": false,
+      "on_castbar": true,
+      "on_learnbar": true,
+      "ability_cast_range": [
+        0
+      ],
+      "ability_cast_range_buffer": 250,
+      "ability_cast_point": [
+        0.0,
+        0.0,
+        0.0,
+        0.0
+      ],
+      "ability_channel_time": [
+        0.0,
+        0.0,
+        0.0,
+        0.0
+      ],
+      "ability_cooldown": [
+        0.0,
+        0.0,
+        0.0,
+        0.0
+      ],
+      "ability_duration": [
+        0.0,
+        0.0,
+        0.0,
+        0.0
+      ],
+      "ability_damage": [
+        0.0,
+        0.0,
+        0.0,
+        0.0
+      ],
+      "ability_mana_cost": [
+        0.0,
+        0.0,
+        0.0,
+        0.0
+      ],
+      "ability_modifier_support_value": 1.0,
+      "ability_modifier_support_bonus": 0.0,
+      "fight_recap_level": 0,
+      "ability_draft_enabled": false,
+      "linked": null,
+      "ability_special": {}
+    },
+    {
+      "id": 5348,
+      "key": "ancient_apparition_ice_blast",
+      "name": "Ice Blast",
+      "description": "Launches a tracer toward any location on the battlefield, which must be triggered again to mark the area to be blasted by a damaging explosion of hail. The further the tracer travels, the larger the explosion will be. Enemies caught in the explosion, or who touch the icy ball of hail as it travels, are Frostbitten, taking damage and prevented from regenerating or healing. If a Frostbitten unit's health drops below a certain percentage, they will instantly shatter.\\n\\nUpgradable by Aghanim's Scepter.",
+      "image": "https://hgv-hyperstone.azurewebsites.net/abilities/ancient_apparition_ice_blast.png",
+      "hero_id": 68,
+      "ability_type": "DOTA_ABILITY_TYPE_ULTIMATE",
+      "ability_behaviors": [
+        "DOTA_ABILITY_BEHAVIOR_POINT",
+        "DOTA_ABILITY_BEHAVIOR_AOE"
+      ],
+      "ability_unit_target_team": null,
+      "ability_unit_target_type": [],
+      "ability_unit_target_flags": [],
+      "spell_immunity_type": "SPELL_IMMUNITY_ENEMIES_YES",
+      "spell_dispellable_type": "SPELL_DISPELLABLE_NO",
+      "ability_unit_damage_type": "DAMAGE_TYPE_MAGICAL",
+      "is_skill": false,
+      "is_ultimate": true,
+      "has_scepter_upgrade": true,
+      "on_castbar": true,
+      "on_learnbar": true,
+      "ability_cast_range": [
+        0
+      ],
+      "ability_cast_range_buffer": 250,
+      "ability_cast_point": [
+        0.01,
+        0.01,
+        0.01
+      ],
+      "ability_channel_time": [
+        0.0,
+        0.0,
+        0.0,
+        0.0
+      ],
+      "ability_cooldown": [
+        40.0
+      ],
+      "ability_duration": [
+        0.0,
+        0.0,
+        0.0,
+        0.0
+      ],
+      "ability_damage": [
+        250.0,
+        350.0,
+        450.0
+      ],
+      "ability_mana_cost": [
+        150.0
+      ],
+      "ability_modifier_support_value": 1.0,
+      "ability_modifier_support_bonus": 0.0,
+      "fight_recap_level": 2,
+      "ability_draft_enabled": true,
+      "linked": null,
+      "ability_special": {
+        "radius_min": [
+          275.0,
+          275.0,
+          275.0
+        ],
+        "radius_grow": [
+          50.0,
+          50.0,
+          50.0
+        ],
+        "radius_max": [
+          1000.0,
+          1000.0,
+          1000.0
+        ],
+        "path_radius": [
+          275.0,
+          275.0,
+          275.0
+        ],
+        "frostbite_duration": [
+          9.0,
+          10.0,
+          11.0
+        ],
+        "dot_damage": [
+          12.5,
+          20.0,
+          32.0
+        ],
+        "speed": [
+          1500.0,
+          1500.0,
+          1500.0,
+          1500.0
+        ],
+        "kill_pct": [
+          10.0,
+          11.0,
+          12.0
+        ],
+        "target_sight_radius": [
+          500.0,
+          500.0,
+          500.0
+        ],
+        "frostbite_duration_scepter": [
+          17.0
+        ]
+      }
+    },
+    {
+      "id": 5349,
+      "key": "ancient_apparition_ice_blast_release",
+      "name": "Release",
+      "description": "Releases the ice blast to explode at the tracer's current location.",
+      "image": "https://hgv-hyperstone.azurewebsites.net/abilities/ancient_apparition_ice_blast_release.png",
+      "hero_id": 68,
+      "ability_type": "DOTA_ABILITY_TYPE_ULTIMATE",
+      "ability_behaviors": [
+        "DOTA_ABILITY_BEHAVIOR_HIDDEN",
+        "DOTA_ABILITY_BEHAVIOR_NO_TARGET"
+      ],
+      "ability_unit_target_team": null,
+      "ability_unit_target_type": [],
+      "ability_unit_target_flags": [],
+      "spell_immunity_type": null,
+      "spell_dispellable_type": null,
+      "ability_unit_damage_type": null,
+      "is_skill": false,
+      "is_ultimate": true,
+      "has_scepter_upgrade": false,
+      "on_castbar": true,
+      "on_learnbar": true,
+      "ability_cast_range": [
+        0
+      ],
+      "ability_cast_range_buffer": 250,
+      "ability_cast_point": [
+        0.0,
+        0.0,
+        0.0
+      ],
+      "ability_channel_time": [
+        0.0,
+        0.0,
+        0.0,
+        0.0
+      ],
+      "ability_cooldown": [
+        1.0,
+        1.0,
+        1.0
+      ],
+      "ability_duration": [
+        0.0,
+        0.0,
+        0.0,
+        0.0
+      ],
+      "ability_damage": [
+        0.0,
+        0.0,
+        0.0,
+        0.0
+      ],
+      "ability_mana_cost": [
+        0.0,
+        0.0,
+        0.0,
+        0.0
+      ],
+      "ability_modifier_support_value": 1.0,
+      "ability_modifier_support_bonus": 0.0,
+      "fight_recap_level": 0,
+      "ability_draft_enabled": false,
+      "linked": null,
+      "ability_special": {}
+    }
+  ],
+  "talents": [
+    {
+      "id": 6007,
+      "key": "special_bonus_gold_income_15",
+      "name": "+90 Gold/Min",
+      "description": null
+    },
+    {
+      "id": 5989,
+      "key": "special_bonus_spell_amplify_10",
+      "name": "+10% Spell Amplification",
+      "description": null
+    },
+    {
+      "id": 6352,
+      "key": "special_bonus_unique_ancient_apparition_3",
+      "name": "-2.5s Ice Vortex Cooldown",
+      "description": null
+    },
+    {
+      "id": 6079,
+      "key": "special_bonus_hp_regen_20",
+      "name": "+20 Health Regen",
+      "description": null
+    },
+    {
+      "id": 6534,
+      "key": "special_bonus_unique_ancient_apparition_4",
+      "name": "+8% Ice Vortex Slow/Resistance",
+      "description": null
+    },
+    {
+      "id": 6291,
+      "key": "special_bonus_unique_ancient_apparition_2",
+      "name": "+80 Chilling Touch Damage",
+      "description": null
+    },
+    {
+      "id": 7106,
+      "key": "special_bonus_unique_ancient_apparition_6",
+      "name": "900 AoE Cold Feet",
+      "description": null
+    },
+    {
+      "id": 6810,
+      "key": "special_bonus_unique_ancient_apparition_5",
+      "name": "+4% Ice Blast Kill Threshold",
+      "description": null
+    }
+  ],
+  "legs": 2,
+  "armor_physical": -1.0,
+  "magical_resistance": 25,
+  "attack_capabilities": "DOTA_UNIT_CAP_RANGED_ATTACK",
+  "attack_damage_min": 21,
+  "attack_damage_max": 31,
+  "attack_rate": 1.7,
+  "attack_animation_point": 0.45,
+  "attack_acquisition_range": 800,
+  "attack_range": 675,
+  "projectile_speed": 1250,
+  "attribute_primary": "DOTA_ATTRIBUTE_INTELLECT",
+  "attribute_base_strength": 20,
+  "attribute_strength_gain": 1.7,
+  "attribute_base_intelligence": 23,
+  "attribute_intelligence_gain": 2.6,
+  "attribute_base_agility": 20,
+  "attribute_agility_gain": 2.2,
+  "status_health": 200,
+  "status_health_regen": 1.5,
+  "status_mana": 75,
+  "status_mana_regen": 0.9,
+  "bounty_xp": 62,
+  "bounty_gold_min": 0,
+  "bounty_gold_max": 0,
+  "movement_capabilities": "DOTA_UNIT_CAP_MOVE_GROUND",
+  "movement_speed": 295,
+  "movement_turn_rate": 0.6,
+  "has_aggressive_stance": false,
+  "team": 1,
+  "team_name": "Radiant",
+  "vision_daytime_range": 1800,
+  "vision_nighttime_range": 0,
+  "bot": {
+    "hero_types": null,
+    "solo_desire": 0,
+    "requires_babysit": 0,
+    "provides_babysit": 0,
+    "survival_rating": 0,
+    "requires_farm": 0,
+    "provides_setup": 0,
+    "requires_setup": 0
+  }
+}

@@ -1,0 +1,656 @@
+{
+  "id": 64,
+  "name": "Jakiro",
+  "key": "npc_dota_hero_jakiro",
+  "image_profile": "https://hgv-hyperstone.azurewebsites.net/heroes/profile/npc_dota_hero_jakiro.png",
+  "image_icon": "https://hgv-hyperstone.azurewebsites.net/heroes/icons/npc_dota_hero_jakiro.png",
+  "image_banner": "https://hgv-hyperstone.azurewebsites.net/heroes/banner/npc_dota_hero_jakiro.png",
+  "enabled": true,
+  "new_player_enable": true,
+  "captains_mode_enabled": true,
+  "ability_draft_enabled": true,
+  "complexity": 1,
+  "roles": [
+    {
+      "role": "Support",
+      "level": 1
+    },
+    {
+      "role": "Nuker",
+      "level": 2
+    },
+    {
+      "role": "Pusher",
+      "level": 2
+    },
+    {
+      "role": "Disabler",
+      "level": 1
+    }
+  ],
+  "bot_implemented": true,
+  "abilities": [
+    {
+      "id": 5297,
+      "key": "jakiro_dual_breath",
+      "name": "Dual Breath",
+      "description": "An icy blast followed by a wave of fire launches out in a path in front of Jakiro. The ice slows enemies, while the fire delivers damage over time.",
+      "image": "https://hgv-hyperstone.azurewebsites.net/abilities/jakiro_dual_breath.png",
+      "hero_id": 64,
+      "ability_type": "DOTA_ABILITY_TYPE_BASIC",
+      "ability_behaviors": [
+        "DOTA_ABILITY_BEHAVIOR_POINT",
+        "DOTA_ABILITY_BEHAVIOR_UNIT_TARGET"
+      ],
+      "ability_unit_target_team": "DOTA_UNIT_TARGET_TEAM_ENEMY",
+      "ability_unit_target_type": [
+        "DOTA_UNIT_TARGET_HERO",
+        "DOTA_UNIT_TARGET_BASIC"
+      ],
+      "ability_unit_target_flags": [],
+      "spell_immunity_type": "SPELL_IMMUNITY_ENEMIES_NO",
+      "spell_dispellable_type": "SPELL_DISPELLABLE_YES",
+      "ability_unit_damage_type": "DAMAGE_TYPE_MAGICAL",
+      "is_skill": true,
+      "is_ultimate": false,
+      "has_scepter_upgrade": false,
+      "on_castbar": true,
+      "on_learnbar": true,
+      "ability_cast_range": [
+        750
+      ],
+      "ability_cast_range_buffer": 250,
+      "ability_cast_point": [
+        0.55
+      ],
+      "ability_channel_time": [
+        0.0,
+        0.0,
+        0.0,
+        0.0
+      ],
+      "ability_cooldown": [
+        10.0,
+        10.0,
+        10.0,
+        10.0
+      ],
+      "ability_duration": [
+        5.0
+      ],
+      "ability_damage": [
+        0.0
+      ],
+      "ability_mana_cost": [
+        135.0,
+        140.0,
+        155.0,
+        170.0
+      ],
+      "ability_modifier_support_value": 0.25,
+      "ability_modifier_support_bonus": 0.0,
+      "fight_recap_level": 1,
+      "ability_draft_enabled": true,
+      "linked": null,
+      "ability_special": {
+        "start_radius": [
+          225.0
+        ],
+        "end_radius": [
+          275.0
+        ],
+        "range": [
+          750.0,
+          750.0,
+          750.0,
+          750.0
+        ],
+        "speed": [
+          1050.0
+        ],
+        "fire_delay": [
+          0.3,
+          0.3,
+          0.3,
+          0.3
+        ],
+        "burn_damage": [
+          20.0,
+          40.0,
+          60.0,
+          80.0
+        ],
+        "slow_movement_speed_pct": [
+          -28.0,
+          -32.0,
+          -36.0,
+          -40.0
+        ],
+        "slow_attack_speed_pct": [
+          -28.0,
+          -32.0,
+          -36.0,
+          -40.0
+        ],
+        "tooltip_duration": [
+          5.0
+        ],
+        "speed_fire": [
+          1050.0
+        ]
+      }
+    },
+    {
+      "id": 5298,
+      "key": "jakiro_ice_path",
+      "name": "Ice Path",
+      "description": "Creates a path of ice that stuns and damages enemies that touch it.",
+      "image": "https://hgv-hyperstone.azurewebsites.net/abilities/jakiro_ice_path.png",
+      "hero_id": 64,
+      "ability_type": "DOTA_ABILITY_TYPE_BASIC",
+      "ability_behaviors": [
+        "DOTA_ABILITY_BEHAVIOR_POINT"
+      ],
+      "ability_unit_target_team": "DOTA_UNIT_TARGET_TEAM_ENEMY",
+      "ability_unit_target_type": [
+        "DOTA_UNIT_TARGET_HERO",
+        "DOTA_UNIT_TARGET_BASIC"
+      ],
+      "ability_unit_target_flags": [],
+      "spell_immunity_type": "SPELL_IMMUNITY_ENEMIES_NO",
+      "spell_dispellable_type": "SPELL_DISPELLABLE_YES_STRONG",
+      "ability_unit_damage_type": "DAMAGE_TYPE_MAGICAL",
+      "is_skill": true,
+      "is_ultimate": false,
+      "has_scepter_upgrade": false,
+      "on_castbar": true,
+      "on_learnbar": true,
+      "ability_cast_range": [
+        1200
+      ],
+      "ability_cast_range_buffer": 250,
+      "ability_cast_point": [
+        0.65
+      ],
+      "ability_channel_time": [
+        0.0,
+        0.0,
+        0.0,
+        0.0
+      ],
+      "ability_cooldown": [
+        12.0,
+        11.0,
+        10.0,
+        9.0
+      ],
+      "ability_duration": [
+        0.0,
+        0.0,
+        0.0,
+        0.0
+      ],
+      "ability_damage": [
+        0.0
+      ],
+      "ability_mana_cost": [
+        90.0
+      ],
+      "ability_modifier_support_value": 1.0,
+      "ability_modifier_support_bonus": 0.0,
+      "fight_recap_level": 1,
+      "ability_draft_enabled": true,
+      "linked": null,
+      "ability_special": {
+        "path_delay": [
+          0.5
+        ],
+        "duration": [
+          1.0,
+          1.5,
+          2.0,
+          2.5
+        ],
+        "path_radius": [
+          150.0
+        ],
+        "damage": [
+          50.0
+        ]
+      }
+    },
+    {
+      "id": 5299,
+      "key": "jakiro_liquid_fire",
+      "name": "Liquid Fire",
+      "description": "Jakiro burns his enemies in an area of effect with fire added to his attack, while slowing their attacks.",
+      "image": "https://hgv-hyperstone.azurewebsites.net/abilities/jakiro_liquid_fire.png",
+      "hero_id": 64,
+      "ability_type": "DOTA_ABILITY_TYPE_BASIC",
+      "ability_behaviors": [
+        "DOTA_ABILITY_BEHAVIOR_UNIT_TARGET",
+        "DOTA_ABILITY_BEHAVIOR_AUTOCAST",
+        "DOTA_ABILITY_BEHAVIOR_ATTACK"
+      ],
+      "ability_unit_target_team": "DOTA_UNIT_TARGET_TEAM_ENEMY",
+      "ability_unit_target_type": [
+        "DOTA_UNIT_TARGET_HERO",
+        "DOTA_UNIT_TARGET_BASIC",
+        "DOTA_UNIT_TARGET_BUILDING"
+      ],
+      "ability_unit_target_flags": [
+        "DOTA_UNIT_TARGET_FLAG_MAGIC_IMMUNE_ENEMIES"
+      ],
+      "spell_immunity_type": "SPELL_IMMUNITY_ENEMIES_NO",
+      "spell_dispellable_type": "SPELL_DISPELLABLE_YES",
+      "ability_unit_damage_type": "DAMAGE_TYPE_MAGICAL",
+      "is_skill": true,
+      "is_ultimate": false,
+      "has_scepter_upgrade": false,
+      "on_castbar": true,
+      "on_learnbar": true,
+      "ability_cast_range": [
+        600
+      ],
+      "ability_cast_range_buffer": 250,
+      "ability_cast_point": [
+        0.0,
+        0.0,
+        0.0,
+        0.0
+      ],
+      "ability_channel_time": [
+        0.0,
+        0.0,
+        0.0,
+        0.0
+      ],
+      "ability_cooldown": [
+        20.0,
+        15.0,
+        10.0,
+        4.0
+      ],
+      "ability_duration": [
+        5.0,
+        5.0,
+        5.0,
+        5.0
+      ],
+      "ability_damage": [
+        0.0,
+        0.0,
+        0.0,
+        0.0
+      ],
+      "ability_mana_cost": [
+        0.0,
+        0.0,
+        0.0,
+        0.0
+      ],
+      "ability_modifier_support_value": 1.0,
+      "ability_modifier_support_bonus": 35.0,
+      "fight_recap_level": 0,
+      "ability_draft_enabled": true,
+      "linked": null,
+      "ability_special": {
+        "slow_attack_speed_pct": [
+          -30.0,
+          -40.0,
+          -50.0,
+          -60.0
+        ],
+        "radius": [
+          300.0
+        ],
+        "damage": [
+          12.0,
+          16.0,
+          20.0,
+          24.0
+        ],
+        "tooltip_duration": [
+          5.0,
+          5.0,
+          5.0,
+          5.0
+        ]
+      }
+    },
+    {
+      "id": 6251,
+      "key": "generic_hidden",
+      "name": null,
+      "description": null,
+      "image": "https://hgv-hyperstone.azurewebsites.net/abilities/generic_hidden.png",
+      "hero_id": 64,
+      "ability_type": "DOTA_ABILITY_TYPE_BASIC",
+      "ability_behaviors": [
+        "DOTA_ABILITY_BEHAVIOR_HIDDEN",
+        "DOTA_ABILITY_BEHAVIOR_NOT_LEARNABLE"
+      ],
+      "ability_unit_target_team": null,
+      "ability_unit_target_type": [],
+      "ability_unit_target_flags": [],
+      "spell_immunity_type": null,
+      "spell_dispellable_type": null,
+      "ability_unit_damage_type": null,
+      "is_skill": true,
+      "is_ultimate": false,
+      "has_scepter_upgrade": false,
+      "on_castbar": true,
+      "on_learnbar": true,
+      "ability_cast_range": [
+        0
+      ],
+      "ability_cast_range_buffer": 250,
+      "ability_cast_point": [
+        0.0,
+        0.0,
+        0.0,
+        0.0
+      ],
+      "ability_channel_time": [
+        0.0,
+        0.0,
+        0.0,
+        0.0
+      ],
+      "ability_cooldown": [
+        0.0,
+        0.0,
+        0.0,
+        0.0
+      ],
+      "ability_duration": [
+        0.0,
+        0.0,
+        0.0,
+        0.0
+      ],
+      "ability_damage": [
+        0.0,
+        0.0,
+        0.0,
+        0.0
+      ],
+      "ability_mana_cost": [
+        0.0,
+        0.0,
+        0.0,
+        0.0
+      ],
+      "ability_modifier_support_value": 1.0,
+      "ability_modifier_support_bonus": 0.0,
+      "fight_recap_level": 0,
+      "ability_draft_enabled": false,
+      "linked": null,
+      "ability_special": {}
+    },
+    {
+      "id": 6251,
+      "key": "generic_hidden",
+      "name": null,
+      "description": null,
+      "image": "https://hgv-hyperstone.azurewebsites.net/abilities/generic_hidden.png",
+      "hero_id": 64,
+      "ability_type": "DOTA_ABILITY_TYPE_BASIC",
+      "ability_behaviors": [
+        "DOTA_ABILITY_BEHAVIOR_HIDDEN",
+        "DOTA_ABILITY_BEHAVIOR_NOT_LEARNABLE"
+      ],
+      "ability_unit_target_team": null,
+      "ability_unit_target_type": [],
+      "ability_unit_target_flags": [],
+      "spell_immunity_type": null,
+      "spell_dispellable_type": null,
+      "ability_unit_damage_type": null,
+      "is_skill": true,
+      "is_ultimate": false,
+      "has_scepter_upgrade": false,
+      "on_castbar": true,
+      "on_learnbar": true,
+      "ability_cast_range": [
+        0
+      ],
+      "ability_cast_range_buffer": 250,
+      "ability_cast_point": [
+        0.0,
+        0.0,
+        0.0,
+        0.0
+      ],
+      "ability_channel_time": [
+        0.0,
+        0.0,
+        0.0,
+        0.0
+      ],
+      "ability_cooldown": [
+        0.0,
+        0.0,
+        0.0,
+        0.0
+      ],
+      "ability_duration": [
+        0.0,
+        0.0,
+        0.0,
+        0.0
+      ],
+      "ability_damage": [
+        0.0,
+        0.0,
+        0.0,
+        0.0
+      ],
+      "ability_mana_cost": [
+        0.0,
+        0.0,
+        0.0,
+        0.0
+      ],
+      "ability_modifier_support_value": 1.0,
+      "ability_modifier_support_bonus": 0.0,
+      "fight_recap_level": 0,
+      "ability_draft_enabled": false,
+      "linked": null,
+      "ability_special": {}
+    },
+    {
+      "id": 5300,
+      "key": "jakiro_macropyre",
+      "name": "Macropyre",
+      "description": "Jakiro exhales a wide line of lasting flames, which deals damage per second to any enemy units caught in the fire.\\n\\nUpgradable by Aghanim's Scepter.",
+      "image": "https://hgv-hyperstone.azurewebsites.net/abilities/jakiro_macropyre.png",
+      "hero_id": 64,
+      "ability_type": "DOTA_ABILITY_TYPE_ULTIMATE",
+      "ability_behaviors": [
+        "DOTA_ABILITY_BEHAVIOR_POINT"
+      ],
+      "ability_unit_target_team": "DOTA_UNIT_TARGET_TEAM_ENEMY",
+      "ability_unit_target_type": [
+        "DOTA_UNIT_TARGET_HERO",
+        "DOTA_UNIT_TARGET_BASIC"
+      ],
+      "ability_unit_target_flags": [],
+      "spell_immunity_type": "SPELL_IMMUNITY_ENEMIES_NO",
+      "spell_dispellable_type": null,
+      "ability_unit_damage_type": "DAMAGE_TYPE_MAGICAL",
+      "is_skill": false,
+      "is_ultimate": true,
+      "has_scepter_upgrade": true,
+      "on_castbar": true,
+      "on_learnbar": true,
+      "ability_cast_range": [
+        1400
+      ],
+      "ability_cast_range_buffer": 250,
+      "ability_cast_point": [
+        0.55
+      ],
+      "ability_channel_time": [
+        0.0,
+        0.0,
+        0.0,
+        0.0
+      ],
+      "ability_cooldown": [
+        60.0,
+        60.0,
+        60.0
+      ],
+      "ability_duration": [
+        0.0,
+        0.0,
+        0.0,
+        0.0
+      ],
+      "ability_damage": [
+        0.0,
+        0.0,
+        0.0,
+        0.0
+      ],
+      "ability_mana_cost": [
+        220.0,
+        330.0,
+        440.0
+      ],
+      "ability_modifier_support_value": 1.0,
+      "ability_modifier_support_bonus": 0.0,
+      "fight_recap_level": 2,
+      "ability_draft_enabled": true,
+      "linked": null,
+      "ability_special": {
+        "damage": [
+          100.0,
+          140.0,
+          180.0
+        ],
+        "cast_range": [
+          1400.0
+        ],
+        "path_radius": [
+          260.0
+        ],
+        "tooltip_duration": [
+          10.0
+        ],
+        "duration": [
+          10.0
+        ],
+        "burn_interval": [
+          0.5,
+          0.5,
+          0.5
+        ],
+        "damage_scepter": [
+          125.0,
+          175.0,
+          225.0
+        ],
+        "cast_range_scepter": [
+          1800.0
+        ],
+        "duration_scepter": [
+          30.0
+        ]
+      }
+    }
+  ],
+  "talents": [
+    {
+      "id": 6317,
+      "key": "special_bonus_exp_boost_30",
+      "name": "+30% XP Gain",
+      "description": null
+    },
+    {
+      "id": 5949,
+      "key": "special_bonus_spell_amplify_8",
+      "name": "+8% Spell Amplification",
+      "description": null
+    },
+    {
+      "id": 6051,
+      "key": "special_bonus_attack_range_300",
+      "name": "+300 Attack Range",
+      "description": null
+    },
+    {
+      "id": 6381,
+      "key": "special_bonus_unique_jakiro_2",
+      "name": "+40 Dual Breath Burn Damage",
+      "description": null
+    },
+    {
+      "id": 6661,
+      "key": "special_bonus_unique_jakiro_4",
+      "name": "-60 Liquid Fire Attack Speed",
+      "description": null
+    },
+    {
+      "id": 5957,
+      "key": "special_bonus_gold_income_25",
+      "name": "+150 Gold/Min",
+      "description": null
+    },
+    {
+      "id": 6538,
+      "key": "special_bonus_unique_jakiro_3",
+      "name": "Macropyre Pure and Pierces Immunity",
+      "description": null
+    },
+    {
+      "id": 6064,
+      "key": "special_bonus_unique_jakiro",
+      "name": "+1.25s Ice Path Duration",
+      "description": null
+    }
+  ],
+  "legs": 2,
+  "armor_physical": 1.0,
+  "magical_resistance": 25,
+  "attack_capabilities": "DOTA_UNIT_CAP_RANGED_ATTACK",
+  "attack_damage_min": 27,
+  "attack_damage_max": 35,
+  "attack_rate": 1.7,
+  "attack_animation_point": 0.4,
+  "attack_acquisition_range": 800,
+  "attack_range": 400,
+  "projectile_speed": 1100,
+  "attribute_primary": "DOTA_ATTRIBUTE_INTELLECT",
+  "attribute_base_strength": 27,
+  "attribute_strength_gain": 2.6,
+  "attribute_base_intelligence": 26,
+  "attribute_intelligence_gain": 2.8,
+  "attribute_base_agility": 10,
+  "attribute_agility_gain": 1.2,
+  "status_health": 200,
+  "status_health_regen": 1.5,
+  "status_mana": 75,
+  "status_mana_regen": 0.9,
+  "bounty_xp": 62,
+  "bounty_gold_min": 0,
+  "bounty_gold_max": 0,
+  "movement_capabilities": "DOTA_UNIT_CAP_MOVE_GROUND",
+  "movement_speed": 290,
+  "movement_turn_rate": 0.5,
+  "has_aggressive_stance": false,
+  "team": 1,
+  "team_name": "Radiant",
+  "vision_daytime_range": 1800,
+  "vision_nighttime_range": 0,
+  "bot": {
+    "hero_types": null,
+    "solo_desire": 0,
+    "requires_babysit": 0,
+    "provides_babysit": 0,
+    "survival_rating": 0,
+    "requires_farm": 0,
+    "provides_setup": 0,
+    "requires_setup": 0
+  }
+}

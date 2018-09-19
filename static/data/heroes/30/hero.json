@@ -1,0 +1,657 @@
+{
+  "id": 30,
+  "name": "Witch Doctor",
+  "key": "npc_dota_hero_witch_doctor",
+  "image_profile": "https://hgv-hyperstone.azurewebsites.net/heroes/profile/npc_dota_hero_witch_doctor.png",
+  "image_icon": "https://hgv-hyperstone.azurewebsites.net/heroes/icons/npc_dota_hero_witch_doctor.png",
+  "image_banner": "https://hgv-hyperstone.azurewebsites.net/heroes/banner/npc_dota_hero_witch_doctor.png",
+  "enabled": true,
+  "new_player_enable": true,
+  "captains_mode_enabled": true,
+  "ability_draft_enabled": true,
+  "complexity": 1,
+  "roles": [
+    {
+      "role": "Support",
+      "level": 3
+    },
+    {
+      "role": "Nuker",
+      "level": 2
+    },
+    {
+      "role": "Disabler",
+      "level": 1
+    }
+  ],
+  "bot_implemented": true,
+  "abilities": [
+    {
+      "id": 5138,
+      "key": "witch_doctor_paralyzing_cask",
+      "name": "Paralyzing Cask",
+      "description": "Launches a cask of paralyzing powder that ricochets between enemy units, stunning and damaging those it hits.",
+      "image": "https://hgv-hyperstone.azurewebsites.net/abilities/witch_doctor_paralyzing_cask.png",
+      "hero_id": 30,
+      "ability_type": "DOTA_ABILITY_TYPE_BASIC",
+      "ability_behaviors": [
+        "DOTA_ABILITY_BEHAVIOR_UNIT_TARGET"
+      ],
+      "ability_unit_target_team": "DOTA_UNIT_TARGET_TEAM_ENEMY",
+      "ability_unit_target_type": [
+        "DOTA_UNIT_TARGET_HERO",
+        "DOTA_UNIT_TARGET_BASIC"
+      ],
+      "ability_unit_target_flags": [],
+      "spell_immunity_type": "SPELL_IMMUNITY_ENEMIES_NO",
+      "spell_dispellable_type": "SPELL_DISPELLABLE_YES_STRONG",
+      "ability_unit_damage_type": "DAMAGE_TYPE_MAGICAL",
+      "is_skill": true,
+      "is_ultimate": false,
+      "has_scepter_upgrade": false,
+      "on_castbar": true,
+      "on_learnbar": true,
+      "ability_cast_range": [
+        700
+      ],
+      "ability_cast_range_buffer": 250,
+      "ability_cast_point": [
+        0.35,
+        0.35,
+        0.35,
+        0.35
+      ],
+      "ability_channel_time": [
+        0.0,
+        0.0,
+        0.0,
+        0.0
+      ],
+      "ability_cooldown": [
+        20.0,
+        18.0,
+        16.0,
+        14.0
+      ],
+      "ability_duration": [
+        0.0,
+        0.0,
+        0.0,
+        0.0
+      ],
+      "ability_damage": [
+        75.0,
+        100.0,
+        125.0,
+        150.0
+      ],
+      "ability_mana_cost": [
+        110.0,
+        120.0,
+        130.0,
+        140.0
+      ],
+      "ability_modifier_support_value": 0.5,
+      "ability_modifier_support_bonus": 0.0,
+      "fight_recap_level": 1,
+      "ability_draft_enabled": true,
+      "linked": null,
+      "ability_special": {
+        "hero_duration": [
+          1.0,
+          1.0,
+          1.0,
+          1.0
+        ],
+        "creep_duration": [
+          5.0,
+          5.0,
+          5.0,
+          5.0
+        ],
+        "hero_damage": [
+          50.0,
+          50.0,
+          50.0,
+          50.0
+        ],
+        "bounce_range": [
+          575.0,
+          575.0,
+          575.0,
+          575.0
+        ],
+        "bounces": [
+          3.0,
+          5.0,
+          7.0,
+          9.0
+        ],
+        "speed": [
+          1000.0
+        ],
+        "bounce_delay": [
+          0.3
+        ],
+        "bounces_tooltip": [
+          2.0,
+          4.0,
+          6.0,
+          8.0
+        ]
+      }
+    },
+    {
+      "id": 5139,
+      "key": "witch_doctor_voodoo_restoration",
+      "name": "Voodoo Restoration",
+      "description": "Witch Doctor focuses his magic to heal nearby allied units.",
+      "image": "https://hgv-hyperstone.azurewebsites.net/abilities/witch_doctor_voodoo_restoration.png",
+      "hero_id": 30,
+      "ability_type": "DOTA_ABILITY_TYPE_BASIC",
+      "ability_behaviors": [
+        "DOTA_ABILITY_BEHAVIOR_NO_TARGET",
+        "DOTA_ABILITY_BEHAVIOR_TOGGLE",
+        "DOTA_ABILITY_BEHAVIOR_IGNORE_CHANNEL"
+      ],
+      "ability_unit_target_team": null,
+      "ability_unit_target_type": [],
+      "ability_unit_target_flags": [],
+      "spell_immunity_type": null,
+      "spell_dispellable_type": "SPELL_DISPELLABLE_NO",
+      "ability_unit_damage_type": null,
+      "is_skill": true,
+      "is_ultimate": false,
+      "has_scepter_upgrade": false,
+      "on_castbar": true,
+      "on_learnbar": true,
+      "ability_cast_range": [
+        0
+      ],
+      "ability_cast_range_buffer": 250,
+      "ability_cast_point": [
+        0.0,
+        0.0,
+        0.0,
+        0.0
+      ],
+      "ability_channel_time": [
+        0.0,
+        0.0,
+        0.0,
+        0.0
+      ],
+      "ability_cooldown": [
+        0.0,
+        0.0,
+        0.0,
+        0.0
+      ],
+      "ability_duration": [
+        0.0,
+        0.0,
+        0.0,
+        0.0
+      ],
+      "ability_damage": [
+        0.0,
+        0.0,
+        0.0,
+        0.0
+      ],
+      "ability_mana_cost": [
+        35.0,
+        40.0,
+        45.0,
+        50.0
+      ],
+      "ability_modifier_support_value": 1.0,
+      "ability_modifier_support_bonus": 0.0,
+      "fight_recap_level": 0,
+      "ability_draft_enabled": true,
+      "linked": null,
+      "ability_special": {
+        "mana_per_second": [
+          8.0,
+          12.0,
+          16.0,
+          20.0
+        ],
+        "radius": [
+          500.0
+        ],
+        "heal": [
+          16.0,
+          24.0,
+          32.0,
+          40.0
+        ],
+        "heal_interval": [
+          0.33,
+          0.33,
+          0.33,
+          0.33
+        ]
+      }
+    },
+    {
+      "id": 5140,
+      "key": "witch_doctor_maledict",
+      "name": "Maledict",
+      "description": "Curses all enemy Heroes in a small area, causing them to take a set amount of damage each second, as well as bursts of damage every 4 seconds based on how much health they have lost since the curse began.",
+      "image": "https://hgv-hyperstone.azurewebsites.net/abilities/witch_doctor_maledict.png",
+      "hero_id": 30,
+      "ability_type": "DOTA_ABILITY_TYPE_BASIC",
+      "ability_behaviors": [
+        "DOTA_ABILITY_BEHAVIOR_AOE",
+        "DOTA_ABILITY_BEHAVIOR_POINT",
+        "DOTA_ABILITY_BEHAVIOR_IGNORE_BACKSWING"
+      ],
+      "ability_unit_target_team": null,
+      "ability_unit_target_type": [
+        "DOTA_UNIT_TARGET_HERO"
+      ],
+      "ability_unit_target_flags": [],
+      "spell_immunity_type": "SPELL_IMMUNITY_ENEMIES_NO",
+      "spell_dispellable_type": "SPELL_DISPELLABLE_NO",
+      "ability_unit_damage_type": "DAMAGE_TYPE_MAGICAL",
+      "is_skill": true,
+      "is_ultimate": false,
+      "has_scepter_upgrade": false,
+      "on_castbar": true,
+      "on_learnbar": true,
+      "ability_cast_range": [
+        575
+      ],
+      "ability_cast_range_buffer": 250,
+      "ability_cast_point": [
+        0.35,
+        0.35,
+        0.35,
+        0.35
+      ],
+      "ability_channel_time": [
+        0.0,
+        0.0,
+        0.0,
+        0.0
+      ],
+      "ability_cooldown": [
+        50.0,
+        40.0,
+        30.0,
+        20.0
+      ],
+      "ability_duration": [
+        12.0
+      ],
+      "ability_damage": [
+        7.0,
+        14.0,
+        21.0,
+        28.0
+      ],
+      "ability_mana_cost": [
+        105.0,
+        110.0,
+        115.0,
+        120.0
+      ],
+      "ability_modifier_support_value": 1.0,
+      "ability_modifier_support_bonus": 0.0,
+      "fight_recap_level": 1,
+      "ability_draft_enabled": true,
+      "linked": null,
+      "ability_special": {
+        "radius": [
+          180.0
+        ],
+        "duration_tooltip": [
+          12.0
+        ],
+        "bonus_damage": [
+          16.0,
+          24.0,
+          32.0,
+          40.0
+        ],
+        "bonus_damage_threshold": [
+          100.0
+        ],
+        "ticks": [
+          3.0
+        ]
+      }
+    },
+    {
+      "id": 6251,
+      "key": "generic_hidden",
+      "name": null,
+      "description": null,
+      "image": "https://hgv-hyperstone.azurewebsites.net/abilities/generic_hidden.png",
+      "hero_id": 30,
+      "ability_type": "DOTA_ABILITY_TYPE_BASIC",
+      "ability_behaviors": [
+        "DOTA_ABILITY_BEHAVIOR_HIDDEN",
+        "DOTA_ABILITY_BEHAVIOR_NOT_LEARNABLE"
+      ],
+      "ability_unit_target_team": null,
+      "ability_unit_target_type": [],
+      "ability_unit_target_flags": [],
+      "spell_immunity_type": null,
+      "spell_dispellable_type": null,
+      "ability_unit_damage_type": null,
+      "is_skill": true,
+      "is_ultimate": false,
+      "has_scepter_upgrade": false,
+      "on_castbar": true,
+      "on_learnbar": true,
+      "ability_cast_range": [
+        0
+      ],
+      "ability_cast_range_buffer": 250,
+      "ability_cast_point": [
+        0.0,
+        0.0,
+        0.0,
+        0.0
+      ],
+      "ability_channel_time": [
+        0.0,
+        0.0,
+        0.0,
+        0.0
+      ],
+      "ability_cooldown": [
+        0.0,
+        0.0,
+        0.0,
+        0.0
+      ],
+      "ability_duration": [
+        0.0,
+        0.0,
+        0.0,
+        0.0
+      ],
+      "ability_damage": [
+        0.0,
+        0.0,
+        0.0,
+        0.0
+      ],
+      "ability_mana_cost": [
+        0.0,
+        0.0,
+        0.0,
+        0.0
+      ],
+      "ability_modifier_support_value": 1.0,
+      "ability_modifier_support_bonus": 0.0,
+      "fight_recap_level": 0,
+      "ability_draft_enabled": false,
+      "linked": null,
+      "ability_special": {}
+    },
+    {
+      "id": 6251,
+      "key": "generic_hidden",
+      "name": null,
+      "description": null,
+      "image": "https://hgv-hyperstone.azurewebsites.net/abilities/generic_hidden.png",
+      "hero_id": 30,
+      "ability_type": "DOTA_ABILITY_TYPE_BASIC",
+      "ability_behaviors": [
+        "DOTA_ABILITY_BEHAVIOR_HIDDEN",
+        "DOTA_ABILITY_BEHAVIOR_NOT_LEARNABLE"
+      ],
+      "ability_unit_target_team": null,
+      "ability_unit_target_type": [],
+      "ability_unit_target_flags": [],
+      "spell_immunity_type": null,
+      "spell_dispellable_type": null,
+      "ability_unit_damage_type": null,
+      "is_skill": true,
+      "is_ultimate": false,
+      "has_scepter_upgrade": false,
+      "on_castbar": true,
+      "on_learnbar": true,
+      "ability_cast_range": [
+        0
+      ],
+      "ability_cast_range_buffer": 250,
+      "ability_cast_point": [
+        0.0,
+        0.0,
+        0.0,
+        0.0
+      ],
+      "ability_channel_time": [
+        0.0,
+        0.0,
+        0.0,
+        0.0
+      ],
+      "ability_cooldown": [
+        0.0,
+        0.0,
+        0.0,
+        0.0
+      ],
+      "ability_duration": [
+        0.0,
+        0.0,
+        0.0,
+        0.0
+      ],
+      "ability_damage": [
+        0.0,
+        0.0,
+        0.0,
+        0.0
+      ],
+      "ability_mana_cost": [
+        0.0,
+        0.0,
+        0.0,
+        0.0
+      ],
+      "ability_modifier_support_value": 1.0,
+      "ability_modifier_support_bonus": 0.0,
+      "fight_recap_level": 0,
+      "ability_draft_enabled": false,
+      "linked": null,
+      "ability_special": {}
+    },
+    {
+      "id": 5141,
+      "key": "witch_doctor_death_ward",
+      "name": "Death Ward",
+      "description": "CHANNELED - Summons a deadly ward to attack enemy heroes within 700 range. Lasts a maximum of 8 seconds.\\n\\nUpgradable by Aghanim's Scepter.",
+      "image": "https://hgv-hyperstone.azurewebsites.net/abilities/witch_doctor_death_ward.png",
+      "hero_id": 30,
+      "ability_type": "DOTA_ABILITY_TYPE_ULTIMATE",
+      "ability_behaviors": [
+        "DOTA_ABILITY_BEHAVIOR_POINT",
+        "DOTA_ABILITY_BEHAVIOR_CHANNELLED"
+      ],
+      "ability_unit_target_team": null,
+      "ability_unit_target_type": [
+        "DOTA_UNIT_TARGET_HERO"
+      ],
+      "ability_unit_target_flags": [
+        "DOTA_UNIT_TARGET_FLAG_NO_INVIS",
+        "|",
+        "DOTA_UNIT_TARGET_FLAG_FOW_VISIBLE",
+        "|",
+        "DOTA_UNIT_TARGET_FLAG_NOT_ATTACK_IMMUNE",
+        "|",
+        "DOTA_UNIT_TARGET_FLAG_MAGIC_IMMUNE_ENEMIES",
+        "|",
+        "DOTA_UNIT_TARGET_FLAG_NOT_CREEP_HERO"
+      ],
+      "spell_immunity_type": "SPELL_IMMUNITY_ENEMIES_YES",
+      "spell_dispellable_type": null,
+      "ability_unit_damage_type": "DAMAGE_TYPE_PHYSICAL",
+      "is_skill": false,
+      "is_ultimate": true,
+      "has_scepter_upgrade": true,
+      "on_castbar": true,
+      "on_learnbar": true,
+      "ability_cast_range": [
+        600
+      ],
+      "ability_cast_range_buffer": 250,
+      "ability_cast_point": [
+        0.35,
+        0.35,
+        0.35
+      ],
+      "ability_channel_time": [
+        8.0,
+        8.0,
+        8.0
+      ],
+      "ability_cooldown": [
+        80.0
+      ],
+      "ability_duration": [
+        0.0,
+        0.0,
+        0.0,
+        0.0
+      ],
+      "ability_damage": [
+        0.0,
+        0.0,
+        0.0,
+        0.0
+      ],
+      "ability_mana_cost": [
+        200.0,
+        200.0,
+        200.0
+      ],
+      "ability_modifier_support_value": 1.0,
+      "ability_modifier_support_bonus": 0.0,
+      "fight_recap_level": 2,
+      "ability_draft_enabled": true,
+      "linked": null,
+      "ability_special": {
+        "damage": [
+          60.0,
+          105.0,
+          150.0
+        ],
+        "bounces": [
+          0.0,
+          0.0,
+          0.0
+        ],
+        "bounces_scepter": [
+          4.0,
+          4.0,
+          4.0
+        ],
+        "bounce_radius": [
+          650.0,
+          650.0,
+          650.0
+        ]
+      }
+    }
+  ],
+  "talents": [
+    {
+      "id": 5942,
+      "key": "special_bonus_attack_damage_75",
+      "name": "+75 Damage",
+      "description": null
+    },
+    {
+      "id": 5932,
+      "key": "special_bonus_armor_5",
+      "name": "+5 Armor",
+      "description": null
+    },
+    {
+      "id": 6524,
+      "key": "special_bonus_unique_witch_doctor_3",
+      "name": "+2 Cask Bounces",
+      "description": null
+    },
+    {
+      "id": 6008,
+      "key": "special_bonus_gold_income_20",
+      "name": "+120 Gold/Min",
+      "description": null
+    },
+    {
+      "id": 5998,
+      "key": "special_bonus_unique_witch_doctor_1",
+      "name": "+125 Death Ward Attack Range",
+      "description": null
+    },
+    {
+      "id": 6995,
+      "key": "special_bonus_unique_witch_doctor_4",
+      "name": "+1 Maledict Tick",
+      "description": null
+    },
+    {
+      "id": 6298,
+      "key": "special_bonus_unique_witch_doctor_2",
+      "name": "+1.5% Max Health Voodoo Restoration",
+      "description": null
+    },
+    {
+      "id": 6996,
+      "key": "special_bonus_unique_witch_doctor_5",
+      "name": "+75 Death Ward Damage",
+      "description": null
+    }
+  ],
+  "legs": 2,
+  "armor_physical": -1.0,
+  "magical_resistance": 25,
+  "attack_capabilities": "DOTA_UNIT_CAP_RANGED_ATTACK",
+  "attack_damage_min": 29,
+  "attack_damage_max": 39,
+  "attack_rate": 1.7,
+  "attack_animation_point": 0.4,
+  "attack_acquisition_range": 800,
+  "attack_range": 600,
+  "projectile_speed": 1200,
+  "attribute_primary": "DOTA_ATTRIBUTE_INTELLECT",
+  "attribute_base_strength": 18,
+  "attribute_strength_gain": 2.1,
+  "attribute_base_intelligence": 22,
+  "attribute_intelligence_gain": 2.9,
+  "attribute_base_agility": 13,
+  "attribute_agility_gain": 1.4,
+  "status_health": 200,
+  "status_health_regen": 1.5,
+  "status_mana": 75,
+  "status_mana_regen": 0.9,
+  "bounty_xp": 62,
+  "bounty_gold_min": 0,
+  "bounty_gold_max": 0,
+  "movement_capabilities": "DOTA_UNIT_CAP_MOVE_GROUND",
+  "movement_speed": 305,
+  "movement_turn_rate": 0.5,
+  "has_aggressive_stance": false,
+  "team": 1,
+  "team_name": "Radiant",
+  "vision_daytime_range": 1800,
+  "vision_nighttime_range": 0,
+  "bot": {
+    "hero_types": null,
+    "solo_desire": 0,
+    "requires_babysit": 0,
+    "provides_babysit": 0,
+    "survival_rating": 0,
+    "requires_farm": 0,
+    "provides_setup": 0,
+    "requires_setup": 0
+  }
+}
