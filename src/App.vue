@@ -10,7 +10,7 @@
               <b-nav-item to="/pool">Pool</b-nav-item>
               <b-nav-item to="/heroes">Heroes</b-nav-item>
               <b-nav-item to="/abilities">Abilities</b-nav-item>
-              <b-nav-item to="/draft">Draft</b-nav-item>
+              <!--<b-nav-item to="/draft">Draft</b-nav-item>-->
             </b-navbar-nav>
           </b-collapse>
         </b-navbar>

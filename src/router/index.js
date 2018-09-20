@@ -8,6 +8,7 @@ import PageHeroes from '@/components/Heroes'
 import PageHero from '@/components/Hero'
 import PageAbilities from '@/components/Abilities'
 import PageAbility from '@/components/Ability'
+import PageDraft from '@/components/Draft'
 
 Vue.use(Router)
 
@@ -42,6 +43,11 @@ let router = new Router({
       path: '/ability/:id',
       name: 'Ability',
       component: PageAbility
+    },
+    {
+      path: '/draft',
+      name: 'Draft',
+      component: PageDraft
     },
     {
       path: '/error',

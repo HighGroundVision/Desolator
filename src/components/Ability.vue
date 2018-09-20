@@ -13,16 +13,11 @@
       </b-col>
     </b-row>
     <b-row>
-      <b-col>
-        <div>
-          <h2>{{ability.name}}</h2>
-        </div>
-        <div>
-          <b-img :src="ability.image" rounded class="ability-icon-lg"></b-img>
-        </div>
+      <b-col cols="4">
+        <h2>{{ability.name}}</h2>
       </b-col>
       <b-col>
-         {{ability.description}}
+          <b-img :src="ability.image" rounded class="ability-icon-md"></b-img>
       </b-col>
       <b-col>
         <div>Wins</div>
@@ -37,23 +32,107 @@
         <b-progress height="2rem" :value="stats.win_rate" :min="0" :max="1" :striped="true" show-progress></b-progress>
       </b-col>
     </b-row>
-    <br />
+    <hr class="highlighted" />
     <b-row>
       <b-col>
-         <ul class="list-group">
+        <b-card>
+          <b-card-body>
+            {{ability.description}}
+          </b-card-body>
+        </b-card>
+      </b-col>
+      <b-col>
+        <ul class="list-group">
             <li class="list-group-item">
               <b-row>
                 <b-col>
-                  <span></span>
+                  <span>Spell Immunity</span>
                 </b-col>
-                <b-col cols="2">
+                <b-col>
+                  <span v-if="ability.spell_immunity_type === 'SPELL_IMMUNITY_ENEMIES_YES'">Enemies Yes</span>
+                  <span v-if="ability.spell_immunity_type === 'SPELL_IMMUNITY_ENEMIES_NO'">Enemies No</span>
+                  <span v-if="ability.spell_immunity_type === 'SPELL_IMMUNITY_ALLIES_NO'">Allies No</span>
+                  <span v-if="ability.spell_immunity_type === 'SPELL_IMMUNITY_ALLIES_YES'">Allies Yes</span>
+                </b-col>
+              </b-row>
+            </li>
+            <li class="list-group-item">
+              <b-row>
+                <b-col>
+                  <span>Spell Dispellable</span>
+                </b-col>
+                <b-col>
                   <span></span>
+                  <span v-if="ability.spell_dispellable_type === 'SPELL_DISPELLABLE_YES'">Yes</span>
+                  <span v-if="ability.spell_dispellable_type === 'SPELL_DISPELLABLE_NO'">No</span>
+                  <span v-if="ability.spell_dispellable_type === 'SPELL_DISPELLABLE_YES_STRONG'">Strong</span>
+                </b-col>
+              </b-row>
+            </li>
+            <li class="list-group-item">
+              <b-row>
+                <b-col>
+                  <span>Ultimate</span>
+                </b-col>
+                <b-col>
+                  <span v-if="ability.is_ultimate === true">Yes</span>
+                  <span v-else>No</span>
+                </b-col>
+              </b-row>
+            </li>
+            <li class="list-group-item">
+              <b-row>
+                <b-col>
+                  <span>Aghanim's Scepter</span>
+                </b-col>
+                <b-col>
+                  <span v-if="ability.has_scepter_upgrade === true">Yes</span>
+                  <span v-else>No</span>
+                </b-col>
+              </b-row>
+            </li>
+            <li class="list-group-item">
+              <b-row>
+                <b-col>
+                  <span>Cooldown</span>
+                </b-col>
+                <b-col>
+                  <span>{{format(ability.ability_cooldown)}}</span>
+                </b-col>
+              </b-row>
+            </li>
+            <li class="list-group-item">
+              <b-row>
+                <b-col>
+                  <span>Mana Cost</span>
+                </b-col>
+                <b-col>
+                  <span>{{format(ability.ability_mana_cost)}}</span>
                 </b-col>
               </b-row>
             </li>
          </ul>
       </b-col>
+      <b-col>
+        <ul class="list-group">
+          <template v-for="(item, key) in ability.ability_special">
+            <li :key="key" class="list-group-item">
+              <b-row>
+                <b-col>
+                  <span>
+                    {{humanize(key)}}
+                  </span>
+                </b-col>
+                <b-col>
+                  <span>{{format(item)}}</span>
+                </b-col>
+              </b-row>
+            </li>
+          </template>
+        </ul>
+      </b-col>
     </b-row>
+    <br />
     <b-row>
       <b-col>
         <h4 class="text-center">Top Combos</h4>
@@ -82,7 +161,7 @@
               <b-img :src="row.item.img" class="hero-icon-banner-sm" />
           </template>
           <template slot="link" slot-scope="row">
-              <b-link :to="'/ability/' + row.item.id" target="_blank">{{row.item.name}}</b-link>
+              <b-link :to="'/hero/' + row.item.id" target="_blank">{{row.item.name}}</b-link>
           </template>
           <template slot="win_rate_progress" slot-scope="row">
               <b-progress height="2rem" :value="row.item.win_rate" :min="0" :max="1" :striped="true" show-progress></b-progress>
@@ -104,6 +183,8 @@
 
 <script>
 import axios from 'axios'
+
+const humanizeFn = require('humanize-string')
 
 export default {
   name: 'AbilityDetails',
@@ -159,7 +240,7 @@ export default {
       let stats = values[1]
       let heroes = values[2]
       let combos = values[3]
-
+      
       vm.ability = details
       vm.stats = stats
       vm.heroes.items = heroes
@@ -202,7 +283,16 @@ export default {
     }
   },
   methods: {
-    resetModel () {
+    format (items) {
+      let result = items.every((item) => item === items[0]) 
+      if (result) {
+        return items[0]
+      } else {
+        return items.join(' / ')
+      }
+    },
+    humanize (value) {
+      return humanizeFn(value).replace('tooltip', '')
     }
   }
 }
