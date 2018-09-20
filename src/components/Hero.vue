@@ -60,10 +60,10 @@
                             <span>Base</span>
                           </b-col>
                           <b-col>
-                            <span>{{hero.attribute_base_strength}}</span>
+                            <span>{{attributes.attribute_base_strength}}</span>
                           </b-col>
                           <b-col>
-                            <b-progress :value="0" :min="0" :max="1" :striped="true" show-progress></b-progress>
+                            <b-progress :value="attributes.ranking_base_strength" :min="0" :max="1" :striped="true" ></b-progress>
                           </b-col>
                         </b-row>
                         <b-row>
@@ -71,10 +71,10 @@
                             <span>Gain</span>
                           </b-col>
                           <b-col>
-                            <span>{{hero.attribute_strength_gain}}</span>
+                            <span>{{attributes.attribute_strength_gain}}</span>
                           </b-col>
                           <b-col>
-                            <b-progress :value="0" :min="0" :max="1" :striped="true" show-progress></b-progress>
+                            <b-progress :value="attributes.ranking_strength_gain" :min="0" :max="1" :striped="true" ></b-progress>
                           </b-col>
                         </b-row>
                     </b-col>
@@ -91,10 +91,10 @@
                             <span>Base</span>
                           </b-col>
                           <b-col>
-                            <span >{{hero.attribute_base_agility}}</span>
+                            <span >{{attributes.attribute_base_agility}}</span>
                           </b-col>
                           <b-col>
-                            <b-progress :value="0" :min="0" :max="1" :striped="true" show-progress></b-progress>
+                            <b-progress :value="attributes.ranking_base_agility" :min="0" :max="1" :striped="true"></b-progress>
                           </b-col>
                         </b-row>
                         <b-row>
@@ -102,10 +102,10 @@
                             <span>Gain</span>
                           </b-col>
                           <b-col>
-                            <span>{{hero.attribute_agility_gain}}</span>
+                            <span>{{attributes.attribute_agility_gain}}</span>
                           </b-col>
                           <b-col>
-                            <b-progress :value="0" :min="0" :max="1" :striped="true" show-progress></b-progress>
+                            <b-progress :value="attributes.ranking_agility_gain" :min="0" :max="1" :striped="true"></b-progress>
                           </b-col>
                         </b-row>
                     </b-col>
@@ -122,10 +122,10 @@
                             <span>Base</span>
                           </b-col>
                           <b-col>
-                            <span >{{hero.attribute_base_intelligence}}</span>
+                            <span >{{attributes.attribute_base_intelligence}}</span>
                           </b-col>
                           <b-col>
-                            <b-progress :value="0" :min="0" :max="1" :striped="true" show-progress></b-progress>
+                            <b-progress :value="attributes.ranking_base_intelligence" :min="0" :max="1" :striped="true"></b-progress>
                           </b-col>
                         </b-row>
                         <b-row>
@@ -133,10 +133,10 @@
                             <span>Gain</span>
                           </b-col>
                           <b-col>
-                            <span>{{hero.attribute_intelligence_gain}}</span>
+                            <span>{{attributes.attribute_intelligence_gain}}</span>
                           </b-col>
                           <b-col>
-                            <b-progress :value="0" :min="0" :max="1" :striped="true" show-progress></b-progress>
+                            <b-progress :value="attributes.ranking_intelligence_gain" :min="0" :max="1" :striped="true"></b-progress>
                           </b-col>
                         </b-row>
                     </b-col>
@@ -153,10 +153,10 @@
                             <span>Base</span>
                           </b-col>
                           <b-col>
-                            <span >{{hero.status_health}}</span>
+                            <span >{{attributes.status_health}}</span>
                           </b-col>
                           <b-col>
-                            <b-progress :value="0" :min="0" :max="1" :striped="true" show-progress></b-progress>
+                            <b-progress :value="attributes.ranking_health" :min="0" :max="1" :striped="true"></b-progress>
                           </b-col>
                         </b-row>
                         <b-row>
@@ -164,10 +164,10 @@
                             <span>Regen</span>
                           </b-col>
                           <b-col>
-                            <span>{{hero.status_health_regen}}</span>
+                            <span>{{attributes.status_health_regen}}</span>
                           </b-col>
                           <b-col>
-                            <b-progress :value="0" :min="0" :max="1" :striped="true" show-progress></b-progress>
+                            <b-progress :value="attributes.ranking_health_regen" :min="0" :max="1" :striped="true"></b-progress>
                           </b-col>
                         </b-row>
                     </b-col>
@@ -184,10 +184,10 @@
                             <span>Base</span>
                           </b-col>
                           <b-col>
-                            <span >{{hero.status_mana}}</span>
+                            <span >{{attributes.status_mana}}</span>
                           </b-col>
                           <b-col>
-                            <b-progress :value="0" :min="0" :max="1" :striped="true" show-progress></b-progress>
+                            <b-progress :value="attributes.ranking_mana" :min="0" :max="1" :striped="true"></b-progress>
                           </b-col>
                         </b-row>
                         <b-row>
@@ -195,10 +195,10 @@
                             <span>Regen</span>
                           </b-col>
                           <b-col>
-                            <span>{{hero.status_mana_regen}}</span>
+                            <span>{{attributes.status_mana_regen}}</span>
                           </b-col>
                           <b-col>
-                            <b-progress :value="0" :min="0" :max="1" :striped="true" show-progress></b-progress>
+                            <b-progress :value="attributes.ranking_mana_regen" :min="0" :max="1" :striped="true"></b-progress>
                           </b-col>
                         </b-row>
                     </b-col>
@@ -226,10 +226,10 @@
                             <span>Distance</span>
                           </b-col>
                           <b-col>
-                            <span>{{hero.attack_range}}</span>
+                            <span>{{attributes.attack_range}}</span>
                           </b-col>
                           <b-col>
-                            <b-progress :value="0" :min="0" :max="1" :striped="true" show-progress></b-progress>
+                            <b-progress :value="attributes.ranking_attack_range" :min="0" :max="1" :striped="true"></b-progress>
                           </b-col>
                         </b-row>
                         <b-row>
@@ -237,10 +237,10 @@
                             <span>Damage</span>
                           </b-col>
                           <b-col>
-                            <span >{{hero.attack_damage_min}} - {{hero.attack_damage_max}}</span>
+                            <span >{{attributes.attack_damage_min}} - {{attributes.attack_damage_max}}</span>
                           </b-col>
                           <b-col>
-                            <b-progress :value="0" :min="0" :max="1" :striped="true" show-progress></b-progress>
+                            <b-progress :value="attributes.ranking_attack_damage" :min="0" :max="1" :striped="true"></b-progress>
                           </b-col>
                         </b-row>
                     </b-col>
@@ -257,10 +257,10 @@
                             <span>Speed</span>
                           </b-col>
                           <b-col>
-                            <span>{{hero.movement_speed}}</span>
+                            <span>{{attributes.movement_speed}}</span>
                           </b-col>
                           <b-col>
-                            <b-progress :value="0" :min="0" :max="1" :striped="true" show-progress></b-progress>
+                            <b-progress :value="attributes.ranking_movement_speed" :min="0" :max="1" :striped="true"></b-progress>
                           </b-col>
                         </b-row>
                         <b-row>
@@ -268,10 +268,10 @@
                             <span>Turn</span>
                           </b-col>
                           <b-col>
-                            <span>{{hero.movement_turn_rate}}</span>
+                            <span>{{attributes.movement_turn_rate}}</span>
                           </b-col>
                           <b-col>
-                            <b-progress :value="0" :min="0" :max="1" :striped="true" show-progress></b-progress>
+                            <b-progress :value="attributes.ranking_movement_turn_rate" :min="0" :max="1" :striped="true"></b-progress>
                           </b-col>
                         </b-row>
                     </b-col>
@@ -288,10 +288,10 @@
                             <span>Day</span>
                           </b-col>
                           <b-col>
-                            <span>{{hero.vision_daytime_range}}</span>
+                            <span>{{attributes.vision_daytime_range}}</span>
                           </b-col>
                           <b-col>
-                            <b-progress :value="0" :min="0" :max="1" :striped="true" show-progress></b-progress>
+                            <b-progress :value="attributes.ranking_vision_daytime_range" :min="0" :max="1" :striped="true"></b-progress>
                           </b-col>
                         </b-row>
                         <b-row>
@@ -299,10 +299,10 @@
                             <span>Night</span>
                           </b-col>
                           <b-col>
-                            <span>{{hero.vision_nighttime_range}}</span>
+                            <span>{{attributes.vision_nighttime_range}}</span>
                           </b-col>
                           <b-col>
-                            <b-progress :value="0" :min="0" :max="1" :striped="true" show-progress></b-progress>
+                            <b-progress :value="attributes.ranking_vision_nighttime_range" :min="0" :max="1" :striped="true" ></b-progress>
                           </b-col>
                         </b-row>
                     </b-col>
@@ -413,6 +413,7 @@ export default {
     return {
       'ready': false,
       'hero': null,
+      'attributes': null,
       'abilities': [],
       'talents': [],
       'stats': null,
@@ -432,13 +433,15 @@ export default {
     let web1 = [
       axios.get('/static/data/heroes/' + id + '/hero.json').then((reponse) => { return reponse.data }),
       axios.get('/static/data/heroes/' + id + '/stats.json').then((reponse) => { return reponse.data }),
-      axios.get('/static/data/heroes/' + id + '/abilities.json').then((reponse) => { return reponse.data })
+      axios.get('/static/data/heroes/' + id + '/abilities.json').then((reponse) => { return reponse.data }),
+      axios.get('/static/data/heroes/' + id + '/attributes.json').then((reponse) => { return reponse.data })
     ]
 
     Promise.all(web1).then((values1) => {
       let hero = values1[0] 
       let stat = values1[1] 
       let combos = values1[2]
+      let attributes = values1[3]
       let talents = []
 
       talents.push({ level: 10, option1: hero.talents[0], option2: hero.talents[1] })
@@ -457,6 +460,7 @@ export default {
       Promise.all(web2).then((values2) => {
         vm.abilities = values2
         vm.talents = talents
+        vm.attributes = attributes
         vm.hero = hero
         vm.stats = stat
         vm.combos.items = combos
