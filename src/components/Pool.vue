@@ -2,7 +2,7 @@
   <section v-if="ready">
       <b-row>
         <b-col cols="8">
-          <h1 class="text-warning">Draft Pool</h1>
+          <h2 class="text-warning">Draft Pool</h2>
           <p>
             Find out exactly which heroes and which abilities are active. 
             Below is a list of heroes and abilities that make up the draft pool the active ones are in colour while the disabled ones are greyed out.
@@ -35,11 +35,13 @@
               <template v-for="hero in computedItems">
                 <tr v-bind:item="hero" v-bind:key="hero.id">
                   <td>
-                    <b-img :src="hero.img" :title="hero.name" v-bind:class="{ disabled: !hero.enabled }" class="hero-icon-banner" />
+                    <b-link :to="'/hero/' + hero.id">
+                      <b-img :src="hero.img" :title="hero.name" v-bind:class="{ disabled: !hero.enabled }" class="hero-icon-banner" />
+                    </b-link>
                   </td>
                   <template v-for="ability in hero.abilities">
                     <td v-bind:key="ability.id">
-                      <b-link :to="'/stats/ability/' + ability.id" v-if="ability.enabled">
+                      <b-link :to="'/ability/' + ability.id" v-if="ability.enabled">
                         <b-img :src="ability.img" :title="ability.name" v-bind:class="{ disabled: !ability.enabled }" class="ability-icon-md" />
                       </b-link>
                       <b-img v-else :src="ability.img" :title="ability.name" v-bind:class="{ disabled: !ability.enabled }" class="ability-icon-md" />

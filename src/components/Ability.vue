@@ -2,7 +2,7 @@
   <section v-if="ready" >
     <b-row>
       <b-col>
-        <h1 class="text-warning">Ability Details</h1>
+        <h2 class="text-warning">Ability Details</h2>
       </b-col>
     </b-row>
     <b-row>
@@ -14,20 +14,50 @@
     </b-row>
     <b-row>
       <b-col>
-        <h2>{{ability.name}}</h2>
+        <div>
+          <h2>{{ability.name}}</h2>
+        </div>
         <div>
           <b-img :src="ability.image" rounded class="ability-icon-lg"></b-img>
         </div>
-        <div>
-          {{ability.description}}
-        </div>
+      </b-col>
+      <b-col>
+         {{ability.description}}
+      </b-col>
+      <b-col>
+        <div>Wins</div>
+        <span>{{stats.wins}}</span>
+      </b-col>
+      <b-col>
+        <div>Picks</div>
+        <span>{{stats.picks}}</span>
+      </b-col>
+      <b-col>
+        <div>Win Rate</div>
+        <b-progress height="2rem" :value="stats.win_rate" :min="0" :max="1" :striped="true" show-progress></b-progress>
       </b-col>
     </b-row>
     <br />
     <b-row>
       <b-col>
+         <ul class="list-group">
+            <li class="list-group-item">
+              <b-row>
+                <b-col>
+                  <span></span>
+                </b-col>
+                <b-col cols="2">
+                  <span></span>
+                </b-col>
+              </b-row>
+            </li>
+         </ul>
+      </b-col>
+    </b-row>
+    <b-row>
+      <b-col>
         <h4 class="text-center">Top Combos</h4>
-        <b-table :fields="combos.fields" :items="computedAbilities" :sort-by.sync="combos.sortBy" :sort-desc.sync="combos.sortDesc" >
+        <b-table :fields="combos.fields" :items="computedCombos" :sort-by.sync="combos.sortBy" :sort-desc.sync="combos.sortDesc" >
           <template slot="icon" slot-scope="row">
               <b-img :src="row.item.img" class="ability-icon-sm" />
           </template>
@@ -45,11 +75,25 @@
           </template>
         </b-table>
       </b-col>
-    </b-row>
-    <br />
-    <b-row>
       <b-col>
         <h4 class="text-center">Top Heroes</h4>
+        <b-table :fields="heroes.fields" :items="computedHeroes" :sort-by.sync="heroes.sortBy" :sort-desc.sync="heroes.sortDesc" >
+          <template slot="icon" slot-scope="row">
+              <b-img :src="row.item.img" class="hero-icon-banner-sm" />
+          </template>
+          <template slot="link" slot-scope="row">
+              <b-link :to="'/ability/' + row.item.id" target="_blank">{{row.item.name}}</b-link>
+          </template>
+          <template slot="win_rate_progress" slot-scope="row">
+              <b-progress height="2rem" :value="row.item.win_rate" :min="0" :max="1" :striped="true" show-progress></b-progress>
+          </template>
+          <template slot="wins" slot-scope="row">
+              <span>{{row.item.wins}}</span>
+          </template>
+          <template slot="picks" slot-scope="row">
+              <span>{{row.item.picks}}</span>
+          </template>
+        </b-table>
       </b-col>
     </b-row>
   </section>
@@ -126,7 +170,35 @@ export default {
     })
   },
   computed: {
-    computedItems: function () {
+    computedCombos: function () {
+      let items = this.combos.items
+
+      items = items.sort((lhs, rhs) => {
+        if (this.combos.sortBy === 'link') {
+          return this.combos.sortDesc ? lhs.name.localeCompare(rhs.name) : rhs.name.localeCompare(lhs.name)
+        } else if (this.combos.sortBy === 'win_rate_progress') {
+          return this.combos.sortDesc ? rhs.win_rate - lhs.win_rate : lhs.win_rate - rhs.win_rate
+        } else {
+          return 0
+        }
+      })
+
+      return items
+    },
+    computedHeroes: function () {
+      let items = this.heroes.items
+
+      items = items.sort((lhs, rhs) => {
+        if (this.heroes.sortBy === 'link') {
+          return this.heroes.sortDesc ? lhs.name.localeCompare(rhs.name) : rhs.name.localeCompare(lhs.name)
+        } else if (this.heroes.sortBy === 'win_rate_progress') {
+          return this.heroes.sortDesc ? rhs.win_rate - lhs.win_rate : lhs.win_rate - rhs.win_rate
+        } else {
+          return 0
+        }
+      })
+
+      return items
     }
   },
   methods: {

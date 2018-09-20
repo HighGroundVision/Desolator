@@ -8,166 +8,166 @@
     <b-row>
       <b-col>
         <p>
-            Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec eget tempus quam, quis posuere massa. Phasellus ultricies iaculis sapien. Suspendisse tristique odio ullamcorper laoreet vehicula. Duis a ex ut orci pretium blandit efficitur vitae sem. Nullam interdum lobortis mauris ut lacinia. Sed eros ligula, porta sed sapien sed, tempor dapibus nisl. Phasellus turpis massa, rhoncus non ligula sit amet, posuere ultrices elit. Aliquam erat volutpat.
+          Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec eget tempus quam, quis posuere massa. Phasellus ultricies iaculis sapien. Suspendisse tristique odio ullamcorper laoreet vehicula. Duis a ex ut orci pretium blandit efficitur vitae sem. Nullam interdum lobortis mauris ut lacinia. Sed eros ligula, porta sed sapien sed, tempor dapibus nisl. Phasellus turpis massa, rhoncus non ligula sit amet, posuere ultrices elit. Aliquam erat volutpat.
         </p>
       </b-col>
     </b-row>
     <b-row class="text-center">
-        <b-col>
-            <h3>{{hero.name}}</h3>
-        </b-col>
-        <b-col>
-            <b-img :src="hero.image_banner" rounded class="hero-icon-banner"></b-img>
-        </b-col>
-        <b-col>
-            <div>Wins</div>
-            <span>{{stats.wins}}</span>
-        </b-col>
-        <b-col>
-            <div>Picks</div>
-            <span>{{stats.picks}}</span>
-        </b-col>
-        <b-col>
-            <div>Win Rate</div>
-            <b-progress height="2rem" :value="stats.win_rate" :min="0" :max="1" :striped="true" show-progress></b-progress>
-        </b-col>
+      <b-col>
+        <h3>{{hero.name}}</h3>
+      </b-col>
+      <b-col>
+        <b-img :src="hero.image_banner" rounded class="hero-icon-banner"></b-img>
+      </b-col>
+      <b-col>
+        <div>Wins</div>
+        <span>{{stats.wins}}</span>
+      </b-col>
+      <b-col>
+        <div>Picks</div>
+        <span>{{stats.picks}}</span>
+      </b-col>
+      <b-col>
+        <div>Win Rate</div>
+        <b-progress height="2rem" :value="stats.win_rate" :min="0" :max="1" :striped="true" show-progress></b-progress>
+      </b-col>
     </b-row>
     <hr class="highlighted" />
     <b-row>
         <b-col cols="4">
-             <h4 class="text-center">Hero Stats</h4>
-             <ul class="list-group">
-                <li class="list-group-item">
-                    <b-row>
-                        <b-col>
-                            <span class="invert">Primary Attribute</span>
-                        </b-col>
-                        <b-col cols="2">
-                            <b-img v-if="hero.attribute_primary === 'DOTA_ATTRIBUTE_STRENGTH'" src="https://hgv-hyperstone.azurewebsites.net/mics/primary_str.png" rounded class="ability-icon-sm" />
-                            <b-img v-if="hero.attribute_primary === 'DOTA_ATTRIBUTE_AGILITY'" src="https://hgv-hyperstone.azurewebsites.net/mics/primary_agi.png" rounded class="ability-icon-sm" />
-                            <b-img v-if="hero.attribute_primary === 'DOTA_ATTRIBUTE_INTELLIGENCE'" src="https://hgv-hyperstone.azurewebsites.net/mics/primary_int.png" rounded class="ability-icon-sm" />
-                        </b-col>
-                    </b-row>
-                </li>
-                <li class="list-group-item">
-                    <b-row>
-                        <b-col>
-                            <b-img src="https://hgv-hyperstone.azurewebsites.net/mics/primary_str.png" rounded class="ability-icon-sm" />
-                        </b-col>
-                        <b-col cols="2">
-                            <span class="invert" title="Strength Base">{{hero.attribute_base_strength}}</span>
-                        </b-col>
-                        <b-col cols="2">
-                            <span class="invert" title="Strength Base">{{hero.attribute_strength_gain}}</span>
-                        </b-col>
-                    </b-row>
-                </li>
-                <li class="list-group-item">
-                    <b-row>
-                        <b-col>
-                            <b-img src="https://hgv-hyperstone.azurewebsites.net/mics/primary_agi.png" rounded class="ability-icon-sm" />
-                        </b-col>
-                        <b-col cols="2">
-                            <span class="invert" title="Agility Base">{{hero.attribute_base_agility}}</span>
-                        </b-col>
-                        <b-col cols="2">
-                            <span class="invert" title="Agility Base">{{hero.attribute_agility_gain}}</span>
-                        </b-col>
-                    </b-row>
-                </li>
-                <li class="list-group-item">
-                    <b-row>
-                        <b-col>
-                            <b-img src="https://hgv-hyperstone.azurewebsites.net/mics/primary_int.png" rounded class="ability-icon-sm" />
-                        </b-col>
-                        <b-col cols="2">
-                            <span class="invert" title="Intelligence Base">{{hero.attribute_base_intelligence}}</span>
-                        </b-col>
-                        <b-col cols="2">
-                            <span class="invert" title="Intelligence Base">{{hero.attribute_intelligence_gain}}</span>
-                        </b-col>
-                    </b-row>
-                </li>
-                <li class="list-group-item">
-                    <b-row>
-                        <b-col>
-                            <span class="invert">Health</span>
-                        </b-col>
-                        <b-col cols="2">
-                            <span class="invert" title="Health Base">{{hero.status_health}}</span>
-                        </b-col>
-                        <b-col cols="2">
-                            <span class="invert" title="Health Base">{{hero.status_health_regen}}</span>
-                        </b-col>
-                    </b-row>
-                </li>
-                <li class="list-group-item">
-                    <b-row>
-                        <b-col>
-                            <span class="invert">Mana</span>
-                        </b-col>
-                        <b-col cols="2">
-                            <span class="invert" title="Mana Base">{{hero.status_mana}}</span>
-                        </b-col>
-                        <b-col cols="2">
-                            <span class="invert" title="Mana Regen">{{hero.status_mana_regen}}</span>
-                        </b-col>
-                    </b-row>
-                </li>
-                <li class="list-group-item">
-                    <b-row>
-                        <b-col>
-                            <span class="invert">Attack Damage</span>
-                        </b-col>
-                        <b-col cols="2">
-                            <span class="invert" title="Damage Min">{{hero.attack_damage_min}}</span>
-                        </b-col>
-                        <b-col cols="2">
-                            <span class="invert" title="Damage Max">{{hero.attack_damage_max}}</span>
-                        </b-col>
-                    </b-row>
-                </li>
-                <li class="list-group-item">
-                    <b-row>
-                        <b-col>
-                            <span class="invert">Attack Range</span>
-                        </b-col>
-                        <b-col cols="2">
-                            <span class="invert" v-if="hero.attack_capabilities === 'DOTA_UNIT_CAP_MELEE_ATTACK'" title="Attack Type">Melee</span>
-                            <span class="invert" v-if="hero.attack_capabilities === 'DOTA_UNIT_CAP_RANGE_ATTACK'" title="Attack Type">Ranged</span>
-                        </b-col>
-                        <b-col cols="2">
-                            <span class="invert" title="Attack Distance">{{hero.attack_range}}</span>
-                        </b-col>
-                    </b-row>
-                </li>
-                <li class="list-group-item">
-                    <b-row>
-                        <b-col>
-                            <span class="invert">Move Speed</span>
-                        </b-col>
-                        <b-col cols="2">
-                            <span class="invert" title="Movement Rate">{{hero.movement_speed}}</span>
-                        </b-col>
-                        <b-col cols="2">
-                            <span class="invert" title="Turn Rate">{{hero.movement_turn_rate}}</span>
-                        </b-col>
-                    </b-row>
-                </li>
-                <li class="list-group-item">
-                    <b-row>
-                        <b-col>
-                            <span class="invert">Vision</span>
-                        </b-col>
-                        <b-col cols="2">
-                            <span class="invert" title="Daytime Range">{{hero.vision_daytime_range}}</span>
-                        </b-col>
-                        <b-col cols="2">
-                            <span class="invert" title="Nighttime Range">{{hero.vision_nighttime_range}}</span>
-                        </b-col>
-                    </b-row>
-                </li>
-             </ul>
+          <h4 class="text-center">Hero Stats</h4>
+          <ul class="list-group">
+            <li class="list-group-item">
+                <b-row>
+                    <b-col>
+                        <span class="invert">Primary Attribute</span>
+                    </b-col>
+                    <b-col cols="2">
+                        <b-img v-if="hero.attribute_primary === 'DOTA_ATTRIBUTE_STRENGTH'" src="https://hgv-hyperstone.azurewebsites.net/mics/primary_str.png" rounded class="ability-icon-sm" />
+                        <b-img v-if="hero.attribute_primary === 'DOTA_ATTRIBUTE_AGILITY'" src="https://hgv-hyperstone.azurewebsites.net/mics/primary_agi.png" rounded class="ability-icon-sm" />
+                        <b-img v-if="hero.attribute_primary === 'DOTA_ATTRIBUTE_INTELLIGENCE'" src="https://hgv-hyperstone.azurewebsites.net/mics/primary_int.png" rounded class="ability-icon-sm" />
+                    </b-col>
+                </b-row>
+            </li>
+            <li class="list-group-item">
+                <b-row>
+                    <b-col>
+                        <b-img src="https://hgv-hyperstone.azurewebsites.net/mics/primary_str.png" rounded class="ability-icon-sm" />
+                    </b-col>
+                    <b-col cols="2">
+                        <span class="invert" title="Strength Base">{{hero.attribute_base_strength}}</span>
+                    </b-col>
+                    <b-col cols="2">
+                        <span class="invert" title="Strength Base">{{hero.attribute_strength_gain}}</span>
+                    </b-col>
+                </b-row>
+            </li>
+            <li class="list-group-item">
+                <b-row>
+                    <b-col>
+                        <b-img src="https://hgv-hyperstone.azurewebsites.net/mics/primary_agi.png" rounded class="ability-icon-sm" />
+                    </b-col>
+                    <b-col cols="2">
+                        <span class="invert" title="Agility Base">{{hero.attribute_base_agility}}</span>
+                    </b-col>
+                    <b-col cols="2">
+                        <span class="invert" title="Agility Base">{{hero.attribute_agility_gain}}</span>
+                    </b-col>
+                </b-row>
+            </li>
+            <li class="list-group-item">
+                <b-row>
+                    <b-col>
+                        <b-img src="https://hgv-hyperstone.azurewebsites.net/mics/primary_int.png" rounded class="ability-icon-sm" />
+                    </b-col>
+                    <b-col cols="2">
+                        <span class="invert" title="Intelligence Base">{{hero.attribute_base_intelligence}}</span>
+                    </b-col>
+                    <b-col cols="2">
+                        <span class="invert" title="Intelligence Base">{{hero.attribute_intelligence_gain}}</span>
+                    </b-col>
+                </b-row>
+            </li>
+            <li class="list-group-item">
+                <b-row>
+                    <b-col>
+                        <span class="invert">Health</span>
+                    </b-col>
+                    <b-col cols="2">
+                        <span class="invert" title="Health Base">{{hero.status_health}}</span>
+                    </b-col>
+                    <b-col cols="2">
+                        <span class="invert" title="Health Base">{{hero.status_health_regen}}</span>
+                    </b-col>
+                </b-row>
+            </li>
+            <li class="list-group-item">
+                <b-row>
+                    <b-col>
+                        <span class="invert">Mana</span>
+                    </b-col>
+                    <b-col cols="2">
+                        <span class="invert" title="Mana Base">{{hero.status_mana}}</span>
+                    </b-col>
+                    <b-col cols="2">
+                        <span class="invert" title="Mana Regen">{{hero.status_mana_regen}}</span>
+                    </b-col>
+                </b-row>
+            </li>
+            <li class="list-group-item">
+                <b-row>
+                    <b-col>
+                        <span class="invert">Attack Damage</span>
+                    </b-col>
+                    <b-col cols="2">
+                        <span class="invert" title="Damage Min">{{hero.attack_damage_min}}</span>
+                    </b-col>
+                    <b-col cols="2">
+                        <span class="invert" title="Damage Max">{{hero.attack_damage_max}}</span>
+                    </b-col>
+                </b-row>
+            </li>
+            <li class="list-group-item">
+                <b-row>
+                    <b-col>
+                        <span class="invert">Attack Range</span>
+                    </b-col>
+                    <b-col cols="2">
+                        <span class="invert" v-if="hero.attack_capabilities === 'DOTA_UNIT_CAP_MELEE_ATTACK'" title="Attack Type">Melee</span>
+                        <span class="invert" v-if="hero.attack_capabilities === 'DOTA_UNIT_CAP_RANGE_ATTACK'" title="Attack Type">Ranged</span>
+                    </b-col>
+                    <b-col cols="2">
+                        <span class="invert" title="Attack Distance">{{hero.attack_range}}</span>
+                    </b-col>
+                </b-row>
+            </li>
+            <li class="list-group-item">
+                <b-row>
+                    <b-col>
+                        <span class="invert">Move Speed</span>
+                    </b-col>
+                    <b-col cols="2">
+                        <span class="invert" title="Movement Rate">{{hero.movement_speed}}</span>
+                    </b-col>
+                    <b-col cols="2">
+                        <span class="invert" title="Turn Rate">{{hero.movement_turn_rate}}</span>
+                    </b-col>
+                </b-row>
+            </li>
+            <li class="list-group-item">
+                <b-row>
+                    <b-col>
+                        <span class="invert">Vision</span>
+                    </b-col>
+                    <b-col cols="2">
+                        <span class="invert" title="Daytime Range">{{hero.vision_daytime_range}}</span>
+                    </b-col>
+                    <b-col cols="2">
+                        <span class="invert" title="Nighttime Range">{{hero.vision_nighttime_range}}</span>
+                    </b-col>
+                </b-row>
+            </li>
+          </ul>
         </b-col>
         <b-col cols="4">
             <h4 class="text-center">Default Abilities</h4>

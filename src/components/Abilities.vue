@@ -2,7 +2,7 @@
   <section v-if="ready" >
     <b-row>
       <b-col>
-        <h1 class="text-warning">Abilities</h1>
+        <h2 class="text-warning">Abilities</h2>
       </b-col>
     </b-row>
     <b-row>
