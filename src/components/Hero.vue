@@ -13,12 +13,13 @@
       </b-col>
     </b-row>
     <b-row class="text-center">
-      <b-col cols="4">
+      <b-col cols="6">
         <h3>{{hero.name}}</h3>
       </b-col>
       <b-col>
         <b-img :src="hero.image_banner" rounded class="hero-icon-banner"></b-img>
       </b-col>
+      <!--
       <b-col>
         <div>Wins</div>
         <span>{{stats.wins}}</span>
@@ -27,6 +28,7 @@
         <div>Picks</div>
         <span>{{stats.picks}}</span>
       </b-col>
+      -->
       <b-col>
         <div>Win Rate</div>
         <b-progress height="2rem" :value="stats.win_rate" :min="0" :max="1" :striped="true" show-progress></b-progress>
