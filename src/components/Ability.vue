@@ -152,6 +152,14 @@
           <template slot="picks" slot-scope="row">
               <span>{{row.item.picks}}</span>
           </template>
+          <template slot="ultimate" slot-scope="row">
+            <span v-if="row.item.is_ultimate" class="badge badge-success">Yes</span>
+            <span v-else class="badge badge-secondary">No</span>
+          </template>
+          <template slot="upgrade" slot-scope="row">
+            <span v-if="row.item.has_upgrade" class="badge badge-success">Yes</span>
+            <span v-else class="badge badge-secondary">No</span>
+          </template>
         </b-table>
       </b-col>
       <b-col>
@@ -190,19 +198,21 @@ export default {
   name: 'AbilityDetails',
   data () {
     const heroFields = [
-      { key: 'icon', label: 'Icon', sortable: false, variant: 'light' },
-      { key: 'link', label: 'Hero', sortable: true, variant: 'light' },
-      { key: 'wins', label: 'Wins', sortable: true, variant: 'light' },
-      { key: 'picks', label: 'Picks', sortable: true, variant: 'light' },
-      { key: 'win_rate_progress', label: 'Win Rate', sortable: true, variant: 'light' }
+      { key: 'icon', label: 'Icon', sortable: false },
+      { key: 'link', label: 'Hero', sortable: true },
+      // { key: 'wins', label: 'Wins', sortable: true },
+      // { key: 'picks', label: 'Picks', sortable: true },
+      { key: 'win_rate_progress', label: 'Win Rate', sortable: true }
     ]
 
     const abilityFields = [
-      { key: 'icon', label: 'Icon', sortable: false, variant: 'light' },
-      { key: 'link', label: 'Ability', sortable: true, variant: 'light' },
-      { key: 'wins', label: 'Wins', sortable: true, variant: 'light' },
-      { key: 'picks', label: 'Picks', sortable: true, variant: 'light' },
-      { key: 'win_rate_progress', label: 'Win Rate', sortable: true, variant: 'light' }
+      { key: 'icon', label: 'Icon', sortable: false },
+      { key: 'link', label: 'Ability', sortable: true },
+      { key: 'ultimate', label: 'Ultimate', sortable: true },
+      { key: 'upgrade', label: 'Upgradable', sortable: true },
+      // { key: 'wins', label: 'Wins', sortable: true },
+      // { key: 'picks', label: 'Picks', sortable: true },
+      { key: 'win_rate_progress', label: 'Win Rate', sortable: true }
     ]
 
     return {

@@ -357,35 +357,31 @@
     <h3 class="text-center">Top Abilities</h3>
     <b-row>
         <b-col>
-          <b-card>
-            <b-card-body>
-              <b-table bordered :fields="combos.fields" :items="computedCombos" :sort-by.sync="combos.sortBy" :sort-desc.sync="combos.sortDesc" >
-                <template slot="icon" slot-scope="row">
-                  <b-img :src="row.item.img" class="ability-icon-sm" />
-                </template>
-                <template slot="link" slot-scope="row">
-                  <b-link :to="'/ability/' + row.item.id" target="_blank">{{row.item.name}}</b-link>
-                </template>
-                <template slot="win_rate_progress" slot-scope="row">
-                  <b-progress height="2rem" :value="row.item.win_rate" :min="0" :max="1" :striped="true" show-progress></b-progress>
-                </template>
-                <template slot="wins" slot-scope="row">
-                  <span>{{row.item.wins}}</span>
-                </template>
-                <template slot="picks" slot-scope="row">
-                  <span>{{row.item.picks}}</span>
-                </template>
-                <template slot="ultimate" slot-scope="row">
-                  <span v-if="row.item.is_ultimate" class="badge badge-success">Yes</span>
-                  <span v-else class="badge badge-warning">No</span>
-                </template>
-                <template slot="upgrade" slot-scope="row">
-                  <span v-if="row.item.has_upgrade" class="badge badge-success">Yes</span>
-                  <span v-else class="badge badge-warning">No</span>
-                </template>
-              </b-table>
-            </b-card-body>
-          </b-card>
+          <b-table :fields="combos.fields" :items="computedCombos" :sort-by.sync="combos.sortBy" :sort-desc.sync="combos.sortDesc" >
+            <template slot="icon" slot-scope="row">
+              <b-img :src="row.item.img" class="ability-icon-sm" />
+            </template>
+            <template slot="link" slot-scope="row">
+              <b-link :to="'/ability/' + row.item.id" target="_blank">{{row.item.name}}</b-link>
+            </template>
+            <template slot="win_rate_progress" slot-scope="row">
+              <b-progress height="2rem" :value="row.item.win_rate" :min="0" :max="1" :striped="true" show-progress></b-progress>
+            </template>
+            <template slot="wins" slot-scope="row">
+              <span>{{row.item.wins}}</span>
+            </template>
+            <template slot="picks" slot-scope="row">
+              <span>{{row.item.picks}}</span>
+            </template>
+            <template slot="ultimate" slot-scope="row">
+              <span v-if="row.item.is_ultimate" class="badge badge-success">Yes</span>
+              <span v-else class="badge badge-secondary">No</span>
+            </template>
+            <template slot="upgrade" slot-scope="row">
+              <span v-if="row.item.has_upgrade" class="badge badge-success">Yes</span>
+              <span v-else class="badge badge-secondary">No</span>
+            </template>
+          </b-table>
         </b-col>
     </b-row>
   </section>
@@ -405,8 +401,8 @@ export default {
       { key: 'link', label: 'Ability', sortable: true },
       { key: 'ultimate', label: 'Ultimate', sortable: true },
       { key: 'upgrade', label: 'Upgradable', sortable: true },
-      { key: 'wins', label: 'Wins', sortable: true },
-      { key: 'picks', label: 'Picks', sortable: true },
+      // { key: 'wins', label: 'Wins', sortable: true },
+      // { key: 'picks', label: 'Picks', sortable: true },
       { key: 'win_rate_progress', label: 'Win Rate', sortable: true }
     ]
 

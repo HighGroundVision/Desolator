@@ -72,8 +72,8 @@ export default {
     const fields = [
       { key: 'icon', label: 'Icon', sortable: false },
       { key: 'link', label: 'Hero', sortable: true },
-      { key: 'wins', label: 'Wins', sortable: true },
-      { key: 'picks', label: 'Picks', sortable: true },
+      // { key: 'wins', label: 'Wins', sortable: true },
+      // { key: 'picks', label: 'Picks', sortable: true },
       { key: 'win_rate_progress', label: 'Win Rate', sortable: true }
     ]
 
