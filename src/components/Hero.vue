@@ -387,13 +387,47 @@
     </b-row>
     <hr class="highlighted" />
     <b-row>
-        <b-col>
+        <b-col cols="8">
           <h3 class="text-center">Combos</h3>
           <b-table 
             :fields="combos.fields" 
             :items="computedCombos" 
             :sort-by.sync="combos.sortBy" :sort-desc.sync="combos.sortDesc" 
             :current-page="combos.currentPage" :per-page="combos.perPage"
+            >
+            <template slot="icon" slot-scope="row">
+              <b-img :src="row.item.img" class="ability-icon-sm" />
+            </template>
+            <template slot="link" slot-scope="row">
+              <b-link :to="'/ability/' + row.item.id" target="_blank">{{row.item.name}}</b-link>
+            </template>
+            <template slot="win_rate" slot-scope="row">
+              <b-progress height="1.5rem" :value="row.item.win_rate" :min="0" :max="1" :striped="true" show-progress></b-progress>
+            </template>
+            <template slot="wins" slot-scope="row">
+              <b-progress variant="warning" height="1.5rem" :value="row.item.wins" :min="0" :max="1" :striped="true"></b-progress>
+            </template>
+            <template slot="picks" slot-scope="row">
+              <b-progress variant="warning" height="1.5rem" :value="row.item.picks" :min="0" :max="1" :striped="true"></b-progress>
+            </template>
+            <template slot="ultimate" slot-scope="row">
+              <span v-if="row.item.is_ultimate" class="badge badge-success">Yes</span>
+              <span v-else class="badge badge-secondary">No</span>
+            </template>
+            <template slot="upgrade" slot-scope="row">
+              <span v-if="row.item.has_upgrade" class="badge badge-success">Yes</span>
+              <span v-else class="badge badge-secondary">No</span>
+            </template>
+          </b-table>
+          <b-pagination align="center" :total-rows="combos.totalRows" :per-page="combos.perPage" v-model="combos.currentPage" />
+        </b-col>
+        <b-col>
+          <h3 class="text-center">Least Picked</h3>
+          <b-table 
+            :fields="anticombos.fields" 
+            :items="computedAntiCombos" 
+            :sort-by.sync="anticombos.sortBy" :sort-desc.sync="anticombos.sortDesc" 
+            :current-page="anticombos.currentPage" :per-page="anticombos.perPage"
             >
             <template slot="icon" slot-scope="row">
               <b-img :src="row.item.img" class="ability-icon-sm" />
@@ -434,14 +468,24 @@ import axios from 'axios'
 export default {
   name: 'HeroDetails',
   data () {
-    const fields = [
+    const fieldsCombos = [
       { key: 'icon', label: 'Icon', sortable: false },
       { key: 'link', label: 'Ability', sortable: true },
       { key: 'ultimate', label: 'Ultimate', sortable: true },
-      { key: 'upgrade', label: 'Upgradable', sortable: true },
-      { key: 'picks', label: 'Picks', sortable: true },
-      { key: 'wins', label: 'Wins', sortable: true },
+      { key: 'upgrade', label: 'Aghanims', sortable: true },
+      { key: 'picks', label: 'Most Picks', sortable: true },
+      { key: 'wins', label: 'Most Wins', sortable: true },
       { key: 'win_rate', label: 'Win Rate', sortable: true }
+    ]
+
+    const fieldsAntiCombos = [
+      { key: 'icon', label: 'Icon', sortable: false },
+      { key: 'link', label: 'Ability', sortable: true }
+      // { key: 'ultimate', label: 'Ultimate', sortable: true },
+      // { key: 'upgrade', label: 'Aghanims', sortable: true }
+      // { key: 'picks', label: 'Most Picks', sortable: true },
+      // { key: 'wins', label: 'Most Wins', sortable: true },
+      // { key: 'win_rate', label: 'Win Rate', sortable: true }
     ]
 
     return {
@@ -453,9 +497,18 @@ export default {
       'stats': null,
       'combos': {
         'items': [],
-        'fields': fields,
+        'fields': fieldsCombos,
         'sortBy': 'wins',
         'sortDesc': true,
+        'totalRows': 0,
+        'currentPage': 1,
+        'perPage': 10
+      },
+      'anticombos': {
+        'items': [],
+        'fields': fieldsAntiCombos,
+        'sortBy': 'wins',
+        'sortDesc': false,
         'totalRows': 0,
         'currentPage': 1,
         'perPage': 10
@@ -479,9 +532,6 @@ export default {
       let stat = values[1] 
       let combos = values[2]
       let attributes = values[3]
-      
-      let skills = hero.abilities.filter(_ => _.ability_draft_enabled).map(_ => _.id)
-      vm.abilities = combos.filter(_ => skills.includes(_.id))
 
       let talents = []
 
@@ -490,12 +540,26 @@ export default {
       talents.push({ level: 20, option1: hero.talents[4], option2: hero.talents[5] })
       talents.push({ level: 25, option1: hero.talents[6], option2: hero.talents[7] })
       vm.talents = talents
+      
+      // Get heroes abilties from combos
+      let skills = hero.abilities.filter(_ => _.ability_draft_enabled).map(_ => _.id)
+      let abilities = combos.filter(_ => skills.includes(_.id))
 
+      // Filter combos to remove heroes abilties
+      combos = combos.filter(_ => skills.includes(_.id) === false)
+
+      let avgPicks = combos.reduce((ammulator, element) => ammulator + element.picks, 0) / combos.length
+      let mostCombos = combos.filter(_ => _.picks >= avgPicks)
+      let leastCombos = combos.filter(_ => _.picks < avgPicks)
+
+      vm.abilities = abilities
       vm.attributes = attributes
       vm.hero = hero
       vm.stats = stat
-      vm.combos.items = combos.filter(_ => skills.includes(_.id) === false)
-      vm.combos.totalRows = vm.combos.items.length
+      vm.combos.items = mostCombos
+      vm.combos.totalRows = mostCombos.length
+      vm.anticombos.items = leastCombos
+      vm.anticombos.totalRows = leastCombos.length
       vm.ready = true
     }).catch(function () {
       vm.$router.push('/error')
@@ -512,6 +576,23 @@ export default {
           return this.combos.sortDesc ? lhs.is_ultimate > rhs.is_ultimate : lhs.is_ultimate < rhs.is_ultimate 
         } else if (this.combos.sortBy === 'upgrade') {
           return this.combos.sortDesc ? lhs.has_upgrade > rhs.has_upgrade : lhs.has_upgrade < rhs.has_upgrade 
+        } else {
+          return 0
+        }
+      })
+
+      return items
+    },
+    computedAntiCombos: function () {
+      let items = this.anticombos.items
+
+      items = items.sort((lhs, rhs) => {
+        if (this.anticombos.sortBy === 'link') {
+          return this.anticombos.sortDesc ? lhs.name.localeCompare(rhs.name) : rhs.name.localeCompare(lhs.name)
+        } else if (this.anticombos.sortBy === 'ultimate') {
+          return this.anticombos.sortDesc ? lhs.is_ultimate > rhs.is_ultimate : lhs.is_ultimate < rhs.is_ultimate 
+        } else if (this.anticombos.sortBy === 'upgrade') {
+          return this.anticombos.sortDesc ? lhs.has_upgrade > rhs.has_upgrade : lhs.has_upgrade < rhs.has_upgrade 
         } else {
           return 0
         }

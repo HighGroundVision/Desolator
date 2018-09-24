@@ -245,8 +245,8 @@ export default {
     const heroFields = [
       { key: 'icon', label: 'Icon', sortable: false },
       { key: 'link', label: 'Hero', sortable: true },
-      { key: 'wins', label: 'Wins', sortable: true },
-      { key: 'picks', label: 'Picks', sortable: true },
+      { key: 'wins', label: 'Most Wins', sortable: true },
+      { key: 'picks', label: 'Most Picks', sortable: true },
       { key: 'win_rate_progress', label: 'Win Rate', sortable: true }
     ]
 
@@ -254,9 +254,9 @@ export default {
       { key: 'icon', label: 'Icon', sortable: false },
       { key: 'link', label: 'Ability', sortable: true },
       { key: 'ultimate', label: 'Ultimate', sortable: true },
-      { key: 'upgrade', label: 'Upgradable', sortable: true },
-      { key: 'wins', label: 'Wins', sortable: true },
-      { key: 'picks', label: 'Picks', sortable: true },
+      { key: 'upgrade', label: 'Aghanims', sortable: true },
+      { key: 'wins', label: 'Most Wins', sortable: true },
+      { key: 'picks', label: 'Most Picks', sortable: true },
       { key: 'win_rate_progress', label: 'Win Rate', sortable: true }
     ]
 
@@ -331,13 +331,16 @@ export default {
           }
         })
       }
-      
+
+      let avgPicks = combos.reduce((ammulator, element) => ammulator + element.picks, 0) / combos.length
+      let mostCombos = combos.filter(_ => _.picks >= avgPicks)
+
       vm.ability = details
       vm.stats = stats
       vm.heroes.items = heroes
       vm.heroes.totalRows = heroes.length
-      vm.combos.items = combos
-      vm.combos.totalRows = combos.length
+      vm.combos.items = mostCombos
+      vm.combos.totalRows = mostCombos.length
       vm.drafts.items = drafts
       vm.drafts.totalRows = drafts.length
       vm.ready = true
