@@ -134,11 +134,15 @@
         </ul>
       </b-col>
     </b-row>
-    <br />
+    <hr class="highlighted" />
     <b-row>
       <b-col>
-        <h4 class="text-center">Top Combos</h4>
-        <b-table :fields="combos.fields" :items="computedCombos" :sort-by.sync="combos.sortBy" :sort-desc.sync="combos.sortDesc" >
+        <h4 class="text-center">Ability Combos</h4>
+        <b-table 
+          :fields="combos.fields" :items="computedCombos" 
+          :sort-by.sync="combos.sortBy" :sort-desc.sync="combos.sortDesc"
+          :current-page="combos.currentPage" :per-page="combos.perPage"
+        >
           <template slot="icon" slot-scope="row">
               <b-img :src="row.item.img" class="ability-icon-sm" />
           </template>
@@ -149,10 +153,12 @@
               <b-progress height="2rem" :value="row.item.win_rate" :min="0" :max="1" :striped="true" show-progress></b-progress>
           </template>
           <template slot="wins" slot-scope="row">
-              <span>{{row.item.wins}}</span>
+            <b-progress height="2rem" :value="row.item.wins" :min="0" :max="1" :striped="true" show-progress></b-progress>
+            <!--<span>{{row.item.wins}}</span>-->
           </template>
           <template slot="picks" slot-scope="row">
-              <span>{{row.item.picks}}</span>
+            <b-progress height="2rem" :value="row.item.picks" :min="0" :max="1" :striped="true" show-progress></b-progress>
+            <!--<span>{{row.item.picks}}</span>-->
           </template>
           <template slot="ultimate" slot-scope="row">
             <span v-if="row.item.is_ultimate" class="badge badge-success">Yes</span>
@@ -163,15 +169,55 @@
             <span v-else class="badge badge-secondary">No</span>
           </template>
         </b-table>
+        <b-pagination align="center" :total-rows="combos.totalRows" :per-page="combos.perPage" v-model="combos.currentPage" />
       </b-col>
+    </b-row>
+    <hr class="highlighted" />
+    <b-row>
       <b-col>
-        <h4 class="text-center">Top Heroes</h4>
-        <b-table :fields="heroes.fields" :items="computedHeroes" :sort-by.sync="heroes.sortBy" :sort-desc.sync="heroes.sortDesc" >
+        <h4 class="text-center">Hero Combos</h4>
+        <b-table 
+          :fields="heroes.fields" :items="computedHeroes" 
+          :sort-by.sync="heroes.sortBy" :sort-desc.sync="heroes.sortDesc" 
+          :current-page="heroes.currentPage" :per-page="heroes.perPage"
+        >
           <template slot="icon" slot-scope="row">
               <b-img :src="row.item.img" class="hero-icon-banner-sm" />
           </template>
           <template slot="link" slot-scope="row">
               <b-link :to="'/hero/' + row.item.id" target="_blank">{{row.item.name}}</b-link>
+          </template>
+          <template slot="win_rate_progress" slot-scope="row">
+              <b-progress height="2rem" :value="row.item.win_rate" :min="0" :max="1" :striped="true" show-progress></b-progress>
+          </template>
+          <template slot="wins" slot-scope="row">
+              <b-progress height="2rem" :value="row.item.wins" :min="0" :max="1" :striped="true" show-progress></b-progress>
+              <!--<span>{{row.item.wins}}</span>-->
+          </template>
+          <template slot="picks" slot-scope="row">
+              <b-progress height="2rem" :value="row.item.picks" :min="0" :max="1" :striped="true" show-progress></b-progress>
+              <!--<span>{{row.item.picks}}</span>-->
+          </template>
+        </b-table>
+        <b-pagination align="center" :total-rows="heroes.totalRows" :per-page="heroes.perPage" v-model="heroes.currentPage" />
+      </b-col>
+    </b-row>
+    <hr class="highlighted" />
+    <b-row>
+      <b-col>
+        <h4 class="text-center">Drafts</h4>
+        <b-table 
+          :fields="drafts.fields" :items="drafts.items" 
+          :sort-by.sync="drafts.sortBy" :sort-desc.sync="drafts.sortDesc" 
+        >
+          <template slot="images" slot-scope="row">
+              <b-img :src="row.item.images[0]" class="hero-icon-banner-sm" />
+              <b-img :src="row.item.images[1]" class="hero-icon-banner-sm" />
+              <b-img :src="row.item.images[2]" class="hero-icon-banner-sm" />
+              <b-img :src="row.item.images[3]" class="hero-icon-banner-sm" />
+          </template>
+          <template slot="names" slot-scope="row">
+              <span>{{row.item.abilties}}</span>
           </template>
           <template slot="win_rate_progress" slot-scope="row">
               <b-progress height="2rem" :value="row.item.win_rate" :min="0" :max="1" :striped="true" show-progress></b-progress>
@@ -183,6 +229,7 @@
               <span>{{row.item.picks}}</span>
           </template>
         </b-table>
+        <!--<b-pagination align="center" :total-rows="drafts.totalRows" :per-page="drafts.perPage" v-model="drafts.currentPage" />-->
       </b-col>
     </b-row>
   </section>
@@ -202,8 +249,8 @@ export default {
     const heroFields = [
       { key: 'icon', label: 'Icon', sortable: false },
       { key: 'link', label: 'Hero', sortable: true },
-      // { key: 'wins', label: 'Wins', sortable: true },
-      // { key: 'picks', label: 'Picks', sortable: true },
+      { key: 'wins', label: 'Wins', sortable: true },
+      { key: 'picks', label: 'Picks', sortable: true },
       { key: 'win_rate_progress', label: 'Win Rate', sortable: true }
     ]
 
@@ -212,9 +259,17 @@ export default {
       { key: 'link', label: 'Ability', sortable: true },
       { key: 'ultimate', label: 'Ultimate', sortable: true },
       { key: 'upgrade', label: 'Upgradable', sortable: true },
-      // { key: 'wins', label: 'Wins', sortable: true },
-      // { key: 'picks', label: 'Picks', sortable: true },
+      { key: 'wins', label: 'Wins', sortable: true },
+      { key: 'picks', label: 'Picks', sortable: true },
       { key: 'win_rate_progress', label: 'Win Rate', sortable: true }
+    ]
+
+    const draftsFields = [
+      { key: 'images', label: 'Icons', sortable: false },
+      { key: 'names', label: 'Abilities', sortable: false },
+      // { key: 'wins', label: 'Wins', sortable: true },
+      { key: 'picks', label: 'Picks', sortable: false },
+      { key: 'win_rate_progress', label: 'Win Rate', sortable: false }
     ]
 
     return {
@@ -224,14 +279,29 @@ export default {
       'heroes': {
         'items': [],
         'fields': heroFields,
-        'sortBy': 'win_rate_progress',
-        'sortDesc': true
+        'sortBy': 'wins',
+        'sortDesc': true,
+        'currentPage': 1,
+        'perPage': 10,
+        'totalRows': 0
       },
       'combos': {
         'items': [],
         'fields': abilityFields,
-        'sortBy': 'win_rate_progress',
-        'sortDesc': true
+        'sortBy': 'wins',
+        'sortDesc': true,
+        'currentPage': 1,
+        'perPage': 10,
+        'totalRows': 0
+      },
+      'drafts': {
+        'items': [],
+        'fields': draftsFields,
+        'sortBy': 'win_rate',
+        'sortDesc': true,
+        'currentPage': 1,
+        'perPage': 10,
+        'totalRows': 0
       }
     }
   },
@@ -244,7 +314,8 @@ export default {
       axios.get('/static/data/abilities/' + id + '/ability.json').then((reponse) => { return reponse.data }),
       axios.get('/static/data/abilities/' + id + '/stats.json').then((reponse) => { return reponse.data }),
       axios.get('/static/data/abilities/' + id + '/heroes.json').then((reponse) => { return reponse.data }),
-      axios.get('/static/data/abilities/' + id + '/combos.json').then((reponse) => { return reponse.data })
+      axios.get('/static/data/abilities/' + id + '/combos.json').then((reponse) => { return reponse.data }),
+      axios.get('/static/data/abilities/' + id + '/drafts.json').then((reponse) => { return reponse.data })
     ]
 
     Promise.all(web).then((values) => {
@@ -252,11 +323,27 @@ export default {
       let stats = values[1]
       let heroes = values[2]
       let combos = values[3]
+      let drafts = values[4]
+
+      for (let i = 0; i < drafts.length; i++) {
+        const draft = drafts[i]
+        draft.images.sort((lhs, rhs) => { 
+          if (lhs.includes(details.key)) {
+            return -1
+          } else {
+            return 1
+          }
+        })
+      }
       
       vm.ability = details
       vm.stats = stats
       vm.heroes.items = heroes
+      vm.heroes.totalRows = heroes.length
       vm.combos.items = combos
+      vm.combos.totalRows = combos.length
+      vm.drafts.items = drafts
+      vm.drafts.totalRows = drafts.length
       vm.ready = true
     }).catch(function () {
       vm.$router.push('/error')

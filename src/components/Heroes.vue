@@ -82,7 +82,6 @@ export default {
       'currentPage': 1,
       'perPage': 10,
       'totalRows': 0,
-      'pageOptions': [ 10, 50, 100 ],
       'sortBy': 'win_rate_progress',
       'sortDesc': true,
       'fields': fields,

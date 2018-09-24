@@ -36,7 +36,7 @@
     </b-row>
     <hr class="highlighted" />
     <b-row>
-        <b-col cols="4">
+        <b-col cols="5">
           <h4 class="text-center">Attributes</h4>
           <ul class="list-group">
             <li class="list-group-item">
@@ -312,68 +312,105 @@
             </li>
           </ul>
         </b-col>
-        <b-col cols="4">
-            <h4 class="text-center">Abilities</h4>
-            <ul class="list-group">
-                <template v-for="ability in abilities">
-                    <li :key="ability.id" class="list-group-item">
-                        <b-row>
-                            <b-col cols="2">
-                                <b-img :src="ability.img" rounded class="ability-icon-sm" />
-                            </b-col>
-                            <b-col>
-                                <b-link :to="'/ability/' + ability.id" target="_blank">
-                                    <span class="invert">{{ability.name}}</span>
-                                </b-link>
-                            </b-col>
-                            <b-col>
-                              <b-progress height="1.5rem" :value="ability.win_rate" :min="0" :max="1" :striped="true" show-progress></b-progress>
-                            </b-col>
-                        </b-row>
+        <b-col>
+            <b-row>
+              <b-col>
+                <h4 class="text-center">Abilities</h4>
+                <ul class="list-group">
+                    <li class="list-group-item text-center">
+                      <b-row>
+                      <b-col cols="2">                     
+                      </b-col>
+                      <b-col>
+                      </b-col>
+                      <b-col>
+                        Picks
+                      </b-col>
+                      <b-col>
+                        Wins
+                      </b-col>
+                      <b-col>
+                        Win Rate
+                      </b-col>
+                    </b-row>
                     </li>
-                </template>
-            </ul>
-        </b-col>
-        <b-col cols="4">
-            <h4 class="text-center">Talents</h4>
-            <ul class="list-group">
-                <template v-for="talent in talents">
-                    <li :key="talent.level" class="list-group-item">
-                        <b-row style="line-height: 32px;">
-                            <b-col cols="5">
-                                <span class="invert" :title="talent.option1.description">{{talent.option1.name}}</span>
-                            </b-col>
-                            <b-col cols="2" class="text-center">
-                                <span class="badge badge-pill badge-info">{{talent.level}}</span>
-                            </b-col>
-                            <b-col cols="5">
-                                <span class="invert" :title="talent.option2.description">{{talent.option2.name}}</span>
-                            </b-col>
-                        </b-row>
-                    </li>
-                </template>
-            </ul>
+                    <template v-for="ability in abilities">
+                        <li :key="ability.id" class="list-group-item">
+                            <b-row>
+                                <b-col cols="2">
+                                    <b-img :src="ability.img" rounded class="ability-icon-sm" />
+                                </b-col>
+                                <b-col>
+                                    <b-link :to="'/ability/' + ability.id" target="_blank">
+                                        <span class="invert">{{ability.name}}</span>
+                                    </b-link>
+                                </b-col>
+                                <b-col>
+                                  <b-progress height="1.5rem" :value="ability.picks" :min="0" :max="1" :striped="true" show-progress></b-progress>
+                                </b-col>
+                                <b-col>
+                                  <b-progress height="1.5rem" :value="ability.wins" :min="0" :max="1" :striped="true" show-progress></b-progress>
+                                </b-col>
+                                <b-col>
+                                  <b-progress height="1.5rem" :value="ability.win_rate" :min="0" :max="1" :striped="true" show-progress></b-progress>
+                                </b-col>
+                            </b-row>
+                        </li>
+                    </template>
+                </ul>
+              </b-col>
+            </b-row>
+            <b-row>
+              <b-col>
+                <h4 class="text-center">Talents</h4>
+                <ul class="list-group">
+                    <template v-for="talent in talents">
+                        <li :key="talent.level" class="list-group-item">
+                            <b-row style="line-height: 32px;">
+                                <b-col cols="5">
+                                    <span class="invert" :title="talent.option1.description">{{talent.option1.name}}</span>
+                                </b-col>
+                                <b-col cols="2" class="text-center">
+                                    <span class="badge badge-pill badge-info">{{talent.level}}</span>
+                                </b-col>
+                                <b-col cols="5">
+                                    <span class="invert" :title="talent.option2.description">{{talent.option2.name}}</span>
+                                </b-col>
+                            </b-row>
+                        </li>
+                    </template>
+                </ul>
+              </b-col>
+            </b-row>
+            
         </b-col>
     </b-row>
-    <br />
-    <h3 class="text-center">Top Abilities</h3>
+    <hr class="highlighted" />
     <b-row>
         <b-col>
-          <b-table :fields="combos.fields" :items="computedCombos" :sort-by.sync="combos.sortBy" :sort-desc.sync="combos.sortDesc" >
+          <h3 class="text-center">Combos</h3>
+          <b-table 
+            :fields="combos.fields" 
+            :items="computedCombos" 
+            :sort-by.sync="combos.sortBy" :sort-desc.sync="combos.sortDesc" 
+            :current-page="combos.currentPage" :per-page="combos.perPage"
+            >
             <template slot="icon" slot-scope="row">
               <b-img :src="row.item.img" class="ability-icon-sm" />
             </template>
             <template slot="link" slot-scope="row">
               <b-link :to="'/ability/' + row.item.id" target="_blank">{{row.item.name}}</b-link>
             </template>
-            <template slot="win_rate_progress" slot-scope="row">
+            <template slot="win_rate" slot-scope="row">
               <b-progress height="2rem" :value="row.item.win_rate" :min="0" :max="1" :striped="true" show-progress></b-progress>
             </template>
             <template slot="wins" slot-scope="row">
-              <span>{{row.item.wins}}</span>
+              <b-progress height="2rem" :value="row.item.wins" :min="0" :max="1" :striped="true" show-progress></b-progress>
+              <!--<span>{{row.item.wins}}</span>-->
             </template>
             <template slot="picks" slot-scope="row">
-              <span>{{row.item.picks}}</span>
+              <b-progress height="2rem" :value="row.item.picks" :min="0" :max="1" :striped="true" show-progress></b-progress>
+              <!--<span>{{row.item.picks}}</span>-->
             </template>
             <template slot="ultimate" slot-scope="row">
               <span v-if="row.item.is_ultimate" class="badge badge-success">Yes</span>
@@ -384,6 +421,7 @@
               <span v-else class="badge badge-secondary">No</span>
             </template>
           </b-table>
+          <b-pagination align="center" :total-rows="combos.totalRows" :per-page="combos.perPage" v-model="combos.currentPage" />
         </b-col>
     </b-row>
   </section>
@@ -403,9 +441,9 @@ export default {
       { key: 'link', label: 'Ability', sortable: true },
       { key: 'ultimate', label: 'Ultimate', sortable: true },
       { key: 'upgrade', label: 'Upgradable', sortable: true },
-      // { key: 'wins', label: 'Wins', sortable: true },
-      // { key: 'picks', label: 'Picks', sortable: true },
-      { key: 'win_rate_progress', label: 'Win Rate', sortable: true }
+      { key: 'picks', label: 'Picks', sortable: true },
+      { key: 'wins', label: 'Wins', sortable: true },
+      { key: 'win_rate', label: 'Win Rate', sortable: true }
     ]
 
     return {
@@ -418,8 +456,11 @@ export default {
       'combos': {
         'items': [],
         'fields': fields,
-        'sortBy': 'win_rate_progress',
-        'sortDesc': true
+        'sortBy': 'wins',
+        'sortDesc': true,
+        'totalRows': 0,
+        'currentPage': 1,
+        'perPage': 10
       }
     }
   },
@@ -435,35 +476,29 @@ export default {
       axios.get('/static/data/heroes/' + id + '/attributes.json').then((reponse) => { return reponse.data })
     ]
 
-    Promise.all(web1).then((values1) => {
-      let hero = values1[0] 
-      let stat = values1[1] 
-      let combos = values1[2]
-      let attributes = values1[3]
+    Promise.all(web1).then((values) => {
+      let hero = values[0] 
+      let stat = values[1] 
+      let combos = values[2]
+      let attributes = values[3]
+      
+      let skills = hero.abilities.filter(_ => _.ability_draft_enabled).map(_ => _.id)
+      vm.abilities = combos.filter(_ => skills.includes(_.id))
+
       let talents = []
 
       talents.push({ level: 10, option1: hero.talents[0], option2: hero.talents[1] })
       talents.push({ level: 15, option1: hero.talents[2], option2: hero.talents[3] })
       talents.push({ level: 20, option1: hero.talents[4], option2: hero.talents[5] })
       talents.push({ level: 25, option1: hero.talents[6], option2: hero.talents[7] })
+      vm.talents = talents
 
-      let web2 = []
-      for (let i = 0; i < hero.abilities.length; i++) {
-        const ability = hero.abilities[i]
-        if (ability.ability_draft_enabled) {
-          web2.push(axios.get('/static/data/abilities/' + ability.id + '/stats.json').then((reponse) => { return reponse.data }))
-        }
-      }
-
-      Promise.all(web2).then((values2) => {
-        vm.abilities = values2
-        vm.talents = talents
-        vm.attributes = attributes
-        vm.hero = hero
-        vm.stats = stat
-        vm.combos.items = combos
-        vm.ready = true
-      })
+      vm.attributes = attributes
+      vm.hero = hero
+      vm.stats = stat
+      vm.combos.items = combos.filter(_ => skills.includes(_.id) === false)
+      vm.combos.totalRows = vm.combos.items.length
+      vm.ready = true
     }).catch(function () {
       vm.$router.push('/error')
     })
@@ -475,8 +510,6 @@ export default {
       items = items.sort((lhs, rhs) => {
         if (this.combos.sortBy === 'link') {
           return this.combos.sortDesc ? lhs.name.localeCompare(rhs.name) : rhs.name.localeCompare(lhs.name)
-        } else if (this.combos.sortBy === 'win_rate_progress') {
-          return this.combos.sortDesc ? rhs.win_rate - lhs.win_rate : lhs.win_rate - rhs.win_rate
         } else if (this.combos.sortBy === 'ultimate') {
           return this.combos.sortDesc ? lhs.is_ultimate > rhs.is_ultimate : lhs.is_ultimate < rhs.is_ultimate 
         } else if (this.combos.sortBy === 'upgrade') {
