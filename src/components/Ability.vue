@@ -150,15 +150,13 @@
               <b-link :to="'/ability/' + row.item.id" target="_blank">{{row.item.name}}</b-link>
           </template>
           <template slot="win_rate_progress" slot-scope="row">
-              <b-progress height="2rem" :value="row.item.win_rate" :min="0" :max="1" :striped="true" show-progress></b-progress>
+              <b-progress x height="1.5rem" :value="row.item.win_rate" :min="0" :max="1" :striped="true" show-progress></b-progress>
           </template>
           <template slot="wins" slot-scope="row">
-            <b-progress height="2rem" :value="row.item.wins" :min="0" :max="1" :striped="true" show-progress></b-progress>
-            <!--<span>{{row.item.wins}}</span>-->
+            <b-progress variant="warning" height="1.5rem" :value="row.item.wins" :min="0" :max="1" :striped="true" ></b-progress>
           </template>
           <template slot="picks" slot-scope="row">
-            <b-progress height="2rem" :value="row.item.picks" :min="0" :max="1" :striped="true" show-progress></b-progress>
-            <!--<span>{{row.item.picks}}</span>-->
+            <b-progress variant="warning" height="1.5rem" :value="row.item.picks" :min="0" :max="1" :striped="true" ></b-progress>
           </template>
           <template slot="ultimate" slot-scope="row">
             <span v-if="row.item.is_ultimate" class="badge badge-success">Yes</span>
@@ -188,15 +186,13 @@
               <b-link :to="'/hero/' + row.item.id" target="_blank">{{row.item.name}}</b-link>
           </template>
           <template slot="win_rate_progress" slot-scope="row">
-              <b-progress height="2rem" :value="row.item.win_rate" :min="0" :max="1" :striped="true" show-progress></b-progress>
+              <b-progress height="1.5rem" :value="row.item.win_rate" :min="0" :max="1" :striped="true" show-progress></b-progress>
           </template>
           <template slot="wins" slot-scope="row">
-              <b-progress height="2rem" :value="row.item.wins" :min="0" :max="1" :striped="true" show-progress></b-progress>
-              <!--<span>{{row.item.wins}}</span>-->
+              <b-progress variant="warning" height="1.5rem" :value="row.item.wins" :min="0" :max="1" :striped="true" ></b-progress>
           </template>
           <template slot="picks" slot-scope="row">
-              <b-progress height="2rem" :value="row.item.picks" :min="0" :max="1" :striped="true" show-progress></b-progress>
-              <!--<span>{{row.item.picks}}</span>-->
+              <b-progress variant="warning" height="1.5rem" :value="row.item.picks" :min="0" :max="1" :striped="true"></b-progress>
           </template>
         </b-table>
         <b-pagination align="center" :total-rows="heroes.totalRows" :per-page="heroes.perPage" v-model="heroes.currentPage" />
@@ -268,7 +264,7 @@ export default {
       { key: 'images', label: 'Icons', sortable: false },
       { key: 'names', label: 'Abilities', sortable: false },
       // { key: 'wins', label: 'Wins', sortable: true },
-      { key: 'picks', label: 'Picks', sortable: false },
+      // { key: 'picks', label: 'Picks', sortable: false },
       { key: 'win_rate_progress', label: 'Win Rate', sortable: false }
     ]
 
