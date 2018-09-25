@@ -8,7 +8,13 @@
     <b-row>
       <b-col>
         <p>
-          Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec eget tempus quam, quis posuere massa. Phasellus ultricies iaculis sapien. Suspendisse tristique odio ullamcorper laoreet vehicula. Duis a ex ut orci pretium blandit efficitur vitae sem. Nullam interdum lobortis mauris ut lacinia. Sed eros ligula, porta sed sapien sed, tempor dapibus nisl. Phasellus turpis massa, rhoncus non ligula sit amet, posuere ultrices elit. Aliquam erat volutpat.
+          We have provided details about a hero.
+          We have included the important attributes of the hero and how they compare to other heroes.
+          We have included the hero's default abilities with states on most wins / picks and the win rate.
+          We have included the hero's talents so you can see how depenant on their default abilities the hero is.
+          We have incldued the most picked and least picked combos.
+          Most picks and most wins are a ratio to other ability's picks and wins. 
+          The heroes default abilities are pulled out the combos and compared to themselfs as they are unblanced with the rest of the skills.
         </p>
       </b-col>
     </b-row>
@@ -324,10 +330,10 @@
                       <b-col>
                       </b-col>
                       <b-col>
-                        Picks
+                        Most Picks
                       </b-col>
                       <b-col>
-                        Wins
+                        Most Wins
                       </b-col>
                       <b-col>
                         Win Rate

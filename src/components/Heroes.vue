@@ -8,10 +8,11 @@
     <b-row>
       <b-col>
         <p>
-            Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec eget tempus quam, quis posuere massa. Phasellus ultricies iaculis sapien. Suspendisse tristique odio ullamcorper laoreet vehicula. Duis a ex ut orci pretium blandit efficitur vitae sem. Nullam interdum lobortis mauris ut lacinia. Sed eros ligula, porta sed sapien sed, tempor dapibus nisl. Phasellus turpis massa, rhoncus non ligula sit amet, posuere ultrices elit. Aliquam erat volutpat.
+          We have provided a list of the heroes enabled in the Ability Draft.
         </p>
         <p>
           You can filter by hero name.
+          You can sort by win rate.
           You can click on the hero name to see more details about that hero.
         </p>
       </b-col>
