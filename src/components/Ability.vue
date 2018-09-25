@@ -264,7 +264,7 @@ export default {
       { key: 'images', label: 'Icons', sortable: false },
       { key: 'names', label: 'Abilities', sortable: false },
       // { key: 'wins', label: 'Wins', sortable: true },
-      // { key: 'picks', label: 'Picks', sortable: false },
+      { key: 'picks', label: 'Picks', sortable: false },
       { key: 'win_rate_progress', label: 'Win Rate', sortable: false }
     ]
 
@@ -293,7 +293,7 @@ export default {
       'drafts': {
         'items': [],
         'fields': draftsFields,
-        'sortBy': 'win_rate',
+        'sortBy': 'picks',
         'sortDesc': true,
         'currentPage': 1,
         'perPage': 10,
