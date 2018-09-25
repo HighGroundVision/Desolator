@@ -8,7 +8,10 @@
     <b-row>
       <b-col>
         <p>
-          Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec eget tempus quam, quis posuere massa. Phasellus ultricies iaculis sapien. Suspendisse tristique odio ullamcorper laoreet vehicula. Duis a ex ut orci pretium blandit efficitur vitae sem. Nullam interdum lobortis mauris ut lacinia. Sed eros ligula, porta sed sapien sed, tempor dapibus nisl. Phasellus turpis massa, rhoncus non ligula sit amet, posuere ultrices elit. Aliquam erat volutpat.
+           We have provided details about a ability, including it's description, standard attributes (like cooldown and mana cost) and custom attributes (unique to the ability).
+           We have included the abilities pairs to can compare abiltiy combos by Wins, Picks, WinRate.
+           We have included the heroes pairs to identify which heroes are strongest with this ability.
+           We have included the most picked drafts for this abilitiy to identify which drafts are picked ofen and how well they fair. We will not include drafts that have a zero win rate. 
         </p>
       </b-col>
     </b-row>

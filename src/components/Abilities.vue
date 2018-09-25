@@ -8,9 +8,10 @@
     <b-row>
       <b-col>
         <p>
-            Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec eget tempus quam, quis posuere massa. Phasellus ultricies iaculis sapien. Suspendisse tristique odio ullamcorper laoreet vehicula. Duis a ex ut orci pretium blandit efficitur vitae sem. Nullam interdum lobortis mauris ut lacinia. Sed eros ligula, porta sed sapien sed, tempor dapibus nisl. Phasellus turpis massa, rhoncus non ligula sit amet, posuere ultrices elit. Aliquam erat volutpat.
+            We have provided a list of the abilities enabled in the Ability Draft.
         </p>
         <p>
+          You can sort by Win Rate, if the ability is an ulimated or aghanims.
           You can filter by ability name.
           You can click on the ability name to see more details about that ability.
         </p>
@@ -81,7 +82,7 @@ export default {
       { key: 'icon', label: 'Icon', sortable: false },
       { key: 'link', label: 'Ability', sortable: true },
       { key: 'ultimate', label: 'Ultimate', sortable: true },
-      { key: 'upgrade', label: 'Upgradable', sortable: true },
+      { key: 'upgrade', label: 'Aghanims', sortable: true },
       // { key: 'wins', label: 'Wins', sortable: true },
       // { key: 'picks', label: 'Picks', sortable: true },
       { key: 'win_rate_progress', label: 'Win Rate', sortable: true }
