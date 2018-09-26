@@ -36,7 +36,7 @@
             :current-page="currentPage" :per-page="perPage"
             @filtered="onFiltered">
           <template slot="icon" slot-scope="row">
-            <b-img :src="row.item.img" class="hero-icon-banner-sm" />
+            <b-img :src="row.item.image_banner" class="hero-icon-banner-sm" />
           </template>
           <template slot="link" slot-scope="row">
             <b-link :to="'/hero/' + row.item.id">{{row.item.name}}</b-link>

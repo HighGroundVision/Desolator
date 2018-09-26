@@ -25,7 +25,7 @@
     <b-row>
       <b-col>
         <template v-for="(item) in computedPool">
-          <img @click="draftItem(item)" :key="item.id" :src="item.img" class="hero-icon-profile-md m-1" />
+          <img @click="draftItem(item)" :key="item.id" :src="item.image_profile" class="hero-icon-profile-md m-1" />
         </template>
       </b-col>
     </b-row>
@@ -69,11 +69,6 @@ export default {
 
     Promise.all(web).then((values) => {
       let items = values[0]
-
-      for (let i = 0; i < items.length; i++) {
-        const item = items[i]
-        item.img = item.img.replace('/banner/', '/profile/')
-      }
 
       vm.pool = items
       vm.roster = []
