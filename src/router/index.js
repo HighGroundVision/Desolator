@@ -9,7 +9,7 @@ import PageHero from '@/components/Hero'
 import PageAbilities from '@/components/Abilities'
 import PageAbility from '@/components/Ability'
 import PageDraft from '@/components/Draft'
-import PageDraftHandler from '@/components/DraftHandler'
+import PageDraftCustomize from '@/components/DraftCustomize'
 import PageDraftLive from '@/components/DraftLive'
 
 Vue.use(Router)
@@ -52,9 +52,9 @@ let router = new Router({
       component: PageDraft
     },
     {
-      path: '/draft/handler',
-      name: 'DraftHandler',
-      component: PageDraftHandler
+      path: '/draft/customize',
+      name: 'DraftCustomize',
+      component: PageDraftCustomize
     },
     {
       path: '/draft/live',

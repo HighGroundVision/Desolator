@@ -7,7 +7,7 @@
 // import axios from 'axios'
 
 export default {
-  name: 'DraftHanlder',
+  name: 'DraftCustomize',
   data () {
     return {}
   },

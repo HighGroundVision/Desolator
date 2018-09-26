@@ -5,6 +5,15 @@
         <h2 class="text-left text-warning">Drafting</h2>
       </b-col>
     </b-row>
+    <b-row>
+      <b-col class="text-left">
+        <p>
+          Select the Roster (the 10 heroes displayed at the top of the drafting window) from the hero Pool.
+          Customize the draft to supply options we will have missed from the roster. These include the addational heroes and any substitutes for missing abilities.
+          Some times you don't have time for all that! Select Draft if you just want to get into the draft with limited options.
+        </p>
+      </b-col>
+    </b-row>
     <hr class="highlighted" />
     <b-row>
       <b-col>
@@ -40,8 +49,14 @@
         <template v-for="(item) in roster">
           <img @click="returnItem(item)" :key="item.id" :src="item.img" v-bind:class="{ 'border border-primary border-selected': selected === item }" class="hero-icon-profile-md m-1" />
         </template>
-        <br />
-        <b-btn v-if="fullRoster" @click="proceed" variant="success">Draft</b-btn>
+      </b-col>
+    </b-row>
+    <br />
+    <b-row v-if="fullRoster">
+      <b-col>
+        <b-btn @click="customize(true)" variant="warning">Customize</b-btn>
+        or skip that all and get right to the
+        <b-btn @click="customize(false)" variant="success">Draft</b-btn>
       </b-col>
     </b-row>
   </section>
