@@ -578,10 +578,16 @@ export default {
       items = items.sort((lhs, rhs) => {
         if (this.combos.sortBy === 'link') {
           return this.combos.sortDesc ? lhs.name.localeCompare(rhs.name) : rhs.name.localeCompare(lhs.name)
+        } else if (this.combos.sortBy === 'win_rate_progress') {
+          return this.combos.sortDesc ? rhs.win_rate - lhs.win_rate : lhs.win_rate - rhs.win_rate
+        } else if (this.combos.sortBy === 'picks') {
+          return this.combos.sortDesc ? rhs.picks - lhs.picks : lhs.picks - rhs.picks
+        } else if (this.combos.sortBy === 'wins') {
+          return this.combos.sortDesc ? rhs.wins - lhs.wins : lhs.wins - rhs.wins
         } else if (this.combos.sortBy === 'ultimate') {
-          return this.combos.sortDesc ? lhs.is_ultimate > rhs.is_ultimate : lhs.is_ultimate < rhs.is_ultimate 
+          return this.combos.sortDesc ? lhs.is_ultimate - rhs.is_ultimate : rhs.is_ultimate - lhs.is_ultimate
         } else if (this.combos.sortBy === 'upgrade') {
-          return this.combos.sortDesc ? lhs.has_upgrade > rhs.has_upgrade : lhs.has_upgrade < rhs.has_upgrade 
+          return this.combos.sortDesc ? lhs.has_upgrade - rhs.has_upgrade : rhs.has_upgrade - lhs.has_upgrade 
         } else {
           return 0
         }
@@ -595,10 +601,16 @@ export default {
       items = items.sort((lhs, rhs) => {
         if (this.anticombos.sortBy === 'link') {
           return this.anticombos.sortDesc ? lhs.name.localeCompare(rhs.name) : rhs.name.localeCompare(lhs.name)
+        } else if (this.anticombos.sortBy === 'win_rate_progress') {
+          return this.anticombos.sortDesc ? rhs.win_rate - lhs.win_rate : lhs.win_rate - rhs.win_rate
+        } else if (this.anticombos.sortBy === 'picks') {
+          return this.anticombos.sortDesc ? rhs.picks - lhs.picks : lhs.picks - rhs.picks
+        } else if (this.anticombos.sortBy === 'wins') {
+          return this.anticombos.sortDesc ? rhs.wins - lhs.wins : lhs.wins - rhs.wins
         } else if (this.anticombos.sortBy === 'ultimate') {
-          return this.anticombos.sortDesc ? lhs.is_ultimate > rhs.is_ultimate : lhs.is_ultimate < rhs.is_ultimate 
+          return this.anticombos.sortDesc ? lhs.is_ultimate - rhs.is_ultimate : rhs.is_ultimate - lhs.is_ultimate
         } else if (this.anticombos.sortBy === 'upgrade') {
-          return this.anticombos.sortDesc ? lhs.has_upgrade > rhs.has_upgrade : lhs.has_upgrade < rhs.has_upgrade 
+          return this.anticombos.sortDesc ? lhs.has_upgrade - rhs.has_upgrade : rhs.has_upgrade - lhs.has_upgrade 
         } else {
           return 0
         }

@@ -133,6 +133,14 @@ export default {
           return this.sortDesc ? lhs.name.localeCompare(rhs.name) : rhs.name.localeCompare(lhs.name)
         } else if (this.sortBy === 'win_rate_progress') {
           return this.sortDesc ? rhs.win_rate - lhs.win_rate : lhs.win_rate - rhs.win_rate
+        } else if (this.sortBy === 'picks') {
+          return this.sortDesc ? rhs.picks - lhs.picks : lhs.picks - rhs.picks
+        } else if (this.sortBy === 'wins') {
+          return this.sortDesc ? rhs.wins - lhs.wins : lhs.wins - rhs.wins
+        } else if (this.sortBy === 'ultimate') {
+          return this.sortDesc ? lhs.is_ultimate - rhs.is_ultimate : rhs.is_ultimate - lhs.is_ultimate
+        } else if (this.sortBy === 'upgrade') {
+          return this.sortDesc ? lhs.has_upgrade - rhs.has_upgrade : rhs.has_upgrade - lhs.has_upgrade 
         } else {
           return 0
         }
