@@ -176,12 +176,39 @@
     <hr class="highlighted" />
     <b-row>
       <b-col>
+        <h4 class="text-center">Hero Stats</h4>
+        <b-row class="text-center">
+          <b-col>
+            <h5>Str</h5>
+
+          </b-col>
+          <b-col>
+            <h5>Agi</h5>
+
+          </b-col>
+          <b-col>
+            <h5>Int</h5>
+
+          </b-col>
+          <b-col>
+            <h5>Melee</h5>
+
+          </b-col>
+          <b-col>
+            <h5>Range</h5>
+
+          </b-col>
+        </b-row>
+      </b-col>
+    </b-row>
+    <hr class="highlighted" />
+    <b-row>
+      <b-col>
         <h4 class="text-center">Hero Combos</h4>
         <b-table 
           :fields="heroes.fields" :items="computedHeroes" 
           :sort-by.sync="heroes.sortBy" :sort-desc.sync="heroes.sortDesc" 
-          :current-page="heroes.currentPage" :per-page="heroes.perPage"
-        >
+          :current-page="heroes.currentPage" :per-page="heroes.perPage">
           <template slot="icon" slot-scope="row">
               <b-img :src="row.item.img" class="hero-icon-banner-sm" />
           </template>
@@ -210,25 +237,24 @@
           :sort-by.sync="drafts.sortBy" :sort-desc.sync="drafts.sortDesc" 
         >
           <template slot="images" slot-scope="row">
-              <b-img :src="row.item.images[0]" class="hero-icon-banner-sm" />
-              <b-img :src="row.item.images[1]" class="hero-icon-banner-sm" />
-              <b-img :src="row.item.images[2]" class="hero-icon-banner-sm" />
-              <b-img :src="row.item.images[3]" class="hero-icon-banner-sm" />
+            <b-img :src="row.item.images[0]" class="hero-icon-banner-sm" />
+            <b-img :src="row.item.images[1]" class="hero-icon-banner-sm" />
+            <b-img :src="row.item.images[2]" class="hero-icon-banner-sm" />
+            <b-img :src="row.item.images[3]" class="hero-icon-banner-sm" />
           </template>
           <template slot="names" slot-scope="row">
-              <span>{{row.item.abilties}}</span>
+            <span>{{row.item.abilties}}</span>
           </template>
           <template slot="win_rate_progress" slot-scope="row">
-              <b-progress height="2rem" :value="row.item.win_rate" :min="0" :max="1" :striped="true" show-progress></b-progress>
+            <b-progress height="2rem" :value="row.item.win_rate" :min="0" :max="1" :striped="true" show-progress></b-progress>
           </template>
           <template slot="wins" slot-scope="row">
-              <span>{{row.item.wins}}</span>
+            <span>{{row.item.wins}}</span>
           </template>
           <template slot="picks" slot-scope="row">
-              <span>{{row.item.picks}}</span>
+            <span>{{row.item.picks}}</span>
           </template>
         </b-table>
-        <!--<b-pagination align="center" :total-rows="drafts.totalRows" :per-page="drafts.perPage" v-model="drafts.currentPage" />-->
       </b-col>
     </b-row>
   </section>
@@ -324,15 +350,16 @@ export default {
       let combos = values[3]
       let drafts = values[4]
 
+      // ability - heroes
+      // primary
+      // attack
+      // ...
+      // hero - collection
+      // img -> expand
+
       for (let i = 0; i < drafts.length; i++) {
         const draft = drafts[i]
-        draft.images.sort((lhs, rhs) => { 
-          if (lhs.includes(details.key)) {
-            return -1
-          } else {
-            return 1
-          }
-        })
+        draft.images.sort((lhs, rhs) => { return lhs.includes(details.key) ? -1 : 1 })
       }
 
       let avgPicks = combos.reduce((ammulator, element) => ammulator + element.picks, 0) / combos.length
