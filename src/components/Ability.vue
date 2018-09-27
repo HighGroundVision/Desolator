@@ -179,32 +179,32 @@
         <h4 class="text-center">Hero Stats</h4>
         <b-row class="text-center">
           <b-col>
-            <h5>Str</h5>
-
+            <h5><b-img src="https://hgv-hyperstone.azurewebsites.net/mics/primary_str.png" title="Strength" rounded class="ability-icon-sm" /> Str</h5>
+            <b-progress height="1.5rem" :value="groups.str" :min="0" :max="1" :striped="true" show-progress></b-progress>
           </b-col>
           <b-col>
-            <h5>Agi</h5>
-
+            <h5><b-img src="https://hgv-hyperstone.azurewebsites.net/mics/primary_agi.png" title="Strength" rounded class="ability-icon-sm" /> Agi</h5>
+            <b-progress height="1.5rem" :value="groups.agi" :min="0" :max="1" :striped="true" show-progress></b-progress>
           </b-col>
           <b-col>
-            <h5>Int</h5>
-
+            <h5><b-img src="https://hgv-hyperstone.azurewebsites.net/mics/primary_int.png" title="Strength" rounded class="ability-icon-sm" /> Int</h5>
+            <b-progress height="1.5rem" :value="groups.int" :min="0" :max="1" :striped="true" show-progress></b-progress>
           </b-col>
           <b-col>
-            <h5>Melee</h5>
-
+            <h5><b-img src="https://hgv-hyperstone.azurewebsites.net/mics/type_melee.png" title="Melee" rounded class="ability-icon-sm" /> Melee</h5>
+            <b-progress height="1.5rem" :value="groups.melee" :min="0" :max="1" :striped="true" show-progress></b-progress>
           </b-col>
           <b-col>
-            <h5>Range</h5>
-
+            <h5><b-img src="https://hgv-hyperstone.azurewebsites.net/mics/type_range.png" title="Range" rounded class="ability-icon-sm" /> Range</h5>
+            <b-progress height="1.5rem" :value="groups.range" :min="0" :max="1" :striped="true" show-progress></b-progress>
           </b-col>
         </b-row>
       </b-col>
     </b-row>
-    <hr class="highlighted" />
+    <br />
     <b-row>
       <b-col>
-        <h4 class="text-center">Hero Combos</h4>
+        <h4 class="text-center">Hero Pairs</h4>
         <b-table 
           :fields="heroes.fields" :items="computedHeroes" 
           :sort-by.sync="heroes.sortBy" :sort-desc.sync="heroes.sortDesc" 
@@ -301,10 +301,17 @@ export default {
       'ready': false,
       'ability': null,
       'stats': null,
+      'groups': {
+        'str': 0,
+        'int': 0,
+        'agi': 0,
+        'melee': 0,
+        'range': 0
+      },
       'heroes': {
         'items': [],
         'fields': heroFields,
-        'sortBy': 'wins',
+        'sortBy': 'win_rate_progress',
         'sortDesc': true,
         'currentPage': 1,
         'perPage': 10,
@@ -313,7 +320,7 @@ export default {
       'combos': {
         'items': [],
         'fields': abilityFields,
-        'sortBy': 'wins',
+        'sortBy': 'win_rate_progress',
         'sortDesc': true,
         'currentPage': 1,
         'perPage': 10,
@@ -331,6 +338,8 @@ export default {
     }
   },
   created: function () {
+    const average = (arr, o) => arr.reduce((a, i) => a + i[o], 0) / arr.length
+
     const vm = this
 
     let id = this.$route.params.id
@@ -350,12 +359,11 @@ export default {
       let combos = values[3]
       let drafts = values[4]
 
-      // ability - heroes
-      // primary
-      // attack
-      // ...
-      // hero - collection
-      // img -> expand
+      let strheroes = heroes.filter(_ => _.attribute_primary === 'DOTA_ATTRIBUTE_STRENGTH')
+      let intheroes = heroes.filter(_ => _.attribute_primary === 'DOTA_ATTRIBUTE_INTELLECT')
+      let agiheroes = heroes.filter(_ => _.attribute_primary === 'DOTA_ATTRIBUTE_AGILITY')
+      let meleeheroes = heroes.filter(_ => _.attack_capabilities === 'DOTA_UNIT_CAP_MELEE_ATTACK')
+      let rangeheroes = heroes.filter(_ => _.attack_capabilities === 'DOTA_UNIT_CAP_RANGED_ATTACK')
 
       for (let i = 0; i < drafts.length; i++) {
         const draft = drafts[i]
@@ -373,6 +381,11 @@ export default {
       vm.combos.totalRows = mostCombos.length
       vm.drafts.items = drafts
       vm.drafts.totalRows = drafts.length
+      vm.groups.str = average(strheroes, 'wins')
+      vm.groups.int = average(intheroes, 'wins')
+      vm.groups.agi = average(agiheroes, 'wins')
+      vm.groups.melee = average(meleeheroes, 'wins')
+      vm.groups.range = average(rangeheroes, 'wins')
       vm.ready = true
     }).catch(function () {
       vm.$router.push('/error')

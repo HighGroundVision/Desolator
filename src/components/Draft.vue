@@ -47,7 +47,7 @@
     <b-row>
       <b-col>
         <template v-for="(item) in roster">
-          <img @click="returnItem(item)" :key="item.id" :src="item.img" v-bind:class="{ 'border border-primary border-selected': selected === item }" class="hero-icon-profile-md m-1" />
+          <img @click="returnItem(item)" :key="item.id" :src="item.image_profile" class="hero-icon-profile-md m-1" />
         </template>
       </b-col>
     </b-row>
@@ -140,7 +140,4 @@ export default {
 
 <!-- Add "scoped" attribute to limit CSS to this component only -->
 <style scoped>
-.border-selected {
-  border-width: medium !important;
-}
 </style>

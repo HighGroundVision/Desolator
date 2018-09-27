@@ -43,7 +43,7 @@
     <hr class="highlighted" />
     <b-row>
         <b-col cols="5">
-          <h4 class="text-center">Attributes</h4>
+          <h5 class="text-center">Attributes</h5>
           <ul class="list-group">
             <li class="list-group-item">
                 <b-row>
@@ -321,7 +321,7 @@
         <b-col>
             <b-row>
               <b-col>
-                <h4 class="text-center">Abilities</h4>
+                <h5 class="text-center">Abilities</h5>
                 <ul class="list-group">
                     <li class="list-group-item text-center">
                       <b-row>
@@ -368,7 +368,7 @@
             </b-row>
             <b-row>
               <b-col>
-                <h4 class="text-center">Talents</h4>
+                <h5 class="text-center">Talents</h5>
                 <ul class="list-group">
                     <template v-for="talent in talents">
                         <li :key="talent.level" class="list-group-item">
@@ -394,7 +394,7 @@
     <hr class="highlighted" />
     <b-row>
         <b-col cols="8">
-          <h3 class="text-center">Combos</h3>
+          <h5 class="text-center">Top Picks <small>For this Hero</small></h5>
           <b-table 
             :fields="combos.fields" 
             :items="computedCombos" 
@@ -428,7 +428,7 @@
           <b-pagination align="center" :total-rows="combos.totalRows" :per-page="combos.perPage" v-model="combos.currentPage" />
         </b-col>
         <b-col>
-          <h3 class="text-center">Least Picked</h3>
+          <h5 class="text-center">Least Picks <small>For this Hero</small></h5>
           <b-table 
             :fields="anticombos.fields" 
             :items="computedAntiCombos" 
@@ -459,7 +459,7 @@
               <span v-else class="badge badge-secondary">No</span>
             </template>
           </b-table>
-          <b-pagination align="center" :total-rows="combos.totalRows" :per-page="combos.perPage" v-model="combos.currentPage" />
+          <b-pagination align="center" :total-rows="anticombos.totalRows" :per-page="anticombos.perPage" v-model="anticombos.currentPage" />
         </b-col>
     </b-row>
   </section>
@@ -504,7 +504,7 @@ export default {
       'combos': {
         'items': [],
         'fields': fieldsCombos,
-        'sortBy': 'wins',
+        'sortBy': 'win_rate',
         'sortDesc': true,
         'totalRows': 0,
         'currentPage': 1,
