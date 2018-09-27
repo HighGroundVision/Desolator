@@ -144,8 +144,7 @@
         <b-table 
           :fields="combos.fields" :items="computedCombos" 
           :sort-by.sync="combos.sortBy" :sort-desc.sync="combos.sortDesc"
-          :current-page="combos.currentPage" :per-page="combos.perPage"
-        >
+          :current-page="combos.currentPage" :per-page="combos.perPage">
           <template slot="icon" slot-scope="row">
               <b-img :src="row.item.img" class="ability-icon-sm" />
           </template>
@@ -179,15 +178,19 @@
         <h4 class="text-center">Hero Stats</h4>
         <b-row class="text-center">
           <b-col>
-            <h5><b-img src="https://hgv-hyperstone.azurewebsites.net/mics/primary_str.png" title="Strength" rounded class="ability-icon-sm" /> Str</h5>
+            <h5>&nbsp;</h5>
+            <span>Win Rate</span>
+          </b-col>
+          <b-col>
+            <h5><b-img src="https://hgv-hyperstone.azurewebsites.net/mics/primary_str.png" title="Str" rounded class="ability-icon-sm" /> Str</h5>
             <b-progress height="1.5rem" :value="groups.str" :min="0" :max="1" :striped="true" show-progress></b-progress>
           </b-col>
           <b-col>
-            <h5><b-img src="https://hgv-hyperstone.azurewebsites.net/mics/primary_agi.png" title="Strength" rounded class="ability-icon-sm" /> Agi</h5>
+            <h5><b-img src="https://hgv-hyperstone.azurewebsites.net/mics/primary_agi.png" title="Agi" rounded class="ability-icon-sm" /> Agi</h5>
             <b-progress height="1.5rem" :value="groups.agi" :min="0" :max="1" :striped="true" show-progress></b-progress>
           </b-col>
           <b-col>
-            <h5><b-img src="https://hgv-hyperstone.azurewebsites.net/mics/primary_int.png" title="Strength" rounded class="ability-icon-sm" /> Int</h5>
+            <h5><b-img src="https://hgv-hyperstone.azurewebsites.net/mics/primary_int.png" title="Int" rounded class="ability-icon-sm" /> Int</h5>
             <b-progress height="1.5rem" :value="groups.int" :min="0" :max="1" :striped="true" show-progress></b-progress>
           </b-col>
           <b-col>
@@ -211,6 +214,11 @@
           :current-page="heroes.currentPage" :per-page="heroes.perPage">
           <template slot="icon" slot-scope="row">
               <b-img :src="row.item.image_banner" class="hero-icon-banner-sm" />
+              <b-img v-if="row.item.attribute_primary === 'DOTA_ATTRIBUTE_STRENGTH'" src="https://hgv-hyperstone.azurewebsites.net/mics/primary_str.png" title="Str" rounded class="ability-icon-xs" />
+              <b-img v-if="row.item.attribute_primary === 'DOTA_ATTRIBUTE_INTELLECT'" src="https://hgv-hyperstone.azurewebsites.net/mics/primary_int.png" title="Int" rounded class="ability-icon-xs" />
+              <b-img v-if="row.item.attribute_primary === 'DOTA_ATTRIBUTE_AGILITY'" src="https://hgv-hyperstone.azurewebsites.net/mics/primary_agi.png" title="Agi" rounded class="ability-icon-xs" />
+              <b-img v-if="row.item.attack_capabilities === 'DOTA_UNIT_CAP_MELEE_ATTACK'" src="https://hgv-hyperstone.azurewebsites.net/mics/type_melee.png" title="Melee" rounded class="ability-icon-xs" />
+              <b-img v-if="row.item.attack_capabilities === 'DOTA_UNIT_CAP_RANGED_ATTACK'" src="https://hgv-hyperstone.azurewebsites.net/mics/type_range.png" title="Range" rounded class="ability-icon-xs" />
           </template>
           <template slot="link" slot-scope="row">
               <b-link :to="'/hero/' + row.item.id" target="_blank">{{row.item.name}}</b-link>
@@ -234,8 +242,7 @@
         <h4 class="text-center">Drafts</h4>
         <b-table 
           :fields="drafts.fields" :items="drafts.items" 
-          :sort-by.sync="drafts.sortBy" :sort-desc.sync="drafts.sortDesc" 
-        >
+          :sort-by.sync="drafts.sortBy" :sort-desc.sync="drafts.sortDesc">
           <template slot="images" slot-scope="row">
             <b-img :src="row.item.images[0]" class="hero-icon-banner-sm" />
             <b-img :src="row.item.images[1]" class="hero-icon-banner-sm" />
@@ -272,7 +279,7 @@ export default {
   name: 'AbilityDetails',
   data () {
     const heroFields = [
-      { key: 'icon', label: 'Icon', sortable: false },
+      { key: 'icon', label: '', sortable: false },
       { key: 'link', label: 'Hero', sortable: true },
       { key: 'wins', label: 'Most Wins', sortable: true },
       { key: 'picks', label: 'Most Picks', sortable: true },
@@ -280,7 +287,7 @@ export default {
     ]
 
     const abilityFields = [
-      { key: 'icon', label: 'Icon', sortable: false },
+      { key: 'icon', label: '', sortable: false },
       { key: 'link', label: 'Ability', sortable: true },
       { key: 'ultimate', label: 'Ultimate', sortable: true },
       { key: 'upgrade', label: 'Aghanims', sortable: true },
@@ -290,7 +297,7 @@ export default {
     ]
 
     const draftsFields = [
-      { key: 'images', label: 'Icons', sortable: false },
+      { key: 'images', label: '', sortable: false },
       { key: 'names', label: 'Abilities', sortable: false },
       // { key: 'wins', label: 'Wins', sortable: true },
       { key: 'picks', label: 'Picks', sortable: false },
@@ -381,11 +388,11 @@ export default {
       vm.combos.totalRows = mostCombos.length
       vm.drafts.items = drafts
       vm.drafts.totalRows = drafts.length
-      vm.groups.str = average(strheroes, 'wins')
-      vm.groups.int = average(intheroes, 'wins')
-      vm.groups.agi = average(agiheroes, 'wins')
-      vm.groups.melee = average(meleeheroes, 'wins')
-      vm.groups.range = average(rangeheroes, 'wins')
+      vm.groups.str = average(strheroes, 'win_rate')
+      vm.groups.int = average(intheroes, 'win_rate')
+      vm.groups.agi = average(agiheroes, 'win_rate')
+      vm.groups.melee = average(meleeheroes, 'win_rate')
+      vm.groups.range = average(rangeheroes, 'win_rate')
       vm.ready = true
     }).catch(function () {
       vm.$router.push('/error')
