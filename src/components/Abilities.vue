@@ -2,21 +2,10 @@
   <section v-if="ready" >
     <b-row>
       <b-col>
-        <h2 class="text-warning">Abilities</h2>
+        <h2 class="text-center text-warning">Abilities</h2>
       </b-col>
     </b-row>
-    <b-row>
-      <b-col>
-        <p>
-            We have provided a list of the abilities enabled in the Ability Draft.
-        </p>
-        <p>
-          You can sort by Win Rate, if the ability is an ulimated or aghanims.
-          You can filter by ability name.
-          You can click on the ability name to see more details about that ability.
-        </p>
-      </b-col>
-    </b-row>
+    <hr class="highlighted" />
     <b-row class="text-center">
       <b-col cols="2">
         <h4>Filter</h4>
@@ -67,7 +56,7 @@
       </b-col>
     </b-row>
   </section>
-  <section v-else class="ext-center">
+  <section v-else class="text-center">
     <hgv-loader :color="'#ffc107'"></hgv-loader>
   </section>
 </template>
@@ -79,7 +68,7 @@ export default {
   name: 'AbilitiesCollection',
   data () {
     const fields = [
-      { key: 'icon', label: 'Icon', sortable: false },
+      { key: 'icon', label: '', sortable: false },
       { key: 'link', label: 'Ability', sortable: true },
       { key: 'ultimate', label: 'Ultimate', sortable: true },
       { key: 'upgrade', label: 'Aghanims', sortable: true },

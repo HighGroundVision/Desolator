@@ -1,5 +1,13 @@
 <template>
-  <section>
+  <section v-if="ready" >
+    <b-row>
+      <b-col>
+        <h2 class="text-warning">Drafting</h2>
+      </b-col>
+    </b-row>
+  </section>
+  <section v-else class="text-center">
+    <hgv-loader :color="'#ffc107'"></hgv-loader>
   </section>
 </template>
 
@@ -9,9 +17,12 @@
 export default {
   name: 'DraftLive',
   data () {
-    return {}
+    return {
+      'ready': false
+    }
   },
   created: function () {
+    
   }
 }
 </script>

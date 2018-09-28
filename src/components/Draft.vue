@@ -1,23 +1,15 @@
 <template>
-  <section class="text-center">
+  <section v-if="ready" class="text-center">
     <b-row>
       <b-col>
-        <h2 class="text-left text-warning">Drafting</h2>
-      </b-col>
-    </b-row>
-    <b-row>
-      <b-col class="text-left">
-        <p>
-          Select the Roster (the 10 heroes displayed at the top of the drafting window) from the hero Pool.
-          Customize the draft to supply options we will have missed from the roster. These include the addational heroes and any substitutes for missing abilities.
-          Some times you don't have time for all that! Select Draft if you just want to get into the draft with limited options.
-        </p>
+        <h2 class="text-warning">Drafting</h2>
       </b-col>
     </b-row>
     <hr class="highlighted" />
     <b-row>
       <b-col>
         <h4>Pool</h4>
+        <p>Select the Roster (the 10 heroes displayed at the top of the drafting window) from the hero Pool.</p>
       </b-col>
     </b-row>
     <b-row>
@@ -28,13 +20,13 @@
         <b-form-input v-model="filter" placeholder="By Hero" />
       </b-col>
       <b-col cols="2">
-        <b-btn @click="resetModel">Clear</b-btn>
+        <b-btn @click="clear">Clear</b-btn>
       </b-col>
     </b-row>
     <b-row>
       <b-col>
         <template v-for="(item) in computedPool">
-          <img @click="draftItem(item)" :key="item.id" :src="item.image_profile" class="hero-icon-profile-md m-1" />
+          <img @click="selectPool(item)" :key="item.id" :src="item.image_profile" class="hero-icon-profile-md m-1" />
         </template>
       </b-col>
     </b-row>
@@ -42,23 +34,19 @@
     <b-row>
       <b-col>
         <h4>Roster</h4>
+         <p v-if="fullRoster">Select your hero to proced to draft.</p>
       </b-col>
     </b-row>
     <b-row>
       <b-col>
         <template v-for="(item) in roster">
-          <img @click="returnItem(item)" :key="item.id" :src="item.image_profile" class="hero-icon-profile-md m-1" />
+          <img @click="selectRoster(item)" :key="item.id" :src="item.image_profile" v-bind:class="{ 'border border-primary border-selected': selection === item.id }" class="hero-icon-profile-md m-1" />
         </template>
       </b-col>
     </b-row>
-    <br />
-    <b-row v-if="fullRoster">
-      <b-col>
-        <b-btn @click="customize(true)" variant="warning">Customize</b-btn>
-        or skip that all and get right to the
-        <b-btn @click="customize(false)" variant="success">Draft</b-btn>
-      </b-col>
-    </b-row>
+  </section>
+  <section v-else class="text-center">
+    <hgv-loader :color="'#ffc107'"></hgv-loader>
   </section>
 </template>
 
@@ -72,7 +60,8 @@ export default {
       'ready': false,
       'filter': null,
       'pool': [],
-      'roster': []
+      'roster': [],
+      'selection': null
     }
   },
   created: function () {
@@ -115,24 +104,45 @@ export default {
     }
   },
   methods: {
-    resetModel () {
+    clear () {
       this.filter = null
       this.roster = []
     },
-    draftItem (item) {
-      if (this.roster.length < 10) {
-        if (this.roster.includes(item) === false) {
+    selectPool (item) {
+      if (this.roster.includes(item)) {
+        let index = this.roster.indexOf(item)
+        this.roster.splice(index, 1)
+      } else {
+        if (this.roster.length < 10) {
           this.roster.push(item)
         }
       }
     },
-    returnItem (item) {
-      let index = this.roster.indexOf(item)
-      this.roster.splice(index, 1)
+    selectRoster (item) {
+      if (this.fullRoster) {
+        this.selection = item.id
+        this.draft()
+      }
     },
-    proceed () {
-      var roster = this.roster.map(_ => _.id).join()
-      this.$router.push('/draft/handler/?heroes=' + roster)
+    draft () {
+      let web = []
+      for (let i = 0; i < this.roster.length; i++) {
+        const hero = this.roster[i]
+        web.push(axios.get('/static/data/heroes/' + hero.id + '/hero.json').then((reponse) => { return reponse.data }))
+      }
+
+      Promise.all(web).then((values) => {
+        let collection = []
+        for (let i = 0; i < this.roster.length; i++) {
+          let hero = values[i]
+          let data = hero.abilities.filter(_ => _.ability_behaviors.includes('DOTA_ABILITY_BEHAVIOR_HIDDEN') === false).map(_ => _.id)
+          collection = collection.concat(data)
+        }
+        
+        let heroes = this.roster.map(_ => _.id).join()
+        let abilities = collection.join()
+        this.$router.push('/draft/live/?hero=' + this.selection + '&roster=' + heroes + '&skills=' + abilities)
+      })
     }
   }
 }
@@ -140,4 +150,7 @@ export default {
 
 <!-- Add "scoped" attribute to limit CSS to this component only -->
 <style scoped>
+.border-selected {
+  border-width: medium !important;
+}
 </style>

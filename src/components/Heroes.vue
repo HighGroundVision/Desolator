@@ -2,21 +2,51 @@
   <section v-if="ready" >
     <b-row>
       <b-col>
-        <h2 class="text-warning">Heroes</h2>
+        <h2 class="text-center text-warning">Heroes</h2>
       </b-col>
     </b-row>
+    <hr class="highlighted" />
     <b-row>
-      <b-col>
-        <p>
-          We have provided a list of the heroes enabled in the Ability Draft.
-        </p>
-        <p>
-          You can filter by hero name.
-          You can sort by win rate.
-          You can click on the hero name to see more details about that hero.
-        </p>
+      <b-col class="text-center">
+        <b-row>
+          <b-col>
+            <h5><b-img src="https://hgv-hyperstone.azurewebsites.net/mics/primary_str.png" title="Str" rounded class="ability-icon-sm" /> Str</h5>
+            <b-progress height="1.5rem" :value="groups.str" :min="0" :max="1" :striped="true" show-progress></b-progress>
+          </b-col>
+          <b-col>
+            <h5><b-img src="https://hgv-hyperstone.azurewebsites.net/mics/primary_agi.png" title="Agi" rounded class="ability-icon-sm" /> Agi</h5>
+            <b-progress height="1.5rem" :value="groups.agi" :min="0" :max="1" :striped="true" show-progress></b-progress>
+          </b-col>
+          <b-col>
+            <h5><b-img src="https://hgv-hyperstone.azurewebsites.net/mics/primary_int.png" title="Int" rounded class="ability-icon-sm" /> Int</h5>
+            <b-progress height="1.5rem" :value="groups.int" :min="0" :max="1" :striped="true" show-progress></b-progress>
+          </b-col>
+        </b-row>
+        <br />
+        <b-row>
+          <b-col>
+            <h5><b-img src="https://hgv-hyperstone.azurewebsites.net/mics/type_melee.png" title="Melee" rounded class="ability-icon-sm" /> Melee</h5>
+            <b-progress height="1.5rem" :value="groups.melee" :min="0" :max="1" :striped="true" show-progress></b-progress>
+          </b-col>
+          <b-col>
+            <h5><b-img src="https://hgv-hyperstone.azurewebsites.net/mics/type_range.png" title="Range" rounded class="ability-icon-sm" /> Range</h5>
+            <b-progress height="1.5rem" :value="groups.range" :min="0" :max="1" :striped="true" show-progress></b-progress>
+          </b-col>
+          <b-col>
+          </b-col>
+        </b-row>
+      </b-col>
+      <b-col cols="4">
+        <div class="text-center">
+          <b-alert variant="info" show>
+            <strong>Cluckles Says</strong><br />
+            <p>We have averaged each heroes' win rate for primary stats and attack capabilities</p>
+          </b-alert>
+          <b-img src="/static/images/cluckles-speach.png" class="cluckles-speach" />
+        </div>
       </b-col>
     </b-row>
+    <hr class="highlighted" />
     <b-row class="text-center">
       <b-col cols="2">
         <h4>Filter</h4>
@@ -71,7 +101,7 @@ export default {
   name: 'HeroesCollection',
   data () {
     const fields = [
-      { key: 'icon', label: 'Icon', sortable: false },
+      { key: 'icon', label: '', sortable: false },
       { key: 'link', label: 'Hero', sortable: true },
       // { key: 'wins', label: 'Wins', sortable: true },
       // { key: 'picks', label: 'Picks', sortable: true },
@@ -87,10 +117,19 @@ export default {
       'sortDesc': true,
       'fields': fields,
       'items': [],
-      'filter': null
+      'filter': null,
+      'groups': {
+        'str': 0,
+        'int': 0,
+        'agi': 0,
+        'melee': 0,
+        'range': 0
+      }
     }
   },
   created: function () {
+    const average = (arr, o) => arr.reduce((a, i) => a + i[o], 0) / arr.length
+    
     const vm = this
 
     let web = [
@@ -100,6 +139,17 @@ export default {
     Promise.all(web).then((values) => {
       let items = values[0]
 
+      let strheroes = items.filter(_ => _.attribute_primary === 'DOTA_ATTRIBUTE_STRENGTH')
+      let intheroes = items.filter(_ => _.attribute_primary === 'DOTA_ATTRIBUTE_INTELLECT')
+      let agiheroes = items.filter(_ => _.attribute_primary === 'DOTA_ATTRIBUTE_AGILITY')
+      let meleeheroes = items.filter(_ => _.attack_capabilities === 'DOTA_UNIT_CAP_MELEE_ATTACK')
+      let rangeheroes = items.filter(_ => _.attack_capabilities === 'DOTA_UNIT_CAP_RANGED_ATTACK')
+
+      vm.groups.str = average(strheroes, 'win_rate')
+      vm.groups.int = average(intheroes, 'win_rate')
+      vm.groups.agi = average(agiheroes, 'win_rate')
+      vm.groups.melee = average(meleeheroes, 'win_rate')
+      vm.groups.range = average(rangeheroes, 'win_rate')
       vm.totalRows = items.length
       vm.items = items
       vm.ready = true
