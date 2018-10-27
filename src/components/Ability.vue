@@ -11,7 +11,7 @@
            We have provided details about a ability, including it's description, standard attributes (like cooldown and mana cost) and custom attributes (unique to the ability).
            We have included the abilities pairs to can compare abiltiy combos by Wins, Picks, WinRate.
            We have included the heroes pairs to identify which heroes are strongest with this ability.
-           We have included the most picked drafts for this abilitiy to identify which drafts are picked ofen and how well they fair. We will not include drafts that have a zero win rate. 
+           We have included the most picked drafts for this abilitiy to identify which drafts are picked often and how well they fair. We will not include drafts that have a zero win rate. (even if they are picked alot) 
         </p>
       </b-col>
     </b-row>
