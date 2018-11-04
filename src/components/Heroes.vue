@@ -75,10 +75,10 @@
             <b-progress height="2rem" :value="row.item.win_rate" :min="0" :max="1" :striped="true" show-progress></b-progress>
           </template>
           <template slot="wins" slot-scope="row">
-            <span>{{row.item.wins}}</span>
+            <b-progress height="2rem" variant="warning" :value="row.item.wins" :min="0" :max="1" :striped="true"></b-progress>
           </template>
           <template slot="picks" slot-scope="row">
-            <span>{{row.item.picks}}</span>
+            <b-progress height="2rem" variant="warning" :value="row.item.picks" :min="0" :max="1" :striped="true" ></b-progress>
           </template>
         </b-table>
       </b-col>
