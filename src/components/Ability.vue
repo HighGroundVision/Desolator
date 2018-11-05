@@ -158,7 +158,7 @@
             <b-progress variant="warning" height="1.5rem" :value="row.item.wins" :min="0" :max="1" :striped="true" ></b-progress>
           </template>
           <template slot="picks" slot-scope="row">
-            <b-progress variant="warning" height="1.5rem" :value="row.item.picks" :min="0" :max="1" :striped="true" ></b-progress>
+            <b-progress variant="info" height="1.5rem" :value="row.item.picks" :min="0" :max="1" :striped="true" ></b-progress>
           </template>
           <template slot="ultimate" slot-scope="row">
             <span v-if="row.item.is_ultimate" class="badge badge-success">Yes</span>
@@ -230,7 +230,7 @@
               <b-progress variant="warning" height="1.5rem" :value="row.item.wins" :min="0" :max="1" :striped="true" ></b-progress>
           </template>
           <template slot="picks" slot-scope="row">
-              <b-progress variant="warning" height="1.5rem" :value="row.item.picks" :min="0" :max="1" :striped="true"></b-progress>
+              <b-progress variant="info" height="1.5rem" :value="row.item.picks" :min="0" :max="1" :striped="true"></b-progress>
           </template>
         </b-table>
         <b-pagination align="center" :total-rows="heroes.totalRows" :per-page="heroes.perPage" v-model="heroes.currentPage" />

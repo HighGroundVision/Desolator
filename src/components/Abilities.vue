@@ -37,7 +37,7 @@
             <b-progress height="2rem" variant="warning" :value="row.item.wins" :min="0" :max="1" :striped="true" ></b-progress>
           </template>
           <template slot="picks" slot-scope="row">
-            <b-progress height="2rem" variant="warning" :value="row.item.picks" :min="0" :max="1" :striped="true" ></b-progress>
+            <b-progress height="2rem" variant="info" :value="row.item.picks" :min="0" :max="1" :striped="true" ></b-progress>
           </template>
           <template slot="ultimate" slot-scope="row">
             <span v-if="row.item.is_ultimate" class="badge badge-success">Yes</span>
@@ -72,7 +72,7 @@ export default {
       { key: 'link', label: 'Ability', sortable: true },
       { key: 'ultimate', label: 'Ultimate', sortable: true },
       { key: 'upgrade', label: 'Aghanims', sortable: true },
-      // { key: 'wins', label: 'Wins', sortable: true },
+      { key: 'wins', label: 'Wins', sortable: true },
       { key: 'picks', label: 'Picks', sortable: true },
       { key: 'win_rate_progress', label: 'Win Rate', sortable: true }
     ]

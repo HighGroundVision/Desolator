@@ -71,7 +71,7 @@
                             <span>{{attributes.attribute_base_strength}}</span>
                           </b-col>
                           <b-col>
-                            <b-progress variant="info" :value="attributes.ranking_base_strength" :min="0" :max="1" :striped="true" ></b-progress>
+                            <b-progress variant="dark" :value="attributes.ranking_base_strength" :min="0" :max="1" :striped="true" ></b-progress>
                           </b-col>
                         </b-row>
                         <b-row>
@@ -82,7 +82,7 @@
                             <span>{{attributes.attribute_strength_gain}}</span>
                           </b-col>
                           <b-col>
-                            <b-progress variant="info" :value="attributes.ranking_strength_gain" :min="0" :max="1" :striped="true" ></b-progress>
+                            <b-progress variant="dark" :value="attributes.ranking_strength_gain" :min="0" :max="1" :striped="true" ></b-progress>
                           </b-col>
                         </b-row>
                     </b-col>
@@ -102,7 +102,7 @@
                             <span >{{attributes.attribute_base_agility}}</span>
                           </b-col>
                           <b-col>
-                            <b-progress variant="info" :value="attributes.ranking_base_agility" :min="0" :max="1" :striped="true"></b-progress>
+                            <b-progress variant="dark" :value="attributes.ranking_base_agility" :min="0" :max="1" :striped="true"></b-progress>
                           </b-col>
                         </b-row>
                         <b-row>
@@ -113,7 +113,7 @@
                             <span>{{attributes.attribute_agility_gain}}</span>
                           </b-col>
                           <b-col>
-                            <b-progress variant="info" :value="attributes.ranking_agility_gain" :min="0" :max="1" :striped="true"></b-progress>
+                            <b-progress variant="dark" :value="attributes.ranking_agility_gain" :min="0" :max="1" :striped="true"></b-progress>
                           </b-col>
                         </b-row>
                     </b-col>
@@ -133,7 +133,7 @@
                             <span >{{attributes.attribute_base_intelligence}}</span>
                           </b-col>
                           <b-col>
-                            <b-progress variant="info" :value="attributes.ranking_base_intelligence" :min="0" :max="1" :striped="true"></b-progress>
+                            <b-progress variant="dark" :value="attributes.ranking_base_intelligence" :min="0" :max="1" :striped="true"></b-progress>
                           </b-col>
                         </b-row>
                         <b-row>
@@ -144,7 +144,7 @@
                             <span>{{attributes.attribute_intelligence_gain}}</span>
                           </b-col>
                           <b-col>
-                            <b-progress variant="info" :value="attributes.ranking_intelligence_gain" :min="0" :max="1" :striped="true"></b-progress>
+                            <b-progress variant="dark" :value="attributes.ranking_intelligence_gain" :min="0" :max="1" :striped="true"></b-progress>
                           </b-col>
                         </b-row>
                     </b-col>
@@ -164,7 +164,7 @@
                             <span >{{attributes.status_health}}</span>
                           </b-col>
                           <b-col>
-                            <b-progress variant="info" :value="attributes.ranking_health" :min="0" :max="1" :striped="true"></b-progress>
+                            <b-progress variant="dark" :value="attributes.ranking_health" :min="0" :max="1" :striped="true"></b-progress>
                           </b-col>
                         </b-row>
                         <b-row>
@@ -175,7 +175,7 @@
                             <span>{{attributes.status_health_regen}}</span>
                           </b-col>
                           <b-col>
-                            <b-progress variant="info" :value="attributes.ranking_health_regen" :min="0" :max="1" :striped="true"></b-progress>
+                            <b-progress variant="dark" :value="attributes.ranking_health_regen" :min="0" :max="1" :striped="true"></b-progress>
                           </b-col>
                         </b-row>
                     </b-col>
@@ -195,7 +195,7 @@
                             <span >{{attributes.status_mana}}</span>
                           </b-col>
                           <b-col>
-                            <b-progress variant="info" :value="attributes.ranking_mana" :min="0" :max="1" :striped="true"></b-progress>
+                            <b-progress variant="dark" :value="attributes.ranking_mana" :min="0" :max="1" :striped="true"></b-progress>
                           </b-col>
                         </b-row>
                         <b-row>
@@ -206,7 +206,7 @@
                             <span>{{attributes.status_mana_regen}}</span>
                           </b-col>
                           <b-col>
-                            <b-progress variant="info" :value="attributes.ranking_mana_regen" :min="0" :max="1" :striped="true"></b-progress>
+                            <b-progress variant="dark" :value="attributes.ranking_mana_regen" :min="0" :max="1" :striped="true"></b-progress>
                           </b-col>
                         </b-row>
                     </b-col>
@@ -237,7 +237,7 @@
                             <span>{{attributes.attack_range}}</span>
                           </b-col>
                           <b-col>
-                            <b-progress variant="info" :value="attributes.ranking_attack_range" :min="0" :max="1" :striped="true"></b-progress>
+                            <b-progress variant="dark" :value="attributes.ranking_attack_range" :min="0" :max="1" :striped="true"></b-progress>
                           </b-col>
                         </b-row>
                         <b-row>
@@ -248,7 +248,7 @@
                             <span >{{attributes.attack_damage_min}} - {{attributes.attack_damage_max}}</span>
                           </b-col>
                           <b-col>
-                            <b-progress variant="info" :value="attributes.ranking_attack_damage" :min="0" :max="1" :striped="true"></b-progress>
+                            <b-progress variant="dark" :value="attributes.ranking_attack_damage" :min="0" :max="1" :striped="true"></b-progress>
                           </b-col>
                         </b-row>
                     </b-col>
@@ -268,7 +268,7 @@
                             <span>{{attributes.movement_speed}}</span>
                           </b-col>
                           <b-col>
-                            <b-progress variant="info" :value="attributes.ranking_movement_speed" :min="0" :max="1" :striped="true"></b-progress>
+                            <b-progress variant="dark" :value="attributes.ranking_movement_speed" :min="0" :max="1" :striped="true"></b-progress>
                           </b-col>
                         </b-row>
                         <b-row>
@@ -279,7 +279,7 @@
                             <span>{{attributes.movement_turn_rate}}</span>
                           </b-col>
                           <b-col>
-                            <b-progress variant="info" :value="attributes.ranking_movement_turn_rate" :min="0" :max="1" :striped="true"></b-progress>
+                            <b-progress variant="dark" :value="attributes.ranking_movement_turn_rate" :min="0" :max="1" :striped="true"></b-progress>
                           </b-col>
                         </b-row>
                     </b-col>
@@ -299,7 +299,7 @@
                             <span>{{attributes.vision_daytime_range}}</span>
                           </b-col>
                           <b-col>
-                            <b-progress variant="info" :value="attributes.ranking_vision_daytime_range" :min="0" :max="1" :striped="true"></b-progress>
+                            <b-progress variant="dark" :value="attributes.ranking_vision_daytime_range" :min="0" :max="1" :striped="true"></b-progress>
                           </b-col>
                         </b-row>
                         <b-row>
@@ -310,7 +310,7 @@
                             <span>{{attributes.vision_nighttime_range}}</span>
                           </b-col>
                           <b-col>
-                            <b-progress variant="info" :value="attributes.ranking_vision_nighttime_range" :min="0" :max="1" :striped="true" ></b-progress>
+                            <b-progress variant="dark" :value="attributes.ranking_vision_nighttime_range" :min="0" :max="1" :striped="true" ></b-progress>
                           </b-col>
                         </b-row>
                     </b-col>
@@ -352,7 +352,7 @@
                                     </b-link>
                                 </b-col>
                                 <b-col>
-                                  <b-progress variant="warning" height="1.5rem" :value="ability.picks" :min="0" :max="1" :striped="true" ></b-progress>
+                                  <b-progress variant="info" height="1.5rem" :value="ability.picks" :min="0" :max="1" :striped="true" ></b-progress>
                                 </b-col>
                                 <b-col>
                                   <b-progress variant="warning" height="1.5rem" :value="ability.wins" :min="0" :max="1" :striped="true"></b-progress>
@@ -414,7 +414,7 @@
               <b-progress variant="warning" height="1.5rem" :value="row.item.wins" :min="0" :max="1" :striped="true"></b-progress>
             </template>
             <template slot="picks" slot-scope="row">
-              <b-progress variant="warning" height="1.5rem" :value="row.item.picks" :min="0" :max="1" :striped="true"></b-progress>
+              <b-progress variant="info" height="1.5rem" :value="row.item.picks" :min="0" :max="1" :striped="true"></b-progress>
             </template>
             <template slot="ultimate" slot-scope="row">
               <span v-if="row.item.is_ultimate" class="badge badge-success">Yes</span>
@@ -448,7 +448,7 @@
               <b-progress variant="warning" height="1.5rem" :value="row.item.wins" :min="0" :max="1" :striped="true"></b-progress>
             </template>
             <template slot="picks" slot-scope="row">
-              <b-progress variant="warning" height="1.5rem" :value="row.item.picks" :min="0" :max="1" :striped="true"></b-progress>
+              <b-progress variant="info" height="1.5rem" :value="row.item.picks" :min="0" :max="1" :striped="true"></b-progress>
             </template>
             <template slot="ultimate" slot-scope="row">
               <span v-if="row.item.is_ultimate" class="badge badge-success">Yes</span>

@@ -9,7 +9,7 @@
     <b-row>
       <b-col>
         <h4>Pool</h4>
-        <p>Select the Roster (the 10 heroes displayed at the top of the drafting window) from the hero Pool.</p>
+        <p>Select the Roster (the 10 heroes displayed at the top of the drafting window PLUS the 2 addational heroes) from the hero Pool.</p>
       </b-col>
     </b-row>
     <b-row>
@@ -26,7 +26,7 @@
     <b-row>
       <b-col>
         <template v-for="(item) in computedPool">
-          <img @click="selectPool(item)" :key="item.id" :src="item.image_profile" class="hero-icon-profile-md m-1" />
+          <img @click="selectPool(item)" :key="item.id" :src="item.image_profile" v-bind:class="{ 'border border-info border-selected': roster.map(_ => _.id).includes(item.id) }" class="hero-icon-profile-md m-1" />
         </template>
       </b-col>
     </b-row>
@@ -39,8 +39,8 @@
     </b-row>
     <b-row>
       <b-col>
-        <template v-for="(item) in roster">
-          <img @click="selectRoster(item)" :key="item.id" :src="item.image_profile" v-bind:class="{ 'border border-primary border-selected': selection === item.id }" class="hero-icon-profile-md m-1" />
+        <template v-for="(item, index)  in roster">
+          <img @click="selectRoster(item,  index)" :key="item.id" :src="item.image_profile" v-bind:class="{ 'border border-primary border-selected': selection === item.id }" class="hero-icon-profile-lg m-1" />
         </template>
       </b-col>
     </b-row>
@@ -100,7 +100,7 @@ export default {
       return items
     },
     fullRoster: function () {
-      return this.roster.length === 10
+      return this.roster.length === 12
     }
   },
   methods: {
@@ -113,13 +113,13 @@ export default {
         let index = this.roster.indexOf(item)
         this.roster.splice(index, 1)
       } else {
-        if (this.roster.length < 10) {
+        if (this.roster.length < 12) {
           this.roster.push(item)
         }
       }
     },
-    selectRoster (item) {
-      if (this.fullRoster) {
+    selectRoster (item, index) {
+      if (this.roster.length > 9) {
         this.selection = item.id
         this.draft()
       }
@@ -139,9 +139,8 @@ export default {
           collection = collection.concat(data)
         }
         
-        let heroes = this.roster.map(_ => _.id).join()
         let abilities = collection.join()
-        this.$router.push('/draft/live/?hero=' + this.selection + '&roster=' + heroes + '&skills=' + abilities)
+        this.$router.push('/draft/live/?hero=' + this.selection + '&skills=' + abilities)
       })
     }
   }
