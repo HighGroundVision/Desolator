@@ -7,17 +7,23 @@
     </b-row>
     <b-row>
       <b-col>
-        <p>Working on it...</p>
+        <p>
+          We have provided details about the draft. 
+          We have included the <span class="rounded bg-primary text-white"> Win Rate </span> , <span class="rounded bg-warning text-white"> Wins </span> and <span class="rounded bg-info text-white"> Picks </span> for the abilties in the draft pool. 
+          Along with search, filter, and sort capabilities on the draft pool. We also include a threshold to hide ability that are below the threshold, it is compared against the current sort.    
+          We have included the stats for the your hero as well as the stats for the general abilities.
+          You can <span class="rounded bg-danger text-white"> ✖ </span> to remove an ability from the pool. You can also <span class="rounded bg-success text-white"> ✔ </span> to draft an ability to see its combos. You can use <span class="rounded bg-info text-white"> ? </span> to open a new page with details about this ability.
+        </p>
       </b-col>
     </b-row>
     <b-row class="text-center">
       <b-col cols="6">
         <h3>{{hero.details.name}}</h3>
       </b-col>
-      <b-col>
+      <b-col cols="3">
         <b-img :src="hero.details.image_banner" rounded class="hero-icon-banner"></b-img>
       </b-col>
-      <b-col>
+      <b-col cols="3">
         <div>Win Rate</div>
         <b-progress height="2rem" :value="hero.stats.win_rate" :min="0" :max="1" striped show-progress></b-progress>
       </b-col>
@@ -26,36 +32,42 @@
     <b-row>
       <b-col md="3" class="p-1">
         <b-button-group>
-          <b-button variant="primary" @click="switchWhich(true)" :pressed="!abilities.which" title="Filter stats to this hero">Hero</b-button>
-          <b-button variant="primary" @click="switchWhich(false)" :pressed="abilities.which" title="Filter stats to general abilities">Abilities</b-button>
+          <b-button variant="primary" @click="switchWhich(true)" :pressed="abilities.which" title="">Hero</b-button>
+          <b-button variant="primary" @click="switchWhich(false)" :pressed="!abilities.which" title="">Abilities</b-button>
+          <!--<b-button variant="primary" :pressed="false" title="View Combos">Combos</b-button>-->
         </b-button-group>
       </b-col>
       <b-col md="3" class="p-1">
         <b-form-input v-model="abilities.search" placeholder="Search for Ability"></b-form-input>
       </b-col>
       <b-col md="2" class="p-1">
-        <b-form-select v-model="abilities.filter">
-          <option :value="null">Filter</option>
-          <optgroup label="General">
-            <option value="illusion,reflection">Illusions</option>
-            <option value="aghanims">Aghanims</option>
-            <option value="ultimate">Ultimate</option>
-          </optgroup>
-          <optgroup label="Disables">
-            <option value="stun,root,sleep,hex,taunt,fear">Stun</option>
-            <option value="slow">Slow</option>
-            <option value="silence">Silence</option>
-            <option value="disarm,blind,ethereal">Disarm</option>
-          </optgroup>
-        </b-form-select>
+        <b-input-group prepend="Filter">
+          <b-form-select v-model="abilities.filter">
+            <template slot="first">
+              <option :value="null">None</option>
+            </template>
+            <optgroup label="General">
+              <option value="illusion,reflection">Illusions</option>
+              <option value="aghanims">Aghanims</option>
+              <option value="ultimate">Ultimate</option>
+            </optgroup>
+            <optgroup label="Disables">
+              <option value="stun,root,sleep,hex,taunt,fear">Stun</option>
+              <option value="slow">Slow</option>
+              <option value="silence">Silence</option>
+              <option value="disarm,blind,ethereal">Disarm</option>
+            </optgroup>
+          </b-form-select>
+         </b-input-group>
       </b-col>
       <b-col md="2" class="p-1">
-        <b-form-select v-model="abilities.sort">
-          <option :value="null">Sort</option>
-          <option value="1">Win Rate</option>
-          <option value="2">Wins</option>
-          <option value="3">Picks</option>
-        </b-form-select>
+        <b-input-group prepend="Sort">
+          <b-form-select v-model="abilities.sort">
+            <option value="1">Win Rate</option>
+            <option value="2">Wins</option>
+            <option value="3">Picks</option>
+          </b-form-select>
+        </b-input-group>
       </b-col>
       <b-col md="2">
         <span>Threshold</span>
@@ -65,15 +77,15 @@
     <br />
     <b-row>
       <template v-for="item in computedAbilities">
-        <b-col md="2" class="border border-light" v-bind:key="item.id">
-          <div class="overlay-container">
+        <b-col cols="12" sm="4" md="2" class="border border-light" v-bind:key="item.id">
+          <div class="overlay-container" :title="item.name">
             <b-row>
-              <b-col sm="2" md="4" class="p-0">
+              <b-col cols="2" md="4" class="p-0">
                 <div class="p-1">
-                  <b-img :src="item.img" :title="item.name" class="rounded ability-icon-sm" />
+                  <b-img :src="item.img" class="rounded img-fluid" />
                 </div>
               </b-col>
-              <b-col sm="10" md="8" class="p-0">
+              <b-col cols="10" md="8" class="p-0">
                 <div class="p-1">
                   <b-progress class="m-1" height="0.3rem" :value="item.win_rate" :min="0" :max="1" ></b-progress>
                   <b-progress class="m-1" height="0.3rem" variant="warning" :value="item.wins"  :min="0" :max="1"></b-progress>
@@ -85,7 +97,7 @@
               <b-button-group class="text">
                 <b-button variant="success" size="sm" @click="draftAbility(item.id)" title="Draft this ability for yourself">✔</b-button>
                 <b-button variant="danger" size="sm" @click="removeAbility(item.id)" title="Remove this ability from the pool">✖</b-button>
-                <b-button variant="info" size="sm" title="More details about ability"><b-link class="text-white" :to="'/ability/' + item.id" target="_blank">?</b-link></b-button>                          
+                <b-button  :to="'/ability/' + item.id" target="_blank" variant="info" size="sm" title="More details about ability">?</b-button>                          
               </b-button-group>
             </div>
           </div>
@@ -97,30 +109,27 @@
     <b-row>
       <b-col>
         <template v-for="item in computedSelection">
-          <div class="media" v-bind:key="item.ability.id">
-            <img class="mr-3 rounded ability-icon-md border border-3 border-primary" :src="item.ability.image" :alt="item.ability.name" @click="rePoolAbility(item.ability.id)">
-            <div class="media-body">
-              <b-row>
-                <template v-for="combo in item.combos">
-                  <b-col v-bind:key="combo.id">
-                    <div class="overlay-container">
-                      <div>
-                        <img class="ability-icon-md" :src="combo.img" :alt="combo.name">
-                      </div>
-                      <div class="overlay">
-                        <b-button-group class="text">
-                          <b-button variant="success" size="sm" @click="draftAbility(combo.id)" title="Draft this ability for yourself">✔</b-button>
-                          <b-button variant="danger" size="sm" @click="removeAbility(combo.id)" title="Remove this ability from the pool">✖</b-button>
-                          <b-button variant="info" size="sm" title="More details about ability"><b-link class="text-white" :to="'/ability/' + combo.id" target="_blank">?</b-link></b-button>                          
-                        </b-button-group>
-                      </div>
-                    </div>
-                  </b-col>
-                </template>
-              </b-row>
-              <br />
-            </div>
-          </div>
+          <b-row v-bind:key="item.id" class="p-1 text-center">
+            <b-col cols="4" sm="2" md="1" class="bg-secondary border border-secondary">
+              <img class="rounded img-fluid" :src="item.ability.image" :alt="item.ability.name" @click="rePoolAbility(item.ability.id)">
+            </b-col>
+            <template v-for="combo in item.combos">
+              <b-col cols="4" sm="2" md="1" v-bind:key="combo.id">
+                <div class="overlay-container">
+                  <div>
+                    <img class="img-fluid" :src="combo.img" :alt="combo.name">
+                  </div>
+                  <div class="overlay">
+                    <b-button-group class="text">
+                      <b-button variant="success" size="sm" @click="draftAbility(combo.id)" title="Draft this ability for yourself">✔</b-button>
+                      <b-button variant="danger" size="sm" @click="removeAbility(combo.id)" title="Remove this ability from the pool">✖</b-button>
+                      <b-button :to="'/ability/' + combo.id" target="_blank" variant="info" size="sm" title="More details about ability">?</b-button>
+                    </b-button-group>
+                  </div>
+                </div>
+              </b-col>
+            </template>
+          </b-row>
         </template>
       </b-col>
     </b-row>
@@ -480,7 +489,7 @@ export default {
         'search': null,
         'filter': null,        
         'sort': '1',
-        'limit': 50,
+        'limit': 45,
         'taken': []
       }
     }
@@ -570,7 +579,7 @@ export default {
         }
       }
 
-      collection = collection.sort((lhs, rhs) => {
+      collection.sort((lhs, rhs) => {
         if (this.abilities.sort === '1') {
           return rhs.win_rate - lhs.win_rate
         } else if (this.abilities.sort === '2') {
@@ -590,12 +599,37 @@ export default {
       let drafted = this.selection.map(_ => _.ability.id)
 
       for (const item of this.selection) {
-        let data = {
-          ability: item.ability,
-          combos: item.combos
+        let combos = item.combos
             .filter(_ => this.abilities.taken.includes(_.id) === false)
             .filter(_ => drafted.includes(_.id) === false)
             .slice(0, 10)
+
+        if (this.abilities.filter) {
+          if (this.abilities.filter === 'aghanims') {
+            combos = combos.filter(_ => _.has_upgrade)
+          } else if (this.abilities.filter === 'ultimate') {
+            combos = combos.filter(_ => _.is_ultimate)
+          } else {
+            let filter = this.abilities.filter.split(',')
+            combos = combos.filter(_ => filter.map(f => _.desc.includes(f)).reduce((acc, val) => acc || val))
+          }
+        }
+
+        combos.sort((lhs, rhs) => {
+          if (this.abilities.sort === '1') {
+            return rhs.win_rate - lhs.win_rate
+          } else if (this.abilities.sort === '2') {
+            return rhs.wins - lhs.wins
+          } else if (this.abilities.sort === '3') {   
+            return rhs.picks - lhs.picks
+          } else {
+            return 0
+          }
+        })
+
+        let data = {
+          ability: item.ability,
+          combos: combos
         }
         collection.push(data)
       }

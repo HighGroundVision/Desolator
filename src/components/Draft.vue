@@ -67,6 +67,9 @@ export default {
   created: function () {
     const vm = this
 
+    let query = this.$route.query.roster ? this.$route.query.roster : ''
+    let heroes = query ? query.split(',').map(_ => parseInt(_)) : []
+
     let web = [
       axios.get('/static/data/heroes/collection.json').then((reponse) => { return reponse.data })
     ]
@@ -74,8 +77,15 @@ export default {
     Promise.all(web).then((values) => {
       let items = values[0]
 
+      let roster = []
+      for (const id of heroes) {
+        let index = items.findIndex(_ => _.id === id)
+        let item = items[index]
+        roster.push(item)
+      }
+
       vm.pool = items
-      vm.roster = []
+      vm.roster = roster
       vm.ready = true
     }).catch(function () {
       vm.$router.push('/error')
@@ -107,6 +117,7 @@ export default {
     clear () {
       this.filter = null
       this.roster = []
+      history.pushState({}, null, '/#/draft')
     },
     selectPool (item) {
       if (this.roster.includes(item)) {
@@ -115,6 +126,8 @@ export default {
       } else {
         if (this.roster.length < 12) {
           this.roster.push(item)
+          let heroes = this.roster.map(_ => _.id).join()
+          history.pushState({}, null, '/#/draft?roster=' + heroes)
         }
       }
     },
@@ -138,9 +151,10 @@ export default {
           let data = hero.abilities.filter(_ => _.ability_behaviors.includes('DOTA_ABILITY_BEHAVIOR_HIDDEN') === false).map(_ => _.id)
           collection = collection.concat(data)
         }
-        
+
+        let heroes = this.roster.map(_ => _.id).join()
         let abilities = collection.join()
-        this.$router.push('/draft/live/?hero=' + this.selection + '&skills=' + abilities)
+        this.$router.push('/draft/live?hero=' + this.selection + '&roster=' + heroes + '&skills=' + abilities)
       })
     }
   }

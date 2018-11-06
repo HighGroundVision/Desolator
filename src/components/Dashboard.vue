@@ -47,7 +47,7 @@ export default {
   name: 'Dashboard',
   data () {
     return {
-      construction: true
+      construction: false
     }
   }
 }
