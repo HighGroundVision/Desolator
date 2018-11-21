@@ -2,21 +2,18 @@
   "id": 5276,
   "key": "night_stalker_crippling_fear",
   "name": "Crippling Fear",
-  "description": "Night Stalker horrifies the target enemy Hero, causing it to miss attacks and become silenced.  The effect lasts longer at night.",
+  "description": "Night Stalker horrifies all nearby enemies, causing them to become silenced while near him.  The effect lasts longer at night.",
   "image": "https://hgv-hyperstone.azurewebsites.net/abilities/night_stalker_crippling_fear.png",
   "hero_id": 60,
   "ability_type": "DOTA_ABILITY_TYPE_BASIC",
   "ability_behaviors": [
-    "DOTA_ABILITY_BEHAVIOR_UNIT_TARGET"
+    "DOTA_ABILITY_BEHAVIOR_NO_TARGET"
   ],
-  "ability_unit_target_team": "DOTA_UNIT_TARGET_TEAM_ENEMY",
-  "ability_unit_target_type": [
-    "DOTA_UNIT_TARGET_HERO",
-    "DOTA_UNIT_TARGET_BASIC"
-  ],
+  "ability_unit_target_team": null,
+  "ability_unit_target_type": [],
   "ability_unit_target_flags": [],
   "spell_immunity_type": "SPELL_IMMUNITY_ENEMIES_NO",
-  "spell_dispellable_type": "SPELL_DISPELLABLE_YES",
+  "spell_dispellable_type": "SPELL_DISPELLABLE_NO",
   "ability_unit_damage_type": null,
   "is_skill": true,
   "is_ultimate": false,
@@ -24,14 +21,11 @@
   "on_castbar": true,
   "on_learnbar": true,
   "ability_cast_range": [
-    500
+    375
   ],
   "ability_cast_range_buffer": 250,
   "ability_cast_point": [
-    0.3,
-    0.3,
-    0.3,
-    0.3
+    0.2
   ],
   "ability_channel_time": [
     0.0,
@@ -40,10 +34,10 @@
     0.0
   ],
   "ability_cooldown": [
-    24.0,
+    30.0,
+    25.0,
     20.0,
-    16.0,
-    12.0
+    15.0
   ],
   "ability_duration": [
     0.0,
@@ -78,14 +72,8 @@
       7.0,
       8.0
     ],
-    "miss_rate_day": [
-      10.0,
-      10.0,
-      10.0,
-      10.0
-    ],
-    "miss_rate_night": [
-      50.0
+    "radius": [
+      375.0
     ]
   }
 }

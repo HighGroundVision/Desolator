@@ -193,16 +193,16 @@
           150.0
         ],
         "cleave_ending_width": [
-          330.0
+          360.0
         ],
         "cleave_distance": [
-          625.0
+          650.0
         ],
         "great_cleave_damage": [
-          40.0,
-          50.0,
+          45.0,
           60.0,
-          70.0
+          75.0,
+          90.0
         ]
       }
     },
@@ -210,7 +210,7 @@
       "id": 5096,
       "key": "sven_warcry",
       "name": "Warcry",
-      "description": "Sven's Warcry heartens his allies for battle, increasing their movement speed and armor.  Lasts 8 seconds.",
+      "description": "Sven's Warcry heartens his allied heroes for battle, increasing their movement speed and provides them with an attack damage shield. Buff ends if the shield is consumed.",
       "image": "https://hgv-hyperstone.azurewebsites.net/abilities/sven_warcry.png",
       "hero_id": 18,
       "ability_type": "DOTA_ABILITY_TYPE_BASIC",
@@ -246,13 +246,16 @@
         0.0
       ],
       "ability_cooldown": [
-        35.0,
-        30.0,
-        25.0,
-        20.0
+        36.0,
+        32.0,
+        28.0,
+        24.0
       ],
       "ability_duration": [
-        8.0
+        0.0,
+        0.0,
+        0.0,
+        0.0
       ],
       "ability_damage": [
         0.0,
@@ -261,10 +264,7 @@
         0.0
       ],
       "ability_mana_cost": [
-        25.0,
-        25.0,
-        25.0,
-        25.0
+        40.0
       ],
       "ability_modifier_support_value": 1.0,
       "ability_modifier_support_bonus": 0.0,
@@ -272,20 +272,23 @@
       "ability_draft_enabled": true,
       "linked": null,
       "ability_special": {
-        "warcry_armor": [
-          5.0,
-          10.0,
-          15.0,
+        "movespeed": [
+          8.0,
+          12.0,
+          16.0,
           20.0
         ],
-        "warcry_movespeed": [
-          12.0
+        "hp_shield": [
+          110.0,
+          220.0,
+          330.0,
+          440.0
         ],
-        "warcry_radius": [
-          900.0
+        "radius": [
+          700.0
         ],
-        "duration_tooltip": [
-          8.0
+        "duration": [
+          10.0
         ]
       }
     },
@@ -433,7 +436,7 @@
       "id": 5097,
       "key": "sven_gods_strength",
       "name": "God's Strength",
-      "description": "Sven channels his rogue strength, granting bonus damage for 25 seconds.\\n\\nUpgradable by Aghanim's Scepter.",
+      "description": "Sven channels his rogue strength, granting bonus damage for 25 seconds. Upgradable by Aghanim's Scepter.",
       "image": "https://hgv-hyperstone.azurewebsites.net/abilities/sven_gods_strength.png",
       "hero_id": 18,
       "ability_type": "DOTA_ABILITY_TYPE_ULTIMATE",
@@ -503,7 +506,7 @@
           30.0
         ],
         "radius_scepter": [
-          900.0
+          1200.0
         ],
         "gods_strength_damage_scepter": [
           75.0,
@@ -521,9 +524,9 @@
       "description": null
     },
     {
-      "id": 5961,
-      "key": "special_bonus_mp_regen_2",
-      "name": "+2 Mana Regen",
+      "id": 6160,
+      "key": "special_bonus_mp_regen_3",
+      "name": "+3 Mana Regen",
       "description": null
     },
     {
@@ -582,9 +585,9 @@
   "attribute_base_agility": 21,
   "attribute_agility_gain": 2.0,
   "status_health": 200,
-  "status_health_regen": 1.5,
+  "status_health_regen": 0.0,
   "status_mana": 75,
-  "status_mana_regen": 0.9,
+  "status_mana_regen": 0.0,
   "bounty_xp": 62,
   "bounty_gold_min": 0,
   "bounty_gold_max": 0,

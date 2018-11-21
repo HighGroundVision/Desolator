@@ -42,7 +42,7 @@
       "id": 5106,
       "key": "tiny_avalanche",
       "name": "Avalanche",
-      "description": "Bombards an area with rocks, stunning and damaging enemy land units.",
+      "description": "Bombards an area with rocks, continously doing small intervals of damage and stun to enemy units. Avalanche does 3x damage to units being tossed.",
       "image": "https://hgv-hyperstone.azurewebsites.net/abilities/tiny_avalanche.png",
       "hero_id": 19,
       "ability_type": "DOTA_ABILITY_TYPE_BASIC",
@@ -79,15 +79,15 @@
       ],
       "ability_cooldown": [
         23.0,
-        21.0,
-        19.0,
-        17.0
+        20.0,
+        17.0,
+        14.0
       ],
       "ability_duration": [
-        2.0,
-        2.0,
-        2.0,
-        2.0
+        0.0,
+        0.0,
+        0.0,
+        0.0
       ],
       "ability_damage": [
         0.0,
@@ -108,33 +108,27 @@
       "linked": null,
       "ability_special": {
         "radius": [
-          275.0,
-          275.0,
-          275.0,
-          275.0
+          400.0
         ],
         "tick_interval": [
-          0.25,
-          0.25,
-          0.25,
-          0.25
+          0.3
         ],
-        "num_ticks": [
-          4.0,
-          4.0,
-          4.0,
-          4.0
+        "total_duration": [
+          1.8
+        ],
+        "tick_count": [
+          6.0
         ],
         "stun_duration": [
-          1.0
+          0.2
         ],
         "projectile_duration": [
           0.5
         ],
         "avalanche_damage": [
-          120.0,
-          180.0,
-          240.0,
+          90.0,
+          160.0,
+          230.0,
           300.0
         ]
       }
@@ -273,9 +267,9 @@
         0.0
       ],
       "ability_cooldown": [
-        24.0,
-        20.0,
-        16.0,
+        27.0,
+        22.0,
+        17.0,
         12.0
       ],
       "ability_duration": [
@@ -539,15 +533,10 @@
       "ability_draft_enabled": true,
       "linked": null,
       "ability_special": {
-        "status_resistance": [
-          30.0,
-          40.0,
-          50.0
-        ],
         "bonus_armor": [
-          5.0,
-          10.0,
-          15.0
+          7.0,
+          16.0,
+          25.0
         ],
         "bonus_damage": [
           30.0,
@@ -655,9 +644,9 @@
   ],
   "talents": [
     {
-      "id": 6000,
-      "key": "special_bonus_magic_resistance_20",
-      "name": "+20% Magic Resistance",
+      "id": 5918,
+      "key": "special_bonus_movement_speed_20",
+      "name": "+20 Movement Speed",
       "description": null
     },
     {
@@ -693,7 +682,7 @@
     {
       "id": 6933,
       "key": "special_bonus_unique_tiny_3",
-      "name": "-12s Avalanche Cooldown",
+      "name": "-9s Avalanche Cooldown",
       "description": null
     },
     {
@@ -722,9 +711,9 @@
   "attribute_base_agility": 0,
   "attribute_agility_gain": 0.0,
   "status_health": 200,
-  "status_health_regen": 1.5,
+  "status_health_regen": 0.0,
   "status_mana": 75,
-  "status_mana_regen": 0.9,
+  "status_mana_regen": 0.0,
   "bounty_xp": 62,
   "bounty_gold_min": 0,
   "bounty_gold_max": 0,

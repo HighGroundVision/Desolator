@@ -375,12 +375,16 @@
                             <b-row style="line-height: 32px;">
                                 <b-col cols="5">
                                     <span class="invert" :title="talent.option1.description">{{talent.option1.name}}</span>
+                                    <br />
+                                    <b-progress :value="talent.option1.win_rate" :min="0" :max="1" show-progress></b-progress>
                                 </b-col>
                                 <b-col cols="2" class="text-center">
                                     <h5><span class="badge badge-pill badge-secondary">{{talent.level}}</span></h5>
                                 </b-col>
                                 <b-col cols="5">
                                     <span class="invert" :title="talent.option2.description">{{talent.option2.name}}</span>
+                                    <br />
+                                    <b-progress :value="talent.option2.win_rate" :min="0" :max="1" show-progress></b-progress>
                                 </b-col>
                             </b-row>
                         </li>
@@ -528,6 +532,7 @@ export default {
 
     let web1 = [
       axios.get('/static/data/heroes/' + id + '/hero.json').then((reponse) => { return reponse.data }),
+      axios.get('/static/data/heroes/' + id + '/talents.json').then((reponse) => { return reponse.data }),
       axios.get('/static/data/heroes/' + id + '/stats.json').then((reponse) => { return reponse.data }),
       axios.get('/static/data/heroes/' + id + '/abilities.json').then((reponse) => { return reponse.data }),
       axios.get('/static/data/heroes/' + id + '/attributes.json').then((reponse) => { return reponse.data })
@@ -535,17 +540,17 @@ export default {
 
     Promise.all(web1).then((values) => {
       let hero = values[0] 
-      let stat = values[1] 
-      let combos = values[2]
-      let attributes = values[3]
+      let talents = values[1] 
+      let stat = values[2] 
+      let combos = values[3]
+      let attributes = values[4]
 
-      let talents = []
-
-      talents.push({ level: 10, option1: hero.talents[0], option2: hero.talents[1] })
-      talents.push({ level: 15, option1: hero.talents[2], option2: hero.talents[3] })
-      talents.push({ level: 20, option1: hero.talents[4], option2: hero.talents[5] })
-      talents.push({ level: 25, option1: hero.talents[6], option2: hero.talents[7] })
-      vm.talents = talents
+      let talentGroups = []
+      talentGroups.push({ level: 10, option1: talents[0], option2: talents[1] })
+      talentGroups.push({ level: 15, option1: talents[2], option2: talents[3] })
+      talentGroups.push({ level: 20, option1: talents[4], option2: talents[5] })
+      talentGroups.push({ level: 25, option1: talents[6], option2: talents[7] })
+      vm.talents = talentGroups
       
       // Get heroes abilties from combos
       let skills = hero.abilities.filter(_ => _.ability_draft_enabled).map(_ => _.id)

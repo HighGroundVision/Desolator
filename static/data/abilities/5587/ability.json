@@ -2,7 +2,7 @@
   "id": 5587,
   "key": "abaddon_frostmourne",
   "name": "Curse of Avernus",
-  "description": "Abaddon strikes an enemy with chilling curse on each attack, causing all units who attack the slowed enemy to gain increased movement speed, along with faster attack speed, for a limited time.",
+  "description": "Abaddon strikes an enemy, slowing the target's movement speed. If the target gets hit 4 times, they become affected by a chilling curse causing them to be silenced and slowed, and all attacks against them gain an attack speed boost.",
   "image": "https://hgv-hyperstone.azurewebsites.net/abilities/abaddon_frostmourne.png",
   "hero_id": 102,
   "ability_type": "DOTA_ABILITY_TYPE_BASIC",
@@ -12,7 +12,7 @@
   "ability_unit_target_team": null,
   "ability_unit_target_type": [],
   "ability_unit_target_flags": [],
-  "spell_immunity_type": "SPELL_IMMUNITY_ENEMIES_YES",
+  "spell_immunity_type": "SPELL_IMMUNITY_ENEMIES_NO",
   "spell_dispellable_type": "SPELL_DISPELLABLE_YES",
   "ability_unit_damage_type": null,
   "is_skill": true,
@@ -66,32 +66,32 @@
   "ability_draft_enabled": true,
   "linked": null,
   "ability_special": {
-    "debuff_duration": [
-      2.5
+    "slow_duration": [
+      4.0
     ],
-    "buff_duration": [
-      4.5
-    ],
-    "slow_pct": [
-      8.0,
-      12.0,
-      16.0,
-      20.0
-    ],
-    "attack_slow_tooltip": [
-      8.0,
-      12.0,
-      16.0,
-      20.0
-    ],
-    "move_speed_pct": [
-      15.0
-    ],
-    "attack_speed": [
+    "movement_speed": [
       10.0,
+      15.0,
       20.0,
+      25.0
+    ],
+    "hit_count": [
+      4.0
+    ],
+    "curse_duration": [
+      4.0
+    ],
+    "curse_slow": [
       30.0,
-      40.0
+      40.0,
+      50.0,
+      60.0
+    ],
+    "curse_attack_speed": [
+      40.0,
+      60.0,
+      80.0,
+      100.0
     ]
   }
 }

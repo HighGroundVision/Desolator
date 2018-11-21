@@ -34,7 +34,7 @@
       "id": 5012,
       "key": "bane_enfeeble",
       "name": "Enfeeble",
-      "description": "Weakens an enemy unit, reducing its physical damage.",
+      "description": "Lower's the target's status resistance and attack speed. ",
       "image": "https://hgv-hyperstone.azurewebsites.net/abilities/bane_enfeeble.png",
       "hero_id": 3,
       "ability_type": "DOTA_ABILITY_TYPE_BASIC",
@@ -46,11 +46,9 @@
       "ability_unit_target_type": [
         "DOTA_UNIT_TARGET_HERO"
       ],
-      "ability_unit_target_flags": [
-        "DOTA_UNIT_TARGET_FLAG_NOT_ANCIENTS"
-      ],
+      "ability_unit_target_flags": [],
       "spell_immunity_type": "SPELL_IMMUNITY_ENEMIES_NO",
-      "spell_dispellable_type": "SPELL_DISPELLABLE_NO",
+      "spell_dispellable_type": "SPELL_DISPELLABLE_YES",
       "ability_unit_damage_type": null,
       "is_skill": true,
       "is_ultimate": false,
@@ -62,7 +60,7 @@
       ],
       "ability_cast_range_buffer": 250,
       "ability_cast_point": [
-        0.4
+        0.3
       ],
       "ability_channel_time": [
         0.0,
@@ -71,13 +69,16 @@
         0.0
       ],
       "ability_cooldown": [
-        8.0
+        12.0,
+        10.0,
+        8.0,
+        6.0
       ],
       "ability_duration": [
-        8.0,
-        12.0,
-        16.0,
-        20.0
+        0.0,
+        0.0,
+        0.0,
+        0.0
       ],
       "ability_damage": [
         0.0,
@@ -86,7 +87,10 @@
         0.0
       ],
       "ability_mana_cost": [
-        95.0
+        70.0,
+        90.0,
+        110.0,
+        130.0
       ],
       "ability_modifier_support_value": 1.0,
       "ability_modifier_support_bonus": 0.0,
@@ -94,17 +98,20 @@
       "ability_draft_enabled": true,
       "linked": null,
       "ability_special": {
-        "enfeeble_attack_reduction": [
-          30.0,
-          60.0,
-          90.0,
-          120.0
+        "status_resistance_reduction": [
+          36.0,
+          44.0,
+          52.0,
+          60.0
         ],
-        "enfeeble_tooltip_duration": [
-          8.0,
-          12.0,
-          16.0,
-          20.0
+        "attack_speed_reduction": [
+          40.0,
+          60.0,
+          80.0,
+          100.0
+        ],
+        "duration": [
+          8.0
         ]
       }
     },
@@ -112,7 +119,7 @@
       "id": 5011,
       "key": "bane_brain_sap",
       "name": "Brain Sap",
-      "description": "Feasts on the vital energies of an enemy unit, healing Bane and dealing damage.\\n\\nUpgradable by Aghanim's Scepter.",
+      "description": "Feasts on the vital energies of an enemy unit, healing Bane and dealing damage. Upgradable by Aghanim's Scepter.",
       "image": "https://hgv-hyperstone.azurewebsites.net/abilities/bane_brain_sap.png",
       "hero_id": 3,
       "ability_type": "DOTA_ABILITY_TYPE_BASIC",
@@ -605,8 +612,8 @@
     {
       "id": 6826,
       "key": "special_bonus_unique_bane_4",
-      "name": "Enfeeble Steals Damage",
-      "description": "Bane gains damage equal to the damage stolen for the duration of Enfeeble."
+      "name": "Enfeeble Steals Attack Speed",
+      "description": "Bane gains attack speed equal to the attack speed stolen for the duration of Enfeeble."
     },
     {
       "id": 6447,
@@ -617,13 +624,13 @@
     {
       "id": 6068,
       "key": "special_bonus_unique_bane_1",
-      "name": "+100 Enfeeble Damage Reduction",
+      "name": "+100 Enfeeble Attack Speed Reduction",
       "description": null
     },
     {
-      "id": 7130,
-      "key": "special_bonus_movement_speed_65",
-      "name": "+65 Movement Speed",
+      "id": 6306,
+      "key": "special_bonus_movement_speed_50",
+      "name": "+50 Movement Speed",
       "description": null
     },
     {
@@ -658,9 +665,9 @@
   "attribute_base_agility": 23,
   "attribute_agility_gain": 2.4,
   "status_health": 200,
-  "status_health_regen": 1.5,
+  "status_health_regen": 0.0,
   "status_mana": 75,
-  "status_mana_regen": 0.9,
+  "status_mana_regen": 0.0,
   "bounty_xp": 62,
   "bounty_gold_min": 0,
   "bounty_gold_max": 0,

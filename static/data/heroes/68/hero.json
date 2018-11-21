@@ -230,38 +230,38 @@
       "id": 5347,
       "key": "ancient_apparition_chilling_touch",
       "name": "Chilling Touch",
-      "description": "A frigid gust enchants allied heroes, granting them bonus magical damage for a given number of physical attacks. Each attack slows the enemy movement speed.  Ancient Apparition always receives the buff.",
+      "description": "Enchances your attacks with heavy magic damage and slow. Gives increases attack range for this attack.",
       "image": "https://hgv-hyperstone.azurewebsites.net/abilities/ancient_apparition_chilling_touch.png",
       "hero_id": 68,
       "ability_type": "DOTA_ABILITY_TYPE_BASIC",
       "ability_behaviors": [
-        "DOTA_ABILITY_BEHAVIOR_AOE",
-        "DOTA_ABILITY_BEHAVIOR_POINT",
-        "DOTA_ABILITY_BEHAVIOR_IGNORE_BACKSWING"
+        "DOTA_ABILITY_BEHAVIOR_UNIT_TARGET",
+        "DOTA_ABILITY_BEHAVIOR_AUTOCAST",
+        "DOTA_ABILITY_BEHAVIOR_ATTACK"
       ],
-      "ability_unit_target_team": null,
-      "ability_unit_target_type": [],
+      "ability_unit_target_team": "DOTA_UNIT_TARGET_TEAM_ENEMY",
+      "ability_unit_target_type": [
+        "DOTA_UNIT_TARGET_HERO",
+        "DOTA_UNIT_TARGET_BASIC"
+      ],
       "ability_unit_target_flags": [],
       "spell_immunity_type": "SPELL_IMMUNITY_ENEMIES_NO",
       "spell_dispellable_type": "SPELL_DISPELLABLE_YES",
-      "ability_unit_damage_type": "DAMAGE_TYPE_MAGICAL",
+      "ability_unit_damage_type": null,
       "is_skill": true,
       "is_ultimate": false,
       "has_scepter_upgrade": false,
       "on_castbar": true,
       "on_learnbar": true,
       "ability_cast_range": [
-        800,
-        800,
-        800,
-        800
+        0
       ],
       "ability_cast_range_buffer": 250,
       "ability_cast_point": [
-        0.01,
-        0.01,
-        0.01,
-        0.01
+        0.0,
+        0.0,
+        0.0,
+        0.0
       ],
       "ability_channel_time": [
         0.0,
@@ -270,16 +270,16 @@
         0.0
       ],
       "ability_cooldown": [
-        50.0,
-        42.0,
-        34.0,
-        26.0
+        15.0,
+        11.0,
+        7.0,
+        3.0
       ],
       "ability_duration": [
-        20.0,
-        24.0,
-        28.0,
-        32.0
+        0.0,
+        0.0,
+        0.0,
+        0.0
       ],
       "ability_damage": [
         0.0,
@@ -288,10 +288,10 @@
         0.0
       ],
       "ability_mana_cost": [
-        110.0,
-        120.0,
-        130.0,
-        140.0
+        30.0,
+        50.0,
+        70.0,
+        90.0
       ],
       "ability_modifier_support_value": 1.0,
       "ability_modifier_support_bonus": 0.0,
@@ -299,32 +299,23 @@
       "ability_draft_enabled": true,
       "linked": null,
       "ability_special": {
-        "radius": [
-          525.0
+        "damage": [
+          50.0,
+          85.0,
+          120.0,
+          155.0
         ],
-        "max_attacks": [
-          3.0,
-          4.0,
-          5.0,
-          6.0
+        "slow": [
+          100.0
         ],
-        "bonus_damage": [
-          20.0,
-          40.0,
+        "duration": [
+          0.5
+        ],
+        "attack_range_bonus": [
           60.0,
-          80.0
-        ],
-        "move_speed_pct": [
-          30.0
-        ],
-        "move_speed_duration": [
-          0.3
-        ],
-        "buff_duration": [
-          20.0,
-          24.0,
-          28.0,
-          32.0
+          120.0,
+          180.0,
+          240.0
         ]
       }
     },
@@ -472,7 +463,7 @@
       "id": 5348,
       "key": "ancient_apparition_ice_blast",
       "name": "Ice Blast",
-      "description": "Launches a tracer toward any location on the battlefield, which must be triggered again to mark the area to be blasted by a damaging explosion of hail. The further the tracer travels, the larger the explosion will be. Enemies caught in the explosion, or who touch the icy ball of hail as it travels, are Frostbitten, taking damage and prevented from regenerating or healing. If a Frostbitten unit's health drops below a certain percentage, they will instantly shatter.\\n\\nUpgradable by Aghanim's Scepter.",
+      "description": "Launches a tracer toward any location on the battlefield, which must be triggered again to mark the area to be blasted by a damaging explosion of hail. The further the tracer travels, the larger the explosion will be. Enemies caught in the explosion, or who touch the icy ball of hail as it travels, are Frostbitten, taking damage and prevented from regenerating or healing. If a Frostbitten unit's health drops below a certain percentage, they will instantly shatter. Upgradable by Aghanim's Scepter.",
       "image": "https://hgv-hyperstone.azurewebsites.net/abilities/ancient_apparition_ice_blast.png",
       "hero_id": 68,
       "ability_type": "DOTA_ABILITY_TYPE_ULTIMATE",
@@ -712,15 +703,15 @@
   "projectile_speed": 1250,
   "attribute_primary": "DOTA_ATTRIBUTE_INTELLECT",
   "attribute_base_strength": 20,
-  "attribute_strength_gain": 1.7,
+  "attribute_strength_gain": 1.9,
   "attribute_base_intelligence": 23,
   "attribute_intelligence_gain": 2.6,
   "attribute_base_agility": 20,
   "attribute_agility_gain": 2.2,
   "status_health": 200,
-  "status_health_regen": 1.5,
+  "status_health_regen": 0.0,
   "status_mana": 75,
-  "status_mana_regen": 0.9,
+  "status_mana_regen": 0.0,
   "bounty_xp": 62,
   "bounty_gold_min": 0,
   "bounty_gold_max": 0,

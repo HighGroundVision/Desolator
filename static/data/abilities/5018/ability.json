@@ -2,7 +2,7 @@
   "id": 5018,
   "key": "bloodseeker_rupture",
   "name": "Rupture",
-  "description": "Causes an enemy unit's skin to rupture. If the unit moves, it takes a percentage of the distance traveled as damage.  The damage is dealt through spell immunity. Upgradable by Aghanim's Scepter.",
+  "description": "Causes an enemy unit's skin to rupture. If the unit moves, it takes a percentage of current health as damage per 100 units moved.  The damage is dealt through spell immunity. Upgradable by Aghanim's Scepter.",
   "image": "https://hgv-hyperstone.azurewebsites.net/abilities/bloodseeker_rupture.png",
   "hero_id": 4,
   "ability_type": "DOTA_ABILITY_TYPE_ULTIMATE",
@@ -26,7 +26,9 @@
   "on_castbar": true,
   "on_learnbar": true,
   "ability_cast_range": [
-    800
+    700,
+    800,
+    900
   ],
   "ability_cast_range_buffer": 250,
   "ability_cast_point": [
@@ -39,7 +41,9 @@
     0.0
   ],
   "ability_cooldown": [
-    60.0
+    70.0,
+    60.0,
+    50.0
   ],
   "ability_duration": [
     0.0,
@@ -65,21 +69,20 @@
   "linked": null,
   "ability_special": {
     "duration": [
+      8.0,
+      10.0,
       12.0
     ],
     "movement_damage_pct": [
-      30.0,
-      45.0,
-      60.0
+      8.0
     ],
     "damage_cap_amount": [
       200.0
     ],
-    "damage_cap_interval": [
-      0.25
-    ],
     "cast_range_tooltip": [
-      1000.0
+      700.0,
+      800.0,
+      900.0
     ],
     "max_charges_scepter": [
       2.0

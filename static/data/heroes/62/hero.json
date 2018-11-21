@@ -26,7 +26,7 @@
       "id": 5285,
       "key": "bounty_hunter_shuriken_toss",
       "name": "Shuriken Toss",
-      "description": "Hurls a deadly shuriken at an enemy unit, dealing damage and mini-stunning the target.  The shuriken will bounce between any Tracked units who are within a 1200 radius of each other.\\n\\nUpgradable by Aghanim's Scepter.",
+      "description": "Hurls a deadly shuriken at an enemy unit, dealing damage and mini-stunning the target.  The shuriken will bounce between any Tracked units who are within a 1200 radius of each other. Upgradable by Aghanim's Scepter.",
       "image": "https://hgv-hyperstone.azurewebsites.net/abilities/bounty_hunter_shuriken_toss.png",
       "hero_id": 62,
       "ability_type": "DOTA_ABILITY_TYPE_BASIC",
@@ -114,7 +114,7 @@
       "id": 5286,
       "key": "bounty_hunter_jinada",
       "name": "Jinada",
-      "description": "Bounty Hunter plans his next hit, passively adding a critical strike and maim to his next attack.",
+      "description": "Bounty Hunter plans his next hit, dealing bonus damage and stealing some unrealiable gold.",
       "image": "https://hgv-hyperstone.azurewebsites.net/abilities/bounty_hunter_jinada.png",
       "hero_id": 62,
       "ability_type": "DOTA_ABILITY_TYPE_BASIC",
@@ -150,9 +150,9 @@
       ],
       "ability_cooldown": [
         12.0,
-        10.0,
-        8.0,
-        6.0
+        9.0,
+        6.0,
+        3.0
       ],
       "ability_duration": [
         0.0,
@@ -178,29 +178,17 @@
       "ability_draft_enabled": true,
       "linked": null,
       "ability_special": {
-        "crit_multiplier": [
-          150.0,
-          175.0,
-          200.0,
-          225.0
+        "bonus_damage": [
+          80.0,
+          110.0,
+          140.0,
+          170.0
         ],
-        "bonus_movespeed": [
-          -15.0,
-          -20.0,
-          -25.0,
-          -30.0
-        ],
-        "bonus_attackspeed": [
-          -15.0,
-          -20.0,
-          -25.0,
-          -30.0
-        ],
-        "duration": [
-          3.0,
-          3.0,
-          3.0,
-          3.0
+        "gold_steal": [
+          12.0,
+          18.0,
+          24.0,
+          30.0
         ]
       }
     },
@@ -208,7 +196,7 @@
       "id": 5287,
       "key": "bounty_hunter_wind_walk",
       "name": "Shadow Walk",
-      "description": "Bounty Hunter becomes invisible and gains the ability to move through other units until he attacks or uses an ability.  If he breaks the invisibility with an attack, that attack will deal bonus damage.",
+      "description": "Bounty Hunter becomes invisible and gains the ability to move through other units until he attacks or uses an ability.  If he breaks the invisibility with an attack, that attack will slow the target's movement speed.",
       "image": "https://hgv-hyperstone.azurewebsites.net/abilities/bounty_hunter_wind_walk.png",
       "hero_id": 62,
       "ability_type": "DOTA_ABILITY_TYPE_BASIC",
@@ -283,11 +271,14 @@
           0.5,
           0.25
         ],
-        "bonus_damage": [
-          30.0,
-          60.0,
-          90.0,
-          120.0
+        "slow": [
+          14.0,
+          20.0,
+          26.0,
+          32.0
+        ],
+        "slow_duration": [
+          4.0
         ]
       }
     },
@@ -435,7 +426,7 @@
       "id": 5288,
       "key": "bounty_hunter_track",
       "name": "Track",
-      "description": "Tracks an enemy hero, granting True Sight of the target, and information on how much gold it is carrying. Allies near the hunted are granted bonus movement speed. If the target dies, Bounty Hunter and nearby heroes collect a bonus bounty of gold.",
+      "description": "Tracks an enemy hero, granting True Sight of the target, and information on how much gold it is carrying. You move fast when near the tracked unit and deal critical strikes when attacking it. If the target dies, Bounty Hunter and nearby heroes collect a bonus bounty of gold. Casting Track does not take you out of invisibility.",
       "image": "https://hgv-hyperstone.azurewebsites.net/abilities/bounty_hunter_track.png",
       "hero_id": 62,
       "ability_type": "DOTA_ABILITY_TYPE_ULTIMATE",
@@ -498,20 +489,13 @@
       "ability_draft_enabled": true,
       "linked": null,
       "ability_special": {
-        "aura_radius": [
-          900.0,
-          900.0,
-          900.0
-        ],
-        "bonus_move_speed_pct": [
-          16.0,
-          18.0,
-          20.0
+        "target_crit_multiplier": [
+          140.0,
+          160.0,
+          180.0
         ],
         "bonus_gold_radius": [
-          925.0,
-          925.0,
-          925.0
+          1200.0
         ],
         "bonus_gold_self": [
           150.0,
@@ -535,15 +519,20 @@
           0.3,
           0.4,
           0.5
+        ],
+        "bonus_move_speed_pct": [
+          16.0,
+          18.0,
+          20.0
         ]
       }
     }
   ],
   "talents": [
     {
-      "id": 5919,
-      "key": "special_bonus_movement_speed_25",
-      "name": "+25 Movement Speed",
+      "id": 5918,
+      "key": "special_bonus_movement_speed_20",
+      "name": "+20 Movement Speed",
       "description": null
     },
     {
@@ -573,7 +562,7 @@
     {
       "id": 6018,
       "key": "special_bonus_unique_bounty_hunter",
-      "name": "+125% Jinada Critical Strike",
+      "name": "+90 Jinada Gold Steal",
       "description": null
     },
     {
@@ -601,16 +590,16 @@
   "attack_range": 150,
   "projectile_speed": 900,
   "attribute_primary": "DOTA_ATTRIBUTE_AGILITY",
-  "attribute_base_strength": 18,
-  "attribute_strength_gain": 2.1,
+  "attribute_base_strength": 20,
+  "attribute_strength_gain": 2.5,
   "attribute_base_intelligence": 19,
   "attribute_intelligence_gain": 2.0,
   "attribute_base_agility": 21,
   "attribute_agility_gain": 3.0,
   "status_health": 200,
-  "status_health_regen": 2.0,
+  "status_health_regen": 0.5,
   "status_mana": 75,
-  "status_mana_regen": 0.9,
+  "status_mana_regen": 0.0,
   "bounty_xp": 62,
   "bounty_gold_min": 0,
   "bounty_gold_max": 0,

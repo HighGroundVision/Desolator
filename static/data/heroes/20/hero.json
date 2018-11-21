@@ -133,7 +133,7 @@
       "ability_unit_target_team": null,
       "ability_unit_target_type": [],
       "ability_unit_target_flags": [],
-      "spell_immunity_type": "SPELL_IMMUNITY_ENEMIES_YES",
+      "spell_immunity_type": "SPELL_IMMUNITY_ENEMIES_NO",
       "spell_dispellable_type": "SPELL_DISPELLABLE_YES",
       "ability_unit_damage_type": "DAMAGE_TYPE_MAGICAL",
       "is_skill": true,
@@ -214,7 +214,7 @@
       "id": 5123,
       "key": "vengefulspirit_command_aura",
       "name": "Vengeance Aura",
-      "description": "Vengeful Spirit's presence increases the physical damage of nearby friendly units. If an allied hero is slain under the aura, an illusion of your allied hero will be created to fight for that hero.",
+      "description": "Vengeful Spirit's presence increases the physical damage of nearby friendly units. Spawns a Vengeance Illusion when you die that lasts until you revive.",
       "image": "https://hgv-hyperstone.azurewebsites.net/abilities/vengefulspirit_command_aura.png",
       "hero_id": 20,
       "ability_type": "DOTA_ABILITY_TYPE_BASIC",
@@ -230,7 +230,7 @@
       "ability_unit_damage_type": null,
       "is_skill": true,
       "is_ultimate": false,
-      "has_scepter_upgrade": false,
+      "has_scepter_upgrade": true,
       "on_castbar": true,
       "on_learnbar": true,
       "ability_cast_range": [
@@ -288,20 +288,11 @@
         "aura_radius": [
           1200.0
         ],
-        "images_do_damage_percent": [
-          0.0
-        ],
-        "images_do_damage_percent_tooltip": [
+        "illusion_damage_out_pct": [
           100.0
         ],
-        "images_take_damage_percent": [
-          100.0
-        ],
-        "images_take_damage_percent_tooltip": [
-          200.0
-        ],
-        "illusion_duration": [
-          6.0
+        "illusion_damage_in_pct": [
+          150.0
         ]
       }
     },
@@ -449,7 +440,7 @@
       "id": 5125,
       "key": "vengefulspirit_nether_swap",
       "name": "Nether Swap",
-      "description": "Instantaneously swaps positions with a target Hero, friend or enemy.  Nether Swap interrupts channeling abilities on the target.\\n\\nUpgradable by Aghanim's Scepter.",
+      "description": "Instantaneously swaps positions with a target Hero, friend or enemy.  Nether Swap interrupts channeling abilities on the target. Upgradable by Aghanim's Scepter.",
       "image": "https://hgv-hyperstone.azurewebsites.net/abilities/vengefulspirit_nether_swap.png",
       "hero_id": 20,
       "ability_type": "DOTA_ABILITY_TYPE_ULTIMATE",
@@ -471,8 +462,8 @@
       "on_learnbar": true,
       "ability_cast_range": [
         700,
-        950,
-        1200
+        850,
+        1000
       ],
       "ability_cast_range_buffer": 250,
       "ability_cast_point": [
@@ -487,7 +478,7 @@
         0.0
       ],
       "ability_cooldown": [
-        45.0
+        0.0
       ],
       "ability_duration": [
         0.0,
@@ -514,17 +505,19 @@
       "ability_special": {
         "tooltip_range": [
           700.0,
-          950.0,
-          1200.0
+          850.0,
+          1000.0
         ],
-        "nether_swap_cooldown_scepter": [
+        "max_charges": [
+          2.0
+        ],
+        "charge_restore_time": [
+          90.0,
+          80.0,
+          70.0
+        ],
+        "charge_restore_time_scepter": [
           10.0
-        ],
-        "illusion_damage_out_pct_scepter": [
-          100.0
-        ],
-        "illusion_damage_in_pct_scepter": [
-          150.0
         ]
       }
     }
@@ -598,9 +591,9 @@
   "attribute_base_agility": 27,
   "attribute_agility_gain": 3.3,
   "status_health": 200,
-  "status_health_regen": 1.75,
+  "status_health_regen": 0.25,
   "status_mana": 75,
-  "status_mana_regen": 0.9,
+  "status_mana_regen": 0.0,
   "bounty_xp": 62,
   "bounty_gold_min": 0,
   "bounty_gold_max": 0,

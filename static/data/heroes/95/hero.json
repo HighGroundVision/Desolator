@@ -34,7 +34,7 @@
       "id": 5508,
       "key": "troll_warlord_berserkers_rage",
       "name": "Berserker's Rage",
-      "description": "While active, Troll Warlord swaps from using ranged to melee attacks. Melee attacks have a chance to bash, dealing bonus damage and stunning the target. Berserker's Rage also grants additional movement speed, armor, and increased attack speed.\\n\\nWhirling Axes has different functionality while Berserker's Rage is active.",
+      "description": "While active, Troll Warlord swaps from using ranged to melee attacks. Melee attacks have a chance to ensnare, preventing the target from moving or using mobility spells. Berserker's Rage also grants additional movement speed, armor, and increased attack speed. Whirling Axes has different functionality while Berserker's Rage is active.",
       "image": "https://hgv-hyperstone.azurewebsites.net/abilities/troll_warlord_berserkers_rage.png",
       "hero_id": 95,
       "ability_type": "DOTA_ABILITY_TYPE_BASIC",
@@ -118,20 +118,17 @@
         "base_attack_time": [
           1.45
         ],
-        "bash_chance": [
-          10.0
+        "ensnare_chance": [
+          10.0,
+          12.0,
+          14.0,
+          16.0
         ],
-        "bash_duration": [
+        "ensnare_duration": [
           0.8,
           1.2,
           1.6,
           2.0
-        ],
-        "bash_damage": [
-          20.0,
-          30.0,
-          40.0,
-          50.0
         ]
       }
     },
@@ -385,14 +382,14 @@
       "ability_draft_enabled": true,
       "linked": null,
       "ability_special": {
-        "max_stacks": [
-          7.0
-        ],
         "attack_speed": [
           15.0,
           20.0,
           25.0,
           30.0
+        ],
+        "max_stacks": [
+          12.0
         ]
       }
     },
@@ -470,7 +467,7 @@
       "id": 5512,
       "key": "troll_warlord_battle_trance",
       "name": "Battle Trance",
-      "description": "Troll's presence on the battlefield increases the attack speed of himself and all allied heroes.",
+      "description": "Troll unleashes a powerful battle trance, that forces you to continuously attack the closest enemy unit within 900 range, prioritizing heroes. Damage does not kill you during this mode. Grants you bonus lifesteal, attack speed and movement speed. Applies a Basic Dispel. ",
       "image": "https://hgv-hyperstone.azurewebsites.net/abilities/troll_warlord_battle_trance.png",
       "hero_id": 95,
       "ability_type": "DOTA_ABILITY_TYPE_ULTIMATE",
@@ -505,7 +502,7 @@
         0.0
       ],
       "ability_cooldown": [
-        35.0
+        90.0
       ],
       "ability_duration": [
         0.0,
@@ -520,9 +517,7 @@
         0.0
       ],
       "ability_mana_cost": [
-        75.0,
-        75.0,
-        75.0
+        150.0
       ],
       "ability_modifier_support_value": 1.0,
       "ability_modifier_support_bonus": 0.0,
@@ -531,12 +526,25 @@
       "linked": null,
       "ability_special": {
         "trance_duration": [
-          5.0
+          6.5
+        ],
+        "lifesteal": [
+          40.0,
+          60.0,
+          80.0
         ],
         "attack_speed": [
-          60.0,
-          120.0,
-          180.0
+          140.0,
+          170.0,
+          200.0
+        ],
+        "movement_speed": [
+          30.0,
+          35.0,
+          40.0
+        ],
+        "range": [
+          900.0
         ]
       }
     }
@@ -587,15 +595,15 @@
     {
       "id": 6960,
       "key": "special_bonus_unique_troll_warlord_4",
-      "name": "Battle Trance Dispels",
-      "description": "Applies a basic dispel to Troll Warlord and all buffed Heroes."
+      "name": "Battle Trance Strong Dispels",
+      "description": "Can be cast while stunned and applies a strong dispel to Troll Warlord."
     }
   ],
   "legs": 2,
   "armor_physical": -1.0,
   "magical_resistance": 25,
   "attack_capabilities": "DOTA_UNIT_CAP_RANGED_ATTACK",
-  "attack_damage_min": 17,
+  "attack_damage_min": 23,
   "attack_damage_max": 35,
   "attack_rate": 1.7,
   "attack_animation_point": 0.3,
@@ -610,9 +618,9 @@
   "attribute_base_agility": 21,
   "attribute_agility_gain": 2.5,
   "status_health": 200,
-  "status_health_regen": 1.75,
+  "status_health_regen": 0.25,
   "status_mana": 75,
-  "status_mana_regen": 0.9,
+  "status_mana_regen": 0.0,
   "bounty_xp": 62,
   "bounty_gold_min": 0,
   "bounty_gold_max": 0,

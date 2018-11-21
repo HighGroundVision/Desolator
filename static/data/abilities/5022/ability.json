@@ -2,7 +2,7 @@
   "id": 5022,
   "key": "drow_ranger_marksmanship",
   "name": "Marksmanship",
-  "description": "Drow's experiences in battle improve her accuracy and effectiveness in combat, providing a passive bonus to Agility. Grants no bonus if there are enemy heroes within 400 range. Upgradable by Aghanim's Scepter.",
+  "description": "Drow's experiences in battle grant her a chance to launch arrows with incredible accuracy and effectiveness. Pierces through the enemy's defenses, ignoring their armor entirely. Instantly kills creeps. This ability is disabled if there is an enemy hero within 400 range.  Upgradable by Aghanim's Scepter.",
   "image": "https://hgv-hyperstone.azurewebsites.net/abilities/drow_ranger_marksmanship.png",
   "hero_id": 6,
   "ability_type": "DOTA_ABILITY_TYPE_ULTIMATE",
@@ -66,13 +66,10 @@
   "ability_draft_enabled": true,
   "linked": null,
   "ability_special": {
-    "marksmanship_agility_bonus": [
-      40.0,
-      60.0,
-      80.0
-    ],
-    "radius": [
-      400.0
+    "chance": [
+      20.0,
+      30.0,
+      40.0
     ],
     "split_count_scepter": [
       2.0
@@ -82,6 +79,9 @@
     ],
     "damage_reduction_scepter": [
       50.0
+    ],
+    "disable_range": [
+      400.0
     ]
   }
 }

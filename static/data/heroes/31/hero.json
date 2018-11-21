@@ -80,10 +80,10 @@
         200.0
       ],
       "ability_mana_cost": [
-        125.0,
-        150.0,
-        170.0,
-        190.0
+        105.0,
+        130.0,
+        155.0,
+        180.0
       ],
       "ability_modifier_support_value": 0.3,
       "ability_modifier_support_bonus": 0.0,
@@ -112,16 +112,15 @@
       }
     },
     {
-      "id": 5135,
-      "key": "lich_frost_armor",
-      "name": "Ice Armor",
-      "description": "Creates a shield around the target friendly unit or building, which adds armor and slows attacking units. Lasts 40 seconds.",
-      "image": "https://hgv-hyperstone.azurewebsites.net/abilities/lich_frost_armor.png",
+      "id": 5136,
+      "key": "lich_frost_shield",
+      "name": "Frost Shield",
+      "description": "Applies a magical frost shield around you, reducing damage from a limited number of attacks against you. While the shield is active, ice magic will be launched towards the nearest enemy unit every 1 seconds, doing minor damage and slowing.",
+      "image": "https://hgv-hyperstone.azurewebsites.net/abilities/lich_frost_shield.png",
       "hero_id": 31,
       "ability_type": "DOTA_ABILITY_TYPE_BASIC",
       "ability_behaviors": [
         "DOTA_ABILITY_BEHAVIOR_UNIT_TARGET",
-        "DOTA_ABILITY_BEHAVIOR_AUTOCAST",
         "DOTA_ABILITY_BEHAVIOR_DONT_RESUME_ATTACK"
       ],
       "ability_unit_target_team": "DOTA_UNIT_TARGET_TEAM_FRIENDLY",
@@ -146,10 +145,7 @@
       ],
       "ability_cast_range_buffer": 250,
       "ability_cast_point": [
-        0.4,
-        0.4,
-        0.4,
-        0.4
+        0.2
       ],
       "ability_channel_time": [
         0.0,
@@ -158,113 +154,10 @@
         0.0
       ],
       "ability_cooldown": [
-        5.0,
-        5.0,
-        5.0,
-        5.0
-      ],
-      "ability_duration": [
-        40.0,
-        40.0,
-        40.0,
-        40.0
-      ],
-      "ability_damage": [
-        0.0,
-        0.0,
-        0.0,
-        0.0
-      ],
-      "ability_mana_cost": [
-        50.0,
-        50.0,
-        50.0,
-        50.0
-      ],
-      "ability_modifier_support_value": 0.3,
-      "ability_modifier_support_bonus": 0.0,
-      "fight_recap_level": 0,
-      "ability_draft_enabled": true,
-      "linked": null,
-      "ability_special": {
-        "armor_bonus": [
-          4.0,
-          6.0,
-          8.0,
-          10.0
-        ],
-        "slow_duration": [
-          2.0,
-          2.0,
-          2.0,
-          2.0
-        ],
-        "slow_movement_speed": [
-          -8.0,
-          -16.0,
-          -24.0,
-          -32.0
-        ],
-        "slow_attack_speed": [
-          -8.0,
-          -16.0,
-          -24.0,
-          -32.0
-        ]
-      }
-    },
-    {
-      "id": 5136,
-      "key": "lich_dark_ritual",
-      "name": "Sacrifice",
-      "description": "Sacrifices a friendly creep and converts its current hit points into mana for Lich.",
-      "image": "https://hgv-hyperstone.azurewebsites.net/abilities/lich_dark_ritual.png",
-      "hero_id": 31,
-      "ability_type": "DOTA_ABILITY_TYPE_BASIC",
-      "ability_behaviors": [
-        "DOTA_ABILITY_BEHAVIOR_UNIT_TARGET",
-        "DOTA_ABILITY_BEHAVIOR_DONT_RESUME_ATTACK"
-      ],
-      "ability_unit_target_team": "DOTA_UNIT_TARGET_TEAM_FRIENDLY",
-      "ability_unit_target_type": [
-        "DOTA_UNIT_TARGET_BASIC"
-      ],
-      "ability_unit_target_flags": [
-        "DOTA_UNIT_TARGET_FLAG_NOT_SUMMONED",
-        "|",
-        "DOTA_UNIT_TARGET_FLAG_NOT_ANCIENTS",
-        "|",
-        "DOTA_UNIT_TARGET_FLAG_NOT_CREEP_HERO"
-      ],
-      "spell_immunity_type": null,
-      "spell_dispellable_type": null,
-      "ability_unit_damage_type": null,
-      "is_skill": true,
-      "is_ultimate": false,
-      "has_scepter_upgrade": false,
-      "on_castbar": true,
-      "on_learnbar": true,
-      "ability_cast_range": [
-        400
-      ],
-      "ability_cast_range_buffer": 250,
-      "ability_cast_point": [
-        0.4,
-        0.4,
-        0.4,
-        0.4
-      ],
-      "ability_channel_time": [
-        0.0,
-        0.0,
-        0.0,
-        0.0
-      ],
-      "ability_cooldown": [
-        60.0,
-        46.0,
-        32.0,
-        18.0
+        30.0,
+        25.0,
+        20.0,
+        15.0
       ],
       "ability_duration": [
         0.0,
@@ -279,7 +172,10 @@
         0.0
       ],
       "ability_mana_cost": [
-        0.0
+        100.0,
+        110.0,
+        120.0,
+        130.0
       ],
       "ability_modifier_support_value": 1.0,
       "ability_modifier_support_bonus": 0.0,
@@ -287,11 +183,125 @@
       "ability_draft_enabled": true,
       "linked": null,
       "ability_special": {
-        "health_conversion": [
-          55.0,
-          70.0,
-          85.0,
-          100.0
+        "damage_reduction": [
+          30.0,
+          40.0,
+          50.0,
+          60.0
+        ],
+        "movement_slow": [
+          35.0
+        ],
+        "slow_duration": [
+          0.5
+        ],
+        "damage": [
+          20.0,
+          30.0,
+          40.0,
+          50.0
+        ],
+        "interval": [
+          1.0
+        ],
+        "radius": [
+          600.0
+        ],
+        "duration": [
+          6.0
+        ]
+      }
+    },
+    {
+      "id": 7325,
+      "key": "lich_sinister_gaze",
+      "name": "Sinister Gaze",
+      "description": "CHANNELED - Hypnotizes an enemy unit, causing it to move towards a point between the two of you.",
+      "image": "https://hgv-hyperstone.azurewebsites.net/abilities/lich_sinister_gaze.png",
+      "hero_id": 31,
+      "ability_type": "DOTA_ABILITY_TYPE_BASIC",
+      "ability_behaviors": [
+        "DOTA_ABILITY_BEHAVIOR_UNIT_TARGET",
+        "DOTA_ABILITY_BEHAVIOR_CHANNELLED",
+        "DOTA_ABILITY_BEHAVIOR_DONT_CANCEL_CHANNEL"
+      ],
+      "ability_unit_target_team": "DOTA_UNIT_TARGET_TEAM_ENEMY",
+      "ability_unit_target_type": [
+        "DOTA_UNIT_TARGET_HERO",
+        "DOTA_UNIT_TARGET_BASIC"
+      ],
+      "ability_unit_target_flags": [],
+      "spell_immunity_type": "SPELL_IMMUNITY_ENEMIES_NO",
+      "spell_dispellable_type": "SPELL_DISPELLABLE_YES",
+      "ability_unit_damage_type": null,
+      "is_skill": true,
+      "is_ultimate": false,
+      "has_scepter_upgrade": false,
+      "on_castbar": true,
+      "on_learnbar": true,
+      "ability_cast_range": [
+        500,
+        525,
+        550,
+        575
+      ],
+      "ability_cast_range_buffer": 250,
+      "ability_cast_point": [
+        0.0,
+        0.0,
+        0.0,
+        0.0
+      ],
+      "ability_channel_time": [
+        1.6,
+        1.9,
+        2.2,
+        2.5
+      ],
+      "ability_cooldown": [
+        30.0
+      ],
+      "ability_duration": [
+        0.0,
+        0.0,
+        0.0,
+        0.0
+      ],
+      "ability_damage": [
+        0.0,
+        0.0,
+        0.0,
+        0.0
+      ],
+      "ability_mana_cost": [
+        120.0,
+        130.0,
+        140.0,
+        150.0
+      ],
+      "ability_modifier_support_value": 1.0,
+      "ability_modifier_support_bonus": 0.0,
+      "fight_recap_level": 1,
+      "ability_draft_enabled": true,
+      "linked": null,
+      "ability_special": {
+        "duration": [
+          1.6,
+          1.9,
+          2.2,
+          2.5
+        ],
+        "destination": [
+          32.0,
+          38.0,
+          44.0,
+          50.0
+        ],
+        "cast_range_tooltip": [
+          500.0,
+          525.0,
+          550.0,
+          575.0
         ]
       }
     },
@@ -439,7 +449,7 @@
       "id": 5137,
       "key": "lich_chain_frost",
       "name": "Chain Frost",
-      "description": "Releases an orb of frost that bounces between nearby enemy units up to 10/10/10 times, slowing and damaging each time it hits. \\n\\nUpgradable by Aghanim's Scepter.",
+      "description": "Releases an orb of frost that bounces between nearby enemy units up to 10/10/10 times, slowing and damaging each time it hits.  Upgradable by Aghanim's Scepter.",
       "image": "https://hgv-hyperstone.azurewebsites.net/abilities/lich_chain_frost.png",
       "hero_id": 31,
       "ability_type": "DOTA_ABILITY_TYPE_ULTIMATE",
@@ -552,9 +562,9 @@
       "description": null
     },
     {
-      "id": 5919,
-      "key": "special_bonus_movement_speed_25",
-      "name": "+25 Movement Speed",
+      "id": 5918,
+      "key": "special_bonus_movement_speed_20",
+      "name": "+20 Movement Speed",
       "description": null
     },
     {
@@ -570,21 +580,21 @@
       "description": null
     },
     {
-      "id": 6120,
-      "key": "special_bonus_cast_range_175",
-      "name": "+175 Cast Range",
+      "id": 6056,
+      "key": "special_bonus_cast_range_150",
+      "name": "+150 Cast Range",
       "description": null
     },
     {
-      "id": 6026,
-      "key": "special_bonus_gold_income_30",
-      "name": "+180 Gold/Min",
+      "id": 7360,
+      "key": "special_bonus_unique_lich_4",
+      "name": "+2s Frost Shield Duration",
       "description": null
     },
     {
       "id": 6039,
       "key": "special_bonus_unique_lich_1",
-      "name": "Ice Armor Provides +30 HP Regen",
+      "name": "Frost Shield Provides +60 HP Regen",
       "description": null
     },
     {
@@ -607,15 +617,15 @@
   "projectile_speed": 900,
   "attribute_primary": "DOTA_ATTRIBUTE_INTELLECT",
   "attribute_base_strength": 20,
-  "attribute_strength_gain": 1.85,
-  "attribute_base_intelligence": 16,
-  "attribute_intelligence_gain": 3.25,
+  "attribute_strength_gain": 2.1,
+  "attribute_base_intelligence": 20,
+  "attribute_intelligence_gain": 3.6,
   "attribute_base_agility": 15,
   "attribute_agility_gain": 2.0,
   "status_health": 200,
-  "status_health_regen": 1.5,
+  "status_health_regen": 0.0,
   "status_mana": 75,
-  "status_mana_regen": 0.9,
+  "status_mana_regen": 0.0,
   "bounty_xp": 62,
   "bounty_gold_min": 0,
   "bounty_gold_max": 0,

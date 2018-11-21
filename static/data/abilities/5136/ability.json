@@ -1,9 +1,9 @@
 {
   "id": 5136,
-  "key": "lich_dark_ritual",
-  "name": "Sacrifice",
-  "description": "Sacrifices a friendly creep and converts its current hit points into mana for Lich.",
-  "image": "https://hgv-hyperstone.azurewebsites.net/abilities/lich_dark_ritual.png",
+  "key": "lich_frost_shield",
+  "name": "Frost Shield",
+  "description": "Applies a magical frost shield around you, reducing damage from a limited number of attacks against you. While the shield is active, ice magic will be launched towards the nearest enemy unit every 1 seconds, doing minor damage and slowing.",
+  "image": "https://hgv-hyperstone.azurewebsites.net/abilities/lich_frost_shield.png",
   "hero_id": 31,
   "ability_type": "DOTA_ABILITY_TYPE_BASIC",
   "ability_behaviors": [
@@ -12,17 +12,15 @@
   ],
   "ability_unit_target_team": "DOTA_UNIT_TARGET_TEAM_FRIENDLY",
   "ability_unit_target_type": [
-    "DOTA_UNIT_TARGET_BASIC"
+    "DOTA_UNIT_TARGET_HERO",
+    "DOTA_UNIT_TARGET_BASIC",
+    "DOTA_UNIT_TARGET_BUILDING"
   ],
   "ability_unit_target_flags": [
-    "DOTA_UNIT_TARGET_FLAG_NOT_SUMMONED",
-    "|",
-    "DOTA_UNIT_TARGET_FLAG_NOT_ANCIENTS",
-    "|",
-    "DOTA_UNIT_TARGET_FLAG_NOT_CREEP_HERO"
+    "DOTA_UNIT_TARGET_FLAG_INVULNERABLE"
   ],
-  "spell_immunity_type": null,
-  "spell_dispellable_type": null,
+  "spell_immunity_type": "SPELL_IMMUNITY_ALLIES_YES",
+  "spell_dispellable_type": "SPELL_DISPELLABLE_YES",
   "ability_unit_damage_type": null,
   "is_skill": true,
   "is_ultimate": false,
@@ -30,14 +28,11 @@
   "on_castbar": true,
   "on_learnbar": true,
   "ability_cast_range": [
-    400
+    1000
   ],
   "ability_cast_range_buffer": 250,
   "ability_cast_point": [
-    0.4,
-    0.4,
-    0.4,
-    0.4
+    0.2
   ],
   "ability_channel_time": [
     0.0,
@@ -46,10 +41,10 @@
     0.0
   ],
   "ability_cooldown": [
-    60.0,
-    46.0,
-    32.0,
-    18.0
+    30.0,
+    25.0,
+    20.0,
+    15.0
   ],
   "ability_duration": [
     0.0,
@@ -64,7 +59,10 @@
     0.0
   ],
   "ability_mana_cost": [
-    0.0
+    100.0,
+    110.0,
+    120.0,
+    130.0
   ],
   "ability_modifier_support_value": 1.0,
   "ability_modifier_support_bonus": 0.0,
@@ -72,11 +70,32 @@
   "ability_draft_enabled": true,
   "linked": null,
   "ability_special": {
-    "health_conversion": [
-      55.0,
-      70.0,
-      85.0,
-      100.0
+    "damage_reduction": [
+      30.0,
+      40.0,
+      50.0,
+      60.0
+    ],
+    "movement_slow": [
+      35.0
+    ],
+    "slow_duration": [
+      0.5
+    ],
+    "damage": [
+      20.0,
+      30.0,
+      40.0,
+      50.0
+    ],
+    "interval": [
+      1.0
+    ],
+    "radius": [
+      600.0
+    ],
+    "duration": [
+      6.0
     ]
   }
 }

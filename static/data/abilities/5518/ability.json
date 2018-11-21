@@ -2,7 +2,7 @@
   "id": 5518,
   "key": "magnataur_shockwave",
   "name": "Shockwave",
-  "description": "Magnus sends out a wave of force, damaging enemy units in a line. Upgradable by Aghanim's Scepter.",
+  "description": "Magnus sends out a wave of force, damaging enemy units in a line and pulling them towards him. Upgradable by Aghanim's Scepter.",
   "image": "https://hgv-hyperstone.azurewebsites.net/abilities/magnataur_shockwave.png",
   "hero_id": 97,
   "ability_type": "DOTA_ABILITY_TYPE_BASIC",
@@ -25,7 +25,7 @@
   "on_castbar": true,
   "on_learnbar": true,
   "ability_cast_range": [
-    1150
+    1200
   ],
   "ability_cast_range_buffer": 250,
   "ability_cast_point": [
@@ -41,10 +41,10 @@
     0.0
   ],
   "ability_cooldown": [
-    10.0,
-    9.0,
-    8.0,
-    7.0
+    14.0,
+    13.0,
+    12.0,
+    11.0
   ],
   "ability_duration": [
     0.6875,
@@ -60,9 +60,9 @@
   ],
   "ability_mana_cost": [
     90.0,
-    90.0,
-    90.0,
-    90.0
+    100.0,
+    110.0,
+    120.0
   ],
   "ability_modifier_support_value": 1.0,
   "ability_modifier_support_bonus": 0.0,
@@ -71,16 +71,19 @@
   "linked": null,
   "ability_special": {
     "shock_speed": [
-      1050.0
+      900.0
     ],
     "shock_width": [
-      150.0
+      200.0
     ],
     "shock_damage": [
-      90.0,
-      160.0,
-      230.0,
+      75.0,
+      150.0,
+      225.0,
       300.0
+    ],
+    "pull_duration": [
+      0.2
     ],
     "movement_slow": [
       60.0
@@ -92,7 +95,13 @@
       1725.0
     ],
     "scepter_speed": [
-      1700.0
+      1200.0
+    ],
+    "pull_distance": [
+      100.0
+    ],
+    "basic_slow_duration": [
+      0.75
     ]
   }
 }

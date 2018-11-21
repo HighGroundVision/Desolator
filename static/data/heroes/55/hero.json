@@ -217,7 +217,7 @@
       "id": 5257,
       "key": "dark_seer_surge",
       "name": "Surge",
-      "description": "Charges a target friendly unit with power, giving it a brief burst of maximum movement speed.",
+      "description": "Charges a target friendly unit with power, giving it a brief burst of movement speed and removes unit collisions. Allows the unit to surpass the movement speed limit and cannot be slowed.",
       "image": "https://hgv-hyperstone.azurewebsites.net/abilities/dark_seer_surge.png",
       "hero_id": 55,
       "ability_type": "DOTA_ABILITY_TYPE_BASIC",
@@ -252,9 +252,9 @@
         0.0
       ],
       "ability_cooldown": [
-        13.0,
+        16.0,
+        14.0,
         12.0,
-        11.0,
         10.0
       ],
       "ability_duration": [
@@ -279,10 +279,13 @@
       "linked": null,
       "ability_special": {
         "duration": [
-          3.0,
-          4.5,
-          6.0,
-          7.5
+          6.0
+        ],
+        "speed_boost": [
+          36.0,
+          54.0,
+          72.0,
+          90.0
         ]
       }
     },
@@ -430,7 +433,7 @@
       "id": 5258,
       "key": "dark_seer_wall_of_replica",
       "name": "Wall of Replica",
-      "description": "Raises a wall of warping light that slows and creates replicas of any enemy hero who crosses it. Enemy replicas serve at the Dark Seer's will. Replicas last until they are destroyed, or until the wall's duration ends.\\n\\nUpgradable by Aghanim's Scepter.",
+      "description": "Raises a wall of warping light that slows and creates replicas of any enemy hero who crosses it. Enemy replicas serve at the Dark Seer's will. Replicas last until they are destroyed, or until the wall's duration ends. Upgradable by Aghanim's Scepter.",
       "image": "https://hgv-hyperstone.azurewebsites.net/abilities/dark_seer_wall_of_replica.png",
       "hero_id": 55,
       "ability_type": "DOTA_ABILITY_TYPE_ULTIMATE",
@@ -449,15 +452,11 @@
       "on_castbar": true,
       "on_learnbar": true,
       "ability_cast_range": [
-        500,
-        900,
         1300
       ],
       "ability_cast_range_buffer": 250,
       "ability_cast_point": [
-        0.4,
-        0.4,
-        0.4
+        0.2
       ],
       "ability_channel_time": [
         0.0,
@@ -519,8 +518,6 @@
           0.0
         ],
         "range_tooltip": [
-          500.0,
-          900.0,
           1300.0
         ],
         "replica_damage_outgoing_scepter": [
@@ -534,12 +531,12 @@
           140.0
         ],
         "movement_slow": [
-          75.0
+          50.0,
+          60.0,
+          70.0
         ],
         "slow_duration": [
-          0.5,
-          0.75,
-          1.0
+          0.75
         ]
       }
     }
@@ -607,15 +604,15 @@
   "projectile_speed": 900,
   "attribute_primary": "DOTA_ATTRIBUTE_INTELLECT",
   "attribute_base_strength": 24,
-  "attribute_strength_gain": 2.9,
+  "attribute_strength_gain": 3.1,
   "attribute_base_intelligence": 21,
   "attribute_intelligence_gain": 2.7,
   "attribute_base_agility": 12,
   "attribute_agility_gain": 1.2,
   "status_health": 200,
-  "status_health_regen": 1.5,
+  "status_health_regen": 0.0,
   "status_mana": 75,
-  "status_mana_regen": 0.9,
+  "status_mana_regen": 0.0,
   "bounty_xp": 62,
   "bounty_gold_min": 0,
   "bounty_gold_max": 0,

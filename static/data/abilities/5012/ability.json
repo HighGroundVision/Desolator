@@ -2,7 +2,7 @@
   "id": 5012,
   "key": "bane_enfeeble",
   "name": "Enfeeble",
-  "description": "Weakens an enemy unit, reducing its physical damage.",
+  "description": "Lower's the target's status resistance and attack speed. ",
   "image": "https://hgv-hyperstone.azurewebsites.net/abilities/bane_enfeeble.png",
   "hero_id": 3,
   "ability_type": "DOTA_ABILITY_TYPE_BASIC",
@@ -14,11 +14,9 @@
   "ability_unit_target_type": [
     "DOTA_UNIT_TARGET_HERO"
   ],
-  "ability_unit_target_flags": [
-    "DOTA_UNIT_TARGET_FLAG_NOT_ANCIENTS"
-  ],
+  "ability_unit_target_flags": [],
   "spell_immunity_type": "SPELL_IMMUNITY_ENEMIES_NO",
-  "spell_dispellable_type": "SPELL_DISPELLABLE_NO",
+  "spell_dispellable_type": "SPELL_DISPELLABLE_YES",
   "ability_unit_damage_type": null,
   "is_skill": true,
   "is_ultimate": false,
@@ -30,7 +28,7 @@
   ],
   "ability_cast_range_buffer": 250,
   "ability_cast_point": [
-    0.4
+    0.3
   ],
   "ability_channel_time": [
     0.0,
@@ -39,13 +37,16 @@
     0.0
   ],
   "ability_cooldown": [
-    8.0
+    12.0,
+    10.0,
+    8.0,
+    6.0
   ],
   "ability_duration": [
-    8.0,
-    12.0,
-    16.0,
-    20.0
+    0.0,
+    0.0,
+    0.0,
+    0.0
   ],
   "ability_damage": [
     0.0,
@@ -54,7 +55,10 @@
     0.0
   ],
   "ability_mana_cost": [
-    95.0
+    70.0,
+    90.0,
+    110.0,
+    130.0
   ],
   "ability_modifier_support_value": 1.0,
   "ability_modifier_support_bonus": 0.0,
@@ -62,17 +66,20 @@
   "ability_draft_enabled": true,
   "linked": null,
   "ability_special": {
-    "enfeeble_attack_reduction": [
-      30.0,
-      60.0,
-      90.0,
-      120.0
+    "status_resistance_reduction": [
+      36.0,
+      44.0,
+      52.0,
+      60.0
     ],
-    "enfeeble_tooltip_duration": [
-      8.0,
-      12.0,
-      16.0,
-      20.0
+    "attack_speed_reduction": [
+      40.0,
+      60.0,
+      80.0,
+      100.0
+    ],
+    "duration": [
+      8.0
     ]
   }
 }

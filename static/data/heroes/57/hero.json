@@ -43,10 +43,8 @@
         "DOTA_UNIT_TARGET_HERO",
         "DOTA_UNIT_TARGET_BASIC"
       ],
-      "ability_unit_target_flags": [
-        "DOTA_UNIT_TARGET_FLAG_NOT_MAGIC_IMMUNE_ALLIES"
-      ],
-      "spell_immunity_type": "SPELL_IMMUNITY_ALLIES_NO",
+      "ability_unit_target_flags": [],
+      "spell_immunity_type": "SPELL_IMMUNITY_ALLIES_YES",
       "spell_dispellable_type": null,
       "ability_unit_damage_type": "DAMAGE_TYPE_PURE",
       "is_skill": true,
@@ -111,8 +109,8 @@
     {
       "id": 5264,
       "key": "omniknight_repel",
-      "name": "Repel",
-      "description": "Creates a divine barrier around an ally which grants them Spell Immunity and 100% resistance to Magic Damage.\\n\\nDISPEL TYPE: Basic Dispel",
+      "name": "Heavenly Grace",
+      "description": "Creates a divine barrier around an ally which grants them increased Status Resistance and Health Regeneration. DISPEL TYPE: Strong Dispel",
       "image": "https://hgv-hyperstone.azurewebsites.net/abilities/omniknight_repel.png",
       "hero_id": 57,
       "ability_type": "DOTA_ABILITY_TYPE_BASIC",
@@ -138,7 +136,7 @@
       ],
       "ability_cast_range_buffer": 250,
       "ability_cast_point": [
-        0.35
+        0.25
       ],
       "ability_channel_time": [
         0.0,
@@ -147,10 +145,10 @@
         0.0
       ],
       "ability_cooldown": [
-        30.0,
-        26.0,
-        22.0,
-        18.0
+        17.0,
+        16.0,
+        15.0,
+        14.0
       ],
       "ability_duration": [
         0.0,
@@ -165,7 +163,7 @@
         0.0
       ],
       "ability_mana_cost": [
-        85.0
+        75.0
       ],
       "ability_modifier_support_value": 3.0,
       "ability_modifier_support_bonus": 0.0,
@@ -174,10 +172,19 @@
       "linked": null,
       "ability_special": {
         "duration": [
-          4.0,
-          5.0,
-          6.0,
-          7.0
+          8.0
+        ],
+        "status_resistance": [
+          50.0,
+          60.0,
+          70.0,
+          80.0
+        ],
+        "hp_regen": [
+          8.0,
+          12.0,
+          16.0,
+          20.0
         ]
       }
     },
@@ -411,7 +418,7 @@
       "id": 5266,
       "key": "omniknight_guardian_angel",
       "name": "Guardian Angel",
-      "description": "Omniknight summons a Guardian Angel that grants immunity from physical damage.\\n\\nUpgradable by Aghanim's Scepter",
+      "description": "Omniknight summons a Guardian Angel that grants immunity from physical damage. Upgradable by Aghanim's Scepter",
       "image": "https://hgv-hyperstone.azurewebsites.net/abilities/omniknight_guardian_angel.png",
       "hero_id": 57,
       "ability_type": "DOTA_ABILITY_TYPE_ULTIMATE",
@@ -443,9 +450,9 @@
         0.0
       ],
       "ability_cooldown": [
-        180.0,
-        170.0,
-        160.0
+        160.0,
+        150.0,
+        140.0
       ],
       "ability_duration": [
         0.0,
@@ -476,7 +483,7 @@
           8.0
         ],
         "radius": [
-          600.0
+          1200.0
         ],
         "duration_scepter": [
           8.0,
@@ -518,9 +525,9 @@
       "description": null
     },
     {
-      "id": 6160,
-      "key": "special_bonus_mp_regen_3",
-      "name": "+3 Mana Regen",
+      "id": 6410,
+      "key": "special_bonus_mp_regen_5",
+      "name": "+5 Mana Regen",
       "description": null
     },
     {
@@ -532,7 +539,7 @@
     {
       "id": 6709,
       "key": "special_bonus_unique_omniknight_3",
-      "name": "+3s Repel Duration",
+      "name": "-8s Heavenly Grace Cooldown",
       "description": null
     }
   ],
@@ -553,11 +560,11 @@
   "attribute_base_intelligence": 15,
   "attribute_intelligence_gain": 1.8,
   "attribute_base_agility": 15,
-  "attribute_agility_gain": 1.75,
+  "attribute_agility_gain": 1.8,
   "status_health": 200,
-  "status_health_regen": 1.5,
+  "status_health_regen": 0.0,
   "status_mana": 75,
-  "status_mana_regen": 0.9,
+  "status_mana_regen": 0.0,
   "bounty_xp": 62,
   "bounty_gold_min": 0,
   "bounty_gold_max": 0,

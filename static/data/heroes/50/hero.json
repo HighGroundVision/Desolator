@@ -89,7 +89,10 @@
         0.0
       ],
       "ability_mana_cost": [
-        80.0
+        80.0,
+        100.0,
+        120.0,
+        140.0
       ],
       "ability_modifier_support_value": 0.35,
       "ability_modifier_support_bonus": 0.0,
@@ -154,7 +157,7 @@
       "id": 5234,
       "key": "dazzle_shallow_grave",
       "name": "Shallow Grave",
-      "description": "An ally blessed with Shallow Grave, no matter how close to death, cannot die while under its protection.\\n\\nUpgradable by Aghanim's Scepter.",
+      "description": "An ally blessed with Shallow Grave, no matter how close to death, cannot die while under its protection. Upgradable by Aghanim's Scepter.",
       "image": "https://hgv-hyperstone.azurewebsites.net/abilities/dazzle_shallow_grave.png",
       "hero_id": 50,
       "ability_type": "DOTA_ABILITY_TYPE_BASIC",
@@ -279,10 +282,10 @@
         0.0
       ],
       "ability_cooldown": [
-        12.0,
-        10.0,
-        8.0,
-        6.0
+        13.0,
+        11.0,
+        9.0,
+        7.0
       ],
       "ability_duration": [
         0.0,
@@ -475,22 +478,21 @@
       "ability_special": {}
     },
     {
-      "id": 5236,
-      "key": "dazzle_weave",
-      "name": "Weave",
-      "description": "Applies a buff that increases the armor of allied heroes while decreasing the armor of enemy heroes in the target area over time.",
-      "image": "https://hgv-hyperstone.azurewebsites.net/abilities/dazzle_weave.png",
+      "id": 7304,
+      "key": "dazzle_bad_juju",
+      "name": "Bad Juju",
+      "description": "Passively reduces cooldowns on your abilities and items. Anytime you cast a spell, all nearby enemies will have their armor reduced. Debuff stacks and refreshes duration.",
+      "image": "https://hgv-hyperstone.azurewebsites.net/abilities/dazzle_bad_juju.png",
       "hero_id": 50,
       "ability_type": "DOTA_ABILITY_TYPE_ULTIMATE",
       "ability_behaviors": [
-        "DOTA_ABILITY_BEHAVIOR_POINT",
-        "DOTA_ABILITY_BEHAVIOR_AOE"
+        "DOTA_ABILITY_BEHAVIOR_PASSIVE"
       ],
       "ability_unit_target_team": null,
       "ability_unit_target_type": [],
       "ability_unit_target_flags": [],
-      "spell_immunity_type": "SPELL_IMMUNITY_ENEMIES_YES",
-      "spell_dispellable_type": "SPELL_DISPELLABLE_NO",
+      "spell_immunity_type": "SPELL_IMMUNITY_ENEMIES_NO",
+      "spell_dispellable_type": "SPELL_DISPELLABLE_YES",
       "ability_unit_damage_type": null,
       "is_skill": false,
       "is_ultimate": true,
@@ -498,13 +500,14 @@
       "on_castbar": true,
       "on_learnbar": true,
       "ability_cast_range": [
-        2000
+        1200
       ],
       "ability_cast_range_buffer": 250,
       "ability_cast_point": [
-        0.3,
-        0.3,
-        0.3
+        0.0,
+        0.0,
+        0.0,
+        0.0
       ],
       "ability_channel_time": [
         0.0,
@@ -513,9 +516,10 @@
         0.0
       ],
       "ability_cooldown": [
-        40.0,
-        40.0,
-        40.0
+        0.0,
+        0.0,
+        0.0,
+        0.0
       ],
       "ability_duration": [
         0.0,
@@ -530,9 +534,10 @@
         0.0
       ],
       "ability_mana_cost": [
-        100.0,
-        100.0,
-        100.0
+        0.0,
+        0.0,
+        0.0,
+        0.0
       ],
       "ability_modifier_support_value": 1.0,
       "ability_modifier_support_bonus": 0.0,
@@ -540,21 +545,21 @@
       "ability_draft_enabled": true,
       "linked": null,
       "ability_special": {
-        "radius": [
-          575.0,
-          575.0,
-          575.0
+        "cooldown_reduction": [
+          30.0,
+          40.0,
+          50.0
         ],
-        "vision": [
-          800.0
-        ],
-        "armor_per_second": [
-          0.75,
-          1.0,
-          1.25
+        "armor_reduction": [
+          2.0,
+          2.25,
+          2.5
         ],
         "duration": [
-          24.0
+          8.0
+        ],
+        "radius": [
+          1200.0
         ]
       }
     }
@@ -585,9 +590,9 @@
       "description": null
     },
     {
-      "id": 6306,
-      "key": "special_bonus_movement_speed_50",
-      "name": "+50 Movement Speed",
+      "id": 6093,
+      "key": "special_bonus_movement_speed_40",
+      "name": "+40 Movement Speed",
       "description": null
     },
     {
@@ -599,13 +604,13 @@
     {
       "id": 6049,
       "key": "special_bonus_unique_dazzle_1",
-      "name": "-4s Shadow Wave Cooldown",
+      "name": "+40% Poison Touch Slow",
       "description": null
     },
     {
       "id": 6626,
       "key": "special_bonus_unique_dazzle_4",
-      "name": "+0.5 Weave Armor Per Second",
+      "name": "+0.5 Bad Juju Armor Reduction",
       "description": null
     }
   ],
@@ -622,15 +627,15 @@
   "projectile_speed": 1200,
   "attribute_primary": "DOTA_ATTRIBUTE_INTELLECT",
   "attribute_base_strength": 18,
-  "attribute_strength_gain": 2.3,
+  "attribute_strength_gain": 2.5,
   "attribute_base_intelligence": 25,
   "attribute_intelligence_gain": 3.4,
   "attribute_base_agility": 21,
   "attribute_agility_gain": 1.7,
   "status_health": 200,
-  "status_health_regen": 1.5,
+  "status_health_regen": 0.0,
   "status_mana": 75,
-  "status_mana_regen": 0.9,
+  "status_mana_regen": 0.0,
   "bounty_xp": 62,
   "bounty_gold_min": 0,
   "bounty_gold_max": 0,

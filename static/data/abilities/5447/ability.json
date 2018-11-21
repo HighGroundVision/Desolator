@@ -2,7 +2,7 @@
   "id": 5447,
   "key": "undying_flesh_golem",
   "name": "Flesh Golem",
-  "description": "Undying transforms into a horrifying flesh golem that possesses a Plague Aura.  This aura slows all enemy units within 750 range and amplifies the damage they take; the closer to Undying, the more damage and slow.  When a plagued unit dies, Undying is healed equal to a percentage of his own maximum health.",
+  "description": "Undying transforms into a horrifying flesh golem that possesses a Plague Aura.  This aura slows all enemy units within 375 range and causes them to lose a percentage of their current health per second.",
   "image": "https://hgv-hyperstone.azurewebsites.net/abilities/undying_flesh_golem.png",
   "hero_id": 85,
   "ability_type": "DOTA_ABILITY_TYPE_ULTIMATE",
@@ -13,9 +13,9 @@
   "ability_unit_target_team": null,
   "ability_unit_target_type": [],
   "ability_unit_target_flags": [],
-  "spell_immunity_type": "SPELL_IMMUNITY_ENEMIES_YES",
+  "spell_immunity_type": "SPELL_IMMUNITY_ENEMIES_NO",
   "spell_dispellable_type": "SPELL_DISPELLABLE_NO",
-  "ability_unit_damage_type": null,
+  "ability_unit_damage_type": "DAMAGE_TYPE_MAGICAL",
   "is_skill": false,
   "is_ultimate": true,
   "has_scepter_upgrade": false,
@@ -38,9 +38,7 @@
     0.0
   ],
   "ability_cooldown": [
-    75.0,
-    75.0,
-    75.0
+    110.0
   ],
   "ability_duration": [
     0.0,
@@ -55,8 +53,6 @@
     0.0
   ],
   "ability_mana_cost": [
-    100.0,
-    100.0,
     100.0
   ],
   "ability_modifier_support_value": 1.0,
@@ -65,36 +61,27 @@
   "ability_draft_enabled": true,
   "linked": null,
   "ability_special": {
+    "slow": [
+      24.0,
+      32.0,
+      40.0
+    ],
+    "damage": [
+      7.0
+    ],
+    "radius": [
+      375.0
+    ],
+    "health_bonus": [
+      400.0,
+      1000.0,
+      1600.0
+    ],
     "duration": [
       30.0
     ],
-    "radius": [
-      750.0
-    ],
-    "full_power_radius": [
-      200.0
-    ],
-    "max_damage_amp": [
-      20.0,
-      25.0,
-      30.0
-    ],
-    "min_damage_amp": [
-      1.0
-    ],
-    "max_speed_slow": [
-      20.0
-    ],
-    "min_speed_slow": [
-      1.0
-    ],
-    "death_heal": [
-      15.0,
-      20.0,
-      25.0
-    ],
-    "death_heal_creep": [
-      2.0
+    "tick_rate": [
+      0.5
     ]
   }
 }

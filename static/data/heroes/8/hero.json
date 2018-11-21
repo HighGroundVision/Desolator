@@ -30,7 +30,7 @@
       "id": 5028,
       "key": "juggernaut_blade_fury",
       "name": "Blade Fury",
-      "description": "Causes a bladestorm of destructive force around Juggernaut, rendering him immune to magic and dealing damage to nearby enemy units. \\n\\nDISPEL TYPE: Basic Dispel",
+      "description": "Causes a bladestorm of destructive force around Juggernaut, rendering him immune to magic and dealing damage to nearby enemy units.  DISPEL TYPE: Basic Dispel",
       "image": "https://hgv-hyperstone.azurewebsites.net/abilities/juggernaut_blade_fury.png",
       "hero_id": 8,
       "ability_type": "DOTA_ABILITY_TYPE_BASIC",
@@ -419,7 +419,7 @@
       "id": 5030,
       "key": "juggernaut_omni_slash",
       "name": "Omnislash",
-      "description": "Juggernaut leaps towards the target enemy unit with a damaging attack, and then slashes other nearby enemy units, dealing between 200-225 damage per slash.  Juggernaut is invulnerable for the duration.\\n\\nUpgradable by Aghanim's Scepter.",
+      "description": "Juggernaut leaps towards the target enemy unit with an attack, and then slashes other nearby enemy units at an increased attack rate. Juggernaut is invulnerable for the duration. Upgradable by Aghanim's Scepter.",
       "image": "https://hgv-hyperstone.azurewebsites.net/abilities/juggernaut_omni_slash.png",
       "hero_id": 8,
       "ability_type": "DOTA_ABILITY_TYPE_ULTIMATE",
@@ -488,27 +488,28 @@
       "ability_draft_enabled": true,
       "linked": null,
       "ability_special": {
-        "omni_slash_damage": [
-          200.0,
-          225.0
+        "attack_rate_multiplier": [
+          1.8
         ],
-        "omni_slash_jumps": [
+        "bonus_damage": [
+          30.0,
+          45.0,
+          60.0
+        ],
+        "duration": [
           3.0,
-          6.0,
-          9.0
+          3.25,
+          3.5
         ],
         "omni_slash_radius": [
           425.0
         ],
-        "omni_slash_bounce_tick": [
-          0.4
+        "duration_scepter": [
+          4.0,
+          4.25,
+          4.5
         ],
-        "omni_slash_jumps_scepter": [
-          6.0,
-          9.0,
-          12.0
-        ],
-        "omni_slash_cooldown_scepter": [
+        "cooldown_scepter": [
           70.0
         ]
       }
@@ -560,7 +561,7 @@
     {
       "id": 6662,
       "key": "special_bonus_unique_juggernaut_2",
-      "name": "+5 Omnislash Strikes",
+      "name": "+1s Omnislash Duration",
       "description": null
     }
   ],
@@ -568,8 +569,8 @@
   "armor_physical": 1.0,
   "magical_resistance": 25,
   "attack_capabilities": "DOTA_UNIT_CAP_MELEE_ATTACK",
-  "attack_damage_min": 22,
-  "attack_damage_max": 26,
+  "attack_damage_min": 12,
+  "attack_damage_max": 16,
   "attack_rate": 1.4,
   "attack_animation_point": 0.33,
   "attack_acquisition_range": 600,
@@ -580,12 +581,12 @@
   "attribute_strength_gain": 2.2,
   "attribute_base_intelligence": 14,
   "attribute_intelligence_gain": 1.4,
-  "attribute_base_agility": 26,
+  "attribute_base_agility": 36,
   "attribute_agility_gain": 2.4,
   "status_health": 200,
-  "status_health_regen": 2.0,
+  "status_health_regen": 0.5,
   "status_mana": 75,
-  "status_mana_regen": 0.9,
+  "status_mana_regen": 0.0,
   "bounty_xp": 62,
   "bounty_gold_min": 0,
   "bounty_gold_max": 0,

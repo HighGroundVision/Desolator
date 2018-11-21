@@ -1,13 +1,14 @@
 {
   "id": 5516,
   "key": "centaur_return",
-  "name": "Return",
-  "description": "Centaur counters all attacks, dealing damage back to the attacker based on a percentage of Centaur's strength.",
+  "name": "Retaliate",
+  "description": "Centaur counters all attacks, dealing damage back to the attacker. Each time Centaur gets attacked by a hero or a tower, he gains a charge counter. Can be cast to consume all charges, granting you a percentage base damage increase for 20 seconds.",
   "image": "https://hgv-hyperstone.azurewebsites.net/abilities/centaur_return.png",
   "hero_id": 96,
   "ability_type": "DOTA_ABILITY_TYPE_BASIC",
   "ability_behaviors": [
-    "DOTA_ABILITY_BEHAVIOR_PASSIVE"
+    "DOTA_ABILITY_BEHAVIOR_NO_TARGET",
+    "DOTA_ABILITY_BEHAVIOR_IMMEDIATE"
   ],
   "ability_unit_target_team": null,
   "ability_unit_target_type": [],
@@ -37,10 +38,10 @@
     0.0
   ],
   "ability_cooldown": [
-    0.0,
-    0.0,
-    0.0,
-    0.0
+    55.0,
+    50.0,
+    45.0,
+    40.0
   ],
   "ability_duration": [
     0.0,
@@ -68,18 +69,24 @@
   "ability_special": {
     "return_damage": [
       16.0,
-      18.0,
-      20.0,
-      22.0
+      32.0,
+      48.0,
+      64.0
     ],
-    "strength_pct": [
-      30.0,
-      45.0,
-      60.0,
-      75.0
+    "damage_gain_pct": [
+      6.0,
+      9.0,
+      12.0,
+      15.0
+    ],
+    "damage_gain_duration": [
+      20.0
+    ],
+    "max_stacks": [
+      13.0
     ],
     "aura_radius": [
-      900.0
+      1200.0
     ]
   }
 }

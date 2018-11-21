@@ -27,21 +27,18 @@
   "bot_implemented": false,
   "abilities": [
     {
-      "id": 5271,
-      "key": "huskar_inner_vitality",
-      "name": "Inner Vitality",
-      "description": "Unlocks the regenerative power of a friendly unit, with healing based upon its primary attribute. If the target is below 35%, it will heal faster.  Lasts 16 seconds.",
-      "image": "https://hgv-hyperstone.azurewebsites.net/abilities/huskar_inner_vitality.png",
+      "id": 7300,
+      "key": "huskar_inner_fire",
+      "name": "Inner Fire",
+      "description": "In a fiery rage, knocks all nearby enemies away from you to a fixed distance, dealing damage and disarming them.",
+      "image": "https://hgv-hyperstone.azurewebsites.net/abilities/huskar_inner_fire.png",
       "hero_id": 59,
       "ability_type": "DOTA_ABILITY_TYPE_BASIC",
       "ability_behaviors": [
-        "DOTA_ABILITY_BEHAVIOR_UNIT_TARGET",
-        "DOTA_ABILITY_BEHAVIOR_DONT_RESUME_ATTACK"
+        "DOTA_ABILITY_BEHAVIOR_NO_TARGET"
       ],
-      "ability_unit_target_team": "DOTA_UNIT_TARGET_TEAM_FRIENDLY",
-      "ability_unit_target_type": [
-        "DOTA_UNIT_TARGET_HERO"
-      ],
+      "ability_unit_target_team": null,
+      "ability_unit_target_type": [],
       "ability_unit_target_flags": [],
       "spell_immunity_type": null,
       "spell_dispellable_type": "SPELL_DISPELLABLE_YES",
@@ -52,14 +49,11 @@
       "on_castbar": true,
       "on_learnbar": true,
       "ability_cast_range": [
-        800
+        500
       ],
       "ability_cast_range_buffer": 250,
       "ability_cast_point": [
-        0.3,
-        0.3,
-        0.3,
-        0.3
+        0.2
       ],
       "ability_channel_time": [
         0.0,
@@ -68,16 +62,16 @@
         0.0
       ],
       "ability_cooldown": [
-        22.0,
         18.0,
+        16.0,
         14.0,
-        10.0
+        12.0
       ],
       "ability_duration": [
-        16.0,
-        16.0,
-        16.0,
-        16.0
+        0.0,
+        0.0,
+        0.0,
+        0.0
       ],
       "ability_damage": [
         0.0,
@@ -86,10 +80,10 @@
         0.0
       ],
       "ability_mana_cost": [
-        140.0,
-        150.0,
-        160.0,
-        170.0
+        75.0,
+        100.0,
+        125.0,
+        150.0
       ],
       "ability_modifier_support_value": 0.0,
       "ability_modifier_support_bonus": 0.0,
@@ -97,35 +91,26 @@
       "ability_draft_enabled": true,
       "linked": null,
       "ability_special": {
-        "heal": [
-          12.0
+        "damage": [
+          100.0,
+          155.0,
+          210.0,
+          265.0
         ],
-        "attrib_bonus": [
-          0.06,
-          0.08,
-          0.1,
-          0.12
+        "radius": [
+          500.0
         ],
-        "hurt_attrib_bonus": [
-          0.22,
-          0.3,
-          0.38,
-          0.46
+        "disarm_duration": [
+          1.75,
+          2.5,
+          3.25,
+          4.0
         ],
-        "hurt_percent": [
-          0.35
+        "knockback_distance": [
+          550.0
         ],
-        "tooltip_attrib_bonus": [
-          6.0,
-          8.0,
-          10.0,
-          12.0
-        ],
-        "tooltip_hurt_attrib_bonus": [
-          22.0,
-          30.0,
-          38.0,
-          46.0
+        "knockback_duration": [
+          0.6
         ]
       }
     },
@@ -214,7 +199,7 @@
       "id": 5273,
       "key": "huskar_berserkers_blood",
       "name": "Berserker's Blood",
-      "description": "Huskar's injuries feed his power, giving increased attack speed and magic damage resistance based on missing health.",
+      "description": "Huskar's injuries feed his power, giving increased attack speed and health regen resistance based on missing health. Health Regen is a percentage of your strength.",
       "image": "https://hgv-hyperstone.azurewebsites.net/abilities/huskar_berserkers_blood.png",
       "hero_id": 59,
       "ability_type": "DOTA_ABILITY_TYPE_BASIC",
@@ -284,11 +269,11 @@
           300.0,
           340.0
         ],
-        "maximum_resistance": [
+        "maximum_health_regen": [
           20.0,
-          30.0,
           40.0,
-          50.0
+          60.0,
+          80.0
         ],
         "hp_threshold_max": [
           10.0
@@ -439,7 +424,7 @@
       "id": 5274,
       "key": "huskar_life_break",
       "name": "Life Break",
-      "description": "Huskar draws upon his health to break an enemy's life, leaping at a target within attack range to shatter a percentage of that hero's current health, and slowing them.  While leaping, Huskar is Spell Immune.\\n\\nDISPEL TYPE: Basic Dispel\\n\\nUpgradable by Aghanim's Scepter.",
+      "description": "Huskar draws upon his health to break an enemy's life, leaping at a target within attack range to shatter a percentage of that hero's current health, and slowing them.  While leaping, Huskar is Spell Immune. DISPEL TYPE: Basic Dispel Upgradable by Aghanim's Scepter.",
       "image": "https://hgv-hyperstone.azurewebsites.net/abilities/huskar_life_break.png",
       "hero_id": 59,
       "ability_type": "DOTA_ABILITY_TYPE_ULTIMATE",
@@ -563,19 +548,19 @@
     {
       "id": 6380,
       "key": "special_bonus_unique_huskar_2",
-      "name": "+10 Burning Spears DPS",
+      "name": "+15 Burning Spears DPS",
       "description": null
     },
     {
-      "id": 6289,
-      "key": "special_bonus_lifesteal_15",
-      "name": "15% Lifesteal",
+      "id": 6078,
+      "key": "special_bonus_lifesteal_20",
+      "name": "20% Lifesteal",
       "description": null
     },
     {
-      "id": 6145,
-      "key": "special_bonus_strength_15",
-      "name": "+15 Strength",
+      "id": 6080,
+      "key": "special_bonus_strength_20",
+      "name": "+20 Strength",
       "description": null
     },
     {
@@ -585,9 +570,9 @@
       "description": null
     },
     {
-      "id": 5963,
-      "key": "special_bonus_attack_range_150",
-      "name": "+150 Attack Range",
+      "id": 6186,
+      "key": "special_bonus_attack_range_175",
+      "name": "+175 Attack Range",
       "description": null
     },
     {
@@ -616,9 +601,9 @@
   "attribute_base_agility": 15,
   "attribute_agility_gain": 1.4,
   "status_health": 200,
-  "status_health_regen": 1.5,
+  "status_health_regen": 0.0,
   "status_mana": 75,
-  "status_mana_regen": 0.9,
+  "status_mana_regen": 0.0,
   "bounty_xp": 62,
   "bounty_gold_min": 0,
   "bounty_gold_max": 0,

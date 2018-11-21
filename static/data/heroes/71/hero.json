@@ -105,10 +105,10 @@
       "linked": null,
       "ability_special": {
         "movement_speed": [
-          600.0,
-          650.0,
-          700.0,
-          750.0
+          300.0,
+          325.0,
+          350.0,
+          375.0
         ],
         "stun_duration": [
           1.2,
@@ -137,23 +137,22 @@
       }
     },
     {
-      "id": 5354,
-      "key": "spirit_breaker_empowering_haste",
-      "name": "Empowering Haste",
-      "description": "Causes Spirit Breaker to gain power with higher movement speed. His presence increases the movement speed of nearby allied units. Can be cast to improve the movement speed bonus for %duration% seconds.",
-      "image": "https://hgv-hyperstone.azurewebsites.net/abilities/spirit_breaker_empowering_haste.png",
+      "id": 7301,
+      "key": "spirit_breaker_bulldoze",
+      "name": "Bulldoze",
+      "description": "Spirit Breaker gains movement speed and status resistance to ram through enemies. Can be used while charging.",
+      "image": "https://hgv-hyperstone.azurewebsites.net/abilities/spirit_breaker_bulldoze.png",
       "hero_id": 71,
       "ability_type": "DOTA_ABILITY_TYPE_BASIC",
       "ability_behaviors": [
         "DOTA_ABILITY_BEHAVIOR_NO_TARGET",
-        "DOTA_ABILITY_BEHAVIOR_IMMEDIATE",
-        "DOTA_ABILITY_BEHAVIOR_AURA"
+        "DOTA_ABILITY_BEHAVIOR_IMMEDIATE"
       ],
-      "ability_unit_target_team": "DOTA_UNIT_TARGET_TEAM_FRIENDLY",
+      "ability_unit_target_team": null,
       "ability_unit_target_type": [],
       "ability_unit_target_flags": [],
       "spell_immunity_type": null,
-      "spell_dispellable_type": "SPELL_DISPELLABLE_NO",
+      "spell_dispellable_type": null,
       "ability_unit_damage_type": null,
       "is_skill": true,
       "is_ultimate": false,
@@ -177,7 +176,7 @@
         0.0
       ],
       "ability_cooldown": [
-        20.0
+        22.0
       ],
       "ability_duration": [
         0.0,
@@ -192,17 +191,33 @@
         0.0
       ],
       "ability_mana_cost": [
-        0.0,
-        0.0,
-        0.0,
-        0.0
+        25.0,
+        30.0,
+        35.0,
+        40.0
       ],
       "ability_modifier_support_value": 1.0,
       "ability_modifier_support_bonus": 0.0,
-      "fight_recap_level": 0,
+      "fight_recap_level": 1,
       "ability_draft_enabled": true,
       "linked": null,
-      "ability_special": {}
+      "ability_special": {
+        "movement_speed": [
+          12.0,
+          18.0,
+          24.0,
+          30.0
+        ],
+        "status_resistance": [
+          30.0,
+          40.0,
+          50.0,
+          60.0
+        ],
+        "duration": [
+          8.0
+        ]
+      }
     },
     {
       "id": 5355,
@@ -279,10 +294,10 @@
           17.0
         ],
         "damage": [
-          12.0,
+          16.0,
           24.0,
-          36.0,
-          48.0
+          32.0,
+          40.0
         ],
         "duration": [
           1.2,
@@ -463,13 +478,14 @@
       "id": 5356,
       "key": "spirit_breaker_nether_strike",
       "name": "Nether Strike",
-      "description": "Spirit Breaker slips into the nether realm, reappearing next to his hapless victim. Upon reappearing, a Greater Bash of the current level occurs and deals bonus damage. Knocks back for double the normal distance. \\n\\nUpgradable by Aghanim's Scepter.",
+      "description": "Spirit Breaker slips into the nether realm, reappearing next to his hapless victim. Upon reappearing, a Greater Bash of the current level occurs and deals bonus damage. Knocks back for double the normal distance.  Upgradable by Aghanim's Scepter.",
       "image": "https://hgv-hyperstone.azurewebsites.net/abilities/spirit_breaker_nether_strike.png",
       "hero_id": 71,
       "ability_type": "DOTA_ABILITY_TYPE_ULTIMATE",
       "ability_behaviors": [
         "DOTA_ABILITY_BEHAVIOR_UNIT_TARGET",
-        "DOTA_ABILITY_BEHAVIOR_IGNORE_BACKSWING"
+        "DOTA_ABILITY_BEHAVIOR_IGNORE_BACKSWING",
+        "DOTA_ABILITY_BEHAVIOR_ROOT_DISABLES"
       ],
       "ability_unit_target_team": "DOTA_UNIT_TARGET_TEAM_ENEMY",
       "ability_unit_target_type": [
@@ -571,9 +587,9 @@
       "description": null
     },
     {
-      "id": 5912,
-      "key": "special_bonus_hp_regen_10",
-      "name": "+10 Health Regen",
+      "id": 6730,
+      "key": "special_bonus_hp_regen_12",
+      "name": "+12 Health Regen",
       "description": null
     },
     {
@@ -585,13 +601,13 @@
     {
       "id": 6543,
       "key": "special_bonus_unique_spirit_breaker_3",
-      "name": "+30% Greater Bash Damage",
+      "name": "+15% Greater Bash Damage",
       "description": null
     },
     {
       "id": 6296,
       "key": "special_bonus_unique_spirit_breaker_2",
-      "name": "+400 Charge Speed",
+      "name": "-7s Bulldoze Cooldown",
       "description": null
     },
     {
@@ -626,9 +642,9 @@
   "attribute_base_agility": 17,
   "attribute_agility_gain": 1.7,
   "status_health": 200,
-  "status_health_regen": 1.5,
+  "status_health_regen": 0.0,
   "status_mana": 75,
-  "status_mana_regen": 0.9,
+  "status_mana_regen": 0.0,
   "bounty_xp": 62,
   "bounty_gold_min": 0,
   "bounty_gold_max": 0,

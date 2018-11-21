@@ -107,7 +107,7 @@
           250.0
         ],
         "missile_speed": [
-          1600.0
+          1300.0
         ]
       }
     },
@@ -115,7 +115,7 @@
       "id": 5586,
       "key": "abaddon_aphotic_shield",
       "name": "Aphotic Shield",
-      "description": "Summons dark energies around an ally unit, creating a shield that absorbs a set amount of damage before expiring. When the shield is destroyed it will burst and deal damage equal to the amount it could absorb to an area around it. Removes certain types of negative buffs and stuns on cast.\\n\\nDISPEL TYPE: Strong Dispel",
+      "description": "Summons dark energies around an ally unit, creating a shield that absorbs a set amount of damage before expiring. When the shield is destroyed it will burst and deal damage equal to the amount it could absorb to an area around it. Removes certain types of negative buffs and stuns on cast. DISPEL TYPE: Strong Dispel",
       "image": "https://hgv-hyperstone.azurewebsites.net/abilities/abaddon_aphotic_shield.png",
       "hero_id": 102,
       "ability_type": "DOTA_ABILITY_TYPE_BASIC",
@@ -196,7 +196,7 @@
       "id": 5587,
       "key": "abaddon_frostmourne",
       "name": "Curse of Avernus",
-      "description": "Abaddon strikes an enemy with chilling curse on each attack, causing all units who attack the slowed enemy to gain increased movement speed, along with faster attack speed, for a limited time.",
+      "description": "Abaddon strikes an enemy, slowing the target's movement speed. If the target gets hit 4 times, they become affected by a chilling curse causing them to be silenced and slowed, and all attacks against them gain an attack speed boost.",
       "image": "https://hgv-hyperstone.azurewebsites.net/abilities/abaddon_frostmourne.png",
       "hero_id": 102,
       "ability_type": "DOTA_ABILITY_TYPE_BASIC",
@@ -206,7 +206,7 @@
       "ability_unit_target_team": null,
       "ability_unit_target_type": [],
       "ability_unit_target_flags": [],
-      "spell_immunity_type": "SPELL_IMMUNITY_ENEMIES_YES",
+      "spell_immunity_type": "SPELL_IMMUNITY_ENEMIES_NO",
       "spell_dispellable_type": "SPELL_DISPELLABLE_YES",
       "ability_unit_damage_type": null,
       "is_skill": true,
@@ -260,32 +260,32 @@
       "ability_draft_enabled": true,
       "linked": null,
       "ability_special": {
-        "debuff_duration": [
-          2.5
+        "slow_duration": [
+          4.0
         ],
-        "buff_duration": [
-          4.5
-        ],
-        "slow_pct": [
-          8.0,
-          12.0,
-          16.0,
-          20.0
-        ],
-        "attack_slow_tooltip": [
-          8.0,
-          12.0,
-          16.0,
-          20.0
-        ],
-        "move_speed_pct": [
-          15.0
-        ],
-        "attack_speed": [
+        "movement_speed": [
           10.0,
+          15.0,
           20.0,
+          25.0
+        ],
+        "hit_count": [
+          4.0
+        ],
+        "curse_duration": [
+          4.0
+        ],
+        "curse_slow": [
           30.0,
-          40.0
+          40.0,
+          50.0,
+          60.0
+        ],
+        "curse_attack_speed": [
+          40.0,
+          60.0,
+          80.0,
+          100.0
         ]
       }
     },
@@ -433,7 +433,7 @@
       "id": 5588,
       "key": "abaddon_borrowed_time",
       "name": "Borrowed Time",
-      "description": "When activated, all damage dealt to you will heal instead of harm. Most negative buffs will also be removed. If the ability is not on cooldown, it will automatically activate if your health falls below 400.\\n\\nUpgradable by Aghanim's Scepter.\\n\\nDISPEL TYPE: Strong Dispel",
+      "description": "When activated, all damage dealt to you will heal instead of harm. Most negative buffs will also be removed. If the ability is not on cooldown, it will automatically activate if your health falls below 400. Upgradable by Aghanim's Scepter. DISPEL TYPE: Strong Dispel",
       "image": "https://hgv-hyperstone.azurewebsites.net/abilities/abaddon_borrowed_time.png",
       "hero_id": 102,
       "ability_type": "DOTA_ABILITY_TYPE_ULTIMATE",
@@ -517,16 +517,16 @@
           50.0
         ],
         "redirect_range_tooltip_scepter": [
-          900.0
+          1200.0
         ]
       }
     }
   ],
   "talents": [
     {
-      "id": 5919,
-      "key": "special_bonus_movement_speed_25",
-      "name": "+25 Movement Speed",
+      "id": 5918,
+      "key": "special_bonus_movement_speed_20",
+      "name": "+20 Movement Speed",
       "description": null
     },
     {
@@ -566,9 +566,9 @@
       "description": null
     },
     {
-      "id": 6602,
-      "key": "special_bonus_unique_abaddon_3",
-      "name": "+25% Curse of Avernus MS/AS Slow",
+      "id": 7335,
+      "key": "special_bonus_unique_abaddon_4",
+      "name": "375 AoE Mist Coil",
       "description": null
     }
   ],
@@ -588,17 +588,17 @@
   "attribute_strength_gain": 2.6,
   "attribute_base_intelligence": 21,
   "attribute_intelligence_gain": 2.0,
-  "attribute_base_agility": 17,
+  "attribute_base_agility": 23,
   "attribute_agility_gain": 1.5,
   "status_health": 200,
-  "status_health_regen": 1.5,
+  "status_health_regen": 0.0,
   "status_mana": 75,
-  "status_mana_regen": 0.9,
+  "status_mana_regen": 0.0,
   "bounty_xp": 62,
   "bounty_gold_min": 0,
   "bounty_gold_max": 0,
   "movement_capabilities": "DOTA_UNIT_CAP_MOVE_GROUND",
-  "movement_speed": 310,
+  "movement_speed": 325,
   "movement_turn_rate": 0.5,
   "has_aggressive_stance": true,
   "team": 1,

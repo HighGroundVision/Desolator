@@ -132,7 +132,7 @@
       "id": 5127,
       "key": "crystal_maiden_frostbite",
       "name": "Frostbite",
-      "description": "Encases an enemy unit in ice, prohibiting movement and attack, while dealing 50 damage every half-second. Lasts 10 seconds on creeps level 6 or lower.",
+      "description": "Encases an enemy unit in ice, prohibiting movement and attack, while dealing damage over time. Lasts 10 seconds on creeps level 6 or lower.",
       "image": "https://hgv-hyperstone.azurewebsites.net/abilities/crystal_maiden_frostbite.png",
       "hero_id": 5,
       "ability_type": "DOTA_ABILITY_TYPE_BASIC",
@@ -154,7 +154,7 @@
       "on_castbar": true,
       "on_learnbar": true,
       "ability_cast_range": [
-        525
+        550
       ],
       "ability_cast_range_buffer": 250,
       "ability_cast_point": [
@@ -199,8 +199,14 @@
       "ability_draft_enabled": true,
       "linked": null,
       "ability_special": {
-        "damage_per_second_tooltip": [
-          50.0
+        "total_damage": [
+          150.0,
+          200.0,
+          250.0,
+          300.0
+        ],
+        "creep_total_damage": [
+          1000.0
         ],
         "duration": [
           1.5,
@@ -208,23 +214,8 @@
           2.5,
           3.0
         ],
-        "hero_damage_tooltip": [
-          150.0,
-          200.0,
-          250.0,
-          300.0
-        ],
         "creep_duration": [
-          10.0,
-          10.0,
-          10.0,
           10.0
-        ],
-        "creep_damage_tooltip": [
-          1000.0
-        ],
-        "damage": [
-          100.0
         ]
       }
     },
@@ -294,16 +285,16 @@
       "linked": null,
       "ability_special": {
         "mana_regen": [
-          0.7,
-          0.9,
-          1.1,
-          1.3
+          1.2,
+          1.7,
+          2.2,
+          2.7
         ],
         "mana_regen_self": [
-          1.8,
-          2.6,
-          3.4,
-          4.2
+          2.4,
+          4.4,
+          6.4,
+          8.4
         ]
       }
     },
@@ -451,7 +442,7 @@
       "id": 5129,
       "key": "crystal_maiden_freezing_field",
       "name": "Freezing Field",
-      "description": "CHANNELED - Surrounds Crystal Maiden with random icy explosions that slow enemies and deal massive damage.  Lasts 10 seconds.\\n\\nUpgradable by Aghanim's Scepter.",
+      "description": "CHANNELED - Surrounds Crystal Maiden with random icy explosions that slow enemies and deal massive damage.  Lasts 10 seconds. Upgradable by Aghanim's Scepter.",
       "image": "https://hgv-hyperstone.azurewebsites.net/abilities/crystal_maiden_freezing_field.png",
       "hero_id": 5,
       "ability_type": "DOTA_ABILITY_TYPE_ULTIMATE",
@@ -476,9 +467,7 @@
       ],
       "ability_cast_range_buffer": 250,
       "ability_cast_point": [
-        0.3,
-        0.3,
-        0.3
+        0.0
       ],
       "ability_channel_time": [
         10.0
@@ -600,8 +589,8 @@
   "armor_physical": 0.0,
   "magical_resistance": 25,
   "attack_capabilities": "DOTA_UNIT_CAP_RANGED_ATTACK",
-  "attack_damage_min": 26,
-  "attack_damage_max": 32,
+  "attack_damage_min": 28,
+  "attack_damage_max": 34,
   "attack_rate": 1.7,
   "attack_animation_point": 0.55,
   "attack_acquisition_range": 800,
@@ -609,15 +598,15 @@
   "projectile_speed": 900,
   "attribute_primary": "DOTA_ATTRIBUTE_INTELLECT",
   "attribute_base_strength": 18,
-  "attribute_strength_gain": 2.0,
+  "attribute_strength_gain": 2.2,
   "attribute_base_intelligence": 14,
   "attribute_intelligence_gain": 2.9,
   "attribute_base_agility": 16,
   "attribute_agility_gain": 1.6,
   "status_health": 200,
-  "status_health_regen": 1.5,
+  "status_health_regen": 0.0,
   "status_mana": 75,
-  "status_mana_regen": 0.9,
+  "status_mana_regen": 0.0,
   "bounty_xp": 62,
   "bounty_gold_min": 0,
   "bounty_gold_max": 0,

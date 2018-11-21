@@ -2,7 +2,7 @@
   "id": 5288,
   "key": "bounty_hunter_track",
   "name": "Track",
-  "description": "Tracks an enemy hero, granting True Sight of the target, and information on how much gold it is carrying. Allies near the hunted are granted bonus movement speed. If the target dies, Bounty Hunter and nearby heroes collect a bonus bounty of gold.",
+  "description": "Tracks an enemy hero, granting True Sight of the target, and information on how much gold it is carrying. You move fast when near the tracked unit and deal critical strikes when attacking it. If the target dies, Bounty Hunter and nearby heroes collect a bonus bounty of gold. Casting Track does not take you out of invisibility.",
   "image": "https://hgv-hyperstone.azurewebsites.net/abilities/bounty_hunter_track.png",
   "hero_id": 62,
   "ability_type": "DOTA_ABILITY_TYPE_ULTIMATE",
@@ -65,20 +65,13 @@
   "ability_draft_enabled": true,
   "linked": null,
   "ability_special": {
-    "aura_radius": [
-      900.0,
-      900.0,
-      900.0
-    ],
-    "bonus_move_speed_pct": [
-      16.0,
-      18.0,
-      20.0
+    "target_crit_multiplier": [
+      140.0,
+      160.0,
+      180.0
     ],
     "bonus_gold_radius": [
-      925.0,
-      925.0,
-      925.0
+      1200.0
     ],
     "bonus_gold_self": [
       150.0,
@@ -102,6 +95,11 @@
       0.3,
       0.4,
       0.5
+    ],
+    "bonus_move_speed_pct": [
+      16.0,
+      18.0,
+      20.0
     ]
   }
 }
