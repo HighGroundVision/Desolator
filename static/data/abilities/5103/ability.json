@@ -2,13 +2,12 @@
   "id": 5103,
   "key": "sandking_sand_storm",
   "name": "Sand Storm",
-  "description": "CHANNELED - Sand King creates a fearsome sandstorm that damages enemy units while hiding him from vision.  The invisibility remains for a short duration after the sandstorm ends.",
+  "description": "Sand King creates a fearsome sandstorm that damages enemy units while hiding him from vision.  The effect ends when Sand King leaves the area.",
   "image": "https://hgv-hyperstone.azurewebsites.net/abilities/sandking_sand_storm.png",
   "hero_id": 16,
   "ability_type": "DOTA_ABILITY_TYPE_BASIC",
   "ability_behaviors": [
     "DOTA_ABILITY_BEHAVIOR_NO_TARGET",
-    "DOTA_ABILITY_BEHAVIOR_CHANNELLED",
     "DOTA_ABILITY_BEHAVIOR_DONT_RESUME_ATTACK"
   ],
   "ability_unit_target_team": null,
@@ -33,16 +32,22 @@
     0.0
   ],
   "ability_channel_time": [
-    50.0
+    0.0,
+    0.0,
+    0.0,
+    0.0
   ],
   "ability_cooldown": [
-    34.0,
-    26.0,
-    18.0,
-    10.0
+    40.0,
+    32.0,
+    24.0,
+    16.0
   ],
   "ability_duration": [
-    50.0
+    20.0,
+    25.0,
+    30.0,
+    35.0
   ],
   "ability_damage": [
     0.0,
@@ -51,10 +56,7 @@
     0.0
   ],
   "ability_mana_cost": [
-    60.0,
-    50.0,
-    40.0,
-    30.0
+    60.0
   ],
   "ability_modifier_support_value": 1.0,
   "ability_modifier_support_bonus": 0.0,
@@ -62,23 +64,29 @@
   "ability_draft_enabled": true,
   "linked": null,
   "ability_special": {
-    "sand_storm_invis_delay": [
-      0.9,
-      1.1,
-      1.3,
-      1.5
+    "damage_tick_rate": [
+      0.5
     ],
     "sand_storm_radius": [
-      525.0
+      350.0,
+      450.0,
+      550.0,
+      650.0
     ],
     "AbilityDuration": [
-      50.0
+      20.0,
+      25.0,
+      30.0,
+      35.0
     ],
     "sand_storm_damage": [
-      40.0,
-      60.0,
-      80.0,
+      25.0,
+      50.0,
+      75.0,
       100.0
+    ],
+    "fade_delay": [
+      0.7
     ]
   }
 }

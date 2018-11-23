@@ -34,7 +34,7 @@
       "id": 5118,
       "key": "tidehunter_gush",
       "name": "Gush",
-      "description": "Summons a gush of water to damage an enemy unit, reducing their movement speed and armor.  Lasts 4 seconds.\\n\\nUpgradable by Aghanim's Scepter.",
+      "description": "Summons a gush of water to damage an enemy unit, reducing their movement speed and armor.  Lasts 4 seconds. Upgradable by Aghanim's Scepter.",
       "image": "https://hgv-hyperstone.azurewebsites.net/abilities/tidehunter_gush.png",
       "hero_id": 29,
       "ability_type": "DOTA_ABILITY_TYPE_BASIC",
@@ -137,7 +137,7 @@
       "id": 5119,
       "key": "tidehunter_kraken_shell",
       "name": "Kraken Shell",
-      "description": "Thickens Tidehunter's hide to passively block a portion of any incoming physical attack damage. The hide also removes negative status effects if the damage taken crosses a threshold.\\n\\nDoes not stack with items that provide Damage Block.\\n\\nDISPEL TYPE: Strong Dispel",
+      "description": "Thickens Tidehunter's hide to passively block a portion of any incoming physical attack damage. The hide also removes negative status effects if the damage taken crosses a threshold. Does not stack with items that provide Damage Block. DISPEL TYPE: Strong Dispel",
       "image": "https://hgv-hyperstone.azurewebsites.net/abilities/tidehunter_kraken_shell.png",
       "hero_id": 29,
       "ability_type": "DOTA_ABILITY_TYPE_BASIC",
@@ -225,7 +225,7 @@
       "id": 5120,
       "key": "tidehunter_anchor_smash",
       "name": "Anchor Smash",
-      "description": "Tidehunter swings his mighty anchor to damage nearby enemies and reduce their attack damage.",
+      "description": "Tidehunter swings his mighty anchor to attack and deal bonus damage to nearby enemies and reduce their attack damage.",
       "image": "https://hgv-hyperstone.azurewebsites.net/abilities/tidehunter_anchor_smash.png",
       "hero_id": 29,
       "ability_type": "DOTA_ABILITY_TYPE_BASIC",
@@ -235,7 +235,7 @@
       "ability_unit_target_team": null,
       "ability_unit_target_type": [],
       "ability_unit_target_flags": [],
-      "spell_immunity_type": "SPELL_IMMUNITY_ENEMIES_YES",
+      "spell_immunity_type": "SPELL_IMMUNITY_ENEMIES_NO",
       "spell_dispellable_type": "SPELL_DISPELLABLE_YES",
       "ability_unit_damage_type": "DAMAGE_TYPE_PHYSICAL",
       "is_skill": true,
@@ -269,10 +269,10 @@
         0.0
       ],
       "ability_damage": [
-        75.0,
-        125.0,
-        175.0,
-        225.0
+        0.0,
+        0.0,
+        0.0,
+        0.0
       ],
       "ability_mana_cost": [
         30.0,
@@ -286,6 +286,12 @@
       "ability_draft_enabled": true,
       "linked": null,
       "ability_special": {
+        "attack_damage": [
+          45.0,
+          90.0,
+          135.0,
+          180.0
+        ],
         "damage_reduction": [
           -45.0,
           -50.0,
@@ -493,8 +499,8 @@
       ],
       "ability_damage": [
         200.0,
-        290.0,
-        380.0
+        300.0,
+        400.0
       ],
       "ability_mana_cost": [
         150.0,
@@ -523,15 +529,15 @@
   ],
   "talents": [
     {
-      "id": 5919,
-      "key": "special_bonus_movement_speed_25",
-      "name": "+25 Movement Speed",
+      "id": 5918,
+      "key": "special_bonus_movement_speed_20",
+      "name": "+20 Movement Speed",
       "description": null
     },
     {
       "id": 6945,
       "key": "special_bonus_unique_tidehunter_2",
-      "name": "+80 Gush Damage",
+      "name": "+100 Gush Damage",
       "description": null
     },
     {
@@ -590,9 +596,9 @@
   "attribute_base_agility": 15,
   "attribute_agility_gain": 1.5,
   "status_health": 200,
-  "status_health_regen": 1.5,
+  "status_health_regen": 0.0,
   "status_mana": 75,
-  "status_mana_regen": 0.9,
+  "status_mana_regen": 0.0,
   "bounty_xp": 62,
   "bounty_gold_min": 0,
   "bounty_gold_max": 0,

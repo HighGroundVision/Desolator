@@ -183,25 +183,26 @@
       }
     },
     {
-      "id": 5005,
-      "key": "antimage_spell_shield",
-      "name": "Spell Shield",
-      "description": "Increases Anti-Mage's resistance to magic damage.\\n\\nUpgradable by Aghanim's Scepter.",
-      "image": "https://hgv-hyperstone.azurewebsites.net/abilities/antimage_spell_shield.png",
+      "id": 7314,
+      "key": "antimage_counterspell",
+      "name": "Counterspell",
+      "description": "Passively grants you magic resistance. Can be activated to create an anti-magic shell around you that sends any targeted spells back towards enemies instead of affecting you.",
+      "image": "https://hgv-hyperstone.azurewebsites.net/abilities/antimage_counterspell.png",
       "hero_id": 1,
       "ability_type": "DOTA_ABILITY_TYPE_BASIC",
       "ability_behaviors": [
-        "DOTA_ABILITY_BEHAVIOR_PASSIVE"
+        "DOTA_ABILITY_BEHAVIOR_NO_TARGET",
+        "DOTA_ABILITY_BEHAVIOR_IMMEDIATE"
       ],
       "ability_unit_target_team": null,
       "ability_unit_target_type": [],
       "ability_unit_target_flags": [],
       "spell_immunity_type": null,
-      "spell_dispellable_type": null,
+      "spell_dispellable_type": "SPELL_DISPELLABLE_YES",
       "ability_unit_damage_type": null,
       "is_skill": true,
       "is_ultimate": false,
-      "has_scepter_upgrade": true,
+      "has_scepter_upgrade": false,
       "on_castbar": true,
       "on_learnbar": true,
       "ability_cast_range": [
@@ -221,10 +222,10 @@
         0.0
       ],
       "ability_cooldown": [
-        0.0,
-        0.0,
-        0.0,
-        0.0
+        15.0,
+        11.0,
+        7.0,
+        3.0
       ],
       "ability_duration": [
         0.0,
@@ -239,25 +240,22 @@
         0.0
       ],
       "ability_mana_cost": [
-        0.0,
-        0.0,
-        0.0,
-        0.0
+        40.0
       ],
       "ability_modifier_support_value": 1.0,
       "ability_modifier_support_bonus": 0.0,
-      "fight_recap_level": 0,
+      "fight_recap_level": 1,
       "ability_draft_enabled": true,
       "linked": null,
       "ability_special": {
-        "spell_shield_resistance": [
-          20.0,
-          30.0,
-          40.0,
-          50.0
+        "magic_resistance": [
+          15.0,
+          25.0,
+          35.0,
+          45.0
         ],
-        "scepter_cooldown": [
-          12.0
+        "duration": [
+          1.4
         ]
       }
     },
@@ -527,7 +525,7 @@
     {
       "id": 6607,
       "key": "special_bonus_unique_antimage_4",
-      "name": "+25% Spell Shield",
+      "name": "+25% Counterspell Magic Resistance",
       "description": null
     },
     {
@@ -556,9 +554,9 @@
   "attribute_base_agility": 22,
   "attribute_agility_gain": 2.8,
   "status_health": 200,
-  "status_health_regen": 1.75,
+  "status_health_regen": 0.25,
   "status_mana": 75,
-  "status_mana_regen": 0.9,
+  "status_mana_regen": 0.0,
   "bounty_xp": 62,
   "bounty_gold_min": 0,
   "bounty_gold_max": 0,

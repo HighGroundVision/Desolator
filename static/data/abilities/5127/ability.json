@@ -2,7 +2,7 @@
   "id": 5127,
   "key": "crystal_maiden_frostbite",
   "name": "Frostbite",
-  "description": "Encases an enemy unit in ice, prohibiting movement and attack, while dealing 50 damage every half-second. Lasts 10 seconds on creeps level 6 or lower.",
+  "description": "Encases an enemy unit in ice, prohibiting movement and attack, while dealing damage over time. Lasts 10 seconds on creeps level 6 or lower.",
   "image": "https://hgv-hyperstone.azurewebsites.net/abilities/crystal_maiden_frostbite.png",
   "hero_id": 5,
   "ability_type": "DOTA_ABILITY_TYPE_BASIC",
@@ -24,7 +24,7 @@
   "on_castbar": true,
   "on_learnbar": true,
   "ability_cast_range": [
-    525
+    550
   ],
   "ability_cast_range_buffer": 250,
   "ability_cast_point": [
@@ -69,8 +69,14 @@
   "ability_draft_enabled": true,
   "linked": null,
   "ability_special": {
-    "damage_per_second_tooltip": [
-      50.0
+    "total_damage": [
+      150.0,
+      200.0,
+      250.0,
+      300.0
+    ],
+    "creep_total_damage": [
+      1000.0
     ],
     "duration": [
       1.5,
@@ -78,23 +84,8 @@
       2.5,
       3.0
     ],
-    "hero_damage_tooltip": [
-      150.0,
-      200.0,
-      250.0,
-      300.0
-    ],
     "creep_duration": [
-      10.0,
-      10.0,
-      10.0,
       10.0
-    ],
-    "creep_damage_tooltip": [
-      1000.0
-    ],
-    "damage": [
-      100.0
     ]
   }
 }

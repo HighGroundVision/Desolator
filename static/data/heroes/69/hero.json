@@ -44,7 +44,8 @@
       "ability_type": "DOTA_ABILITY_TYPE_BASIC",
       "ability_behaviors": [
         "DOTA_ABILITY_BEHAVIOR_UNIT_TARGET",
-        "DOTA_ABILITY_BEHAVIOR_DONT_RESUME_ATTACK"
+        "DOTA_ABILITY_BEHAVIOR_DONT_RESUME_ATTACK",
+        "DOTA_ABILITY_BEHAVIOR_AUTOCAST"
       ],
       "ability_unit_target_team": "DOTA_UNIT_TARGET_TEAM_CUSTOM",
       "ability_unit_target_type": [
@@ -116,10 +117,13 @@
           75.0,
           100.0
         ],
-        "health_per_second": [
-          20.0,
-          20.0,
-          20.0,
+        "devour_time": [
+          80.0
+        ],
+        "regen": [
+          5.0,
+          10.0,
+          15.0,
           20.0
         ]
       }
@@ -128,7 +132,7 @@
       "id": 5340,
       "key": "doom_bringer_scorched_earth",
       "name": "Scorched Earth",
-      "description": "Carpets the nearby earth in flames which damage enemies and heal Doom, while also granting him increased movement speed.",
+      "description": "Carpets the nearby earth in flames which damage enemies, while also granting him increased movement speed.",
       "image": "https://hgv-hyperstone.azurewebsites.net/abilities/doom_bringer_scorched_earth.png",
       "hero_id": 69,
       "ability_type": "DOTA_ABILITY_TYPE_BASIC",
@@ -166,7 +170,10 @@
         0.0
       ],
       "ability_cooldown": [
-        55.0
+        55.0,
+        50.0,
+        45.0,
+        40.0
       ],
       "ability_duration": [
         0.0,
@@ -193,16 +200,10 @@
       "linked": null,
       "ability_special": {
         "damage_per_second": [
-          16.0,
-          24.0,
-          32.0,
-          40.0
-        ],
-        "regen": [
-          12.0,
-          18.0,
-          24.0,
-          30.0
+          20.0,
+          30.0,
+          40.0,
+          50.0
         ],
         "radius": [
           600.0,
@@ -252,7 +253,7 @@
       "on_castbar": true,
       "on_learnbar": true,
       "ability_cast_range": [
-        150
+        175
       ],
       "ability_cast_range_buffer": 250,
       "ability_cast_point": [
@@ -455,7 +456,7 @@
       "id": 5342,
       "key": "doom_bringer_doom",
       "name": "Doom",
-      "description": "Inflicts a curse that prevents an enemy Hero from casting spells or using items, while taking damage over time.\\n\\nUpgradable by Aghanim's Scepter.\\n\\nDISPEL TYPE: Basic Dispel",
+      "description": "Inflicts a curse that prevents an enemy Hero from casting spells or using items, while taking damage over time. Upgradable by Aghanim's Scepter. DISPEL TYPE: Basic Dispel",
       "image": "https://hgv-hyperstone.azurewebsites.net/abilities/doom_bringer_doom.png",
       "hero_id": 69,
       "ability_type": "DOTA_ABILITY_TYPE_ULTIMATE",
@@ -549,7 +550,7 @@
     {
       "id": 6370,
       "key": "special_bonus_unique_doom_4",
-      "name": "+10 Scorched Earth Damage/Heal",
+      "name": "+20 Scorched Earth Damage",
       "description": null
     },
     {
@@ -589,9 +590,9 @@
       "description": null
     },
     {
-      "id": 6827,
-      "key": "special_bonus_cleave_100",
-      "name": "+100% Cleave",
+      "id": 7201,
+      "key": "special_bonus_cleave_130",
+      "name": "+130% Cleave",
       "description": null
     }
   ],
@@ -604,7 +605,7 @@
   "attack_rate": 2.0,
   "attack_animation_point": 0.5,
   "attack_acquisition_range": 600,
-  "attack_range": 150,
+  "attack_range": 175,
   "projectile_speed": 900,
   "attribute_primary": "DOTA_ATTRIBUTE_STRENGTH",
   "attribute_base_strength": 26,
@@ -614,9 +615,9 @@
   "attribute_base_agility": 11,
   "attribute_agility_gain": 0.9,
   "status_health": 200,
-  "status_health_regen": 1.5,
+  "status_health_regen": 0.0,
   "status_mana": 75,
-  "status_mana_regen": 0.9,
+  "status_mana_regen": 0.0,
   "bounty_xp": 62,
   "bounty_gold_min": 0,
   "bounty_gold_max": 0,

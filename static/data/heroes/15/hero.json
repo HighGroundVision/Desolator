@@ -34,7 +34,7 @@
       "id": 5082,
       "key": "razor_plasma_field",
       "name": "Plasma Field",
-      "description": "Releases a wave of energetic plasma that grows in power as it expands, but also zaps on contraction, dealing damage to enemy units caught in its path. Damage increases with distance from Razor.",
+      "description": "Releases a wave of energetic plasma that grows in power as it expands, but also zaps on contraction, slowing and dealing damage to enemy units caught in its path. Damage and slow increases with distance from Razor. The Plasma Field hits each unit twice, once each direction.",
       "image": "https://hgv-hyperstone.azurewebsites.net/abilities/razor_plasma_field.png",
       "hero_id": 15,
       "ability_type": "DOTA_ABILITY_TYPE_BASIC",
@@ -97,22 +97,34 @@
       "linked": null,
       "ability_special": {
         "damage_min": [
-          30.0,
-          50.0,
-          70.0,
-          90.0
+          15.0,
+          25.0,
+          35.0,
+          45.0
         ],
         "damage_max": [
-          160.0,
-          230.0,
-          300.0,
-          370.0
+          80.0,
+          115.0,
+          150.0,
+          185.0
         ],
         "radius": [
           700.0
         ],
         "speed": [
           636.0
+        ],
+        "slow_min": [
+          5.0
+        ],
+        "slow_max": [
+          25.0,
+          30.0,
+          35.0,
+          40.0
+        ],
+        "slow_duration": [
+          1.5
         ]
       }
     },
@@ -234,7 +246,7 @@
       "id": 5084,
       "key": "razor_unstable_current",
       "name": "Unstable Current",
-      "description": "Razor moves with increased speed, and hits a random nearby unit with a jolt of electricity every 5 seconds. The jolt deals damages, slows, and purges buffs from enemies.\\n\\nDISPEL TYPE: Basic Dispel",
+      "description": "Increases the movement speed. Passively hits every unit in the area for some damage.",
       "image": "https://hgv-hyperstone.azurewebsites.net/abilities/razor_unstable_current.png",
       "hero_id": 15,
       "ability_type": "DOTA_ABILITY_TYPE_BASIC",
@@ -244,9 +256,9 @@
       "ability_unit_target_team": null,
       "ability_unit_target_type": [],
       "ability_unit_target_flags": [],
-      "spell_immunity_type": "SPELL_IMMUNITY_ENEMIES_NO",
-      "spell_dispellable_type": "SPELL_DISPELLABLE_YES",
-      "ability_unit_damage_type": "DAMAGE_TYPE_MAGICAL",
+      "spell_immunity_type": null,
+      "spell_dispellable_type": null,
+      "ability_unit_damage_type": null,
       "is_skill": true,
       "is_ultimate": false,
       "has_scepter_upgrade": false,
@@ -269,7 +281,10 @@
         0.0
       ],
       "ability_cooldown": [
-        5.0
+        0.0,
+        0.0,
+        0.0,
+        0.0
       ],
       "ability_duration": [
         0.0,
@@ -301,26 +316,20 @@
           12.0,
           16.0
         ],
-        "hit_interval": [
-          5.0
-        ],
-        "slow_duration": [
-          0.5,
-          1.0,
-          1.5,
-          2.0
-        ],
-        "slow_amount": [
-          -40.0
-        ],
-        "damage": [
+        "passive_area_damage": [
           60.0,
+          80.0,
           100.0,
-          140.0,
-          180.0
+          120.0
+        ],
+        "passive_area_interval": [
+          6.0,
+          5.0,
+          4.0,
+          3.0
         ],
         "radius": [
-          350.0
+          500.0
         ]
       }
     },
@@ -468,7 +477,7 @@
       "id": 5085,
       "key": "razor_eye_of_the_storm",
       "name": "Eye of the Storm",
-      "description": "A powerful lightning storm strikes out at enemy units with the lowest health, dealing damage and reducing their armor.\\n\\nUpgradable by Aghanim's Scepter.",
+      "description": "A powerful lightning storm strikes out at enemy units with the lowest health, dealing damage and reducing their armor.  Upgradable by Aghanim's Scepter.",
       "image": "https://hgv-hyperstone.azurewebsites.net/abilities/razor_eye_of_the_storm.png",
       "hero_id": 15,
       "ability_type": "DOTA_ABILITY_TYPE_ULTIMATE",
@@ -529,8 +538,6 @@
       "linked": null,
       "ability_special": {
         "radius": [
-          500.0,
-          500.0,
           500.0
         ],
         "duration": [
@@ -605,7 +612,7 @@
     {
       "id": 6861,
       "key": "special_bonus_unique_razor_4",
-      "name": "-3s Unstable Current Interval",
+      "name": "+200 Unstable Current Damage",
       "description": null
     }
   ],
@@ -628,9 +635,9 @@
   "attribute_base_agility": 22,
   "attribute_agility_gain": 1.8,
   "status_health": 200,
-  "status_health_regen": 1.5,
+  "status_health_regen": 0.0,
   "status_mana": 75,
-  "status_mana_regen": 0.9,
+  "status_mana_regen": 0.0,
   "bounty_xp": 62,
   "bounty_gold_min": 0,
   "bounty_gold_max": 0,

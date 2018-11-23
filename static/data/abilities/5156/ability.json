@@ -2,18 +2,19 @@
   "id": 5156,
   "key": "sniper_take_aim",
   "name": "Take Aim",
-  "description": "Extends the attack range of Sniper's rifle.",
+  "description": "Extends the attack range of Sniper's rifle. Can be activated to double the attack range bonus for 1 attack.",
   "image": "https://hgv-hyperstone.azurewebsites.net/abilities/sniper_take_aim.png",
   "hero_id": 35,
   "ability_type": "DOTA_ABILITY_TYPE_BASIC",
   "ability_behaviors": [
-    "DOTA_ABILITY_BEHAVIOR_PASSIVE"
+    "DOTA_ABILITY_BEHAVIOR_NO_TARGET",
+    "DOTA_ABILITY_BEHAVIOR_IMMEDIATE"
   ],
   "ability_unit_target_team": null,
   "ability_unit_target_type": [],
   "ability_unit_target_flags": [],
   "spell_immunity_type": null,
-  "spell_dispellable_type": null,
+  "spell_dispellable_type": "SPELL_DISPELLABLE_YES",
   "ability_unit_damage_type": null,
   "is_skill": true,
   "is_ultimate": false,
@@ -37,10 +38,10 @@
     0.0
   ],
   "ability_cooldown": [
-    0.0,
-    0.0,
-    0.0,
-    0.0
+    15.0,
+    12.0,
+    9.0,
+    6.0
   ],
   "ability_duration": [
     0.0,
@@ -55,14 +56,11 @@
     0.0
   ],
   "ability_mana_cost": [
-    0.0,
-    0.0,
-    0.0,
-    0.0
+    30.0
   ],
   "ability_modifier_support_value": 1.0,
   "ability_modifier_support_bonus": 0.0,
-  "fight_recap_level": 0,
+  "fight_recap_level": 1,
   "ability_draft_enabled": true,
   "linked": null,
   "ability_special": {

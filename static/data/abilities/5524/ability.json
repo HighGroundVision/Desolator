@@ -2,7 +2,7 @@
   "id": 5524,
   "key": "shredder_whirling_death",
   "name": "Whirling Death",
-  "description": "Timbersaw whirls extremely sharp edges, damaging enemies and destroying trees around him in an area.  If an enemy hero is affected, it loses some of its primary attribute for a short duration.  Whirling Death will deal Pure damage if a tree is cut down in the process.",
+  "description": "Timbersaw whirls extremely sharp edges, damaging enemies and destroying trees around him in an area.  If an enemy hero is affected, it loses some of its primary attribute for a short duration.  Whirling Death will deal bonus damage per tree destroyed.",
   "image": "https://hgv-hyperstone.azurewebsites.net/abilities/shredder_whirling_death.png",
   "hero_id": 98,
   "ability_type": "DOTA_ABILITY_TYPE_BASIC",
@@ -16,7 +16,7 @@
   "ability_unit_target_flags": [],
   "spell_immunity_type": "SPELL_IMMUNITY_ENEMIES_NO",
   "spell_dispellable_type": "SPELL_DISPELLABLE_YES",
-  "ability_unit_damage_type": "DAMAGE_TYPE_MAGICAL",
+  "ability_unit_damage_type": "DAMAGE_TYPE_PURE",
   "is_skill": true,
   "is_ultimate": false,
   "has_scepter_upgrade": false,
@@ -66,15 +66,24 @@
       300.0
     ],
     "whirling_damage": [
-      100.0,
+      90.0,
+      120.0,
       150.0,
-      200.0,
-      250.0
+      180.0
+    ],
+    "tree_damage_scale": [
+      10.0,
+      14.0,
+      18.0,
+      22.0
     ],
     "whirling_tick": [
       0.3
     ],
     "stat_loss_pct": [
+      12.0,
+      13.0,
+      14.0,
       15.0
     ],
     "duration": [

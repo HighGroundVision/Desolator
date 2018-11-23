@@ -208,7 +208,7 @@
       "id": 5021,
       "key": "drow_ranger_trueshot",
       "name": "Precision Aura",
-      "description": "Adds bonus damage to the physical attack of allied, ranged Hero units based on a percentage of Drow's agility.  Affects creeps for 30 seconds when cast.",
+      "description": "Adds bonus attack speed to allied, ranged Hero units based on a percentage of Drow's agility.  Affects creeps for 30 seconds when cast.",
       "image": "https://hgv-hyperstone.azurewebsites.net/abilities/drow_ranger_trueshot.png",
       "hero_id": 6,
       "ability_type": "DOTA_ABILITY_TYPE_BASIC",
@@ -267,11 +267,11 @@
       "ability_draft_enabled": true,
       "linked": null,
       "ability_special": {
-        "trueshot_ranged_damage": [
-          10.0,
+        "trueshot_ranged_attack_speed": [
           20.0,
-          30.0,
-          40.0
+          40.0,
+          60.0,
+          80.0
         ]
       }
     },
@@ -419,7 +419,7 @@
       "id": 5022,
       "key": "drow_ranger_marksmanship",
       "name": "Marksmanship",
-      "description": "Drow's experiences in battle improve her accuracy and effectiveness in combat, providing a passive bonus to Agility. Grants no bonus if there are enemy heroes within 400 range.\\n\\nUpgradable by Aghanim's Scepter.",
+      "description": "Drow's experiences in battle grant her a chance to launch arrows with incredible accuracy and effectiveness. Pierces through the enemy's defenses, ignoring their armor entirely. Instantly kills creeps. This ability is disabled if there is an enemy hero within 400 range.  Upgradable by Aghanim's Scepter.",
       "image": "https://hgv-hyperstone.azurewebsites.net/abilities/drow_ranger_marksmanship.png",
       "hero_id": 6,
       "ability_type": "DOTA_ABILITY_TYPE_ULTIMATE",
@@ -483,13 +483,10 @@
       "ability_draft_enabled": true,
       "linked": null,
       "ability_special": {
-        "marksmanship_agility_bonus": [
-          40.0,
-          60.0,
-          80.0
-        ],
-        "radius": [
-          400.0
+        "chance": [
+          20.0,
+          30.0,
+          40.0
         ],
         "split_count_scepter": [
           2.0
@@ -499,6 +496,9 @@
         ],
         "damage_reduction_scepter": [
           50.0
+        ],
+        "disable_range": [
+          400.0
         ]
       }
     }
@@ -529,9 +529,9 @@
       "description": null
     },
     {
-      "id": 6280,
-      "key": "special_bonus_unique_drow_ranger_3",
-      "name": "+20 Marksmanship Agility",
+      "id": 5974,
+      "key": "special_bonus_evasion_25",
+      "name": "25% Evasion",
       "description": null
     },
     {
@@ -543,7 +543,7 @@
     {
       "id": 6202,
       "key": "special_bonus_unique_drow_ranger_1",
-      "name": "+20% Precision Aura Damage",
+      "name": "+25% Precision Aura Attack Speed",
       "description": null
     },
     {
@@ -569,12 +569,12 @@
   "attribute_strength_gain": 1.9,
   "attribute_base_intelligence": 15,
   "attribute_intelligence_gain": 1.4,
-  "attribute_base_agility": 19,
+  "attribute_base_agility": 23,
   "attribute_agility_gain": 2.2,
   "status_health": 200,
-  "status_health_regen": 1.75,
+  "status_health_regen": 0.25,
   "status_mana": 75,
-  "status_mana_regen": 0.9,
+  "status_mana_regen": 0.0,
   "bounty_xp": 62,
   "bounty_gold_min": 0,
   "bounty_gold_max": 0,
