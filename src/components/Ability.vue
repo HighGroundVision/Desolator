@@ -236,34 +236,6 @@
         <b-pagination align="center" :total-rows="heroes.totalRows" :per-page="heroes.perPage" v-model="heroes.currentPage" />
       </b-col>
     </b-row>
-    <hr class="highlighted" />
-    <b-row>
-      <b-col>
-        <h4 class="text-center">Drafts</h4>
-        <b-table 
-          :fields="drafts.fields" :items="drafts.items" 
-          :sort-by.sync="drafts.sortBy" :sort-desc.sync="drafts.sortDesc">
-          <template slot="images" slot-scope="row">
-            <b-img :src="row.item.images[0]" class="hero-icon-banner-sm" />
-            <b-img :src="row.item.images[1]" class="hero-icon-banner-sm" />
-            <b-img :src="row.item.images[2]" class="hero-icon-banner-sm" />
-            <b-img :src="row.item.images[3]" class="hero-icon-banner-sm" />
-          </template>
-          <template slot="names" slot-scope="row">
-            <span>{{row.item.abilties}}</span>
-          </template>
-          <template slot="win_rate_progress" slot-scope="row">
-            <b-progress height="2rem" :value="row.item.win_rate" :min="0" :max="1" :striped="true" show-progress></b-progress>
-          </template>
-          <template slot="wins" slot-scope="row">
-            <span>{{row.item.wins}}</span>
-          </template>
-          <template slot="picks" slot-scope="row">
-            <span>{{row.item.picks}}</span>
-          </template>
-        </b-table>
-      </b-col>
-    </b-row>
   </section>
   <section v-else class="text-center">
     <hgv-loader :color="'#ffc107'"></hgv-loader>
@@ -296,14 +268,6 @@ export default {
       { key: 'win_rate_progress', label: 'Win Rate', sortable: true }
     ]
 
-    const draftsFields = [
-      { key: 'images', label: '', sortable: false },
-      { key: 'names', label: 'Abilities', sortable: false },
-      // { key: 'wins', label: 'Wins', sortable: true },
-      { key: 'picks', label: 'Picks', sortable: false },
-      { key: 'win_rate_progress', label: 'Win Rate', sortable: false }
-    ]
-
     return {
       'ready': false,
       'ability': null,
@@ -332,15 +296,6 @@ export default {
         'currentPage': 1,
         'perPage': 10,
         'totalRows': 0
-      },
-      'drafts': {
-        'items': [],
-        'fields': draftsFields,
-        'sortBy': 'picks',
-        'sortDesc': true,
-        'currentPage': 1,
-        'perPage': 10,
-        'totalRows': 0
       }
     }
   },
@@ -355,8 +310,7 @@ export default {
       axios.get('/static/data/abilities/' + id + '/ability.json').then((reponse) => { return reponse.data }),
       axios.get('/static/data/abilities/' + id + '/stats.json').then((reponse) => { return reponse.data }),
       axios.get('/static/data/abilities/' + id + '/heroes.json').then((reponse) => { return reponse.data }),
-      axios.get('/static/data/abilities/' + id + '/combos.json').then((reponse) => { return reponse.data }),
-      axios.get('/static/data/abilities/' + id + '/drafts.json').then((reponse) => { return reponse.data })
+      axios.get('/static/data/abilities/' + id + '/combos.json').then((reponse) => { return reponse.data })
     ]
 
     Promise.all(web).then((values) => {
@@ -364,18 +318,12 @@ export default {
       let stats = values[1]
       let heroes = values[2]
       let combos = values[3]
-      let drafts = values[4]
 
       let strheroes = heroes.filter(_ => _.attribute_primary === 'DOTA_ATTRIBUTE_STRENGTH')
       let intheroes = heroes.filter(_ => _.attribute_primary === 'DOTA_ATTRIBUTE_INTELLECT')
       let agiheroes = heroes.filter(_ => _.attribute_primary === 'DOTA_ATTRIBUTE_AGILITY')
       let meleeheroes = heroes.filter(_ => _.attack_capabilities === 'DOTA_UNIT_CAP_MELEE_ATTACK')
       let rangeheroes = heroes.filter(_ => _.attack_capabilities === 'DOTA_UNIT_CAP_RANGED_ATTACK')
-
-      for (let i = 0; i < drafts.length; i++) {
-        const draft = drafts[i]
-        draft.images.sort((lhs, rhs) => { return lhs.includes(details.key) ? -1 : 1 })
-      }
 
       let avgPicks = combos.reduce((ammulator, element) => ammulator + element.picks, 0) / combos.length
       let mostCombos = combos.filter(_ => _.picks >= avgPicks)
@@ -386,8 +334,6 @@ export default {
       vm.heroes.totalRows = heroes.length
       vm.combos.items = mostCombos
       vm.combos.totalRows = mostCombos.length
-      vm.drafts.items = drafts
-      vm.drafts.totalRows = drafts.length
       vm.groups.str = average(strheroes, 'win_rate')
       vm.groups.int = average(intheroes, 'win_rate')
       vm.groups.agi = average(agiheroes, 'win_rate')
