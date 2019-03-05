@@ -36,9 +36,8 @@
               <tr v-bind:item="hero" v-bind:key="hero.id">
                 <td>
                   <b-link :to="'/hero/' + hero.id">
-                    <b-img :src="ability.img" :title="ability.name" v-bind:class="{ disabled: !ability.enabled }" class="ability-icon-md" />
+                    <b-img :src="hero.img" :title="hero.name" v-bind:class="{ disabled: !hero.enabled }" class="hero-icon-banner" />
                   </b-link>
-                  <b-img :src="ability.img" :title="ability.name" v-bind:class="{ disabled: !ability.enabled }" class="ability-icon-md" />
                 </td>
                 <template v-for="ability in hero.abilities">
                   <td v-bind:key="ability.id">
