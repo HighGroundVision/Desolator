@@ -21,7 +21,7 @@
         <div class="text-center">
           <b-alert variant="info" show>
             <strong>Cluckles Says</strong><br />
-            <p>With all the new additions it gives hope that one day all heroes will be included!</p>
+            <p>Only 3 Heroes left out! We feel bad for you Morphling, Invoker and Earth Spirit...</p>
           </b-alert>
           <b-img src="/static/images/cluckles-speach.png" class="cluckles-speach" />
         </div>
