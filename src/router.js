@@ -4,6 +4,11 @@ import Home from './views/Home.vue'
 
 Vue.use(Router)
 
+// route level code-splitting
+// this generates a separate chunk (about.[hash].js) for this route
+// which is lazy-loaded when the route is visited.
+/* webpackChunkName: "about" */
+
 export default new Router({
   routes: [
     {
@@ -14,10 +19,12 @@ export default new Router({
     {
       path: '/about',
       name: 'about',
-      // route level code-splitting
-      // this generates a separate chunk (about.[hash].js) for this route
-      // which is lazy-loaded when the route is visited.
-      component: () => import('./views/About.vue') /* webpackChunkName: "about" */
+      component: () => import('./views/About.vue') 
+    },
+    {
+      path: '/pool',
+      name: 'pool',
+      component: () => import('./views/Pool.vue') 
     }
   ]
 })

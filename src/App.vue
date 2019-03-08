@@ -7,6 +7,7 @@
           <b-navbar-brand to="/">[HGV] Ability Drafter</b-navbar-brand>
           <b-collapse is-nav id="nav_collapse">
             <b-navbar-nav class="mr-auto">
+              <b-nav-item to="/about">About</b-nav-item>
               <b-nav-item to="/pool">Pool</b-nav-item>
               <b-nav-item to="/heroes">Heroes</b-nav-item>
               <b-nav-item to="/abilities">Abilities</b-nav-item>
