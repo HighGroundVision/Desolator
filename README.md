@@ -3,13 +3,6 @@
 > Ability Drafter
 
 ## TODO
-1. Home Page:
-- New intro
-- AD overview
-- Collection window (start / end / # matches)
-- Day of week break down
-- Radiant vs dire win rate
-- HGV summary
 2. Pools Page:
 - Unavailable heroes
 - Unavailable abilities & reasoning (TODO: create reasons lookup to join to disabled abilities)

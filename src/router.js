@@ -25,6 +25,16 @@ export default new Router({
       path: '/pool',
       name: 'pool',
       component: () => import('./views/Pool.vue') 
+    },
+    {
+      path: '/heroes',
+      name: 'heroes',
+      component: () => import('./views/Heroes.vue')
+    },
+    {
+      path: '/hero/:id',
+      name: 'hero',
+      component: () => import('./views/Hero.vue')
     }
   ]
 })
