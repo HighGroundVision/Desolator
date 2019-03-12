@@ -16,13 +16,13 @@
       <p>
         We track all the enabled heroes. 
         Not all heroes are created equal!
-        We have ordered the list below by the heroe's win rate.
+        We have ordered the list below by the heroes win rate.
         The <b class="text-success">strongest</b> heroes will have wins rates around <b class="text-info">60%</b>. These heroes just rock have fun!
-        While <b class="text-danger">weakest</b> ones will have win rates around <b class="text-info">40%</b>. These heroes need alot of help, build you draft carefully.
+        While <b class="text-danger">weakest</b> ones will have win rates around <b class="text-info">40%</b>. These heroes need a lot of help, build you draft carefully.
       </p>
       <p>
         We have detected two classifications of <b class="text-info">picks deviations</b> which we have label <b class="text-success">A</b> and <b class="text-warning">B</b>.
-        This confirms that there are two groups of heroes that show up in the pool and this is why we see some heroes more than others, alot more...
+        This confirms that there are two groups of heroes that show up in the pool and this is why we see some heroes more than others, a lot more...
         We have labeled the heroes with the deviation class you see can see which group the hero belongs to.
       </p>
       <b-row>
@@ -39,7 +39,7 @@
                   <div>
                     <b-img :src="value.image" class="p-1" fluid-grow  />
                     <b-progress :max="1">
-                      <b-progress-bar :value="value.win_rate" variant="info" :striped="true" >
+                      <b-progress-bar :value="value.win_rate" variant="primary" :striped="true" >
                         <strong>{{ formatPercentage(value.win_rate) }}</strong>
                       </b-progress-bar>
                       <b-progress-bar :value="1-value.win_rate" variant="secondary" />

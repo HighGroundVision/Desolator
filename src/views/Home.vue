@@ -17,12 +17,12 @@
         </div>
       </b-col>
       <b-col>
-        <b-alert v-if="false" variant="warning" show>
+        <b-alert v-if="construction" variant="warning" show>
           <b-row>
             <b-col>
-              <strong>Under Construction</strong>
+              <strong><i class="fas fa-exclamation-triangle"></i> Under Construction</strong>
               <p>
-                We are currently rebuilding the backend and front systems that run this web application. 
+                We are currently rebuilding the systems that run this web application. 
                 Our continuous deployment process means that this site will be updated as we push out new features. 
                 You are welcome to use the site and the new features. 
                 Some features maybe unstable/incomplete and maybe removed in the future.
@@ -34,8 +34,8 @@
         <h4 class="text-center">Welcome!</h4>
         <hr class="highlighted" />
         <p>
-          We at HGV are deadacted to the Ability Draft communtiy. 
-          Providing the tools to understand AD better, and hopfuly have some fun along the way. 
+          We at HGV are dedicated to the Ability Draft community.
+          Providing the tools to understand AD better, and hopefully have some fun along the way. 
           Remember everyone that while Carry may kill heroes but Supports win games!
         </p>
         <p>
@@ -76,7 +76,7 @@
           We are often asked when do people play AD?
           To that end we have included the daily counts as a percentage of the total matches.
           We also break down the time of day matches are being played, based on the UTC time.
-          There is always going to be a little bais based on day and time we run the export.
+          There is always going to be a little bias based on day and time we run the export.
         </p>
         <div class="card">
           <div class="card-body">
@@ -309,7 +309,7 @@
         <p>
           We reset our baseline when a major patch is released that changes the balance of abilities.
           We normally export our master database approximately once a week.
-          Our current stats collection is based started on <b class="text-info">{{ formatDateTime(summary.range.start) }}</b> and was last exported on <b class="text-info">{{ formatDateTime(summary.range.end) }}</b> with a total of <b class="text-info">{{ formatNumber(summary.range.matches) }}</b> AD matches processed. 
+          Our current stats collection is based started on <b class="text-info">{{ formatDateTime(summary.range.start) }}</b> and was last exported on <b class="text-info">{{ formatDateTime(summary.range.end) }}</b>, that is a total of <b class="text-info">{{ formatDuration(summary.range.start, summary.range.end) }}</b>, with a total of <b class="text-info">{{ formatNumber(summary.range.matches) }}</b> AD matches processed. 
           But we did notice that <b class="text-info">{{ summary.range.abandoned }}%</b> of matches where abandoned, you can do better people!
         </p>
       </b-col>
@@ -330,6 +330,7 @@ export default {
   name: 'home',
   data () {
     return {
+      "construction": true,
       'summary': summary,
       'heroes': heroes,
     }
@@ -337,6 +338,12 @@ export default {
   methods: {
     formatDateTime(value) {
       return moment(value).format("MMMM Do");
+    },
+    formatDuration(start, end) {
+      var x = moment(start);
+      var y = moment(end);
+      var duration = moment.duration(x.diff(y))
+      return duration.humanize();
     },
     formatNumber(value) {
       return numeral(value).format('0,0');

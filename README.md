@@ -3,25 +3,8 @@
 > Ability Drafter
 
 ## TODO
-2. Pools Page:
-- Unavailable heroes
-- Unavailable abilities & reasoning (TODO: create reasons lookup to join to disabled abilities)
-- Innate Skills
-- Detail collection
-3. Heroes Collection
-- List heroes with details
-4. Heroes Details
-- Hero Summary
-- Attribute ranking
-- Heroes Abilities
-- Talents
-- Combos
-4. Abilities Collection
-- List abilities with details
-5. Ability Details
-- Abiltiy Summary
-- Combos
-- Heroes
+1. Hero Details
+2. Ability Details
 
 ## Build Setup
 

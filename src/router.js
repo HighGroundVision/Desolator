@@ -40,6 +40,21 @@ export default new Router({
       path: '/abilities',
       name: 'abilities',
       component: () => import('./views/Abilities.vue')
+    },
+    {
+      path: '/ability/:id',
+      name: 'ability',
+      component: () => import('./views/Ability.vue')
+    },
+    {
+      path: '/leaderboard',
+      name: 'leaderboard',
+      component: () => import('./views/Leaderboard.vue')
+    },
+    {
+      path: '/draft',
+      name: 'draft',
+      component: () => import('./views/Draft.vue')
     }
   ]
 })

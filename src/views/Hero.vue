@@ -1,30 +1,38 @@
 <template>
   <b-row>
     <b-col>
-      <h4>{{hero.summary.name}}</h4>
-      <h5>Summary</h5>
-      <img :src="hero.summary.image">
-      <br>
-      <span>Win Rate</span>
-      <b-progress :max="1">
-        <b-progress-bar :value="hero.summary.win_rate" variant="info" :striped="true">
-          <strong>{{ formatPercentage(hero.summary.win_rate) }}</strong>
-        </b-progress-bar>
-        <b-progress-bar :value="1-hero.summary.win_rate" variant="secondary"/>
-      </b-progress>
-      <span>
-        Wins
-        <small>as a ratio to the other heroes</small>
-      </span>
-      <b-progress :max="1">
-        <b-progress-bar :value="hero.summary.wins" variant="info" :striped="true">
-          <strong>{{ formatPercentage(hero.summary.wins) }}</strong>
-        </b-progress-bar>
-        <b-progress-bar :value="1-hero.summary.wins" variant="secondary"/>
-      </b-progress>
-
-      <h5>Attributes</h5>
-      <p>As a ratio compared to the other heroes</p>
+      <h4 class="text-center">{{hero.summary.name}}</h4>
+      <b-row>
+        <b-col>
+          <img :src="hero.summary.image">    
+        </b-col>
+        <b-col>
+          <span>Win Rate</span>
+          <b-progress :max="1">
+            <b-progress-bar :value="hero.summary.win_rate" variant="primary" :striped="true">
+              <strong>{{ formatPercentage(hero.summary.win_rate) }}</strong>
+            </b-progress-bar>
+            <b-progress-bar :value="1-hero.summary.win_rate" variant="secondary"/>
+          </b-progress>
+          <span>
+            Wins
+            <small>as a ratio to the other heroes</small>
+          </span>
+          <b-progress :max="1">
+            <b-progress-bar :value="hero.summary.wins" variant="warning" :striped="true" />
+            <b-progress-bar :value="1-hero.summary.wins" variant="secondary"/>
+          </b-progress>
+        </b-col>
+      </b-row>
+      <br />
+      
+      <h4 class="text-center">Attributes</h4>
+      <p>Knowing what your hero is made of will help you pick the ability to best complement the heroes' strengths and help make up for their weaknesses.</p>
+      <p>
+        To that end we have created a table of the hero's most impactful attributes. 
+        We also expressed each attribute has a ratio compared to the other heroes.
+        So you can see how a hero stacks up to the others.
+      </p>
       <ul class="list-group">
         <li class="list-group-item">
           <b-row>
@@ -456,8 +464,12 @@
           </b-row>
         </li>
       </ul>
-      <h5>Abilities</h5>
-      <p>...</p>
+      <br />
+      <h4 class="text-center">Abilities</h4>
+      <p>
+        We include the default abilities for this your so you can see how good there native build is compared to some of the best combos.
+        Some times the best choice is the heroes own ability, be it for a talent or just cause it best ability left in the pool.
+      </p>
       <ul class="list-group">
         <li class="list-group-item text-center">
           <b-row>
@@ -558,21 +570,40 @@
           </li>
         </template>
       </ul>
+      <br />
 
-      <h5>Talents</h5>
-      <p>...</p>
+      <h4 class="text-center">Talents</h4>
+      <p>
+        We have include the talents win rate so you know which talents win more then others.
+        You should always take into account your draft and how the match progressing to prioritize different talents based on your needs.
+        You should know about choices that require one of the heroes abilities, which we have <b  class="text-info">highlighted</b>.
+        Also, watch out for forks that both require a heroes ability.
+      </p>
       <b-row>
          <template v-for="talent in hero.talents">
           <b-col :key="talent.key" cols="6">
-            <span :title="talent.description">{{talent.name}}</span>
-            <br />
-            <b-progress :value="talent.win_rate" :min="0" :max="1" show-progress></b-progress>
+            <div class="p-1">
+              <b v-bind:class="{ 'text-info': talent.key.includes('unique') }" :title="talent.description">{{talent.name}}</b>
+              <br />
+              <b-progress :value="talent.win_rate" :min="0" :max="1" show-progress></b-progress>
+            </div>
           </b-col>
         </template>
       </b-row>
+      <br />
 
-      <h5>Combos - Abilities</h5>
-      <p>...</p>
+      <h4 class="text-center">Combos</h4>
+      <p>
+        We have included the top Ability and Ultimate Combos for this hero.
+        Only abilities that where above the avg pick rate where included.
+        We also only show the top 10 for brevity.
+      </p>
+      <p>
+        It is more important to gain a sense of which types of abilities from <b class="text-info">Speed</b>, <b class="text-info">Damage</b>, <b class="text-info">Tank</b>, <b class="text-info">Stuns</b>, <b class="text-info">Escape</b> etc. give your hero the best chance of success.
+        As the draft often moves quickly and changes with each pick, locking your sights in on one ability or combo early on is one the sins of amateur Drafter.
+        Knowing your archetypes will help you adapt quickly in a draft.
+      </p>
+      <h5 class="text-center">Abilities</h5>
       <b-table 
           :fields="['image', 'name', 'has_upgrade', 'picks', 'wins', 'win_rate']"
           :items="hero.combos.abilities" 
@@ -598,8 +629,7 @@
           </template>
         </b-table>
 
-      <h5>Combos - Ultimates</h5>
-      <p>...</p>
+      <h5 class="text-center">Ultimates</h5>
       <b-table 
           :fields="['image', 'name', 'has_upgrade', 'picks', 'wins', 'win_rate']"
           :items="hero.combos.ultimates" 

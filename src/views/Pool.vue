@@ -15,7 +15,7 @@
             </template>
           </ul>
           <p>
-            Each of these heroes is unlikly to make it into AD in the future as they bring very little to pool 
+            Each of these heroes is unlikely to make it into AD in the future as they bring very little to pool 
             or they where in the pool and have been removed because there abilities interactions are to unstable.
           </p>
         </div>
@@ -64,7 +64,7 @@
             <li><small>3</small> Spells which require more than one ability slot are disabled because of hotkey issues.</li>
             <li><small>4</small> Spells which switch between melee and ranged for are all disabled for technical reasons.</li>
             <li><small>5</small> Spells which have direct synergy/interaction with other spells are disabled, as they are deemed too limiting.</li>
-            <li><small>6</small> Some spells granted by <b class="text-info">Aghanim's Scepter</b> are disabled becauset they add spells that use addational slots. REF #3</li>
+            <li><small>6</small> Some spells granted by <b class="text-info">Aghanim's Scepter</b> are disabled because they add spells that use additional slots. REF #3</li>
             <li><small>7</small> According to game files infest does not grant control, this causes infest to be sort of useless</li>
           </ul>
         </div>
