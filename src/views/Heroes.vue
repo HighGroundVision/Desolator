@@ -27,7 +27,7 @@
       </p>
       <b-row>
         <template v-for="(value) in heroes">
-          <b-col cols="4">
+          <b-col cols="4" :key="value.key">
             <router-link :to="`/hero/${value.id}`">
               <div class="card m-1">
                 <div class="card-body">

@@ -15,7 +15,8 @@
             </template>
           </ul>
           <p>
-            Each of these heroes is unlikly to make it into AD in the future as they bring very little to pool.
+            Each of these heroes is unlikly to make it into AD in the future as they bring very little to pool 
+            or they where in the pool and have been removed because there abilities interactions are to unstable.
           </p>
         </div>
         <b-row>

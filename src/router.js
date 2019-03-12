@@ -35,6 +35,11 @@ export default new Router({
       path: '/hero/:id',
       name: 'hero',
       component: () => import('./views/Hero.vue')
+    },
+    {
+      path: '/abilities',
+      name: 'abilities',
+      component: () => import('./views/Abilities.vue')
     }
   ]
 })
