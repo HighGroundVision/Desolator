@@ -84,22 +84,13 @@
       <br />
       <div>
         <p>{{details.ability.description}}</p>
-        <p>
-          TODO: Nullifer add '_aghanim_description' to ability
-        </p>
+        <p v-if="details.ability.upgrade_description">{{details.ability.upgrade_description}}</p>
       </div>
       <h4 class="text-center">Heroes</h4>
       <p>
         We have include the top heroes paired with this ability.
         Only heroes that where above avg pick rate where included.
         We also only show the top 10 for brevity.
-      </p>
-      <p>
-        Much like it is more important to gain a sense of which types ability type work for heroes, you can use this to gain a sense best type of heroes that fit this ability.
-        Knowing your archetypes will help you make sure you can getting the most out of any ability.
-      </p>
-      <p>
-        <!-- TODO: in nullifer create summary for this ability by hero type -->
       </p>
       <b-table 
           :fields="['image', 'name', 'picks', 'wins', 'win_rate']"
@@ -120,7 +111,27 @@
           <template slot="picks" slot-scope="row">
             <b-progress variant="info" height="1.5rem" :value="row.item.picks" :min="0" :max="100" :striped="true"></b-progress>
           </template>
-        </b-table>
+      </b-table>
+      <br />
+      <p>
+        Much like it is more important to gain a sense of which types ability work for heroes, you can use this to gain a sense best type of heroes that fit this ability.
+        Knowing your archetypes will help you make sure you can getting the most out of any ability.
+      </p>
+      <b-row>
+        <template v-for="(value) in details.types">
+          <b-col :key="value.key">
+            <img :src="value.image" class="float-left p-1" />
+            <b>{{value.name}}</b>
+            <b-progress :max="1">
+              <b-progress-bar :value="value.win_rate" variant="info" :striped="true" > 
+                <strong>{{ formatPercentage(value.win_rate) }}</strong>
+              </b-progress-bar>
+              <b-progress-bar :value="1-value.win_rate" variant="secondary"  />
+            </b-progress>
+          </b-col>
+        </template>
+      </b-row>
+      <br />
       <h4 class="text-center">Combos</h4>
       <p>
         We have included the top Ability and Ultimate Combos for this ability.
