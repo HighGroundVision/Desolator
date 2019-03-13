@@ -84,7 +84,7 @@
       <br />
       <div>
         <p>{{details.ability.description}}</p>
-        <p v-if="details.ability.upgrade_description">{{details.ability.upgrade_description}}</p>
+        <p v-if="details.ability.upgrade_description"><img src="https://hgv-hyperstone.azurewebsites.net/items/ultimate_scepter.png" class="ability-icon-xs" /> {{details.ability.upgrade_description}}</p>
       </div>
       <h4 class="text-center">Heroes</h4>
       <p>
