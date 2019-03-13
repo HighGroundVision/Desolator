@@ -99,7 +99,7 @@
         Knowing your archetypes will help you make sure you can getting the most out of any ability.
       </p>
       <p>
-        TODO: in nullifer create summary for this ability by hero type
+        <!-- TODO: in nullifer create summary for this ability by hero type -->
       </p>
       <b-table 
           :fields="['image', 'name', 'picks', 'wins', 'win_rate']"

@@ -42,9 +42,11 @@
               Shout-out to HGV leader and this sites creator
             </span>
             <br />
-            <span><a href="https://steamcommunity.com/id/RGBKnights" target="_blank">RGBKnights</a></span>
+            <span><a :href="summary.creator.profile.profileurl" target="_blank">{{summary.creator.profile.personaname}}</a></span>
             <br />
-            <span>With a 0% win rate over # matches</span>
+            <span>With a {{formatPercentage(summary.creator.stats.win_rate)}} win rate</span>
+            <br />
+            <span>Go play more Dota...</span>
           </b-alert>
           <img src="@/assets/imgs/cluckles-speach.png" class="cluckles-speach" />
         </div>

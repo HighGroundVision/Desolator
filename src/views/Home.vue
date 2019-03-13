@@ -36,7 +36,7 @@
         <p>
           We at HGV are dedicated to the Ability Draft community.
           Providing the tools to understand AD better, and hopefully have some fun along the way. 
-          Remember everyone that while Carry may kill heroes but Supports win games!
+          Remember everyone, that while Carrys may kill heroes but Supports win games!
         </p>
         <p>
           The strongest Hero is <b class="text-info">{{ summary.leaders.hero.best_win_rate.name }}</b>. 
