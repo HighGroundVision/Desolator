@@ -15,10 +15,7 @@
 
 <script>
 export default {
-  name: 'SoicalFollow',
-  data () {
-    return {}
-  }
+  name: 'SocialFollow'
 }
 </script>
 

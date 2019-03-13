@@ -49,7 +49,7 @@ export default {
   },
   data () {
     return {
-      'enabled': process.env.FLAG_SOCIAL,
+      'enabled': true,
       'help': '' +
         'Share your favourite abilities and combos with Reddit & Twitter.' + '\u000d' +
         'Remember Cluckles is only trying to help.' + '\u000d' +
