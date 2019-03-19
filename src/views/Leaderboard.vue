@@ -5,35 +5,151 @@
         <h4  class="text-center">Leaderboard</h4>
         <hr class="highlighted" />
         <p>
-          We track the leaders in ability draft. 
-          To be include on the leaderboard you need to have more matches in the collection window then the average player.
-          We then sort the list of players by win rate and select the top 100.
+          We track alot of ability draft players.
+          If you have have a <b class="text-info">'Expose Public Match Data'</b> setting enabled in Dota2 and play more then the <b class="text-info">average of {{floorNumber(leaderboard.average_matches)}} matches</b> with our window then your included.
+          If you meet the criteria above then you can search for you yourself or you friends to see where you/they rank.
           Our current collection window started on <b class="text-info">{{ formatDateTime(summary.range.start) }}</b> 
-          and was last exported on <b class="text-info">{{ formatDateTime(summary.range.end) }}</b>,
-          that is a total of <b class="text-info">{{ formatDuration(summary.range.start, summary.range.end) }}</b>.
+          and was last exported on <b class="text-info">{{ formatDateTime(summary.range.end) }}</b>.
         </p>
-        <div>
-          <b-table 
-            :fields="['image', 'personaname', 'wins', 'matches', 'win_rate']" 
-            :items="players" 
-            >
-            <template slot="image" slot-scope="row">
-              <img :src="row.item.profile.avatar">
+        <b-row>
+          <b-col cols="4">
+            <h5 class="text-center">Win Rate</h5>
+            <template v-for="(value, i) in leaderboard.win_rate">
+              <div :key="value.account_id">
+                <div  class="card">
+                  <b-badge class="card-rank" :variant="rankColor(i+1)">
+                    <h5>{{rankNumber(i+1)}}</h5>
+                  </b-badge>
+                  <div class="card-body">
+                    <div class="card-title">
+                      <h5>{{formatPercentage(value.win_rate)}}</h5>
+                    </div>
+                    <p class="card-text" style="height: 50px;">
+                      <a :href="value.profile_url">{{value.name}}</a>
+                    </p>
+                  </div>
+                </div>
+                <br />
+              </div>
             </template>
-            <template slot="personaname" slot-scope="row">
-              <a :href="row.item.profile.profileurl" target="_blank">{{ row.item.profile.personaname }}</a>
+          </b-col>
+          <b-col cols="4">
+            <h5 class="text-center">Wins</h5>
+            <template v-for="(value, i) in leaderboard.wins">
+              <div :key="value.account_id">
+                <div  class="card">
+                  <b-badge class="card-rank" :variant="rankColor(i+1)">
+                    <h5>{{rankNumber(i+1)}}</h5>
+                  </b-badge>
+                  <div class="card-body">
+                    <div class="card-title">
+                      <h5>{{value.wins}}</h5>
+                    </div>
+                    <p class="card-text" style="height: 50px;">
+                      <a :href="value.profile_url">{{value.name}}</a>
+                    </p>
+                  </div>
+                </div>
+                <br />
+              </div>
             </template>
-            <template slot="win_rate" slot-scope="row">
-              <b-progress height="1.5rem" :value="row.item.win_rate" :min="0" :max="1" :striped="true" show-progress></b-progress>
+          </b-col>
+          <b-col cols="4">
+            <h5 class="text-center">Matches</h5>
+            <template v-for="(value, i) in leaderboard.matches">
+              <div :key="value.account_id">
+                <div  class="card">
+                  <b-badge class="card-rank" :variant="rankColor(i+1)">
+                    <h5>{{rankNumber(i+1)}}</h5>
+                  </b-badge>
+                  <div class="card-body">
+                    <div class="card-title">
+                      <h5>{{value.matches}}</h5>
+                    </div>
+                    <p class="card-text" style="height: 50px;">
+                      <a :href="value.profile_url">{{value.name}}</a>
+                    </p>
+                  </div>
+                </div>
+                <br />
+              </div>
             </template>
-            <template slot="wins" slot-scope="row">
-              <span>{{row.item.wins}}</span>
+          </b-col>
+        </b-row>
+        <hr class="highlighted" />
+        <b-row>
+          <b-col>
+            <h5 class="text-center">Find Player</h5>
+            <p>Enter your Gamer Tag, Dota Account ID, or Steam Profile ID</p>
+            <b-form @submit.prevent="findPlayer">
+              <b-input-group>
+                <b-form-input type="text" v-model="search" />
+                <b-input-group-addon>
+                  <b-button variant="success" @click="findPlayer">Search</b-button>
+                </b-input-group-addon>
+              </b-input-group>
+            </b-form>
+            <hr style="height: 50px;" />
+            <template v-for="(value) in player">
+              <div :key="value.account_id">
+                <div  class="card">
+                  <b-badge class="card-rank" variant="info">
+                    <h5>{{rankNumber(value.rank)}}</h5>
+                  </b-badge>
+                  <div class="card-body">
+                    <div class="card-title">
+                      <a :href="value.profile_url">{{value.name}}</a>
+                    </div>
+                    <p class="card-text" style="height: 60px;">
+                      Wins: <span>{{value.wins}}</span><br />
+                      Matches: <span>{{value.matches}}</span><br />
+                      Win Rate: <span>{{formatPercentage(value.win_rate)}}</span>
+                    </p>
+                  </div>
+                </div>
+                <br />
+              </div>
             </template>
-            <template slot="matches" slot-scope="row">
-              <span>{{row.item.matches}}</span>
-            </template>
-          </b-table>
-        </div>
+          </b-col>
+          <b-col>
+            <div v-if="compared">
+              <b-button class="centered" variant="primary" @click="compared = false">Compare</b-button>
+            </div>
+            <div v-else>
+              <h5 class="text-center">Compare</h5>
+              <p>Enter a friends Gamer Tag, Dota Account ID, or Steam Profile ID</p>
+              <b-form @submit.prevent="comparePlayer">
+                <b-input-group>
+                  <b-form-input type="text" v-model="compare" />
+                  <b-input-group-addon>
+                    <b-button variant="success" @click="comparePlayer">Search</b-button>
+                  </b-input-group-addon>
+                </b-input-group>
+              </b-form>
+              <hr style="height: 50px;" />
+              <template v-for="(value) in comparables">
+                <div :key="value.account_id">
+                  <div  class="card">
+                    <b-badge class="card-rank" variant="info">
+                      <h5>{{rankNumber(value.rank)}}</h5>
+                    </b-badge>
+                    <div class="card-body">
+                      <div class="card-title">
+                        <a :href="value.profile_url">{{value.name}}</a>
+                      </div>
+                      <p class="card-text" style="height: 60px;">
+                        Wins: <span>{{value.wins}}</span><br />
+                        Matches: <span>{{value.matches}}</span><br />
+                        Win Rate: <span>{{formatPercentage(value.win_rate)}}</span>
+                      </p>
+                    </div>
+                  </div>
+                  <br />
+                </div>
+              </template>
+            </div>
+          </b-col>
+        </b-row>
       </b-col>
       <b-col cols="4" lg="3">
         <div class="text-center">
@@ -42,18 +158,18 @@
               Shout-out to HGV leader and this sites creator
             </span>
             <br />
-            <span><a :href="summary.creator.profile.profileurl" target="_blank">{{summary.creator.profile.personaname}}</a></span>
-            <br />
-            <span>With a {{formatPercentage(summary.creator.stats.win_rate)}} win rate</span>
-            <br />
+            <template v-for="(creator) in leaderboard.creators">
+              <div :key="creator.profile_id">
+                <span><a :href="creator.profile_url" target="_blank">{{creator.name}}</a></span><br />
+                <span>with Rank {{ rankNumber(creator.rank) }} and a {{formatPercentage(creator.win_rate)}} Win Rate</span><br />
+              </div>
+            </template>
             <span>Go play more Dota...</span>
           </b-alert>
           <img src="@/assets/imgs/cluckles-speach.png" class="cluckles-speach" />
         </div>
       </b-col>
-      
-    </b-row>
-    
+    </b-row> 
   </section>
 </template>
 
@@ -62,14 +178,19 @@ import moment from 'moment'
 import numeral from 'numeral'
 import summary from '@/assets/data/summary.json'
 import players from '@/assets/data/players-collection.json'
+import leaderboard from '@/assets/data/leaderboard.json'
 
 export default {
   name: 'leaderboard',
   data () {
-    players.sort((lhs, rhs) => rhs.win_rate - lhs.win_rate);
     return {
+      'leaderboard': leaderboard,
       'summary': summary,
-      'players': players
+      'search': null,
+      'player': [],
+      'compared': true,
+      'compare': null,
+      'comparables': [],
     }
   },
   methods: {
@@ -84,12 +205,46 @@ export default {
     },
     formatPercentage(value) {
       return numeral(value).format('0%');
-    }
-  },
-  computed: {
-    topPlayers: function () {
-      return this.players.filter(_ => _.win_rate == 1).map(_ => _.profile.personaname);
+    },
+    floorNumber(value) {
+      return numeral(value).format('0');
+    },
+    rankNumber(value) {
+      return numeral(value).format('0o');
+    },
+    rankColor(value) {
+      return value == 1 ? 'success' : value == 2 ? 'warning' : 'info';
+    },
+    findPlayer() {
+      if(this.search) {
+        let s = this.search.toLowerCase();
+        this.player = players.filter(_ => _.name.toLowerCase().includes(s) || _.account_id == s || _.profile_id == s);
+      } else {
+        this.player = [];
+      }
+    },
+    comparePlayer() {
+      if(this.compare) {
+        let s = this.compare.toLowerCase();
+        this.comparables = players.filter(_ => _.name.toLowerCase().includes(s) || _.account_id == s || _.profile_id == s);
+      } else {
+        this.comparables = [];
+      }
     }
   }
 }
 </script>
+
+<!-- Add "scoped" attribute to limit CSS to this component only -->
+<style scoped>
+.card-rank {
+  position: absolute; 
+  right: -10px; 
+  top:-10px;
+}
+.centered {
+  position: absolute; 
+  left: 45%;
+  top: 45%;
+}
+</style>
