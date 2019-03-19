@@ -13,65 +13,220 @@
     <b-col>
       <h4  class="text-center">Heroes</h4>
       <hr class="highlighted" />
-      <p>
-        We track all the enabled heroes. 
-        Not all heroes are created equal!
-        We have ordered the list below by the heroes win rate.
-        The <b class="text-success">strongest</b> heroes will have wins rates around <b class="text-info">60%</b>. These heroes just rock have fun!
-        While <b class="text-danger">weakest</b> ones will have win rates around <b class="text-info">40%</b>. These heroes need a lot of help, build you draft carefully.
-      </p>
-      <p>
-        We have detected two classifications of <b class="text-info">picks deviations</b> which we have label <b class="text-success">A</b> and <b class="text-warning">B</b>.
-        This confirms that there are two groups of heroes that show up in the pool and this is why we see some heroes more than others, a lot more...
-        We have labeled the heroes with the deviation class you see can see which group the hero belongs to.
-      </p>
-      <b-row>
-        <template v-for="(value) in heroes">
-          <b-col cols="4" :key="value.key">
-            <router-link :to="`/hero/${value.id}`">
-              <div class="card m-1">
-                <div class="card-body">
-                  <b-badge class="float-right">
-                    <b v-if="value.picks_deviation == 0" class="text-success h6">A</b>
-                    <b v-if="value.picks_deviation < 0" class="text-warning h6">B</b>
-                  </b-badge>
-                  <span class="card-title">{{value.name}}</span>
-                  <div>
-                    <b-img :src="value.image" class="p-1" fluid-grow  />
-                    <b-progress :max="1">
-                      <b-progress-bar :value="value.win_rate" variant="primary" :striped="true" >
-                        <strong>{{ formatPercentage(value.win_rate) }}</strong>
-                      </b-progress-bar>
-                      <b-progress-bar :value="1-value.win_rate" variant="secondary" />
-                    </b-progress>
-                  </div>
-                </div>
-              </div>
-            </router-link>
-          </b-col>
-        </template>
-      </b-row>
+      <p>Aliquam imperdiet ultricies ultricies. In vel lorem fermentum, commodo sem eu, accumsan dui. Donec hendrerit eleifend ligula eget ultrices. Praesent nec porta nulla. Donec sodales ex a maximus varius. Curabitur maximus dapibus feugiat. Nam suscipit augue vitae suscipit pulvinar.</p>
+      <b-card bg-variant="dark">
+        <b-card-body>
+          <div class="customChart" ref="chartdiv1"></div>
+          <hr />
+          <div class="customChart" ref="chartdiv2"></div>
+          <hr />
+          <div class="customChart" ref="chartdiv3"></div>
+        </b-card-body>
+      </b-card>
     </b-col>
   </b-row>
 </template>
 
 <script>
+import * as am4core from "@amcharts/amcharts4/core";
+import * as am4charts from "@amcharts/amcharts4/charts";
+import am4themes_animated from "@amcharts/amcharts4/themes/animated";
+
 import numeral from 'numeral'
 import heroes from '@/assets/data/hero-collection.json'
 // $route.params.id
 
+// am4core.useTheme(am4themes_animated);
+
 export default {
   name: 'heroes',
   data () {
-    heroes.sort((lhs, rhs) => rhs.win_rate - lhs.win_rate);
-    return {
-      'heroes': heroes
-    }
+    return {};
   },
-  methods: {
-    formatPercentage(value) {
-      return numeral(value).format('0%');
+  mounted() {
+    {
+      // Create chart instance
+      var chart = am4core.create(this.$refs.chartdiv1, am4charts.XYChart);
+
+      var title = chart.titles.create();
+      title.text = "Str Heroes";
+      title.fontSize = 20;
+
+      // Add data
+      chart.data = heroes.filter(_ => _.attribute_primary == "DOTA_ATTRIBUTE_STRENGTH");
+
+      // Create axes
+      var categoryAxis = chart.xAxes.push(new am4charts.CategoryAxis());
+      categoryAxis.dataFields.category = "name";
+      categoryAxis.renderer.grid.template.disabled = false;
+      categoryAxis.renderer.minGridDistance = 1;
+      categoryAxis.renderer.inside = false;
+      categoryAxis.renderer.labels.template.fill = am4core.color("#fff");
+      categoryAxis.renderer.labels.template.fontSize = 20;
+      categoryAxis.hidden = true;
+
+      var valueAxis = chart.yAxes.push(new am4charts.ValueAxis());
+      valueAxis.renderer.grid.template.strokeDasharray = "4,4";
+      valueAxis.renderer.labels.template.disabled = false;
+      valueAxis.min = -10;
+      valueAxis.max = 10;
+      valueAxis.strictMinMax = true;
+
+      // Do not crop bullets
+      chart.maskBullets = false;
+
+      // Remove padding
+      chart.paddingBottom = 0;
+
+      // Create series
+      var series = chart.series.push(new am4charts.ColumnSeries());
+      series.dataFields.valueY = "win_rate_delta";
+      series.dataFields.categoryX = "name";
+      series.columns.template.propertyFields.fill = "color";
+      series.columns.template.propertyFields.stroke = "color";
+      //series.columns.template.column.cornerRadiusTopLeft = 15;
+      //series.columns.template.column.cornerRadiusTopRight = 15;
+      series.columns.template.tooltipText = "{categoryX}: [bold]{valueY}[/b]";
+
+      // Add bullets
+      var bullet = series.bullets.push(new am4charts.Bullet());
+      var image = bullet.createChild(am4core.Image);
+      image.width = 20;
+      image.height = 20;
+      image.horizontalCenter = "middle";
+      image.verticalCenter = "bottom";
+      image.dy = 10;
+      image.y = am4core.percent(100);
+      image.propertyFields.href = "image";
+      image.tooltipText = series.columns.template.tooltipText;
+      image.propertyFields.fill = "color";
+      image.filters.push(new am4core.DropShadowFilter());
     }
+    {
+      // Create chart instance
+      var chart = am4core.create(this.$refs.chartdiv2, am4charts.XYChart);
+
+      var title = chart.titles.create();
+      title.text = "Agi Heroes";
+      title.fontSize = 20;
+
+      // Add data
+      chart.data = heroes.filter(_ => _.attribute_primary == "DOTA_ATTRIBUTE_AGILITY");
+
+      // Create axes
+      var categoryAxis = chart.xAxes.push(new am4charts.CategoryAxis());
+      categoryAxis.dataFields.category = "name";
+      categoryAxis.renderer.grid.template.disabled = false;
+      categoryAxis.renderer.minGridDistance = 1;
+      categoryAxis.renderer.inside = false;
+      categoryAxis.renderer.labels.template.fill = am4core.color("#fff");
+      categoryAxis.renderer.labels.template.fontSize = 20;
+      categoryAxis.hidden = true;
+
+      var valueAxis = chart.yAxes.push(new am4charts.ValueAxis());
+      valueAxis.renderer.grid.template.strokeDasharray = "4,4";
+      valueAxis.renderer.labels.template.disabled = false;
+      valueAxis.min = -10;
+      valueAxis.max = 10;
+      valueAxis.strictMinMax = true;
+
+      // Do not crop bullets
+      chart.maskBullets = false;
+
+      // Remove padding
+      chart.paddingBottom = 0;
+
+      // Create series
+      var series = chart.series.push(new am4charts.ColumnSeries());
+      series.dataFields.valueY = "win_rate_delta";
+      series.dataFields.categoryX = "name";
+      series.columns.template.propertyFields.fill = "color";
+      series.columns.template.propertyFields.stroke = "color";
+      //series.columns.template.column.cornerRadiusTopLeft = 15;
+      //series.columns.template.column.cornerRadiusTopRight = 15;
+      // series.columns.template.tooltipText = "{categoryX}: [bold]{valueY}[/b]";
+
+      // Add bullets
+      var bullet = series.bullets.push(new am4charts.Bullet());
+      var image = bullet.createChild(am4core.Image);
+      image.width = 20;
+      image.height = 20;
+      image.horizontalCenter = "middle";
+      image.verticalCenter = "bottom";
+      image.dy = 10;
+      image.y = am4core.percent(100);
+      image.propertyFields.href = "image";
+      image.tooltipText = series.columns.template.tooltipText;
+      image.propertyFields.fill = "color";
+      image.filters.push(new am4core.DropShadowFilter());
+    }
+    {
+      // Create chart instance
+      var chart = am4core.create(this.$refs.chartdiv3, am4charts.XYChart);
+
+      var title = chart.titles.create();
+      title.text = "Int Heroes";
+      title.fontSize = 20;
+
+      // Add data
+      chart.data = heroes.filter(_ => _.attribute_primary == "DOTA_ATTRIBUTE_INTELLECT");
+
+      // Create axes
+      var categoryAxis = chart.xAxes.push(new am4charts.CategoryAxis());
+      categoryAxis.dataFields.category = "name";
+      categoryAxis.renderer.grid.template.disabled = false;
+      categoryAxis.renderer.minGridDistance = 1;
+      categoryAxis.renderer.inside = false;
+      categoryAxis.renderer.labels.template.fill = am4core.color("#fff");
+      categoryAxis.renderer.labels.template.fontSize = 20;
+      categoryAxis.hidden = true;
+
+      var valueAxis = chart.yAxes.push(new am4charts.ValueAxis());
+      valueAxis.renderer.grid.template.strokeDasharray = "4,4";
+      valueAxis.renderer.labels.template.disabled = false;
+      valueAxis.min = -10;
+      valueAxis.max = 15;
+      valueAxis.strictMinMax = true;
+
+      // Do not crop bullets
+      chart.maskBullets = false;
+
+      // Remove padding
+      chart.paddingBottom = 0;
+
+      // Create series
+      var series = chart.series.push(new am4charts.ColumnSeries());
+      series.dataFields.valueY = "win_rate_delta";
+      series.dataFields.categoryX = "name";
+      series.columns.template.propertyFields.fill = "color";
+      series.columns.template.propertyFields.stroke = "color";
+      //series.columns.template.column.cornerRadiusTopLeft = 15;
+      //series.columns.template.column.cornerRadiusTopRight = 15;
+      // series.columns.template.tooltipText = "{categoryX}: [bold]{valueY}[/b]";
+
+      // Add bullets
+      var bullet = series.bullets.push(new am4charts.Bullet());
+      var image = bullet.createChild(am4core.Image);
+      image.width = 20;
+      image.height = 20;
+      image.horizontalCenter = "middle";
+      image.verticalCenter = "bottom";
+      image.dy = 10;
+      image.y = am4core.percent(100);
+      image.propertyFields.href = "image";
+      image.tooltipText = series.columns.template.tooltipText;
+      image.propertyFields.fill = "color";
+      image.filters.push(new am4core.DropShadowFilter());
+    }
+
   }
 }
 </script>
+
+<!-- Add "scoped" attribute to limit CSS to this component only -->
+<style scoped>
+.customChart {
+  width: 100%;
+  height: 200px;
+}
+</style>

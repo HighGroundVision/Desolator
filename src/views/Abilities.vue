@@ -108,8 +108,8 @@ import ultimates from '@/assets/data/ultimates-collection.json'
 export default {
   name: 'abilities',
   data () {
-    abilities.sort((lhs, rhs) => rhs.win_rate - lhs.win_rate);
-    ultimates.sort((lhs, rhs) => rhs.win_rate - lhs.win_rate);
+    // abilities.sort((lhs, rhs) => rhs.win_rate - lhs.win_rate);
+    // ultimates.sort((lhs, rhs) => rhs.win_rate - lhs.win_rate);
     return {
       'abilities': abilities,
       'ultimates': ultimates
