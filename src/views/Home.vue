@@ -39,7 +39,7 @@
           Remember everyone, that while Carrys may kill heroes but Supports win games!
         </p>
         <p>
-          The strongest Hero is <b class="text-info">{{ summary.leaders.hero.best_win_rate.name }}</b>. 
+          The strongest Hero is <b class="text-info">{{ summary.hero.best_win_rate.name }}</b>. 
           Check out the Heroes list and details pages for more details on each hero.
         </p>
         <div class="card">
@@ -63,13 +63,13 @@
         </div> 
         <br />
         <p>
-          The Ability with the most wins is <b class="text-info">{{ summary.leaders.ability.most_wins.name }}</b> while <b class="text-info">{{ summary.leaders.ability.best_win_rate.name }}</b> <span v-if="summary.leaders.ability.best_win_rate.id == summary.leaders.ability.most_wins.id"> also</span> has the highest win rate.
+          The Ability with the most wins is <b class="text-info">{{ summary.ability.most_wins.name }}</b> while <b class="text-info">{{ summary.ability.best_win_rate.name }}</b> <span v-if="summary.ability.best_win_rate.id == summary.ability.most_wins.id"> also</span> has the highest win rate.
           Check out the Abilities list and details pages for more details on each ability.
         </p>
         <p>
-          Shout-out to <b class="text-info">{{ summary.leaders.players.best_win_rate.profile.personaname }}</b> with a win rate of <b class="text-info">{{ formatPercentage(summary.leaders.players.best_win_rate.stats.win_rate) }}</b> over <b class="text-info">{{ summary.leaders.players.best_win_rate.stats.wins }}</b> matches. 
-          Props to <b class="text-info">{{ summary.leaders.players.most_wins.profile.personaname }}</b> with <b class="text-info">{{ summary.leaders.players.most_wins.stats.wins }}</b> wins (the most in this export range) with a win rate of <b class="text-info">{{ formatPercentage(summary.leaders.players.most_wins.stats.win_rate) }}</b>.
-          Wow! Slow down <b class="text-info">{{ summary.leaders.players.most_matches.profile.personaname }}</b> with over <b class="text-info">{{ summary.leaders.players.most_matches.stats.matches }}</b> matches (the most in this export range) with a win rate of <b class="text-info">{{ formatPercentage(summary.leaders.players.most_matches.stats.win_rate) }}</b>.
+          Shout-out to <b class="text-info">{{ leaderboard.win_rate[0].name }}</b> with a win rate of <b class="text-info">{{ formatPercentage(leaderboard.win_rate[0].win_rate) }}</b> over <b class="text-info">{{ leaderboard.win_rate[0].wins }}</b> matches (the most in this export range). 
+          Props to <b class="text-info">{{ leaderboard.wins[0].name }}</b> with <b class="text-info">{{ leaderboard.wins[0].wins }}</b> wins with a win rate of <b class="text-info">{{ formatPercentage(leaderboard.wins[0].win_rate) }}</b>.
+          Wow! Slow down <b class="text-info">{{ leaderboard.matches[0].name }}</b> with over <b class="text-info">{{ leaderboard.matches[0].matches }}</b> matches with a win rate of <b class="text-info">{{ formatPercentage(leaderboard.matches[0].win_rate) }}</b>.
           Check out our Leaderboard for more details.
         </p>
         <p>
@@ -325,6 +325,7 @@ import moment from 'moment'
 import numeral from 'numeral'
 import summary from '@/assets/data/summary.json'
 import heroes from '@/assets/data/hero-summary.json'
+import leaderboard from '@/assets/data/leaderboard.json'
 
 export default {
   name: 'home',
@@ -333,6 +334,7 @@ export default {
       "construction": true,
       'summary': summary,
       'heroes': heroes,
+      'leaderboard': leaderboard,
     }
   },
   methods: {

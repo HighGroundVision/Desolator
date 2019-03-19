@@ -155,13 +155,14 @@
         <div class="text-center">
           <b-alert variant="info" show>   
             <span>
-              Shout-out to HGV leader and this sites creator
+              Shout-out to this sites creator
             </span>
             <br />
             <template v-for="(creator) in leaderboard.creators">
               <div :key="creator.profile_id">
                 <span><a :href="creator.profile_url" target="_blank">{{creator.name}}</a></span><br />
-                <span>with Rank {{ rankNumber(creator.rank) }} and a {{formatPercentage(creator.win_rate)}} Win Rate</span><br />
+                <span>Rank {{ rankNumber(creator.rank) }}</span><br />
+                <span>Win Rate {{formatPercentage(creator.win_rate)}}</span>
               </div>
             </template>
             <span>Go play more Dota...</span>
