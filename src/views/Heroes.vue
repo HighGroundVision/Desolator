@@ -9,7 +9,7 @@
         <div class="text-center">
           <b-alert variant="info" show>   
             <p>
-              Search for a hero to unlock additional knowledge!
+              Search for a hero and select them in the results to view additional details about the hero.
             </p>
           </b-alert>
           <img src="@/assets/imgs/cluckles-speach.png" class="cluckles-speach" />
