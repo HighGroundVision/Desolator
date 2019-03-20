@@ -1,124 +1,124 @@
 <template>
-  <b-row>
-    <b-col cols="4" lg="3">
-      <div class="text-center">
-        <b-alert variant="info" show>   
-          <p>
-            Select a ability to learn its secrets and gain insight!
-          </p>
-        </b-alert>
-        <img src="@/assets/imgs/cluckles-speach.png" class="cluckles-speach" />
-      </div>
-    </b-col>
-    <b-col>
+  <section>
+    <div>
       <h4  class="text-center">Abilities</h4>
       <hr class="highlighted" />
-      <p>
-        While It made called Ability Draft, abilities are not the be all and end all of the mode.
-        Make sure to check the heroes pages as good a ability in general maybe a bad choice for your hero.
-        We have ordered the lists below by the abilities / ultimates <b class="text-primary">win rate</b>.
-      </p>
-      <p>
-        We have also include the <b class="text-info">pick rate</b> as ratio to other abilities. 
-        As knowing the pick rate you can predict which abilities will be snap up first. 
-        If you are looking at few abilities that have similar win rates the pick rate can help you understand if you can wait till next round or if you should pickup that ability now.
-      </p>
-      <p>
-        Also abilities that have high win rates and low pick rates are outliers your opponents will never see coming!
-      </p>
-      <b-row>
-        <b-col>
-          <h5 class="text-center">Skills</h5>
-          <b-row>
-            <template v-for="(value) in abilities">
-              <b-col cols="6" :key="value.key">
-                <router-link :to="`/ability/${value.id}`">
-                  <div class="card m-1">
-                    <div class="card-body">
-                      <span class="card-title">{{value.name}}</span>
-                      <div class="p-1">
-                        <b-img :src="value.image" fluid-grow  />
-                      </div>
-                      <div class="p-1">
-                        <b-progress :max="1">
-                          <b-progress-bar :value="value.win_rate" variant="primary" :striped="true" >
-                            <strong>{{ formatPercentage(value.win_rate) }}</strong>
-                          </b-progress-bar>
-                          <b-progress-bar :value="1-value.win_rate" variant="secondary" />
-                        </b-progress>
-                      </div>
-                      <div class="p-1">
-                        <b-progress :max="1">
-                          <b-progress-bar :value="value.picks_percentage" variant="info" :striped="true" />
-                          <b-progress-bar :value="1-value.picks_percentage" variant="secondary" />
-                        </b-progress>
-                      </div>
-                    </div>
-                  </div>
-                </router-link>
-              </b-col>
-            </template>
-          </b-row>
-        </b-col>
-        <b-col>
-          <h5 class="text-center">Ultimates</h5>
-          <b-row>
-            <template v-for="(value) in ultimates">
-              <b-col cols="6" :key="value.key">
-                <router-link :to="`/ability/${value.id}`">
-                  <div class="card m-1">
-                    <div class="card-body">
-                      <span class="card-title">{{value.name}}</span>
-                      <div class="p-1">
-                        <b-img :src="value.image" fluid-grow  />
-                      </div>
-                      <div class="p-1">
-                        <b-progress :max="1">
-                          <b-progress-bar :value="value.win_rate" variant="primary" :striped="true" >
-                            <strong>{{ formatPercentage(value.win_rate) }}</strong>
-                          </b-progress-bar>
-                          <b-progress-bar :value="1-value.win_rate" variant="secondary" />
-                        </b-progress>
-                      </div>
-                      <div class="p-1">
-                        <b-progress :max="1">
-                          <b-progress-bar :value="value.picks_percentage" variant="info" :striped="true" />
-                          <b-progress-bar :value="1-value.picks_percentage" variant="secondary" />
-                        </b-progress>
-                      </div>
-                    </div>
-                  </div>
-                </router-link>
-              </b-col>
-            </template>
-          </b-row>
-        </b-col>
-      </b-row>
-      
-    </b-col>
-  </b-row>
+    </div>
+    <b-row>
+      <b-col cols="4" lg="3">
+        <div class="text-center">
+          <b-alert variant="info" show>   
+            <p>
+              Search for an ability by name or by the hero's they belong to.
+              Click the ability to learn its secrets!
+            </p>
+          </b-alert>
+          <img src="@/assets/imgs/cluckles-speach.png" class="cluckles-speach" />
+        </div>
+      </b-col>
+      <b-col>
+        <b-form @submit.prevent="find">
+          <b-input-group>
+            <b-input-group-addon>
+              <b-dropdown :text="searchLabel">
+                <b-dropdown-item @click="search_type = 1">By Ability</b-dropdown-item>
+                <b-dropdown-item @click="search_type = 2">By Hero</b-dropdown-item>
+                <b-dropdown-item @click="search_type = 3">By Keyword</b-dropdown-item>
+              </b-dropdown>
+            </b-input-group-addon>
+            <b-form-input type="text" v-model="search_item" />
+            <b-input-group-addon>
+              <b-button variant="success" @click="find">Find</b-button>
+            </b-input-group-addon>
+          </b-input-group>
+        </b-form>
+        <br />
+        <b-row>
+          <template v-for="(value) in abilities">
+            <b-col :key="value.id" cols="3">
+              <img :src="value.image" class="m-1 ability-icon-sm "/>
+              <b-link :to="'/ability/' + value.id">{{value.name}}</b-link>
+            </b-col>
+          </template>
+        </b-row>
+        <br />
+        <p>
+          When Searching we only display the top 24 results by win rate. 
+          If you the ability is not there then it is more then likely not included in the Ability Draft. 
+          Check out the draft pool for more details.
+        </p>
+        <hr class="highlighted" />
+        <p>
+          We have grouped the abilities by keyword.
+          These keywords represent the primary mechanics.
+          The count is approximately the number of abilities at that fall under this group (there is always some error in the labeled data).
+          While we have also included the win rate for each group.
+        </p>
+        <b-table small
+          :fields="['keyword', 'count', 'win_rate']"
+          :items="groups" 
+          >
+          <template slot="keyword" slot-scope="row">
+            <b class="text-info">{{row.item.keyword}}</b>
+          </template>
+          <template slot="count" slot-scope="row">
+            {{row.item.count}}
+          </template>
+          <template slot="win_rate" slot-scope="row">
+            <b-progress height="1.5rem" :value="row.item.win_rate" :min="0" :max="1" :striped="true" show-progress></b-progress>
+          </template>
+          
+        </b-table>
+      </b-col>
+    </b-row>
+    
+  </section>
 </template>
 
 <script>
 import numeral from 'numeral'
-import abilities from '@/assets/data/abilities-collection.json'
-import ultimates from '@/assets/data/ultimates-collection.json'
-// $route.params.id
+import groups from '@/assets/data/ability-groups.json'
+import abilities from '@/assets/data/ability-collection.json'
 
 export default {
   name: 'abilities',
   data () {
-    // abilities.sort((lhs, rhs) => rhs.win_rate - lhs.win_rate);
-    // ultimates.sort((lhs, rhs) => rhs.win_rate - lhs.win_rate);
     return {
-      'abilities': abilities,
-      'ultimates': ultimates
+      'groups': groups,
+      'search_item': null,
+      'search_type': 1,
+      'abilities': [],
+    }
+  },
+  computed: {
+    searchLabel: function () {
+      return this.search_type == 1 ? 'Search By Ability' : this.search_type == 2 ? 'Search By Hero' : this.search_type == 3 ? 'Search By Keyword' : '...';
     }
   },
   methods: {
     formatPercentage(value) {
       return numeral(value).format('0%');
-    }
+    },
+    find() {
+      if(this.search_item) {
+        let s = this.search_item.toLowerCase();
+        let t = this.search_type;
+        var collection = [];
+        
+        if(t == 1) {
+          collection = abilities.filter(_ => _.name.toLowerCase().includes(s));
+        } else if(t == 2) {
+          collection = abilities.filter(_ => _.hero_name.toLowerCase().includes(s));
+        } else if(t == 3) {
+          collection = abilities.filter(_ => _.keywords.map(_ => _.toLowerCase()).includes(s));
+        }
+        
+        collection.sort((lhs, rhs) => rhs.win_rate - lhs.win_rate);
+        this.abilities = collection.slice(0, 24);
+      } else {
+        this.abilities = [];
+      }
+    },
   }
 }
 </script>

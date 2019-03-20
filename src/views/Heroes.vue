@@ -20,7 +20,7 @@
           <b-input-group>
             <b-form-input type="text" v-model="search" />
             <b-input-group-addon>
-              <b-button variant="success" @click="findHero">Search</b-button>
+              <b-button variant="success" @click="findHero">Find</b-button>
             </b-input-group-addon>
           </b-input-group>
         </b-form>
