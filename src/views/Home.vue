@@ -32,12 +32,13 @@
           </b-row>
         </b-alert>
         <h4 class="text-center">Welcome!</h4>
-        <hr class="highlighted" />
+        <!--<hr class="highlighted" />-->
         <p>
           We at HGV are dedicated to the Ability Draft community.
           Providing the tools to understand AD better, and hopefully have some fun along the way. 
           Remember everyone, that while Carrys may kill heroes but Supports win games!
         </p>
+        <hr class="highlighted" />
         <p>
           The strongest Hero is <b class="text-info">{{ summary.hero.best_win_rate.name }}</b>. 
           Check out the Heroes list and details pages for more details on each hero.
@@ -62,16 +63,19 @@
           </div>
         </div> 
         <br />
+        <hr class="highlighted" />
         <p>
           The Ability with the most wins is <b class="text-info">{{ summary.ability.most_wins.name }}</b> while <b class="text-info">{{ summary.ability.best_win_rate.name }}</b> <span v-if="summary.ability.best_win_rate.id == summary.ability.most_wins.id"> also</span> has the highest win rate.
           Check out the Abilities list and details pages for more details on each ability.
         </p>
+        <hr class="highlighted" />
         <p>
           Shout-out to <b class="text-info">{{ leaderboard.win_rate[0].name }}</b> with a win rate of <b class="text-info">{{ formatPercentage(leaderboard.win_rate[0].win_rate) }}</b> over <b class="text-info">{{ leaderboard.win_rate[0].wins }}</b> matches (the most in this export range). 
           Props to <b class="text-info">{{ leaderboard.wins[0].name }}</b> with <b class="text-info">{{ leaderboard.wins[0].wins }}</b> wins with a win rate of <b class="text-info">{{ formatPercentage(leaderboard.wins[0].win_rate) }}</b>.
           Wow! Slow down <b class="text-info">{{ leaderboard.matches[0].name }}</b> with over <b class="text-info">{{ leaderboard.matches[0].matches }}</b> matches with a win rate of <b class="text-info">{{ formatPercentage(leaderboard.matches[0].win_rate) }}</b>.
           Check out our Leaderboard for more details.
         </p>
+        <hr class="highlighted" />
         <p>
           We are often asked when do people play AD?
           To that end we have included the daily counts as a percentage of the total matches.
@@ -90,16 +94,17 @@
             </div>
             <h5 class="card-title">Time Breakdown</h5>
             <b-row>
-              <b-col>Sunday</b-col>
-              <b-col>
+              <b-col cols="2">Sunday</b-col>
+              <b-col cols="2">
                  <b-progress :max="100">
                   <b-progress-bar :value="summary.daily.sunday.total" variant="info" :striped="true" > 
+                  </b-progress-bar>  
+                  <b-progress-bar :value="100-summary.daily.sunday.total" variant="secondary">
                     <strong>{{ summary.daily.sunday.total  }}%</strong>
                   </b-progress-bar>
-                  <b-progress-bar :value="100-summary.daily.sunday.total" variant="secondary"  />
                 </b-progress>
               </b-col>
-              <b-col>
+              <b-col cols="8">
                 <b-progress :max="100">
                   <b-progress-bar :value="summary.daily.sunday.hours['1']" variant="primary" :striped="true" >
                     <strong>{{ summary.daily.sunday.hours['1'] }}%</strong>
@@ -117,16 +122,17 @@
               </b-col>
             </b-row>
             <b-row>
-              <b-col >Monday</b-col>
-              <b-col >
+              <b-col cols="2">Monday</b-col>
+              <b-col cols="2">
                  <b-progress :max="100">
                   <b-progress-bar :value="summary.daily.monday.total" variant="info" :striped="true" >
+                  </b-progress-bar>
+                  <b-progress-bar :value="100-summary.daily.monday.total" variant="secondary">
                     <strong>{{ summary.daily.monday.total }}%</strong>
                   </b-progress-bar>
-                  <b-progress-bar :value="100-summary.daily.monday.total" variant="secondary" />
                 </b-progress>
               </b-col>
-              <b-col>
+              <b-col cols="8">
                 <b-progress :max="100">
                   <b-progress-bar :value="summary.daily.monday.hours['1']" variant="primary" :striped="true" >
                     <strong>{{ summary.daily.monday.hours['1'] }}%</strong>
@@ -144,16 +150,17 @@
               </b-col>
             </b-row>
             <b-row>
-              <b-col >Tuesday</b-col>
-              <b-col >
+              <b-col cols="2">Tuesday</b-col>
+              <b-col cols="2">
                  <b-progress :max="100">
                   <b-progress-bar :value="summary.daily.tuesday.total" variant="info" :striped="true" >
+                  </b-progress-bar>
+                  <b-progress-bar :value="100-summary.daily.tuesday.total" variant="secondary">
                     <strong>{{ summary.daily.tuesday.total }}%</strong>
                   </b-progress-bar>
-                  <b-progress-bar :value="100-summary.daily.tuesday.total" variant="secondary" />
                 </b-progress>
               </b-col>
-              <b-col>
+              <b-col cols="8">
                 <b-progress :max="100">
                   <b-progress-bar :value="summary.daily.tuesday.hours['1']" variant="primary" :striped="true" >
                     <strong>{{ summary.daily.tuesday.hours['1'] }}%</strong>
@@ -171,16 +178,17 @@
               </b-col>
             </b-row>
             <b-row>
-              <b-col >Wednesday</b-col>
-              <b-col >
+              <b-col cols="2">Wednesday</b-col>
+              <b-col cols="2">
                 <b-progress :max="100">
                   <b-progress-bar :value="summary.daily.wednesday.total" variant="info" :striped="true" >
+                  </b-progress-bar>
+                  <b-progress-bar :value="100-summary.daily.wednesday.total" variant="secondary">
                     <strong>{{ summary.daily.wednesday.total }}%</strong>
                   </b-progress-bar>
-                  <b-progress-bar :value="100-summary.daily.wednesday.total" variant="secondary" />
                 </b-progress>
               </b-col>
-              <b-col>
+              <b-col cols="8">
                 <b-progress :max="100">
                   <b-progress-bar :value="summary.daily.wednesday.hours['1']" variant="primary" :striped="true" >
                     <strong>{{ summary.daily.wednesday.hours['1'] }}%</strong>
@@ -198,16 +206,17 @@
               </b-col>
             </b-row>
             <b-row>
-              <b-col >Thursday</b-col>
-              <b-col >
+              <b-col cols="2">Thursday</b-col>
+              <b-col cols="2">
                  <b-progress :max="100">
                   <b-progress-bar :value="summary.daily.thursday.total" variant="info" :striped="true" >
+                  </b-progress-bar>
+                  <b-progress-bar :value="100-summary.daily.thursday.total" variant="secondary">
                     <strong>{{ summary.daily.thursday.total }}%</strong>
                   </b-progress-bar>
-                  <b-progress-bar :value="100-summary.daily.thursday.total" variant="secondary" />
                 </b-progress>
               </b-col>
-              <b-col>
+              <b-col cols="8">
                 <b-progress :max="100">
                   <b-progress-bar :value="summary.daily.thursday.hours['1']" variant="primary" :striped="true">
                     <strong>{{ summary.daily.thursday.hours['1'] }}%</strong>
@@ -225,16 +234,17 @@
               </b-col>
             </b-row>
             <b-row>
-              <b-col >Friday</b-col>
-              <b-col >
+              <b-col cols="2">Friday</b-col>
+              <b-col cols="2">
                 <b-progress :max="100">
                   <b-progress-bar :value="summary.daily.friday.total" variant="info" :striped="true" >
+                  </b-progress-bar>
+                  <b-progress-bar :value="100-summary.daily.friday.total" variant="secondary">
                     <strong>{{ summary.daily.friday.total }}%</strong>
                   </b-progress-bar>
-                  <b-progress-bar :value="100-summary.daily.friday.total" variant="secondary" />
                 </b-progress>
               </b-col>
-              <b-col>
+              <b-col cols="8">
                 <b-progress :max="100">
                   <b-progress-bar :value="summary.daily.friday.hours['1']" variant="primary" :striped="true" >
                     <strong>{{ summary.daily.friday.hours['1'] }}%</strong>
@@ -252,16 +262,17 @@
               </b-col>
             </b-row>
             <b-row>
-              <b-col >Saturday</b-col>
-              <b-col >
+              <b-col cols="2">Saturday</b-col>
+              <b-col cols="2">
                 <b-progress :max="100">
                   <b-progress-bar :value="summary.daily.saturday.total" variant="info" :striped="true" >
+                  </b-progress-bar>
+                  <b-progress-bar :value="100-summary.daily.saturday.total" variant="secondary">
                     <strong>{{ summary.daily.saturday.total }}%</strong>
                   </b-progress-bar>
-                  <b-progress-bar :value="100-summary.daily.saturday.total" variant="secondary" />
                 </b-progress>
               </b-col>
-              <b-col>
+              <b-col cols="8">
                 <b-progress :max="100">
                   <b-progress-bar :value="summary.daily.saturday.hours['1']" variant="primary" :striped="true" >
                     <strong>{{ summary.daily.saturday.hours['1'] }}%</strong>
@@ -281,6 +292,7 @@
           </div>
         </div>
         <br />
+        <hr class="highlighted" />
         <p>
           In the war that is Dota two teams continue a set of endless battles.
           But who is winning... Maybe the team that always has first pick?
@@ -304,12 +316,13 @@
         </div>
         <p>
           Nope, as the <b class="text-info">Radiant</b> looks to have a <a href="https://www.dotabuff.com/heroes/meta?view=played&metric=faction">~5% Side Advantage</a> since the last set of map changes. 
-          This means that first pick is not as important as people think...
+          This means that first pick maybe important but players are finding ways to overcome it...
         </p>
+        <hr class="highlighted" />
         <p>
           We reset our baseline when a major patch is released that changes the balance of abilities.
           We normally export our master database approximately once a week.
-          Our current stats collection is based started on <b class="text-info">{{ formatDateTime(summary.range.start) }}</b> and was last exported on <b class="text-info">{{ formatDateTime(summary.range.end) }}</b>, that is a total of <b class="text-info">{{ formatDuration(summary.range.start, summary.range.end) }}</b>, with a total of <b class="text-info">{{ formatNumber(summary.range.matches) }}</b> AD matches processed. 
+          Our current stats collection was started on <b class="text-info">{{ formatDateTime(summary.range.start) }}</b> and was last exported on <b class="text-info">{{ formatDateTime(summary.range.end) }}</b>, that is a total of <b class="text-info">{{ formatDuration(summary.range.start, summary.range.end) }}</b>, with a total of <b class="text-info">{{ formatNumber(summary.range.matches) }}</b> AD matches processed. 
           But we did notice that <b class="text-info">{{ summary.range.abandoned }}%</b> of matches where abandoned, you can do better people!
         </p>
       </b-col>

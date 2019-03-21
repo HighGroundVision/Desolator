@@ -16,11 +16,13 @@
           </b-progress>
           <span>
             Wins
-            <small>as a ratio to the other heroes</small>
+            <small>as a ratio to the max wins</small>
           </span>
           <b-progress :max="1">
-            <b-progress-bar :value="hero.summary.wins" variant="warning" :striped="true" />
-            <b-progress-bar :value="1-hero.summary.wins" variant="secondary"/>
+            <b-progress-bar :value="hero.summary.wins_ratio" variant="warning" :striped="true">
+              <strong>{{ formatPercentage(hero.summary.wins_ratio) }}</strong>
+            </b-progress-bar>
+            <b-progress-bar :value="1-hero.summary.wins_ratio" variant="secondary"/>
           </b-progress>
         </b-col>
       </b-row>
@@ -495,7 +497,7 @@
                 <b-progress
                   variant="info"
                   height="1.5rem"
-                  :value="ability.picks_percentage"
+                  :value="ability.picks_ratio"
                   :min="0"
                   :max="1"
                   :striped="true"
@@ -505,7 +507,7 @@
                 <b-progress
                   variant="warning"
                   height="1.5rem"
-                  :value="ability.wins_percentage"
+                  :value="ability.wins_ratio"
                   :min="0"
                   :max="1"
                   :striped="true"
@@ -540,7 +542,7 @@
                 <b-progress
                   variant="info"
                   height="1.5rem"
-                  :value="ability.picks_percentage"
+                  :value="ability.picks_ratio"
                   :min="0"
                   :max="1"
                   :striped="true"
@@ -550,7 +552,7 @@
                 <b-progress
                   variant="warning"
                   height="1.5rem"
-                  :value="ability.wins_percentage"
+                  :value="ability.wins_ratio"
                   :min="0"
                   :max="1"
                   :striped="true"

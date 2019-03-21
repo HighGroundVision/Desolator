@@ -18,7 +18,7 @@
       <b-col>
         <b-form @submit.prevent="findHero">
           <b-input-group>
-            <b-form-input type="text" v-model="search" />
+            <b-form-input type="text" v-model="search" placeholder="Enter part of a heroes name" />
             <b-input-group-addon>
               <b-button variant="success" @click="findHero">Find</b-button>
             </b-input-group-addon>
@@ -28,7 +28,7 @@
         <ul class="list-unstyled">
           <template v-for="(value) in heroes">
             <li :key="value.id">
-              <img :src="value.image" class="m-1"/>
+              <img :src="value.icon" class="m-1"/>
               <b-link :to="'/hero/' + value.id">{{value.name}}</b-link>
             </li>
           </template>
@@ -79,17 +79,17 @@ export default {
       {
         element: this.$refs.chartdiv1,
         data: heroes.filter(_ => _.attribute_primary == "DOTA_ATTRIBUTE_STRENGTH"),
-        title: "Str Heroes",
+        title: "Str Win Rate",
       },
       {
         element: this.$refs.chartdiv2,
         data: heroes.filter(_ => _.attribute_primary == "DOTA_ATTRIBUTE_AGILITY"),
-        title: "Agi Heroes",
+        title: "Agi Win Rate",
       },
       {
         element: this.$refs.chartdiv3,
         data: heroes.filter(_ => _.attribute_primary == "DOTA_ATTRIBUTE_INTELLECT"),
-        title: "Int Heroes",
+        title: "Int Win Rate",
       }
     ];
     
@@ -97,9 +97,9 @@ export default {
       // Create chart instance
       var chart = am4core.create(item.element, am4charts.XYChart);
 
-      var title = chart.titles.create();
-      title.text = item.title;
-      title.fontSize = 20;
+      //var title = chart.titles.create();
+      //title.text = item.title;
+      //title.fontSize = 20;
 
       // Add data
       chart.data = item.data;
@@ -117,9 +117,14 @@ export default {
       var valueAxis = chart.yAxes.push(new am4charts.ValueAxis());
       valueAxis.renderer.grid.template.strokeDasharray = "4,4";
       valueAxis.renderer.labels.template.disabled = false;
-      valueAxis.min = -10;
-      valueAxis.max = 15;
+      valueAxis.baseValue = 0.5;
+      valueAxis.min = 0.4;
+      valueAxis.max = 0.6;
       valueAxis.strictMinMax = true;
+      valueAxis.title.text = item.title;
+
+      // formating 
+      chart.numberFormatter.numberFormat = "#.0%";
 
       // Do not crop bullets
       chart.maskBullets = false;
@@ -129,12 +134,10 @@ export default {
 
       // Create series
       var series = chart.series.push(new am4charts.ColumnSeries());
-      series.dataFields.valueY = "win_rate_delta";
+      series.dataFields.valueY = "win_rate";
       series.dataFields.categoryX = "name";
       series.columns.template.propertyFields.fill = "color";
       series.columns.template.propertyFields.stroke = "color";
-      //series.columns.template.column.cornerRadiusTopLeft = 15;
-      //series.columns.template.column.cornerRadiusTopRight = 15;
       series.columns.template.tooltipText = "{categoryX}: [bold]{valueY}[/b]";
 
       // Add bullets
@@ -146,7 +149,7 @@ export default {
       image.verticalCenter = "bottom";
       image.dy = 10;
       image.y = am4core.percent(100);
-      image.propertyFields.href = "image";
+      image.propertyFields.href = "icon";
       image.tooltipText = series.columns.template.tooltipText;
       image.propertyFields.fill = "color";
       image.filters.push(new am4core.DropShadowFilter());
