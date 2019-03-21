@@ -475,17 +475,19 @@
       <ul class="list-group">
         <li class="list-group-item text-center">
           <b-row>
-            <b-col cols="2"></b-col>
+            <b-col cols="1"></b-col>
             <b-col></b-col>
-            <b-col>Most Picks</b-col>
-            <b-col>Most Wins</b-col>
+            <b-col>Picks</b-col>
+            <b-col cols="1"></b-col>
+            <b-col>Wins</b-col>
+            <b-col cols="1"></b-col>
             <b-col>Win Rate</b-col>
           </b-row>
         </li>
         <template v-for="ability in hero.abilities">
           <li :key="ability.id" class="list-group-item">
             <b-row>
-              <b-col cols="2">
+              <b-col cols="1">
                 <b-img :src="ability.image" rounded class="ability-icon-sm"/>
               </b-col>
               <b-col>
@@ -503,6 +505,7 @@
                   :striped="true"
                 ></b-progress>
               </b-col>
+              <b-col cols="1">{{formatNumber(ability.picks)}}</b-col>
               <b-col>
                 <b-progress
                   variant="warning"
@@ -513,6 +516,7 @@
                   :striped="true"
                 ></b-progress>
               </b-col>
+              <b-col cols="1">{{formatNumber(ability.wins)}}</b-col>
               <b-col>
                 <b-progress
                   height="1.5rem"
@@ -530,7 +534,7 @@
         <template v-for="ability in hero.ultimates">
           <li :key="ability.id" class="list-group-item">
             <b-row>
-              <b-col cols="2">
+              <b-col cols="1">
                 <b-img :src="ability.image" rounded class="ability-icon-sm"/>
               </b-col>
               <b-col>
@@ -548,6 +552,7 @@
                   :striped="true"
                 ></b-progress>
               </b-col>
+              <b-col cols="1">{{formatNumber(ability.picks)}}</b-col>
               <b-col>
                 <b-progress
                   variant="warning"
@@ -558,6 +563,7 @@
                   :striped="true"
                 ></b-progress>
               </b-col>
+              <b-col cols="1">{{formatNumber(ability.wins)}}</b-col>
               <b-col>
                 <b-progress
                   height="1.5rem"
@@ -607,7 +613,7 @@
       </p>
       <h5 class="text-center">Abilities</h5>
       <b-table 
-          :fields="['image', 'name', 'has_upgrade', 'picks', 'wins', 'win_rate']"
+          :fields="['image', 'name', 'has_upgrade', 'picks', 'picks_ratio', 'wins', 'wins_ratio', 'win_rate']"
           :items="hero.combos.abilities" 
           >
           <template slot="image" slot-scope="row">
@@ -620,10 +626,16 @@
             <b-progress height="1.5rem" :value="row.item.win_rate" :min="0" :max="1" :striped="true" show-progress></b-progress>
           </template>
           <template slot="wins" slot-scope="row">
-            <b-progress variant="warning" height="1.5rem" :value="row.item.wins" :min="0" :max="100" :striped="true"></b-progress>
+            <span>{{row.item.wins}}</span>
           </template>
           <template slot="picks" slot-scope="row">
-            <b-progress variant="info" height="1.5rem" :value="row.item.picks" :min="0" :max="100" :striped="true"></b-progress>
+            <span>{{row.item.picks}}</span>
+          </template>
+          <template slot="wins_ratio" slot-scope="row">
+            <b-progress variant="warning" height="1.5rem" :value="row.item.wins_ratio" :min="0" :max="1" :striped="true" show-progress></b-progress>
+          </template>
+          <template slot="picks_ratio" slot-scope="row">
+            <b-progress variant="info" height="1.5rem" :value="row.item.picks_ratio" :min="0" :max="1" :striped="true" show-progress></b-progress>
           </template>
           <template slot="has_upgrade" slot-scope="row">
             <span v-if="row.item.has_upgrade" class="badge badge-success">Yes</span>
@@ -633,7 +645,7 @@
 
       <h5 class="text-center">Ultimates</h5>
       <b-table 
-          :fields="['image', 'name', 'has_upgrade', 'picks', 'wins', 'win_rate']"
+          :fields="['image', 'name', 'has_upgrade', 'picks', 'picks_ratio', 'wins', 'wins_ratio', 'win_rate']"
           :items="hero.combos.ultimates" 
           >
           <template slot="image" slot-scope="row">
@@ -646,10 +658,16 @@
             <b-progress height="1.5rem" :value="row.item.win_rate" :min="0" :max="1" :striped="true" show-progress></b-progress>
           </template>
           <template slot="wins" slot-scope="row">
-            <b-progress variant="warning" height="1.5rem" :value="row.item.wins" :min="0" :max="100" :striped="true"></b-progress>
+            <span>{{row.item.wins}}</span>
           </template>
           <template slot="picks" slot-scope="row">
-            <b-progress variant="info" height="1.5rem" :value="row.item.picks" :min="0" :max="100" :striped="true"></b-progress>
+            <span>{{row.item.picks}}</span>
+          </template>
+          <template slot="wins_ratio" slot-scope="row">
+            <b-progress variant="warning" height="1.5rem" :value="row.item.wins_ratio" :min="0" :max="1" :striped="true" show-progress></b-progress>
+          </template>
+          <template slot="picks_ratio" slot-scope="row">
+            <b-progress variant="info" height="1.5rem" :value="row.item.picks_ratio" :min="0" :max="1" :striped="true" show-progress></b-progress>
           </template>
           <template slot="has_upgrade" slot-scope="row">
             <span v-if="row.item.has_upgrade" class="badge badge-success">Yes</span>
@@ -683,7 +701,10 @@ export default {
   methods: {
     formatPercentage(value) {
       return numeral(value).format("0%");
-    }
+    },
+    formatNumber(value) {
+      return numeral(value).format('0,0');
+    },
   },
   watch: {
     $route(to, from) {

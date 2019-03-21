@@ -65,8 +65,8 @@
               <small>as a ratio to the other abilities</small>
             </b>
             <b-progress :max="1">
-              <b-progress-bar :value="details.summary.picks_percentage" variant="info" :striped="true" />
-              <b-progress-bar :value="1-details.summary.picks_percentage" variant="secondary"/>
+              <b-progress-bar :value="details.summary.picks_ratio" variant="info" :striped="true" />
+              <b-progress-bar :value="1-details.summary.picks_ratio" variant="secondary"/>
             </b-progress>
           </div>
           <div class="p-1">
@@ -75,8 +75,8 @@
               <small>as a ratio to the other abilities</small>
             </b>
             <b-progress :max="1">
-              <b-progress-bar :value="details.summary.wins_percentage" variant="warning" :striped="true" />
-              <b-progress-bar :value="1-details.summary.wins_percentage" variant="secondary"/>
+              <b-progress-bar :value="details.summary.wins_ratio" variant="warning" :striped="true" />
+              <b-progress-bar :value="1-details.summary.wins_ratio" variant="secondary"/>
             </b-progress>
           </div>
         </b-col>
@@ -93,7 +93,7 @@
         We also only show the top 10 for brevity.
       </p>
       <b-table 
-          :fields="['image', 'name', 'picks', 'wins', 'win_rate']"
+          :fields="['image', 'name', 'picks', 'picks_ratio', 'wins', 'wins_ratio', 'win_rate']"
           :items="details.heroes" 
           >
           <template slot="image" slot-scope="row">
@@ -106,10 +106,16 @@
             <b-progress variant="primary" height="1.5rem" :value="row.item.win_rate" :min="0" :max="1" :striped="true" show-progress></b-progress>
           </template>
           <template slot="wins" slot-scope="row">
-            <b-progress variant="warning" height="1.5rem" :value="row.item.wins" :min="0" :max="100" :striped="true"></b-progress>
+            <span>{{row.item.wins}}</span>
           </template>
           <template slot="picks" slot-scope="row">
-            <b-progress variant="info" height="1.5rem" :value="row.item.picks" :min="0" :max="100" :striped="true"></b-progress>
+            <span>{{row.item.picks}}</span>
+          </template>
+          <template slot="wins_ratio" slot-scope="row">
+            <b-progress variant="warning" height="1.5rem" :value="row.item.wins_ratio" :min="0" :max="1" :striped="true" show-progress></b-progress>
+          </template>
+          <template slot="picks_ratio" slot-scope="row">
+            <b-progress variant="info" height="1.5rem" :value="row.item.picks_ratio" :min="0" :max="1" :striped="true" show-progress></b-progress>
           </template>
       </b-table>
       <br />
@@ -148,7 +154,7 @@
       <div>
         <h5 class="text-center">Abilities</h5>
         <b-table 
-            :fields="['image', 'name', 'picks', 'wins', 'win_rate']"
+            :fields="['image', 'name', 'picks', 'picks_ratio', 'wins', 'wins_ratio', 'win_rate']"
             :items="details.combos.abilities" 
             >
             <template slot="image" slot-scope="row">
@@ -161,17 +167,23 @@
               <b-progress height="1.5rem" :value="row.item.win_rate" :min="0" :max="1" :striped="true" show-progress></b-progress>
             </template>
             <template slot="wins" slot-scope="row">
-              <b-progress variant="warning" height="1.5rem" :value="row.item.wins" :min="0" :max="100" :striped="true"></b-progress>
+              <span>{{row.item.wins}}</span>
             </template>
             <template slot="picks" slot-scope="row">
-              <b-progress variant="info" height="1.5rem" :value="row.item.picks" :min="0" :max="100" :striped="true"></b-progress>
+              <span>{{row.item.picks}}</span>
+            </template>
+            <template slot="wins_ratio" slot-scope="row">
+              <b-progress variant="warning" height="1.5rem" :value="row.item.wins_ratio" :min="0" :max="1" :striped="true" show-progress></b-progress>
+            </template>
+            <template slot="picks_ratio" slot-scope="row">
+              <b-progress variant="info" height="1.5rem" :value="row.item.picks_ratio" :min="0" :max="1" :striped="true" show-progress></b-progress>
             </template>
           </b-table>
       </div>
       <div v-if="details.combos.ultimates.length > 0">
         <h5 class="text-center">Ultimates</h5>
         <b-table 
-            :fields="['image', 'name', 'picks', 'wins', 'win_rate']"
+            :fields="['image', 'name', 'picks', 'picks_ratio', 'wins', 'wins_ratio', 'win_rate']"
             :items="details.combos.ultimates" 
             >
             <template slot="image" slot-scope="row">
@@ -184,10 +196,16 @@
               <b-progress height="1.5rem" :value="row.item.win_rate" :min="0" :max="1" :striped="true" show-progress></b-progress>
             </template>
             <template slot="wins" slot-scope="row">
-              <b-progress variant="warning" height="1.5rem" :value="row.item.wins" :min="0" :max="100" :striped="true"></b-progress>
+              <span>{{row.item.wins}}</span>
             </template>
             <template slot="picks" slot-scope="row">
-              <b-progress variant="info" height="1.5rem" :value="row.item.picks" :min="0" :max="100" :striped="true"></b-progress>
+              <span>{{row.item.picks}}</span>
+            </template>
+            <template slot="wins_ratio" slot-scope="row">
+              <b-progress variant="warning" height="1.5rem" :value="row.item.wins_ratio" :min="0" :max="1" :striped="true" show-progress></b-progress>
+            </template>
+            <template slot="picks_ratio" slot-scope="row">
+              <b-progress variant="info" height="1.5rem" :value="row.item.picks_ratio" :min="0" :max="1" :striped="true" show-progress></b-progress>
             </template>
           </b-table>
       </div>

@@ -59,7 +59,7 @@
           :items="groups" 
           >
           <template slot="keyword" slot-scope="row">
-            <b class="text-info">{{row.item.keyword}}</b>
+            <a href="javascript:void(0);"><b class="text-info" @click="findKeyword(row.item.keyword)">{{row.item.keyword}}</b></a>
           </template>
           <template slot="count" slot-scope="row">
             {{row.item.count}}
@@ -98,6 +98,11 @@ export default {
   methods: {
     formatPercentage(value) {
       return numeral(value).format('0%');
+    },
+    findKeyword(item) {
+      this.search_item = item;
+      this.search_type = 3;
+      this.find();
     },
     find() {
       if(this.search_item) {
