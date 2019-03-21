@@ -40,6 +40,7 @@
               <b-link :to="'/ability/' + value.id">{{value.name}}</b-link>
             </b-col>
           </template>
+          <b-btn v-if="search_more" @click="more" variant="link">More</b-btn>
         </b-row>
         <br />
         <p>
@@ -59,13 +60,15 @@
           :items="groups" 
           >
           <template slot="keyword" slot-scope="row">
-            <a href="javascript:void(0);"><b class="text-info" @click="findKeyword(row.item.keyword)">{{row.item.keyword}}</b></a>
+            <a v-if="row.item.win_rate > 0.505" href="javascript:void(0);"><b class="text-success" @click="findKeyword(row.item.keyword)">{{row.item.keyword}}</b></a>
+            <a v-else-if="row.item.win_rate < 0.495" href="javascript:void(0);"><b class="text-warning" @click="findKeyword(row.item.keyword)">{{row.item.keyword}}</b></a>
+            <a v-else href="javascript:void(0);"><b class="text-info" @click="findKeyword(row.item.keyword)">{{row.item.keyword}}</b></a>
           </template>
           <template slot="count" slot-scope="row">
             {{row.item.count}}
           </template>
           <template slot="win_rate" slot-scope="row">
-            <b-progress height="1.5rem" :value="row.item.win_rate" :min="0" :max="1" :striped="true" show-progress></b-progress>
+            <b-progress :value="row.item.win_rate" :min="0" :max="1" :striped="true" show-progress></b-progress>
           </template>
           
         </b-table>
@@ -87,6 +90,8 @@ export default {
       'groups': groups,
       'search_item': null,
       'search_type': 1,
+      'search_limit': 12,
+      'search_more': false,
       'abilities': [],
     }
   },
@@ -102,12 +107,15 @@ export default {
     findKeyword(item) {
       this.search_item = item;
       this.search_type = 3;
+      this.search_more = false;
+      this.search_limit = 12;
       this.find();
     },
     find() {
       if(this.search_item) {
         let s = this.search_item.toLowerCase();
         let t = this.search_type;
+        let l = this.search_limit;
         var collection = [];
         
         if(t == 1) {
@@ -119,11 +127,16 @@ export default {
         }
         
         collection.sort((lhs, rhs) => rhs.win_rate - lhs.win_rate);
-        this.abilities = collection.slice(0, 24);
+        this.abilities = collection.slice(0, l);
+        this.search_more = collection.length !=  this.abilities.length && collection.length > 0;
       } else {
         this.abilities = [];
       }
     },
+    more() {
+      this.search_limit = this.search_limit + 12;
+      this.find();
+    }
   }
 }
 </script>

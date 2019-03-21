@@ -338,7 +338,7 @@ import moment from 'moment'
 import numeral from 'numeral'
 import summary from '@/assets/data/summary.json'
 import heroes from '@/assets/data/hero-summary.json'
-import leaderboard from '@/assets/data/leaderboard.json'
+import leaderboard from '@/assets/data/leaderboard-summary.json'
 
 export default {
   name: 'home',

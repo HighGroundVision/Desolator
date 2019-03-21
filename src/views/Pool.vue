@@ -40,6 +40,7 @@
                   <b-img :src="value.ability.image" class="ability-icon-sm" />
                   <span> {{ value.ability.name }}</span>
                   <sup> {{ value.reason }}</sup>
+                  <sup v-if="value.ability.has_data" >1</sup>
                 </li>
               </template>
             </ul>
@@ -59,13 +60,14 @@
         </b-row>
         <div style="font-size: 0.8em;">
           <ul class="list-unstyled">
-            <li><small>1</small> Unknown reasons.</li>
+            <li><small>1</small> Spells are disabled in the game data but we have collected data for it, this means Valve fucked up and ability is more and likly is (or was) active.</li>
             <li><small>2</small> Disabled for balance reasons.</li>
             <li><small>3</small> Spells which require more than one ability slot are disabled because of hotkey issues.</li>
             <li><small>4</small> Spells which switch between melee and ranged for are all disabled for technical reasons.</li>
             <li><small>5</small> Spells which have direct synergy/interaction with other spells are disabled, as they are deemed too limiting.</li>
             <li><small>6</small> Some spells granted by <b class="text-info">Aghanim's Scepter</b> are disabled because they add spells that use additional slots. REF #3</li>
             <li><small>7</small> According to game files infest does not grant control, this causes infest to be sort of useless</li>
+            <li><small>8</small> Your guess is as good as mine...</li>
           </ul>
         </div>
         <hr class="highlighted" />

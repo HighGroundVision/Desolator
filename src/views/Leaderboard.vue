@@ -24,8 +24,11 @@
                     <div class="card-title">
                       <h5>{{formatPercentage(value.win_rate)}}</h5>
                     </div>
-                    <p class="card-text" style="height: 50px;">
+                    <p class="card-text" style="height: 60px;">
                       <a :href="value.profile_url">{{value.name}}</a>
+                      <br />
+                      Wins: <span>{{value.wins}}</span><br />
+                      Matches: <span>{{value.matches}}</span><br />
                     </p>
                   </div>
                 </div>
@@ -45,8 +48,11 @@
                     <div class="card-title">
                       <h5>{{value.wins}}</h5>
                     </div>
-                    <p class="card-text" style="height: 50px;">
+                    <p class="card-text" style="height: 60px;">
                       <a :href="value.profile_url">{{value.name}}</a>
+                      <br />
+                      Matches: <span>{{value.matches}}</span><br />
+                      Win Rate: <span>{{formatPercentage(value.win_rate)}}</span>
                     </p>
                   </div>
                 </div>
@@ -66,8 +72,11 @@
                     <div class="card-title">
                       <h5>{{value.matches}}</h5>
                     </div>
-                    <p class="card-text" style="height: 50px;">
+                    <p class="card-text" style="height: 60px;">
                       <a :href="value.profile_url">{{value.name}}</a>
+                      <br />
+                      Wins: <span>{{value.wins}}</span><br />
+                      Win Rate: <span>{{formatPercentage(value.win_rate)}}</span>
                     </p>
                   </div>
                 </div>
@@ -178,8 +187,8 @@
 import moment from 'moment'
 import numeral from 'numeral'
 import summary from '@/assets/data/summary.json'
-import players from '@/assets/data/players-collection.json'
-import leaderboard from '@/assets/data/leaderboard.json'
+import players from '@/assets/data/leaderboard-collection.json'
+import leaderboard from '@/assets/data/leaderboard-summary.json'
 
 export default {
   name: 'leaderboard',

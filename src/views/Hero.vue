@@ -703,7 +703,7 @@ export default {
       return numeral(value).format("0%");
     },
     formatNumber(value) {
-      return numeral(value).format('0,0');
+      return numeral(value).format('0.0a');
     },
   },
   watch: {
