@@ -1,6 +1,7 @@
 <template>
   <b-row>
     <b-col>
+      <!--
       <h4 class="text-center">{{details.summary.name}}</h4>
       <b-row>
         <b-col>
@@ -81,11 +82,60 @@
           </div>
         </b-col>
       </b-row>
-      <br />
+      <div>
+        <b-badge>Keywords:</b-badge>
+        <ul class="list-inline">
+          <template v-for="(value) in details.ability.keywords">
+            <li :key="value" class="list-inline-item">
+              {{value}}
+            </li>
+          </template>
+        </ul>
+      </div>
       <div>
         <p>{{details.ability.description}}</p>
         <p v-if="details.ability.upgrade_description"><img src="https://hgv-hyperstone.azurewebsites.net/items/ultimate_scepter.png" class="ability-icon-xs" /> {{details.ability.upgrade_description}}</p>
       </div>
+      -->
+      
+      <h4 class="text-center">{{details.summary.name}}</h4>
+
+      <AbilityCard :ability="details.ability" :showTitle="false" />
+
+      <br />
+      <b-row>
+        <b-col>
+          <b>Win Rate</b>
+          <b-progress :max="1">
+            <b-progress-bar :value="details.summary.win_rate" variant="primary" :striped="true">
+              <strong>{{ formatPercentage(details.summary.win_rate) }}</strong>
+            </b-progress-bar>
+            <b-progress-bar :value="1-details.summary.win_rate" variant="secondary"/>
+          </b-progress>
+        </b-col>
+        <b-col>
+          <b>
+            Picks
+            <small>as a ratio to the other abilities</small>
+          </b>
+          <b-progress :max="1">
+            <b-progress-bar :value="details.summary.picks_ratio" variant="info" :striped="true" />
+            <b-progress-bar :value="1-details.summary.picks_ratio" variant="secondary"/>
+          </b-progress>
+        </b-col>
+        <b-col>
+          <b>
+            Wins
+            <small>as a ratio to the other abilities</small>
+          </b>
+          <b-progress :max="1">
+            <b-progress-bar :value="details.summary.wins_ratio" variant="warning" :striped="true" />
+            <b-progress-bar :value="1-details.summary.wins_ratio" variant="secondary"/>
+          </b-progress>
+        </b-col>
+      </b-row>
+      <br />
+
       <h4 class="text-center">Heroes</h4>
       <p>
         We have include the top heroes paired with this ability.
@@ -226,6 +276,7 @@
 <script>
 import numeral from 'numeral'
 import abilities from "@/assets/data/ability-details.json";
+import AbilityCard from "@/components/AbilityCard";
 
 export default {
   name: 'ability',
@@ -234,6 +285,7 @@ export default {
       'details': abilities[this.$route.params.id]
     }
   },
+  components: { AbilityCard },
   methods: {
     formatPercentage(value) {
       return numeral(value).format('0%');
