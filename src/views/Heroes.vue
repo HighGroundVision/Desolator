@@ -62,7 +62,6 @@ import am4themes_animated from "@amcharts/amcharts4/themes/animated";
 
 import numeral from 'numeral'
 import heroes from '@/assets/data/hero-collection.json'
-// $route.params.id
 
 am4core.useTheme(am4themes_animated);
 
@@ -139,6 +138,10 @@ export default {
       series.columns.template.propertyFields.fill = "color";
       series.columns.template.propertyFields.stroke = "color";
       series.columns.template.tooltipText = "{categoryX}: [bold]{valueY}[/b]";
+      series.columns.template.events.on("hit", function(ev) {
+        var id = ev.target.dataItem.dataContext.id;
+        this.$router.push('/hero/' + id);
+      }, this);
 
       // Add bullets
       var bullet = series.bullets.push(new am4charts.Bullet());
@@ -153,6 +156,10 @@ export default {
       image.tooltipText = series.columns.template.tooltipText;
       image.propertyFields.fill = "color";
       image.filters.push(new am4core.DropShadowFilter());
+      image.events.on("hit", function(ev) {
+        var id = ev.target.dataItem.dataContext.id;
+        this.$router.push('/hero/' + id);
+      }, this);
     }
   },
   methods: {
