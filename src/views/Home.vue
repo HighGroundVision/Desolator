@@ -344,7 +344,7 @@ export default {
   name: 'home',
   data () {
     return {
-      "construction": true,
+      "construction": false,
       'summary': summary,
       'heroes': heroes,
       'leaderboard': leaderboard,

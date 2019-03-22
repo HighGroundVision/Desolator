@@ -20,7 +20,7 @@
         <b-form @submit.prevent="find">
           <b-input-group>
             <b-input-group-addon>
-              <b-dropdown :text="searchLabel">
+              <b-dropdown :text="searchLabel" variant="light">
                 <b-dropdown-item @click="search_type = 1">By Ability</b-dropdown-item>
                 <b-dropdown-item @click="search_type = 2">By Hero</b-dropdown-item>
                 <b-dropdown-item @click="search_type = 3">By Keyword</b-dropdown-item>

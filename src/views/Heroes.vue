@@ -17,11 +17,11 @@
       </b-col>
       <b-col>
         <b-form @submit.prevent="findHero">
-          <b-input-group>
-            <b-form-input type="text" v-model="search" placeholder="Enter part of a heroes name" />
-            <b-input-group-addon>
+          <b-input-group prepend="Search by Hero">
+            <b-form-input type="text" v-model="search"/>
+            <b-input-group-append>
               <b-button variant="success" @click="findHero">Find</b-button>
-            </b-input-group-addon>
+            </b-input-group-append>
           </b-input-group>
         </b-form>
         <br />

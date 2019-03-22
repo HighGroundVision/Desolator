@@ -31,53 +31,53 @@
             <b-col cols="6"><b-badge class="text-dark">Behaviors</b-badge></b-col>
             <b-col>{{formatAbilityBehaviors(ability.ability_behaviors)}}</b-col>
           </b-row>
-          <b-row>
-            <b-col cols="6" v-if="formatAbilityUnitTargetTeam(ability.ability_unit_target_team)"><b-badge class="text-dark">Unit Target Team</b-badge></b-col>
+          <b-row v-if="formatAbilityUnitTargetTeam(ability.ability_unit_target_team)">
+            <b-col cols="6"><b-badge class="text-dark">Unit Target Team</b-badge></b-col>
             <b-col>{{formatAbilityUnitTargetTeam(ability.ability_unit_target_team)}}</b-col>
           </b-row>
-          <b-row>
-            <b-col cols="6" v-if="formatAbilityUnitTargetType(ability.ability_unit_target_type)"><b-badge class="text-dark">Unit Target</b-badge></b-col>
+          <b-row v-if="formatAbilityUnitTargetType(ability.ability_unit_target_type)">
+            <b-col cols="6"><b-badge class="text-dark">Unit Target</b-badge></b-col>
             <b-col>{{formatAbilityUnitTargetType(ability.ability_unit_target_type)}}</b-col>
           </b-row>
           <b-row>
             <b-col cols="6"><b-badge class="text-success">Aghanims Upgrade</b-badge></b-col>
             <b-col>{{ability.has_scepter_upgrade ? "Yes" : "No"}}</b-col>
           </b-row>
-          <b-row>
-            <b-col cols="6" v-if="formatAbilityUnitDamageType(ability.ability_unit_damage_type)"><b-badge class="text-dark">Damage Type</b-badge></b-col>
+          <b-row v-if="formatAbilityUnitDamageType(ability.ability_unit_damage_type)">
+            <b-col cols="6"><b-badge class="text-dark">Damage Type</b-badge></b-col>
             <b-col>{{formatAbilityUnitDamageType(ability.ability_unit_damage_type)}}</b-col>
           </b-row>
-          <b-row>
-            <b-col cols="6" v-if="formatSpellImmunityType(ability.spell_immunity_type)"><b-badge class="text-dark">Spell Immunity</b-badge></b-col>
+          <b-row v-if="formatSpellImmunityType(ability.spell_immunity_type)">
+            <b-col cols="6"><b-badge class="text-dark">Spell Immunity</b-badge></b-col>
             <b-col>{{formatSpellImmunityType(ability.spell_immunity_type)}}</b-col>
           </b-row>
-          <b-row>
-            <b-col cols="6" v-if="formatSpellDispellableType(ability.spell_dispellable_type)"><b-badge class="text-dark">Dispellable</b-badge></b-col>
+          <b-row v-if="formatSpellDispellableType(ability.spell_dispellable_type)">
+            <b-col cols="6"><b-badge class="text-dark">Dispellable</b-badge></b-col>
             <b-col>{{formatSpellDispellableType(ability.spell_dispellable_type)}}</b-col>
           </b-row>
         </b-col>
         <b-col cols="6">
-          <b-row>
+          <b-row v-if="formatList(ability.ability_mana_cost)">
             <b-col cols="6"><b-badge class="text-primary">Manacost</b-badge></b-col>
             <b-col>{{formatList(ability.ability_mana_cost)}}</b-col>
           </b-row>
-          <b-row>
+          <b-row v-if="formatList(ability.ability_cooldown)">
             <b-col cols="6"><b-badge class="text-warning">Cooldown</b-badge></b-col>
             <b-col>{{formatList(ability.ability_cooldown)}}</b-col>
           </b-row>
-          <b-row>
+          <b-row v-if="formatList(ability.ability_cast_range)">
             <b-col cols="6"><b-badge class="text-dark">Cast Range</b-badge></b-col>
             <b-col>{{formatList(ability.ability_cast_range)}}</b-col>
           </b-row>
-          <b-row>
+          <b-row v-if="formatList(ability.ability_channel_time)">
             <b-col cols="6"><b-badge class="text-dark">Channel Time</b-badge></b-col>
             <b-col>{{formatList(ability.ability_channel_time)}}</b-col>
           </b-row>
-          <b-row>
+          <b-row v-if="formatList(ability.ability_duration)">
             <b-col cols="6"><b-badge class="text-dark">Duration</b-badge></b-col>
             <b-col>{{formatList(ability.ability_duration)}}</b-col>
           </b-row>
-          <b-row>
+          <b-row v-if="formatList(ability.ability_damage)">
             <b-col cols="6"><b-badge class="text-dark">Damage</b-badge></b-col>
             <b-col>{{formatList(ability.ability_damage)}}</b-col>
           </b-row>

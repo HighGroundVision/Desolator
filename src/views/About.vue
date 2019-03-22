@@ -19,15 +19,15 @@
         We’re also happy to share our knowledge with the community by <a href="https://github.com/HighGroundVision/" target="_blank">open sourcing</a> our stack. 
         Development is done by volunteers contributing in their free time.
       </p>
-      <h4>Reddit</h4>
+      <h4><i class="fab fa-reddit-alien"></i> Reddit</h4>
       <p>
         We also run the Ability Draft <a href="https://www.reddit.com/r/Abilitydraft/">Reddit</a> Check it out for AD community news!
       </p>
-      <h4>Discord</h4>
+      <h4><i class="fab fa-discord"></i> Discord</h4>
       <p>
         We also run the Ability Draft <a href="https://discord.gg/sSFjabV">Discord</a> Come chat with us and other like minded AD players.
       </p>
-      <h4>Twitter</h4>
+      <h4><i class="fab fa-twitter"></i> Twitter</h4>
       <p>
         We are new to this <a href="https://twitter.com/DotaHGV">Twitter</a> thing, but we do post AD news and details about local Dota events.
       </p>

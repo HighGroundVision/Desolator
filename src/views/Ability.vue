@@ -1,108 +1,11 @@
 <template>
   <b-row>
     <b-col>
-      <!--
-      <h4 class="text-center">{{details.summary.name}}</h4>
-      <b-row>
-        <b-col>
-          <img :src="details.summary.image" class="ability-icon-lg">
-        </b-col>
-        <b-col>
-          <table class="table table-sm ">
-            <tr>
-              <td>Type</td>
-              <td>
-                <span v-if="details.ability.is_ultimate == true">Ultimate</span>
-                <span v-else>Skill</span>
-              </td>
-            </tr>
-            <tr>
-              <td>Effect</td>
-              <td>
-                <span>{{ formatBehaviorsList(details.ability.ability_behaviors) }}</span>
-              </td>
-            </tr>
-            <tr v-if="details.ability.ability_unit_damage_type != null">
-              <td>Damage</td>
-              <td>
-                <span v-if="details.ability.ability_unit_damage_type == 'DAMAGE_TYPE_MAGICAL'" class="text-success">Magical</span>
-                <span v-if="details.ability.ability_unit_damage_type == 'DAMAGE_TYPE_PHYSICAL'" class="text-primary">Physical</span>
-                <span v-if="details.ability.ability_unit_damage_type == 'DAMAGE_TYPE_PURE'" class="text-danger">Pure</span>
-              </td>
-            </tr>
-            <tr v-if="details.ability.has_scepter_upgrade == true">
-              <td>Aghanim's <img src="https://hgv-hyperstone.azurewebsites.net/items/ultimate_scepter.png" class="ability-icon-xs" /></td>
-              <td>
-                <span class="text-info">Yes</span>
-              </td>
-            </tr>
-            <tr>
-              <td>Cooldown</td>
-              <td>
-                {{ details.ability.ability_cooldown.join(" / ") }}
-              </td>
-            </tr>
-            <tr>
-              <td>Manacost</td>
-              <td>
-                {{ details.ability.ability_mana_cost.join(" / ") }}
-              </td>
-            </tr>
-          </table>
-        </b-col>
-        <b-col>
-          <div class="p-1">
-            <b>Win Rate</b>
-            <b-progress :max="1">
-              <b-progress-bar :value="details.summary.win_rate" variant="primary" :striped="true">
-                <strong>{{ formatPercentage(details.summary.win_rate) }}</strong>
-              </b-progress-bar>
-              <b-progress-bar :value="1-details.summary.win_rate" variant="secondary"/>
-            </b-progress>
-          </div>
-          <div class="p-1">
-            <b>
-              Picks
-              <small>as a ratio to the other abilities</small>
-            </b>
-            <b-progress :max="1">
-              <b-progress-bar :value="details.summary.picks_ratio" variant="info" :striped="true" />
-              <b-progress-bar :value="1-details.summary.picks_ratio" variant="secondary"/>
-            </b-progress>
-          </div>
-          <div class="p-1">
-            <b>
-              Wins
-              <small>as a ratio to the other abilities</small>
-            </b>
-            <b-progress :max="1">
-              <b-progress-bar :value="details.summary.wins_ratio" variant="warning" :striped="true" />
-              <b-progress-bar :value="1-details.summary.wins_ratio" variant="secondary"/>
-            </b-progress>
-          </div>
-        </b-col>
-      </b-row>
-      <div>
-        <b-badge>Keywords:</b-badge>
-        <ul class="list-inline">
-          <template v-for="(value) in details.ability.keywords">
-            <li :key="value" class="list-inline-item">
-              {{value}}
-            </li>
-          </template>
-        </ul>
-      </div>
-      <div>
-        <p>{{details.ability.description}}</p>
-        <p v-if="details.ability.upgrade_description"><img src="https://hgv-hyperstone.azurewebsites.net/items/ultimate_scepter.png" class="ability-icon-xs" /> {{details.ability.upgrade_description}}</p>
-      </div>
-      -->
-      
       <h4 class="text-center">{{details.summary.name}}</h4>
 
       <AbilityCard :ability="details.ability" :showTitle="false" />
-
       <br />
+      
       <b-row>
         <b-col>
           <b>Win Rate</b>
