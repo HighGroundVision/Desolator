@@ -1,0 +1,4512 @@
+{
+  "summary": {
+    "wins": 6175,
+    "kills": 86843,
+    "kda": 2.92861962,
+    "winrate": 0.479798,
+    "picks": 12870
+  },
+  "details": {
+    "id": 12,
+    "name": "Phantom Lancer",
+    "key": "npc_dota_hero_phantom_lancer",
+    "image_profile": "https://hgv-hyperstone.azurewebsites.net/heroes/profile/npc_dota_hero_phantom_lancer.png",
+    "image_icon": "https://hgv-hyperstone.azurewebsites.net/heroes/icons/npc_dota_hero_phantom_lancer.png",
+    "image_banner": "https://hgv-hyperstone.azurewebsites.net/heroes/banner/npc_dota_hero_phantom_lancer.png",
+    "enabled": true,
+    "new_player_enable": true,
+    "captains_mode_enabled": true,
+    "ability_draft_enabled": true,
+    "complexity": 2,
+    "roles": [
+      {
+        "role": "Carry",
+        "level": 2
+      },
+      {
+        "role": "Escape",
+        "level": 2
+      },
+      {
+        "role": "Pusher",
+        "level": 1
+      },
+      {
+        "role": "Nuker",
+        "level": 1
+      }
+    ],
+    "bot_implemented": false,
+    "abilities": [
+      {
+        "id": 5065,
+        "key": "phantom_lancer_spirit_lance",
+        "name": "Spirit Lance",
+        "description": "Sends a magical spirit lance to a target enemy unit that damages and slows, while summoning an illusory phantom to attack the unit. Upgradable by Aghanim's Scepter.",
+        "upgrade_description": "Causes Spirit Lance to bounce on nearby enemies.",
+        "image": "https://hgv-hyperstone.azurewebsites.net/abilities/phantom_lancer_spirit_lance.png",
+        "hero_id": 12,
+        "ability_type": "DOTA_ABILITY_TYPE_BASIC",
+        "ability_behaviors": [
+          "DOTA_ABILITY_BEHAVIOR_UNIT_TARGET"
+        ],
+        "ability_unit_target_team": "DOTA_UNIT_TARGET_TEAM_ENEMY",
+        "ability_unit_target_type": [
+          "DOTA_UNIT_TARGET_HERO",
+          "DOTA_UNIT_TARGET_BASIC"
+        ],
+        "ability_unit_target_flags": [],
+        "spell_immunity_type": "SPELL_IMMUNITY_ENEMIES_NO",
+        "spell_dispellable_type": "SPELL_DISPELLABLE_YES",
+        "ability_unit_damage_type": "DAMAGE_TYPE_MAGICAL",
+        "is_skill": true,
+        "is_ultimate": false,
+        "has_scepter_upgrade": true,
+        "on_castbar": true,
+        "on_learnbar": true,
+        "ability_cast_range": [
+          525,
+          600,
+          675,
+          750
+        ],
+        "ability_cast_range_buffer": 250,
+        "ability_cast_point": [
+          0.3,
+          0.3,
+          0.3,
+          0.3
+        ],
+        "ability_channel_time": [],
+        "ability_cooldown": [
+          7.0,
+          7.0,
+          7.0,
+          7.0
+        ],
+        "ability_duration": [],
+        "ability_damage": [],
+        "ability_mana_cost": [
+          125.0,
+          130.0,
+          135.0,
+          140.0
+        ],
+        "ability_modifier_support_value": 1.0,
+        "ability_modifier_support_bonus": 0.0,
+        "fight_recap_level": 1,
+        "ability_draft_enabled": true,
+        "linked": null,
+        "ability_special": {
+          "lance_damage": [
+            100.0,
+            150.0,
+            200.0,
+            250.0
+          ],
+          "lance_speed": [
+            1000.0,
+            1000.0,
+            1000.0,
+            1000.0
+          ],
+          "duration": [
+            3.25
+          ],
+          "movement_speed_pct": [
+            -10.0,
+            -18.0,
+            -26.0,
+            -34.0
+          ],
+          "illusion_duration": [
+            2.0,
+            4.0,
+            6.0,
+            8.0
+          ],
+          "illusion_damage_out_pct": [
+            -80.0
+          ],
+          "tooltip_illusion_damage": [
+            20.0
+          ],
+          "illusion_damage_in_pct": [
+            300.0,
+            300.0,
+            300.0,
+            300.0
+          ],
+          "tooltip_illusion_total_damage_in_pct": [
+            400.0,
+            400.0,
+            400.0,
+            400.0
+          ],
+          "fake_lance_distance": [
+            675.0
+          ],
+          "scepter_radius": [
+            400.0
+          ],
+          "scepter_jumps": [
+            5.0
+          ],
+          "lance_speed_bounces": [
+            700.0
+          ]
+        },
+        "keywords": [
+          "Summons",
+          "Movement Reduction",
+          "Nuke"
+        ]
+      },
+      {
+        "id": 5066,
+        "key": "phantom_lancer_doppelwalk",
+        "name": "Doppelganger",
+        "description": "Phantom Lancer briefly vanishes from the battlefield. After 1 second, Phantom Lancer and any of his nearby illusions reappear at a random position within the targeted location, along with two additional doppelgangers. Extends duration of all illusions. The two added doppelgangers have different properties: one takes normal damage and deals none, while the other takes 600% damage and deals 20% damage. DISPEL TYPE: Basic Dispel",
+        "upgrade_description": null,
+        "image": "https://hgv-hyperstone.azurewebsites.net/abilities/phantom_lancer_doppelwalk.png",
+        "hero_id": 12,
+        "ability_type": "DOTA_ABILITY_TYPE_BASIC",
+        "ability_behaviors": [
+          "DOTA_ABILITY_BEHAVIOR_POINT",
+          "DOTA_ABILITY_BEHAVIOR_AOE",
+          "DOTA_ABILITY_BEHAVIOR_ROOT_DISABLES"
+        ],
+        "ability_unit_target_team": null,
+        "ability_unit_target_type": [],
+        "ability_unit_target_flags": [],
+        "spell_immunity_type": null,
+        "spell_dispellable_type": null,
+        "ability_unit_damage_type": null,
+        "is_skill": true,
+        "is_ultimate": false,
+        "has_scepter_upgrade": false,
+        "on_castbar": true,
+        "on_learnbar": true,
+        "ability_cast_range": [
+          600
+        ],
+        "ability_cast_range_buffer": 250,
+        "ability_cast_point": [
+          0.1
+        ],
+        "ability_channel_time": [],
+        "ability_cooldown": [
+          25.0,
+          20.0,
+          15.0,
+          10.0
+        ],
+        "ability_duration": [],
+        "ability_damage": [],
+        "ability_mana_cost": [
+          50.0
+        ],
+        "ability_modifier_support_value": 1.0,
+        "ability_modifier_support_bonus": 0.0,
+        "fight_recap_level": 1,
+        "ability_draft_enabled": true,
+        "linked": null,
+        "ability_special": {
+          "illusion_1_damage_out_pct": [
+            -100.0
+          ],
+          "illusion_1_damage_in_pct": [
+            0.0
+          ],
+          "illusion_2_damage_out_pct": [
+            -80.0
+          ],
+          "illusion_2_damage_in_pct": [
+            500.0
+          ],
+          "target_aoe": [
+            325.0
+          ],
+          "search_radius": [
+            900.0
+          ],
+          "delay": [
+            1.0
+          ],
+          "illusion_duration": [
+            8.0
+          ],
+          "illusion_extended_duration": [
+            2.0
+          ]
+        },
+        "keywords": [
+          "Summons",
+          "Escape"
+        ]
+      },
+      {
+        "id": 5068,
+        "key": "phantom_lancer_phantom_edge",
+        "name": "Phantom Rush",
+        "description": "When targetting an enemy for an attack, Phantom Lancer quickly charges into range, gaining a temporary agility boost upon reaching the target. Phantom Lancer's illusions also have this ability.",
+        "upgrade_description": null,
+        "image": "https://hgv-hyperstone.azurewebsites.net/abilities/phantom_lancer_phantom_edge.png",
+        "hero_id": 12,
+        "ability_type": "DOTA_ABILITY_TYPE_BASIC",
+        "ability_behaviors": [
+          "DOTA_ABILITY_BEHAVIOR_IMMEDIATE",
+          "DOTA_ABILITY_BEHAVIOR_NO_TARGET",
+          "DOTA_ABILITY_BEHAVIOR_TOGGLE"
+        ],
+        "ability_unit_target_team": null,
+        "ability_unit_target_type": [],
+        "ability_unit_target_flags": [],
+        "spell_immunity_type": null,
+        "spell_dispellable_type": null,
+        "ability_unit_damage_type": null,
+        "is_skill": true,
+        "is_ultimate": false,
+        "has_scepter_upgrade": false,
+        "on_castbar": true,
+        "on_learnbar": true,
+        "ability_cast_range": [],
+        "ability_cast_range_buffer": 250,
+        "ability_cast_point": [],
+        "ability_channel_time": [],
+        "ability_cooldown": [
+          16.0,
+          12.0,
+          8.0,
+          4.0
+        ],
+        "ability_duration": [],
+        "ability_damage": [],
+        "ability_mana_cost": [],
+        "ability_modifier_support_value": 1.0,
+        "ability_modifier_support_bonus": 0.0,
+        "fight_recap_level": 0,
+        "ability_draft_enabled": true,
+        "linked": null,
+        "ability_special": {
+          "min_distance": [
+            250.0
+          ],
+          "max_distance": [
+            600.0,
+            700.0,
+            800.0,
+            900.0
+          ],
+          "bonus_speed": [
+            800.0
+          ],
+          "bonus_agility": [
+            11.0,
+            22.0,
+            33.0,
+            44.0
+          ],
+          "agility_duration": [
+            2.0
+          ]
+        },
+        "keywords": [
+          "Passive",
+          "Movement Increase"
+        ]
+      },
+      {
+        "id": 6251,
+        "key": "generic_hidden",
+        "name": null,
+        "description": null,
+        "upgrade_description": null,
+        "image": "https://hgv-hyperstone.azurewebsites.net/abilities/generic_hidden.png",
+        "hero_id": 12,
+        "ability_type": "DOTA_ABILITY_TYPE_BASIC",
+        "ability_behaviors": [
+          "DOTA_ABILITY_BEHAVIOR_HIDDEN",
+          "DOTA_ABILITY_BEHAVIOR_NOT_LEARNABLE"
+        ],
+        "ability_unit_target_team": null,
+        "ability_unit_target_type": [],
+        "ability_unit_target_flags": [],
+        "spell_immunity_type": null,
+        "spell_dispellable_type": null,
+        "ability_unit_damage_type": null,
+        "is_skill": false,
+        "is_ultimate": false,
+        "has_scepter_upgrade": false,
+        "on_castbar": true,
+        "on_learnbar": true,
+        "ability_cast_range": [],
+        "ability_cast_range_buffer": 250,
+        "ability_cast_point": [],
+        "ability_channel_time": [],
+        "ability_cooldown": [],
+        "ability_duration": [],
+        "ability_damage": [],
+        "ability_mana_cost": [],
+        "ability_modifier_support_value": 1.0,
+        "ability_modifier_support_bonus": 0.0,
+        "fight_recap_level": 0,
+        "ability_draft_enabled": false,
+        "linked": null,
+        "ability_special": {},
+        "keywords": null
+      },
+      {
+        "id": 6251,
+        "key": "generic_hidden",
+        "name": null,
+        "description": null,
+        "upgrade_description": null,
+        "image": "https://hgv-hyperstone.azurewebsites.net/abilities/generic_hidden.png",
+        "hero_id": 12,
+        "ability_type": "DOTA_ABILITY_TYPE_BASIC",
+        "ability_behaviors": [
+          "DOTA_ABILITY_BEHAVIOR_HIDDEN",
+          "DOTA_ABILITY_BEHAVIOR_NOT_LEARNABLE"
+        ],
+        "ability_unit_target_team": null,
+        "ability_unit_target_type": [],
+        "ability_unit_target_flags": [],
+        "spell_immunity_type": null,
+        "spell_dispellable_type": null,
+        "ability_unit_damage_type": null,
+        "is_skill": false,
+        "is_ultimate": false,
+        "has_scepter_upgrade": false,
+        "on_castbar": true,
+        "on_learnbar": true,
+        "ability_cast_range": [],
+        "ability_cast_range_buffer": 250,
+        "ability_cast_point": [],
+        "ability_channel_time": [],
+        "ability_cooldown": [],
+        "ability_duration": [],
+        "ability_damage": [],
+        "ability_mana_cost": [],
+        "ability_modifier_support_value": 1.0,
+        "ability_modifier_support_bonus": 0.0,
+        "fight_recap_level": 0,
+        "ability_draft_enabled": false,
+        "linked": null,
+        "ability_special": {},
+        "keywords": null
+      },
+      {
+        "id": 5067,
+        "key": "phantom_lancer_juxtapose",
+        "name": "Juxtapose",
+        "description": "Phantom Lancer has a chance to fracture his presence, creating an illusion of himself. Illusions also have a chance to fracture further. Illusions created from Phantom Lancer last for 8 seconds, while illusions created from other illusions last 4 seconds.",
+        "upgrade_description": null,
+        "image": "https://hgv-hyperstone.azurewebsites.net/abilities/phantom_lancer_juxtapose.png",
+        "hero_id": 12,
+        "ability_type": "DOTA_ABILITY_TYPE_ULTIMATE",
+        "ability_behaviors": [
+          "DOTA_ABILITY_BEHAVIOR_PASSIVE"
+        ],
+        "ability_unit_target_team": null,
+        "ability_unit_target_type": [],
+        "ability_unit_target_flags": [],
+        "spell_immunity_type": null,
+        "spell_dispellable_type": null,
+        "ability_unit_damage_type": null,
+        "is_skill": false,
+        "is_ultimate": true,
+        "has_scepter_upgrade": false,
+        "on_castbar": true,
+        "on_learnbar": true,
+        "ability_cast_range": [],
+        "ability_cast_range_buffer": 250,
+        "ability_cast_point": [],
+        "ability_channel_time": [],
+        "ability_cooldown": [],
+        "ability_duration": [],
+        "ability_damage": [],
+        "ability_mana_cost": [],
+        "ability_modifier_support_value": 1.0,
+        "ability_modifier_support_bonus": 0.0,
+        "fight_recap_level": 0,
+        "ability_draft_enabled": true,
+        "linked": null,
+        "ability_special": {
+          "max_illusions": [
+            6.0,
+            8.0,
+            10.0
+          ],
+          "proc_chance_pct": [
+            40.0,
+            45.0,
+            50.0
+          ],
+          "illusion_proc_chance_pct": [
+            8.0
+          ],
+          "illusion_duration": [
+            8.0
+          ],
+          "illusion_damage_out_pct": [
+            -84.0
+          ],
+          "tooltip_illusion_damage": [
+            16.0
+          ],
+          "illusion_damage_in_pct": [
+            550.0
+          ],
+          "tooltip_total_illusion_damage_in_pct": [
+            650.0
+          ],
+          "illusion_from_illusion_duration": [
+            4.0
+          ]
+        },
+        "keywords": [
+          "Passive",
+          "Summons"
+        ]
+      }
+    ],
+    "talents": [
+      {
+        "id": 5972,
+        "key": "special_bonus_evasion_15",
+        "hero_id": 12,
+        "name": "15% Evasion",
+        "description": null
+      },
+      {
+        "id": 5906,
+        "key": "special_bonus_attack_speed_20",
+        "hero_id": 12,
+        "name": "+20 Attack Speed",
+        "description": null
+      },
+      {
+        "id": 5903,
+        "key": "special_bonus_hp_250",
+        "hero_id": 12,
+        "name": "+250 Health",
+        "description": null
+      },
+      {
+        "id": 6400,
+        "key": "special_bonus_unique_phantom_lancer_2",
+        "hero_id": 12,
+        "name": "+125 Spirit Lance Damage",
+        "description": null
+      },
+      {
+        "id": 6146,
+        "key": "special_bonus_unique_phantom_lancer",
+        "hero_id": 12,
+        "name": "+500 Phantom Rush Range",
+        "description": null
+      },
+      {
+        "id": 6849,
+        "key": "special_bonus_unique_phantom_lancer_3",
+        "hero_id": 12,
+        "name": "+5 Max Juxtapose Illusions",
+        "description": null
+      },
+      {
+        "id": 6850,
+        "key": "special_bonus_unique_phantom_lancer_4",
+        "hero_id": 12,
+        "name": "-6s Doppelganger CD",
+        "description": null
+      },
+      {
+        "id": 6851,
+        "key": "special_bonus_30_crit_2",
+        "hero_id": 12,
+        "name": "+30% Critical Strike (2x)",
+        "description": null
+      }
+    ],
+    "legs": 2,
+    "armor_physical": 0.0,
+    "magical_resistance": 25,
+    "attack_capabilities": "DOTA_UNIT_CAP_MELEE_ATTACK",
+    "attack_damage_min": 22,
+    "attack_damage_max": 44,
+    "attack_rate": 1.7,
+    "attack_animation_point": 0.5,
+    "attack_acquisition_range": 600,
+    "attack_range": 150,
+    "projectile_speed": 900,
+    "attribute_primary": "DOTA_ATTRIBUTE_AGILITY",
+    "attribute_base_strength": 19,
+    "attribute_strength_gain": 2.0,
+    "attribute_base_intelligence": 19,
+    "attribute_intelligence_gain": 2.0,
+    "attribute_base_agility": 29,
+    "attribute_agility_gain": 3.0,
+    "status_health": 200,
+    "status_health_regen": 1.5,
+    "status_mana": 75,
+    "status_mana_regen": 0.0,
+    "bounty_xp": 62,
+    "bounty_gold_min": 0,
+    "bounty_gold_max": 0,
+    "movement_capabilities": "DOTA_UNIT_CAP_MOVE_GROUND",
+    "movement_speed": 290,
+    "movement_turn_rate": 0.6,
+    "has_aggressive_stance": true,
+    "team": 1,
+    "team_name": "Radiant",
+    "vision_daytime_range": 1800,
+    "vision_nighttime_range": 800,
+    "bot": {
+      "hero_types": null,
+      "solo_desire": 0,
+      "requires_babysit": 0,
+      "provides_babysit": 0,
+      "survival_rating": 0,
+      "requires_farm": 0,
+      "provides_setup": 0,
+      "requires_setup": 0
+    }
+  },
+  "attributes": {
+    "attribute_base_strength": {
+      "rank": 0.35294117647058826,
+      "value": 19.0
+    },
+    "attribute_strength_gain": {
+      "rank": 0.21428571428571427,
+      "value": 2.0
+    },
+    "attribute_base_agility": {
+      "rank": 0.90476190476190477,
+      "value": 29.0
+    },
+    "attribute_agility_gain": {
+      "rank": 0.6875,
+      "value": 3.0
+    },
+    "attribute_base_intelligence": {
+      "rank": 0.44444444444444442,
+      "value": 19.0
+    },
+    "attribute_intelligence_gain": {
+      "rank": 0.32258064516129031,
+      "value": 2.0
+    },
+    "status_health": {
+      "rank": 1.0,
+      "value": 200.0
+    },
+    "status_health_regen": {
+      "rank": 0.6,
+      "value": 1.5
+    },
+    "status_mana": {
+      "rank": 1.0,
+      "value": 75.0
+    },
+    "status_mana_regen": {
+      "rank": 1.0,
+      "value": 0.0
+    },
+    "attack_range": {
+      "rank": 0.08,
+      "value": 150.0
+    },
+    "attack_damage_min": {
+      "rank": 0.32258064516129031,
+      "value": 22.0
+    },
+    "attack_damage_max": {
+      "rank": 0.82352941176470584,
+      "value": 44.0
+    },
+    "movement_speed": {
+      "rank": 0.38461538461538464,
+      "value": 290.0
+    },
+    "movement_turn_rate": {
+      "rank": 0.2857142857142857,
+      "value": 0.6
+    },
+    "vision_daytime_range": {
+      "rank": 1.0,
+      "value": 1800.0
+    },
+    "vision_nighttime_range": {
+      "rank": 0.25,
+      "value": 800.0
+    }
+  },
+  "abilities": [
+    {
+      "id": 5065,
+      "key": "phantom_lancer_spirit_lance",
+      "name": "Spirit Lance",
+      "image": "https://hgv-hyperstone.azurewebsites.net/abilities/phantom_lancer_spirit_lance.png",
+      "wins": 9618,
+      "kills": 127495,
+      "kda": 3.57589149,
+      "win_rate": 0.494193822,
+      "picks": 19462
+    },
+    {
+      "id": 5066,
+      "key": "phantom_lancer_doppelwalk",
+      "name": "Doppelganger",
+      "image": "https://hgv-hyperstone.azurewebsites.net/abilities/phantom_lancer_doppelwalk.png",
+      "wins": 10151,
+      "kills": 131917,
+      "kda": 4.55974674,
+      "win_rate": 0.53107667,
+      "picks": 19114
+    },
+    {
+      "id": 5068,
+      "key": "phantom_lancer_phantom_edge",
+      "name": "Phantom Rush",
+      "image": "https://hgv-hyperstone.azurewebsites.net/abilities/phantom_lancer_phantom_edge.png",
+      "wins": 8362,
+      "kills": 120640,
+      "kda": 2.227271,
+      "win_rate": 0.4650723,
+      "picks": 17980
+    },
+    {
+      "id": 5067,
+      "key": "phantom_lancer_juxtapose",
+      "name": "Juxtapose",
+      "image": "https://hgv-hyperstone.azurewebsites.net/abilities/phantom_lancer_juxtapose.png",
+      "wins": 9459,
+      "kills": 119209,
+      "kda": 2.247355,
+      "win_rate": 0.479616672,
+      "picks": 19722
+    }
+  ],
+  "talents": [
+    {
+      "level": 10,
+      "lhs": {
+        "id": 5972,
+        "level": 10,
+        "key": "special_bonus_evasion_15",
+        "name": "15% Evasion",
+        "wins": 13356,
+        "kills": 175898,
+        "kda": 3.43144822,
+        "win_rate": 0.5049146,
+        "picks": 26452
+      },
+      "rhs": {
+        "id": 5906,
+        "level": 10,
+        "key": "special_bonus_attack_speed_20",
+        "name": "+20 Attack Speed",
+        "wins": 43728,
+        "kills": 657347,
+        "kda": 4.02870035,
+        "win_rate": 0.509888053,
+        "picks": 85760
+      }
+    },
+    {
+      "level": 15,
+      "lhs": {
+        "id": 5903,
+        "level": 15,
+        "key": "special_bonus_hp_250",
+        "name": "+250 Health",
+        "wins": 25496,
+        "kills": 361454,
+        "kda": 4.405405,
+        "win_rate": 0.5351019,
+        "picks": 47647
+      },
+      "rhs": {
+        "id": 6400,
+        "level": 15,
+        "key": "special_bonus_unique_phantom_lancer_2",
+        "name": "+125 Spirit Lance Damage",
+        "wins": 638,
+        "kills": 8951,
+        "kda": 3.40061641,
+        "win_rate": 0.4915254,
+        "picks": 1298
+      }
+    },
+    {
+      "level": 20,
+      "lhs": {
+        "id": 6146,
+        "level": 20,
+        "key": "special_bonus_unique_phantom_lancer",
+        "name": "+500 Phantom Rush Range",
+        "wins": 3264,
+        "kills": 48972,
+        "kda": 5.41720724,
+        "win_rate": 0.5878962,
+        "picks": 5552
+      },
+      "rhs": {
+        "id": 6849,
+        "level": 20,
+        "key": "special_bonus_unique_phantom_lancer_3",
+        "name": "+5 Max Juxtapose Illusions",
+        "wins": 2285,
+        "kills": 31603,
+        "kda": 4.963029,
+        "win_rate": 0.57994926,
+        "picks": 3940
+      }
+    },
+    {
+      "level": 25,
+      "lhs": {
+        "id": 6850,
+        "level": 25,
+        "key": "special_bonus_unique_phantom_lancer_4",
+        "name": "-6s Doppelganger CD",
+        "wins": 671,
+        "kills": 9593,
+        "kda": 7.92592573,
+        "win_rate": 0.6839959,
+        "picks": 981
+      },
+      "rhs": {
+        "id": 6851,
+        "level": 25,
+        "key": "special_bonus_30_crit_2",
+        "name": "+30% Critical Strike (2x)",
+        "wins": 2390,
+        "kills": 39334,
+        "kda": 7.27425575,
+        "win_rate": 0.6447262,
+        "picks": 3707
+      }
+    }
+  ],
+  "combo_abilities": [
+    {
+      "ability_id": 5007,
+      "wins": 55,
+      "win_rate": 0.5045872,
+      "kills": 721,
+      "kda": 3.64525914,
+      "matches": 109
+    },
+    {
+      "ability_id": 5014,
+      "wins": 13,
+      "win_rate": 0.433333337,
+      "kills": 149,
+      "kda": 0.288888544,
+      "matches": 30
+    },
+    {
+      "ability_id": 5025,
+      "wins": 65,
+      "win_rate": 0.4814815,
+      "kills": 1218,
+      "kda": 4.535802,
+      "matches": 135
+    },
+    {
+      "ability_id": 5032,
+      "wins": 84,
+      "win_rate": 0.497041434,
+      "kills": 1534,
+      "kda": 5.27613449,
+      "matches": 169
+    },
+    {
+      "ability_id": 5050,
+      "wins": 43,
+      "win_rate": 0.483146071,
+      "kills": 657,
+      "kda": 4.333333,
+      "matches": 89
+    },
+    {
+      "ability_id": 5068,
+      "wins": 1777,
+      "win_rate": 0.466771722,
+      "kills": 27371,
+      "kda": 2.49890518,
+      "matches": 3807
+    },
+    {
+      "ability_id": 5075,
+      "wins": 33,
+      "win_rate": 0.428571433,
+      "kills": 474,
+      "kda": 2.52381015,
+      "matches": 77
+    },
+    {
+      "ability_id": 5082,
+      "wins": 39,
+      "win_rate": 0.493670881,
+      "kills": 498,
+      "kda": 3.050633,
+      "matches": 79
+    },
+    {
+      "ability_id": 5100,
+      "wins": 20,
+      "win_rate": 0.3448276,
+      "kills": 388,
+      "kda": 2.137931,
+      "matches": 58
+    },
+    {
+      "ability_id": 5107,
+      "wins": 36,
+      "win_rate": 0.461538464,
+      "kills": 629,
+      "kda": 4.34615374,
+      "matches": 78
+    },
+    {
+      "ability_id": 5118,
+      "wins": 39,
+      "win_rate": 0.493670881,
+      "kills": 518,
+      "kda": 3.898734,
+      "matches": 79
+    },
+    {
+      "ability_id": 5132,
+      "wins": 62,
+      "win_rate": 0.496,
+      "kills": 946,
+      "kda": 5.256,
+      "matches": 125
+    },
+    {
+      "ability_id": 5143,
+      "wins": 99,
+      "win_rate": 0.4562212,
+      "kills": 1628,
+      "kda": 3.333333,
+      "matches": 217
+    },
+    {
+      "ability_id": 5150,
+      "wins": 33,
+      "win_rate": 0.523809552,
+      "kills": 455,
+      "kda": 3.6560843,
+      "matches": 63
+    },
+    {
+      "ability_id": 5168,
+      "wins": 33,
+      "win_rate": 0.4520548,
+      "kills": 399,
+      "kda": 1.37899482,
+      "matches": 73
+    },
+    {
+      "ability_id": 5175,
+      "wins": 32,
+      "win_rate": 0.5714286,
+      "kills": 348,
+      "kda": 2.26190519,
+      "matches": 56
+    },
+    {
+      "ability_id": 5182,
+      "wins": 68,
+      "win_rate": 0.5112782,
+      "kills": 864,
+      "kda": 4.5012536,
+      "matches": 133
+    },
+    {
+      "ability_id": 5218,
+      "wins": 32,
+      "win_rate": 0.5423729,
+      "kills": 446,
+      "kda": 3.67231679,
+      "matches": 59
+    },
+    {
+      "ability_id": 5243,
+      "wins": 18,
+      "win_rate": 0.473684222,
+      "kills": 252,
+      "kda": 3.79824519,
+      "matches": 38
+    },
+    {
+      "ability_id": 5250,
+      "wins": 48,
+      "win_rate": 0.470588237,
+      "kills": 696,
+      "kda": 2.28104544,
+      "matches": 102
+    },
+    {
+      "ability_id": 5257,
+      "wins": 47,
+      "win_rate": 0.47,
+      "kills": 624,
+      "kda": 3.05,
+      "matches": 100
+    },
+    {
+      "ability_id": 5268,
+      "wins": 15,
+      "win_rate": 0.4054054,
+      "kills": 178,
+      "kda": 0.8108108,
+      "matches": 37
+    },
+    {
+      "ability_id": 5275,
+      "wins": 49,
+      "win_rate": 0.5104167,
+      "kills": 683,
+      "kda": 2.96875,
+      "matches": 96
+    },
+    {
+      "ability_id": 5357,
+      "wins": 57,
+      "win_rate": 0.4871795,
+      "kills": 714,
+      "kda": 1.64957261,
+      "matches": 117
+    },
+    {
+      "ability_id": 5368,
+      "wins": 73,
+      "win_rate": 0.4679487,
+      "kills": 961,
+      "kda": 2.651709,
+      "matches": 156
+    },
+    {
+      "ability_id": 5400,
+      "wins": 79,
+      "win_rate": 0.434065938,
+      "kills": 1172,
+      "kda": 1.86080635,
+      "matches": 182
+    },
+    {
+      "ability_id": 5443,
+      "wins": 4,
+      "win_rate": 0.1904762,
+      "kills": 90,
+      "kda": -1.77777755,
+      "matches": 21
+    },
+    {
+      "ability_id": 5450,
+      "wins": 5,
+      "win_rate": 0.25,
+      "kills": 90,
+      "kda": 0.5666664,
+      "matches": 20
+    },
+    {
+      "ability_id": 5468,
+      "wins": 63,
+      "win_rate": 0.417218536,
+      "kills": 850,
+      "kda": 1.2825613,
+      "matches": 151
+    },
+    {
+      "ability_id": 5482,
+      "wins": 74,
+      "win_rate": 0.5736434,
+      "kills": 892,
+      "kda": 4.638243,
+      "matches": 129
+    },
+    {
+      "ability_id": 5518,
+      "wins": 49,
+      "win_rate": 0.538461566,
+      "kills": 645,
+      "kda": 5.128205,
+      "matches": 91
+    },
+    {
+      "ability_id": 5525,
+      "wins": 34,
+      "win_rate": 0.409638554,
+      "kills": 553,
+      "kda": 2.54216862,
+      "matches": 83
+    },
+    {
+      "ability_id": 5550,
+      "wins": 56,
+      "win_rate": 0.5833333,
+      "kills": 610,
+      "kda": 3.6875,
+      "matches": 96
+    },
+    {
+      "ability_id": 5582,
+      "wins": 24,
+      "win_rate": 0.413793117,
+      "kills": 359,
+      "kda": 1.09195364,
+      "matches": 58
+    },
+    {
+      "ability_id": 5586,
+      "wins": 55,
+      "win_rate": 0.5,
+      "kills": 653,
+      "kda": 2.5272727,
+      "matches": 110
+    },
+    {
+      "ability_id": 5593,
+      "wins": 54,
+      "win_rate": 0.514285743,
+      "kills": 780,
+      "kda": 3.94920588,
+      "matches": 105
+    },
+    {
+      "ability_id": 5600,
+      "wins": 11,
+      "win_rate": 0.366666675,
+      "kills": 135,
+      "kda": -0.055555217,
+      "matches": 30
+    },
+    {
+      "ability_id": 5625,
+      "wins": 1,
+      "win_rate": 0.142857149,
+      "kills": 31,
+      "kda": -1.95238054,
+      "matches": 7
+    },
+    {
+      "ability_id": 6461,
+      "wins": 68,
+      "win_rate": 0.4857143,
+      "kills": 845,
+      "kda": 2.28809476,
+      "matches": 140
+    },
+    {
+      "ability_id": 7322,
+      "wins": 72,
+      "win_rate": 0.411428571,
+      "kills": 1200,
+      "kda": 2.25523853,
+      "matches": 175
+    },
+    {
+      "ability_id": 5015,
+      "wins": 65,
+      "win_rate": 0.4113924,
+      "kills": 1003,
+      "kda": 1.57383943,
+      "matches": 158
+    },
+    {
+      "ability_id": 5017,
+      "wins": 80,
+      "win_rate": 0.509554148,
+      "kills": 1593,
+      "kda": 6.0021224,
+      "matches": 157
+    },
+    {
+      "ability_id": 5024,
+      "wins": 53,
+      "win_rate": 0.350993365,
+      "kills": 1215,
+      "kda": 2.518764,
+      "matches": 151
+    },
+    {
+      "ability_id": 5051,
+      "wins": 48,
+      "win_rate": 0.533333361,
+      "kills": 675,
+      "kda": 4.16296244,
+      "matches": 90
+    },
+    {
+      "ability_id": 5083,
+      "wins": 70,
+      "win_rate": 0.457516342,
+      "kills": 987,
+      "kda": 0.337690353,
+      "matches": 153
+    },
+    {
+      "ability_id": 5090,
+      "wins": 11,
+      "win_rate": 0.333333343,
+      "kills": 220,
+      "kda": 2.61616182,
+      "matches": 33
+    },
+    {
+      "ability_id": 5115,
+      "wins": 83,
+      "win_rate": 0.5092025,
+      "kills": 1171,
+      "kda": 3.27607369,
+      "matches": 163
+    },
+    {
+      "ability_id": 5124,
+      "wins": 33,
+      "win_rate": 0.44,
+      "kills": 482,
+      "kda": 2.195555,
+      "matches": 75
+    },
+    {
+      "ability_id": 5126,
+      "wins": 31,
+      "win_rate": 0.607843161,
+      "kills": 375,
+      "kda": 5.594772,
+      "matches": 51
+    },
+    {
+      "ability_id": 5151,
+      "wins": 13,
+      "win_rate": 0.433333337,
+      "kills": 191,
+      "kda": 2.8,
+      "matches": 30
+    },
+    {
+      "ability_id": 5156,
+      "wins": 36,
+      "win_rate": 0.545454562,
+      "kills": 593,
+      "kda": 5.843435,
+      "matches": 66
+    },
+    {
+      "ability_id": 5158,
+      "wins": 21,
+      "win_rate": 0.403846145,
+      "kills": 337,
+      "kda": 2.333333,
+      "matches": 52
+    },
+    {
+      "ability_id": 5190,
+      "wins": 55,
+      "win_rate": 0.450819671,
+      "kills": 856,
+      "kda": 2.84972644,
+      "matches": 122
+    },
+    {
+      "ability_id": 5192,
+      "wins": 107,
+      "win_rate": 0.5219512,
+      "kills": 1209,
+      "kda": 2.55284524,
+      "matches": 205
+    },
+    {
+      "ability_id": 5224,
+      "wins": 28,
+      "win_rate": 0.4516129,
+      "kills": 369,
+      "kda": 1.70967746,
+      "matches": 62
+    },
+    {
+      "ability_id": 5226,
+      "wins": 18,
+      "win_rate": 0.461538464,
+      "kills": 205,
+      "kda": 1.43589747,
+      "matches": 39
+    },
+    {
+      "ability_id": 5249,
+      "wins": 53,
+      "win_rate": 0.646341443,
+      "kills": 584,
+      "kda": 4.3983736,
+      "matches": 82
+    },
+    {
+      "ability_id": 5251,
+      "wins": 32,
+      "win_rate": 0.385542154,
+      "kills": 522,
+      "kda": 0.9959834,
+      "matches": 83
+    },
+    {
+      "ability_id": 5260,
+      "wins": 13,
+      "win_rate": 0.419354826,
+      "kills": 195,
+      "kda": 1.61290324,
+      "matches": 31
+    },
+    {
+      "ability_id": 5285,
+      "wins": 36,
+      "win_rate": 0.428571433,
+      "kills": 546,
+      "kda": 2.18650746,
+      "matches": 84
+    },
+    {
+      "ability_id": 5290,
+      "wins": 70,
+      "win_rate": 0.5982906,
+      "kills": 1066,
+      "kda": 8.22792,
+      "matches": 117
+    },
+    {
+      "ability_id": 5358,
+      "wins": 41,
+      "win_rate": 0.41,
+      "kills": 717,
+      "kda": 2.12666631,
+      "matches": 100
+    },
+    {
+      "ability_id": 5392,
+      "wins": 18,
+      "win_rate": 0.428571433,
+      "kills": 232,
+      "kda": 2.42063546,
+      "matches": 42
+    },
+    {
+      "ability_id": 5426,
+      "wins": 37,
+      "win_rate": 0.4868421,
+      "kills": 452,
+      "kda": 2.28070235,
+      "matches": 76
+    },
+    {
+      "ability_id": 5458,
+      "wins": 26,
+      "win_rate": 0.6666667,
+      "kills": 333,
+      "kda": 5.99145365,
+      "matches": 39
+    },
+    {
+      "ability_id": 5460,
+      "wins": 27,
+      "win_rate": 0.435483873,
+      "kills": 329,
+      "kda": 1.5806452,
+      "matches": 62
+    },
+    {
+      "ability_id": 5485,
+      "wins": 32,
+      "win_rate": 0.551724136,
+      "kills": 321,
+      "kda": 3.90804529,
+      "matches": 58
+    },
+    {
+      "ability_id": 5494,
+      "wins": 82,
+      "win_rate": 0.5,
+      "kills": 1219,
+      "kda": 3.48170733,
+      "matches": 164
+    },
+    {
+      "ability_id": 5519,
+      "wins": 144,
+      "win_rate": 0.4881356,
+      "kills": 2038,
+      "kda": 3.14124322,
+      "matches": 295
+    },
+    {
+      "ability_id": 5524,
+      "wins": 43,
+      "win_rate": 0.488636374,
+      "kills": 718,
+      "kda": 3.65530252,
+      "matches": 88
+    },
+    {
+      "ability_id": 5526,
+      "wins": 55,
+      "win_rate": 0.5445545,
+      "kills": 665,
+      "kda": 3.61716223,
+      "matches": 101
+    },
+    {
+      "ability_id": 5549,
+      "wins": 49,
+      "win_rate": 0.544444442,
+      "kills": 659,
+      "kda": 4.118518,
+      "matches": 90
+    },
+    {
+      "ability_id": 5583,
+      "wins": 35,
+      "win_rate": 0.5645161,
+      "kills": 514,
+      "kda": 4.69892454,
+      "matches": 62
+    },
+    {
+      "ability_id": 5585,
+      "wins": 10,
+      "win_rate": 0.3846154,
+      "kills": 141,
+      "kda": 1.39743626,
+      "matches": 26
+    },
+    {
+      "ability_id": 5619,
+      "wins": 32,
+      "win_rate": 0.444444448,
+      "kills": 418,
+      "kda": 2.41203642,
+      "matches": 72
+    },
+    {
+      "ability_id": 5651,
+      "wins": 29,
+      "win_rate": 0.6744186,
+      "kills": 369,
+      "kda": 6.0930233,
+      "matches": 43
+    },
+    {
+      "ability_id": 5685,
+      "wins": 56,
+      "win_rate": 0.577319562,
+      "kills": 799,
+      "kda": 4.402062,
+      "matches": 97
+    },
+    {
+      "ability_id": 7230,
+      "wins": 15,
+      "win_rate": 0.535714269,
+      "kills": 122,
+      "kda": 0.273809165,
+      "matches": 28
+    },
+    {
+      "ability_id": 8000,
+      "wins": 19,
+      "win_rate": 0.5135135,
+      "kills": 262,
+      "kda": 4.46846771,
+      "matches": 37
+    },
+    {
+      "ability_id": 5003,
+      "wins": 96,
+      "win_rate": 0.385542154,
+      "kills": 1365,
+      "kda": 0.8795181,
+      "matches": 249
+    },
+    {
+      "ability_id": 5004,
+      "wins": 77,
+      "win_rate": 0.626016259,
+      "kills": 806,
+      "kda": 4.81571865,
+      "matches": 123
+    },
+    {
+      "ability_id": 5021,
+      "wins": 7,
+      "win_rate": 0.5833333,
+      "kills": 58,
+      "kda": 2.27777743,
+      "matches": 12
+    },
+    {
+      "ability_id": 5071,
+      "wins": 30,
+      "win_rate": 0.5084746,
+      "kills": 367,
+      "kda": 2.59322023,
+      "matches": 59
+    },
+    {
+      "ability_id": 5072,
+      "wins": 16,
+      "win_rate": 0.3809524,
+      "kills": 239,
+      "kda": 2.03174639,
+      "matches": 42
+    },
+    {
+      "ability_id": 5086,
+      "wins": 49,
+      "win_rate": 0.5051546,
+      "kills": 653,
+      "kda": 4.16838551,
+      "matches": 97
+    },
+    {
+      "ability_id": 5103,
+      "wins": 57,
+      "win_rate": 0.575757563,
+      "kills": 704,
+      "kda": 4.5454545,
+      "matches": 99
+    },
+    {
+      "ability_id": 5104,
+      "wins": 65,
+      "win_rate": 0.474452555,
+      "kills": 838,
+      "kda": 2.72506118,
+      "matches": 137
+    },
+    {
+      "ability_id": 5122,
+      "wins": 28,
+      "win_rate": 0.4117647,
+      "kills": 376,
+      "kda": 1.9901967,
+      "matches": 68
+    },
+    {
+      "ability_id": 5136,
+      "wins": 55,
+      "win_rate": 0.443548381,
+      "kills": 790,
+      "kda": 2.505377,
+      "matches": 124
+    },
+    {
+      "ability_id": 5139,
+      "wins": 10,
+      "win_rate": 0.5263158,
+      "kills": 76,
+      "kda": 0.2807023,
+      "matches": 19
+    },
+    {
+      "ability_id": 5154,
+      "wins": 36,
+      "win_rate": 0.493150681,
+      "kills": 513,
+      "kda": 3.72146058,
+      "matches": 73
+    },
+    {
+      "ability_id": 5172,
+      "wins": 56,
+      "win_rate": 0.455284566,
+      "kills": 645,
+      "kda": 1.10027134,
+      "matches": 123
+    },
+    {
+      "ability_id": 5186,
+      "wins": 28,
+      "win_rate": 0.549019635,
+      "kills": 355,
+      "kda": 3.36601353,
+      "matches": 51
+    },
+    {
+      "ability_id": 5222,
+      "wins": 14,
+      "win_rate": 0.424242437,
+      "kills": 197,
+      "kda": 2.19191957,
+      "matches": 33
+    },
+    {
+      "ability_id": 5239,
+      "wins": 23,
+      "win_rate": 0.522727251,
+      "kills": 273,
+      "kda": 3.33333373,
+      "matches": 44
+    },
+    {
+      "ability_id": 5272,
+      "wins": 42,
+      "win_rate": 0.5060241,
+      "kills": 673,
+      "kda": 3.373494,
+      "matches": 83
+    },
+    {
+      "ability_id": 5286,
+      "wins": 56,
+      "win_rate": 0.5045045,
+      "kills": 775,
+      "kda": 2.375375,
+      "matches": 111
+    },
+    {
+      "ability_id": 5289,
+      "wins": 34,
+      "win_rate": 0.453333348,
+      "kills": 525,
+      "kda": 3.08,
+      "matches": 75
+    },
+    {
+      "ability_id": 5321,
+      "wins": 7,
+      "win_rate": 0.466666669,
+      "kills": 81,
+      "kda": 1.37777817,
+      "matches": 15
+    },
+    {
+      "ability_id": 5322,
+      "wins": 35,
+      "win_rate": 0.5147059,
+      "kills": 531,
+      "kda": 4.63725567,
+      "matches": 68
+    },
+    {
+      "ability_id": 5336,
+      "wins": 52,
+      "win_rate": 0.5652174,
+      "kills": 644,
+      "kda": 4.78623247,
+      "matches": 92
+    },
+    {
+      "ability_id": 5353,
+      "wins": 64,
+      "win_rate": 0.4848485,
+      "kills": 994,
+      "kda": 4.33080864,
+      "matches": 132
+    },
+    {
+      "ability_id": 5421,
+      "wins": 21,
+      "win_rate": 0.4375,
+      "kills": 224,
+      "kda": 0.7916667,
+      "matches": 48
+    },
+    {
+      "ability_id": 5422,
+      "wins": 16,
+      "win_rate": 0.5714286,
+      "kills": 239,
+      "kda": 3.79761934,
+      "matches": 28
+    },
+    {
+      "ability_id": 5436,
+      "wins": 20,
+      "win_rate": 0.512820542,
+      "kills": 189,
+      "kda": 1.78632534,
+      "matches": 39
+    },
+    {
+      "ability_id": 5439,
+      "wins": 8,
+      "win_rate": 0.307692319,
+      "kills": 148,
+      "kda": 0.9743594,
+      "matches": 26
+    },
+    {
+      "ability_id": 5471,
+      "wins": 12,
+      "win_rate": 0.4,
+      "kills": 147,
+      "kda": 3.0666666,
+      "matches": 30
+    },
+    {
+      "ability_id": 5486,
+      "wins": 8,
+      "win_rate": 0.3809524,
+      "kills": 194,
+      "kda": 4.47619057,
+      "matches": 21
+    },
+    {
+      "ability_id": 5504,
+      "wins": 33,
+      "win_rate": 0.471428573,
+      "kills": 411,
+      "kda": 2.27142859,
+      "matches": 70
+    },
+    {
+      "ability_id": 5589,
+      "wins": 9,
+      "win_rate": 0.473684222,
+      "kills": 101,
+      "kda": 0.210526317,
+      "matches": 19
+    },
+    {
+      "ability_id": 5603,
+      "wins": 71,
+      "win_rate": 0.5338346,
+      "kills": 1081,
+      "kda": 4.892231,
+      "matches": 133
+    },
+    {
+      "ability_id": 5604,
+      "wins": 71,
+      "win_rate": 0.489655167,
+      "kills": 1148,
+      "kda": 4.811495,
+      "matches": 145
+    },
+    {
+      "ability_id": 5639,
+      "wins": 15,
+      "win_rate": 0.319148928,
+      "kills": 356,
+      "kda": 2.631206,
+      "matches": 47
+    },
+    {
+      "ability_id": 5653,
+      "wins": 26,
+      "win_rate": 0.53061223,
+      "kills": 251,
+      "kda": 1.22448981,
+      "matches": 49
+    },
+    {
+      "ability_id": 5721,
+      "wins": 29,
+      "win_rate": 0.432835817,
+      "kills": 324,
+      "kda": 0.3283582,
+      "matches": 67
+    },
+    {
+      "ability_id": 6339,
+      "wins": 24,
+      "win_rate": 0.558139563,
+      "kills": 254,
+      "kda": 2.91472816,
+      "matches": 43
+    },
+    {
+      "ability_id": 7325,
+      "wins": 11,
+      "win_rate": 0.44,
+      "kills": 133,
+      "kda": 0.5866663,
+      "matches": 25
+    },
+    {
+      "ability_id": 5012,
+      "wins": 18,
+      "win_rate": 0.545454562,
+      "kills": 198,
+      "kda": 1.78787875,
+      "matches": 33
+    },
+    {
+      "ability_id": 5027,
+      "wins": 96,
+      "win_rate": 0.448598117,
+      "kills": 1254,
+      "kda": 0.9579439,
+      "matches": 214
+    },
+    {
+      "ability_id": 5029,
+      "wins": 32,
+      "win_rate": 0.450704217,
+      "kills": 396,
+      "kda": 1.14553964,
+      "matches": 71
+    },
+    {
+      "ability_id": 5044,
+      "wins": 41,
+      "win_rate": 0.5125,
+      "kills": 586,
+      "kda": 4.49166727,
+      "matches": 80
+    },
+    {
+      "ability_id": 5046,
+      "wins": 27,
+      "win_rate": 0.465517253,
+      "kills": 361,
+      "kda": 2.37931037,
+      "matches": 58
+    },
+    {
+      "ability_id": 5061,
+      "wins": 9,
+      "win_rate": 0.5294118,
+      "kills": 79,
+      "kda": 1.43137228,
+      "matches": 17
+    },
+    {
+      "ability_id": 5078,
+      "wins": 20,
+      "win_rate": 0.512820542,
+      "kills": 255,
+      "kda": 2.95726442,
+      "matches": 39
+    },
+    {
+      "ability_id": 5080,
+      "wins": 24,
+      "win_rate": 0.428571433,
+      "kills": 247,
+      "kda": 1.8452388,
+      "matches": 56
+    },
+    {
+      "ability_id": 5095,
+      "wins": 140,
+      "win_rate": 0.492957741,
+      "kills": 1739,
+      "kda": 1.98004663,
+      "matches": 284
+    },
+    {
+      "ability_id": 5110,
+      "wins": 5,
+      "win_rate": 0.208333328,
+      "kills": 167,
+      "kda": 1.02777731,
+      "matches": 24
+    },
+    {
+      "ability_id": 5112,
+      "wins": 10,
+      "win_rate": 0.5,
+      "kills": 104,
+      "kda": 2.183333,
+      "matches": 20
+    },
+    {
+      "ability_id": 5114,
+      "wins": 50,
+      "win_rate": 0.442477882,
+      "kills": 765,
+      "kda": 3.51917362,
+      "matches": 113
+    },
+    {
+      "ability_id": 5127,
+      "wins": 36,
+      "win_rate": 0.4864865,
+      "kills": 526,
+      "kda": 4.5405407,
+      "matches": 74
+    },
+    {
+      "ability_id": 5144,
+      "wins": 95,
+      "win_rate": 0.6597222,
+      "kills": 1551,
+      "kda": 9.898148,
+      "matches": 144
+    },
+    {
+      "ability_id": 5146,
+      "wins": 51,
+      "win_rate": 0.5049505,
+      "kills": 640,
+      "kda": 2.920792,
+      "matches": 101
+    },
+    {
+      "ability_id": 5163,
+      "wins": 17,
+      "win_rate": 0.414634138,
+      "kills": 259,
+      "kda": 1.58536589,
+      "matches": 41
+    },
+    {
+      "ability_id": 5178,
+      "wins": 42,
+      "win_rate": 0.4516129,
+      "kills": 629,
+      "kda": 2.795699,
+      "matches": 93
+    },
+    {
+      "ability_id": 5180,
+      "wins": 21,
+      "win_rate": 0.4883721,
+      "kills": 223,
+      "kda": 1.5503881,
+      "matches": 43
+    },
+    {
+      "ability_id": 5195,
+      "wins": 28,
+      "win_rate": 0.466666669,
+      "kills": 497,
+      "kda": 3.422222,
+      "matches": 60
+    },
+    {
+      "ability_id": 5227,
+      "wins": 41,
+      "win_rate": 0.460674167,
+      "kills": 590,
+      "kda": 2.47565579,
+      "matches": 89
+    },
+    {
+      "ability_id": 5246,
+      "wins": 40,
+      "win_rate": 0.476190478,
+      "kills": 473,
+      "kda": 2.12301636,
+      "matches": 84
+    },
+    {
+      "ability_id": 5261,
+      "wins": 57,
+      "win_rate": 0.564356446,
+      "kills": 787,
+      "kda": 5.821782,
+      "matches": 101
+    },
+    {
+      "ability_id": 5263,
+      "wins": 45,
+      "win_rate": 0.4787234,
+      "kills": 549,
+      "kda": 1.21985769,
+      "matches": 94
+    },
+    {
+      "ability_id": 5280,
+      "wins": 56,
+      "win_rate": 0.5283019,
+      "kills": 739,
+      "kda": 3.95597529,
+      "matches": 106
+    },
+    {
+      "ability_id": 5297,
+      "wins": 28,
+      "win_rate": 0.6086956,
+      "kills": 304,
+      "kda": 3.5869565,
+      "matches": 46
+    },
+    {
+      "ability_id": 5346,
+      "wins": 9,
+      "win_rate": 0.391304344,
+      "kills": 132,
+      "kda": 0.130434781,
+      "matches": 23
+    },
+    {
+      "ability_id": 5361,
+      "wins": 46,
+      "win_rate": 0.4893617,
+      "kills": 760,
+      "kda": 3.875887,
+      "matches": 94
+    },
+    {
+      "ability_id": 5363,
+      "wins": 18,
+      "win_rate": 0.418604642,
+      "kills": 281,
+      "kda": 1.10852766,
+      "matches": 43
+    },
+    {
+      "ability_id": 5378,
+      "wins": 1,
+      "win_rate": 0.111111112,
+      "kills": 20,
+      "kda": -5.40740728,
+      "matches": 9
+    },
+    {
+      "ability_id": 5395,
+      "wins": 12,
+      "win_rate": 0.428571433,
+      "kills": 154,
+      "kda": 0.25,
+      "matches": 28
+    },
+    {
+      "ability_id": 5397,
+      "wins": 103,
+      "win_rate": 0.479069769,
+      "kills": 1562,
+      "kda": 2.96589184,
+      "matches": 215
+    },
+    {
+      "ability_id": 5431,
+      "wins": 8,
+      "win_rate": 0.5,
+      "kills": 72,
+      "kda": 0.854167,
+      "matches": 16
+    },
+    {
+      "ability_id": 5448,
+      "wins": 10,
+      "win_rate": 0.5263158,
+      "kills": 153,
+      "kda": 5.50877142,
+      "matches": 19
+    },
+    {
+      "ability_id": 5463,
+      "wins": 25,
+      "win_rate": 0.543478251,
+      "kills": 366,
+      "kda": 4.818841,
+      "matches": 46
+    },
+    {
+      "ability_id": 5480,
+      "wins": 64,
+      "win_rate": 0.3764706,
+      "kills": 1025,
+      "kda": 1.40196025,
+      "matches": 170
+    },
+    {
+      "ability_id": 5495,
+      "wins": 86,
+      "win_rate": 0.4673913,
+      "kills": 1171,
+      "kda": 2.13405848,
+      "matches": 184
+    },
+    {
+      "ability_id": 5514,
+      "wins": 89,
+      "win_rate": 0.55625,
+      "kills": 1130,
+      "kda": 4.739583,
+      "matches": 160
+    },
+    {
+      "ability_id": 5548,
+      "wins": 49,
+      "win_rate": 0.5212766,
+      "kills": 749,
+      "kda": 4.191489,
+      "matches": 94
+    },
+    {
+      "ability_id": 5565,
+      "wins": 26,
+      "win_rate": 0.40625,
+      "kills": 324,
+      "kda": 0.0572919846,
+      "matches": 64
+    },
+    {
+      "ability_id": 5595,
+      "wins": 59,
+      "win_rate": 0.453846157,
+      "kills": 853,
+      "kda": 3.017949,
+      "matches": 130
+    },
+    {
+      "ability_id": 5597,
+      "wins": 103,
+      "win_rate": 0.434599161,
+      "kills": 1608,
+      "kda": 2.464135,
+      "matches": 237
+    },
+    {
+      "ability_id": 5614,
+      "wins": 46,
+      "win_rate": 0.534883738,
+      "kills": 478,
+      "kda": 2.58527184,
+      "matches": 86
+    },
+    {
+      "ability_id": 6582,
+      "wins": 61,
+      "win_rate": 0.406666666,
+      "kills": 712,
+      "kda": 0.275555,
+      "matches": 150
+    },
+    {
+      "ability_id": 7301,
+      "wins": 58,
+      "win_rate": 0.426470578,
+      "kills": 869,
+      "kda": 1.97303951,
+      "matches": 136
+    },
+    {
+      "ability_id": 7318,
+      "wins": 45,
+      "win_rate": 0.463917524,
+      "kills": 585,
+      "kda": 1.75944972,
+      "matches": 97
+    },
+    {
+      "ability_id": 7320,
+      "wins": 14,
+      "win_rate": 0.5,
+      "kills": 204,
+      "kda": 4.273809,
+      "matches": 28
+    },
+    {
+      "ability_id": 5011,
+      "wins": 25,
+      "win_rate": 0.5319149,
+      "kills": 356,
+      "kda": 4.007092,
+      "matches": 47
+    },
+    {
+      "ability_id": 5028,
+      "wins": 95,
+      "win_rate": 0.5792683,
+      "kills": 1400,
+      "kda": 6.10365868,
+      "matches": 164
+    },
+    {
+      "ability_id": 5045,
+      "wins": 50,
+      "win_rate": 0.454545468,
+      "kills": 698,
+      "kda": 2.73636365,
+      "matches": 110
+    },
+    {
+      "ability_id": 5062,
+      "wins": 46,
+      "win_rate": 0.403508782,
+      "kills": 784,
+      "kda": 2.406433,
+      "matches": 114
+    },
+    {
+      "ability_id": 5079,
+      "wins": 41,
+      "win_rate": 0.4408602,
+      "kills": 571,
+      "kda": 1.57347715,
+      "matches": 93
+    },
+    {
+      "ability_id": 5094,
+      "wins": 50,
+      "win_rate": 0.5882353,
+      "kills": 562,
+      "kda": 3.164706,
+      "matches": 85
+    },
+    {
+      "ability_id": 5096,
+      "wins": 53,
+      "win_rate": 0.452991456,
+      "kills": 593,
+      "kda": 0.8831912,
+      "matches": 117
+    },
+    {
+      "ability_id": 5111,
+      "wins": 9,
+      "win_rate": 0.375,
+      "kills": 165,
+      "kda": 4.66666651,
+      "matches": 24
+    },
+    {
+      "ability_id": 5128,
+      "wins": 36,
+      "win_rate": 0.5,
+      "kills": 395,
+      "kda": 1.36111116,
+      "matches": 72
+    },
+    {
+      "ability_id": 5130,
+      "wins": 41,
+      "win_rate": 0.471264362,
+      "kills": 502,
+      "kda": 1.5517242,
+      "matches": 87
+    },
+    {
+      "ability_id": 5147,
+      "wins": 13,
+      "win_rate": 0.4814815,
+      "kills": 117,
+      "kda": 0.9506169,
+      "matches": 27
+    },
+    {
+      "ability_id": 5160,
+      "wins": 11,
+      "win_rate": 0.289473683,
+      "kills": 181,
+      "kda": 0.6491234,
+      "matches": 38
+    },
+    {
+      "ability_id": 5162,
+      "wins": 37,
+      "win_rate": 0.480519474,
+      "kills": 499,
+      "kda": 2.7965374,
+      "matches": 77
+    },
+    {
+      "ability_id": 5164,
+      "wins": 4,
+      "win_rate": 0.363636374,
+      "kills": 50,
+      "kda": -0.363636374,
+      "matches": 11
+    },
+    {
+      "ability_id": 5179,
+      "wins": 54,
+      "win_rate": 0.509434,
+      "kills": 798,
+      "kda": 3.72641516,
+      "matches": 106
+    },
+    {
+      "ability_id": 5194,
+      "wins": 54,
+      "win_rate": 0.5869565,
+      "kills": 726,
+      "kda": 4.597826,
+      "matches": 92
+    },
+    {
+      "ability_id": 5196,
+      "wins": 55,
+      "win_rate": 0.647058845,
+      "kills": 785,
+      "kda": 6.87451029,
+      "matches": 85
+    },
+    {
+      "ability_id": 5228,
+      "wins": 36,
+      "win_rate": 0.5294118,
+      "kills": 404,
+      "kda": 2.64705873,
+      "matches": 68
+    },
+    {
+      "ability_id": 5245,
+      "wins": 7,
+      "win_rate": 0.3181818,
+      "kills": 57,
+      "kda": -2.9242425,
+      "matches": 22
+    },
+    {
+      "ability_id": 5247,
+      "wins": 14,
+      "win_rate": 0.4516129,
+      "kills": 123,
+      "kda": 0.107527211,
+      "matches": 31
+    },
+    {
+      "ability_id": 5264,
+      "wins": 43,
+      "win_rate": 0.472527474,
+      "kills": 448,
+      "kda": 1.586081,
+      "matches": 91
+    },
+    {
+      "ability_id": 5277,
+      "wins": 83,
+      "win_rate": 0.506097555,
+      "kills": 1284,
+      "kda": 4.51626062,
+      "matches": 164
+    },
+    {
+      "ability_id": 5279,
+      "wins": 14,
+      "win_rate": 0.4117647,
+      "kills": 236,
+      "kda": 1.382353,
+      "matches": 34
+    },
+    {
+      "ability_id": 5281,
+      "wins": 90,
+      "win_rate": 0.489130437,
+      "kills": 1261,
+      "kda": 2.77536273,
+      "matches": 184
+    },
+    {
+      "ability_id": 5328,
+      "wins": 49,
+      "win_rate": 0.4949495,
+      "kills": 557,
+      "kda": 1.69360232,
+      "matches": 99
+    },
+    {
+      "ability_id": 5330,
+      "wins": 9,
+      "win_rate": 0.36,
+      "kills": 105,
+      "kda": 0.16,
+      "matches": 25
+    },
+    {
+      "ability_id": 5345,
+      "wins": 32,
+      "win_rate": 0.470588237,
+      "kills": 425,
+      "kda": 2.71568561,
+      "matches": 68
+    },
+    {
+      "ability_id": 5347,
+      "wins": 15,
+      "win_rate": 0.441176474,
+      "kills": 212,
+      "kda": 1.83333361,
+      "matches": 34
+    },
+    {
+      "ability_id": 5362,
+      "wins": 24,
+      "win_rate": 0.461538464,
+      "kills": 309,
+      "kda": 1.96794832,
+      "matches": 52
+    },
+    {
+      "ability_id": 5379,
+      "wins": 23,
+      "win_rate": 0.4181818,
+      "kills": 306,
+      "kda": 1.33939433,
+      "matches": 55
+    },
+    {
+      "ability_id": 5396,
+      "wins": 59,
+      "win_rate": 0.427536219,
+      "kills": 745,
+      "kda": 2.21739125,
+      "matches": 138
+    },
+    {
+      "ability_id": 5428,
+      "wins": 103,
+      "win_rate": 0.492822975,
+      "kills": 1566,
+      "kda": 3.291866,
+      "matches": 209
+    },
+    {
+      "ability_id": 5430,
+      "wins": 22,
+      "win_rate": 0.458333343,
+      "kills": 258,
+      "kda": 1.51388931,
+      "matches": 48
+    },
+    {
+      "ability_id": 5462,
+      "wins": 41,
+      "win_rate": 0.7592593,
+      "kills": 434,
+      "kda": 6.79012251,
+      "matches": 54
+    },
+    {
+      "ability_id": 5464,
+      "wins": 46,
+      "win_rate": 0.554216862,
+      "kills": 610,
+      "kda": 3.93574238,
+      "matches": 83
+    },
+    {
+      "ability_id": 5481,
+      "wins": 10,
+      "win_rate": 0.333333343,
+      "kills": 169,
+      "kda": 0.6,
+      "matches": 30
+    },
+    {
+      "ability_id": 5496,
+      "wins": 132,
+      "win_rate": 0.483516484,
+      "kills": 2229,
+      "kda": 3.51404119,
+      "matches": 273
+    },
+    {
+      "ability_id": 5511,
+      "wins": 31,
+      "win_rate": 0.455882341,
+      "kills": 410,
+      "kda": 0.990195751,
+      "matches": 68
+    },
+    {
+      "ability_id": 5515,
+      "wins": 17,
+      "win_rate": 0.34,
+      "kills": 342,
+      "kda": 1.22,
+      "matches": 50
+    },
+    {
+      "ability_id": 5581,
+      "wins": 8,
+      "win_rate": 0.4,
+      "kills": 149,
+      "kda": 3.316667,
+      "matches": 20
+    },
+    {
+      "ability_id": 5596,
+      "wins": 57,
+      "win_rate": 0.401408464,
+      "kills": 932,
+      "kda": 1.971831,
+      "matches": 142
+    },
+    {
+      "ability_id": 5613,
+      "wins": 42,
+      "win_rate": 0.6,
+      "kills": 442,
+      "kda": 4.54762,
+      "matches": 70
+    },
+    {
+      "ability_id": 5615,
+      "wins": 105,
+      "win_rate": 0.596590936,
+      "kills": 1601,
+      "kda": 5.50757551,
+      "matches": 176
+    },
+    {
+      "ability_id": 5632,
+      "wins": 21,
+      "win_rate": 0.3888889,
+      "kills": 243,
+      "kda": 1.27160537,
+      "matches": 54
+    },
+    {
+      "ability_id": 5679,
+      "wins": 7,
+      "win_rate": 0.35,
+      "kills": 108,
+      "kda": 0.8166672,
+      "matches": 20
+    },
+    {
+      "ability_id": 6583,
+      "wins": 46,
+      "win_rate": 0.429906547,
+      "kills": 587,
+      "kda": 1.04049885,
+      "matches": 107
+    },
+    {
+      "ability_id": 7300,
+      "wins": 70,
+      "win_rate": 0.593220353,
+      "kills": 721,
+      "kda": 2.57062173,
+      "matches": 118
+    },
+    {
+      "ability_id": 5008,
+      "wins": 45,
+      "win_rate": 0.473684222,
+      "kills": 581,
+      "kda": 2.136842,
+      "matches": 95
+    },
+    {
+      "ability_id": 5031,
+      "wins": 30,
+      "win_rate": 0.4054054,
+      "kills": 542,
+      "kda": 3.73423481,
+      "matches": 74
+    },
+    {
+      "ability_id": 5033,
+      "wins": 28,
+      "win_rate": 0.4117647,
+      "kills": 383,
+      "kda": 1.19117641,
+      "matches": 68
+    },
+    {
+      "ability_id": 5040,
+      "wins": 17,
+      "win_rate": 0.354166657,
+      "kills": 284,
+      "kda": 1.45138931,
+      "matches": 48
+    },
+    {
+      "ability_id": 5042,
+      "wins": 56,
+      "win_rate": 0.459016383,
+      "kills": 921,
+      "kda": 2.47267723,
+      "matches": 122
+    },
+    {
+      "ability_id": 5065,
+      "wins": 769,
+      "win_rate": 0.437180221,
+      "kills": 11054,
+      "kda": 2.49005127,
+      "matches": 1759
+    },
+    {
+      "ability_id": 5074,
+      "wins": 46,
+      "win_rate": 0.5,
+      "kills": 675,
+      "kda": 3.952898,
+      "matches": 92
+    },
+    {
+      "ability_id": 5076,
+      "wins": 33,
+      "win_rate": 0.5,
+      "kills": 574,
+      "kda": 4.4848485,
+      "matches": 66
+    },
+    {
+      "ability_id": 5099,
+      "wins": 51,
+      "win_rate": 0.5,
+      "kills": 625,
+      "kda": 2.24836636,
+      "matches": 102
+    },
+    {
+      "ability_id": 5106,
+      "wins": 54,
+      "win_rate": 0.6,
+      "kills": 728,
+      "kda": 5.629629,
+      "matches": 90
+    },
+    {
+      "ability_id": 5108,
+      "wins": 93,
+      "win_rate": 0.406113535,
+      "kills": 1664,
+      "kda": 2.85152841,
+      "matches": 229
+    },
+    {
+      "ability_id": 5131,
+      "wins": 19,
+      "win_rate": 0.3653846,
+      "kills": 322,
+      "kda": 2.22435927,
+      "matches": 52
+    },
+    {
+      "ability_id": 5140,
+      "wins": 37,
+      "win_rate": 0.49333334,
+      "kills": 653,
+      "kda": 3.684445,
+      "matches": 75
+    },
+    {
+      "ability_id": 5142,
+      "wins": 72,
+      "win_rate": 0.585365832,
+      "kills": 879,
+      "kda": 4.40108347,
+      "matches": 123
+    },
+    {
+      "ability_id": 5174,
+      "wins": 53,
+      "win_rate": 0.53,
+      "kills": 713,
+      "kda": 6.026666,
+      "matches": 100
+    },
+    {
+      "ability_id": 5233,
+      "wins": 25,
+      "win_rate": 0.373134315,
+      "kills": 367,
+      "kda": 0.154228553,
+      "matches": 67
+    },
+    {
+      "ability_id": 5235,
+      "wins": 33,
+      "win_rate": 0.5409836,
+      "kills": 369,
+      "kda": 2.852459,
+      "matches": 61
+    },
+    {
+      "ability_id": 5242,
+      "wins": 44,
+      "win_rate": 0.5714286,
+      "kills": 540,
+      "kda": 1.89177442,
+      "matches": 77
+    },
+    {
+      "ability_id": 5265,
+      "wins": 105,
+      "win_rate": 0.466666669,
+      "kills": 1339,
+      "kda": 2.47703671,
+      "matches": 225
+    },
+    {
+      "ability_id": 5267,
+      "wins": 82,
+      "win_rate": 0.4852071,
+      "kills": 915,
+      "kda": 2.07692313,
+      "matches": 169
+    },
+    {
+      "ability_id": 5276,
+      "wins": 62,
+      "win_rate": 0.3899371,
+      "kills": 986,
+      "kda": 1.63522017,
+      "matches": 159
+    },
+    {
+      "ability_id": 5299,
+      "wins": 34,
+      "win_rate": 0.459459454,
+      "kills": 375,
+      "kda": 0.364864856,
+      "matches": 74
+    },
+    {
+      "ability_id": 5335,
+      "wins": 77,
+      "win_rate": 0.5,
+      "kills": 1004,
+      "kda": 2.554113,
+      "matches": 154
+    },
+    {
+      "ability_id": 5340,
+      "wins": 23,
+      "win_rate": 0.46938777,
+      "kills": 385,
+      "kda": 3.8095243,
+      "matches": 49
+    },
+    {
+      "ability_id": 5365,
+      "wins": 47,
+      "win_rate": 0.465346545,
+      "kills": 564,
+      "kda": 1.88448882,
+      "matches": 101
+    },
+    {
+      "ability_id": 5435,
+      "wins": 27,
+      "win_rate": 0.5744681,
+      "kills": 247,
+      "kda": 2.163121,
+      "matches": 47
+    },
+    {
+      "ability_id": 5440,
+      "wins": 35,
+      "win_rate": 0.522388041,
+      "kills": 414,
+      "kda": 2.72139263,
+      "matches": 67
+    },
+    {
+      "ability_id": 5442,
+      "wins": 24,
+      "win_rate": 0.363636374,
+      "kills": 350,
+      "kda": 1.30808139,
+      "matches": 66
+    },
+    {
+      "ability_id": 5444,
+      "wins": 40,
+      "win_rate": 0.533333361,
+      "kills": 470,
+      "kda": 3.86666656,
+      "matches": 75
+    },
+    {
+      "ability_id": 5467,
+      "wins": 102,
+      "win_rate": 0.4678899,
+      "kills": 1207,
+      "kda": 1.66972482,
+      "matches": 218
+    },
+    {
+      "ability_id": 5469,
+      "wins": 148,
+      "win_rate": 0.475884259,
+      "kills": 2036,
+      "kda": 2.25830626,
+      "matches": 311
+    },
+    {
+      "ability_id": 5476,
+      "wins": 17,
+      "win_rate": 0.5483871,
+      "kills": 202,
+      "kda": 3.60215116,
+      "matches": 31
+    },
+    {
+      "ability_id": 5599,
+      "wins": 20,
+      "win_rate": 0.4651163,
+      "kills": 241,
+      "kda": 1.35658872,
+      "matches": 43
+    },
+    {
+      "ability_id": 5601,
+      "wins": 21,
+      "win_rate": 0.381818175,
+      "kills": 348,
+      "kda": -1.533333,
+      "matches": 55
+    },
+    {
+      "ability_id": 5678,
+      "wins": 9,
+      "win_rate": 0.3,
+      "kills": 208,
+      "kda": 0.6777781,
+      "matches": 30
+    },
+    {
+      "ability_id": 6344,
+      "wins": 78,
+      "win_rate": 0.4785276,
+      "kills": 1366,
+      "kda": 4.58486652,
+      "matches": 163
+    },
+    {
+      "ability_id": 7307,
+      "wins": 70,
+      "win_rate": 0.443038,
+      "kills": 967,
+      "kda": 1.77004266,
+      "matches": 158
+    },
+    {
+      "ability_id": 7314,
+      "wins": 69,
+      "win_rate": 0.485915482,
+      "kills": 970,
+      "kda": 3.23943663,
+      "matches": 142
+    },
+    {
+      "ability_id": 8007,
+      "wins": 74,
+      "win_rate": 0.5174825,
+      "kills": 1052,
+      "kda": 3.195804,
+      "matches": 143
+    },
+    {
+      "ability_id": 5019,
+      "wins": 31,
+      "win_rate": 0.38271606,
+      "kills": 500,
+      "kda": 1.02057636,
+      "matches": 81
+    },
+    {
+      "ability_id": 5087,
+      "wins": 95,
+      "win_rate": 0.3846154,
+      "kills": 1424,
+      "kda": 1.89473689,
+      "matches": 247
+    },
+    {
+      "ability_id": 5088,
+      "wins": 86,
+      "win_rate": 0.4387755,
+      "kills": 1358,
+      "kda": 2.74659824,
+      "matches": 196
+    },
+    {
+      "ability_id": 5102,
+      "wins": 61,
+      "win_rate": 0.554545462,
+      "kills": 835,
+      "kda": 5.521211,
+      "matches": 110
+    },
+    {
+      "ability_id": 5119,
+      "wins": 78,
+      "win_rate": 0.52,
+      "kills": 906,
+      "kda": 3.495555,
+      "matches": 150
+    },
+    {
+      "ability_id": 5120,
+      "wins": 75,
+      "win_rate": 0.4385965,
+      "kills": 1217,
+      "kda": 2.97465944,
+      "matches": 171
+    },
+    {
+      "ability_id": 5138,
+      "wins": 39,
+      "win_rate": 0.527027,
+      "kills": 411,
+      "kda": 2.90991044,
+      "matches": 74
+    },
+    {
+      "ability_id": 5152,
+      "wins": 10,
+      "win_rate": 0.454545468,
+      "kills": 72,
+      "kda": -0.196970165,
+      "matches": 22
+    },
+    {
+      "ability_id": 5155,
+      "wins": 76,
+      "win_rate": 0.5241379,
+      "kills": 1043,
+      "kda": 2.74023,
+      "matches": 145
+    },
+    {
+      "ability_id": 5187,
+      "wins": 22,
+      "win_rate": 0.628571451,
+      "kills": 272,
+      "kda": 4.8,
+      "matches": 35
+    },
+    {
+      "ability_id": 5188,
+      "wins": 29,
+      "win_rate": 0.591836751,
+      "kills": 241,
+      "kda": 2.91156435,
+      "matches": 49
+    },
+    {
+      "ability_id": 5219,
+      "wins": 52,
+      "win_rate": 0.597701132,
+      "kills": 612,
+      "kda": 4.7318,
+      "matches": 87
+    },
+    {
+      "ability_id": 5220,
+      "wins": 83,
+      "win_rate": 0.549668849,
+      "kills": 1050,
+      "kda": 4.218543,
+      "matches": 151
+    },
+    {
+      "ability_id": 5237,
+      "wins": 73,
+      "win_rate": 0.474025965,
+      "kills": 1208,
+      "kda": 3.35930681,
+      "matches": 154
+    },
+    {
+      "ability_id": 5238,
+      "wins": 47,
+      "win_rate": 0.4563107,
+      "kills": 567,
+      "kda": 0.8252427,
+      "matches": 103
+    },
+    {
+      "ability_id": 5255,
+      "wins": 23,
+      "win_rate": 0.442307681,
+      "kills": 273,
+      "kda": 1.55769229,
+      "matches": 52
+    },
+    {
+      "ability_id": 5256,
+      "wins": 49,
+      "win_rate": 0.475728154,
+      "kills": 743,
+      "kda": 4.294499,
+      "matches": 103
+    },
+    {
+      "ability_id": 5269,
+      "wins": 26,
+      "win_rate": 0.448275864,
+      "kills": 294,
+      "kda": 0.9367813,
+      "matches": 58
+    },
+    {
+      "ability_id": 5287,
+      "wins": 61,
+      "win_rate": 0.469230771,
+      "kills": 948,
+      "kda": 4.29743671,
+      "matches": 130
+    },
+    {
+      "ability_id": 5320,
+      "wins": 28,
+      "win_rate": 0.3888889,
+      "kills": 629,
+      "kda": 3.13888884,
+      "matches": 72
+    },
+    {
+      "ability_id": 5355,
+      "wins": 71,
+      "win_rate": 0.4127907,
+      "kills": 1002,
+      "kda": 1.071705,
+      "matches": 172
+    },
+    {
+      "ability_id": 5438,
+      "wins": 18,
+      "win_rate": 0.4090909,
+      "kills": 270,
+      "kda": 1.77272725,
+      "matches": 44
+    },
+    {
+      "ability_id": 5473,
+      "wins": 31,
+      "win_rate": 0.596153855,
+      "kills": 301,
+      "kda": 3.04487133,
+      "matches": 52
+    },
+    {
+      "ability_id": 5487,
+      "wins": 62,
+      "win_rate": 0.4275862,
+      "kills": 869,
+      "kda": 1.450575,
+      "matches": 145
+    },
+    {
+      "ability_id": 5505,
+      "wins": 37,
+      "win_rate": 0.5285714,
+      "kills": 429,
+      "kda": 3.27142859,
+      "matches": 70
+    },
+    {
+      "ability_id": 5506,
+      "wins": 28,
+      "win_rate": 0.444444448,
+      "kills": 357,
+      "kda": 2.6560843,
+      "matches": 63
+    },
+    {
+      "ability_id": 5520,
+      "wins": 48,
+      "win_rate": 0.444444448,
+      "kills": 568,
+      "kda": 1.55246878,
+      "matches": 108
+    },
+    {
+      "ability_id": 5587,
+      "wins": 104,
+      "win_rate": 0.5252525,
+      "kills": 1431,
+      "kda": 2.71717167,
+      "matches": 198
+    },
+    {
+      "ability_id": 5605,
+      "wins": 50,
+      "win_rate": 0.5102041,
+      "kills": 685,
+      "kda": 3.76530623,
+      "matches": 98
+    },
+    {
+      "ability_id": 5620,
+      "wins": 31,
+      "win_rate": 0.352272719,
+      "kills": 417,
+      "kda": -0.174242884,
+      "matches": 88
+    },
+    {
+      "ability_id": 5623,
+      "wins": 9,
+      "win_rate": 0.3,
+      "kills": 167,
+      "kda": 1.71111143,
+      "matches": 30
+    },
+    {
+      "ability_id": 5637,
+      "wins": 17,
+      "win_rate": 0.425,
+      "kills": 244,
+      "kda": 4.041667,
+      "matches": 40
+    },
+    {
+      "ability_id": 5638,
+      "wins": 9,
+      "win_rate": 0.333333343,
+      "kills": 143,
+      "kda": 1.037037,
+      "matches": 27
+    },
+    {
+      "ability_id": 5723,
+      "wins": 41,
+      "win_rate": 0.353448272,
+      "kills": 642,
+      "kda": -0.18965517,
+      "matches": 116
+    },
+    {
+      "ability_id": 6341,
+      "wins": 17,
+      "win_rate": 0.4722222,
+      "kills": 212,
+      "kda": 1.99074042,
+      "matches": 36
+    },
+    {
+      "ability_id": 6342,
+      "wins": 23,
+      "win_rate": 0.442307681,
+      "kills": 289,
+      "kda": 1.63461542,
+      "matches": 52
+    },
+    {
+      "ability_id": 7310,
+      "wins": 31,
+      "win_rate": 0.516666651,
+      "kills": 413,
+      "kda": 3.50555515,
+      "matches": 60
+    },
+    {
+      "ability_id": 5009,
+      "wins": 63,
+      "win_rate": 0.525,
+      "kills": 928,
+      "kda": 3.74166656,
+      "matches": 120
+    },
+    {
+      "ability_id": 5016,
+      "wins": 37,
+      "win_rate": 0.5138889,
+      "kills": 428,
+      "kda": 2.11574125,
+      "matches": 72
+    },
+    {
+      "ability_id": 5023,
+      "wins": 34,
+      "win_rate": 0.419753075,
+      "kills": 436,
+      "kda": 2.10288119,
+      "matches": 81
+    },
+    {
+      "ability_id": 5041,
+      "wins": 42,
+      "win_rate": 0.56,
+      "kills": 527,
+      "kda": 4.124445,
+      "matches": 75
+    },
+    {
+      "ability_id": 5048,
+      "wins": 43,
+      "win_rate": 0.6231884,
+      "kills": 426,
+      "kda": 3.801933,
+      "matches": 69
+    },
+    {
+      "ability_id": 5059,
+      "wins": 4,
+      "win_rate": 0.235294119,
+      "kills": 85,
+      "kda": -1.52941179,
+      "matches": 17
+    },
+    {
+      "ability_id": 5066,
+      "wins": 1718,
+      "win_rate": 0.5268323,
+      "kills": 21962,
+      "kda": 3.98773384,
+      "matches": 3261
+    },
+    {
+      "ability_id": 5084,
+      "wins": 93,
+      "win_rate": 0.6,
+      "kills": 1531,
+      "kda": 6.967742,
+      "matches": 155
+    },
+    {
+      "ability_id": 5091,
+      "wins": 26,
+      "win_rate": 0.472727269,
+      "kills": 312,
+      "kda": 1.71515119,
+      "matches": 55
+    },
+    {
+      "ability_id": 5098,
+      "wins": 17,
+      "win_rate": 0.43589744,
+      "kills": 297,
+      "kda": 3.17094064,
+      "matches": 39
+    },
+    {
+      "ability_id": 5116,
+      "wins": 101,
+      "win_rate": 0.5706215,
+      "kills": 1523,
+      "kda": 4.493408,
+      "matches": 177
+    },
+    {
+      "ability_id": 5123,
+      "wins": 81,
+      "win_rate": 0.5225806,
+      "kills": 1003,
+      "kda": 2.97204351,
+      "matches": 155
+    },
+    {
+      "ability_id": 5134,
+      "wins": 15,
+      "win_rate": 0.483870953,
+      "kills": 216,
+      "kda": 1.86021471,
+      "matches": 31
+    },
+    {
+      "ability_id": 5148,
+      "wins": 28,
+      "win_rate": 0.549019635,
+      "kills": 356,
+      "kda": 3.71241784,
+      "matches": 51
+    },
+    {
+      "ability_id": 5159,
+      "wins": 75,
+      "win_rate": 0.5952381,
+      "kills": 1339,
+      "kda": 8.293651,
+      "matches": 126
+    },
+    {
+      "ability_id": 5173,
+      "wins": 32,
+      "win_rate": 0.3764706,
+      "kills": 616,
+      "kda": 2.98431325,
+      "matches": 85
+    },
+    {
+      "ability_id": 5184,
+      "wins": 82,
+      "win_rate": 0.460674167,
+      "kills": 1330,
+      "kda": 3.29213476,
+      "matches": 178
+    },
+    {
+      "ability_id": 5191,
+      "wins": 118,
+      "win_rate": 0.49372384,
+      "kills": 2024,
+      "kda": 4.156206,
+      "matches": 239
+    },
+    {
+      "ability_id": 5223,
+      "wins": 29,
+      "win_rate": 0.4915254,
+      "kills": 359,
+      "kda": 2.46327639,
+      "matches": 59
+    },
+    {
+      "ability_id": 5234,
+      "wins": 30,
+      "win_rate": 0.416666657,
+      "kills": 338,
+      "kda": 1.24074125,
+      "matches": 72
+    },
+    {
+      "ability_id": 5241,
+      "wins": 41,
+      "win_rate": 0.5694444,
+      "kills": 505,
+      "kda": 2.67129683,
+      "matches": 72
+    },
+    {
+      "ability_id": 5259,
+      "wins": 58,
+      "win_rate": 0.467741936,
+      "kills": 846,
+      "kda": 1.65860188,
+      "matches": 124
+    },
+    {
+      "ability_id": 5273,
+      "wins": 87,
+      "win_rate": 0.478021979,
+      "kills": 1369,
+      "kda": 2.63369918,
+      "matches": 182
+    },
+    {
+      "ability_id": 5291,
+      "wins": 44,
+      "win_rate": 0.357723564,
+      "kills": 752,
+      "kda": 1.18970227,
+      "matches": 123
+    },
+    {
+      "ability_id": 5298,
+      "wins": 29,
+      "win_rate": 0.537037,
+      "kills": 292,
+      "kda": 2.93827081,
+      "matches": 54
+    },
+    {
+      "ability_id": 5334,
+      "wins": 41,
+      "win_rate": 0.455555558,
+      "kills": 689,
+      "kda": 4.85555553,
+      "matches": 90
+    },
+    {
+      "ability_id": 5341,
+      "wins": 25,
+      "win_rate": 0.462962955,
+      "kills": 447,
+      "kda": 3.03086448,
+      "matches": 54
+    },
+    {
+      "ability_id": 5359,
+      "wins": 57,
+      "win_rate": 0.413043469,
+      "kills": 998,
+      "kda": 2.2608695,
+      "matches": 138
+    },
+    {
+      "ability_id": 5366,
+      "wins": 64,
+      "win_rate": 0.5663717,
+      "kills": 697,
+      "kda": 2.72566366,
+      "matches": 113
+    },
+    {
+      "ability_id": 5377,
+      "wins": 28,
+      "win_rate": 0.56,
+      "kills": 297,
+      "kda": 2.58666635,
+      "matches": 50
+    },
+    {
+      "ability_id": 5391,
+      "wins": 2,
+      "win_rate": 0.15384616,
+      "kills": 45,
+      "kda": -1.92307687,
+      "matches": 13
+    },
+    {
+      "ability_id": 5402,
+      "wins": 99,
+      "win_rate": 0.487684727,
+      "kills": 1504,
+      "kda": 3.315271,
+      "matches": 203
+    },
+    {
+      "ability_id": 5427,
+      "wins": 112,
+      "win_rate": 0.474576265,
+      "kills": 1590,
+      "kda": 2.20903921,
+      "matches": 236
+    },
+    {
+      "ability_id": 5434,
+      "wins": 15,
+      "win_rate": 0.375,
+      "kills": 239,
+      "kda": 2.75833273,
+      "matches": 40
+    },
+    {
+      "ability_id": 5459,
+      "wins": 25,
+      "win_rate": 0.5102041,
+      "kills": 308,
+      "kda": 4.25850248,
+      "matches": 49
+    },
+    {
+      "ability_id": 5516,
+      "wins": 52,
+      "win_rate": 0.440677971,
+      "kills": 816,
+      "kda": 3.279661,
+      "matches": 118
+    },
+    {
+      "ability_id": 5566,
+      "wins": 49,
+      "win_rate": 0.480392158,
+      "kills": 747,
+      "kda": 3.10784316,
+      "matches": 102
+    },
+    {
+      "ability_id": 5652,
+      "wins": 9,
+      "win_rate": 0.375,
+      "kills": 123,
+      "kda": 2.40277743,
+      "matches": 24
+    },
+    {
+      "ability_id": 5677,
+      "wins": 20,
+      "win_rate": 0.4878049,
+      "kills": 308,
+      "kda": 2.6016264,
+      "matches": 41
+    },
+    {
+      "ability_id": 5684,
+      "wins": 19,
+      "win_rate": 0.3877551,
+      "kills": 267,
+      "kda": 1.12244892,
+      "matches": 49
+    },
+    {
+      "ability_id": 5691,
+      "wins": 23,
+      "win_rate": 0.403508782,
+      "kills": 250,
+      "kda": -0.0760230348,
+      "matches": 57
+    },
+    {
+      "ability_id": 5716,
+      "wins": 49,
+      "win_rate": 0.3951613,
+      "kills": 847,
+      "kda": 2.98118258,
+      "matches": 124
+    },
+    {
+      "ability_id": 6495,
+      "wins": 81,
+      "win_rate": 0.447513819,
+      "kills": 1184,
+      "kda": 2.52302074,
+      "matches": 181
+    },
+    {
+      "ability_id": 7306,
+      "wins": 22,
+      "win_rate": 0.372881353,
+      "kills": 303,
+      "kda": 0.559322059,
+      "matches": 59
+    },
+    {
+      "ability_id": 8006,
+      "wins": 48,
+      "win_rate": 0.50526315,
+      "kills": 777,
+      "kda": 4.34736824,
+      "matches": 95
+    }
+  ],
+  "combo_ultimates": [
+    {
+      "ability_id": 5006,
+      "wins": 42,
+      "win_rate": 0.4117647,
+      "kills": 725,
+      "kda": 2.30392146,
+      "matches": 102
+    },
+    {
+      "ability_id": 5067,
+      "wins": 1438,
+      "win_rate": 0.462825865,
+      "kills": 19110,
+      "kda": 1.89400315,
+      "matches": 3107
+    },
+    {
+      "ability_id": 5101,
+      "wins": 21,
+      "win_rate": 0.525,
+      "kills": 254,
+      "kda": 4.725,
+      "matches": 40
+    },
+    {
+      "ability_id": 5133,
+      "wins": 35,
+      "win_rate": 0.421686739,
+      "kills": 671,
+      "kda": 2.12449765,
+      "matches": 83
+    },
+    {
+      "ability_id": 5165,
+      "wins": 30,
+      "win_rate": 0.5660377,
+      "kills": 416,
+      "kda": 4.67295647,
+      "matches": 53
+    },
+    {
+      "ability_id": 5176,
+      "wins": 28,
+      "win_rate": 0.466666669,
+      "kills": 399,
+      "kda": 2.56111145,
+      "matches": 60
+    },
+    {
+      "ability_id": 5240,
+      "wins": 60,
+      "win_rate": 0.48,
+      "kills": 806,
+      "kda": 2.749333,
+      "matches": 125
+    },
+    {
+      "ability_id": 5274,
+      "wins": 63,
+      "win_rate": 0.456521749,
+      "kills": 1007,
+      "kda": 1.79227078,
+      "matches": 138
+    },
+    {
+      "ability_id": 5342,
+      "wins": 25,
+      "win_rate": 0.490196079,
+      "kills": 358,
+      "kda": 3.169935,
+      "matches": 51
+    },
+    {
+      "ability_id": 5465,
+      "wins": 56,
+      "win_rate": 0.46280992,
+      "kills": 1075,
+      "kda": 5.58677673,
+      "matches": 121
+    },
+    {
+      "ability_id": 5018,
+      "wins": 66,
+      "win_rate": 0.4852941,
+      "kills": 944,
+      "kda": 3.94362688,
+      "matches": 136
+    },
+    {
+      "ability_id": 5022,
+      "wins": 17,
+      "win_rate": 0.414634138,
+      "kills": 214,
+      "kda": 0.650406241,
+      "matches": 41
+    },
+    {
+      "ability_id": 5035,
+      "wins": 47,
+      "win_rate": 0.4563107,
+      "kills": 670,
+      "kda": 3.64724874,
+      "matches": 103
+    },
+    {
+      "ability_id": 5085,
+      "wins": 65,
+      "win_rate": 0.433333337,
+      "kills": 1118,
+      "kda": 2.86888838,
+      "matches": 150
+    },
+    {
+      "ability_id": 5121,
+      "wins": 74,
+      "win_rate": 0.5826772,
+      "kills": 857,
+      "kda": 4.971128,
+      "matches": 127
+    },
+    {
+      "ability_id": 5153,
+      "wins": 15,
+      "win_rate": 0.428571433,
+      "kills": 177,
+      "kda": 2.17142868,
+      "matches": 35
+    },
+    {
+      "ability_id": 5189,
+      "wins": 28,
+      "win_rate": 0.5090909,
+      "kills": 385,
+      "kda": 3.29696941,
+      "matches": 55
+    },
+    {
+      "ability_id": 5221,
+      "wins": 38,
+      "win_rate": 0.38,
+      "kills": 779,
+      "kda": 2.98333383,
+      "matches": 100
+    },
+    {
+      "ability_id": 5403,
+      "wins": 75,
+      "win_rate": 0.539568365,
+      "kills": 942,
+      "kda": 4.254196,
+      "matches": 139
+    },
+    {
+      "ability_id": 5521,
+      "wins": 82,
+      "win_rate": 0.518987358,
+      "kills": 1031,
+      "kda": 2.87341762,
+      "matches": 158
+    },
+    {
+      "ability_id": 5622,
+      "wins": 34,
+      "win_rate": 0.4473684,
+      "kills": 433,
+      "kda": 0.565789461,
+      "matches": 76
+    },
+    {
+      "ability_id": 5640,
+      "wins": 37,
+      "win_rate": 0.5362319,
+      "kills": 391,
+      "kda": 1.92753625,
+      "matches": 69
+    },
+    {
+      "ability_id": 5654,
+      "wins": 48,
+      "win_rate": 0.551724136,
+      "kills": 571,
+      "kda": 4.325671,
+      "matches": 87
+    },
+    {
+      "ability_id": 5073,
+      "wins": 15,
+      "win_rate": 0.3846154,
+      "kills": 256,
+      "kda": 1.96581244,
+      "matches": 39
+    },
+    {
+      "ability_id": 5109,
+      "wins": 75,
+      "win_rate": 0.462962955,
+      "kills": 1118,
+      "kda": 3.16666675,
+      "matches": 162
+    },
+    {
+      "ability_id": 5141,
+      "wins": 38,
+      "win_rate": 0.5,
+      "kills": 636,
+      "kda": 4.916666,
+      "matches": 76
+    },
+    {
+      "ability_id": 5248,
+      "wins": 61,
+      "win_rate": 0.5495495,
+      "kills": 800,
+      "kda": 4.72672749,
+      "matches": 111
+    },
+    {
+      "ability_id": 5266,
+      "wins": 50,
+      "win_rate": 0.5050505,
+      "kills": 499,
+      "kda": 1.21212125,
+      "matches": 99
+    },
+    {
+      "ability_id": 5323,
+      "wins": 25,
+      "win_rate": 0.416666657,
+      "kills": 322,
+      "kda": 1.19444478,
+      "matches": 60
+    },
+    {
+      "ability_id": 5348,
+      "wins": 46,
+      "win_rate": 0.547619045,
+      "kills": 734,
+      "kda": 6.38095236,
+      "matches": 84
+    },
+    {
+      "ability_id": 5527,
+      "wins": 25,
+      "win_rate": 0.480769217,
+      "kills": 356,
+      "kda": 2.14743638,
+      "matches": 52
+    },
+    {
+      "ability_id": 5584,
+      "wins": 10,
+      "win_rate": 0.357142866,
+      "kills": 196,
+      "kda": 3.22619081,
+      "matches": 28
+    },
+    {
+      "ability_id": 5602,
+      "wins": 12,
+      "win_rate": 0.363636374,
+      "kills": 194,
+      "kda": 1.33333337,
+      "matches": 33
+    },
+    {
+      "ability_id": 5616,
+      "wins": 16,
+      "win_rate": 0.470588237,
+      "kills": 233,
+      "kda": 2.05882359,
+      "matches": 34
+    },
+    {
+      "ability_id": 5010,
+      "wins": 67,
+      "win_rate": 0.544715464,
+      "kills": 1126,
+      "kda": 4.77777767,
+      "matches": 123
+    },
+    {
+      "ability_id": 5097,
+      "wins": 60,
+      "win_rate": 0.454545468,
+      "kills": 979,
+      "kda": 2.16161656,
+      "matches": 132
+    },
+    {
+      "ability_id": 5129,
+      "wins": 37,
+      "win_rate": 0.5441176,
+      "kills": 543,
+      "kda": 4.9901967,
+      "matches": 68
+    },
+    {
+      "ability_id": 5161,
+      "wins": 31,
+      "win_rate": 0.469696969,
+      "kills": 599,
+      "kda": 5.262626,
+      "matches": 66
+    },
+    {
+      "ability_id": 5197,
+      "wins": 19,
+      "win_rate": 0.5135135,
+      "kills": 279,
+      "kda": 3.837838,
+      "matches": 37
+    },
+    {
+      "ability_id": 5244,
+      "wins": 48,
+      "win_rate": 0.5925926,
+      "kills": 785,
+      "kda": 7.51028872,
+      "matches": 81
+    },
+    {
+      "ability_id": 5278,
+      "wins": 60,
+      "win_rate": 0.5,
+      "kills": 937,
+      "kda": 3.4805553,
+      "matches": 120
+    },
+    {
+      "ability_id": 5331,
+      "wins": 7,
+      "win_rate": 0.538461566,
+      "kills": 56,
+      "kda": 0.0,
+      "matches": 13
+    },
+    {
+      "ability_id": 5380,
+      "wins": 27,
+      "win_rate": 0.473684222,
+      "kills": 278,
+      "kda": 1.91228068,
+      "matches": 57
+    },
+    {
+      "ability_id": 5429,
+      "wins": 98,
+      "win_rate": 0.5414365,
+      "kills": 1261,
+      "kda": 2.86003733,
+      "matches": 181
+    },
+    {
+      "ability_id": 5461,
+      "wins": 33,
+      "win_rate": 0.434210539,
+      "kills": 503,
+      "kda": 3.14473677,
+      "matches": 76
+    },
+    {
+      "ability_id": 5497,
+      "wins": 85,
+      "win_rate": 0.5029586,
+      "kills": 1273,
+      "kda": 4.514793,
+      "matches": 169
+    },
+    {
+      "ability_id": 5512,
+      "wins": 45,
+      "win_rate": 0.5421687,
+      "kills": 641,
+      "kda": 3.26907682,
+      "matches": 83
+    },
+    {
+      "ability_id": 7316,
+      "wins": 36,
+      "win_rate": 0.545454562,
+      "kills": 376,
+      "kda": 2.64141464,
+      "matches": 66
+    },
+    {
+      "ability_id": 5013,
+      "wins": 29,
+      "win_rate": 0.517857134,
+      "kills": 341,
+      "kda": 3.29166746,
+      "matches": 56
+    },
+    {
+      "ability_id": 5030,
+      "wins": 108,
+      "win_rate": 0.432,
+      "kills": 1841,
+      "kda": 2.882667,
+      "matches": 250
+    },
+    {
+      "ability_id": 5043,
+      "wins": 28,
+      "win_rate": 0.459016383,
+      "kills": 474,
+      "kda": 3.56284118,
+      "matches": 61
+    },
+    {
+      "ability_id": 5047,
+      "wins": 42,
+      "win_rate": 0.5121951,
+      "kills": 860,
+      "kda": 6.79674864,
+      "matches": 82
+    },
+    {
+      "ability_id": 5077,
+      "wins": 24,
+      "win_rate": 0.3809524,
+      "kills": 406,
+      "kda": 1.45502675,
+      "matches": 63
+    },
+    {
+      "ability_id": 5113,
+      "wins": 21,
+      "win_rate": 0.446808517,
+      "kills": 373,
+      "kda": 6.212766,
+      "matches": 47
+    },
+    {
+      "ability_id": 5145,
+      "wins": 88,
+      "win_rate": 0.5,
+      "kills": 1335,
+      "kda": 2.92992473,
+      "matches": 176
+    },
+    {
+      "ability_id": 5177,
+      "wins": 49,
+      "win_rate": 0.480392158,
+      "kills": 667,
+      "kda": 3.1241827,
+      "matches": 102
+    },
+    {
+      "ability_id": 5364,
+      "wins": 32,
+      "win_rate": 0.395061731,
+      "kills": 437,
+      "kda": 1.06995833,
+      "matches": 81
+    },
+    {
+      "ability_id": 5394,
+      "wins": 5,
+      "win_rate": 0.294117659,
+      "kills": 71,
+      "kda": -0.0980386138,
+      "matches": 17
+    },
+    {
+      "ability_id": 5398,
+      "wins": 66,
+      "win_rate": 0.415094346,
+      "kills": 1076,
+      "kda": 2.49475861,
+      "matches": 159
+    },
+    {
+      "ability_id": 5447,
+      "wins": 63,
+      "win_rate": 0.4883721,
+      "kills": 939,
+      "kda": 3.29457355,
+      "matches": 129
+    },
+    {
+      "ability_id": 5598,
+      "wins": 102,
+      "win_rate": 0.463636369,
+      "kills": 1754,
+      "kda": 3.58939433,
+      "matches": 220
+    },
+    {
+      "ability_id": 5630,
+      "wins": 16,
+      "win_rate": 0.516129,
+      "kills": 223,
+      "kda": 4.34408665,
+      "matches": 31
+    },
+    {
+      "ability_id": 6598,
+      "wins": 61,
+      "win_rate": 0.46564886,
+      "kills": 793,
+      "kda": 2.315521,
+      "matches": 131
+    },
+    {
+      "ability_id": 7319,
+      "wins": 10,
+      "win_rate": 0.2857143,
+      "kills": 175,
+      "kda": -0.838095546,
+      "matches": 35
+    },
+    {
+      "ability_id": 5105,
+      "wins": 39,
+      "win_rate": 0.534246564,
+      "kills": 482,
+      "kda": 3.109589,
+      "matches": 73
+    },
+    {
+      "ability_id": 5137,
+      "wins": 52,
+      "win_rate": 0.590909064,
+      "kills": 652,
+      "kda": 4.768939,
+      "matches": 88
+    },
+    {
+      "ability_id": 5270,
+      "wins": 3,
+      "win_rate": 0.3,
+      "kills": 53,
+      "kda": -0.9,
+      "matches": 10
+    },
+    {
+      "ability_id": 5288,
+      "wins": 74,
+      "win_rate": 0.5,
+      "kills": 1114,
+      "kda": 4.42117071,
+      "matches": 148
+    },
+    {
+      "ability_id": 5337,
+      "wins": 70,
+      "win_rate": 0.5691057,
+      "kills": 916,
+      "kda": 4.64227629,
+      "matches": 123
+    },
+    {
+      "ability_id": 5356,
+      "wins": 39,
+      "win_rate": 0.40625,
+      "kills": 540,
+      "kda": 0.7986107,
+      "matches": 96
+    },
+    {
+      "ability_id": 5369,
+      "wins": 99,
+      "win_rate": 0.6,
+      "kills": 1382,
+      "kda": 5.54343462,
+      "matches": 165
+    },
+    {
+      "ability_id": 5437,
+      "wins": 32,
+      "win_rate": 0.5423729,
+      "kills": 333,
+      "kda": 3.146892,
+      "matches": 59
+    },
+    {
+      "ability_id": 5470,
+      "wins": 40,
+      "win_rate": 0.4347826,
+      "kills": 469,
+      "kda": 1.80434787,
+      "matches": 92
+    },
+    {
+      "ability_id": 5488,
+      "wins": 17,
+      "win_rate": 0.2982456,
+      "kills": 316,
+      "kda": 0.7309945,
+      "matches": 57
+    },
+    {
+      "ability_id": 5588,
+      "wins": 83,
+      "win_rate": 0.564625859,
+      "kills": 1088,
+      "kda": 5.48072624,
+      "matches": 147
+    },
+    {
+      "ability_id": 5606,
+      "wins": 51,
+      "win_rate": 0.51,
+      "kills": 739,
+      "kda": 4.48,
+      "matches": 100
+    },
+    {
+      "ability_id": 6491,
+      "wins": 43,
+      "win_rate": 0.6142857,
+      "kills": 401,
+      "kda": 2.69047666,
+      "matches": 70
+    },
+    {
+      "ability_id": 5026,
+      "wins": 43,
+      "win_rate": 0.477777779,
+      "kills": 712,
+      "kda": 4.096296,
+      "matches": 90
+    },
+    {
+      "ability_id": 5049,
+      "wins": 54,
+      "win_rate": 0.620689631,
+      "kills": 525,
+      "kda": 3.7624526,
+      "matches": 87
+    },
+    {
+      "ability_id": 5081,
+      "wins": 28,
+      "win_rate": 0.466666669,
+      "kills": 373,
+      "kda": 2.25555515,
+      "matches": 60
+    },
+    {
+      "ability_id": 5117,
+      "wins": 84,
+      "win_rate": 0.5915493,
+      "kills": 1147,
+      "kda": 4.69953,
+      "matches": 142
+    },
+    {
+      "ability_id": 5149,
+      "wins": 30,
+      "win_rate": 0.476190478,
+      "kills": 324,
+      "kda": 1.38095236,
+      "matches": 63
+    },
+    {
+      "ability_id": 5181,
+      "wins": 37,
+      "win_rate": 0.560606062,
+      "kills": 390,
+      "kda": 2.64141464,
+      "matches": 66
+    },
+    {
+      "ability_id": 5185,
+      "wins": 78,
+      "win_rate": 0.4642857,
+      "kills": 1283,
+      "kda": 4.16666651,
+      "matches": 168
+    },
+    {
+      "ability_id": 5258,
+      "wins": 21,
+      "win_rate": 0.5121951,
+      "kills": 241,
+      "kda": 2.91056871,
+      "matches": 41
+    },
+    {
+      "ability_id": 5292,
+      "wins": 71,
+      "win_rate": 0.507142842,
+      "kills": 937,
+      "kda": 4.573809,
+      "matches": 140
+    },
+    {
+      "ability_id": 5360,
+      "wins": 52,
+      "win_rate": 0.460177,
+      "kills": 711,
+      "kda": 2.28908515,
+      "matches": 113
+    },
+    {
+      "ability_id": 5483,
+      "wins": 15,
+      "win_rate": 0.454545468,
+      "kills": 159,
+      "kda": 0.181818187,
+      "matches": 33
+    },
+    {
+      "ability_id": 5517,
+      "wins": 61,
+      "win_rate": 0.5258621,
+      "kills": 680,
+      "kda": 3.25574684,
+      "matches": 116
+    },
+    {
+      "ability_id": 5551,
+      "wins": 48,
+      "win_rate": 0.475247532,
+      "kills": 790,
+      "kda": 3.772277,
+      "matches": 101
+    },
+    {
+      "ability_id": 5594,
+      "wins": 20,
+      "win_rate": 0.5882353,
+      "kills": 184,
+      "kda": 3.13725543,
+      "matches": 34
+    },
+    {
+      "ability_id": 5064,
+      "wins": 17,
+      "win_rate": 0.303571433,
+      "kills": 407,
+      "kda": 3.232143,
+      "matches": 56
+    },
+    {
+      "ability_id": 5089,
+      "wins": 73,
+      "win_rate": 0.5367647,
+      "kills": 876,
+      "kda": 5.232844,
+      "matches": 136
+    },
+    {
+      "ability_id": 5093,
+      "wins": 44,
+      "win_rate": 0.578947365,
+      "kills": 610,
+      "kda": 4.214913,
+      "matches": 76
+    },
+    {
+      "ability_id": 5125,
+      "wins": 37,
+      "win_rate": 0.480519474,
+      "kills": 489,
+      "kda": 2.90043354,
+      "matches": 77
+    },
+    {
+      "ability_id": 5157,
+      "wins": 27,
+      "win_rate": 0.3375,
+      "kills": 471,
+      "kda": 2.88333273,
+      "matches": 80
+    },
+    {
+      "ability_id": 5193,
+      "wins": 60,
+      "win_rate": 0.3821656,
+      "kills": 1034,
+      "kda": 1.61783445,
+      "matches": 157
+    },
+    {
+      "ability_id": 5282,
+      "wins": 94,
+      "win_rate": 0.505376339,
+      "kills": 1384,
+      "kda": 2.68458748,
+      "matches": 186
+    },
+    {
+      "ability_id": 5300,
+      "wins": 18,
+      "win_rate": 0.4090909,
+      "kills": 302,
+      "kda": 2.575757,
+      "matches": 44
+    },
+    {
+      "ability_id": 5425,
+      "wins": 18,
+      "win_rate": 0.4864865,
+      "kills": 271,
+      "kda": 2.07207251,
+      "matches": 37
+    },
+    {
+      "ability_id": 5507,
+      "wins": 47,
+      "win_rate": 0.408695638,
+      "kills": 582,
+      "kda": 1.68405759,
+      "matches": 115
+    },
+    {
+      "ability_id": 5568,
+      "wins": 31,
+      "win_rate": 0.430555552,
+      "kills": 572,
+      "kda": 3.21296263,
+      "matches": 72
+    },
+    {
+      "ability_id": 5725,
+      "wins": 43,
+      "win_rate": 0.394495428,
+      "kills": 464,
+      "kda": -0.440366983,
+      "matches": 109
+    },
+    {
+      "ability_id": 6343,
+      "wins": 64,
+      "win_rate": 0.507936537,
+      "kills": 767,
+      "kda": 3.10317469,
+      "matches": 126
+    },
+    {
+      "ability_id": 7304,
+      "wins": 55,
+      "win_rate": 0.5092593,
+      "kills": 691,
+      "kda": 3.25,
+      "matches": 108
+    },
+    {
+      "ability_id": 8340,
+      "wins": 68,
+      "win_rate": 0.5271318,
+      "kills": 1202,
+      "kda": 5.51162767,
+      "matches": 129
+    }
+  ],
+  "ability_groups": [
+    {
+      "keyword": "Vision",
+      "count": 19,
+      "wins": 919,
+      "win_rate": 0.5242441,
+      "kills": 13473,
+      "kda": 450.807
+    },
+    {
+      "keyword": "Escape",
+      "count": 16,
+      "wins": 2524,
+      "win_rate": 0.521595359,
+      "kills": 33028,
+      "kda": 1229.97913
+    },
+    {
+      "keyword": "DPS",
+      "count": 56,
+      "wins": 2136,
+      "win_rate": 0.504011333,
+      "kills": 30768,
+      "kda": 276.255951
+    },
+    {
+      "keyword": "Tank",
+      "count": 57,
+      "wins": 3299,
+      "win_rate": 0.496314138,
+      "kills": 43435,
+      "kda": 364.456146
+    },
+    {
+      "keyword": "Stun",
+      "count": 52,
+      "wins": 2329,
+      "win_rate": 0.495954,
+      "kills": 31761,
+      "kda": 304.833344
+    },
+    {
+      "keyword": "Negative Aura",
+      "count": 25,
+      "wins": 1141,
+      "win_rate": 0.4905417,
+      "kills": 16231,
+      "kda": 330.373322
+    },
+    {
+      "keyword": "AoE",
+      "count": 114,
+      "wins": 4332,
+      "win_rate": 0.489768237,
+      "kills": 58219,
+      "kda": 229.906433
+    },
+    {
+      "keyword": "Armor Reduction",
+      "count": 11,
+      "wins": 636,
+      "win_rate": 0.489230782,
+      "kills": 9107,
+      "kda": 369.0
+    },
+    {
+      "keyword": "Attack Speed Reduction",
+      "count": 23,
+      "wins": 1181,
+      "win_rate": 0.4858083,
+      "kills": 15853,
+      "kda": 305.029
+    },
+    {
+      "keyword": "Upgrade",
+      "count": 70,
+      "wins": 3069,
+      "win_rate": 0.483535528,
+      "kills": 44276,
+      "kda": 309.347626
+    },
+    {
+      "keyword": "Positive Aura",
+      "count": 21,
+      "wins": 1203,
+      "win_rate": 0.482551157,
+      "kills": 16887,
+      "kda": 380.7143
+    },
+    {
+      "keyword": "Channeled",
+      "count": 17,
+      "wins": 515,
+      "win_rate": 0.482209742,
+      "kills": 7122,
+      "kda": 186.92157
+    },
+    {
+      "keyword": "Attack Speed Increase",
+      "count": 24,
+      "wins": 1398,
+      "win_rate": 0.480742782,
+      "kills": 21394,
+      "kda": 374.152771
+    },
+    {
+      "keyword": "Passive",
+      "count": 62,
+      "wins": 7409,
+      "win_rate": 0.4805422,
+      "kills": 107266,
+      "kda": 707.0538
+    },
+    {
+      "keyword": "Movement Increase",
+      "count": 34,
+      "wins": 3760,
+      "win_rate": 0.4805112,
+      "kills": 57338,
+      "kda": 741.039246
+    },
+    {
+      "keyword": "Summons",
+      "count": 25,
+      "wins": 4671,
+      "win_rate": 0.480209738,
+      "kills": 61635,
+      "kda": 1058.56
+    },
+    {
+      "keyword": "Bash",
+      "count": 4,
+      "wins": 279,
+      "win_rate": 0.480206549,
+      "kills": 4302,
+      "kda": 432.333344
+    },
+    {
+      "keyword": "Nuke",
+      "count": 153,
+      "wins": 6155,
+      "win_rate": 0.476356328,
+      "kills": 86648,
+      "kda": 257.451
+    },
+    {
+      "keyword": "Silence",
+      "count": 12,
+      "wins": 432,
+      "win_rate": 0.475247532,
+      "kills": 5762,
+      "kda": 179.944443
+    },
+    {
+      "keyword": "Disable",
+      "count": 56,
+      "wins": 2157,
+      "win_rate": 0.47406593,
+      "kills": 29368,
+      "kda": 225.035721
+    },
+    {
+      "keyword": "Armor Increase",
+      "count": 6,
+      "wins": 305,
+      "win_rate": 0.472136229,
+      "kills": 3939,
+      "kda": 275.944458
+    },
+    {
+      "keyword": "Knockback",
+      "count": 11,
+      "wins": 513,
+      "win_rate": 0.471507341,
+      "kills": 6696,
+      "kda": 201.0303
+    },
+    {
+      "keyword": "Attack Damage Increase",
+      "count": 46,
+      "wins": 2923,
+      "win_rate": 0.465001583,
+      "kills": 45075,
+      "kda": 397.746368
+    },
+    {
+      "keyword": "Movement Reduction",
+      "count": 74,
+      "wins": 3515,
+      "win_rate": 0.4649471,
+      "kills": 49660,
+      "kda": 283.382874
+    },
+    {
+      "keyword": "Heal",
+      "count": 33,
+      "wins": 1305,
+      "win_rate": 0.460967869,
+      "kills": 18138,
+      "kda": 195.787872
+    },
+    {
+      "keyword": "Autocast",
+      "count": 11,
+      "wins": 300,
+      "win_rate": 0.455927044,
+      "kills": 4877,
+      "kda": 170.242432
+    },
+    {
+      "keyword": "Crit",
+      "count": 9,
+      "wins": 671,
+      "win_rate": 0.4429043,
+      "kills": 10395,
+      "kda": 423.629639
+    }
+  ]
+}
