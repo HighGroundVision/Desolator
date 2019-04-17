@@ -61,7 +61,7 @@ import * as am4charts from "@amcharts/amcharts4/charts";
 import am4themes_animated from "@amcharts/amcharts4/themes/animated";
 
 import numeral from 'numeral'
-import heroes from '@/assets/data/hero-collection.json'
+// import heroes from '@/assets/data/hero-collection.json'
 
 am4core.useTheme(am4themes_animated);
 

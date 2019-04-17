@@ -178,7 +178,7 @@
 
 <script>
 import numeral from 'numeral'
-import abilities from "@/assets/data/ability-details.json";
+// import abilities from "@/assets/data/ability-details.json";
 import AbilityCard from "@/components/AbilityCard";
 
 export default {

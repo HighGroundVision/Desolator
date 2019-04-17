@@ -80,8 +80,8 @@
 
 <script>
 import numeral from 'numeral'
-import groups from '@/assets/data/ability-groups.json'
-import abilities from '@/assets/data/ability-collection.json'
+// import groups from '@/assets/data/ability-groups.json'
+// import abilities from '@/assets/data/ability-collection.json'
 
 export default {
   name: 'abilities',

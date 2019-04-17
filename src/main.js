@@ -7,9 +7,11 @@ import router from './router'
 // Components
 import SocialShare from '@/components/SocialShare.vue'
 import SocialFollow from '@/components/SocialFollow.vue'
+import Loading from "@/components/Loading";
 
 Vue.component('hgv-social-share', SocialShare)
 Vue.component('hgv-social-follow', SocialFollow)
+Vue.component('hgv-loading', Loading)
 
 Vue.config.productionTip = false
 

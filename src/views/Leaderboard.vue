@@ -186,9 +186,9 @@
 <script>
 import moment from 'moment'
 import numeral from 'numeral'
-import summary from '@/assets/data/summary.json'
-import players from '@/assets/data/leaderboard-collection.json'
-import leaderboard from '@/assets/data/leaderboard-summary.json'
+//import summary from '@/assets/data/summary.json'
+//import players from '@/assets/data/leaderboard-collection.json'
+//import leaderboard from '@/assets/data/leaderboard-summary.json'
 
 export default {
   name: 'leaderboard',

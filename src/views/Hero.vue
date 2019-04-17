@@ -689,7 +689,7 @@
 
 <script>
 import numeral from "numeral";
-import heroes from "@/assets/data/hero-details.json";
+// import heroes from "@/assets/data/hero-details.json";
 
 export default {
   name: "hero",
