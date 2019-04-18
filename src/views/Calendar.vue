@@ -46,17 +46,6 @@
       <b-card bg-variant="dark">
         <div class="customChart" id="chart"></div>
       </b-card>
-      <!--
-      <b-card bg-variant="dark">
-        <div class="customChart" id="chartMon"></div>
-        <div class="customChart" id="chartTus"></div>
-        <div class="customChart" id="chartWed"></div>
-        <div class="customChart" id="chartThr"></div>
-        <div class="customChart" id="chartFri"></div>
-        <div class="customChart" id="chartSat"></div>
-        <div class="customChart" id="chartSun"></div>
-      </b-card>
-      -->
     </b-col>
   </b-row>
   </hgv-loading>

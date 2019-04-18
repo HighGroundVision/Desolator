@@ -13,7 +13,10 @@ export default {
       return duration.humanize();
     },
     formatNumber(value) {
-      return numeral(value).format('0,0');
+      return numeral(value).format('0a');
+    },
+    formatDecimal(value) {
+      return numeral(value).format('0.0');
     },
     formatPercentage(value) {
       return numeral(value).format('0%');
