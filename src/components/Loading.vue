@@ -1,6 +1,6 @@
 <template>
   <section>
-    <div v-if="loading">
+    <div v-if="loading" class="text-center">
       <div class="spinner-border" role="status">
         <span class="sr-only">Loading...</span>
       </div>
@@ -27,7 +27,7 @@ export default {
   data () {
     return {
       'loading': true,
-      'error': false,
+      'error': false
     }
   },
   async mounted() {
@@ -40,11 +40,8 @@ export default {
         data.push(response.data);
       }
 
-      // Emit Event
-      this.$emit('loaded', data);
-
-      // Loading Done
       this.loading = false;
+      this.$emit('loaded', data); // Emit Event
     } catch (err) {
       this.loading = false;
       this.error = true;
