@@ -21,7 +21,7 @@
     </b-col>
     <b-col>
       <div>
-        <h4  class="text-center">Matches</h4>
+        <h4  class="text-center">Calendar / Matches</h4>
         <hr class="highlighted" />
       </div>
       <p>
@@ -29,12 +29,6 @@
         To that end we have included the daily counts broken down by the time of day matches are being played with the times, offset to match your browser's timezone.
         We also include the total # matches per region.
         There is always going to be a little bias based on day and time we run the export.
-      </p>
-      <p>
-        We reset our baseline when a major patch is released that changes the balance of abilities.
-        We normally export our master database approximately once a week.
-        Our current stats collection was started on <b class="text-info">{{ formatDateTime(range.start) }}</b> and was last exported on <b class="text-info">{{ formatDateTime(range.end) }}</b>, that is ~ <b class="text-info">{{ formatDuration(range.start, range.end) }}</b>, with a total of <b class="text-info">{{ formatNumber(range.matches) }}</b> AD matches processed. 
-        But we did notice that <b class="text-info">{{ formatPercentage(range.abandoned_ratio) }}</b> of matches where abandoned, you can do better people!
       </p>
       <div>
         <b-form-group label="Selected Region">
@@ -46,6 +40,13 @@
       <b-card bg-variant="dark">
         <div class="customChart" id="chart"></div>
       </b-card>
+      <br />
+      <p>
+        We reset our baseline when a major patch is released that changes the balance of abilities.
+        We normally export our master database approximately once a week.
+        Our current stats collection was started on <b class="text-info">{{ formatDateTime(range.start) }}</b> and was last exported on <b class="text-info">{{ formatDateTime(range.end) }}</b>, that is ~ <b class="text-info">{{ formatDuration(range.start, range.end) }}</b>, with a total of <b class="text-info">{{ formatNumber(range.matches) }}</b> AD matches processed. 
+        But we did notice that <b class="text-info">{{ formatPercentage(range.abandoned_ratio) }}</b> of matches where abandoned, you can do better people!
+      </p>
     </b-col>
   </b-row>
   </hgv-loading>

@@ -36,12 +36,21 @@
         <p>
           We at HGV are dedicated to the Ability Draft community.
           Providing the tools to understand AD better, and hopefully have some fun along the way. 
-          Remember everyone, that while Carrys may kill heroes but Supports win games!
+          On our quest to identify the best Heroes and Abilities for AD we found 5 key metrics which to measure by. 
+          These are Picks, Wins, Win Rate (Wins / Picks), Kills, and KDA ([Kills + [Assists/3] - Deaths] / Picks).
+          You will see these metrics on most sections. 
+          These are meant to give you as complete as picture as possible.
+          Just because something wins a lot or kills a lot dose not make it a choice or the right choice. 
+          We have found while metrics like Kills and Wins tends to speak to a entity's strength compare to others.
+          Win Rates will have bias because of the delta in picks between entities (even heroes, but this gets worst for abilities)
+          To that end we found the KDA ratio works best to compare heroes and abilities.
+          This is because in reviewing the data, winning the match was not enough to say that the hero, ability, or combos was good.
+          While KDA provided a better view its not the complete picture hence the need for these other metrics.
         </p>
         <hr class="highlighted" />
         <h4 class="text-center">Heroes</h4>
         <p>
-          Etiam vitae rhoncus lacus. Integer egestas nisi nunc, eget efficitur est faucibus id. Donec pretium risus risus, sit amet aliquam arcu lobortis eget. Nunc at rutrum tortor. Ut eu magna eu nulla condimentum tincidunt. Nullam gravida augue et mauris consequat, non dapibus quam congue. Mauris bibendum metus sapien, a finibus ligula tempus sed. Cras lacinia sodales eros, quis lobortis lacus venenatis sit amet.
+          We have collected metrics on each hero then we grouped those by type and calculated the results. 
         </p>
         <b-card bg-variant="secondary">
           <div>
@@ -92,7 +101,8 @@
         </b-card>
         <br />
         <p>
-          Etiam vitae rhoncus lacus. Integer egestas nisi nunc, eget efficitur est faucibus id. Donec pretium risus risus, sit amet aliquam arcu lobortis eget. Nunc at rutrum tortor. Ut eu magna eu nulla condimentum tincidunt. Nullam gravida augue et mauris consequat, non dapibus quam congue. Mauris bibendum metus sapien, a finibus ligula tempus sed. Cras lacinia sodales eros, quis lobortis lacus venenatis sit amet.
+          We have collected metrics on each hero then we grouped those by roles and calculated the results.
+          We based this on what Dota states each hero should be, not what we calculated they should be.
         </p>
         <b-card bg-variant="secondary">
           <div>
@@ -130,10 +140,11 @@
               </template>
             </tr>
           </table>
+          <i>NOTE: No one should ever think Jungling instead of lanning is a good idea! I don't care what your build is...</i>
         </b-card>
         <br />
         <p>
-          Etiam vitae rhoncus lacus. Integer egestas nisi nunc, eget efficitur est faucibus id. Donec pretium risus risus, sit amet aliquam arcu lobortis eget. Nunc at rutrum tortor. Ut eu magna eu nulla condimentum tincidunt. Nullam gravida augue et mauris consequat, non dapibus quam congue. Mauris bibendum metus sapien, a finibus ligula tempus sed. Cras lacinia sodales eros, quis lobortis lacus venenatis sit amet.
+          We have collected the top 3 heroes by kda. See above for why we use KDA instead of Win Rate.
         </p>
         <b-card bg-variant="secondary">
           <div>
@@ -141,7 +152,7 @@
           </div>
           <!-- heroes.best -->
           <table class="table table-sm" style="color: white;">
-            <template v-for="(value, index) in heroes.best['winrate']">
+            <template v-for="(value, index) in heroes.best['kda']">
               <tr :key="index">
                 <td style="width: 35px">
                   <i v-if="index == 0" class="fas fa-2x fa-award" style="color: #FFD700;" title="1st"></i>
@@ -158,10 +169,15 @@
             </template>
           </table>
         </b-card>
-        <br />
+        <p>
+          We have provided a small summary of the heroes in AD. 
+          Check out the <b-link to="/heroes">Heroes Page</b-link> for more information and dive into each hero's details.
+        </p>
         <h4 class="text-center">Abilities</h4>
         <p>
-          Etiam vitae rhoncus lacus. Integer egestas nisi nunc, eget efficitur est faucibus id. Donec pretium risus risus, sit amet aliquam arcu lobortis eget. Nunc at rutrum tortor. Ut eu magna eu nulla condimentum tincidunt. Nullam gravida augue et mauris consequat, non dapibus quam congue. Mauris bibendum metus sapien, a finibus ligula tempus sed. Cras lacinia sodales eros, quis lobortis lacus venenatis sit amet.
+          The best abilities is collected a little differently then others and looking at the metrics listed above dose not provide a clear victory for the title of best ability.
+          But if we look at the which ability (by KDA) is the top ability for hero then we count each time that ability was the top for all heroes.
+          This to us means that these are the abilities that are best across all heroes and therefore are the best abilities.
         </p>
         <b-card v-if="abilities" bg-variant="secondary">
           <div>
@@ -184,11 +200,13 @@
               </tr>
             </template>
           </table>
+          <i>If you are not 1st picking one these abilities you better know what your doing!</i>
         </b-card>
         <br />
         <h4 class="text-center">Combos</h4>
         <p>
-          Etiam vitae rhoncus lacus. Integer egestas nisi nunc, eget efficitur est faucibus id. Donec pretium risus risus, sit amet aliquam arcu lobortis eget. Nunc at rutrum tortor. Ut eu magna eu nulla condimentum tincidunt. Nullam gravida augue et mauris consequat, non dapibus quam congue. Mauris bibendum metus sapien, a finibus ligula tempus sed. Cras lacinia sodales eros, quis lobortis lacus venenatis sit amet.
+          AD is build on ability combos. While a single ability is good a great combo can destroy your opponents.
+          We have included the top combos for Ability pairs and Ultimate pairs.
         </p>
         <b-card v-if="combos" bg-variant="secondary">
           <div>
@@ -221,7 +239,7 @@
         <br />
         <b-card v-if="combos" bg-variant="secondary">
           <div>
-            <b>Top Ultimate Piars</b>
+            <b>Top Ultimate Pairs</b>
           </div>
           <table class="table table-sm" style="color: white;">
             <template v-for="(value, index) in combos.ulimates['kda']">
@@ -247,10 +265,17 @@
             </template>
           </table>
         </b-card>
+        <p>
+          We have provided a small summary of the Abilities in AD. 
+          Check out the <b-link to="/abilities">Abilities Page</b-link> for more information and dive into each ability's details.
+        </p>
         <br />
         <h4 class="text-center">Leaderboard</h4>
         <p>
-          Etiam vitae rhoncus lacus. Integer egestas nisi nunc, eget efficitur est faucibus id. Donec pretium risus risus, sit amet aliquam arcu lobortis eget. Nunc at rutrum tortor. Ut eu magna eu nulla condimentum tincidunt. Nullam gravida augue et mauris consequat, non dapibus quam congue. Mauris bibendum metus sapien, a finibus ligula tempus sed. Cras lacinia sodales eros, quis lobortis lacus venenatis sit amet.
+          We have collected the top players in each region, ordered by win rate then by # of matches. 
+          We only include matches with our export range.
+          You need to have the <b class="text-info">'Expose Public Match Data'</b> setting enabled in Dota2 to be included.
+          If a region is missing then it did not have a enough AD matches to be include in the export.
         </p>
         <b-card v-if="leaderboard" bg-variant="secondary">
           <div>
@@ -290,11 +315,15 @@
               </tr>
             </template>
           </table>
+          <i>Shout-out those of you that have a 100% win rate.</i>
         </b-card>
+        <p>
+          Check out the <b-link to="/leaderboard">Leaderboard Page</b-link> for more details and find where you or your friends rank in your region.
+        </p>
         <br />
         <h4 class="text-center">Matches</h4>
         <p>
-          Etiam vitae rhoncus lacus. Integer egestas nisi nunc, eget efficitur est faucibus id. Donec pretium risus risus, sit amet aliquam arcu lobortis eget. Nunc at rutrum tortor. Ut eu magna eu nulla condimentum tincidunt. Nullam gravida augue et mauris consequat, non dapibus quam congue. Mauris bibendum metus sapien, a finibus ligula tempus sed. Cras lacinia sodales eros, quis lobortis lacus venenatis sit amet.
+          We are often asked when do people play AD? To that end we have included the daily counts broken down by the time of day matches are being played with the times, offset to match your browser's timezone. We also include the total # matches per region. There is always going to be a little bias based on day and time we run the export.
         </p>
         <b-card bg-variant="secondary">
           <div>
@@ -309,6 +338,9 @@
             </template>
           </table>
         </b-card>
+        <p>
+          Check out the <b-link to="/calendar">Calendar Page</b-link> for more details about how many players are in each region and when they are playing.
+        </p>
         <br />
         <p v-if="matches.range">
           We reset our baseline when a major patch is released that changes the balance of abilities.
@@ -357,8 +389,8 @@ export default {
       self.matches.range = data[0].range;
       self.matches.regions = data[0].regions;
 
-      self.heroes.types = data[1].filter(_ => _.region == 2); // Remove the region 
-      self.heroes.roles = data[2].filter(_ => _.region == 2); // Remove the region 
+      self.heroes.types = data[1].filter(_ => _.region == 2); 
+      self.heroes.roles = data[2].filter(_ => _.region == 2);
       self.heroes.best = data[3];
 
       self.leaderboard = data[4];
