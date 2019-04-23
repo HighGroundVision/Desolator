@@ -139,6 +139,24 @@
           <div>
             <b>Top Heroes</b>
           </div>
+          <!-- heroes.best -->
+          <table class="table table-sm" style="color: white;">
+            <template v-for="(value, index) in heroes.best['winrate']">
+              <tr :key="index">
+                <td style="width: 35px">
+                  <i v-if="index == 0" class="fas fa-2x fa-award" style="color: #FFD700;" title="1st"></i>
+                  <i v-if="index == 1" class="fas fa-2x fa-award" style="color: #C0C0C0;" title="2nd"></i>
+                  <i v-if="index == 2" class="fas fa-2x fa-award" style="color: #CD7F32;" title="3rd"></i>
+                </td>
+                <td style="width: 35px">
+                  <img :src="value.icon" class="ability-icon-sm"/>
+                </td>
+                <td>
+                  <span>{{value.name}}</span>
+                </td>
+              </tr>
+            </template>
+          </table>
         </b-card>
         <br />
         <h4 class="text-center">Abilities</h4>
@@ -174,7 +192,7 @@
         </p>
         <b-card v-if="combos" bg-variant="secondary">
           <div>
-            <b>Top Ability Combos</b>
+            <b>Top Ability Pairs</b>
           </div>
           <table class="table table-sm" style="color: white;">
             <template v-for="(value, index) in combos.abilities['kda']">
@@ -203,7 +221,7 @@
         <br />
         <b-card v-if="combos" bg-variant="secondary">
           <div>
-            <b>Top Ultimate Combos</b>
+            <b>Top Ultimate Piars</b>
           </div>
           <table class="table table-sm" style="color: white;">
             <template v-for="(value, index) in combos.ulimates['kda']">
@@ -294,8 +312,8 @@
         <br />
         <p v-if="matches.range">
           We reset our baseline when a major patch is released that changes the balance of abilities.
-          We normally export our master database approximately once a week.
-          Our current stats collection was started on <b class="text-info">{{ formatDateTime(matches.range.start) }}</b> and was last exported on <b class="text-info">{{ formatDateTime(matches.range.end) }}</b>, that is ~ <b class="text-info">{{ formatDuration(matches.range.start, matches.range.end) }}</b>, with a total of <b class="text-info">{{ formatNumber(matches.range.matches) }}</b> AD matches processed. 
+          We normally export our master database roughly once a week.
+          Our current stats collection was started on <b class="text-info">{{ formatDateTime(matches.range.start) }}</b> and was last exported on <b class="text-info">{{ formatDateTime(matches.range.end) }}</b>, that is approximately <b class="text-info">{{ formatDuration(matches.range.start, matches.range.end) }}</b>, with a total of <b class="text-info">{{ formatNumber(matches.range.matches) }}</b> AD matches processed. 
           But we did notice that <b class="text-info">{{ formatPercentage(matches.range.abandoned_ratio) }}</b> of matches where abandoned, you can do better people!
         </p>
       </b-col>
@@ -314,9 +332,10 @@ export default {
         '/static/schedule.json', 
         '/static/heroes-types.json', 
         '/static/heroes-roles.json', 
+        '/static/summary-heroes.json',
         '/static/leaderboard-regions.json',
         '/static/summary-abilities.json',
-        '/static/summary-combos.json',
+        '/static/summary-combos.json'        
       ],
       matches: {
         range: null,
@@ -338,13 +357,14 @@ export default {
       self.matches.range = data[0].range;
       self.matches.regions = data[0].regions;
 
-      self.heroes.types = data[1].filter(_ => _.region == 2);
-      self.heroes.roles = data[2].filter(_ => _.region == 2);
+      self.heroes.types = data[1].filter(_ => _.region == 2); // Remove the region 
+      self.heroes.roles = data[2].filter(_ => _.region == 2); // Remove the region 
+      self.heroes.best = data[3];
 
-      self.leaderboard = data[3];
+      self.leaderboard = data[4];
 
-      self.abilities = data[4];
-      self.combos = data[5];
+      self.abilities = data[5];
+      self.combos = data[6];
     }
   }
 }

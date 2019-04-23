@@ -4,7 +4,7 @@
     <b-col cols="4" lg="3">
       <div class="text-center">
         <b-alert variant="info" show>
-          <span>The AD community is small. Understanding who is playing where and when so you do not get left out.</span>
+          <span>The AD community is small. Understand who is playing where and when so you do not get left out.</span>
         </b-alert>
         <img src="@/assets/imgs/cluckles-speach.png" class="cluckles-speach" />
       </div>
