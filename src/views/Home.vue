@@ -43,8 +43,8 @@
           Just because something wins a lot or kills a lot dose not make it a choice or the right choice. 
           We have found while metrics like Kills and Wins tends to speak to a entity's strength compare to others.
           Win Rates will have bias because of the delta in picks between entities (even heroes, but this gets worst for abilities)
-          To that end we found the KDA ratio works best to compare heroes and abilities.
-          This is because in reviewing the data, winning the match was not enough to say that the hero, ability, or combos was good.
+          in the end we found the KDA ratio works best to compare heroes and abilities.
+          This is because in reviewing the data, winning the match was not enough to say that the hero, ability, or combos were good.
           While KDA provided a better view its not the complete picture hence the need for these other metrics.
         </p>
         <hr class="highlighted" />
