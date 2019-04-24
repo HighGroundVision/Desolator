@@ -7,13 +7,15 @@ import router from './router'
 
 
 // Components
+import Loading from "@/components/Loading";
 import SocialShare from '@/components/SocialShare.vue'
 import SocialFollow from '@/components/SocialFollow.vue'
-import Loading from "@/components/Loading";
+import Regions from '@/components/Regions.vue'
 
+Vue.component('hgv-loading', Loading)
 Vue.component('hgv-social-share', SocialShare)
 Vue.component('hgv-social-follow', SocialFollow)
-Vue.component('hgv-loading', Loading)
+Vue.component('hgv-regions', Regions)
 
 Vue.mixin(MixIn);
 

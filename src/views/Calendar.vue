@@ -31,17 +31,14 @@
         There is always going to be a little bias based on day and time we run the export.
       </p>
       <div>
-        <b-form-group label="Selected Region">
-          <b-form-select v-model="regionSelected" :options="regionOptions" @change="buildCharts">
-          </b-form-select>
-        </b-form-group>
+        <hgv-regions @change="onRegionChanged" />
       </div>
       <br />
       <b-card bg-variant="dark">
         <div class="customChart" id="chart"></div>
       </b-card>
       <br />
-      <p>
+      <p v-if="range">
         We reset our baseline when a major patch is released that changes the balance of abilities.
         We normally export our master database approximately once a week.
         Our current stats collection was started on <b class="text-info">{{ formatDateTime(range.start) }}</b> and was last exported on <b class="text-info">{{ formatDateTime(range.end) }}</b>, that is ~ <b class="text-info">{{ formatDuration(range.start, range.end) }}</b>, with a total of <b class="text-info">{{ formatNumber(range.matches) }}</b> AD matches processed. 
@@ -57,8 +54,6 @@ import axios from 'axios'
 import * as am4core from "@amcharts/amcharts4/core";
 import * as am4charts from "@amcharts/amcharts4/charts";
 import am4themes_animated from "@amcharts/amcharts4/themes/animated";
-import { timeout } from 'q';
-import { setTimeout } from 'timers';
 
 am4core.useTheme(am4themes_animated);
 
@@ -66,17 +61,10 @@ export default {
   name: 'calendar',
   data () {
     return {
-      'urls': ['/static/schedule.json', '/static/regions.json'],
+      'urls': ['/static/schedule.json'],
       'regions': null,
       'schedule': [],
-      'range':  {
-        "start": "",
-        "end": "",
-        "matches": 0,
-        "abandoned_ratio": 0
-      },
-      'regionSelected': 2,
-      'regionOptions': []
+      'range': null,
     }
   },
   methods: {
@@ -85,14 +73,6 @@ export default {
       self.regions = data[0].regions;
       self.schedule = data[0].schedule;
       self.range = data[0].range;
-
-      var _regions = data[1];
-      for (const key in _regions) {
-        if (_regions.hasOwnProperty(key)) {
-          const element = _regions[key];
-          self.regionOptions.push({value: key, text: element })
-        }
-      }
 
       // correct hour form UTC to local time based on browser's timezone.
       var x = new Date();
@@ -106,14 +86,17 @@ export default {
       
       // allow re-render of DOM so chart elements are ready
       this.$nextTick(function () {
-        self.buildCharts();
+        self.buildCharts('2');
       });
     },
-    buildCharts() {
+    onRegionChanged(region) {
+      this.buildCharts(region);
+    },
+    buildCharts(region) {
       // Create chart instance
       var chart = am4core.create('chart', am4charts.XYChart);
 
-      let data = this.schedule.filter(_ => _.region == this.regionSelected);
+      let data = this.schedule.filter(_ => _.region == region);
       chart.data = data;
 
       let chartElements = [

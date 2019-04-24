@@ -289,27 +289,27 @@
               <td class="text-center">Win Rate</td>
               <td class="text-center">Matches</td>
             </tr>
-            <template v-for="(value, key, index) in leaderboard.regions">
-              <tr :key="index" v-if="value.length > 0">
-                <td>{{key}}</td>
+            <template v-for="(item, key, index) in leaderboard.regions">
+              <tr :key="index">
+                <td>{{item.region}}</td>
                 <td>
                   <div>
-                    <img :src="value[0].avatar" class="ability-icon-sm" />
+                    <img :src="item.players[0].avatar" class="ability-icon-sm" />
                   </div>
                 </td>
                 <td>
                   <div>
-                    <span>{{value[0].name}}</span>
+                    <span>{{item.players[0].name}}</span>
                   </div>
                 </td>
                 <td>
                   <div>
-                    <b-progress variant="info" :value="value[0].win_rate" :min="0" :max="1" :striped="true" show-progress></b-progress>
+                    <b-progress variant="info" :value="item.players[0].win_rate" :min="0" :max="1" :striped="true" show-progress></b-progress>
                   </div>
                 </td>
                 <td>
                   <div class="text-center">
-                    {{value[0].matches}}
+                    {{item.players[0].matches}}
                   </div>
                 </td>
               </tr>

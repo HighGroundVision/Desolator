@@ -20,6 +20,9 @@ export default {
     },
     formatPercentage(value) {
       return numeral(value).format('0%');
-    }
+    },
+    formatRank(value) {
+      return numeral(value).format('0,0');
+    },
   }
 };
