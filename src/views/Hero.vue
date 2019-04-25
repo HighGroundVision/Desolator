@@ -645,7 +645,7 @@
             :fields="['image', 'name', 'kda',  'kills', 'picks', 'wins', 'win_rate']"
             :items="hero.combo_ultimates"
             :per-page="page.size"
-            :current-page="1"
+            :current-page="page.ultimates"
             >
             <template slot="image" slot-scope="row">
               <b-img :src="row.item.image" class="ability-icon-sm" />

@@ -37,7 +37,7 @@
           We at HGV are dedicated to the Ability Draft community.
           Providing the tools to understand AD better, and hopefully have some fun along the way. 
           On our quest to identify the best Heroes and Abilities for AD we found 5 key metrics which to measure by. 
-          These are Picks, Wins, Win Rate (Wins / Picks), Kills, and KDA ([Kills + [Assists/3] - Deaths] / Picks).
+          These are Picks, Wins, <abbr title="Wins / Picks">Win Rate</abbr>, Kills, and <abbr title="(Kills + (Assists/3) - Deaths) / Matches">KDA</abbr>.
           You will see these metrics on most sections. 
           These are meant to give you as complete as picture as possible.
           Just because something wins a lot or kills a lot dose not make it a choice or the right choice. 
