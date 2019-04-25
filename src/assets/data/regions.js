@@ -1,6 +1,6 @@
 ﻿
 export default {
-  "0": "UNKNOWN",
+  "0": "UNKNOWN (Probably Space)",
   "1": "US WEST",
   "2": "US EAST",
   "3": "EUROPE",
