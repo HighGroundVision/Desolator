@@ -1,5 +1,5 @@
 <template>
-  <section>
+  <hgv-loading :urls="urls" v-on:loaded="loaded">
     <b-row>
       <b-col cols="4" lg="3">
         <div class="text-center">
@@ -36,336 +36,375 @@
         <p>
           We at HGV are dedicated to the Ability Draft community.
           Providing the tools to understand AD better, and hopefully have some fun along the way. 
-          Remember everyone, that while Carrys may kill heroes but Supports win games!
+          On our quest to identify the best Heroes and Abilities for AD we found 5 key metrics which to measure by. 
+          These are Picks, Wins, <abbr title="Wins / Picks">Win Rate</abbr>, Kills, and <abbr title="(Kills + (Assists/3) - Deaths) / Matches">KDA</abbr>.
+          You will see these metrics on most sections. 
+          These are meant to give you as complete as picture as possible.
+          Just because something wins a lot or kills a lot dose not make it a choice or the right choice. 
+          We have found while metrics like Kills and Wins tends to speak to a entity's strength compare to others.
+          Win Rates will have bias because of the delta in picks between entities (even heroes, but this gets worst for abilities)
+          in the end we found the KDA ratio works best to compare heroes and abilities.
+          This is because in reviewing the data, winning the match was not enough to say that the hero, ability, or combos were good.
+          While KDA provided a better view its not the complete picture hence the need for these other metrics.
         </p>
         <hr class="highlighted" />
+        <h4 class="text-center">Heroes</h4>
         <p>
-          The strongest Hero is <b class="text-info">{{ summary.hero.best_win_rate.name }}</b>. 
-          Check out the Heroes list and details pages for more details on each hero.
+          We have collected metrics on each hero then we grouped those by type and calculated the results. 
         </p>
-        <div class="card">
-          <div class="card-body">
-            <h5 class="card-title">Hero Types</h5>
-            <b-row>
-              <template v-for="(value) in heroes">
-                <b-col :key="value.key">
-                  <img :src="value.image" class="float-left p-1" />
-                  <b>{{value.name}}</b>
-                  <b-progress :max="1">
-                    <b-progress-bar :value="value.win_rate" variant="info" :striped="true" > 
-                      <strong>{{ formatPercentage(value.win_rate) }}</strong>
-                    </b-progress-bar>
-                    <b-progress-bar :value="1-value.win_rate" variant="secondary"  />
-                  </b-progress>
-                </b-col>
+        <b-card bg-variant="secondary">
+          <div>
+            <b>Hero Types</b>
+          </div>
+          <table class="table table-sm" style="color: white;">
+            <tr>
+              <th></th>
+              <template v-for="(value) in heroes.types">
+                <th :key="value.key">
+                  <div v-if="value.attribute == 1">
+                    <b>Strength</b>
+                  </div>
+                  <div v-if="value.attribute == 2">
+                    <b>Agility</b>
+                  </div>
+                  <div v-if="value.attribute == 3">
+                    <b>Intelligence</b>
+                  </div>
+                </th>
               </template>
-            </b-row>
-          </div>
-        </div> 
+            </tr>
+            <tr>
+              <td>Wins</td>
+              <template v-for="(value) in heroes.types">
+                <td :key="value.key">{{formatNumber(value.wins) }}</td>
+              </template>
+            </tr>
+            <tr>
+              <td>Win Rate</td>
+              <template v-for="(value) in heroes.types">
+                <td :key="value.key">{{formatPercentage(value.win_rate) }}</td>
+              </template>
+            </tr>
+            <tr>
+              <td>Kills</td>
+              <template v-for="(value) in heroes.types">
+                <td :key="value.key">{{formatNumber(value.kills) }}</td>
+              </template>
+            </tr>
+            <tr>
+              <td>KDA</td>
+              <template v-for="(value) in heroes.types">
+                <td :key="value.key">{{formatDecimal(value.kda) }}</td>
+              </template>
+            </tr>
+          </table>
+        </b-card>
         <br />
-        <hr class="highlighted" />
         <p>
-          The Ability with the most wins is <b class="text-info">{{ summary.ability.most_wins.name }}</b> while <b class="text-info">{{ summary.ability.best_win_rate.name }}</b> <span v-if="summary.ability.best_win_rate.id == summary.ability.most_wins.id"> also</span> has the highest win rate.
-          Check out the Abilities list and details pages for more details on each ability.
+          We have collected metrics on each hero then we grouped those by roles and calculated the results.
+          We based this on what Dota states each hero should be, not what we calculated they should be.
         </p>
-        <hr class="highlighted" />
-        <p>
-          Shout-out to <b class="text-info">{{ leaderboard.win_rate[0].name }}</b> with a win rate of <b class="text-info">{{ formatPercentage(leaderboard.win_rate[0].win_rate) }}</b> over <b class="text-info">{{ leaderboard.win_rate[0].wins }}</b> matches (the most in this export range). 
-          Props to <b class="text-info">{{ leaderboard.wins[0].name }}</b> with <b class="text-info">{{ leaderboard.wins[0].wins }}</b> wins with a win rate of <b class="text-info">{{ formatPercentage(leaderboard.wins[0].win_rate) }}</b>.
-          Wow! Slow down <b class="text-info">{{ leaderboard.matches[0].name }}</b> with over <b class="text-info">{{ leaderboard.matches[0].matches }}</b> matches with a win rate of <b class="text-info">{{ formatPercentage(leaderboard.matches[0].win_rate) }}</b>.
-          Check out our Leaderboard for more details.
-        </p>
-        <hr class="highlighted" />
-        <p>
-          We are often asked when do people play AD?
-          To that end we have included the daily counts as a percentage of the total matches.
-          We also break down the time of day matches are being played, based on the UTC time.
-          There is always going to be a little bias based on day and time we run the export.
-        </p>
-        <div class="card">
-          <div class="card-body">
-            <div class="float-right">
-              <ul class="list-inline">
-                <li class="list-inline-item text-primary">Night</li>
-                <li class="list-inline-item text-warning">Morning</li>
-                <li class="list-inline-item text-success">Afternoon</li>
-                <li class="list-inline-item text-danger">Evening</li>
-              </ul>
-            </div>
-            <h5 class="card-title">Time Breakdown</h5>
-            <b-row>
-              <b-col cols="2">Sunday</b-col>
-              <b-col cols="2">
-                 <b-progress :max="100">
-                  <b-progress-bar :value="summary.daily.sunday.total" variant="info" :striped="true" > 
-                  </b-progress-bar>  
-                  <b-progress-bar :value="100-summary.daily.sunday.total" variant="secondary">
-                    <strong>{{ summary.daily.sunday.total  }}%</strong>
-                  </b-progress-bar>
-                </b-progress>
-              </b-col>
-              <b-col cols="8">
-                <b-progress :max="100">
-                  <b-progress-bar :value="summary.daily.sunday.hours['1']" variant="primary" :striped="true" >
-                    <strong>{{ summary.daily.sunday.hours['1'] }}%</strong>
-                  </b-progress-bar>
-                  <b-progress-bar :value="summary.daily.sunday.hours['2']" variant="warning" :striped="true" >
-                    <strong>{{ summary.daily.sunday.hours['2'] }}%</strong>
-                  </b-progress-bar>
-                  <b-progress-bar :value="summary.daily.sunday.hours['3']" variant="success" :striped="true" >
-                    <strong>{{ summary.daily.sunday.hours['3'] }}%</strong>
-                  </b-progress-bar>
-                  <b-progress-bar :value="summary.daily.sunday.hours['4']" variant="danger" :striped="true" >
-                    <strong>{{ summary.daily.sunday.hours['4'] }}%</strong>
-                  </b-progress-bar>
-                </b-progress>
-              </b-col>
-            </b-row>
-            <b-row>
-              <b-col cols="2">Monday</b-col>
-              <b-col cols="2">
-                 <b-progress :max="100">
-                  <b-progress-bar :value="summary.daily.monday.total" variant="info" :striped="true" >
-                  </b-progress-bar>
-                  <b-progress-bar :value="100-summary.daily.monday.total" variant="secondary">
-                    <strong>{{ summary.daily.monday.total }}%</strong>
-                  </b-progress-bar>
-                </b-progress>
-              </b-col>
-              <b-col cols="8">
-                <b-progress :max="100">
-                  <b-progress-bar :value="summary.daily.monday.hours['1']" variant="primary" :striped="true" >
-                    <strong>{{ summary.daily.monday.hours['1'] }}%</strong>
-                  </b-progress-bar>
-                  <b-progress-bar :value="summary.daily.monday.hours['2']" variant="warning" :striped="true" >
-                    <strong>{{ summary.daily.monday.hours['2'] }}%</strong>
-                  </b-progress-bar>
-                  <b-progress-bar :value="summary.daily.monday.hours['3']" variant="success" :striped="true" >
-                    <strong>{{ summary.daily.monday.hours['3'] }}%</strong>
-                  </b-progress-bar>
-                  <b-progress-bar :value="summary.daily.monday.hours['4']" variant="danger" :striped="true" >
-                    <strong>{{ summary.daily.monday.hours['4'] }}%</strong>
-                  </b-progress-bar>
-                </b-progress>
-              </b-col>
-            </b-row>
-            <b-row>
-              <b-col cols="2">Tuesday</b-col>
-              <b-col cols="2">
-                 <b-progress :max="100">
-                  <b-progress-bar :value="summary.daily.tuesday.total" variant="info" :striped="true" >
-                  </b-progress-bar>
-                  <b-progress-bar :value="100-summary.daily.tuesday.total" variant="secondary">
-                    <strong>{{ summary.daily.tuesday.total }}%</strong>
-                  </b-progress-bar>
-                </b-progress>
-              </b-col>
-              <b-col cols="8">
-                <b-progress :max="100">
-                  <b-progress-bar :value="summary.daily.tuesday.hours['1']" variant="primary" :striped="true" >
-                    <strong>{{ summary.daily.tuesday.hours['1'] }}%</strong>
-                  </b-progress-bar>
-                  <b-progress-bar :value="summary.daily.tuesday.hours['2']" variant="warning" :striped="true" >
-                    <strong>{{ summary.daily.tuesday.hours['2'] }}%</strong>
-                  </b-progress-bar>
-                  <b-progress-bar :value="summary.daily.tuesday.hours['3']" variant="success" :striped="true" >
-                    <strong>{{ summary.daily.tuesday.hours['3'] }}%</strong>
-                  </b-progress-bar>
-                  <b-progress-bar :value="summary.daily.tuesday.hours['4']" variant="danger" :striped="true" >
-                    <strong>{{ summary.daily.tuesday.hours['4'] }}%</strong>
-                  </b-progress-bar>
-                </b-progress>
-              </b-col>
-            </b-row>
-            <b-row>
-              <b-col cols="2">Wednesday</b-col>
-              <b-col cols="2">
-                <b-progress :max="100">
-                  <b-progress-bar :value="summary.daily.wednesday.total" variant="info" :striped="true" >
-                  </b-progress-bar>
-                  <b-progress-bar :value="100-summary.daily.wednesday.total" variant="secondary">
-                    <strong>{{ summary.daily.wednesday.total }}%</strong>
-                  </b-progress-bar>
-                </b-progress>
-              </b-col>
-              <b-col cols="8">
-                <b-progress :max="100">
-                  <b-progress-bar :value="summary.daily.wednesday.hours['1']" variant="primary" :striped="true" >
-                    <strong>{{ summary.daily.wednesday.hours['1'] }}%</strong>
-                  </b-progress-bar>
-                  <b-progress-bar :value="summary.daily.wednesday.hours['2']" variant="warning" :striped="true" >
-                    <strong>{{ summary.daily.wednesday.hours['2'] }}%</strong>
-                  </b-progress-bar>
-                  <b-progress-bar :value="summary.daily.wednesday.hours['3']" variant="success" :striped="true" >
-                    <strong>{{ summary.daily.wednesday.hours['3'] }}%</strong>
-                  </b-progress-bar>
-                  <b-progress-bar :value="summary.daily.wednesday.hours['4']" variant="danger" :striped="true"  >
-                    <strong>{{ summary.daily.wednesday.hours['4'] }}%</strong>
-                  </b-progress-bar>
-                </b-progress>
-              </b-col>
-            </b-row>
-            <b-row>
-              <b-col cols="2">Thursday</b-col>
-              <b-col cols="2">
-                 <b-progress :max="100">
-                  <b-progress-bar :value="summary.daily.thursday.total" variant="info" :striped="true" >
-                  </b-progress-bar>
-                  <b-progress-bar :value="100-summary.daily.thursday.total" variant="secondary">
-                    <strong>{{ summary.daily.thursday.total }}%</strong>
-                  </b-progress-bar>
-                </b-progress>
-              </b-col>
-              <b-col cols="8">
-                <b-progress :max="100">
-                  <b-progress-bar :value="summary.daily.thursday.hours['1']" variant="primary" :striped="true">
-                    <strong>{{ summary.daily.thursday.hours['1'] }}%</strong>
-                  </b-progress-bar>
-                  <b-progress-bar :value="summary.daily.thursday.hours['2']" variant="warning" :striped="true">
-                    <strong>{{ summary.daily.thursday.hours['2'] }}%</strong>
-                  </b-progress-bar>
-                  <b-progress-bar :value="summary.daily.thursday.hours['3']" variant="success" :striped="true">
-                    <strong>{{ summary.daily.thursday.hours['3'] }}%</strong>
-                  </b-progress-bar>
-                  <b-progress-bar :value="summary.daily.thursday.hours['4']" variant="danger" :striped="true">
-                    <strong>{{ summary.daily.thursday.hours['4'] }}%</strong>
-                  </b-progress-bar>
-                </b-progress>
-              </b-col>
-            </b-row>
-            <b-row>
-              <b-col cols="2">Friday</b-col>
-              <b-col cols="2">
-                <b-progress :max="100">
-                  <b-progress-bar :value="summary.daily.friday.total" variant="info" :striped="true" >
-                  </b-progress-bar>
-                  <b-progress-bar :value="100-summary.daily.friday.total" variant="secondary">
-                    <strong>{{ summary.daily.friday.total }}%</strong>
-                  </b-progress-bar>
-                </b-progress>
-              </b-col>
-              <b-col cols="8">
-                <b-progress :max="100">
-                  <b-progress-bar :value="summary.daily.friday.hours['1']" variant="primary" :striped="true" >
-                    <strong>{{ summary.daily.friday.hours['1'] }}%</strong>
-                  </b-progress-bar>
-                  <b-progress-bar :value="summary.daily.friday.hours['2']" variant="warning" :striped="true" >
-                    <strong>{{ summary.daily.friday.hours['2'] }}%</strong>
-                  </b-progress-bar>
-                  <b-progress-bar :value="summary.daily.friday.hours['3']" variant="success" :striped="true" >
-                    <strong>{{ summary.daily.friday.hours['3'] }}%</strong>
-                  </b-progress-bar>
-                  <b-progress-bar :value="summary.daily.friday.hours['4']" variant="danger" :striped="true" >
-                    <strong>{{ summary.daily.friday.hours['4'] }}%</strong>
-                  </b-progress-bar>
-                </b-progress>
-              </b-col>
-            </b-row>
-            <b-row>
-              <b-col cols="2">Saturday</b-col>
-              <b-col cols="2">
-                <b-progress :max="100">
-                  <b-progress-bar :value="summary.daily.saturday.total" variant="info" :striped="true" >
-                  </b-progress-bar>
-                  <b-progress-bar :value="100-summary.daily.saturday.total" variant="secondary">
-                    <strong>{{ summary.daily.saturday.total }}%</strong>
-                  </b-progress-bar>
-                </b-progress>
-              </b-col>
-              <b-col cols="8">
-                <b-progress :max="100">
-                  <b-progress-bar :value="summary.daily.saturday.hours['1']" variant="primary" :striped="true" >
-                    <strong>{{ summary.daily.saturday.hours['1'] }}%</strong>
-                  </b-progress-bar>
-                  <b-progress-bar :value="summary.daily.saturday.hours['2']" variant="warning" :striped="true" >
-                    <strong>{{ summary.daily.saturday.hours['2'] }}%</strong>
-                  </b-progress-bar>
-                  <b-progress-bar :value="summary.daily.saturday.hours['3']" variant="success" :striped="true" >
-                    <strong>{{ summary.daily.saturday.hours['3'] }}%</strong>
-                  </b-progress-bar>
-                  <b-progress-bar :value="summary.daily.saturday.hours['4']" variant="danger" :striped="true" >
-                    <strong>{{ summary.daily.saturday.hours['4'] }}%</strong>
-                  </b-progress-bar>
-                </b-progress>
-              </b-col>
-            </b-row>
+        <b-card bg-variant="secondary">
+          <div>
+            <b>Hero Roles</b>
           </div>
-        </div>
+          <table class="table table-sm" style="color: white;">
+            <tr>
+              <th></th>
+              <template v-for="(value) in heroes.roles">
+                <th :key="value.key">{{value.role}}</th>
+              </template>
+            </tr>
+            <tr>
+              <td>Wins</td>
+              <template v-for="(value) in heroes.roles">
+                <td :key="value.key">{{formatNumber(value.wins) }}</td>
+              </template>
+            </tr>
+            <tr>
+              <td>Win Rate</td>
+              <template v-for="(value) in heroes.roles">
+                <td :key="value.key">{{formatPercentage(value.win_rate) }}</td>
+              </template>
+            </tr>
+            <tr>
+              <td>Kills</td>
+              <template v-for="(value) in heroes.roles">
+                <td :key="value.key">{{formatNumber(value.kills) }}</td>
+              </template>
+            </tr>
+            <tr>
+              <td>KDA</td>
+              <template v-for="(value) in heroes.roles">
+                <td :key="value.key">{{formatDecimal(value.kda) }}</td>
+              </template>
+            </tr>
+          </table>
+          <i>NOTE: No one should ever think Jungling instead of lanning is a good idea! I don't care what your build is...</i>
+        </b-card>
         <br />
-        <hr class="highlighted" />
         <p>
-          In the war that is Dota two teams continue a set of endless battles.
-          But who is winning... Maybe the team that always has first pick?
+          We have collected the top 3 heroes by kda. See above for why we use KDA instead of Win Rate.
         </p>
-        <div class="card">
-          <div class="card-body">
-            <h5 class="card-title">Radiant vs Dire</h5>
-            <b-row>
-              <b-col>
-                <b-progress :max="1">
-                  <b-progress-bar :value="summary.team.radiant" variant="success">
-                    <strong>Radiant {{ Math.round(summary.team.radiant * 100) }}%</strong>
-                  </b-progress-bar>
-                  <b-progress-bar :value="summary.team.dire" variant="danger">
-                    <strong>Dire {{ Math.round(summary.team.dire * 100) }}%</strong>
-                  </b-progress-bar>
-                </b-progress>
-              </b-col>
-            </b-row>
+        <b-card bg-variant="secondary">
+          <div>
+            <b>Top Heroes</b>
           </div>
-        </div>
+          <!-- heroes.best -->
+          <table class="table table-sm" style="color: white;">
+            <template v-for="(value, index) in heroes.best['kda']">
+              <tr :key="index">
+                <td style="width: 35px">
+                  <i v-if="index == 0" class="fas fa-2x fa-award" style="color: #FFD700;" title="1st"></i>
+                  <i v-if="index == 1" class="fas fa-2x fa-award" style="color: #C0C0C0;" title="2nd"></i>
+                  <i v-if="index == 2" class="fas fa-2x fa-award" style="color: #CD7F32;" title="3rd"></i>
+                </td>
+                <td style="width: 35px">
+                  <img :src="value.icon" class="ability-icon-sm"/>
+                </td>
+                <td>
+                  <span>{{value.name}}</span>
+                </td>
+              </tr>
+            </template>
+          </table>
+        </b-card>
         <p>
-          Nope, as the <b class="text-info">Radiant</b> looks to have a <a href="https://www.dotabuff.com/heroes/meta?view=played&metric=faction">~5% Side Advantage</a> since the last set of map changes. 
-          This means that first pick maybe important but players are finding ways to overcome it...
+          We have provided a small summary of the heroes in AD. 
+          Check out the <b-link to="/heroes">Heroes Page</b-link> for more information and dive into each hero's details.
         </p>
-        <hr class="highlighted" />
+        <h4 class="text-center">Abilities</h4>
         <p>
+          The best abilities is collected a little differently then others and looking at the metrics listed above dose not provide a clear victory for the title of best ability.
+          But if we look at the which ability (by KDA) is the top ability for hero then we count each time that ability was the top for all heroes.
+          This to us means that these are the abilities that are best across all heroes and therefore are the best abilities.
+        </p>
+        <b-card v-if="abilities" bg-variant="secondary">
+          <div>
+            <b>Best Abilities</b>
+          </div>
+          <table class="table table-sm" style="color: white;">
+            <template v-for="(value, index) in abilities['rank']">
+              <tr :key="index">
+                <td style="width: 35px">
+                  <i v-if="index == 0" class="fas fa-2x fa-award" style="color: #FFD700;" title="1st"></i>
+                  <i v-if="index == 1" class="fas fa-2x fa-award" style="color: #C0C0C0;" title="2nd"></i>
+                  <i v-if="index == 2" class="fas fa-2x fa-award" style="color: #CD7F32;" title="3rd"></i>
+                </td>
+                <td style="width: 35px">
+                  <img :src="value.image" class="ability-icon-sm"/>
+                </td>
+                <td>
+                  <span>{{value.name}}</span>
+                </td>
+              </tr>
+            </template>
+          </table>
+          <i>If you are not 1st picking one these abilities you better know what your doing!</i>
+        </b-card>
+        <br />
+        <h4 class="text-center">Combos</h4>
+        <p>
+          AD is build on ability combos. While a single ability is good a great combo can destroy your opponents.
+          We have included the top combos for Ability pairs and Ultimate pairs.
+        </p>
+        <b-card v-if="combos" bg-variant="secondary">
+          <div>
+            <b>Top Ability Pairs</b>
+          </div>
+          <table class="table table-sm" style="color: white;">
+            <template v-for="(value, index) in combos.abilities['kda']">
+              <tr :key="index">
+                <td style="width: 35px">
+                  <i v-if="index == 0" class="fas fa-2x fa-award" style="color: #FFD700;" title="1st"></i>
+                  <i v-if="index == 1" class="fas fa-2x fa-award" style="color: #C0C0C0;" title="2nd"></i>
+                  <i v-if="index == 2" class="fas fa-2x fa-award" style="color: #CD7F32;" title="3rd"></i>
+                </td>
+                <td style="width: 35px">
+                  <img :src="value.ability1.image" class="ability-icon-sm"/>
+                </td>
+                <td style="width: 300px">
+                  <span>{{value.ability1.name}}</span>
+                </td>
+                <td style="width: 35px">
+                  <img :src="value.ability2.image" class="ability-icon-sm"/>
+                </td>
+                <td style="width: 300px">
+                  <span>{{value.ability2.name}}</span>
+                </td>
+              </tr>
+            </template>
+          </table>
+        </b-card>
+        <br />
+        <b-card v-if="combos" bg-variant="secondary">
+          <div>
+            <b>Top Ultimate Pairs</b>
+          </div>
+          <table class="table table-sm" style="color: white;">
+            <template v-for="(value, index) in combos.ulimates['kda']">
+              <tr :key="index">
+                <td style="width: 35px">
+                  <i v-if="index == 0" class="fas fa-2x fa-award" style="color: #FFD700;" title="1st"></i>
+                  <i v-if="index == 1" class="fas fa-2x fa-award" style="color: #C0C0C0;" title="2nd"></i>
+                  <i v-if="index == 2" class="fas fa-2x fa-award" style="color: #CD7F32;" title="3rd"></i>
+                </td>
+                <td style="width: 35px">
+                  <img :src="value.ability1.image" class="ability-icon-sm"/>
+                </td>
+                <td style="width: 300px">
+                  <span>{{value.ability1.name}}</span>
+                </td>
+                <td style="width: 35px">
+                  <img :src="value.ability2.image" class="ability-icon-sm"/>
+                </td>
+                <td style="width: 300px">
+                  <span>{{value.ability2.name}}</span>
+                </td>
+              </tr>
+            </template>
+          </table>
+        </b-card>
+        <p>
+          We have provided a small summary of the Abilities in AD. 
+          Check out the <b-link to="/abilities">Abilities Page</b-link> for more information and dive into each ability's details.
+        </p>
+        <br />
+        <h4 class="text-center">Leaderboard</h4>
+        <p>
+          We have collected the top players in each region, ordered by win rate then by # of matches. 
+          We only include matches with our export range.
+          You need to have the <b class="text-info">'Expose Public Match Data'</b> setting enabled in Dota2 to be included.
+          If a region is missing then it did not have a enough AD matches to be include in the export.
+        </p>
+        <b-card v-if="leaderboard" bg-variant="secondary">
+          <div>
+            <b>Leaderboard</b>
+          </div>
+          <table class="table table-sm" style="color: white;">
+            <tr>
+              <td>Region</td>
+              <td></td>
+              <td>Persona</td>
+              <td class="text-center">Win Rate</td>
+              <td class="text-center">Matches</td>
+            </tr>
+            <template v-for="(item, key, index) in leaderboard.regions">
+              <tr :key="index">
+                <td>{{item.region}}</td>
+                <td>
+                  <div>
+                    <img :src="item.players[0].avatar" class="ability-icon-sm" />
+                  </div>
+                </td>
+                <td>
+                  <div>
+                    <span>{{item.players[0].name}}</span>
+                  </div>
+                </td>
+                <td>
+                  <div>
+                    <b-progress variant="info" :value="item.players[0].win_rate" :min="0" :max="1" :striped="true" show-progress></b-progress>
+                  </div>
+                </td>
+                <td>
+                  <div class="text-center">
+                    {{item.players[0].matches}}
+                  </div>
+                </td>
+              </tr>
+            </template>
+          </table>
+          <i>Shout-out those of you that have a 100% win rate.</i>
+        </b-card>
+        <p>
+          Check out the <b-link to="/leaderboard">Leaderboard Page</b-link> for more details and find where you or your friends rank in your region.
+        </p>
+        <br />
+        <h4 class="text-center">Matches</h4>
+        <p>
+          We are often asked when do people play AD? To that end we have included the daily counts broken down by the time of day matches are being played with the times, offset to match your browser's timezone. We also include the total # matches per region. There is always going to be a little bias based on day and time we run the export.
+        </p>
+        <b-card bg-variant="secondary">
+          <div>
+            <b>Matches / Region</b>
+          </div>
+          <table class="table table-sm" style="color: white;">
+            <template v-for="(value, key, index) in matches.regions">
+              <tr :key="index">
+                <td>{{key}}</td>
+                <td>{{formatNumber(value)}}</td>
+              </tr>
+            </template>
+          </table>
+        </b-card>
+        <p>
+          Check out the <b-link to="/calendar">Calendar Page</b-link> for more details about how many players are in each region and when they are playing.
+        </p>
+        <br />
+        <p v-if="matches.range">
           We reset our baseline when a major patch is released that changes the balance of abilities.
-          We normally export our master database approximately once a week.
-          Our current stats collection was started on <b class="text-info">{{ formatDateTime(summary.range.start) }}</b> and was last exported on <b class="text-info">{{ formatDateTime(summary.range.end) }}</b>, that is a total of <b class="text-info">{{ formatDuration(summary.range.start, summary.range.end) }}</b>, with a total of <b class="text-info">{{ formatNumber(summary.range.matches) }}</b> AD matches processed. 
-          But we did notice that <b class="text-info">{{ summary.range.abandoned }}%</b> of matches where abandoned, you can do better people!
+          We normally export our master database roughly once a week.
+          Our current stats collection was started on <b class="text-info">{{ formatDateTime(matches.range.start) }}</b> and was last exported on <b class="text-info">{{ formatDateTime(matches.range.end) }}</b>, that is approximately <b class="text-info">{{ formatDuration(matches.range.start, matches.range.end) }}</b>, with a total of <b class="text-info">{{ formatNumber(matches.range.matches) }}</b> AD matches processed. 
+          But we did notice that <b class="text-info">{{ formatPercentage(matches.range.abandoned_ratio) }}</b> of matches where abandoned, you can do better people!
         </p>
       </b-col>
     </b-row>
-  </section>
+  </hgv-loading>
 </template>
 
 <script>
-// import HelloWorld from '@/components/HelloWorld.vue'
-// components: { HelloWorld }
-
-import moment from 'moment'
-import numeral from 'numeral'
-import summary from '@/assets/data/summary.json'
-import heroes from '@/assets/data/hero-summary.json'
-import leaderboard from '@/assets/data/leaderboard-summary.json'
 
 export default {
   name: 'home',
   data () {
     return {
-      "construction": false,
-      'summary': summary,
-      'heroes': heroes,
-      'leaderboard': leaderboard,
+      construction: true,
+      urls: [
+        '/static/schedule.json', 
+        '/static/heroes-types.json', 
+        '/static/heroes-roles.json', 
+        '/static/summary-heroes.json',
+        '/static/leaderboard-regions.json',
+        '/static/summary-abilities.json',
+        '/static/summary-combos.json'        
+      ],
+      matches: {
+        range: null,
+        regions: [],
+      },
+      heroes: {
+        types: [],
+        roles: [],
+        best: [],
+      },
+      leaderboard: null,
+      abilities: null,
+      combos: null,
     }
   },
   methods: {
-    formatDateTime(value) {
-      return moment(value).format("MMMM Do");
-    },
-    formatDuration(start, end) {
-      var x = moment(start);
-      var y = moment(end);
-      var duration = moment.duration(x.diff(y))
-      return duration.humanize();
-    },
-    formatNumber(value) {
-      return numeral(value).format('0,0');
-    },
-    formatPercentage(value) {
-      return numeral(value).format('0%');
+    loaded(data) {
+      var self = this;
+      self.matches.range = data[0].range;
+      self.matches.regions = data[0].regions;
+
+      self.heroes.types = data[1].filter(_ => _.region == 2); 
+      self.heroes.roles = data[2].filter(_ => _.region == 2);
+      self.heroes.best = data[3];
+
+      self.leaderboard = data[4];
+
+      self.abilities = data[5];
+      self.combos = data[6];
     }
   }
 }
 </script>
+
+<!-- Add "scoped" attribute to limit CSS to this component only -->
+<style scoped>
+.card.bg-secondary {
+  color: white;
+}
+</style>

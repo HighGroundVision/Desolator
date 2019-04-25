@@ -1,5 +1,5 @@
 <template>
-  <section>
+  <hgv-loading :urls="urls" v-on:loaded="loaded">
     <b-row>
       <b-col>
         <h4  class="text-center">Draft Pool</h4>
@@ -102,7 +102,6 @@
             </li>
           </ul>
         </div>
-
       </b-col>
       <b-col cols="4" lg="3">
         <div class="text-center">
@@ -113,26 +112,33 @@
         </div>
       </b-col>
     </b-row>
-  </section>
+  </hgv-loading>
 </template>
 
 <script>
-import pool from '@/assets/data/draft-pool.json'
-import reasons from '@/assets/data/draft-pool-reasons.json'
+import axios from 'axios'
 
 export default {
   name: 'pool',
   data () {
-    var heroes = pool.filter(_ => _.enabled == false);
-    var skills = pool.filter(_ => _.enabled == true).map(_ => _.abilities).flat().filter(_ => _.enabled == false);
-    var abilities = skills.filter(_ => _.is_ultimate == false && _.has_upgrade == false).map(_ => { return {ability: _, reason: reasons[_.id]}; });
-    var ultimates = skills.filter(_ => _.is_ultimate == true).map(_ => { return {ability: _, reason: reasons[_.id]}; });
-    var upgrades = skills.filter(_ => _.has_upgrade == true &&  _.is_ultimate == false).map(_ => { return {ability: _, reason: reasons[_.id]}; });
     return {
-      'heroes': heroes,
-      'abilities': abilities,
-      'ultimates': ultimates,
-      'upgrades': upgrades,
+      'urls': ['/static/draft-pool.json', '/static/draft-pool-reasons.json'],
+      'heroes': [],
+      'abilities': [],
+      'ultimates': [],
+      'upgrades': [],
+    }
+  },
+  methods: {
+    loaded(data) {
+      let pool = data[0];
+      let reasons = data[1];
+      let skills = pool.filter(_ => _.enabled == true).map(_ => _.abilities).flat().filter(_ => _.enabled == false);
+
+      this.heroes = pool.filter(_ => _.enabled == false);;
+      this.abilities = skills.filter(_ => _.is_ultimate == false && _.has_upgrade == false).map(_ => { return {ability: _, reason: reasons[_.id]}; });
+      this.ultimates = skills.filter(_ => _.is_ultimate == true).map(_ => { return {ability: _, reason: reasons[_.id]}; });
+      this.upgrades = skills.filter(_ => _.has_upgrade == true &&  _.is_ultimate == false).map(_ => { return {ability: _, reason: reasons[_.id]}; });
     }
   }
 }

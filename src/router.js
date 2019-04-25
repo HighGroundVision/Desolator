@@ -27,6 +27,11 @@ export default new Router({
       component: () => import('./views/Pool.vue') 
     },
     {
+      path: '/calendar',
+      name: 'calendar',
+      component: () => import('./views/Calendar.vue')
+    },
+    {
       path: '/heroes',
       name: 'heroes',
       component: () => import('./views/Heroes.vue')

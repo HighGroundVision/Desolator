@@ -1,5 +1,5 @@
 <template>
-  <section>
+  <hgv-loading :urls="urls" v-on:loaded="loaded">
     <div>
       <h4  class="text-center">Abilities</h4>
       <hr class="highlighted" />
@@ -17,6 +17,9 @@
         </div>
       </b-col>
       <b-col>
+        <div>
+          <hgv-regions @change="onRegionChanged" />
+        </div>
         <b-form @submit.prevent="find">
           <b-input-group>
             <b-input-group-addon>
@@ -34,7 +37,7 @@
         </b-form>
         <br />
         <b-row>
-          <template v-for="(value) in abilities">
+          <template v-for="(value) in search_results">
             <b-col :key="value.id" cols="3">
               <img :src="value.image" class="m-1 ability-icon-sm "/>
               <b-link :to="'/ability/' + value.id">{{value.name}}</b-link>
@@ -74,25 +77,27 @@
         </b-table>
       </b-col>
     </b-row>
-    
-  </section>
+  </hgv-loading>
 </template>
 
 <script>
 import numeral from 'numeral'
-import groups from '@/assets/data/ability-groups.json'
-import abilities from '@/assets/data/ability-collection.json'
+// import groups from '@/assets/data/ability-groups.json'
+// import abilities from '@/assets/data/ability-collection.json'
 
 export default {
   name: 'abilities',
   data () {
     return {
-      'groups': groups,
+      'urls': ['/static/abilities-group.json', '/static/abilities-search.json'],
+      'data': [],
+      'groups': [],
+      'abilities': [],
       'search_item': null,
       'search_type': 1,
       'search_limit': 12,
       'search_more': false,
-      'abilities': [],
+      'search_results': [],
     }
   },
   computed: {
@@ -101,6 +106,16 @@ export default {
     }
   },
   methods: {
+    loaded(data) {
+      var self = this;
+      self.data = data[0];
+      self.abilities = data[1];
+
+      this.onRegionChanged('2');
+    },
+    onRegionChanged(region) {
+      this.groups = this.data.filter(_ => _.region == region);
+    },
     formatPercentage(value) {
       return numeral(value).format('0%');
     },
@@ -119,18 +134,19 @@ export default {
         var collection = [];
         
         if(t == 1) {
-          collection = abilities.filter(_ => _.name.toLowerCase().includes(s));
+          collection = this.abilities.filter(_ => _.name.toLowerCase().includes(s));
         } else if(t == 2) {
-          collection = abilities.filter(_ => _.hero_name.toLowerCase().includes(s));
+          collection = this.abilities.filter(_ => _.hero_name.toLowerCase().includes(s));
         } else if(t == 3) {
-          collection = abilities.filter(_ => _.keywords.map(_ => _.toLowerCase()).includes(s));
+          debugger;
+          collection = this.abilities.filter(_ => _.keywords.map(_ => _.toLowerCase()).includes(s));
         }
         
         collection.sort((lhs, rhs) => rhs.win_rate - lhs.win_rate);
-        this.abilities = collection.slice(0, l);
-        this.search_more = collection.length !=  this.abilities.length && collection.length > 0;
+        this.search_results = collection.slice(0, l);
+        this.search_more = collection.length !=  this.search_results.length && collection.length > 0;
       } else {
-        this.abilities = [];
+        this.search_results = [];
       }
     },
     more() {
