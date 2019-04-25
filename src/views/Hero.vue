@@ -617,7 +617,7 @@
               <b-img :src="row.item.image" class="ability-icon-sm" />
             </template>
             <template slot="name" slot-scope="row">
-              <b-link :to="'/ability/' + row.item.ability_id" target="_blank">{{row.item.name}}</b-link>
+              <b-link :to="'/ability/' + row.item.id" target="_blank">{{row.item.name}}</b-link>
             </template>
             <template slot="win_rate" slot-scope="row">
               <b-progress height="1.5rem" :value="row.item.win_rate" :min="0" :max="1" :striped="true" show-progress></b-progress>
@@ -651,7 +651,7 @@
               <b-img :src="row.item.image" class="ability-icon-sm" />
             </template>
             <template slot="name" slot-scope="row">
-              <b-link :to="'/ability/' + row.item.ability_id" target="_blank">{{row.item.name}}</b-link>
+              <b-link :to="'/ability/' + row.item.id" target="_blank">{{row.item.name}}</b-link>
             </template>
             <template slot="win_rate" slot-scope="row">
               <b-progress height="1.5rem" :value="row.item.win_rate" :min="0" :max="1" :striped="true" show-progress></b-progress>
