@@ -495,7 +495,7 @@
         <br />
         <h4 class="text-center">Abilities</h4>
         <p>
-          We include the default abilities for this your so you can see how good there native build is compared to some of the best combos.
+          We include the default abilities for this hero so you can see how good there native build is compared to some of the best combos.
           Some times the best choice is the heroes own ability, be it for a talent or just cause it best ability left in the pool.
         </p>
         <ul class="list-group">

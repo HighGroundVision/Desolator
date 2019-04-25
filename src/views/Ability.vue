@@ -35,9 +35,9 @@
 
         <h4 class="text-center">Heroes</h4>
         <p>
-          We have include the top heroes paired with this ability.
-          Only heroes that where above avg pick rate where included.
-          We also only show the top 10 for brevity.
+          We have included the top Heroes for this ability.
+          These skills are ordered by KDA.
+          We only show 10 at a time but you can page through the table to find the hero you are interested in.
         </p>
         <b-card bg-variant="light">
           <b-table 
@@ -46,7 +46,7 @@
               :per-page="page.size"
               :current-page="page.heroes"
               :sort-by="'kda'"
-              :sort-desc="'Descending'"
+              :sort-desc="true"
               >
               <template slot="image" slot-scope="row">
                 <b-img :src="row.item.image" class="hero-icon-banner-sm" />
@@ -75,31 +75,25 @@
         <b-pagination v-model="page.heroes" :total-rows="ability.heroes.length" :per-page="page.size" align="center"></b-pagination>
 
         <p>
-          Much like it is more important to gain a sense of which types ability work for heroes, you can use this to gain a sense best type of heroes that fit this ability.
-          Knowing your archetypes will help you make sure you can getting the most out of any ability.
+          It is more important to gain a sense of which types of heroes are a good fit for this ability.
+          To that end we have include the hero graph filter to this ability and hero pairs.
         </p>
-        <b-card bg-variant="light">
-          <b-row>  
-              <template v-for="(value) in ability.hero_roles">
-                <b-col :key="value.key">
-                  <b>{{value.role}}</b>
-                  <b-progress :max="1" :value="value.win_rate" :striped="true" show-progress></b-progress>
-                </b-col>
-              </template>
-          </b-row>
+        <b-card bg-variant="dark">
+          <div class="customChart" id="chartdiv1"></div>
+          <hr />
+          <div class="customChart" id="chartdiv2"></div>
+          <hr />
+          <div class="customChart" id="chartdiv3"></div>
         </b-card>
         <br />
-        <h4 class="text-center">Combos</h4>
-        <p>
-          We have included the top Ability and Ultimate Combos for this ability.
-          Only abilities that where above the avg pick rate where included.
-          We also only show the top 10 for brevity.
-        </p>
+
+        <h4 class="text-center">Combos</h4>   
         <p>
           After selecting the best ability for your hero or the strongest ability in the pool, what is next? 
           This is where you can find the best pairing for that ability.
         </p>
-        <p>
+         <p>
+          We have included the top Ability and Ultimate Combos for this ability.
           If this this skill is an Ultimate then no other Ultimates will appear in the combos list as you can't have more then one.
         </p>
         <div>
@@ -111,7 +105,7 @@
                 :per-page="page.size"
                 :current-page="page.abilities"
                 :sort-by="'kda'"
-                :sort-desc="'Descending'"
+                :sort-desc="true"
                 >
                 <template slot="image" slot-scope="row">
                   <b-img :src="row.item.image" class="hero-icon-banner-sm" />
@@ -148,7 +142,7 @@
                 :per-page="page.size"
                 :current-page="page.ultimates"
                 :sort-by="'kda'"
-                :sort-desc="'Descending'"
+                :sort-desc="true"
                 >
                 <template slot="image" slot-scope="row">
                   <b-img :src="row.item.image" class="hero-icon-banner-sm" />
@@ -193,6 +187,11 @@
 
 <script>
 import AbilityCard from "@/components/AbilityCard";
+import * as am4core from "@amcharts/amcharts4/core";
+import * as am4charts from "@amcharts/amcharts4/charts";
+import am4themes_animated from "@amcharts/amcharts4/themes/animated";
+
+am4core.useTheme(am4themes_animated);
 
 export default {
   name: 'ability',
@@ -212,8 +211,99 @@ export default {
   components: { AbilityCard },
   methods: {
     loaded(data) {
+      this.ability = data[0];
+
       var self = this;
-      self.ability = data[0];
+      this.$nextTick(function () {
+        self.buildCharts();
+      });
+    },
+    buildCharts() {
+
+      var collection = [
+        {
+          element: 'chartdiv1',
+          data: this.ability.heroes.filter(_ => _.attribute == 1),
+          title: "Str Win Rate",
+        },
+        {
+          element: 'chartdiv2',
+          data: this.ability.heroes.filter(_ => _.attribute == 2),
+          title: "Agi Win Rate",
+        },
+        {
+          element: 'chartdiv3',
+          data: this.ability.heroes.filter(_ => _.attribute == 3),
+          title: "Int Win Rate",
+        }
+      ];
+      
+      for (const item of collection) {
+        // Create chart instance
+        var chart = am4core.create(item.element, am4charts.XYChart);
+
+        // Add data
+        item.data.sort((lhs, rhs) => lhs.name.localeCompare(rhs.name));
+        chart.data = item.data;
+
+        // Create axes
+        var categoryAxis = chart.xAxes.push(new am4charts.CategoryAxis());
+        categoryAxis.dataFields.category = "name";
+        categoryAxis.renderer.grid.template.disabled = false;
+        categoryAxis.renderer.minGridDistance = 1;
+        categoryAxis.renderer.inside = false;
+        categoryAxis.renderer.labels.template.fill = am4core.color("#fff");
+        categoryAxis.renderer.labels.template.fontSize = 20;
+        categoryAxis.hidden = true;
+
+        var valueAxis = chart.yAxes.push(new am4charts.ValueAxis());
+        valueAxis.renderer.grid.template.strokeDasharray = "4,4";
+        valueAxis.renderer.labels.template.disabled = false;
+        valueAxis.baseValue = 0.5;
+        valueAxis.min = 0.4;
+        valueAxis.max = 0.6;
+        valueAxis.strictMinMax = true;
+        valueAxis.title.text = item.title;
+
+        // formating 
+        chart.numberFormatter.numberFormat = "#.0%";
+
+        // Do not crop bullets
+        chart.maskBullets = false;
+
+        // Remove padding
+        chart.paddingBottom = 0;
+
+        // Create series
+        var series = chart.series.push(new am4charts.ColumnSeries());
+        series.dataFields.valueY = "win_rate";
+        series.dataFields.categoryX = "name";
+        series.columns.template.propertyFields.fill = "color";
+        series.columns.template.propertyFields.stroke = "color";
+        series.columns.template.tooltipText = "{categoryX}: [bold]{valueY}[/b]";
+        series.columns.template.events.on("hit", function(ev) {
+          var id = ev.target.dataItem.dataContext.id;
+          this.$router.push('/hero/' + id);
+        }, this);
+
+        // Add bullets
+        var bullet = series.bullets.push(new am4charts.Bullet());
+        var image = bullet.createChild(am4core.Image);
+        image.width = 20;
+        image.height = 20;
+        image.horizontalCenter = "middle";
+        image.verticalCenter = "bottom";
+        image.dy = 10;
+        image.y = am4core.percent(100);
+        image.propertyFields.href = "icon";
+        image.tooltipText = series.columns.template.tooltipText;
+        image.propertyFields.fill = "color";
+        image.filters.push(new am4core.DropShadowFilter());
+        image.events.on("hit", function(ev) {
+          var id = ev.target.dataItem.dataContext.id;
+          this.$router.push('/hero/' + id);
+        }, this);
+      }
     },
   },
   /*
@@ -225,3 +315,11 @@ export default {
   */
 }
 </script>
+
+<!-- Add "scoped" attribute to limit CSS to this component only -->
+<style scoped>
+.customChart {
+  width: 100%;
+  height: 200px;
+}
+</style>
