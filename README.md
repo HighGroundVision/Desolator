@@ -3,8 +3,6 @@
 > Ability Drafter
 
 ## TODO
-1. Hero Details
-2. Ability Details
 
 ## Build Setup
 
