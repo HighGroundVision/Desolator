@@ -38,7 +38,8 @@
     <hr class="highlighted" />
     <div v-if="summary">
       <p>
-        Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec et luctus purus. Phasellus hendrerit leo in eros luctus mollis. Praesent consectetur metus mauris, id maximus felis sodales vel. Praesent vehicula sagittis urna, at ultrices quam aliquet quis. Donec vitae turpis non urna ultrices accumsan. In hac habitasse platea dictumst. Phasellus ac venenatis libero. Duis hendrerit id erat eleifend tempor. Sed vehicula massa ac justo dictum, at elementum ligula facilisis. Suspendisse potenti. Nunc euismod rhoncus arcu, et luctus arcu cursus nec.
+       As we talked about before the win rate dose not give a complete picture.
+       This is way we also include the top 3 heroes ordered by the other metrics.
       </p>
       <b-row>
         <b-col>

@@ -52,6 +52,11 @@ export default new Router({
       component: () => import('./views/Ability.vue')
     },
     {
+      path: '/combos',
+      name: 'combos',
+      component: () => import('./views/Combos.vue')
+    },
+    {
       path: '/leaderboard',
       name: 'leaderboard',
       component: () => import('./views/Leaderboard.vue')

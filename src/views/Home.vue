@@ -208,12 +208,12 @@
           AD is build on ability combos. While a single ability is good a great combo can destroy your opponents.
           We have included the top combos for Ability pairs and Ultimate pairs.
         </p>
-        <b-card v-if="combos" bg-variant="secondary">
+        <b-card v-if="combos_abilities" bg-variant="secondary">
           <div>
             <b>Top Ability Pairs</b>
           </div>
           <table class="table table-sm" style="color: white;">
-            <template v-for="(value, index) in combos.abilities['kda']">
+            <template v-for="(value, index) in combos_abilities">
               <tr :key="index">
                 <td style="width: 35px">
                   <i v-if="index == 0" class="fas fa-2x fa-award" style="color: #FFD700;" title="1st"></i>
@@ -237,12 +237,12 @@
           </table>
         </b-card>
         <br />
-        <b-card v-if="combos" bg-variant="secondary">
+        <b-card v-if="combos_ultimates" bg-variant="secondary">
           <div>
             <b>Top Ultimate Pairs</b>
           </div>
           <table class="table table-sm" style="color: white;">
-            <template v-for="(value, index) in combos.ulimates['kda']">
+            <template v-for="(value, index) in combos_ultimates">
               <tr :key="index">
                 <td style="width: 35px">
                   <i v-if="index == 0" class="fas fa-2x fa-award" style="color: #FFD700;" title="1st"></i>
@@ -250,16 +250,16 @@
                   <i v-if="index == 2" class="fas fa-2x fa-award" style="color: #CD7F32;" title="3rd"></i>
                 </td>
                 <td style="width: 35px">
-                  <img :src="value.ability1.image" class="ability-icon-sm"/>
+                  <img :src="value.ability.image" class="ability-icon-sm"/>
                 </td>
                 <td style="width: 300px">
-                  <span>{{value.ability1.name}}</span>
+                  <span>{{value.ability.name}}</span>
                 </td>
                 <td style="width: 35px">
-                  <img :src="value.ability2.image" class="ability-icon-sm"/>
+                  <img :src="value.ultimate.image" class="ability-icon-sm"/>
                 </td>
                 <td style="width: 300px">
-                  <span>{{value.ability2.name}}</span>
+                  <span>{{value.ultimate.name}}</span>
                 </td>
               </tr>
             </template>
@@ -380,7 +380,8 @@ export default {
       },
       leaderboard: null,
       abilities: null,
-      combos: null,
+      combos_abilities: null,
+      combos_ultimates: null,
     }
   },
   methods: {
@@ -396,7 +397,10 @@ export default {
       self.leaderboard = data[4];
 
       self.abilities = data[5];
-      self.combos = data[6];
+      
+      var combos = data[6];
+      self.combos_abilities = combos.abilities['kda'].slice(0, 3);
+      self.combos_ultimates = combos.ultimates['kda'].slice(0, 3);
     }
   }
 }
@@ -408,3 +412,4 @@ export default {
   color: white;
 }
 </style>
+
