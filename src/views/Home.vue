@@ -359,7 +359,7 @@ export default {
   name: 'home',
   data () {
     return {
-      construction: true,
+      construction: false,
       urls: [
         '/static/schedule.json', 
         '/static/heroes-types.json', 

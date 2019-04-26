@@ -3,7 +3,8 @@
     <div>
       <h4 class="text-center">Combos</h4>
       <p>
-        Lorem ipsum dolor sit amet, consectetur adipiscing elit. Mauris nec egestas augue, a mattis magna. Proin tempor lectus nibh, vitae consequat ligula tempor eget. Fusce tincidunt justo a nulla faucibus efficitur. Phasellus ut tellus euismod, dapibus quam sit amet, pulvinar lorem. Nunc ac nibh vel eros ultricies ornare. Maecenas in tellus est. Nullam malesuada leo id neque fermentum, quis auctor sapien hendrerit. Cras ornare leo at felis pulvinar bibendum.
+        While knowing your heroes and abilities is key to starting a great build, combos are the reason we play AD.
+        We have complied a list of ability-ability pairs and ultimate-ability pairs for each metric.
       </p>
       <hr class="highlighted" />
     </div>

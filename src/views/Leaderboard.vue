@@ -54,7 +54,7 @@
           </template>
         </table>
         <hr class="highlighted" />
-        <b-form @submit="onSearchChanged">
+        <b-form @submit.prevent="onSearchChanged">
           <b-form-group label="Search for Player">
             <b-input-group>
               <b-form-input v-model="search" />
