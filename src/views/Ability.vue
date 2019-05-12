@@ -168,7 +168,7 @@
               </b-table>
             </b-card>
             <br />
-            <b-pagination v-model="page.abilities" :total-rows="ability.combo_abilities.length" :per-page="page.size" align="center"></b-pagination>
+            <b-pagination v-model="page.ultimates" :total-rows="ability.combo_abilities.length" :per-page="page.size" align="center"></b-pagination>
         </div>
       </b-col>
       <b-col cols="4" lg="3">
