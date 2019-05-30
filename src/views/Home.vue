@@ -26,8 +26,26 @@
                 Our continuous deployment process means that this site will be updated as we push out new features. 
                 You are welcome to use the site and the new features. 
                 Some features maybe unstable/incomplete and maybe removed in the future.
-                This banner will be removed when the rework is finished.
               </p>
+              <p>This banner will be removed when the rework is finished.</p>
+            </b-col>
+          </b-row>
+        </b-alert>
+        <b-alert v-if="short" variant="warning" show>
+          <b-row>
+            <b-col>
+              <strong><i class="fas fa-exclamation-triangle"></i> Patch Change</strong>
+              <p v-if="matches.range">
+                There was a major patch change recently.
+                As a result we have reset out export range from the master database.
+                Currently there is a small sample size with only <b class="text-secondary">{{ formatDuration(matches.range.start, matches.range.end) }}</b> worth of data.
+                Some results maybe unrepresentative untill more data is collection as there is only <b class="text-secondary">{{ formatNumber(matches.range.matches) }}</b> valid AD matches.
+                Some results may even be shocking althought interesting all the same.
+              </p>
+              <p>
+                As with any patch change you should check out the <b-link to="/pool">Pool Page</b-link> to make sure your favourite hero or abilities is still enabled.
+              </p>
+              <p>This banner will be removed once enough data has been collected to stablize the results.</p>
             </b-col>
           </b-row>
         </b-alert>
@@ -360,6 +378,7 @@ export default {
   data () {
     return {
       construction: false,
+      short: true,
       urls: [
         '/static/schedule.json', 
         '/static/heroes-types.json', 

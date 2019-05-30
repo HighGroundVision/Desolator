@@ -124,11 +124,15 @@ export default {
 
       for (let i = 0; i < chartElements.length; i++) {
         const item = chartElements[i];
+        let local = data.filter(_ => _.day == item.day);
+        if(local.length == 0) {
+          continue;
+        }
 
         // Create series
         var series = chart.series.push(new am4charts.ColumnSeries());
         // series.hidden = true;
-        series.data = data.filter(_ => _.day == item.day);
+        series.data = local;
         series.dataFields.categoryX = "hour";
         series.dataFields.valueY = "matches";
         series.name = item.title;

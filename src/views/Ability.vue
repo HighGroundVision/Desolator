@@ -260,8 +260,8 @@ export default {
         valueAxis.renderer.grid.template.strokeDasharray = "4,4";
         valueAxis.renderer.labels.template.disabled = false;
         valueAxis.baseValue = 0.5;
-        valueAxis.min = 0.4;
-        valueAxis.max = 0.6;
+        valueAxis.min = 0.0;
+        valueAxis.max = 1.0;
         valueAxis.strictMinMax = true;
         valueAxis.title.text = item.title;
 

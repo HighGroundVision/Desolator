@@ -110,21 +110,24 @@
       </b-col>
       <b-col cols="4" lg="3">
         <div class="text-center">
-          <b-alert variant="info" show>   
-            <span v-if="creators.length > 0">
-              Shout-out to this sites creators
-            </span>
-            <template v-for="(creator) in creators">
-              <div :key="creator.profile_id">
-                <span><a :href="creator.profile_url" target="_blank">{{creator.name}}</a></span><br />
-                <span>with a rank of {{formatRank(creator.rank)}} </span><br />
-                <span>and win rate of {{formatPercentage(creator.win_rate)}}</span><br />
-                <span>over {{formatNumber(creator.matches)}} matches</span><br />
-                <span>in US EAST!</span>
-              </div>
-            </template>
-            <br />
-            <span>Go play more Dota...</span>
+          <b-alert variant="info" show>
+            <div v-if="creators.length > 0">
+              <span>
+                Shout-out to this sites creators
+              </span>
+              <template v-for="(creator) in creators">
+                <div :key="creator.profile_id">
+                  <span><a :href="creator.profile_url" target="_blank">{{creator.name}}</a></span><br />
+                  <span>with a rank of {{formatRank(creator.rank)}} </span><br />
+                  <span>and win rate of {{formatPercentage(creator.win_rate)}}</span><br />
+                  <span>over {{formatNumber(creator.matches)}} matches</span><br />
+                  <span>in US EAST!</span>
+                </div>
+              </template>
+            </div>
+            <div v-else>
+                <span>This sites creators need to go play more AD...</span>
+            </div>
           </b-alert>
           <img src="@/assets/imgs/cluckles-speach.png" class="cluckles-speach" />
         </div>

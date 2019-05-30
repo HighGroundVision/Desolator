@@ -92,13 +92,28 @@
           <h5>Upgrades <img src="https://hgv-hyperstone.azurewebsites.net/items/ultimate_scepter.png" class="ability-icon-xs" /></h5>
           <ul class="list-unstyled">
             <li>
-              <img src="https://hgv-hyperstone.azurewebsites.net/heroes/banner/npc_dota_hero_nyx_assassin.png" class="hero-icon-banner-sm" /><b class="text-info"> Nyx Assassin</b> when acquiring Aghanim's Scepter will still be grant  <b class="text-info">Burrow</b>, regardless of what spells he has.
+              <img src="https://hgv-hyperstone.azurewebsites.net/heroes/banner/npc_dota_hero_nyx_assassin.png" class="hero-icon-banner-sm" /><b class="text-info"> Nyx Assassin</b> after acquiring Aghanim's Scepter will still be granted  <b class="text-info">Burrow</b>.
             </li>
             <li>
-              <img src="https://hgv-hyperstone.azurewebsites.net/heroes/banner/npc_dota_hero_treant.png" class="hero-icon-banner-sm" /> <b class="text-info"> Treant Protector</b> when acquiring Aghanim's Scepter will still be grant  <b class="text-info">Eyes In The Forest</b>, regardless of what spells he has.
+              <img src="https://hgv-hyperstone.azurewebsites.net/heroes/banner/npc_dota_hero_treant.png" class="hero-icon-banner-sm" /> <b class="text-info"> Treant Protector</b> after acquiring Aghanim's Scepter will still be granted  <b class="text-info">Eyes In The Forest</b>.
             </li>
             <li>
-              <img src="https://hgv-hyperstone.azurewebsites.net/heroes/banner/npc_dota_hero_gyrocopter.png" class="hero-icon-banner-sm" /> <b class="text-info">Gyrocopter</b> when acquiring Aghanim's Scepter will still be grant  <b class="text-info">Side Gunner</b> only if Gryo also has  <b class="text-info">Flak Cannon</b>.
+              <img src="https://hgv-hyperstone.azurewebsites.net/heroes/banner/npc_dota_hero_gyrocopter.png" class="hero-icon-banner-sm" /> <b class="text-info">Gyrocopter</b> after acquiring Aghanim's Scepter will still be granted  <b class="text-info">Side Gunner</b>.
+            </li>
+            <li>
+              <img src="https://hgv-hyperstone.azurewebsites.net/heroes/banner/npc_dota_hero_grimstroke.png" class="hero-icon-banner-sm" /> <b class="text-info">Grimstroke</b> after acquiring Aghanim's Scepter will still be granted <b class="text-info">Dark Artistry</b>.
+            </li>
+            <li>
+              <img src="https://hgv-hyperstone.azurewebsites.net/heroes/banner/npc_dota_hero_spectre.png" class="hero-icon-banner-sm" /> <b class="text-info">Spectre</b> after acquiring Aghanim's Scepter will still be granted <b class="text-info">Shadow Step</b>.
+            </li>
+            <li>
+              <img src="https://hgv-hyperstone.azurewebsites.net/heroes/banner/npc_dota_hero_tiny.png" class="hero-icon-banner-sm" /> <b class="text-info">Tiny</b> after acquiring Aghanim's Scepter will still be granted <b class="text-info">Tree Volley</b>.
+            </li>
+            <li>
+              <img src="https://hgv-hyperstone.azurewebsites.net/heroes/banner/npc_dota_hero_lycan.png" class="hero-icon-banner-sm" /> <b class="text-info">Lycan</b> (Requires <b class="text-info">Summon Wolves</b>) Causes one of the three creep waves to include two wolves.
+            </li>
+            <li>
+              <img src="https://hgv-hyperstone.azurewebsites.net/heroes/banner/npc_dota_hero_mars.png" class="hero-icon-banner-sm" /> <b class="text-info">Mars</b> (Requires <b class="text-info">Arena of Bloods</b>) Gods Rebuke cooldown is now 1.4 seconds during Arena of Blood.
             </li>
           </ul>
         </div>
