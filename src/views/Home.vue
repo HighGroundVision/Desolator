@@ -378,7 +378,7 @@ export default {
   data () {
     return {
       construction: false,
-      short: true,
+      short: false,
       urls: [
         '/static/schedule.json', 
         '/static/heroes-types.json', 
