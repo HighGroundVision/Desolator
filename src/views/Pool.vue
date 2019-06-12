@@ -63,7 +63,7 @@
                     </td>
                     <td><b-img :src="ability.image" class="ability-icon-md" v-bind:class="{'disabled': !ability.enabled }" /></td>
                     <td>
-                      <img v-if="ability.has_upgrade" src="https://hgv-hyperstone.azurewebsites.net/items/ultimate_scepter.png" class="ability-icon-md" />
+                      <img v-if="ability.has_upgrade" src="https://hgv-hyperstone.azurewebsites.net/items/ultimate_scepter.png" class="ability-icon-md" v-bind:class="{'disabled': !ability.enabled }" />
                     </td>
                     <td>
                       <span v-if="ability.enabled == false && ability.has_data == true">Game data says that this ability is disabled but we have collected data. It could be enabled or is not reported correctly in the API</span>
