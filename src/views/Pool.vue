@@ -5,73 +5,6 @@
         <h4  class="text-center">Draft Pool</h4>
         <hr class="highlighted" />
         <div>
-          <h5>Unavailable Heroes</h5>
-          <ul class="list-unstyled">
-            <template v-for="(value) in heroes">
-              <li :key="value.id">
-                <b-img :src="value.image"  class="hero-icon-banner-sm" />
-                <b class="text-info"> {{ value.name }}</b>
-              </li>
-            </template>
-          </ul>
-          <p>
-            Each of these heroes is unlikely to make it into AD in the future as they bring very little to pool 
-            or they where in the pool and have been removed because there abilities interactions are to unstable.
-          </p>
-        </div>
-        <b-row>
-          <b-col>
-            <h5>Unavailable Abilities</h5>
-            <ul class="list-unstyled">
-              <template v-for="(value) in abilities">
-                <li :key="value.ability.id">
-                  <b-img :src="value.ability.image" class="ability-icon-sm" />
-                  <span> {{ value.ability.name }}</span>
-                  <sup> {{ value.reason }}</sup>
-                </li>
-              </template>
-            </ul>
-          </b-col>
-          <b-col>
-            <h5>Unavailable Ultimates</h5>
-            <ul class="list-unstyled">
-              <template v-for="(value) in ultimates">
-                <li :key="value.ability.id">
-                  <b-img :src="value.ability.image" class="ability-icon-sm" />
-                  <span> {{ value.ability.name }}</span>
-                  <sup> {{ value.reason }}</sup>
-                  <sup v-if="value.ability.has_data" >1</sup>
-                </li>
-              </template>
-            </ul>
-          </b-col>
-          <b-col>
-            <h5>Unavailable Upgrades <img src="https://hgv-hyperstone.azurewebsites.net/items/ultimate_scepter.png" class="ability-icon-xs" /></h5>
-            <ul class="list-unstyled">
-              <template v-for="(value) in upgrades">
-                <li :key="value.ability.id">
-                  <b-img :src="value.ability.image" class="ability-icon-sm" />
-                  <span> {{ value.ability.name }}</span>
-                  <sup> {{ value.reason }}</sup>
-                </li>
-              </template>
-            </ul>
-          </b-col>
-        </b-row>
-        <div style="font-size: 0.8em;">
-          <ul class="list-unstyled">
-            <li><small>1</small> Spells are disabled in the game data but we have collected data for it, this means Valve fucked up and ability is more and likly is (or was) active.</li>
-            <li><small>2</small> Disabled for balance reasons.</li>
-            <li><small>3</small> Spells which require more than one ability slot are disabled because of hotkey issues.</li>
-            <li><small>4</small> Spells which switch between melee and ranged for are all disabled for technical reasons.</li>
-            <li><small>5</small> Spells which have direct synergy/interaction with other spells are disabled, as they are deemed too limiting.</li>
-            <li><small>6</small> Some spells granted by <b class="text-info">Aghanim's Scepter</b> are disabled because they add spells that use additional slots. REF #3</li>
-            <li><small>7</small> According to game files infest does not grant control, this causes infest to be sort of useless</li>
-            <li><small>8</small> Your guess is as good as mine...</li>
-          </ul>
-        </div>
-        <hr class="highlighted" />
-        <div>
           <h5>Innate Skills</h5>
           <ul class="list-unstyled">
             <li>
@@ -88,35 +21,61 @@
             </li>
           </ul>
         </div>
+        <hr class="highlighted" />
         <div>
-          <h5>Upgrades <img src="https://hgv-hyperstone.azurewebsites.net/items/ultimate_scepter.png" class="ability-icon-xs" /></h5>
-          <ul class="list-unstyled">
-            <li>
-              <img src="https://hgv-hyperstone.azurewebsites.net/heroes/banner/npc_dota_hero_nyx_assassin.png" class="hero-icon-banner-sm" /><b class="text-info"> Nyx Assassin</b> after acquiring Aghanim's Scepter will still be granted  <b class="text-info">Burrow</b>.
-            </li>
-            <li>
-              <img src="https://hgv-hyperstone.azurewebsites.net/heroes/banner/npc_dota_hero_treant.png" class="hero-icon-banner-sm" /> <b class="text-info"> Treant Protector</b> after acquiring Aghanim's Scepter will still be granted  <b class="text-info">Eyes In The Forest</b>.
-            </li>
-            <li>
-              <img src="https://hgv-hyperstone.azurewebsites.net/heroes/banner/npc_dota_hero_gyrocopter.png" class="hero-icon-banner-sm" /> <b class="text-info">Gyrocopter</b> after acquiring Aghanim's Scepter will still be granted  <b class="text-info">Side Gunner</b>.
-            </li>
-            <li>
-              <img src="https://hgv-hyperstone.azurewebsites.net/heroes/banner/npc_dota_hero_grimstroke.png" class="hero-icon-banner-sm" /> <b class="text-info">Grimstroke</b> after acquiring Aghanim's Scepter will still be granted <b class="text-info">Dark Artistry</b>.
-            </li>
-            <li>
-              <img src="https://hgv-hyperstone.azurewebsites.net/heroes/banner/npc_dota_hero_spectre.png" class="hero-icon-banner-sm" /> <b class="text-info">Spectre</b> after acquiring Aghanim's Scepter will still be granted <b class="text-info">Shadow Step</b>.
-            </li>
-            <li>
-              <img src="https://hgv-hyperstone.azurewebsites.net/heroes/banner/npc_dota_hero_tiny.png" class="hero-icon-banner-sm" /> <b class="text-info">Tiny</b> after acquiring Aghanim's Scepter will still be granted <b class="text-info">Tree Volley</b>.
-            </li>
-            <li>
-              <img src="https://hgv-hyperstone.azurewebsites.net/heroes/banner/npc_dota_hero_lycan.png" class="hero-icon-banner-sm" /> <b class="text-info">Lycan</b> (Requires <b class="text-info">Summon Wolves</b>) Causes one of the three creep waves to include two wolves.
-            </li>
-            <li>
-              <img src="https://hgv-hyperstone.azurewebsites.net/heroes/banner/npc_dota_hero_mars.png" class="hero-icon-banner-sm" /> <b class="text-info">Mars</b> (Requires <b class="text-info">Arena of Bloods</b>) Gods Rebuke cooldown is now 1.4 seconds during Arena of Blood.
-            </li>
+          <h5>Disabled Heroes</h5>
+          <ul class="list-inline">
+            <template v-for="(hero) in pool">
+              <li :key="hero.id" v-if="!hero.enabled" class="list-inline-item">
+                <span>{{hero.name}}</span>
+                <br />
+                <b-img :src="hero.image" class="hero-icon-profile-md" />
+              </li>    
+            </template>
           </ul>
         </div>
+        
+        <hr class="highlighted" />
+        <div>
+          <h5>Active Heroes, Abilities, and Upgrades</h5>
+          <table class="table">
+            <thead>
+              <tr>
+                <th>Hero</th>
+                <th></th>
+                <th>Ability</th>
+                <th></th>
+                <th>Upgrade</th>
+                <th>Notes</th>
+              </tr>
+            </thead>
+            <tbody>
+              <template v-for="(hero) in pool">
+                <template v-for="(ability, index) in hero.abilities">
+                  <tr :key="ability.id" v-if="hero.enabled">
+                    <td>
+                      <span v-if="index == 0">{{hero.name}}</span>
+                    </td>
+                    <td><b-img v-if="index == 0" :src="hero.image" class="hero-icon-profile-md" v-bind:class="{'disabled': !hero.enabled }" /></td>
+                    <td>
+                      <span v-if="ability.enabled">{{ability.name}}</span>
+                      <span v-else style="text-decoration: line-through;">{{ability.name}}</span>
+                    </td>
+                    <td><b-img :src="ability.image" class="ability-icon-md" v-bind:class="{'disabled': !ability.enabled }" /></td>
+                    <td>
+                      <img v-if="ability.has_upgrade" src="https://hgv-hyperstone.azurewebsites.net/items/ultimate_scepter.png" class="ability-icon-md" />
+                    </td>
+                    <td>
+                      <span v-if="ability.enabled == false && ability.has_data == true">Game data says that this ability is disabled but we have collected data. It could be enabled or is not reported correctly in the API</span>
+                      <span v-if="ability.enabled == true && ability.has_data == false">Game data says that this ability is enabled but we have not collected any data. It could be disbaled in other ways or not reported in the API.</span>
+                    </td>
+                  </tr>
+                </template>              
+              </template>
+            </tbody>
+          </table>
+        </div>
+        
       </b-col>
       <b-col cols="4" lg="3">
         <div class="text-center">
@@ -138,22 +97,14 @@ export default {
   data () {
     return {
       'urls': ['/static/draft-pool.json', '/static/draft-pool-reasons.json'],
-      'heroes': [],
-      'abilities': [],
-      'ultimates': [],
-      'upgrades': [],
+      'pool': [],
+      'reasons': []
     }
   },
   methods: {
     loaded(data) {
-      let pool = data[0];
-      let reasons = data[1];
-      let skills = pool.filter(_ => _.enabled == true).map(_ => _.abilities).flat().filter(_ => _.enabled == false);
-
-      this.heroes = pool.filter(_ => _.enabled == false);;
-      this.abilities = skills.filter(_ => _.is_ultimate == false && _.has_upgrade == false).map(_ => { return {ability: _, reason: reasons[_.id]}; });
-      this.ultimates = skills.filter(_ => _.is_ultimate == true).map(_ => { return {ability: _, reason: reasons[_.id]}; });
-      this.upgrades = skills.filter(_ => _.has_upgrade == true &&  _.is_ultimate == false).map(_ => { return {ability: _, reason: reasons[_.id]}; });
+      this.pool = data[0];
+      this.reasons = data[1];
     }
   }
 }
