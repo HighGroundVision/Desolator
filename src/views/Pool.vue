@@ -68,6 +68,7 @@
                     <td>
                       <span v-if="ability.enabled == false && ability.has_data == true">Game data says that this ability is disabled but we have collected data. It could be enabled or is not reported correctly in the API</span>
                       <span v-if="ability.enabled == true && ability.has_data == false">Game data says that this ability is enabled but we have not collected any data. It could be disbaled in other ways or not reported in the API.</span>
+                      <span v-if="hasReason(ability.id)">{{getReason(ability.id)}}</span>
                     </td>
                   </tr>
                 </template>              
@@ -105,6 +106,20 @@ export default {
     loaded(data) {
       this.pool = data[0];
       this.reasons = data[1];
+    },
+    hasReason(id) {
+      if(this.reasons[id.toString()]) {
+        return true;
+      } else {
+        return false;
+      }
+    },
+    getReason(id) {
+      if(this.reasons[id.toString()]) {
+        return this.reasons[id.toString()];
+      } else {
+        return "";
+      }
     }
   }
 }
