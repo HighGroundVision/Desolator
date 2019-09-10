@@ -32,14 +32,14 @@ export default {
   },
   async mounted() {
     try {
-      var data = [];
-
-      // Load Data
+      let requests = [];
       for (const url of this.urls) {
-        var response = await axios.get(url);
-        data.push(response.data);
+        requests.push(
+          axios.get(url).then(res => res.data)
+        );
       }
 
+      let data = await Promise.all(requests);
       this.loading = false;
       this.$emit('loaded', data); // Emit Event
     } catch (err) {

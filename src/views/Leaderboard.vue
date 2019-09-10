@@ -137,11 +137,13 @@
 </template>
 
 <script>
+import axios from 'axios'
+
 export default {
   name: 'leaderboard',
   data () {
     return {
-      'urls': ['/static/leaderboard-collection.json', '/static/leaderboard-regions.json', '/static/schedule.json'],
+      'urls': ['/static/leaderboard.2.json', '/static/leaderboard-regions.json', '/static/schedule.json'], // '/static/leaderboard-collection.json', 
       // Region Selection
       'selection': '',
       // Search for Player
@@ -174,6 +176,9 @@ export default {
     },
     onRegionChanged(index) {
       this.selection = index;
+      axios.get(`/static/leaderboard.${index}.json`).then(res => {
+        this.players = res.data;
+      });
     },
     onSearchChanged() {
       let search = this.search.toLowerCase();
