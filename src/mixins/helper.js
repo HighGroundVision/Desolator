@@ -13,7 +13,7 @@ export default {
       return duration.humanize();
     },
     formatNumber(value) {
-      return numeral(value).format('0a');
+      return numeral(value).format('0.00 a').toUpperCase();
     },
     formatDecimal(value) {
       return numeral(value).format('0.0');

@@ -121,7 +121,6 @@
                   <span>with a rank of {{formatRank(creator.rank)}} </span><br />
                   <span>and win rate of {{formatPercentage(creator.win_rate)}}</span><br />
                   <span>over {{formatNumber(creator.matches)}} matches</span><br />
-                  <span>in US EAST!</span>
                 </div>
               </template>
             </div>
