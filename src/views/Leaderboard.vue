@@ -118,8 +118,8 @@
               <template v-for="(creator) in creators">
                 <div :key="creator.profile_id">
                   <span><a :href="creator.profile_url" target="_blank">{{creator.name}}</a></span><br />
-                  <span>with a rank of {{formatRank(creator.rank)}} </span><br />
-                  <span>and win rate of {{formatPercentage(creator.win_rate)}}</span><br />
+                  <!--<span>with a rank of {{formatRank(creator.rank)}} </span><br />-->
+                  <span>with a win rate of {{formatPercentage(creator.win_rate)}}</span><br />
                   <span>Stop coding and go play more AD!</span>
                   <!--<span>over {{formatNumber(creator.matches)}} matches</span><br />-->
                 </div>
