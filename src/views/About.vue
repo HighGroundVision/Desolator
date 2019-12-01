@@ -2,12 +2,12 @@
   <b-row>
     <b-col cols="4" lg="3">
       <div class="text-center">
-        <b-alert variant="info" show>   
+        <b-alert variant="info bordered-alert" show>   
           <p>
             Provide any feedback about this project to <a href="https://twitter.com/DotaHGV" target="_blank">@DotaHGV</a> or open an issue on <a href="https://github.com/HighGroundVision/Desolator/issues" target="_blank">GitHub</a>
           </p>
         </b-alert>
-        <img src="@/assets/imgs/cluckles-speach.png" class="cluckles-speach" />
+        <img src="@/assets/imgs/cluckles.png" class="cluckles-speach" />
       </div>
     </b-col>
     <b-col>

@@ -21,6 +21,7 @@ export default {
 
 <!-- Add "scoped" attribute to limit CSS to this component only -->
 <style scoped>
+
 .sticky-container{
   padding:0px;
   margin:0px;
@@ -35,7 +36,7 @@ export default {
   list-style-type:none;
   background-color: #f8f9fa;
   color:#0b1425;
-  height:43px;
+  height:42px;
   padding:0px;
   margin:0px 0px 1px 0px;
   -webkit-transition:all 0.25s ease-in-out;

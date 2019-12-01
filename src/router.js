@@ -27,44 +27,9 @@ export default new Router({
       component: () => import('./views/Pool.vue') 
     },
     {
-      path: '/calendar',
-      name: 'calendar',
-      component: () => import('./views/Calendar.vue')
-    },
-    {
       path: '/heroes',
       name: 'heroes',
-      component: () => import('./views/Heroes.vue')
-    },
-    {
-      path: '/hero/:id',
-      name: 'hero',
-      component: () => import('./views/Hero.vue')
-    },
-    {
-      path: '/abilities',
-      name: 'abilities',
-      component: () => import('./views/Abilities.vue')
-    },
-    {
-      path: '/ability/:id',
-      name: 'ability',
-      component: () => import('./views/Ability.vue')
-    },
-    {
-      path: '/combos',
-      name: 'combos',
-      component: () => import('./views/Combos.vue')
-    },
-    {
-      path: '/leaderboard',
-      name: 'leaderboard',
-      component: () => import('./views/Leaderboard.vue')
-    },
-    {
-      path: '/draft',
-      name: 'draft',
-      component: () => import('./views/Draft.vue')
+      component: () => import('./views/Heroes.vue') 
     }
   ]
 })
