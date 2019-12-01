@@ -2,19 +2,14 @@
   <div id="app">
     <b-container>
       <header class="top-spacing">
-        <b-navbar toggleable="md" type="dark" variant="secondary" class="rounded">
+        <b-navbar toggleable="md" type="dark" variant="dark" class="rounded">
           <b-navbar-toggle target="nav_collapse"></b-navbar-toggle>
           <b-navbar-brand to="/">[HGV] Ability Drafter</b-navbar-brand>
           <b-collapse is-nav id="nav_collapse">
             <b-navbar-nav class="mr-auto">
               <b-nav-item to="/about">About</b-nav-item>
               <b-nav-item to="/pool">Pool</b-nav-item>
-              <b-nav-item to="/heroes">Heroes</b-nav-item>
-              <b-nav-item to="/abilities">Abilities</b-nav-item>
-              <b-nav-item to="/combos">Combos</b-nav-item>
-              <b-nav-item to="/calendar">Calendar</b-nav-item>
-              <b-nav-item to="/leaderboard">Leaderboard</b-nav-item>
-              <!--<b-nav-item to="/draft">Draft</b-nav-item>-->
+              <!--<b-nav-item to="/heroes">Heroes</b-nav-item>-->
             </b-navbar-nav>
           </b-collapse>
         </b-navbar>

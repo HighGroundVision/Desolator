@@ -1,170 +1,14 @@
 <template>
   <hgv-loading :urls="urls" v-on:loaded="loaded">
-    <div>
-      <h4  class="text-center">Heroes</h4>
-      <hr class="highlighted" />
-    </div>
-    <b-row>
-      <b-col cols="4" lg="3">
-        <div class="text-center">
-          <b-alert variant="info" show>   
-            <p>
-              Search for a hero to unlock additional knowledge!
-            </p>
-          </b-alert>
-          <img src="@/assets/imgs/cluckles-speach.png" class="cluckles-speach" />
-        </div>
-      </b-col>
-      <b-col>
-        <b-form @submit.prevent="findHero">
-          <b-input-group prepend="Search by Hero">
-            <b-form-input type="text" v-model="search"/>
-            <b-input-group-append>
-              <b-button variant="success" @click="findHero">Find</b-button>
-            </b-input-group-append>
-          </b-input-group>
-        </b-form>
-        <br />
-        <ul class="list-unstyled">
-          <template v-for="(value) in results">
-            <li :key="value.id">
-              <img :src="value.image" class="m-1"/>
-              <b-link :to="'/hero/' + value.id">{{value.name}}</b-link>
-            </li>
-          </template>
-        </ul>
-      </b-col>
-    </b-row>
-    <hr class="highlighted" />
-    <div v-if="summary">
-      <p>
-       As we talked about before the win rate dose not give a complete picture.
-       This is way we also include the top 3 heroes ordered by the other metrics.
-      </p>
-      <b-row>
-        <b-col>
-          <h5 class="text-center">Wins</h5>
-          <table class="table table-sm">
-            <template v-for="(value, index) in summary['wins']">
-              <tr :key="index">
-                <td style="width: 35px">
-                  <i v-if="index == 0" class="fas fa-2x fa-award" style="color: #FFD700;" title="1st"></i>
-                  <i v-if="index == 1" class="fas fa-2x fa-award" style="color: #C0C0C0;" title="2nd"></i>
-                  <i v-if="index == 2" class="fas fa-2x fa-award" style="color: #CD7F32;" title="3rd"></i>
-                </td>
-                <td style="width: 35px">
-                  <img :src="value.icon" class="ability-icon-sm"/>
-                </td>
-                <td>
-                  <b-link :to="'/hero/' + value.id">{{value.name}}</b-link>
-                </td>
-                <td>
-                  <span>{{formatNumber(value.wins)}}</span>
-                </td>
-              </tr>
-            </template>
-          </table>
-        </b-col>
-        <b-col>
-          <h5 class="text-center">Picks</h5>
-          <table class="table table-sm">
-            <template v-for="(value, index) in summary['picks']">
-              <tr :key="index">
-                <td style="width: 35px">
-                  <i v-if="index == 0" class="fas fa-2x fa-award" style="color: #FFD700;" title="1st"></i>
-                  <i v-if="index == 1" class="fas fa-2x fa-award" style="color: #C0C0C0;" title="2nd"></i>
-                  <i v-if="index == 2" class="fas fa-2x fa-award" style="color: #CD7F32;" title="3rd"></i>
-                </td>
-                <td style="width: 35px">
-                  <img :src="value.icon" class="ability-icon-sm"/>
-                </td>
-                <td>
-                  <b-link :to="'/hero/' + value.id">{{value.name}}</b-link>
-                </td>
-                <td>
-                  <span>{{formatNumber(value.picks)}}</span>
-                </td>
-              </tr>
-            </template>
-          </table>
-        </b-col>
-        <b-col>
-          <h5 class="text-center">Kills</h5>
-          <table class="table table-sm">
-            <template v-for="(value, index) in summary['kills']">
-              <tr :key="index">
-                <td style="width: 35px">
-                  <i v-if="index == 0" class="fas fa-2x fa-award" style="color: #FFD700;" title="1st"></i>
-                  <i v-if="index == 1" class="fas fa-2x fa-award" style="color: #C0C0C0;" title="2nd"></i>
-                  <i v-if="index == 2" class="fas fa-2x fa-award" style="color: #CD7F32;" title="3rd"></i>
-                </td>
-                <td style="width: 35px">
-                  <img :src="value.icon" class="ability-icon-sm"/>
-                </td>
-                <td>
-                  <b-link :to="'/hero/' + value.id">{{value.name}}</b-link>
-                </td>
-                <td>
-                  <span>{{formatNumber(value.kills)}}</span>
-                </td>
-              </tr>
-            </template>
-          </table>
-        </b-col>
-        <b-col>
-          <h5 class="text-center">KDA</h5>
-          <table class="table table-sm">
-            <template v-for="(value, index) in summary['kda']">
-              <tr :key="index">
-                <td style="width: 35px">
-                  <i v-if="index == 0" class="fas fa-2x fa-award" style="color: #FFD700;" title="1st"></i>
-                  <i v-if="index == 1" class="fas fa-2x fa-award" style="color: #C0C0C0;" title="2nd"></i>
-                  <i v-if="index == 2" class="fas fa-2x fa-award" style="color: #CD7F32;" title="3rd"></i>
-                </td>
-                <td style="width: 35px">
-                  <img :src="value.icon" class="ability-icon-sm"/>
-                </td>
-                <td>
-                  <b-link :to="'/hero/' + value.id">{{value.name}}</b-link>
-                </td>
-                <td>
-                  <span>{{formatDecimal(value.kda)}}</span>
-                </td>
-              </tr>
-            </template>
-          </table>
-        </b-col>
-      </b-row>
-    </div>
-    <hr class="highlighted" />
-    <div>
-      <p>
-        We have charted the heroes <b class="text-info">Win Rate</b> as delta from <b class="text-info">50%</b>.
-        This should provide a clear picture of which heroes are doing better then others. 
-        We have grouped the heroes together by type to make it simpler to compare.
-      </p>
-      <b-card bg-variant="dark">
-        <div class="customChart" id="chartdiv1"></div>
-        <hr />
-        <div class="customChart" id="chartdiv2"></div>
-        <hr />
-        <div class="customChart" id="chartdiv3"></div>
-      </b-card>
-    </div>
-    
-    
+    <div class="customChart" id="chartdiv"></div>
   </hgv-loading>
 </template>
 
 <script>
-import * as am4core from "@amcharts/amcharts4/core";
-import * as am4charts from "@amcharts/amcharts4/charts";
-import am4themes_animated from "@amcharts/amcharts4/themes/animated";
-
-am4core.useTheme(am4themes_animated);
+import axios from 'axios'
 
 export default {
-  name: 'heroes',
+  name: 'pool',
   data () {
     return {
       'urls': ['/static/heroes-chart.json', '/static/summary-heroes.json'],
@@ -186,28 +30,41 @@ export default {
       });
     },
     buildCharts() {
+      let am4charts = this.$am4charts;
+      let am4core = this.$am4core;
 
       var collection = [
         {
-          element: 'chartdiv1',
           data: this.heroes.filter(_ => _.attribute == 1 && _.region == 2),
-          title: "Str Win Rate",
+          title: "Str Heroes",
+          color: "#C63016",
         },
         {
-          element: 'chartdiv2',
           data: this.heroes.filter(_ => _.attribute == 2 && _.region == 2),
-          title: "Agi Win Rate",
+          title: "Agi Heroes",
+          color: "#13B63D",
         },
         {
-          element: 'chartdiv3',
           data: this.heroes.filter(_ => _.attribute == 3 && _.region == 2),
-          title: "Int Win Rate",
+          title: "Int Heroes",
+          color: "#1671C6",
         }
       ];
-      
+
+      // Create chart instance
+      var container = am4core.create("chartdiv", am4core.Container);
+      container.layout = "vertical";
+      container.fixedWidthGrid = false;
+      container.width = am4core.percent(100);
+      container.height = am4core.percent(100);
+
       for (const item of collection) {
         // Create chart instance
-        var chart = am4core.create(item.element, am4charts.XYChart);
+        var chart = container.createChild(am4charts.XYChart);
+        chart.width = am4core.percent(100);
+        chart.height = 200;
+
+        chart.colors.list = [am4core.color(item.color)];
 
         // Add data
         item.data.sort((lhs, rhs) => lhs.name.localeCompare(rhs.name));
@@ -231,6 +88,7 @@ export default {
         valueAxis.max = 0.6;
         valueAxis.strictMinMax = true;
         valueAxis.title.text = item.title;
+        valueAxis.title.rotation = 0;
 
         // formating 
         chart.numberFormatter.numberFormat = "#.0%";
@@ -284,13 +142,9 @@ export default {
 }
 </script>
 
-<!-- Add "scoped" attribute to limit CSS to this component only -->
 <style scoped>
 .customChart {
   width: 100%;
-  height: 200px;
-}
-.card-body {
-  padding: 0px !important;
+  height: 600px;
 }
 </style>
