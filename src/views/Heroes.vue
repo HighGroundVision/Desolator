@@ -11,17 +11,13 @@ export default {
   name: 'pool',
   data () {
     return {
-      'urls': ['/static/heroes-chart.json', '/static/summary-heroes.json'],
+      'urls': ['/static/heroes-chart.json'],
       'heroes': [],
-      'summary': null,
-      'search': null,
-      'results': [],
     };
   },
   methods: {
     loaded(data) {
       this.heroes = data[0];
-      this.summary = data[1];
 
       // allow re-render of DOM so chart elements are ready
       var self = this;
@@ -35,17 +31,17 @@ export default {
 
       var collection = [
         {
-          data: this.heroes.filter(_ => _.attribute == 1 && _.region == 2),
+          data: this.heroes.filter(_ => _.attribute == 1),
           title: "Str Heroes",
           color: "#C63016",
         },
         {
-          data: this.heroes.filter(_ => _.attribute == 2 && _.region == 2),
+          data: this.heroes.filter(_ => _.attribute == 2),
           title: "Agi Heroes",
           color: "#13B63D",
         },
         {
-          data: this.heroes.filter(_ => _.attribute == 3 && _.region == 2),
+          data: this.heroes.filter(_ => _.attribute == 3),
           title: "Int Heroes",
           color: "#1671C6",
         }
@@ -62,7 +58,7 @@ export default {
         // Create chart instance
         var chart = container.createChild(am4charts.XYChart);
         chart.width = am4core.percent(100);
-        chart.height = 200;
+        chart.height = 250;
 
         chart.colors.list = [am4core.color(item.color)];
 
@@ -84,8 +80,8 @@ export default {
         valueAxis.renderer.grid.template.strokeDasharray = "4,4";
         valueAxis.renderer.labels.template.disabled = false;
         valueAxis.baseValue = 0.5;
-        valueAxis.min = 0.4;
-        valueAxis.max = 0.6;
+        valueAxis.min = 0.3;
+        valueAxis.max = 0.7;
         valueAxis.strictMinMax = true;
         valueAxis.title.text = item.title;
         valueAxis.title.rotation = 0;
@@ -107,8 +103,8 @@ export default {
         series.columns.template.propertyFields.stroke = "color";
         series.columns.template.tooltipText = "{categoryX}: [bold]{valueY}[/b]";
         series.columns.template.events.on("hit", function(ev) {
-          var id = ev.target.dataItem.dataContext.id;
-          this.$router.push('/hero/' + id);
+          // var id = ev.target.dataItem.dataContext.id;
+          // this.$router.push('/hero/' + id);
         }, this);
 
         // Add bullets
@@ -125,17 +121,9 @@ export default {
         image.propertyFields.fill = "color";
         image.filters.push(new am4core.DropShadowFilter());
         image.events.on("hit", function(ev) {
-          var id = ev.target.dataItem.dataContext.id;
-          this.$router.push('/hero/' + id);
+          // var id = ev.target.dataItem.dataContext.id;
+          // this.$router.push('/hero/' + id);
         }, this);
-      }
-    },
-    findHero() {
-      if(this.search) {
-        let s = this.search.toLowerCase();
-        this.results = this.heroes.filter(_ => _.region == 0 &&_.name.toLowerCase().includes(s)).slice(0, 5);
-      } else {
-        this.results = [];
       }
     },
   }
@@ -145,6 +133,6 @@ export default {
 <style scoped>
 .customChart {
   width: 100%;
-  height: 600px;
+  height: 725px;
 }
 </style>

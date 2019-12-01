@@ -7,5 +7,5 @@ import am4themes_animated from "@amcharts/amcharts4/themes/animated";
 
 am4core.useTheme(am4themes_material);
 
-Vue.prototype.$am4core = am4charts;
+Vue.prototype.$am4core = am4core;
 Vue.prototype.$am4charts = am4charts;

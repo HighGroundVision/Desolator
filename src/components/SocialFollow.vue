@@ -2,11 +2,11 @@
   <div class="sticky-container">
     <ul class="sticky">
       <li>
-        <i class="fab fa-2x fa-twitter-square text-warning"></i>
+        <i class="fab fa-2x fa-twitter-square text-primary"></i>
         <p><a href="https://twitter.com/DotaHGV/" target="_blank">Follow Us on<br>Twitter</a></p>
       </li>
       <li>
-        <i class="fab fa-2x fa-reddit-square text-warning"></i>
+        <i class="fab fa-2x fa-reddit-square text-danger"></i>
         <p><a href="https://www.reddit.com/r/abilitydraft/" target="_blank">Find Us on<br>Reddit</a></p>
       </li>
     </ul>
