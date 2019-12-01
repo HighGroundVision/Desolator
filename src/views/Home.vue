@@ -1,7 +1,7 @@
 <template>
   <hgv-loading :urls="urls" v-on:loaded="loaded">
     <b-row>
-      <b-col cols="4" lg="3">
+      <b-col cols="3" class="d-none d-lg-block">
         <div class="text-center">
           <b-alert variant="info" show>   
             <strong>Hi, I am Cluckles!</strong>
