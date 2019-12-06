@@ -48,10 +48,12 @@
             Welcome Snapfire and her abilties Scatterblast, Firesnap Cookie, Lil' Shredder and  Mortimer Kisses.
           </p>
           <p>
-            Void Sprit is still in the void for AD players and is not in the draft pool. He joins Earth Spirit, Invoker, Lone Druid, and Morphling as the 5 disabled heroes.
+            Void Sprit is still in the void for AD players and is not in the draft pool. 
+            He joins Earth Spirit, Invoker, Lone Druid, and Morphling as the 5 disabled heroes.
           </p>
           <p>
-            The 7.23 patch added a bunch of new scepter grant abilties these are <span class="text-uppercase"> not </span> enabled don't expect them to work. Check out the <b-link to="/pool">Pool</b-link> page for more details.
+            The 7.23 patch added a bunch of new scepter grant abilties these are <span class="text-uppercase"> not </span> 
+            enabled don't expect them to work. Check out the Pool page for more details.
           </p>
           <p>
             With this new patch we have created a data model that can be capture the connections and history of heroes and abilties. 

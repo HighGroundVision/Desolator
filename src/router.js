@@ -27,6 +27,11 @@ export default new Router({
       component: () => import('./views/Pool.vue') 
     },
     {
+      path: '/timeline',
+      name: 'timeline',
+      component: () => import('./views/Timeline.vue') 
+    },
+    {
       path: '/heroes',
       name: 'heroes',
       component: () => import('./views/Heroes.vue') 
