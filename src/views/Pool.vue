@@ -103,6 +103,8 @@ export default {
           return "Faceless Void's is immunity to Chronosphere.";
         case 119:
           return "Dark Willow's Bedlam & Terrorize are paired."
+        case 83: 
+          return "Tree has his innate Tree Walking which provides HP Regen and Movement Speed";
         default:
           return "";
       }

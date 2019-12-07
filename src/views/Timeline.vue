@@ -133,44 +133,57 @@ export default {
         "name": "No Change",
         "fill": "#ffc107"
       }, {
-        "name": "Positive",
+        "name": "More Matches",
         "fill": "#28a745"
       }, {
-        "name": "Negivate",
+        "name": "Less Matches",
         "fill": "#dc3545"
       }];
     },
-    loadData() {
-      var data = this.world.map(_ => {
-        var date = moment.utc(_.date);
+    setData(source) {
+      let tz = moment.tz.guess();
+
+      var data = source.map(_ => {
+        let tz = moment.tz.guess();
+
+        var date = moment.utc(_.date).tz(tz);
+        // var date = moment.utc(_.date);
         return {
-          hour: date.format("hA"), // hA z
-          day: date.format("ddd"),
+          date: date,
+          hour: date.format("hA z"), // hA z
+          day: date.format("MMM Do"),
           value: _.value
         };
       });
-      
+
+      let first = data[0];
+      if(first) {
+        let date = first.date.clone();
+        for (let h = date.hour(); h > 0; h--) {
+          date.subtract(1, 'hours');
+          data.unshift({
+            date: date.clone(),
+            hour: date.format("hA z"), // hA z
+            day: date.format("MMM Do"),
+            value: 0
+          });
+        }
+      }
+        
       this.chart.data = data;
+    },
+    loadData() {
+      this.setData(this.world);
     },
     changeRegion(item) {
       this.selection = item;
 
       if(item.region_id == -1) {
-        this.loadData();
-        return;
+         this.setData(this.world);
+      } else {
+        let source = this.regions.filter(_ => _.region_id == item.region_id);
+        this.setData(source);
       }
-
-      let source = this.regions.filter(_ => _.region_id == item.region_id);
-      var data = source.map(_ => {
-        var date = moment.utc(_.date);
-        return {
-          hour: date.format("hA"), //hA z
-          day: date.format("ddd"),
-          value: _.value
-        };
-      });
-
-      this.chart.data = data;
     },
   },
 }
