@@ -104,7 +104,7 @@ export default {
         case 119:
           return "Dark Willow's Bedlam & Terrorize are paired."
         case 83: 
-          return "Tree has his innate Nature's Guise which provides HP Regen and Movement Speed";
+          return "Tree's innate ability dose not work.";
         default:
           return "";
       }
