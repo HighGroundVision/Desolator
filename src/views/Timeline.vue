@@ -32,7 +32,7 @@ export default {
   name: 'timeline',
   data () {
     return {
-      'urls': ['/static/regions-summary.json', '/static/region-chart.json', '/static/regions-chart.json'],
+      'urls': ['/static/regions-summary.json', '/static/chart-regions-all.json', '/static/chart-regions-data.json'],
       'chart': null,
       'selection': null,
       'summary': [],
