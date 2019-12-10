@@ -43,24 +43,20 @@ export default {
   methods: {
     loaded(data) {
       this.summary = data[0];
-      this.world = data[1];
-      this.regions = data[2];
+      this.world = this.processData(data[1]);
+      this.regions = this.processData(data[2]);
 
       // allow re-render of DOM so chart elements are ready
       var self = this;
       this.$nextTick(function () {
         self.buildCharts();
-        self.loadData();
+        self.setData(self.world);
       });
     },
     buildCharts() {
       let am4charts = this.$am4charts;
       let am4core = this.$am4core;
-      
-      if(this.chart) {
-        this.chart.dispose();
-      }
-      
+
       this.chart = am4core.create("chartdiv", am4charts.XYChart);
       this.chart.maskBullets = false;
 
@@ -140,44 +136,33 @@ export default {
         "fill": "#dc3545"
       }];
     },
-    setData(source) {
-      let tz = moment.tz.guess();
+    processData(source) {
+      let guess = moment.tz.guess();
+      // let guess = "Europe/Berlin";
 
-      var data = source.map(_ => {
-        let tz = moment.tz.guess();
-
-        var date = moment.utc(_.date).tz(tz);
-        // var date = moment.utc(_.date);
+      let data = source.map(_ => {
+        var date = moment.utc(_.date).tz(guess);
         return {
+          region_id: _.region_id,
           date: date,
-          hour: date.format("hA z"), // hA z
+          hour: date.format("hA z"),
           day: date.format("MMM Do"),
           value: _.value
         };
       });
-
-      let first = data[0];
-      if(first) {
-        let date = first.date.clone();
-        for (let h = date.hour(); h > 0; h--) {
-          date.subtract(1, 'hours');
-          data.unshift({
-            date: date.clone(),
-            hour: date.format("hA z"), // hA z
-            day: date.format("MMM Do"),
-            value: 0
-          });
-        }
-      }
-        
-      this.chart.data = data;
+     
+      return data;
     },
-    loadData() {
-      this.setData(this.world);
+    setData(source) {        
+      let item = source[0];
+      while(item && item.date.hour() > 0) {
+        source.shift();
+        item = source[0];
+      }
+      this.chart.data = source;
     },
     changeRegion(item) {
       this.selection = item;
-
       if(item.region_id == -1) {
          this.setData(this.world);
       } else {
