@@ -84,60 +84,52 @@ export default {
       valueAxis1.renderer.baseGrid.disabled = true;
       valueAxis1.marginLeft = 30;
       valueAxis1.marginRight = 30;
-      valueAxis1.renderer.gridContainer.background.fill = interfaceColors.getFor("alternativeBackground");
-      valueAxis1.renderer.gridContainer.background.fillOpacity = 0.05;
-      valueAxis1.renderer.grid.template.stroke = interfaceColors.getFor("background");
-      valueAxis1.renderer.grid.template.strokeOpacity = 1;
       valueAxis1.title.text = "Win Rate";
-      valueAxis1.renderer.labels.template.disabled = true;
+      // valueAxis1.renderer.labels.template.disabled = true;
       valueAxis1.numberFormatter.numberFormat = "#%";
 
       var series1 = this.chart.series.push(new am4charts.LineSeries());
+      series1.stroke = am4core.color("#9575CD");
+      series1.strokeWidth = 3; 
       series1.dataFields.categoryY = "category";
       series1.dataFields.valueX = "value1";
       series1.xAxis = valueAxis1;
       series1.name = "Win Rate";
       var bullet1 = series1.bullets.push(new am4charts.CircleBullet());
+      bullet1.fill = am4core.color("#9575CD");
       bullet1.tooltipText = "{valueX.value}";
 
       var valueAxis2 = this.chart.xAxes.push(new am4charts.ValueAxis());
       valueAxis2.renderer.baseGrid.disabled = true;
+      valueAxis2.marginLeft = 30;
       valueAxis2.marginRight = 30;
-      valueAxis2.renderer.gridContainer.background.fill = interfaceColors.getFor("alternativeBackground");
-      valueAxis2.renderer.gridContainer.background.fillOpacity = 0.05;
-      valueAxis2.renderer.grid.template.stroke = interfaceColors.getFor("background");
-      valueAxis2.renderer.grid.template.strokeOpacity = 1;
       valueAxis2.title.text = "Pick Priority";
       valueAxis2.renderer.labels.template.disabled = true;
       valueAxis2.cursorTooltipEnabled = false;
 
       var series2 = this.chart.series.push(new am4charts.ColumnSeries());
+      series2.columns.template.stroke = am4core.color("#673AB7");
+      series2.columns.template.fill = am4core.color("#673AB7"); 
       series2.dataFields.categoryY = "category";
       series2.dataFields.valueX = "value2";
       series2.xAxis = valueAxis2;
       series2.name = "Pick Priority";
-      var bullet2 = series2.bullets.push(new am4charts.CircleBullet());
-      bullet2.fillOpacity = 0;
-      bullet2.strokeOpacity = 0;
 
       var valueAxis3 = this.chart.xAxes.push(new am4charts.ValueAxis());
       valueAxis3.renderer.baseGrid.disabled = true;
-      valueAxis3.renderer.gridContainer.background.fill = interfaceColors.getFor("alternativeBackground");
-      valueAxis3.renderer.gridContainer.background.fillOpacity = 0.05;
-      valueAxis3.renderer.grid.template.stroke = interfaceColors.getFor("background");
-      valueAxis3.renderer.grid.template.strokeOpacity = 1;
+      valueAxis3.marginLeft = 30;
       valueAxis3.title.text = "Strength";
       valueAxis3.renderer.labels.template.disabled = true;
       valueAxis3.cursorTooltipEnabled = false;
 
-      var series3 = this.chart.series.push(new am4charts.LineSeries());
+      var series3 = this.chart.series.push(new am4charts.ColumnSeries());
+      series3.columns.template.stroke = am4core.color("#420F8D"); 
+      series3.columns.template.fill = am4core.color("#420F8D"); 
       series3.dataFields.categoryY = "category";
       series3.dataFields.valueX = "value3";
       series3.xAxis = valueAxis3;
       series3.name = "Strength";
-      var bullet3 = series3.bullets.push(new am4charts.CircleBullet());
  
-
     },
     setData(source) {
       var data = [];
@@ -155,7 +147,7 @@ export default {
       } else if(type == 3) {
         data.sort((lhs, rhs) => rhs.most_kills - lhs.most_kills);
       }
-      this.setData(data.slice(0, 100));
+      this.setData(data.slice(0, 25));
     }
   }
 }
@@ -164,6 +156,6 @@ export default {
 <style scoped>
 .customChart {
   width: 100%;
-  height: 3000px;
+  height: 750px;
 }
 </style>
