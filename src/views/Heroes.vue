@@ -5,10 +5,8 @@
 </template>
 
 <script>
-import axios from 'axios'
-
 export default {
-  name: 'pool',
+  name: 'heroes',
   data () {
     return {
       'urls': ['/static/chart-heroes-categories.json', '/static/chart-heroes-data.json'],

@@ -100,7 +100,7 @@ export default {
           } else if(currentValue < lastValue.value) { 
             return am4core.color("#dc3545");
           } else {
-            return fill;  
+            return fill;
           }
         } else {
           return fill;
