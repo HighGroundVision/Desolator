@@ -53,12 +53,16 @@ export default {
       this.chart.bottomAxesContainer.reverseOrder = true;
 
       var categoryAxis = this.chart.yAxes.push(new am4charts.CategoryAxis());
+      categoryAxis.renderer.grid.template.location = 0;
+      categoryAxis.renderer.ticks.template.disabled = true;
+      categoryAxis.renderer.axisFills.template.disabled = true;
       categoryAxis.dataFields.category = "category";
-      categoryAxis.renderer.grid.template.stroke = interfaceColors.getFor("background");
-      categoryAxis.renderer.grid.template.strokeOpacity = 1;
-      categoryAxis.renderer.grid.template.location = 1;
-      categoryAxis.renderer.minGridDistance = 20;
-
+      categoryAxis.renderer.minGridDistance = 15;
+      categoryAxis.renderer.inversed = true;
+      categoryAxis.renderer.inside = false;
+      categoryAxis.renderer.grid.template.location = 0.5;
+      categoryAxis.renderer.grid.template.strokeDasharray = "1,3";
+      
        var image = new am4core.Image();
       image.horizontalCenter = "middle";
       image.width = 20;
@@ -67,7 +71,7 @@ export default {
       image.adapter.add("href", (href, target)=>{
         let category = target.dataItem.category;
         if(category){
-          let cat = this.categories.find(_ => _.name + " (" + _.id + ")" == category)
+          let cat = this.categories.find(_ => _.name == category)
           if(cat) {
             return cat.image;
           } else {
@@ -85,6 +89,10 @@ export default {
       valueAxis1.marginLeft = 30;
       valueAxis1.marginRight = 30;
       valueAxis1.title.text = "Win Rate";
+      valueAxis1.renderer.gridContainer.background.fill = interfaceColors.getFor("alternativeBackground");
+      valueAxis1.renderer.gridContainer.background.fillOpacity = 0.05;
+      valueAxis1.renderer.grid.template.stroke = interfaceColors.getFor("background");
+      valueAxis1.renderer.grid.template.strokeOpacity = 1;
       // valueAxis1.renderer.labels.template.disabled = true;
       valueAxis1.numberFormatter.numberFormat = "#%";
 
@@ -99,42 +107,55 @@ export default {
       bullet1.fill = am4core.color("#9575CD");
       bullet1.tooltipText = "{valueX.value}";
 
+
       var valueAxis2 = this.chart.xAxes.push(new am4charts.ValueAxis());
       valueAxis2.renderer.baseGrid.disabled = true;
       valueAxis2.marginLeft = 30;
       valueAxis2.marginRight = 30;
       valueAxis2.title.text = "Pick Priority";
+      valueAxis2.renderer.gridContainer.background.fill = interfaceColors.getFor("alternativeBackground");
+      valueAxis2.renderer.gridContainer.background.fillOpacity = 0.05;
+      valueAxis2.renderer.grid.template.stroke = interfaceColors.getFor("background");
+      valueAxis2.renderer.grid.template.strokeOpacity = 1;
       valueAxis2.renderer.labels.template.disabled = true;
       valueAxis2.cursorTooltipEnabled = false;
 
-      var series2 = this.chart.series.push(new am4charts.ColumnSeries());
-      series2.columns.template.stroke = am4core.color("#673AB7");
-      series2.columns.template.fill = am4core.color("#673AB7"); 
+      var series2 = this.chart.series.push(new am4charts.LineSeries());
+      series2.stroke =  am4core.color("#673AB7"); 
       series2.dataFields.categoryY = "category";
       series2.dataFields.valueX = "value2";
       series2.xAxis = valueAxis2;
       series2.name = "Pick Priority";
+      var bullet2 = series2.bullets.push(new am4charts.CircleBullet());
+      bullet2.fill = am4core.color("#673AB7");
+      // bullet2.tooltipText = "{valueX.value}";
 
       var valueAxis3 = this.chart.xAxes.push(new am4charts.ValueAxis());
       valueAxis3.renderer.baseGrid.disabled = true;
       valueAxis3.marginLeft = 30;
       valueAxis3.title.text = "Strength";
+      valueAxis3.renderer.gridContainer.background.fill = interfaceColors.getFor("alternativeBackground");
+      valueAxis3.renderer.gridContainer.background.fillOpacity = 0.05;
+      valueAxis3.renderer.grid.template.stroke = interfaceColors.getFor("background");
+      valueAxis3.renderer.grid.template.strokeOpacity = 1;
       valueAxis3.renderer.labels.template.disabled = true;
       valueAxis3.cursorTooltipEnabled = false;
 
-      var series3 = this.chart.series.push(new am4charts.ColumnSeries());
-      series3.columns.template.stroke = am4core.color("#420F8D"); 
-      series3.columns.template.fill = am4core.color("#420F8D"); 
+      var series3 = this.chart.series.push(new am4charts.LineSeries());
+      series3.stroke =  am4core.color("#420F8D"); 
       series3.dataFields.categoryY = "category";
       series3.dataFields.valueX = "value3";
       series3.xAxis = valueAxis3;
       series3.name = "Strength";
+      var bullet3 = series3.bullets.push(new am4charts.CircleBullet());
+      bullet3.fill = am4core.color("#420F8D");
+      // bullet3.tooltipText = "{valueX.value}";
  
     },
     setData(source) {
       var data = [];
       for (const ability of source) {
-        data.push({ category: ability.name + " (" + ability.id + ")", value1: ability.win_rate, value2:ability.draft_order, value3:ability.most_kills });
+        data.push({ category: ability.name, value1: ability.win_rate, value2:ability.draft_order, value3:ability.most_kills });
       }
       this.chart.data = data;
     },
