@@ -48,7 +48,7 @@ export default {
       categoryAxis.dataFields.category = "category";
       categoryAxis.renderer.minGridDistance = 15;
       categoryAxis.renderer.inversed = true;
-      categoryAxis.renderer.inside = true;
+      categoryAxis.renderer.inside = false;
       categoryAxis.renderer.grid.template.location = 0.5;
       categoryAxis.renderer.grid.template.strokeDasharray = "1,3";
 
@@ -106,6 +106,7 @@ export default {
       });
       
       chart.legend = new am4charts.Legend();
+      chart.legend.position = "top";
       chart.legend.data = [{
         "name": "Previous Winrate",
         "fill": "#606060"

@@ -125,6 +125,7 @@ export default {
       hoverState.properties.strokeOpacity = 1;
 
       this.chart.legend = new am4charts.Legend();
+      this.chart.legend.position = "top";
       this.chart.legend.data = [{
         "name": "No Change",
         "fill": "#ffc107"
@@ -138,7 +139,6 @@ export default {
     },
     processData(source) {
       let guess = moment.tz.guess();
-      // let guess = "Europe/Berlin";
 
       let data = source.map(_ => {
         var date = moment.utc(_.date).tz(guess);
@@ -177,6 +177,6 @@ export default {
 <style scoped>
 .customChart {
   width: 100%;
-  height: 725px;
+  height: 900px;
 }
 </style>

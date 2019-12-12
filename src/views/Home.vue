@@ -53,7 +53,7 @@
           </p>
           <p>
             The 7.23 patch added a bunch of new scepter grant abilties these are <span class="text-uppercase"> not </span> 
-            enabled don't expect them to work. Check out the Pool page for more details.
+            enabled don't expect them to work.
           </p>
           <p>
             With this new patch we have created a data model that can be capture the connections and history of heroes and abilties. 

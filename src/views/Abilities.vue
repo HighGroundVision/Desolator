@@ -38,7 +38,7 @@ export default {
       var self = this;
       this.$nextTick(function () {
         self.buildCharts();
-        this.changeSource(1);
+        self.changeSource(1);
       });
     },
     buildCharts() {
@@ -89,22 +89,24 @@ export default {
       valueAxis1.marginLeft = 30;
       valueAxis1.marginRight = 30;
       valueAxis1.title.text = "Win Rate";
+      valueAxis1.title.disabled = true;
       valueAxis1.renderer.gridContainer.background.fill = interfaceColors.getFor("alternativeBackground");
       valueAxis1.renderer.gridContainer.background.fillOpacity = 0.05;
       valueAxis1.renderer.grid.template.stroke = interfaceColors.getFor("background");
       valueAxis1.renderer.grid.template.strokeOpacity = 1;
-      // valueAxis1.renderer.labels.template.disabled = true;
       valueAxis1.numberFormatter.numberFormat = "#%";
+      //valueAxis1.renderer.opposite = true;
 
       var series1 = this.chart.series.push(new am4charts.LineSeries());
-      series1.stroke = am4core.color("#9575CD");
+      series1.stroke = am4core.color("#48036F");
       series1.strokeWidth = 3; 
       series1.dataFields.categoryY = "category";
       series1.dataFields.valueX = "value1";
       series1.xAxis = valueAxis1;
       series1.name = "Win Rate";
+      series1.valign = "top";
       var bullet1 = series1.bullets.push(new am4charts.CircleBullet());
-      bullet1.fill = am4core.color("#9575CD");
+      bullet1.fill = am4core.color("#48036F");
       bullet1.tooltipText = "{valueX.value}";
 
 
@@ -113,44 +115,60 @@ export default {
       valueAxis2.marginLeft = 30;
       valueAxis2.marginRight = 30;
       valueAxis2.title.text = "Pick Priority";
+      valueAxis2.title.disabled = true;
       valueAxis2.renderer.gridContainer.background.fill = interfaceColors.getFor("alternativeBackground");
       valueAxis2.renderer.gridContainer.background.fillOpacity = 0.05;
       valueAxis2.renderer.grid.template.stroke = interfaceColors.getFor("background");
       valueAxis2.renderer.grid.template.strokeOpacity = 1;
       valueAxis2.renderer.labels.template.disabled = true;
       valueAxis2.cursorTooltipEnabled = false;
+      //valueAxis2.renderer.opposite = true;
 
       var series2 = this.chart.series.push(new am4charts.LineSeries());
-      series2.stroke =  am4core.color("#673AB7"); 
+      series2.stroke =  am4core.color("#679B00"); 
       series2.dataFields.categoryY = "category";
       series2.dataFields.valueX = "value2";
       series2.xAxis = valueAxis2;
       series2.name = "Pick Priority";
       var bullet2 = series2.bullets.push(new am4charts.CircleBullet());
-      bullet2.fill = am4core.color("#673AB7");
+      bullet2.fill = am4core.color("#679B00");
       // bullet2.tooltipText = "{valueX.value}";
 
       var valueAxis3 = this.chart.xAxes.push(new am4charts.ValueAxis());
       valueAxis3.renderer.baseGrid.disabled = true;
       valueAxis3.marginLeft = 30;
-      valueAxis3.title.text = "Strength";
+      valueAxis3.title.text = "Most Kills";
+      valueAxis3.title.disabled = true;
       valueAxis3.renderer.gridContainer.background.fill = interfaceColors.getFor("alternativeBackground");
       valueAxis3.renderer.gridContainer.background.fillOpacity = 0.05;
       valueAxis3.renderer.grid.template.stroke = interfaceColors.getFor("background");
       valueAxis3.renderer.grid.template.strokeOpacity = 1;
       valueAxis3.renderer.labels.template.disabled = true;
       valueAxis3.cursorTooltipEnabled = false;
+      //valueAxis3.renderer.opposite = true;
 
       var series3 = this.chart.series.push(new am4charts.LineSeries());
-      series3.stroke =  am4core.color("#420F8D"); 
+      series3.stroke =  am4core.color("#FFA200"); 
       series3.dataFields.categoryY = "category";
       series3.dataFields.valueX = "value3";
       series3.xAxis = valueAxis3;
-      series3.name = "Strength";
+      series3.name = "Most Kills";
       var bullet3 = series3.bullets.push(new am4charts.CircleBullet());
-      bullet3.fill = am4core.color("#420F8D");
+      bullet3.fill = am4core.color("#FFA200");
       // bullet3.tooltipText = "{valueX.value}";
  
+      this.chart.legend = new am4charts.Legend();
+      this.chart.legend.position = "top";
+      this.chart.legend.data = [{
+        "name": "Win Rate",
+        "fill": "#48036F"
+      },{
+        "name": "Pick Priority",
+        "fill": "#679B00"
+      }, {
+        "name": "Most Kills",
+        "fill": "#FFA200"
+      }];
     },
     setData(source) {
       var data = [];
