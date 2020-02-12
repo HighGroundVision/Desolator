@@ -9,7 +9,7 @@
             <b-navbar-nav class="mr-auto">
               <b-nav-item to="/about">About</b-nav-item>
               <b-nav-item to="/pool">Pool</b-nav-item>
-              <b-nav-item to="/timeline">Timeline</b-nav-item>
+              <!--<b-nav-item to="/timeline">Timeline</b-nav-item>-->
               <b-nav-item to="/heroes">Heroes</b-nav-item>
               <b-nav-item to="/abilities">Abilities</b-nav-item>
             </b-navbar-nav>
@@ -18,7 +18,7 @@
       </header>
     </b-container>
     <b-container class="top-spacing">
-      <router-view></router-view>
+      <router-view :key="$route.fullPath"></router-view>
       <hgv-social-follow />
       <hr class="highlighted" />
       <footer>

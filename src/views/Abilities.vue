@@ -5,7 +5,7 @@
         <b-dropdown id="axis" text="Select Axis to Sort" size="sm" block>
           <b-dropdown-item @click="changeSource(1)">Win Rate</b-dropdown-item>
           <b-dropdown-item @click="changeSource(2)">Pick Priority</b-dropdown-item>
-          <b-dropdown-item @click="changeSource(3)">Strength</b-dropdown-item>
+          <b-dropdown-item @click="changeSource(3)">Most Kills</b-dropdown-item>
         </b-dropdown>
       </b-col>
     </b-row>
