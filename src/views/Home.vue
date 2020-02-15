@@ -45,11 +45,10 @@
             The Outlanders update has added a new Hero! 
           </p>
           <p>
-            Welcome Snapfire and her abilties Scatterblast, Firesnap Cookie, Lil' Shredder and  Mortimer Kisses.
+            Welcome Snapfire and her abilties Scatterblast, Firesnap Cookie, Lil' Shredder and Mortimer Kisses.
           </p>
           <p>
-            Void Sprit is still in the void for AD players and is not in the draft pool. 
-            He joins Earth Spirit, Invoker, Lone Druid, and Morphling as the 5 disabled heroes.
+            Finaly Welcome, Void Sprit and his abilties Aether Remnant, Dissimilate, Resonant Pulse and Astral Step
           </p>
           <p>
             The 7.23 patch added a bunch of new scepter grant abilties these are <span class="text-uppercase"> not </span> 
