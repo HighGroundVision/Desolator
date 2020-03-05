@@ -15,31 +15,6 @@ export default new Router({
       path: '/',
       name: 'home',
       component: Home
-    },
-    {
-      path: '/about',
-      name: 'about',
-      component: () => import('./views/About.vue') 
-    },
-    {
-      path: '/pool',
-      name: 'pool',
-      component: () => import('./views/Pool.vue') 
-    },
-    {
-      path: '/timeline',
-      name: 'timeline',
-      component: () => import('./views/Timeline.vue') 
-    },
-    {
-      path: '/heroes',
-      name: 'heroes',
-      component: () => import('./views/Heroes.vue') 
-    },
-    {
-      path: '/abilities',
-      name: 'abilities',
-      component: () => import('./views/Abilities.vue') 
     }
   ]
 })

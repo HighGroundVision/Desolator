@@ -1,37 +1,64 @@
 <template>
   <div id="app">
-    <b-container>
-      <header class="top-spacing">
-        <b-navbar toggleable="md" type="dark" variant="dark" class="rounded">
-          <b-navbar-toggle target="nav_collapse"></b-navbar-toggle>
-          <b-navbar-brand to="/">[HGV] Ability Drafter</b-navbar-brand>
-          <b-collapse is-nav id="nav_collapse">
-            <b-navbar-nav class="mr-auto">
-              <b-nav-item to="/about">About</b-nav-item>
-              <b-nav-item to="/pool">Pool</b-nav-item>
-              <!--<b-nav-item to="/timeline">Timeline</b-nav-item>-->
-              <b-nav-item to="/heroes">Heroes</b-nav-item>
-              <b-nav-item to="/abilities">Abilities</b-nav-item>
-            </b-navbar-nav>
-          </b-collapse>
-        </b-navbar>
-      </header>
-    </b-container>
-    <b-container class="top-spacing">
-      <router-view :key="$route.fullPath"></router-view>
-      <hgv-social-follow />
-      <hr class="highlighted" />
-      <footer>
-        <div class="text-center">
-          <p>&copy; 2019 - <a href="https://hgv-tango.azurewebsites.net/" target="_blank">High Ground Vision</a></p>
-        </div>
-      </footer>
-    </b-container>
+    <!-- Header -->
+    <header id="header">
+      <nav class="left">
+        <a href="#menu"><span>Menu</span></a>
+      </nav>
+      <img src="/favicon.ico" style="height: 35px; padding-right: 5px;"/>
+      <a href="/" class="logo">High Ground Vision</a>
+      <nav class="right">
+        <a href="#" class="">
+          <img src="/static/images/sits_01.png" />
+        </a>
+      </nav>
+    </header>
+
+		<!-- Menu -->
+    <nav id="menu">
+      <ul class="links">
+        <li><a href="/">Home</a></li>
+        <li><span>(What Works)</span> <a href="/">Pool</a></li>
+        <li><span>(Numbers)</span> <a href="/">Heroes</a></li>
+        <li><span>(More Numbers)</span> <a href="/">Abilities</a></li>
+        <li><span>(Regional Leaderboards)</span> <a href="/">Latter</a></li>
+        <li><span>(Regional Peek Times)</span> <a href="/">Calendar</a></li>
+        <li><span>(Drafting Assistant)</span> <a href="/">Drafter</a></li>
+        <li><span>(Personalized Numbers)</span> <a href="/">Profile </a></li>
+      </ul>
+      <div style="text-align:center">
+        <img src="/static/images/cluckles.png" />
+        <br />
+        <span>Hi, I am Cluckles. Ability Draft is hard game mode to understand and it is challenging to become a drafting master but luckly I am here to help!</span>
+      </div>
+      <br />
+      <ul class="actions vertical">
+        <li><a href="#" class="button fit">Login</a></li>
+      </ul>
+    </nav>
+
+		<router-view :key="$route.fullPath"></router-view>
+
+		<!-- Footer -->
+    <footer id="footer">
+      <div class="inner">
+        <h2>Get In Touch</h2>
+        <ul class="actions">
+          <li><i class="fab fa-twitter"></i> <a href="https://twitter.com/dotahgv" target="_blank"> @DotaHGV</a></li>
+          <li><i class="fab fa-reddit-alien"></i> <a href="https://www.reddit.com/r/Abilitydraft/" target="_blank"> r/AbilityDraft</a></li>
+          <li><i class="fab fa-discord"></i> <a href="https://discord.gg/sSFjabV" target="_blank"> Chat on Discord</a></li>
+          <li><i class="fab fa-github"></i> <a href="https://github.com/HighGroundVision" target="_blank"> We love Open Source</a></li>
+        </ul>
+      </div>
+      <div class="copyright">
+        &copy; 2020 <a href="https://hgv-tango.azurewebsites.net/" target="_blank">High Ground Vision</a>
+        <br />
+        Template by <a href="https://templated.co" target="_blank">TEMPLATED</a>
+      </div>
+    </footer>
+    
   </div>
 </template>
 
 <style>
-.top-spacing {
-  padding-top: 10px;
-}
 </style>
