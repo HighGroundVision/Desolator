@@ -3,14 +3,12 @@
     <!-- Header -->
     <header id="header">
       <nav class="left">
-        <a href="#menu"><span>Menu</span></a>
+        <a href="#menu"></a>
       </nav>
       <img src="/favicon.ico" style="height: 35px; padding-right: 5px;"/>
       <a href="/" class="logo">High Ground Vision</a>
       <nav class="right">
-        <a href="#" class="">
-          <img src="/static/images/sits_01.png" />
-        </a>
+        <a href="#" class="button fit">Login</a>
       </nav>
     </header>
 
@@ -31,10 +29,6 @@
         <br />
         <span>Hi, I am Cluckles. Ability Draft is hard game mode to understand and it is challenging to become a drafting master but luckly I am here to help!</span>
       </div>
-      <br />
-      <ul class="actions vertical">
-        <li><a href="#" class="button fit">Login</a></li>
-      </ul>
     </nav>
 
 		<router-view :key="$route.fullPath"></router-view>

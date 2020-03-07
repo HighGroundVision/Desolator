@@ -41,27 +41,27 @@
       <div class="inner flex flex-3">
         <div class="flex-item left">
           <div>
-            <h3>Pool</h3>
+            <h3><router-link to="/pool">Pool</router-link></h3>
             <p>A list has been complied of all the heroes and abilities that are enabled in AD. As well which Aghanim's Scepter upgrades are enabled.</p>
           </div>
           <div>
-            <h3>Heros</h3>
+            <h3><router-link to="/heroes">Heroes</router-link></h3>
             <p>See how the base models stack up against each other with details on each hero including ability combos.</p>
           </div>
         </div>
         <div class="flex-item">
           <div class="center" style="width:100%;">
-            <h2>Statistics!</h2>
+            <h2 style="color: #f6755e;">Statistics!</h2>
             <i class="fas fa-chart-line icon-header" style="font-size:15em;"></i>
           </div>
         </div>
         <div class="flex-item right">
           <div>
-            <h3>Abilities</h3>
+            <h3><router-link to="/abilities">Abilities</router-link></h3>
             <p>Study up on which abilities are strongest, highest priority and make powerful combos.</p>
           </div>
           <div>
-            <h3>Profile</h3>
+            <h3><router-link to="/profile">Profile</router-link></h3>
             <p>Get a bunch of infomation personalized for you including history, combatants, and ranking.</p>
           </div>
         </div>
@@ -75,7 +75,7 @@
             <i class="fas fa-list-ol icon-header"></i>
           </div>
           <div class="content">
-            <h3 style="text-align: center;">Latter</h3>
+            <h3 class="center"><router-link to="/latter">Latter</router-link></h3>
             <p>
               See how you rank against others in your region. 
               We have created a Elo based rating system that is updated for each <span title="Those that have 'Expose Public Match Data' settings checked">public player</span>.
@@ -92,7 +92,7 @@
             <i class="fas fa-globe-asia icon-header"></i>
           </div>
           <div class="content">
-            <h3 class="center">Regions</h3>
+            <h3 class="center"><router-link to="/regions">Regions</router-link></h3>
             <p>Answers to questions you never knew you wanted.</p>
             <p>
               Which region is most popular? 
@@ -107,7 +107,7 @@
             <i class="fas fa-drafting-compass icon-header"></i>
           </div>
           <div class="content">
-            <h3 class="center">Drafter</h3>
+            <h3 class="center"><router-link to="/drafter">Drafter</router-link></h3>
             <p>
               For those that need alittle assitant with drafting don't worry Cluckles will guide you.
             </p>
