@@ -4,13 +4,16 @@
     <section id="banner">
       <div class="content">
         <h1>Ability Draft</h1>
+        <br />
         <p>
-          Alot like a normal match of Dota<br />
-          But draft your <b>Abilities</b> not your Hero!<br />
-          And you thought remebering 100+ heroes was hard try 400+ abilities...
+          <b>
+            Alot like a normal match of Dota but draft your Abilities not your Hero!<br />
+            You thought remebering 100+ heroes when drafting was hardtry 400+ abilities...<br />
+          </b>
         </p>
+        <br />
         <ul class="actions">
-          <li><a href="#one" class="button scrolly">Get Started</a></li>
+          <li><router-link  class="button scrolly" to="/guide">Get Started Guide</router-link></li>
         </ul>
       </div>
     </section>
@@ -55,7 +58,7 @@
         <div class="flex-item right">
           <div>
             <h3>Abilities</h3>
-            <p>Study up on which abilities are strongest and highest priority and which abilities make powerful combos.</p>
+            <p>Study up on which abilities are strongest, highest priority and make powerful combos.</p>
           </div>
           <div>
             <h3>Profile</h3>
@@ -109,7 +112,7 @@
               For those that need alittle assitant with drafting don't worry Cluckles will guide you.
             </p>
             <p>
-              You can now filter the combos specifically for your hero and limit the abilities to only those in the draft.
+              You can filter the combos specifically for your hero and limit the abilities to only those in the draft.
             </p>
             <p class="center">
               <b>Coming Soon!</b>

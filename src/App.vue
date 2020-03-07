@@ -18,13 +18,13 @@
     <nav id="menu">
       <ul class="links">
         <li><a href="/">Home</a></li>
-        <li><span>(What Works)</span> <a href="/">Pool</a></li>
-        <li><span>(Numbers)</span> <a href="/">Heroes</a></li>
-        <li><span>(More Numbers)</span> <a href="/">Abilities</a></li>
-        <li><span>(Regional Leaderboards)</span> <a href="/">Latter</a></li>
-        <li><span>(Regional Peek Times)</span> <a href="/">Calendar</a></li>
-        <li><span>(Drafting Assistant)</span> <a href="/">Drafter</a></li>
-        <li><span>(Personalized Numbers)</span> <a href="/">Profile </a></li>
+        <li><span>(What Works)</span> <router-link to="/pool">Pool</router-link> </li>
+        <li><span>(Numbers)</span> <router-link to="/heroes">Heroes</router-link> </li>
+        <li><span>(More Numbers)</span> <router-link to="/abilities">Abilities</router-link> </li>
+        <li><span>(Regional Leaderboards)</span> <router-link to="/latter">Latter</router-link> </li>
+        <li><span>(Regional Peek Times)</span> <router-link to="/regions">Regions</router-link> </li>
+        <li><span>(Drafting Assistant)</span> <router-link to="/drafter">Drafter</router-link> </li>
+        <li><span>(Personalized Numbers)</span> <router-link to="/profile">Profile</router-link> </li>
       </ul>
       <div style="text-align:center">
         <img src="/static/images/cluckles.png" />
