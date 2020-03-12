@@ -5,15 +5,22 @@
       <nav class="left">
         <a href="#menu"></a>
       </nav>
-      <img src="/favicon.ico" style="height: 35px; padding-right: 5px;"/>
+      <img class="logo-icon" src="/favicon.ico" style=""/>
       <a href="/" class="logo">High Ground Vision</a>
+      <!--
       <nav class="right">
         <a href="#" class="button fit">Login</a>
       </nav>
+      -->
     </header>
 
 		<!-- Menu -->
     <nav id="menu">
+      <div style="text-align:center">
+        <img src="/static/images/cluckles.png" />
+        <br />
+        <span>Hi, I am Cluckles. Ability Draft is hard game mode to understand and it is challenging to become a drafting master but luckly I am here to help!</span>
+      </div>
       <ul class="links">
         <li><a href="/">Home</a></li>
         <li><span>(What Works)</span> <router-link to="/pool">Pool</router-link> </li>
@@ -24,11 +31,6 @@
         <li><span>(Drafting Assistant)</span> <router-link to="/drafter">Drafter</router-link> </li>
         <li><span>(Personalized Numbers)</span> <router-link to="/profile">Profile</router-link> </li>
       </ul>
-      <div style="text-align:center">
-        <img src="/static/images/cluckles.png" />
-        <br />
-        <span>Hi, I am Cluckles. Ability Draft is hard game mode to understand and it is challenging to become a drafting master but luckly I am here to help!</span>
-      </div>
     </nav>
 
 		<router-view :key="$route.fullPath"></router-view>
@@ -45,7 +47,13 @@
         </ul>
       </div>
       <div class="copyright">
-        &copy; 2020 <a href="https://hgv-tango.azurewebsites.net/" target="_blank">High Ground Vision</a>
+        <div class="image round">
+          <a href="https://hgv-tango.azurewebsites.net/" target="_blank">
+            <img src="/static/images/wards.jpg" />
+          </a>
+        </div>
+        <br />
+        &copy; 2020 High Ground Vision
         <br />
         Template by <a href="https://templated.co" target="_blank">TEMPLATED</a>
       </div>
