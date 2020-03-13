@@ -19,7 +19,8 @@
       <div class="inner">
         <h2>News & Updates</h2>
         <ul style="list-style:none">
-          <li>11 Mar 2020 [7.24]: Enabled Morphling, but without attribute shift or morph</li>
+          <li>12 Mar 2020 [7.24]: Added Lone Druid, as well as Spirit Bear, Spirit Link, Savage Roar and True Form</li>
+          <li>09 Mar 2020 [7.24]: Enabled Morphling, but without attribute shift or morph</li>
           <li>03 Feb 2020: Sign up for Ability Draft Challenge League</li>
           <li>26 Jan 2020 [7.24]: Void Spirit has now been enabled</li>
           <li>26 Nov 2019 [7.23]: Outlanders are here but only Snapfire is in the pool</li>

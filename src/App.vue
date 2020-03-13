@@ -22,7 +22,7 @@
         <span>Hi, I am Cluckles. Ability Draft is hard game mode to understand and it is challenging to become a drafting master but luckly I am here to help!</span>
       </div>
       <ul class="links">
-        <li><a href="/">Home</a></li>
+        <li><router-link to="/guide">Guide</router-link></li>
         <li><span>(What Works)</span> <router-link to="/pool">Pool</router-link> </li>
         <li><span>(Numbers)</span> <router-link to="/heroes">Heroes</router-link> </li>
         <li><span>(More Numbers)</span> <router-link to="/abilities">Abilities</router-link> </li>
