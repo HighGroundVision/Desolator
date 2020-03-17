@@ -18,34 +18,31 @@
             </p>
           </div>
           <hr />
-          <div v-if="loading">
-            <div style="text-align:center;">
-              <i class="fas fa-spinner fa-spin" style="font-size:5em;"></i>
-            </div>
-          </div>
-          <div v-else>
-            <h2>Enabled Heroes</h2>
-            <div class="row">
-               <template v-for="(hero) in pool">
-                <div v-bind:key="hero.id" class="3u 12u$(medium)">
-                  <img :src="hero.image" v-bind:class="{ disabled: !hero.enabled }" style="width:100%; border-radius: 15px 15px 0px 0px;" />
-                  <h3 v-if="hero.enabled && hero.abilities.filter(_ => _.enabled).length >= 4" class="hero-name" style="background-color: #f6755e; color: white;">{{hero.name}}</h3>
-                  <h3 v-else-if="hero.enabled" class="hero-name"  style="background-color: #25a2c3; color: white;">{{hero.name}}</h3>
-                  <h3 v-else class="hero-name" style="color: #727a82;">{{hero.name}}</h3>
-                  <div v-if="hero.enabled" style="height: 250px;">
-                    <template v-for="(ability) in hero.abilities">
-                      <div v-bind:key="ability.id" class="truncate" style="line-height: 25px; padding: 5px;">
-                        <img v-if="ability.hasUpgrade" class="ability-icon-xs" src="/static/images/aghanims_scepter.svg" style="float:right;" />
-                        <img v-bind:class="{ disabled: !ability.enabled }" class="ability-icon-xs" :src="ability.image" style="border-radius: 5px; vertical-align: middle;"  />
-                        <span v-bind:class="{ disabled: !ability.enabled, 'ability-ultimate': ability.isUltimate }"  class="ability-name">{{ability.name}}</span>
-                      </div>
-                    </template>
+          <loader :loading="loading">
+            <div>
+              <h2>Enabled Heroes</h2>
+              <div class="row">
+                <template v-for="(hero) in pool">
+                  <div v-bind:key="hero.id" class="3u 12u$(medium)">
+                    <img :src="hero.image" v-bind:class="{ disabled: !hero.enabled }" style="width:100%; border-radius: 15px 15px 0px 0px;" />
+                    <h3 v-if="hero.enabled && hero.primary" class="hero-name" style="background-color: #f6755e; color: white;"><router-link :to="'/hero/'+hero.id">{{hero.name}}</router-link></h3>
+                    <h3 v-else-if="hero.enabled" class="hero-name"  style="background-color: #25a2c3; color: white;">{{hero.name}}</h3>
+                    <h3 v-else class="hero-name" style="color: #727a82;">{{hero.name}}</h3>
+                    <div v-if="hero.enabled" style="height: 250px;">
+                      <template v-for="(ability) in hero.abilities">
+                        <div v-bind:key="ability.id" class="truncate" style="line-height: 25px; padding: 5px;">
+                          <img v-if="ability.hasUpgrade" class="ability-icon-xs" src="/static/images/aghanims_scepter.svg" style="float:right;" />
+                          <img v-bind:class="{ disabled: !ability.enabled }" class="ability-icon-xs" :src="ability.image" style="border-radius: 5px; vertical-align: middle;"  />
+                          <span v-bind:class="{ disabled: !ability.enabled, 'ability-ultimate': ability.isUltimate }"  class="ability-name">{{ability.name}}</span>
+                        </div>
+                      </template>
+                    </div>
                   </div>
-                  
-                </div>
-              </template>
-						</div>
-          </div>
+                </template>
+              </div>
+            </div>
+          </loader>
+          
         </div>
       </section>
   </div>
@@ -56,23 +53,22 @@ import axios from 'axios'
 
 export default {
   name: 'pool',
-  data () {
-    
+  data () {  
     return {
       loading: false,
       pool: []
     }
   },
   created() {
-      this.loadData()
+    this.loadData()
   },
   methods: {
-      async  loadData() {
-          this.loading = true
-          var response = await axios.get("https://tarrasque.azurewebsites.net/api/draft/pool")
-          this.pool = response.data
-          this.loading = false
-      }
+    async  loadData() {
+      this.loading = true
+      var response = await axios.get("https://tarrasque.azurewebsites.net/api/draft/pool")
+      this.pool = response.data
+      this.loading = false
+    }
   }
 }
 </script>

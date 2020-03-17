@@ -15,16 +15,16 @@
       </div>
     </section>
 
-    <section class="wrapper style1 special">
+    <section class="wrapper style1 ">
       <div class="inner">
         <h2>News & Updates</h2>
         <ul style="list-style:none">
-          <li>12 Mar 2020 [7.24]: Added Lone Druid, as well as Spirit Bear, Spirit Link, Savage Roar and True Form</li>
-          <li>09 Mar 2020 [7.24]: Enabled Morphling, but without attribute shift or morph</li>
-          <li>03 Feb 2020: Sign up for Ability Draft Challenge League</li>
-          <li>26 Jan 2020 [7.24]: Void Spirit has now been enabled</li>
-          <li>26 Nov 2019 [7.23]: Outlanders are here but only Snapfire is in the pool</li>
-          <li>24 Sep 2019: Look for HGV @ Midas Mode 2.0</li>
+          <li><span class="w3-tag w3-round w3-light-blue" style="width:80px;">7.24c</span> 12 Mar 2020: Added Lone Druid, as well as Spirit Bear, Spirit Link, Savage Roar and True Form</li>
+          <li><span class="w3-tag w3-round w3-light-blue" style="width:80px;">7.24b</span> 09 Mar 2020: Enabled Morphling, but without attribute shift or morph</li>
+          <li><span class="w3-tag w3-round w3-light-blue" style="width:80px;"></span> 03 Feb 2020: Sign up for Ability Draft Challenge League</li>
+          <li><span class="w3-tag w3-round w3-light-blue" style="width:80px;">7.24a</span> 26 Jan 2020: Void Spirit has now been enabled</li>
+          <li><span class="w3-tag w3-round w3-light-blue" style="width:80px;">7.23</span> 26 Nov 2019: Outlanders are here but only Snapfire is in the pool</li>
+          <li><span class="w3-tag w3-round w3-light-blue" style="width:80px;"></span> 24 Sep 2019: Look for HGV @ Midas Mode 2.0</li>
         </ul>
         <p v-if="construction">
           <b><span class="icon fa-bullhorn"></span> We are currently rebuilding the systems that run this web application.</b>
@@ -69,7 +69,7 @@
 
     <section class="wrapper">
       <div class="inner flex flex-3">
-        <div class="flex-item box">
+        <div class="flex-item box w3-card">
           <div class="center">
             <i class="fas fa-list-ol icon-header"></i>
           </div>
@@ -84,7 +84,7 @@
             </p>
           </div>
         </div>
-        <div class="flex-item box">
+        <div class="flex-item box w3-card">
           <div style="text-align:center;">
             <i class="fas fa-globe-americas icon-header"></i>
             <i class="fas fa-globe-europe icon-header"></i>
@@ -101,7 +101,7 @@
             </p>
           </div>
         </div>
-        <div class="flex-item box">
+        <div class="flex-item box w3-card">
           <div class="center">
             <i class="fas fa-drafting-compass icon-header"></i>
           </div>
@@ -131,6 +131,9 @@ export default {
 
 <!-- Add "scoped" attribute to limit CSS to this component only -->
 <style scoped>
+li:not(:last-child) {
+    margin-bottom: 5px;
+}
 .center {
   text-align:center;
 }
