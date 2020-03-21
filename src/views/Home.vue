@@ -3,15 +3,30 @@
     <!-- Banner -->
     <section id="banner">
       <div class="content">
-        <h1>Ability Draft</h1>
-        <b>
-          Alot like a normal match of Dota but draft your Abilities not your Hero!<br />
-          You thought remebering 100+ heroes when drafting was hard try 400+ abilities...<br />
-        </b>
-        <br />
-        <ul class="actions">
-          <li><router-link  class="button scrolly" to="/guide">Get Started Guide</router-link></li>
-        </ul>
+        <div class="flex flex-3">
+          <div class="flex-item left">
+          </div>
+          <div class="flex-item">
+            <div style="text-align:center">
+              <img src="/static/images/cluckles.png" />
+              <br />
+              <b>Hi, I am Cluckles.</b>
+              <br />
+              <b>
+                Ability Draft is hard game mode to understand. 
+                Its a lot like a normal match of Dota but things are… rarely as they seem.
+                In this mode you draft your Abilities not your Hero.
+                It is challenging to become a drafting master but luckily I am here to help!
+              </b>
+            </div>
+            <br />
+            <ul class="actions">
+              <li><router-link  class="button scrolly" to="/guide">Get Started Guide</router-link></li>
+            </ul>
+          </div>
+          <div class="flex-item right">
+          </div>
+        </div>
       </div>
     </section>
 
@@ -19,6 +34,7 @@
       <div class="inner">
         <h2>News & Updates</h2>
         <ul style="list-style:none">
+          <li><span class="w3-tag w3-round w3-light-blue" style="width:80px;">7.25</span> 17 Mar 2020: Gameplay Update 7.25</li>
           <li><span class="w3-tag w3-round w3-light-blue" style="width:80px;">7.24c</span> 12 Mar 2020: Added Lone Druid, as well as Spirit Bear, Spirit Link, Savage Roar and True Form</li>
           <li><span class="w3-tag w3-round w3-light-blue" style="width:80px;">7.24b</span> 09 Mar 2020: Enabled Morphling, but without attribute shift or morph</li>
           <li><span class="w3-tag w3-round w3-light-blue" style="width:80px;"></span> 03 Feb 2020: Sign up for Ability Draft Challenge League</li>
@@ -27,11 +43,12 @@
           <li><span class="w3-tag w3-round w3-light-blue" style="width:80px;"></span> 24 Sep 2019: Look for HGV @ Midas Mode 2.0</li>
         </ul>
         <p v-if="construction">
-          <b><span class="icon fa-bullhorn"></span> We are currently rebuilding the systems that run this web application.</b>
+          <b><i class="fas fa-bullhorn"></i> We are currently rebuilding the systems that run this web application.</b>
           <br />
           Our continuous deployment process means that this site will be updated as we push out new features. 
           You are welcome to use the site and the new features. 
           Some features maybe unstable/incomplete and maybe removed in the future.
+          We will remove this alert when the work is complete.
         </p>
       </div>
     </section>
@@ -61,7 +78,7 @@
           </div>
           <div>
             <h3><router-link to="/profile">Profile</router-link></h3>
-            <p>Get a bunch of infomation personalized for you including history, combatants, and ranking.</p>
+            <p>Get a bunch of information personalized for you including history, combatants, and ranking.</p>
           </div>
         </div>
       </div>
@@ -74,13 +91,14 @@
             <i class="fas fa-list-ol icon-header"></i>
           </div>
           <div class="content">
-            <h3 class="center"><router-link to="/latter">Latter</router-link></h3>
+            <h3 class="center"><router-link to="/ladder">Ladder</router-link></h3>
             <p>
               See how you rank against others in your region. 
               We have created a Elo based rating system that is updated for each <span title="Those that have 'Expose Public Match Data' settings checked">public player</span>.
             </p>
             <p>
-              As this feature is new it will take some time before the rankings are correctly disturbed as there was no way to seed the players. So all players start at the default calibration.
+              As this feature is new it will take some time before the rankings are correctly disturbed as there was no way to seed the players. 
+              So all players start at the default calibration.
             </p>
           </div>
         </div>
@@ -108,7 +126,7 @@
           <div class="content">
             <h3 class="center"><router-link to="/drafter">Drafter</router-link></h3>
             <p>
-              For those that need alittle assitant with drafting don't worry Cluckles will guide you.
+              For those that need a little assistance with drafting don't worry Cluckles will guide you.
             </p>
             <p>
               You can filter the combos specifically for your hero and limit the abilities to only those in the draft.
@@ -124,7 +142,7 @@
 export default {
   name: 'home',
   data () {
-    return { construction: false }
+    return { construction: true }
   }
 }
 </script>

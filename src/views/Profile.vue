@@ -13,9 +13,10 @@
                 <img :src="details.avatar" style="float:right; height: 64px;" />
                 <h2>{{details.persona}}</h2>
             </div>
+            <hr />
             <h3>Regions</h3>
             <p>
-              Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Purus viverra accumsan in nisl nisi scelerisque eu ultrices. Vitae ultricies leo integer malesuada nunc vel risus commodo viverra. Quis risus sed vulputate odio. Orci phasellus egestas tellus rutrum tellus pellentesque eu. 
+              Purus viverra accumsan in nisl nisi scelerisque eu ultrices. Vitae ultricies leo integer malesuada nunc vel risus commodo viverra. Quis risus sed vulputate odio. Orci phasellus egestas tellus rutrum tellus pellentesque eu. 
             </p>
             <div class="w3-row-padding">
               <template v-for="(item) in details.summaries">
@@ -32,7 +33,9 @@
                       <h4 style="margin: 0;">
                         {{item.regionName}}
                       </h4>
-                      <b>Ranking: </b><span>{{Math.round(item.ranking)}}</span>
+                      <b>Rating: </b><span>{{Math.round(item.ranking)}}</span> | 
+                      <b v-if="item.delta > 0" class="w3-text-red">-{{Math.round(item.delta)}}</b>
+                      <i v-else class="fas fa-crown" style="color: gold;" title="Top of the Ladder"></i>
                       <br />
                       <b>Matches: </b><span>{{item.total}}</span>
                       <br />
@@ -42,54 +45,60 @@
                 </div>
               </template>
             </div>
-            <br />
+            <hr />
             <h3>History</h3>
             <p>
-              Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Purus viverra accumsan in nisl nisi scelerisque eu ultrices. Vitae ultricies leo integer malesuada nunc vel risus commodo viverra. Quis risus sed vulputate odio. Orci phasellus egestas tellus rutrum tellus pellentesque eu. 
+              Vitae ultricies leo integer malesuada nunc vel risus commodo viverra. Quis risus sed vulputate odio. Orci phasellus egestas tellus rutrum tellus pellentesque eu. 
             </p>
-            <div class="table-wrapper">
+            <div class="table-wrapper" > <!-- style="max-height: 400px; overflow-y: auto;" -->
               <table>
                 <thead>
                   <tr>
                     <th>Match</th>
                     <th>Date</th>
                     <th>Hero</th>
-                    <th>Abilites</th>
+                    <th>Abilities</th>
                   </tr>
                 </thead>
-                <template v-for="(item) in details.history">
-                  <tbody v-bind:key="item.matchId">
-                    <tr v-bind:class="{ 'w3-pale-green': item.victory, 'w3-pale-red': !item.victory }"> 
-                      <td>
-                        <a :href="'https://www.opendota.com/matches/' +  item.matchId" target="_blank">{{item.matchId}}</a>
-                      </td>
-                      <td>
-                        <span :title="formateDate(item.date)">{{humizeDate(item.date)}}</span>
-                      </td>
-                      <td>
-                        <router-link :to="'/hero/' + item.hero.id">
-                          <img :src="item.hero.image" :title="item.hero.name" />
+                <tbody>
+                <template v-for="(item) in summarizeHistory ? details.history.slice(0,10) :  details.history">
+                  <tr v-bind:key="item.matchId" v-bind:class="{ 'w3-pale-green': item.victory, 'w3-pale-red': !item.victory }"> 
+                    <td>
+                      <a :href="'https://www.opendota.com/matches/' +  item.matchId" target="_blank">{{item.matchId}}</a>
+                    </td>
+                    <td>
+                      <span :title="formateDate(item.date)">{{humizeDate(item.date)}}</span>
+                    </td>
+                    <td>
+                      <router-link :to="'/hero/' + item.hero.id">
+                        <img :src="item.hero.image" :title="item.hero.name" />
+                      </router-link>
+                    </td>
+                    <td>
+                      <template v-for="(ability) in item.abilities">
+                        <div v-bind:key="ability.id" style="display: inline-block; margin: 2px;">
+                        <router-link :to="'/ability/' + ability.id">
+                          <img class="ability-icon-xs w3-round" :src="ability.image" :title="ability.name" />
                         </router-link>
-                      </td>
-                      <td>
-                         <template v-for="(ability) in item.abilities">
-                           <div v-bind:key="ability.id" style="display: inline-block; margin: 2px;">
-                            <router-link :to="'/ability/' + ability.id">
-                              <img class="ability-icon-xs w3-round" :src="ability.image" :title="ability.name" />
-                            </router-link>
-                           </div>
-                         </template>
-                      </td>
-                     
-                    </tr>
-                  </tbody>
+                        </div>
+                      </template>
+                    </td>
+                  </tr>
                 </template>
+                </tbody>
               </table>
+              <div class="w3-center">
+                <button v-if="summarizeHistory" @click="summarizeHistory = false" class="button alt small">More...</button>
+              </div>
             </div>
+            <hr />
             <h3>Combatants</h3>
             <p>
-              Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Purus viverra accumsan in nisl nisi scelerisque eu ultrices. Vitae ultricies leo integer malesuada nunc vel risus commodo viverra. Quis risus sed vulputate odio. Orci phasellus egestas tellus rutrum tellus pellentesque eu. Tellus in hac habitasse platea dictumst vestibulum rhoncus. Orci porta non pulvinar neque laoreet suspendisse interdum consectetur. Donec et odio pellentesque diam volutpat commodo. 
+              Purus viverra accumsan in nisl nisi scelerisque eu ultrices. Vitae ultricies leo integer malesuada nunc vel risus commodo viverra. Quis risus sed vulputate odio. Orci phasellus egestas tellus rutrum tellus pellentesque eu. 
             </p>
+            <div style="text-align:center;">
+              <img src="/static/images/soon.png" />
+            </div>
           </loader>
         </div>
       </section>
@@ -104,8 +113,10 @@ export default {
   name: 'profile',
   data () {
     return {
+      profile: false,
       loading: false,
       details: {},
+      summarizeHistory: true,
     }
   },
   created() {
@@ -114,21 +125,39 @@ export default {
   },
   methods: {
     fetchAccount() {
-      var id =  this.$route.params.id
+      let id =  this.$route.params.id
       if(id != undefined)
+      {
+        this.profile = false
         return id
+      }
 
-      var accountId = localStorage.getItem("accountId");
+      let accountId = localStorage.getItem("accountId");
       if(accountId != undefined)
+      {
+        this.profile = true
         return accountId
-
+      }
+      
       this.$router.push({ name: 'login' });
     },
     async loadData(id) {
       this.loading = true
-      var response = await axios.get("https://tarrasque.azurewebsites.net/api/player/details/" + id)
+      let response = await axios.get("https://tarrasque.azurewebsites.net/api/player/details/" + id)
       this.details = response.data
+      this.summarizeHistory = this.details.history.length > 10
+      this.setRegion();
       this.loading = false
+    },
+    setRegion() {
+      if(!this.profile)
+        return
+
+      if(this.details.summaries.length == 0 )
+        return
+
+      let regionId = this.details.summaries[0].regionId;
+      localStorage.setItem("regionId", regionId);
     },
     formateDate(date) {
       return moment(date).format("dddd, MMMM Do YYYY, h:mm A")
@@ -142,6 +171,10 @@ export default {
 
 <!-- Add "scoped" attribute to limit CSS to this component only -->
 <style scoped>
+hr  {
+  color: orange;
+  border: 1px  solid orange;
+}
 .icon-location {
   font-size:3em;
   padding: 10px;

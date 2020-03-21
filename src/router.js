@@ -53,10 +53,10 @@ export default new Router({
                 import ('./views/Ability.vue')
         },
         {
-            path: '/latter',
-            name: 'latter',
+            path: '/ladder',
+            name: 'ladder',
             component: () =>
-                import ('./views/Latter.vue')
+                import ('./views/Ladder.vue')
         },
         {
             path: '/regions',

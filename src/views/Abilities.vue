@@ -11,18 +11,19 @@
           <loader :loading="loading">
             <h2>Top Abilities</h2>
             <p>
-              Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Purus viverra accumsan in nisl nisi scelerisque eu ultrices. Vitae ultricies leo integer malesuada nunc vel risus commodo viverra. Quis risus sed vulputate odio. Orci phasellus egestas tellus rutrum tellus pellentesque eu. Tellus in hac habitasse platea dictumst vestibulum rhoncus. Orci porta non pulvinar neque laoreet suspendisse interdum consectetur. Donec et odio pellentesque diam volutpat commodo. Diam maecenas sed enim ut sem viverra aliquet eget. Ultrices tincidunt arcu non sodales neque sodales ut etiam sit. In fermentum et sollicitudin ac. Purus gravida quis blandit turpis cursus in hac habitasse. Egestas egestas fringilla phasellus faucibus scelerisque. Mauris sit amet massa vitae. Ornare massa eget egestas purus.
+               These are ability drafts top abilities.
+               While others may rise and fall with the meta these abilities have stood the test of time.
             </p>
             <div class="w3-row-padding">
               <template v-for="(item) in topAbilities">
-                <div v-bind:key="item.id" class="w3-col s12 m6 l4 w3-padding-small">
+                <div v-bind:key="item.id" class="w3-col s12 m6 l3 w3-padding-small">
                   <div class="w3-card w3-row w3-padding">
                     <div class="w3-col" style="width:64px;">
                       <img class="ability-icon-s" :src="item.image"  />
                     </div>
                     <div class="w3-rest w3-padding-small">
-                      <b style="line-height: 28px; color:#25a2c3;">
-                        <router-link style="text-decoration: none;" :to="'/ability/' + item.id">{{item.name}}</router-link>
+                      <b style="color:#25a2c3;">
+                        <router-link class="title-short" :to="'/ability/' + item.id">{{item.name}}</router-link>
                       </b>
                       <div class="w3-border w3-center w3-round">
                         <div :style="'background-color:#f6755e;height:28px;width:'+ Math.round(item.total.winRate * 100)+'%'">
@@ -37,18 +38,20 @@
             <br />
             <h2>Priority Abilities</h2>
             <p>
-              Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Purus viverra accumsan in nisl nisi scelerisque eu ultrices. Vitae ultricies leo integer malesuada nunc vel risus commodo viverra. Quis risus sed vulputate odio. Orci phasellus egestas tellus rutrum tellus pellentesque eu. Tellus in hac habitasse platea dictumst vestibulum rhoncus. Orci porta non pulvinar neque laoreet suspendisse interdum consectetur. Donec et odio pellentesque diam volutpat commodo. Diam maecenas sed enim ut sem viverra aliquet eget. Ultrices tincidunt arcu non sodales neque sodales ut etiam sit. In fermentum et sollicitudin ac. Purus gravida quis blandit turpis cursus in hac habitasse. Egestas egestas fringilla phasellus faucibus scelerisque. Mauris sit amet massa vitae. Ornare massa eget egestas purus.
+              Using some cleaver math we are able to deuced the drafting order for abilities. 
+              Since this is based on fuzzy math we are calling this Pick Priority which is a indication of which abilities players are picking first.
+              As you can see just cause people think an ability is 1st pick  worthy dose not mean it has a high win rate.
             </p>
             <div class="w3-row-padding">
               <template v-for="(item) in priorityAbilities">
-                <div v-bind:key="item.id" class="w3-col s12 m6 l4 w3-padding-small">
+                <div v-bind:key="item.id" class="w3-col s12 m6 l3 w3-padding-small">
                   <div class="w3-card w3-row w3-padding">
                     <div class="w3-col" style="width:64px;">
                       <img class="ability-icon-s" :src="item.image"  />
                     </div>
                     <div class="w3-rest w3-padding-small">
-                      <b style="line-height: 28px; color:#25a2c3;">
-                        <router-link style="text-decoration: none;" :to="'/ability/' + item.id">{{item.name}}</router-link>
+                      <b style="color:#25a2c3;">
+                        <router-link class="title-short" :to="'/ability/' + item.id">{{item.name}}</router-link>
                       </b>
                       <div class="w3-border w3-center w3-round">
                         <div :style="'background-color:#f6755e;height:28px;width:'+ Math.round(item.total.winRate * 100)+'%'">
@@ -63,18 +66,21 @@
             <br />
             <h2>Ancestry Abilities</h2>
             <p>
-              Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Purus viverra accumsan in nisl nisi scelerisque eu ultrices. Vitae ultricies leo integer malesuada nunc vel risus commodo viverra. Quis risus sed vulputate odio. Orci phasellus egestas tellus rutrum tellus pellentesque eu. Tellus in hac habitasse platea dictumst vestibulum rhoncus. Orci porta non pulvinar neque laoreet suspendisse interdum consectetur. Donec et odio pellentesque diam volutpat commodo. Diam maecenas sed enim ut sem viverra aliquet eget. Ultrices tincidunt arcu non sodales neque sodales ut etiam sit. In fermentum et sollicitudin ac. Purus gravida quis blandit turpis cursus in hac habitasse. Egestas egestas fringilla phasellus faucibus scelerisque. Mauris sit amet massa vitae. Ornare massa eget egestas purus.
+              Some things are just better together like SUNSfan and syndereN or peanut butter and jam but 'beware things are… rarely as they seem'.
+              Below are abilities that players felt paired well with the source hero. 
+              This could be because of a talent, limited imagination or a panic pick (don't judge we have all been there).
+              However as you can see some of these abilities do not have a very high win rate.
             </p>
             <div class="w3-row-padding">
               <template v-for="(item) in ancestryAbilities">
-                <div v-bind:key="item.id" class="w3-col s12 m6 l4 w3-padding-small">
+                <div v-bind:key="item.id" class="w3-col s12 m6 l3 w3-padding-small">
                   <div class="w3-card w3-row w3-padding">
                     <div class="w3-col" style="width:64px;">
                       <img class="ability-icon-s" :src="item.image"  />
                     </div>
                     <div class="w3-rest w3-padding-small">
-                      <b style="line-height: 28px; color:#25a2c3;">
-                        <router-link style="text-decoration: none;" :to="'/ability/' + item.id">{{item.name}}</router-link>
+                      <b style="color:#25a2c3;">
+                        <router-link class="title-short" :to="'/ability/' + item.id">{{item.name}}</router-link>
                       </b>
                         <div class="w3-border w3-center w3-round">
                         <div :style="'background-color:#f6755e;height:28px;width:'+ Math.round(item.total.winRate * 100)+'%'">
@@ -89,7 +95,13 @@
             <br />
             <h2>Abilities</h2>
             <p>
-              Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Purus viverra accumsan in nisl nisi scelerisque eu ultrices. Vitae ultricies leo integer malesuada nunc vel risus commodo viverra. Quis risus sed vulputate odio. Orci phasellus egestas tellus rutrum tellus pellentesque eu. Tellus in hac habitasse platea dictumst vestibulum rhoncus. Orci porta non pulvinar neque laoreet suspendisse interdum consectetur. Donec et odio pellentesque diam volutpat commodo. Diam maecenas sed enim ut sem viverra aliquet eget. Ultrices tincidunt arcu non sodales neque sodales ut etiam sit. In fermentum et sollicitudin ac. Purus gravida quis blandit turpis cursus in hac habitasse. Egestas egestas fringilla phasellus faucibus scelerisque. Mauris sit amet massa vitae. Ornare massa eget egestas purus.
+              We have charted the abilities current week win rate and with their pervious week.
+              So you can see how each ability compare to each other.
+              Also how the meta for each ability is changing week to week or in response to a patch.
+            </p>
+            <p>
+              The chart bellow list all the active abilities in order of highest win rate.
+              It has dumbbells that connect the <b>Previous</b> week and the <b style="color: #f6755e">Current</b> week.
             </p>
             <div class="chart" ref="chart"></div>
           </loader>
@@ -125,13 +137,15 @@ export default {
       self.abilities = response.data
 
       self.abilities.sort((a,b) => b.total.winRate - a.total.winRate)
-      self.topAbilities = self.abilities.slice(0,9);
+      self.topAbilities = self.abilities.slice(0,24);
 
-      self.abilities.sort((a,b) => b.total.priority - a.total.priority)
-      self.priorityAbilities = self.abilities.slice(0,9);
+      self.abilities.sort((a,b) => b.current.priority - a.current.priority)
+      self.priorityAbilities = self.abilities.slice(0,24);
+      self.priorityAbilities.sort((a,b) => b.total.winRate - a.total.winRate)
 
-      self.abilities.sort((a,b) => b.total.ancestry - a.total.ancestry)
-      self.ancestryAbilities = self.abilities.slice(0,9);
+      self.abilities.sort((a,b) => b.current.ancestry - a.current.ancestry)
+      self.ancestryAbilities = self.abilities.slice(0,24);
+      self.ancestryAbilities.sort((a,b) => b.total.winRate - a.total.winRate)
 
       self.abilities.sort((a,b) => b.current.winRate - a.current.winRate)
 
@@ -153,7 +167,7 @@ export default {
           id: item.id,
           category: item.name,
           open: item.current.winRate,
-          close: item.current.winRate - 0.01
+          close: item.previous.winRate
         });
       }
 
@@ -231,10 +245,6 @@ export default {
           fill: "#f6755e"
         }
       ];
-
-      chart.scrollbarY = new am4core.Scrollbar();
-      categoryAxis.start = 0;
-      categoryAxis.end = 0.07;
     }
   }
 }
@@ -244,7 +254,7 @@ export default {
 <style scoped>
 .chart {
   width: 100%;
-  height: 900px;
+  height: 9000px;
 }
 .ability-icon-s
 {
@@ -255,6 +265,16 @@ export default {
 {
   width: 30px;
   height: 30px;
+}
+.title-short {
+  white-space: nowrap; 
+  width: 100px; 
+  overflow: hidden;
+  text-overflow: ellipsis;
+  text-decoration: none;
+}
+.title-short:hover {
+  overflow: visible;
 }
 </style>
 

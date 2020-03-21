@@ -13,7 +13,8 @@
               We have complied a list of all the heroes and abilities that are enabled in AD.
               Some abilities of heroes are <b>Disabled</b> and highlighted as such, this includes scepter upgrades.
               Abilities marked by <img class="ability-icon-xs" src="/static/images/aghanims_scepter.svg" /> are upgraded or granted by Aghanim's Scepter.
-              <b style="color: #f6755e;">Class A</b> heroes have four active abilities while <b style="color: #25a2c3;">Class B</b> heroes will have less then four. 
+              Only abilities granted by an ultimate are currently enabled.
+              <b style="color: #f6755e;">Class A</b> heroes have four enabled abilities while <b style="color: #25a2c3;">Class B</b> heroes will have less then four. 
               No more then one Class B hero will appear in the draft pool at once limiting the number of potential combinations.
             </p>
           </div>
@@ -31,8 +32,8 @@
                     <div v-if="hero.enabled" style="height: 250px;">
                       <template v-for="(ability) in hero.abilities">
                         <div v-bind:key="ability.id" class="truncate" style="line-height: 25px; padding: 5px;">
-                          <img v-if="ability.hasUpgrade" class="ability-icon-xs" src="/static/images/aghanims_scepter.svg" style="float:right;" />
                           <img v-bind:class="{ disabled: !ability.enabled }" class="ability-icon-xs" :src="ability.image" style="border-radius: 5px; vertical-align: middle;"  />
+                          <img v-if="ability.hasUpgrade" class="ability-icon-xs" src="/static/images/aghanims_scepter.svg" style="vertical-align: middle;" />
                           <span v-bind:class="{ disabled: !ability.enabled, 'ability-ultimate': ability.isUltimate }"  class="ability-name">{{ability.name}}</span>
                         </div>
                       </template>

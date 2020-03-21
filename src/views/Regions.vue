@@ -10,19 +10,24 @@
         <div class="inner">
           <h2>Regions</h2>
           <p>
-            Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Purus viverra accumsan in nisl nisi scelerisque eu ultrices. Vitae ultricies leo integer malesuada nunc vel risus commodo viverra. Quis risus sed vulputate odio. Orci phasellus egestas tellus rutrum tellus pellentesque eu. Tellus in hac habitasse platea dictumst vestibulum rhoncus. Orci porta non pulvinar neque laoreet suspendisse interdum consectetur. Donec et odio pellentesque diam volutpat commodo. Diam maecenas sed enim ut sem viverra aliquet eget. Ultrices tincidunt arcu non sodales neque sodales ut etiam sit. In fermentum et sollicitudin ac. Purus gravida quis blandit turpis cursus in hac habitasse. Egestas egestas fringilla phasellus faucibus scelerisque. Mauris sit amet massa vitae. Ornare massa eget egestas purus.
+            Where in the world are people playing Ability Draft?
+            These are the regional totals and are reset ever few patches.
           </p>
           <loader :loading="loadingRegions">
             <div id="chartRegions" class="chart" ref="chartRegions"></div>
           </loader>
+          <br />
           <h2>Timeline</h2>
           <p>
-            Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Purus viverra accumsan in nisl nisi scelerisque eu ultrices. Vitae ultricies leo integer malesuada nunc vel risus commodo viverra. Quis risus sed vulputate odio. Orci phasellus egestas tellus rutrum tellus pellentesque eu. Tellus in hac habitasse platea dictumst vestibulum rhoncus. Orci porta non pulvinar neque laoreet suspendisse interdum consectetur. Donec et odio pellentesque diam volutpat commodo. Diam maecenas sed enim ut sem viverra aliquet eget. Ultrices tincidunt arcu non sodales neque sodales ut etiam sit. In fermentum et sollicitudin ac. Purus gravida quis blandit turpis cursus in hac habitasse. Egestas egestas fringilla phasellus faucibus scelerisque. Mauris sit amet massa vitae. Ornare massa eget egestas purus.
+            When are people playing Ability Draft in your region?
+            We track every match and have broken it down by region, date and hour.
+            Select a region to find out more.
           </p>
           <div class="w3-content">
             <h4>Select Region</h4>
             <div class="select-wrapper">
               <select name="region" id="region" v-model="region" @change="changeRegion">
+                <option  :value="0"> Select Region </option>
                 <template v-for="(item) in regions">
                   <option v-bind:key="item.id" :value="item.id">{{item.name}} </option>
                 </template>
@@ -40,16 +45,19 @@
 
 <script>
 import axios from "axios";
+import * as moment from 'moment';
 import { am4core, am4charts, am4maps, worldLow } from "@/plugins/amcharts-vue";
 
 export default {
   name: 'regions',
   data() {
+    let regionId = localStorage.getItem("regionId")
+    regionId = regionId == undefined ? 0 : regionId
     return {
       loadingRegions: true,
-      loadingHistory: true,
+      loadingHistory: false,
       regions: [],
-      region: 2,
+      region: regionId,
       history: {},
     }
   },
@@ -70,9 +78,32 @@ export default {
 		  })
     },
     async loadDataHistory() {
+      if(this.region == 0)
+        return
+        
       this.loadingHistory = true
       let response = await axios.get("https://tarrasque.azurewebsites.net/api/region/" + this.region + "/history")
-      this.history = response.data
+      
+      var history = response.data
+      let data = []
+      for (const key in history) {
+        if (history.hasOwnProperty(key)) {
+          const value = history[key]
+          let date = moment.utc(key, "YYYY-MM-DD:HH")
+          date.local()
+          data.push({
+            hour: date.format("h a"),
+            weekday: date.format("MMM Do"),
+            value: value,
+          });
+        }
+      }
+
+      if(data[0].hour != "12 am")  {
+        data = data.filter(_ => _.weekday != data[0].weekday)
+      }
+
+      this.history = data
       this.loadingHistory = false
 
       let self = this
@@ -92,6 +123,7 @@ export default {
       yAxis.dataFields.category = "weekday"
       xAxis.renderer.minGridDistance = 40
       xAxis.dataFields.category = "hour"
+      xAxis.renderer.labels.template.rotation = 45;
 
       xAxis.renderer.grid.template.disabled = true
       yAxis.renderer.grid.template.disabled = true
@@ -133,20 +165,7 @@ export default {
       var hoverState = bullet.states.create("hover")
       hoverState.properties.strokeOpacity = 1
 
-      let data = []
-      for (const key in this.history) {
-        if (this.history.hasOwnProperty(key)) {
-          const value = this.history[key]
-          var parts = key.split(":")
-          data.push({
-            hour: parts[1],
-            weekday: parts[0],
-            value: value,
-          });
-        }
-      }
-
-      chart.data = data
+      chart.data = this.history
     },
     makeChartRegions() {
       let self = this
@@ -208,7 +227,6 @@ export default {
       })
 
       imageTemplate.adapter.add("longitude", function(longitude, target) {
-        debugger;
         return target.dataItem.dataContext.longitude;
       })
 

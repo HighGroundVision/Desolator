@@ -104,18 +104,22 @@
             <template v-for="(item) in hero.combos">
               <div v-bind:key="item.id" class="w3-col s12 m6 l4 w3-padding-small">
                 <div class="w3-card w3-row w3-padding">
+                  <div style="float: right;">
+                    <span class="w3-badge" style="background-color: #25a2c3">{{item.picks}}</span>
+                  </div>
                   <div class="w3-col" style="width:64px;">
                     <img class="ability-icon-s" :src="item.image"  />
                   </div>
                   <div class="w3-rest w3-padding-small">
                     <b style="line-height: 28px; color:#25a2c3;">
-                      <router-link style="text-decoration: none;" :to="'/ability/' + item.id">{{item.name}}</router-link>
+                      <router-link class="truncate" :to="'/ability/' + item.id">{{item.name}}</router-link>
                     </b>
                     <div class="w3-border w3-center  w3-round">
                       <div :style="'background-color:#f6755e;height:28px;width:'+ Math.round(item.winRate * 100)+'%'">
                         <b>{{Math.round(item.winRate * 100)}}%</b>
                       </div>
                     </div>
+                    
                   </div>
                 </div>
               </div>
@@ -223,5 +227,12 @@ export default {
 {
   width: 30px;
   height: 30px;
+}
+.truncate {
+  width: 200px;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  text-decoration: none;
 }
 </style>
