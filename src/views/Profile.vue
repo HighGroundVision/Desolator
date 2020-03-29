@@ -10,13 +10,20 @@
         <div class="inner">
           <loader :loading="loading">
             <div style="line-height: 64px;">
-                <img :src="details.avatar" style="float:right; height: 64px;" />
+                <img :src="details.avatar" class="avatar" style="float:right;" />
                 <h2>{{details.persona}}</h2>
             </div>
             <hr />
             <h3>Regions</h3>
             <p>
-              Purus viverra accumsan in nisl nisi scelerisque eu ultrices. Vitae ultricies leo integer malesuada nunc vel risus commodo viverra. Quis risus sed vulputate odio. Orci phasellus egestas tellus rutrum tellus pellentesque eu. 
+              We summarize the matches in each region played in. 
+              This means the player will have a rank in each region and we include the delta from the maximum rank in this region.
+              We also added the total matches played in each region and its delta from the maximum.
+              As well computed the win rate for each region.
+            </p>
+            <p>
+              If the player has a green <i class="fas fa-check-circle w3-text-green" title="Calibrated"></i> then they are calibrated in that region.
+              When the player has more then minimum limit of matches in a region they are calibrated and they will be eligible for the leaderboard in that region.
             </p>
             <div class="w3-row-padding">
               <template v-for="(item) in details.summaries">
@@ -34,10 +41,10 @@
                         {{item.regionName}}
                       </h4>
                       <b>Rating: </b><span>{{Math.round(item.ranking)}}</span> | 
-                      <b v-if="item.delta > 0" class="w3-text-red">-{{Math.round(item.delta)}}</b>
+                      <b v-if="item.deltaRaking > 0" title="Delta from max ranking">-{{Math.round(item.deltaRaking)}}</b>
                       <i v-else class="fas fa-crown" style="color: gold;" title="Top of the Ladder"></i>
                       <br />
-                      <b>Matches: </b><span>{{item.total}}</span>
+                      <b>Matches: </b><span>{{item.total}}</span> | <b title="Delta from max matches">-{{item.deltaTotal}}</b>
                       <br />
                       <b>Win Rate: </b><span>{{Math.round(item.winRate* 100)}}%</span>
                     </div>
@@ -48,26 +55,36 @@
             <hr />
             <h3>History</h3>
             <p>
-              Vitae ultricies leo integer malesuada nunc vel risus commodo viverra. Quis risus sed vulputate odio. Orci phasellus egestas tellus rutrum tellus pellentesque eu. 
+              The history of the players most recent matches.
+              We include basic match details and the players draft with a link to details match statistics provided by <a href="https://www.opendota.com/">OpenDota</a>.
+              We have also included the public combatants for each match and their draft.
             </p>
-            <div class="table-wrapper" > <!-- style="max-height: 400px; overflow-y: auto;" -->
-              <table>
-                <thead>
-                  <tr>
-                    <th>Match</th>
-                    <th>Date</th>
-                    <th>Hero</th>
-                    <th>Abilities</th>
-                  </tr>
-                </thead>
-                <tbody>
-                <template v-for="(item) in summarizeHistory ? details.history.slice(0,10) :  details.history">
-                  <tr v-bind:key="item.matchId" v-bind:class="{ 'w3-pale-green': item.victory, 'w3-pale-red': !item.victory }"> 
+            <div>
+              <table class="w3-table w3-bordered">
+                <template v-for="(item) in history">
+                  <tr v-bind:key="item.matchId" class="w3-pale-blue">
                     <td>
-                      <a :href="'https://www.opendota.com/matches/' +  item.matchId" target="_blank">{{item.matchId}}</a>
+                      <b :title="formateDate(item.date)">{{humizeDate(item.date)}}</b>
                     </td>
                     <td>
-                      <span :title="formateDate(item.date)">{{humizeDate(item.date)}}</span>
+                      <span v-if="item.victory" class="w3-tag w3-padding-small w3-round-large w3-center w3-pale-green" >Victory</span>
+                      <span v-else class="w3-tag w3-padding-small w3-round-large w3-center w3-pale-red" >Defeat </span>
+                    </td>
+                    <td>
+                      <b><a :href="'https://www.opendota.com/matches/' +  item.matchId" target="_blank" style="text-decoration: none;">{{item.matchId}}</a></b>
+                    </td>
+                    <td>
+                    </td>
+                    <td>
+                    </td>
+                  </tr>
+                  <tr v-bind:key="item.matchId + ':' + details.accountId">
+                    <td>
+                    </td>
+                    <td>
+                    </td>
+                    <td>
+                      <b>{{details.persona}}</b>
                     </td>
                     <td>
                       <router-link :to="'/hero/' + item.hero.id">
@@ -77,16 +94,68 @@
                     <td>
                       <template v-for="(ability) in item.abilities">
                         <div v-bind:key="ability.id" style="display: inline-block; margin: 2px;">
-                        <router-link :to="'/ability/' + ability.id">
+                        <router-link :to="'/ability/' + ability.id" >
                           <img class="ability-icon-xs w3-round" :src="ability.image" :title="ability.name" />
                         </router-link>
                         </div>
                       </template>
                     </td>
                   </tr>
+                  <template v-for="(combatant) in item.with">
+                    <tr v-bind:key="item.matchId + ':' + combatant.accountId">
+                      <td>
+                      </td>
+                      <td>
+                        <span>With</span>
+                      </td>
+                      <td>
+                        <b>{{combatant.persona}}</b>
+                      </td>
+                      <td>
+                        <router-link :to="'/hero/' + combatant.hero.id">
+                          <img :src="combatant.hero.image" :title="combatant.hero.name" />
+                        </router-link>
+                      </td>
+                      <td>
+                        <template v-for="(ability) in combatant.abilities">
+                          <div v-bind:key="ability.id" style="display: inline-block; margin: 2px;">
+                          <router-link :to="'/ability/' + ability.id" >
+                            <img class="ability-icon-xs w3-round" :src="ability.image" :title="ability.name" />
+                          </router-link>
+                          </div>
+                        </template>
+                      </td>
+                    </tr>
+                  </template>
+                  <template v-for="(combatant) in item.against">
+                    <tr v-bind:key="item.matchId + ':' + combatant.accountId">
+                      <td>
+                      </td>
+                      <td>
+                        <span>Against</span>
+                      </td>
+                      <td>
+                        <b>{{combatant.persona}}</b>
+                      </td>
+                      <td>
+                        <router-link :to="'/hero/' + combatant.hero.id">
+                          <img :src="combatant.hero.image" :title="combatant.hero.name" />
+                        </router-link>
+                      </td>
+                      <td>
+                        <template v-for="(ability) in combatant.abilities">
+                          <div v-bind:key="ability.id" style="display: inline-block; margin: 2px;">
+                          <router-link :to="'/ability/' + ability.id" >
+                            <img class="ability-icon-xs w3-round" :src="ability.image" :title="ability.name" />
+                          </router-link>
+                          </div>
+                        </template>
+                      </td>
+                    </tr>
+                  </template>
                 </template>
-                </tbody>
               </table>
+              <br />
               <div class="w3-center">
                 <button v-if="summarizeHistory" @click="summarizeHistory = false" class="button alt small">More...</button>
               </div>
@@ -94,10 +163,40 @@
             <hr />
             <h3>Combatants</h3>
             <p>
-              Purus viverra accumsan in nisl nisi scelerisque eu ultrices. Vitae ultricies leo integer malesuada nunc vel risus commodo viverra. Quis risus sed vulputate odio. Orci phasellus egestas tellus rutrum tellus pellentesque eu. 
+              We have summarized each public combatant from the players matches.
+              The combatant's name will appear in <b class="w3-text-green">green</b> if they are friends with the player.
+              We have included the total number of matches player together and break down of matches player with and against.
             </p>
-            <div style="text-align:center;">
-              <img src="/static/images/soon.png" />
+            <div>
+              <div class="w3-row-padding">
+                <template v-for="(item) in details.combatants">
+                  <div v-bind:key="item.accountId" class="w3-col s6 w3-padding">
+                    <div class="w3-card w3-padding">
+                      <div class="w3-row">
+                        <div class="w3-col" style="width:70px;">
+                          <img :src="item.avatar" class="avatar" />
+                        </div>
+                        <div class="w3-rest">
+                          <div style="float:right;">
+                            <div>
+                              <b>Total</b> <span>{{item.total}}</span>
+                            </div>
+                            <div>
+                              <b>With</b> <span>{{item.victoriesWith}} / {{item.with}}</span>
+                            </div>
+                            <div>
+                              <b>Against</b> <span>{{item.victoriesAgainst}} / {{item.against}}</span>
+                            </div>
+                          </div>
+                          <router-link :to="'/player/' + item.accountId" style="text-decoration: none;">
+                            <h3 v-bind:class="{'w3-text-green': item.friend}">{{item.persona}}</h3> 
+                          </router-link>                     
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </template>
+              </div>
             </div>
           </loader>
         </div>
@@ -122,6 +221,14 @@ export default {
   created() {
     var id = this.fetchAccount()
     this.loadData(id);
+  },
+  computed: {
+    history: function () {
+      if(this.details.history)
+        return this.summarizeHistory ? this.details.history.slice(0,5) : this.details.history
+      else 
+        return []
+    }
   },
   methods: {
     fetchAccount() {
@@ -164,6 +271,9 @@ export default {
     },
     humizeDate(date) {
       return moment(date).fromNow()
+    },
+    showCombatants() {
+
     }
   }
 }
@@ -171,6 +281,9 @@ export default {
 
 <!-- Add "scoped" attribute to limit CSS to this component only -->
 <style scoped>
+ul {
+  list-style: none;
+}
 hr  {
   color: orange;
   border: 1px  solid orange;
@@ -184,6 +297,9 @@ hr  {
 {
   width: 32px;
   height: 32px;
+}
+.avatar {
+  height: 64px;
 }
 </style>
 

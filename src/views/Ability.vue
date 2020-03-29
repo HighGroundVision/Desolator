@@ -27,9 +27,18 @@
           </div>
           <br />
           <h3>Hero Combos</h3>
-          <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Purus viverra accumsan in nisl nisi scelerisque eu ultrices. Vitae ultricies leo integer malesuada nunc vel risus commodo viverra. Quis risus sed vulputate odio. Orci phasellus egestas tellus rutrum tellus pellentesque eu. Tellus in hac habitasse platea dictumst vestibulum rhoncus. Orci porta non pulvinar neque laoreet suspendisse interdum consectetur. Donec et odio pellentesque diam volutpat commodo. Diam maecenas sed enim ut sem viverra aliquet eget. Ultrices tincidunt arcu non sodales neque sodales ut etiam sit. In fermentum et sollicitudin ac. Purus gravida quis blandit turpis cursus in hac habitasse. Egestas egestas fringilla phasellus faucibus scelerisque. Mauris sit amet massa vitae. Ornare massa eget egestas purus.</p>
+          <p>
+            A lot of people when talking about Ability Draft will focus on the ability combos as if they apply to all heroes equal.
+            This is far from true and therefore we believe it is important to highlight heroes pair well with this ability. 
+          </p>
+          <div class="w3-center">
+            <button @click="sortType = 1" class="button small" v-bind:class="{alt: sortType != 1}">Sort by Picks</button>
+            &nbsp;
+            <button @click="sortType = 2" class="button small" v-bind:class="{alt: sortType != 2}">Sort by Win Rate</button>
+          </div>
+          <br />
           <div class="w3-row-padding">
-            <template v-for="(item) in ability.heroes">
+            <template v-for="(item) in heroCombos">
               <div v-bind:key="item.id" class="w3-col s12 m6 l4 w3-padding-small">
                 <div class="w3-card w3-row w3-padding">
                   <div style="float: right;">
@@ -54,9 +63,18 @@
           </div>
            <br />
           <h3>Ability Combos</h3>
-          <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Purus viverra accumsan in nisl nisi scelerisque eu ultrices. Vitae ultricies leo integer malesuada nunc vel risus commodo viverra. Quis risus sed vulputate odio. Orci phasellus egestas tellus rutrum tellus pellentesque eu. Tellus in hac habitasse platea dictumst vestibulum rhoncus. Orci porta non pulvinar neque laoreet suspendisse interdum consectetur. Donec et odio pellentesque diam volutpat commodo. Diam maecenas sed enim ut sem viverra aliquet eget. Ultrices tincidunt arcu non sodales neque sodales ut etiam sit. In fermentum et sollicitudin ac. Purus gravida quis blandit turpis cursus in hac habitasse. Egestas egestas fringilla phasellus faucibus scelerisque. Mauris sit amet massa vitae. Ornare massa eget egestas purus.</p>
+          <p>
+            A great ability combo on the right hero can dominate a game but no combo is unbeatable even if some look like they are.
+            Just remember to against your play, strategy, and/or item builds.
+          </p>
+          <div class="w3-center">
+            <button @click="sortType = 1" class="button small" v-bind:class="{alt: sortType != 1}">Sort by Picks</button>
+            &nbsp;
+            <button @click="sortType = 2" class="button small" v-bind:class="{alt: sortType != 2}">Sort by Win Rate</button>
+          </div>
+          <br />
           <div class="w3-row-padding">
-            <template v-for="(item) in ability.abilities">
+            <template v-for="(item) in abilityCombos">
               <div v-bind:key="item.id" class="w3-col s12 m6 l4 w3-padding-small">
                 <div class="w3-card w3-row w3-padding">
                   <div style="float: right;">
@@ -89,16 +107,54 @@
 import axios from "axios"
 import { am4core, am4charts } from "@/plugins/amcharts-vue"
 
+let chart = undefined;
+
 export default {
   name: "hero",
   data() {
     return {
       loading: true,
+      sortType: 2,
       ability: {}
     }
   },
   mounted() {
     this.loadData()
+  },
+  computed: {
+    heroCombos: function () {
+      if(this.ability.heroes) {
+        var combos = this.ability.heroes.slice();
+        combos.sort((a,b) => {
+          if(this.sortType == 1)
+            return b.picks - a.picks;
+          else if(this.sortType == 2)
+            return b.winRate - a.winRate;
+        });
+        return combos
+      } 
+      else
+      {
+        return []
+      }
+    },
+    abilityCombos: function () {
+      if(this.ability.abilities) {
+        var combos = this.ability.abilities.slice();
+        combos.sort((a,b) => {
+          if(this.sortType == 1)
+            return b.picks - a.picks;
+          else if(this.sortType == 2)
+            return b.winRate - a.winRate;
+        });
+        return combos
+      }
+      else 
+      {
+        return []
+      }
+      
+    }
   },
   methods: {
     async  loadData() {
@@ -115,7 +171,7 @@ export default {
 		  })
     },
     makeSparkline() {
-      var chart = am4core.create(this.$refs.chart, am4charts.XYChart)
+      chart = am4core.create(this.$refs.chart, am4charts.XYChart)
 
       let data = []
       for (const item of this.ability.history) {
@@ -160,6 +216,10 @@ export default {
       bullet.fill = am4core.color("#ff0000");
       bullet.circle.radius = 3
     }
+  },
+  beforeRouteLeave (to, from , next) {
+    chart.dispose()
+    next()
   }
 }
 </script>

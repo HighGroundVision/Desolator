@@ -59,6 +59,8 @@
 import axios from "axios"
 import { am4core, am4charts } from "@/plugins/amcharts-vue"
 
+let chart = undefined
+
 export default {
   name: "heroes",
   data() {
@@ -95,7 +97,7 @@ export default {
     makeChart() {
       let self = this
 
-      let chart = am4core.create(this.$refs.chart, am4charts.XYChart)
+      chart = am4core.create(this.$refs.chart, am4charts.XYChart)
       chart.numberFormatter.numberFormat = "#%"
       
       //chart.scrollbarY = new am4core.Scrollbar()
@@ -188,6 +190,10 @@ export default {
         }
       ]
     }
+  },
+  beforeRouteLeave (to, from , next) {
+    chart.dispose()
+    next()
   }
 }
 </script>

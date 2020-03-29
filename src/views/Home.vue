@@ -34,7 +34,7 @@
       <div class="inner">
         <h2>News & Updates</h2>
         <ul style="list-style:none">
-          <li><span class="w3-tag w3-round w3-light-blue" style="width:80px;">7.25</span> 17 Mar 2020: Gameplay Update 7.25</li>
+          <li><span class="w3-tag w3-round w3-light-blue" style="width:80px;">7.25</span> 17 Mar 2020: Unlocked many new abilities granted by Aghanim's Scepter</li>
           <li><span class="w3-tag w3-round w3-light-blue" style="width:80px;">7.24c</span> 12 Mar 2020: Added Lone Druid, as well as Spirit Bear, Spirit Link, Savage Roar and True Form</li>
           <li><span class="w3-tag w3-round w3-light-blue" style="width:80px;">7.24b</span> 09 Mar 2020: Enabled Morphling, but without attribute shift or morph</li>
           <li><span class="w3-tag w3-round w3-light-blue" style="width:80px;"></span> 03 Feb 2020: Sign up for Ability Draft Challenge League</li>

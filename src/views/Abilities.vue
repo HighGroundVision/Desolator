@@ -114,6 +114,8 @@
 import axios from "axios"
 import { am4core, am4charts } from "@/plugins/amcharts-vue"
 
+let chart = undefined
+
 export default {
   name: 'abilities',
   data() {
@@ -158,7 +160,7 @@ export default {
     makeChart() {
       let self = this
 
-      let chart = am4core.create(this.$refs.chart, am4charts.XYChart);
+      chart = am4core.create(this.$refs.chart, am4charts.XYChart);
       chart.numberFormatter.numberFormat = "#%";
 
       let data = [];
@@ -167,7 +169,7 @@ export default {
           id: item.id,
           category: item.name,
           open: item.current.winRate,
-          close: item.previous.winRate
+          close: isNaN(item.previous.winRate) ? item.current.winRate : item.previous.winRate
         });
       }
 
@@ -246,6 +248,10 @@ export default {
         }
       ];
     }
+  },
+  beforeRouteLeave (to, from , next) {
+    chart.dispose()
+    next()
   }
 }
 </script>

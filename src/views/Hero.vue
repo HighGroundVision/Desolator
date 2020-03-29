@@ -9,24 +9,26 @@
     <section class="wrapper style2">
       <div class="inner">
         <loader :loading="loading">
-          <div class="w3-row-padding w3-center">
-            <div class="w3-third">
-              <span>~</span>
+          <div class="flex flex-3">
+            <div class="flex-item left">
             </div>
-            <div class="w3-third">
+            <div class="flex-item">
               <h2>{{hero.name}}</h2>
               <img class="w3-round-large" :src="hero.image" style="width:100%;" />
               <span>History (Win Rate)</span>
               <br />
               <div class="sparkline" ref="chart"></div>    
             </div>
-            <div class="w3-third">
-              <span>~</span>
+            <div class="flex-item right">
             </div>
           </div>
           <br />
           <h3>Attributes</h3>
-          <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Purus viverra accumsan in nisl nisi scelerisque eu ultrices. Vitae ultricies leo integer malesuada nunc vel risus commodo viverra. Quis risus sed vulputate odio. Orci phasellus egestas tellus rutrum tellus pellentesque eu. </p>
+          <p>
+            Knowing your hero is important in every mode in the Dota but in Ability Draft this can matter far more.
+            Below we listed the primary attributes for the hero sorted by the rank of each attribute.
+            Understanding your heroes strengths and weaknesses will help you understand which ability you can use to enhance your strengths / offset your weakness and this can also effect your item build.
+          </p>
           <template v-for="(attribute) in hero.attributes">
             <div v-bind:key="attribute.name">
               <div class="w3-row-padding">
@@ -46,7 +48,11 @@
           </template>
           <br />
           <h3>Talents</h3>
-          <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Purus viverra accumsan in nisl nisi scelerisque eu ultrices. Vitae ultricies leo integer malesuada nunc vel risus commodo viverra. Quis risus sed vulputate odio. Orci phasellus egestas tellus rutrum tellus pellentesque eu. </p>
+          <p>
+            Some heroes are very ability dependant when its comes to talents.
+            Examine each talents win rate to understand which abilities to prioritize.
+            In Ability Draft extreme differences in win rate can highlight a heroes strengths and weaknesses.
+          </p>
           <div class="w3-row-padding w3-center">
             <div class="w3-col s4">
                <b>Description</b>
@@ -85,7 +91,10 @@
           </template>
           <br />
           <h3>Abilities</h3>
-          <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Purus viverra accumsan in nisl nisi scelerisque eu ultrices. Vitae ultricies leo integer malesuada nunc vel risus commodo viverra. Quis risus sed vulputate odio. Orci phasellus egestas tellus rutrum tellus pellentesque eu. Tellus in hac habitasse platea dictumst vestibulum rhoncus. Orci porta non pulvinar neque laoreet suspendisse interdum consectetur. Donec et odio pellentesque diam volutpat commodo. Diam maecenas sed enim ut sem viverra aliquet eget. Ultrices tincidunt arcu non sodales neque sodales ut etiam sit. In fermentum et sollicitudin ac. Purus gravida quis blandit turpis cursus in hac habitasse. Egestas egestas fringilla phasellus faucibus scelerisque. Mauris sit amet massa vitae. Ornare massa eget egestas purus.</p>
+          <p>
+            The heroes default abilities removed form the combos because they could be required by talents so we wanted to make them easy to find to compare with the talent win rates.
+            Keep in mind because the default abilities are always available with this hero the overall numbers are inflated when compared to other combos.
+          </p>
           <div class="w3-row-padding">
             <template v-for="(item) in hero.abilities">
               <div v-bind:key="item.id" class="w3-col s6 m3 l3 w3-padding-small w3-center">
@@ -99,9 +108,19 @@
           </div>
           <br />
           <h3>Combos</h3>
-          <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Purus viverra accumsan in nisl nisi scelerisque eu ultrices. Vitae ultricies leo integer malesuada nunc vel risus commodo viverra. Quis risus sed vulputate odio. Orci phasellus egestas tellus rutrum tellus pellentesque eu. Tellus in hac habitasse platea dictumst vestibulum rhoncus. Orci porta non pulvinar neque laoreet suspendisse interdum consectetur. Donec et odio pellentesque diam volutpat commodo. Diam maecenas sed enim ut sem viverra aliquet eget. Ultrices tincidunt arcu non sodales neque sodales ut etiam sit. In fermentum et sollicitudin ac. Purus gravida quis blandit turpis cursus in hac habitasse. Egestas egestas fringilla phasellus faucibus scelerisque. Mauris sit amet massa vitae. Ornare massa eget egestas purus.</p>
+          <p>
+            A lot of people when talking about Ability Draft will focus on the ability combos as if they apply to all heroes equal.
+            This is far from true and therefore we believe it is important to highlight abilities that players are picking with this hero but we have also included in the win rate so you can gage which abilities to prioritize over others.
+            After you find the best abilities your your hero you can click them to see which abilities they combo with.
+          </p>
+          <div class="w3-center">
+            <button @click="sortType = 1" class="button small" v-bind:class="{alt: sortType != 1}">Sort by Picks</button>
+            &nbsp;
+            <button @click="sortType = 2" class="button small" v-bind:class="{alt: sortType != 2}">Sort by Win Rate</button>
+          </div>
+          <br />
           <div class="w3-row-padding">
-            <template v-for="(item) in hero.combos">
+            <template v-for="(item) in combos">
               <div v-bind:key="item.id" class="w3-col s12 m6 l4 w3-padding-small">
                 <div class="w3-card w3-row w3-padding">
                   <div style="float: right;">
@@ -135,16 +154,37 @@
 import axios from "axios"
 import { am4core, am4charts } from "@/plugins/amcharts-vue"
 
+let chart = undefined;
+
 export default {
   name: "hero",
   data() {
     return {
       loading: true,
+      sortType: 1,
       hero: {}
     }
   },
   mounted() {
     this.loadData()
+  },
+  computed: {
+    combos: function () {
+      if(this.hero.combos) {
+        var combos = this.hero.combos.slice();
+        combos.sort((a,b) => {
+          if(this.sortType == 1)
+            return b.picks - a.picks;
+          else if(this.sortType == 2)
+            return b.winRate - a.winRate;
+        });
+        return combos  
+      }
+      else
+      {
+        return []
+      }
+    }
   },
   methods: {
     async  loadData() {
@@ -161,7 +201,7 @@ export default {
 		  })
     },
     makeSparkline() {
-      var chart = am4core.create(this.$refs.chart, am4charts.XYChart)
+      chart = am4core.create(this.$refs.chart, am4charts.XYChart)
 
       let data = []
       for (const item of this.hero.history) {
@@ -206,6 +246,10 @@ export default {
       bullet.fill = am4core.color("#ff0000");
       bullet.circle.radius = 3
     }
+  },
+  beforeRouteLeave (to, from , next) {
+    chart.dispose()
+    next()
   }
 }
 </script>
