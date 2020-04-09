@@ -14,16 +14,11 @@
           <div class="flex-item">
             <div style="text-align:center">
               <img src="/static/images/cluckles.png" />
-              <!--
               <br />
-              <a href="https://gamepedia.cursecdn.com/dota2_gamepedia/4/4e/Vo_shredder_timb_rare_01.mp3" target="_blank">
-                <i class="fas fa-play-circle"></i>
-              </a>
-              -->
+              <b>We will do our best to keep this guide up to date based on major patches but a guide is only as good as the last patch</b>
               <br />
-              <b>Someone once told me I needed to face fear to get over it, and I thought, well why not take a step further and cut my fear into little pieces, then set my fear on fire, then throw the hot ash of my fear into a lake, and then poison the lake…</b>
               <br />
-              <b>Simple!</b>
+              <span class="w3-tag w3-padding w3-round-large w3-center">7.25</span>
             </div>
           </div>
           <div class="flex-item right">

@@ -6,7 +6,8 @@ branches:
   - master
 skip_tags: true
 environment:
-  nodejs_version: 8
+  nodejs_version: 10,
+  VUE_APP_BASE_API: https://tarrasque.azurewebsites.net/
 install:
 - ps: Install-Product node $env:nodejs_version
 - npm install

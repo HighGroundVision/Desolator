@@ -54,41 +54,43 @@
             In Ability Draft extreme differences in win rate can highlight a heroes strengths and weaknesses.
           </p>
           <div class="w3-row-padding w3-center">
-            <div class="w3-col s4">
-               <b>Description</b>
-            </div>
-            <div class="w3-col s1">
-               <b>Win Rate</b>
-            </div>
-            <div class="w3-col s2">
-              <b>Level</b>
-            </div>
-            <div class="w3-col s1">
-               <b>Win Rate</b>
-            </div>
-            <div class="w3-col s4">
-              <b>Description</b>
-            </div>
-          </div>
-          <template v-for="(talents, key) in hero.talents">
-            <div class="w3-row-padding w3-center" v-bind:key="key">
               <div class="w3-col s4">
-                {{talents[0].description}}
+                <h5>Description</h5>
               </div>
               <div class="w3-col s1">
-                {{Math.round(talents[0].winRate * 100)}}%
+                <h5>Win Rate</h5>
               </div>
               <div class="w3-col s2">
-                <span class="w3-tag w3-round-large" style="background-color:#f6755e;">{{key}}</span>
+                <h5>Level</h5>
               </div>
               <div class="w3-col s1">
-                {{Math.round(talents[1].winRate * 100)}}%
+                <h5>Win Rate</h5>
               </div>
               <div class="w3-col s4">
-                {{talents[1].description}}
+                <h5>Description</h5>
               </div>
             </div>
-          </template>
+            <template v-for="(talents, key) in hero.talents">
+              <div class="w3-row-padding w3-center" v-bind:key="key">
+                <div class="w3-col s4">
+                  <b v-if="talents[0].key.includes('unique')">{{talents[0].description}}</b>
+                  <span v-else>{{talents[0].description}}</span>
+                </div>
+                <div class="w3-col s1">
+                  {{Math.round(talents[0].winRate * 100)}}%
+                </div>
+                <div class="w3-col s2">
+                  <span class="w3-tag w3-round-large" style="background-color:#f6755e;">{{key}}</span>
+                </div>
+                <div class="w3-col s1">
+                  {{Math.round(talents[1].winRate * 100)}}%
+                </div>
+                <div class="w3-col s4">
+                  <b v-if="talents[1].key.includes('unique')">{{talents[1].description}}</b>
+                  <span v-else>{{talents[1].description}}</span>
+                </div>
+              </div>
+            </template>
           <br />
           <h3>Abilities</h3>
           <p>
@@ -191,7 +193,7 @@ export default {
       let self = this
       self.loading = true
 
-      var response = await axios.get("https://tarrasque.azurewebsites.net/api/hero/" + this.$route.params.id)
+      var response = await axios.get(process.env.VUE_APP_BASE_API + "api/hero/" + this.$route.params.id)
       self.hero = response.data
 
       self.loading = false

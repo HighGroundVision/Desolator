@@ -139,10 +139,33 @@
 </template>
 
 <script>
+import axios from "axios"
+
 export default {
   name: 'home',
   data () {
     return { construction: true }
+  },
+  created() {
+    this.preFetch()
+  },
+  methods: {
+    async preFetch() {
+      let response = await axios.get(process.env.VUE_APP_BASE_API + "api/draft/pool")
+      for (const hero of response.data) {
+        this.preloadImage(hero.imageBanner)
+        this.preloadImage(hero.imageIcon)
+        this.preloadImage(hero.imageProfile)
+        for (const ability of hero.abilities) {
+          this.preloadImage(ability.image)
+        }
+      }
+    },
+    preloadImage(url)
+    {
+      var img = new Image();
+      img.src = url;
+    }
   }
 }
 </script>

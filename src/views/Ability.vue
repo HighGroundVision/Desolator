@@ -65,7 +65,7 @@
           <h3>Ability Combos</h3>
           <p>
             A great ability combo on the right hero can dominate a game but no combo is unbeatable even if some look like they are.
-            Just remember to against your play, strategy, and/or item builds.
+            Just remember to balance against your play style, strategy, and/or item builds.
           </p>
           <div class="w3-center">
             <button @click="sortType = 1" class="button small" v-bind:class="{alt: sortType != 1}">Sort by Picks</button>
@@ -161,7 +161,7 @@ export default {
       let self = this
       self.loading = true
 
-      var response = await axios.get("https://tarrasque.azurewebsites.net/api/ability/" + this.$route.params.id)
+      var response = await axios.get(process.env.VUE_APP_BASE_API + "api/ability/" + this.$route.params.id)
       self.ability = response.data
 
       self.loading = false

@@ -68,7 +68,7 @@ export default {
    methods: {
     async loadDataRegions() {
       this.loadingRegions = true
-      let response = await axios.get("https://tarrasque.azurewebsites.net/api/regions")
+      let response = await axios.get(process.env.VUE_APP_BASE_API + "api/regions")
       this.regions = response.data
       this.loadingRegions = false
 
@@ -82,7 +82,7 @@ export default {
         return
         
       this.loadingHistory = true
-      let response = await axios.get("https://tarrasque.azurewebsites.net/api/region/" + this.region + "/history")
+      let response = await axios.get(process.env.VUE_APP_BASE_API + "api/region/" + this.region + "/history")
       
       var history = response.data
       let data = []

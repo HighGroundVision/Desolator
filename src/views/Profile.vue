@@ -189,7 +189,7 @@
                             </div>
                           </div>
                           <router-link :to="'/player/' + item.accountId" style="text-decoration: none;">
-                            <h3 v-bind:class="{'w3-text-green': item.friend}">{{item.persona}}</h3> 
+                            <h3 class="truncate" v-bind:class="{'w3-text-green': item.friend}">{{item.persona}}</h3> 
                           </router-link>                     
                         </div>
                       </div>
@@ -250,7 +250,7 @@ export default {
     },
     async loadData(id) {
       this.loading = true
-      let response = await axios.get("https://tarrasque.azurewebsites.net/api/player/details/" + id)
+      let response = await axios.get(process.env.VUE_APP_BASE_API + "api/player/details/" + id)
       this.details = response.data
       this.summarizeHistory = this.details.history.length > 10
       this.setRegion();
@@ -271,9 +271,6 @@ export default {
     },
     humizeDate(date) {
       return moment(date).fromNow()
-    },
-    showCombatants() {
-
     }
   }
 }
@@ -300,6 +297,12 @@ hr  {
 }
 .avatar {
   height: 64px;
+}
+.truncate {
+  width: 250px;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
 }
 </style>
 

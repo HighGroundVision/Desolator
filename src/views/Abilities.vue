@@ -135,7 +135,7 @@ export default {
       let self = this
       self.loading = true
 
-      var response = await axios.get("https://tarrasque.azurewebsites.net/api/abilities/")
+      var response = await axios.get(process.env.VUE_APP_BASE_API + "api/abilities/")
       self.abilities = response.data
 
       self.abilities.sort((a,b) => b.total.winRate - a.total.winRate)

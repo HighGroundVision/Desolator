@@ -71,6 +71,12 @@ export default new Router({
                 import ('./views/Drafter.vue')
         },
         {
+            path: '/draft',
+            name: 'draft',
+            component: () =>
+                import ('./views/Draft.vue')
+        },
+        {
             path: '/profile/',
             name: 'profile',
             component: () =>

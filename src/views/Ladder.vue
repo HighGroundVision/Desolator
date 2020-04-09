@@ -60,6 +60,8 @@
                     </h2>
                   </div>
                   <div class="w3-col s2">
+                    <span v-if="region == 0" class="w3-tag w3-round-large w3-center" style="background-color: #f6755e">{{item.region}}</span>
+                    <br v-if="region == 0" />
                     <b>Rating: </b><span>{{Math.round(item.ranking)}}</span>
                     <br />
                     <b>Matches: </b><span>{{item.total}}</span>
@@ -99,19 +101,14 @@ export default {
   methods: {
     async loadRegionData() {
       this.loading = true
-      var response = await axios.get("https://tarrasque.azurewebsites.net/api/regions")
+      var response = await axios.get(process.env.VUE_APP_BASE_API + "api/regions")
       this.regions = response.data
       
       this.loading = false
     },
     async loadLatterData() {
       this.loading = true
-
-      var url = "https://tarrasque.azurewebsites.net/api/leaderboard/global";
-      if(self.region != 0)
-        url = "https://tarrasque.azurewebsites.net/api/leaderboard/region/" + this.region
-
-      var response = await axios.get(url)
+      var response = await axios.get(process.env.VUE_APP_BASE_API + "api/leaderboard/region/" + this.region)
       this.latter = response.data
 
       this.loading = false
