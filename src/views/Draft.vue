@@ -50,7 +50,8 @@
             <p>
               Some heroes are very ability dependant when its comes to talents.
               Examine each talents win rate to understand which abilities to prioritize.
-              In Ability Draft extreme differences in win rate can highlight a heroes strengths and weaknesses.
+              <b>Highlighted</b> talents are dependent on the hero's default abilities.
+              Talents only work when you draft the associated skill, it will not affect a skill on another player.
             </p>
             <div class="w3-row-padding w3-center">
               <div class="w3-col s4">
@@ -93,61 +94,57 @@
             <br />
             <h3>Abilities</h3>
             <p>
-              The heroes default abilities removed form the combos because they could be required by talents so we wanted to make them easy to find to compare with the talent win rates.
-              Keep in mind because the default abilities are always available with this hero the overall numbers are inflated when compared to other combos.
-            </p>
-            <div class="w3-row">
-              <template v-for="(item) in hero.abilities">
-                <div v-bind:key="item.id" class="w3-col s6 m3 l3 w3-padding-small w3-center" style="position: relative;">
-                  <img @click="selectAbility(item)" class="w3-round-large ability-icon" :src="item.image"  />
-                  <h5>{{item.name}}</h5>
-                  <span class="w3-tag w3-xlarge w3-round-large" style="position: absolute; top:0px;left:40px;background-color:#f6755e;">{{Math.round(item.winRate * 100)}}%</span>
-                  <span class="w3-tag w3-xlarge w3-round-large" style="position: absolute; top:0px;right:40px;background-color:#25a2c3;">{{numeralFormat(item.picks)}}</span>
-                </div>
-              </template>
-            </div>
-            <br />
-            <h3>Abilities</h3>
-            <p>
-              A lot of people when talking about Ability Draft will focus on the ability combos as if they apply to all heroes equal.
-              This is far from true and therefore we believe it is important to highlight abilities that players are picking with this hero but we have also included in the win rate so you can gage which abilities to prioritize over others.
-              We have limited the results return to only include those abilities in the draft. You can use the supplied options to pick or remove abilities from the pool to farther improve the results.
+              We have limited the results return to only include those abilities in the draft. 
+              A lot of people when talking about Ability Draft will focus on the ability combos as if they apply to all heroes equal but this is not true.
+              The abilities can be sorted by priority (how much other players want this ability), picks (compared to this hero), or win rate (compared to this hero).
+              We have also included a icon if the ability has Aghanim's scepter upgrade.
+              You can select an ability to see it's combos and we will automatically adjust the pool based on your choices.
             </p>
             <div class="w3-center">
-              <button @click="sortType = 1" class="button small alt" v-bind:class="{special: sortType == 1}">Sort by Picks</button>
-              &nbsp;
-              <button @click="sortType = 2" class="button small alt" v-bind:class="{special: sortType == 2}">Sort by Win Rate</button>
+              <b>Sort By</b>
+              <div>
+                <button @click="sortType = 3" class="button small alt w3-margin" v-bind:class="{special: sortType == 3}">Win Rate</button>
+                <button @click="sortType = 2" class="button small alt w3-margin" v-bind:class="{special: sortType == 2}">Picks</button>
+                <button @click="sortType = 1" class="button small alt w3-margin" v-bind:class="{special: sortType == 1}">Priority</button>
+              </div>
             </div>
             <br />
             <div class="w3-row-padding">
               <template v-for="(item) in sortedCombos">
                 <div v-bind:key="item.id" class="w3-col s1" style="position: relative;">
                   <img @click="selectAbility(item)" :src="item.image" class="w3-round-large ability-icon-s" />
-                  <span v-if="sortType == 2" class="w3-tag w3-round w3-small" style="position: absolute; top:-5px;left:0px;background-color:#f6755e;">{{Math.round(item.winRate * 100)}}%</span>
-                  <span v-else class="w3-tag w3-round w3-small" style="position: absolute; top:-5px;left:0px;background-color:#25a2c3;">{{numeralFormat(item.picks)}}</span>
+                  <span class="w3-tag w3-round w3-small" style="position: absolute; top:-5px;left:0px;background-color:#f6755e;">{{Math.round(item.winRate * 100)}}%</span>
+                  <span v-if="item.hasUpgrade" class="w3-tag w3-round w3-small" style="position: absolute; top:-5px;right:5px;background-color:#25a2c3;">
+                    <img src="https://hgv-hyperstone.azurewebsites.net/mics/aghanims_scepter_upgrade.png" class="aghanims_scepter" />
+                  </span>
                 </div>
               </template>
             </div>
             <br />
             <h3>Combos</h3>
             <p>
-              A great ability combo on the right hero can dominate a game but no combo is unbeatable even if some look like they are. Just remember to balance against your play style, strategy, and/or item builds.
+              A great ability combo on the right hero can dominate a game but no combo is unbeatable even if some look like they are. 
+              Just remember to balance against your play style, strategy, and/or item builds.
             </p>
             <div class="w3-row">
               <template v-for="(item) in sortedDraft">
                 <div v-bind:key="item.ability.id" class="w3-row-padding">
                   <div class="w3-col s1" style="position: relative;">
-                    <img @click="removeAbility(item.ability.id)" :src="item.ability.image" class="w3-round-large ability-icon-s w3-border w3-leftbar w3-rightbar  w3-topbar w3-bottombar w3-border-green" />
-                    <span v-if="sortType == 2" class="w3-tag w3-round w3-small" style="position: absolute; top:-5px;left:0px;background-color:#f6755e;">{{Math.round(item.ability.winRate * 100)}}%</span>
-                    <span v-else class="w3-tag w3-round w3-small" style="position: absolute; top:-5px;left:0px;background-color:#25a2c3;">{{numeralFormat(item.ability.picks)}}</span>
+                    <img @click="removeAbility(item.ability.id)" :src="item.ability.image" class="w3-round-large ability-icon-s" />
+                    <span class="w3-tag w3-round w3-small" style="position: absolute; top:-5px;left:0px;background-color:#f6755e;">{{Math.round(item.ability.winRate * 100)}}%</span>
+                    <span v-if="item.ability.hasUpgrade" class="w3-tag w3-round w3-small" style="position: absolute; top:-5px;right:5px;background-color:#25a2c3;">
+                      <img src="https://hgv-hyperstone.azurewebsites.net/mics/aghanims_scepter_upgrade.png"  class="aghanims_scepter" />
+                    </span>
                   </div>
                   <div class="w3-col s11">
                     <loader :small="true" :loading="item.loading">
                       <template v-for="(combo) in item.sortedCombos">
                         <div v-bind:key="combo.id" class="w3-col s1" style="position: relative;">
-                          <img  @click="selectAbility(combo)" v-bind:class="{'w3-border w3-leftbar w3-rightbar  w3-topbar w3-bottombar w3-border-green': draftedAbilities.includes(combo.id)}" :src="combo.image" class="w3-round-large ability-icon-s" />
-                          <span v-if="sortType == 2"  class="w3-tag w3-round w3-small" style="position: absolute; top:-5px;left:-5px;background-color:#f6755e;">{{Math.round(combo.winRate * 100)}}%</span>
-                          <span v-else class="w3-tag w3-round w3-small" style="position: absolute; top:-5px;left:-5px;background-color:#25a2c3;">{{numeralFormat(combo.picks)}}</span>
+                          <img @click="selectAbility(combo)" :src="combo.image" class="w3-round-large ability-icon-s" />
+                          <span class="w3-tag w3-round w3-small" style="position: absolute; top:-5px;left:-5px;background-color:#f6755e;">{{Math.round(combo.winRate * 100)}}%</span>
+                          <span v-if="combo.hasUpgrade" class="w3-tag w3-round w3-small" style="position: absolute; top:-5px;right:5px;background-color:#25a2c3;">
+                            <img src="https://hgv-hyperstone.azurewebsites.net/mics/aghanims_scepter_upgrade.png"  class="aghanims_scepter" />
+                          </span>
                         </div>
                       </template>
                     </loader>
@@ -171,10 +168,11 @@ export default {
     return {
       loading: false,
       params: {},
-      sortType: 2,
+      sortType: 3,
       combos: [],
       hero: {},
       draft: [],
+      abilities: [],
     }
   },
   created() {
@@ -189,13 +187,13 @@ export default {
     },
     sortedCombos: function () {
       var combos = this.combos.slice()
-      return this.sortCombosPool(combos, 36)
+      return this.sortCombos(combos, 48)
     },
     sortedDraft: function () {
       let draft = this.draft.slice()
       for (const item of draft) {
          var combos = item.combos.slice()
-         item.sortedCombos = this.sortCombosDraft(combos, 11)
+         item.sortedCombos = this.sortCombos(combos, 11)
       }
       return draft;
     },
@@ -208,28 +206,37 @@ export default {
     numeralFormat(value) {
       return numeral(value).format('0a')
     },
-    sortCombosPool(combos, slice) {
-      let self = this
-      if(self.hasUltimate && self.hasAbilities) {
-        combos = []
-      } else if(self.hasUltimate) {
+    sort(sortType, combos) {
+      combos.sort((a,b) => {
+        if(sortType == 1) {
+          return b.priority - a.priority
+        } else if (sortType == 2) {
+          return b.picks - a.picks
+        } else if (sortType == 3) {
+          return b.winRate - a.winRate
+        }
+      })
+    },
+    sortCombos(combos, slice) {
+      combos = combos.filter(_ => this.draftedAbilities.includes(_.id) == false)
+      if(this.hasUltimate) {
         combos = combos.filter(_ => _.isUltimate == false)
-      } else  if(self.hasAbilities) {
-        combos = combos.filter(_ => _.isUltimate == true)
       }
-      combos.sort((a,b) => (self.sortType == 1) ? b.picks - a.picks : b.winRate - a.winRate)
+      if(this.hasAbilities) {
+        combos = combos.filter(_ => _.isUltimate == true )
+      }
+      this.sort(this.sortType, combos)
       return combos.slice(0, slice)
     },
-    sortCombosDraft(combos, slice) {
-      let self = this
-      if(self.hasUltimate) {
-        combos = combos.filter(_ => _.isUltimate == false || self.draftedAbilities.includes(_.id))
+    mergeAbilityData(collection) {
+      for (const item of collection) {
+        let data = this.abilities.find(_ => _.id == item.id)
+        if (data) {
+          item.priority = data.priority
+          item.hasUpgrade = data.hasUpgrade
+          item.isGranted = data.isGranted
+        }
       }
-      if(self.hasAbilities) {
-        combos = combos.filter(_ => _.isUltimate == true || self.draftedAbilities.includes(_.id))
-      }
-      combos.sort((a,b) => (self.sortType == 1) ? b.picks - a.picks : b.winRate - a.winRate)
-      return combos.slice(0, slice)
     },
     async loadData() {
       this.loading = true
@@ -238,14 +245,32 @@ export default {
       let buff = new Buffer(key, 'base64')
       let json = buff.toString('ascii')
       this.params = JSON.parse(json)
+      let collection = this.params.skills.concat(this.params.ultimates)
 
-      var response = await axios.get(process.env.VUE_APP_BASE_API + "api/hero/" + this.params.hero)
-      this.hero = response.data
+      let responsePool = await axios.get(process.env.VUE_APP_BASE_API + "/api/draft/pool")
+      let pool = responsePool.data
+        .map(_ => _.abilities)
+        .flat()
+        .filter(_ => collection.includes(_.id))
+        .map(_ => { return { id: _.id, hasUpgrade: _.hasUpgrade, isGranted: _.isGranted } })
 
-      this.combos = this.hero.combos.filter(_ => this.params.skills.includes(_.id) || this.params.ultimates.includes(_.id))
+      let responseAbilities = await axios.get(process.env.VUE_APP_BASE_API + "/api/abilities")
+      let abilities = responseAbilities.data
+        .filter(_ => collection.includes(_.id))
+        .map(_ => { return { id: _.id, priority: _.total.priority } })
+
+      this.abilities = abilities.map(x => Object.assign(x, pool.find(y => y.id == x.id)))
+
+      let responseHero = await axios.get(process.env.VUE_APP_BASE_API + "api/hero/" + this.params.hero)
+      this.hero = responseHero.data
+
+      this.combos = this.hero.combos.filter(_ => collection.includes(_.id))
+      this.combos = this.combos.concat(this.hero.abilities)
+      this.mergeAbilityData(this.combos)
 
       this.loading = false
     },
+    
     selectAbility(ability) {
       let self = this;
 
@@ -268,9 +293,12 @@ export default {
         loading: true,
       }
       self.draft.push(item)
+
+      let collection = this.params.skills.concat(this.params.ultimates)
       
       axios.get(process.env.VUE_APP_BASE_API + "api/ability/" + ability.id).then((res) => {
-        item.combos = res.data.abilities.filter(_ => self.params.skills.includes(_.id) || self.params.ultimates.includes(_.id))
+        item.combos = res.data.abilities.filter(_ => collection.includes(_.id))
+        self.mergeAbilityData(item.combos)
         item.loading = false
       })
     },
@@ -324,6 +352,12 @@ hr  {
   overflow: hidden;
   text-overflow: ellipsis;
   text-decoration: none;
+}
+.aghanims_scepter {
+  width: 15px; 
+  height: 15px; 
+  vertical-align: text-middle; 
+  filter: invert(100%) sepia(0%) saturate(7490%) hue-rotate(331deg) brightness(103%) contrast(99%);
 }
 </style>
 

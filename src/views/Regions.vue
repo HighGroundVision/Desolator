@@ -14,7 +14,7 @@
             These are the regional totals and are reset ever few patches.
           </p>
           <loader :loading="loadingRegions">
-            <div id="chartRegions" class="chart" ref="chartRegions"></div>
+            <div id="chartRegions" ref="chartRegions"></div>
           </loader>
           <br />
           <h2>Timeline</h2>
@@ -36,7 +36,7 @@
           </div>
           <br />
           <loader :loading="loadingHistory">
-            <div id="chartHistory" class="chart" ref="chartHistory"></div>
+            <div id="chartHistory" ref="chartHistory"></div>
           </loader>
         </div>
       </section>
@@ -217,8 +217,8 @@ export default {
       imageSeries.heatRules.push({
         "target": circle,
         "property": "radius",
-        "min": 5,
-        "max": 20,
+        "min": 2,
+        "max": 15,
         "dataField": "value"
       })
 
@@ -240,7 +240,11 @@ export default {
 
 <!-- Add "scoped" attribute to limit CSS to this component only -->
 <style scoped>
-.chart {
+#chartRegions {
+  width: 100%;
+  height: 800px;
+}
+#chartHistory {
   width: 100%;
   height: 600px;
 }

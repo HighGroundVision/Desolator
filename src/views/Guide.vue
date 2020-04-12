@@ -29,6 +29,7 @@
      
      <section class="wrapper style2">
         <div class="inner">
+          <!--
           <h2>Game Mode</h2>
           <h3>Match Making</h3>
           <p>
@@ -115,6 +116,10 @@
           <p>
             Faucibus in ornare quam viverra orci. Fames ac turpis egestas maecenas pharetra. Lorem ipsum dolor sit amet. Augue lacus viverra vitae congue eu consequat ac. Erat pellentesque adipiscing commodo elit. Aliquam ut porttitor leo a diam. At lectus urna duis convallis convallis tellus. Ultricies lacus sed turpis tincidunt id aliquet risus. Quam pellentesque nec nam aliquam sem et tortor. Rhoncus aenean vel elit scelerisque mauris. Feugiat nibh sed pulvinar proin gravida hendrerit lectus. Aliquet bibendum enim facilisis gravida neque convallis. Non pulvinar neque laoreet suspendisse interdum consectetur. Nulla posuere sollicitudin aliquam ultrices sagittis orci a scelerisque purus.
           </p>
+          -->
+          <div class="w3-center">
+            <img src="/static/images/soon.png" />
+          </div>
         </div>
       </section>
   </div>

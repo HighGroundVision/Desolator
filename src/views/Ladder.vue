@@ -47,7 +47,7 @@
             <template v-for="(item, index) in latter">
               <div v-bind:key="item.accountId" class="w3-col s12 m12 l12 w3-padding-small">
                 <div class="w3-card s12 w3-row w3-round w3-padding">
-                  <div class="w3-col s2">
+                  <div class="w3-col s1">
                     <i v-if="index == 0" class="fas fa-medal icon-metals gold"></i>
                     <i v-else-if="index == 1" class="fas fa-medal icon-metals silver"></i>
                     <i v-else-if="index == 2" class="fas fa-medal icon-metals bronze"></i>
@@ -59,9 +59,10 @@
                       <router-link style="text-decoration: none;" :to="'/player/' + item.accountId">{{item.persona}}</router-link>
                     </h2>
                   </div>
+                  <div class="w3-col s1">
+                    <i class="fas icon-location" v-bind:class="'fa-'+item.regionGroup" :title="item.regionName" ></i>
+                  </div>
                   <div class="w3-col s2">
-                    <span v-if="region == 0" class="w3-tag w3-round-large w3-center" style="background-color: #f6755e">{{item.region}}</span>
-                    <br v-if="region == 0" />
                     <b>Rating: </b><span>{{Math.round(item.ranking)}}</span>
                     <br />
                     <b>Matches: </b><span>{{item.total}}</span>
@@ -147,6 +148,11 @@ hr  {
 .icon-metals.bronze  {
   color: #cd7f32;
   opacity: 1;
+}
+.icon-location {
+  font-size:3em;
+  padding: 10px;
+  color: #f6755e;
 }
 </style>
 
