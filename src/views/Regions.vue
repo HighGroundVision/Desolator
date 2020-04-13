@@ -13,9 +13,8 @@
             Where in the world are people playing Ability Draft?
             These are the regional totals and are reset ever few patches.
           </p>
-          <loader :loading="loadingRegions">
-            <div id="chartRegions" ref="chartRegions"></div>
-          </loader>
+          <loader :loading="loadingRegions"></loader>
+          <div id="chartRegions" ref="chartRegions"></div>
           <br />
           <h2>Timeline</h2>
           <p>
@@ -242,7 +241,7 @@ export default {
 <style scoped>
 #chartRegions {
   width: 100%;
-  height: 800px;
+  height: 700px;
 }
 #chartHistory {
   width: 100%;

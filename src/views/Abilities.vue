@@ -103,8 +103,8 @@
               The chart bellow list all the active abilities in order of highest win rate.
               It has dumbbells that connect the <b>Previous</b> week and the <b style="color: #f6755e">Current</b> week.
             </p>
-            <div class="chart" ref="chart"></div>
           </loader>
+          <div class="chart" ref="chart"></div>
         </div>
       </section>
   </div>
