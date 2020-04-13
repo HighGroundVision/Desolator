@@ -22,7 +22,7 @@
         <li><span>(Numbers)</span> <router-link to="/heroes">Heroes</router-link> </li>
         <li><span>(More Numbers)</span> <router-link to="/abilities">Abilities</router-link> </li>
         <li><span>(Regional Leaderboards)</span> <router-link to="/ladder">Ladder</router-link> </li>
-        <li><span>(Regional Peek Times)</span> <router-link to="/regions">Regions</router-link> </li>
+        <li><span>(regional Peak times)</span> <router-link to="/regions">Regions</router-link> </li>
         <li><span>(Drafting Assistant)</span> <router-link to="/drafter">Drafter</router-link> </li>
         <li><span>(Personalized Numbers)</span> <router-link to="/profile">Profile</router-link> </li>
       </ul>

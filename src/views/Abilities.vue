@@ -38,7 +38,7 @@
             <br />
             <h2>Priority Abilities</h2>
             <p>
-              Using some cleaver math we are able to deuced the drafting order for abilities. 
+              Using some clever math we are able to deuced the drafting order for abilities. 
               Since this is based on fuzzy math we are calling this Pick Priority which is a indication of which abilities players are picking first.
               As you can see just cause people think an ability is 1st pick  worthy dose not mean it has a high win rate.
             </p>
