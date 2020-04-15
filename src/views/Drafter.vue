@@ -12,12 +12,22 @@
             <p>
               For those that need a little assistance with drafting don't worry Cluckles will guide you.
               You can filter the combos specifically for your hero and limit the abilities to only those in the draft.
-            </p>
-            <p>
               Select the heroes in the draft including the <span title="Phantom Heroes are ones that are not part of either team but contribute their abilities to the draft.">phantom heroes</span>.
             </p>
           </div>
           <loader :loading="loading">
+            <div class="w3-center">
+              <ul>
+                <li style="display:inline;">
+                  <span class="w3-tag w3-round w3-xlarge" style="cursor: pointer; background-color: #25a2c3;" @click="filter.selection = ''">~</span>
+                </li>
+                <template v-for="(item) in filter.options">
+                  <li v-bind:key="item" style="display:inline;">
+                    <span class="w3-tag w3-round w3-xlarge" style="cursor: pointer; background-color: #25a2c3;" @click="filter.selection = item">{{item}}</span>
+                  </li>
+                </template>
+              </ul>
+            </div>
             <div class="w3-center">
               <template v-for="(hero) in heroes">
                 <img v-bind:key="hero.id" v-if="hero.enabled" :src="hero.imageIcon" @click="selectHero(hero)" v-bind:class="{ 'hero-disabled': limited && hero.primary == false }" class="hero-icon" />
@@ -72,6 +82,10 @@ export default {
   data () {  
     return {
       loading: false,
+      filter: {
+        options: ['A','B','C','D','E','F','G','H','I','J','K','L','M','N','O','P','Q','R','S','T','U','V','W','X','Y','Z'],
+        selection: '',
+      },
       pool: [],
       roster: [],
     }
@@ -81,7 +95,7 @@ export default {
   },
   computed: {
     heroes: function () {
-      return this.pool.filter(_ => _.enabled == true)
+      return this.pool.filter(_ => _.enabled == true).filter(_ => (this.filter.selection) ? _.name.startsWith(this.filter.selection) : true)
     },
     skills: function() {
       return this.roster.map(_ => _.abilities).flat().filter(_ => _.enabled == true).filter(_ => _.isGranted == false).filter(_ => _.isUltimate == false).slice(0, 36)
