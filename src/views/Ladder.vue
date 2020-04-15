@@ -54,9 +54,13 @@
                     <i v-else class="fas fa-medal icon-metals"></i>
                   </div>
                   <div class="w3-col s8">
-                    <img class="profile-icon" :src="item.avatar"  />
+                    <img v-if="item.avatar == null" class="profile-icon" src="http://cdn.akamai.steamstatic.com/steamcommunity/public/images/avatars/fe/fef49e7fa7e1997310d705b2a6158ff8dc1cdfeb_full.jpg"  />
+                    <img v-else class="profile-icon" :src="item.avatar"  />
                     <h2 style="display: inline; vertical-align: 50%;">
-                      <router-link style="text-decoration: none;" :to="'/player/' + item.accountId">{{item.persona}}</router-link>
+                      <router-link style="text-decoration: none;" :to="'/player/' + item.accountId">
+                        <span v-if="item.persona == null">{{item.accountId}}</span>
+                        <span v-else>{{item.persona}}</span>
+                      </router-link>
                     </h2>
                   </div>
                   <div class="w3-col s1">
