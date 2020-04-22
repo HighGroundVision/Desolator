@@ -98,7 +98,7 @@ img.disabled {
   color: #25a2c3; 
   font-weight: bold; 
   padding-left:5px;
-  
+  font-size: 0.8em;
 }
 .ability-ultimate {
   color: orange; 
@@ -106,12 +106,7 @@ img.disabled {
 span.disabled {
   color: #767d85;
 }
-.truncate {
-  width: 250px;
-  white-space: nowrap;
-  overflow: hidden;
-  text-overflow: ellipsis;
-}
+
 .ability-icon-xs
 {
   width: 30px;
