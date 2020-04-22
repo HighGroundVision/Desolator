@@ -36,6 +36,7 @@
                           <img v-if="ability.hasUpgrade" class="ability-icon-xs" src="https://hgv-hyperstone.azurewebsites.net/mics/aghanims_scepter_upgrade.png" style="vertical-align: middle;" />
                           <img v-if="ability.isGranted" class="ability-icon-xs" src="https://hgv-hyperstone.azurewebsites.net/mics/aghanims_scepter_granted.png" style="vertical-align: middle;" />
                           <span v-bind:class="{ disabled: !ability.enabled, 'ability-ultimate': ability.isUltimate }"  class="ability-name">{{ability.name}}</span>
+                          <i v-if="ability.notes" class="fas fa-info-circle w3-margin-left" :title="ability.notes"></i>
                         </div>
                       </template>
                     </div>
