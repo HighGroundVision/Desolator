@@ -5,6 +5,16 @@
         <h1>Drafter</h1>
       </div>
      </section>
+
+     <!-- 
+      Options:
+      1. Search by Text
+      2. Search by Voice
+      3. Search by Hero Icons
+      4. Search by Ability Icons
+      5. Search by Screen Share
+      6. Search by Camera (Phone)
+      -->
      
      <section class="wrapper style2">
         <div class="inner">

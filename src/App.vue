@@ -17,7 +17,7 @@
 		<!-- Menu -->
     <nav id="menu">      
       <ul class="links">
-        <li><router-link to="/guide">Guide</router-link></li>
+        <li><a href="https://www.reddit.com/r/Abilitydraft/comments/gcy778/how_to_tryhard_at_ability_draft/" target="_blank">Guide</a></li>
         <li><span>(What Works)</span> <router-link to="/pool">Pool</router-link> </li>
         <li><span>(Numbers)</span> <router-link to="/heroes">Heroes</router-link> </li>
         <li><span>(More Numbers)</span> <router-link to="/abilities">Abilities</router-link> </li>

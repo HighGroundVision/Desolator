@@ -21,7 +21,7 @@
             </div>
             <br />
             <ul class="actions">
-              <li><router-link  class="button scrolly" to="/guide">Get Started Guide</router-link></li>
+              <li><a  class="button scrolly" href="https://www.reddit.com/r/Abilitydraft/comments/gcy778/how_to_tryhard_at_ability_draft/" target="_blank">Get Started Guide</a></li>
             </ul>
           </div>
           <div class="flex-item right">

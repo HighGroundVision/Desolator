@@ -29,11 +29,12 @@
               </ol>
             </section>
             <section v-else>
+              
               <div style="line-height: 64px;">
                   <img :src="details.avatar" class="avatar" style="float:right;" />
                   <h2>{{details.persona}}</h2>
               </div>
-              
+              <!--
               <div class="w3-card w3-padding w3-round-large" style="background-color: #f6755e;">
                 <p style="margin: 0px;">
                   <b>
@@ -45,8 +46,10 @@
                 </p>
               </div>
               <br />
+              -->
               <hr />
               <h3>Regions</h3>
+              <!--
               <p>
                 We summarize the matches in each region played in. 
                 This means the player will have a rank in each region and we include the delta from the maximum rank in this region.
@@ -83,6 +86,17 @@
                     </div>
                   </div>
                 </template>
+              </div>
+              -->
+              <div class="w3-card w3-padding w3-round-large" style="background-color: #f6755e;">
+                <p style="margin: 0px;">
+                  <b>
+                    <i class="fas fa-exclamation-triangle"></i>
+                    We have uncovered a number of issues with the our ranking system. Until they have been corrected we are disabling the Ladder. 
+                    We are attempting to expand our range into the past from patch 7.25 to 7.00.
+                    This may take some time for these issues to be corrected.
+                  </b>
+                </p>
               </div>
               <hr />
               <h3>History</h3>
