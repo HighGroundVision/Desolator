@@ -29,7 +29,7 @@
                     <h3 v-if="hero.enabled && hero.primary" class="hero-name" style="background-color: #f6755e; color: white;"><router-link :to="'/hero/'+hero.id">{{hero.name}}</router-link></h3>
                     <h3 v-else-if="hero.enabled" class="hero-name"  style="background-color: #25a2c3; color: white;">{{hero.name}}</h3>
                     <h3 v-else class="hero-name" style="color: #727a82;">{{hero.name}}</h3>
-                    <div v-if="hero.enabled" style="height: 250px;">
+                    <div v-if="hero.enabled" style="height: 250px; overflow-y: auto;">
                       <template v-for="(ability) in hero.abilities">
                         <div v-bind:key="ability.id" class="truncate" style="line-height: 25px; padding: 5px;">
                           <img v-bind:class="{ disabled: !ability.enabled }" class="ability-icon-xs" :src="ability.image" style="border-radius: 5px; vertical-align: middle;"  />
