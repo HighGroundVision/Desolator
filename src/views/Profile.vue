@@ -52,7 +52,7 @@
                   <div v-bind:key="item.regionName" class="w3-col s12 m6 l4 w3-padding-small">
                     <div class="w3-card w3-row w3-padding">
                       <div class="w3-col" style="width:64px;">
-                        <i class="fas icon-location" v-bind:class="'fa-'+item.regionGroup" ></i>
+                        <i class="fas icon-location" v-bind:class="'fa-'+item.regionGroup" v-bind:style="{ color: item.regionColor}" ></i>
                       </div>
                       <div class="w3-rest w3-padding-small">
                         <div style="float:right;">

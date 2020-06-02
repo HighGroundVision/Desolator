@@ -146,7 +146,6 @@ export default {
       bullet.strokeWidth = 3
       bullet.stroke = am4core.color("#ffffff")
       bullet.strokeOpacity = 0
-
       bullet.adapter.add("tooltipY", function(tooltipY, target) {
         return -target.radius + 1
       })
@@ -181,7 +180,7 @@ export default {
           latitude: item.latitude,
           longitude: item.longitude,
           value: item.total,
-          color: am4core.color("#f6755e")
+          color: item.color //am4core.color("#f6755e")
         });
       }
 

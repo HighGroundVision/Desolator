@@ -76,6 +76,7 @@
                       <i
                         class="fas icon-location"
                         v-bind:class="'fa-'+item.regionGroup"
+                        v-bind:style="{ color: item.regionColor}"
                         :title="item.regionName"
                       ></i>
                     </div>
