@@ -98,7 +98,7 @@
                   <template v-for="(item) in history">
                     <tr v-bind:key="item.matchId" class="w3-pale-blue">
                       <td>
-                        <b :title="formateDate(item.date)">{{humizeDate(item.date)}}</b>
+                        <b :title="formateDate(item.date)">{{humanizeDate(item.date)}}</b>
                       </td>
                       <td>
                         <span v-if="item.victory" class="w3-tag w3-padding-small w3-round-large w3-center w3-pale-green" >Victory</span>
@@ -204,7 +204,7 @@
               <div>
                 <h4>As Allies</h4>
                 <div class="w3-row-padding">
-                  <template v-for="(item) in details.combatants.filter(_  => _.with > 1).sort((lhs, rhs) => rhs.with  - lhs.with)">
+                  <template v-for="(item) in combatantsWith">
                     <div v-bind:key="item.accountId" class="w3-col s6 w3-padding">
                       <div class="w3-card w3-padding">
                         <div class="w3-row">
@@ -228,7 +228,7 @@
                 </div>
                 <h4>As Enemies</h4>
                 <div class="w3-row-padding">
-                  <template v-for="(item) in details.combatants.filter(_  => _.against > 1).sort((lhs, rhs) => rhs.against - lhs.against)">
+                  <template v-for="(item) in combatantsAgainst">
                     <div v-bind:key="item.accountId" class="w3-col s6 w3-padding">
                       <div class="w3-card w3-padding">
                         <div class="w3-row">
@@ -274,7 +274,7 @@ export default {
       summarizeHistory: true,
     }
   },
-  created() {
+  created() {  
     var id = this.fetchAccount()
     this.loadData(id);
   },
@@ -284,7 +284,26 @@ export default {
         return this.summarizeHistory ? this.details.history.slice(0,5) : this.details.history
       else 
         return []
+    },
+    combatantsWith: function () {
+      if(this.details.combatants) {
+        var list = this.details.combatants.filter(_  => _.with > 1);
+        list.sort((lhs, rhs) => rhs.with  - lhs.with)
+        return list
+      } else {
+        return []
+      }
+    },
+    combatantsAgainst: function () {
+      if(this.details.combatants)  {
+        var list = this.details.combatants.filter(_  => _.against > 1);
+        list.sort((lhs, rhs) => rhs.against - lhs.against);
+        return list;
+      } else {
+        return []
+      }
     }
+
   },
   methods: {
     fetchAccount() {
@@ -329,7 +348,10 @@ export default {
     formateDate(date) {
       return moment(date).format("dddd, MMMM Do YYYY, h:mm A")
     },
-    humizeDate(date) {
+    humanizeDate(date) {
+      return moment(date).fromNow()
+    },
+    umanizeDate(date) {
       return moment(date).fromNow()
     }
   }
