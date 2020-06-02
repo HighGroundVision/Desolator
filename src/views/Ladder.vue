@@ -8,7 +8,7 @@
 
     <section class="wrapper style2">
       <div class="inner">
-        <section v-if="beta">
+        <section>
           <p>
             We have created a Elo based rating system that is updated for each
             <span title="Those that have 'Expose Public Match Data' settings checked">public player</span>.
@@ -16,6 +16,7 @@
             See how you rank against others in your region by changing the regional section.
           </p>
           <p>Want to see what the best AD players in the world are drafting then click on a player and see their recent history of matches.</p>
+          <!--
           <div class="w3-card w3-padding w3-round-large" style="background-color: #f6755e;">
             <p style="margin: 0px;">
               <b>
@@ -26,6 +27,7 @@
               </b>
             </p>
           </div>
+          -->
           <br />
           <div class="w3-content">
             <h4>Regions</h4>
@@ -93,18 +95,6 @@
             </div>
           </loader>
         </section>
-        <section>
-           <div class="w3-card w3-padding w3-round-large" style="background-color: #f6755e;">
-            <p style="margin: 0px;">
-              <b>
-               <i class="fas fa-exclamation-triangle"></i>
-                We have uncovered a number of issues with the our ranking system. Until they have been corrected we are disabling the Ladder. 
-                We are attempting to expand our range into the past the ranking apply for from patch 7.25 to 7.00. 
-                This may take some time for these issues to be corrected.
-              </b>
-            </p>
-          </div>
-        </section>
       </div>
     </section>
   </div>
@@ -120,7 +110,6 @@ export default {
     regionId = regionId == undefined ? 0 : regionId;
 
     return {
-      beta: false,
       loading: true,
       regions: [],
       region: regionId,

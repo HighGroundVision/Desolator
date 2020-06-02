@@ -34,22 +34,9 @@
                   <img :src="details.avatar" class="avatar" style="float:right;" />
                   <h2>{{details.persona}}</h2>
               </div>
-              <!--
-              <div class="w3-card w3-padding w3-round-large" style="background-color: #f6755e;">
-                <p style="margin: 0px;">
-                  <b>
-                    <i class="fas fa-bullhorn"></i> 
-                    This is a new feature as of Patch 7.25. 
-                    Currently we only export matches going forward (with time) so your previous matches are not include. 
-                    This is to make sure our history aligns with when we started tracking the ladder.
-                  </b>
-                </p>
-              </div>
-              <br />
-              -->
               <hr />
               <h3>Regions</h3>
-              <!--
+              
               <p>
                 We summarize the matches in each region played in. 
                 This means the player will have a rank in each region and we include the delta from the maximum rank in this region.
@@ -87,17 +74,18 @@
                   </div>
                 </template>
               </div>
-              -->
+              <br />
               <div class="w3-card w3-padding w3-round-large" style="background-color: #f6755e;">
                 <p style="margin: 0px;">
                   <b>
-                    <i class="fas fa-exclamation-triangle"></i>
-                    We have uncovered a number of issues with the our ranking system. Until they have been corrected we are disabling the Ladder. 
-                    We are attempting to expand our range into the past from patch 7.25 to 7.00.
-                    This may take some time for these issues to be corrected.
+                    <i class="fas fa-bullhorn"></i> 
+                    This is a new feature as of Patch 7.25. 
+                    Currently we only export matches going forward (with time) so your previous matches are not include. 
+                    This is to make sure our history aligns with when we started tracking the ladder.
                   </b>
                 </p>
               </div>
+              
               <hr />
               <h3>History</h3>
               <p>
@@ -214,8 +202,9 @@
                 We have included the total number of matches player together and break down of matches player with and against.
               </p>
               <div>
+                <h4>As Allies</h4>
                 <div class="w3-row-padding">
-                  <template v-for="(item) in details.combatants">
+                  <template v-for="(item) in details.combatants.filter(_  => _.with > 1).sort((lhs, rhs) => rhs.with  - lhs.with)">
                     <div v-bind:key="item.accountId" class="w3-col s6 w3-padding">
                       <div class="w3-card w3-padding">
                         <div class="w3-row">
@@ -224,14 +213,32 @@
                           </div>
                           <div class="w3-rest">
                             <div style="float:right;">
-                              <div>
-                                <b>Total</b> <span>{{item.total}}</span>
+                              <div title="Victories With">
+                                <span  class="w3-tag w3-padding w3-round w3-pale-blue w3-center">{{item.victoriesWith}} / {{item.with}}</span>
                               </div>
-                              <div>
-                                <b>With</b> <span>{{item.victoriesWith}} / {{item.with}}</span>
-                              </div>
-                              <div>
-                                <b>Against</b> <span>{{item.victoriesAgainst}} / {{item.against}}</span>
+                            </div>
+                            <router-link :to="'/player/' + item.accountId" style="text-decoration: none;">
+                              <h3 class="truncate" v-bind:class="{'w3-text-green': item.friend}">{{item.persona}}</h3> 
+                            </router-link>                     
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                  </template>
+                </div>
+                <h4>As Enemies</h4>
+                <div class="w3-row-padding">
+                  <template v-for="(item) in details.combatants.filter(_  => _.against > 1).sort((lhs, rhs) => rhs.against - lhs.against)">
+                    <div v-bind:key="item.accountId" class="w3-col s6 w3-padding">
+                      <div class="w3-card w3-padding">
+                        <div class="w3-row">
+                          <div class="w3-col" style="width:70px;">
+                            <img :src="item.avatar" class="avatar" />
+                          </div>
+                          <div class="w3-rest">
+                            <div style="float:right;">
+                              <div title="Victories Against">
+                                <span class="w3-tag w3-padding w3-round w3-pale-blue w3-center">{{item.victoriesAgainst}} / {{item.against}}</span>
                               </div>
                             </div>
                             <router-link :to="'/player/' + item.accountId" style="text-decoration: none;">
