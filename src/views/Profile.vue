@@ -47,6 +47,15 @@
                 If the player has a green <i class="fas fa-check-circle w3-text-green" title="Calibrated"></i> then they are calibrated in that region.
                 When the player has more then minimum limit of matches in a region they are calibrated and they will be eligible for the leaderboard in that region.
               </p>
+              <div class="w3-card w3-padding w3-round-large" style="background-color: #f6755e;">
+                <p style="margin: 0px;">
+                  <b>
+                    <i class="fas fa-bullhorn w3-text-light-grey"></i> 
+                    There are the number of issues with ranking you can read more on the <router-link to="/ladder">Ladder</router-link> page.
+                  </b>
+                </p>
+              </div>
+              <br />
               <div class="w3-row-padding">
                 <template v-for="(item) in details.summaries">
                   <div v-bind:key="item.regionName" class="w3-col s12 m6 l4 w3-padding-small">
@@ -74,18 +83,6 @@
                   </div>
                 </template>
               </div>
-              <br />
-              <div class="w3-card w3-padding w3-round-large" style="background-color: #f6755e;">
-                <p style="margin: 0px;">
-                  <b>
-                    <i class="fas fa-bullhorn"></i> 
-                    This is a new feature as of Patch 7.25. 
-                    Currently we only export matches going forward (with time) so your previous matches are not include. 
-                    This is to make sure our history aligns with when we started tracking the ladder.
-                  </b>
-                </p>
-              </div>
-              
               <hr />
               <h3>History</h3>
               <p>

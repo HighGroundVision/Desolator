@@ -8,26 +8,53 @@
 
     <section class="wrapper style2">
       <div class="inner">
-        <section>
+        <section v-if="!consent">
+          <div class="w3-card w3-padding w3-round-large" style="background-color: #f6755e;">
+            <p style="margin: 0px;">
+              <b>
+                <i class="fas fa-bullhorn w3-text-light-grey"></i>
+                Caution Rough Road Ahead!
+              </b>
+            </p>
+          </div>
+          <br />
           <p>
-            We have created a Elo based rating system that is updated for each
-            <span title="Those that have 'Expose Public Match Data' settings checked">public player</span>.
+            Lets start off be saying we are sorry. 
+            There are currently a number of issues with the current version of ranking that we can't fix. 
+            These issue rot the core ranking system making the data dubious at best.
+            <br />
+            <b>What is wrong?</b>
+            <br />
+            1. ELO base ranking is fundamentally faulted at producing meaning rank changes when multiple players are involved in a single match.
+            <br />
+            2. We implemented a way so players at the top get knocked down a few points to prevent run away, this ended up reset the player's rank completely.
+            <br />
+            3. We tried to keep a different ranking in each region using only matches from that region.
+            <br />
+            <b>What are we doing to fix it?</b>
+            <br />
+            1. Unlike the popular Elo rating system, which was initially designed for chess, this new ranking system is designed to support games with more than two players.
+            <br />
+            2. The new system dose not have the ability to run away and therefor no need to adjust ranking causing the conflict.
+            <br />
+            3. Players is their ranking. It is at the time of calculation of a leaderboard that factors like region should be considered.
+            <br />
+            <br />
+            Now all that being said we saw no point in stopping the current process until we have something to replace it. 
+            So if you want to still view the Ladder then click the button below.
+          </p>
+          <br />
+          <div class="w3-center">
+            <button class="w3-button w3-round w3-green" @click="consent=true">Show Me The Data</button>
+          </div>
+        </section>
+        <section v-else>
+          <p>
+            We have created a Elo based rating system that is updated for each public player (Those that have 'Expose Public Match Data' settings checked).
             We have also combined each region into a global ladder.
             See how you rank against others in your region by changing the regional section.
           </p>
           <p>Want to see what the best AD players in the world are drafting then click on a player and see their recent history of matches.</p>
-          <!--
-          <div class="w3-card w3-padding w3-round-large" style="background-color: #f6755e;">
-            <p style="margin: 0px;">
-              <b>
-                <i class="fas fa-bullhorn"></i>
-                This is a new feature as of Patch 7.25 and it will take some time before the rankings are correctly disturbed as there was no way to seed the players.
-                So all players start at the default calibration.
-                We will remove this alert when the standard deviation looks correct.
-              </b>
-            </p>
-          </div>
-          -->
           <br />
           <div class="w3-content">
             <h4>Regions</h4>
@@ -112,6 +139,7 @@ export default {
 
     return {
       loading: true,
+      consent: false,
       regions: [],
       region: regionId,
       latter: {}
