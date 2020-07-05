@@ -8,7 +8,7 @@
 
     <section class="wrapper style2">
       <div class="inner">
-        <section v-if="!consent">
+        <section >
           <div class="w3-card w3-padding w3-round-large" style="background-color: #f6755e;">
             <p style="margin: 0px;">
               <b>
@@ -40,21 +40,19 @@
             3. Players is their ranking. It is at the time of calculation of a leaderboard that factors like region should be considered.
             <br />
             <br />
-            Now all that being said we saw no point in stopping the current process until we have something to replace it. 
-            So if you want to still view the Ladder then click the button below.
+            Now all that being said we saw no point in stopping the current process until we have something to replace it. So below is the current ladder.
           </p>
-          <br />
-          <div class="w3-center">
-            <button class="w3-button w3-round w3-green" @click="consent=true">Show Me The Data</button>
-          </div>
         </section>
-        <section v-else>
+        <hr />
+        <section>
+          <!--
           <p>
             We have created a Elo based rating system that is updated for each public player (Those that have 'Expose Public Match Data' settings checked).
             We have also combined each region into a global ladder.
             See how you rank against others in your region by changing the regional section.
           </p>
           <p>Want to see what the best AD players in the world are drafting then click on a player and see their recent history of matches.</p>
+          -->
           <br />
           <div class="w3-content">
             <h4>Regions</h4>
@@ -67,7 +65,7 @@
               </select>
             </div>
           </div>
-          <hr />
+          <br />
           <loader :loading="loading">
             <div class="w3-row">
               <div v-if="latter.length == 0" class="w3-center">
@@ -76,11 +74,8 @@
               <template v-for="(item, index) in latter">
                 <div v-bind:key="item.accountId" class="w3-col s12 m12 l12 w3-padding-small">
                   <div class="w3-card s12 w3-row w3-round w3-padding">
-                    <div class="w3-col s1">
-                      <i v-if="index == 0" class="fas fa-medal icon-metals gold"></i>
-                      <i v-else-if="index == 1" class="fas fa-medal icon-metals silver"></i>
-                      <i v-else-if="index == 2" class="fas fa-medal icon-metals bronze"></i>
-                      <i v-else class="fas fa-medal icon-metals"></i>
+                    <div class="w3-col s1 w3-center">
+                      <span class="w3-tag w3-round w3-xxlarge" style="background:rgb(246, 117, 94)">{{(index+1)}}</span>
                     </div>
                     <div class="w3-col s8">
                       <img
@@ -139,7 +134,6 @@ export default {
 
     return {
       loading: true,
-      consent: false,
       regions: [],
       region: regionId,
       latter: {}
