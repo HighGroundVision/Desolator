@@ -13,11 +13,12 @@
               <b>We Surrender!</b>
               <br />
               <b>
-                For years we have been build AD tools then Datdota comes along a releases what we have been trying to build for years. 
-                They cover all the areas we do only do a better job of presenting the data. 
-                So rather then have two systems that do basically the same thing but end of confusing users with the differences we have retired this website and its supporting systems.
+                For years we have been build AD tools then Datdota comes along a releases what we have been trying to build. 
+                They cover almost all the aspects we do but a better job of presenting the information.
+                So rather then have two systems that do basically the same thing and end up confusing users with the differences we have retired this website and its supporting systems.
                 As always everything we do at HGV is open source so you can always check out the source over at <a href="https://github.com/orgs/HighGroundVision/dashboard">Github</a>.
-                We maybe back in the future with new tools as we export a partnership with Datdota but in the in term please use this excellent tool by Noxville.
+                We maybe back in the future with new tools and encourage you to check <a href="https://hgv-tango.azurewebsites.net/">High Ground Vision</a> for updates on this and our other projects.
+                We suggest you to visit Ability Draft Statistics (Created by Noxville) for Hero statics, Ability combos, Leaderboards and more.
               </b>
             </div>
             <br />
