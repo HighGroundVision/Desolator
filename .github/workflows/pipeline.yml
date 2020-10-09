@@ -24,7 +24,11 @@ jobs:
         with:
           node-version: '12'
       - run: npm install
-      - run: npm build
+      - run: npm run build
+      - uses: actions/upload-artifact@v2
+        with:
+          name: build
+          path: dist
       - uses: tibor19/static-website-deploy@v1
         with:
           enabled-static-website: 'true'
